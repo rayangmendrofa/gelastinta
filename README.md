@@ -47,16 +47,20 @@ npm run preview    # view it at http://localhost:4173
 To add a page: put `NewPage.dc.html` in `src/pages/`, add its URL to `ROUTES` in `build.mjs`,
 link to it from other pages with `href="NewPage.dc.html"`, then build.
 
-## Known limitation
+## Comments
 
-The comment boxes on the Talk and dissertation pages only work inside the visitor's own
-browser tab — comments are not saved or shown to anyone else. Swap in a real comment
-service (for example Giscus, which stores comments in GitHub Discussions) or remove the
-section before relying on it.
+The comment sections on the three Talk pages and two dissertation pages are real:
+`netlify/functions/comments.mts` serves `/api/comments` and stores each comment in the
+Netlify Blobs store `comments`. Visitors register with a name and email (remembered in
+their browser); comments appear immediately for everyone. Emails are stored for the site
+owner only and never shown publicly. To remove a comment, delete its entry in the Netlify
+dashboard (Data & Storage → Blobs → comments) or ask Claude. Comments only work on the
+Netlify-hosted site, not in `npm run preview`.
 
 ## Hosting
 
-- Host setting: build command **none**, output / publish directory **`public`**.
+- Hosted on Netlify (project `gelastinta`); `netlify.toml` sets build command
+  `npm run build`, publish directory `public`, and the functions folder.
 - Domain: gelastinta.com was bought through Canva. Point it at the host either by editing
   its DNS records in Canva, or by changing its nameservers in Canva to the host's.
   Canva keeps the domain registration either way.
