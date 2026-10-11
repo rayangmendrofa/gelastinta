@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>GelasTinta — Home</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&amp;family=JetBrains+Mono:wght@400;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#EDEFF2;color:#10131C;font-family:'Newsreader',Georgia,serif;font-size:18px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{max-width:100%;display:block}
+a{color:#2B44C8;text-underline-offset:3px}
+a:hover{color:#1A2C8F}
+h1,h2,h3,p,figure,ul,ol{margin:0}
+.wrap{max-width:1160px;margin:0 auto;padding:0 32px}
+.sec{padding:96px 0}
+.sec.tight{padding:64px 0}
+.dark{background:#10131C;color:#EDEFF2}
+.white{background:#FFFFFF}
+.blue{background:#2B44C8;color:#FFFFFF}
+.rule-t{border-top:1px solid #10131C}
+.rule-b{border-bottom:1px solid #10131C}
+.grid-bg{background-color:#EDEFF2;background-image:linear-gradient(#DCE0E7 1px,transparent 1px),linear-gradient(90deg,#DCE0E7 1px,transparent 1px);background-size:32px 32px}
+.disp{font-family:'Bricolage Grotesque',system-ui,sans-serif}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+.kicker{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;line-height:1.5;letter-spacing:.14em;text-transform:uppercase;color:#3A4152}
+.dark .kicker{color:#8FA2FF}
+.blue .kicker{color:#DDE3FF}
+.t-hero{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:clamp(44px,6.2vw,84px);line-height:.96;letter-spacing:-.035em}
+.t-title{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:clamp(34px,4.2vw,56px);line-height:1.04;letter-spacing:-.03em}
+.t-h2{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:clamp(30px,3.2vw,42px);line-height:1.06;letter-spacing:-.025em}
+.t-h3{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:700;font-size:22px;line-height:1.22;letter-spacing:-.01em}
+.lead{font-size:clamp(20px,1.9vw,23px);line-height:1.5}
+.intro{font-size:19px;line-height:1.65}
+.prose{max-width:66ch}
+.prose p+p{margin-top:1.1em}
+.small{font-size:16px;line-height:1.55}
+.muted{color:#3A4152}
+.dark .muted{color:#C9CED8}
+.meta{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;line-height:1.6;letter-spacing:.03em}
+.stack{display:flex;flex-direction:column}
+.g8{gap:8px}.g12{gap:12px}.g16{gap:16px}.g24{gap:24px}.g32{gap:32px}.g48{gap:48px}
+.sec-head{display:flex;flex-direction:column;gap:12px;margin-bottom:40px}
+.sec-head.row{flex-direction:row;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 32px}
+.cols-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.cols-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.cols-4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.split{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:start}
+.split.rev{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
+.split.mid{align-items:center}
+.card{background:#FFFFFF;border:1px solid #10131C;padding:28px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;line-height:1.4;letter-spacing:.05em;padding:6px 10px;border:1px solid currentColor}
+.chip.fill{background:#2B44C8;border-color:#2B44C8;color:#FFFFFF}
+.chip.warn{background:#C2410C;border-color:#C2410C;color:#FFFFFF}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 22px;background:#2B44C8;color:#FFFFFF;text-decoration:none;border-radius:999px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:14px;letter-spacing:.03em;border:1px solid #2B44C8}
+.btn:hover{background:#1A2C8F;border-color:#1A2C8F;color:#FFFFFF}
+.btn.ghost{background:transparent;color:inherit;border-color:currentColor}
+.btn.ghost:hover{background:#10131C;color:#EDEFF2;border-color:#10131C}
+.dark .btn.ghost:hover,.blue .btn.ghost:hover{background:#EDEFF2;color:#10131C;border-color:#EDEFF2}
+.back{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:inherit;min-height:44px;display:inline-flex;align-items:center;align-self:flex-start}
+.back:hover{color:inherit;text-decoration:underline}
+figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;line-height:1.5;letter-spacing:.06em;color:#3A4152;margin-top:10px}
+.dark figcaption{color:#C9CED8}
+.site-head{background:#EDEFF2;border-bottom:1px solid #10131C}
+.site-head .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 24px;min-height:72px}
+.brand{display:flex;align-items:center;gap:10px;color:#10131C;text-decoration:none;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:22px;letter-spacing:-.01em}
+.brand:hover{color:#10131C}
+.nav{display:flex;flex-wrap:wrap;gap:0 28px}
+.nav a{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#10131C;text-decoration:none;min-height:44px;display:inline-flex;align-items:center;border-bottom:2px solid transparent}
+.nav a:hover{color:#2B44C8}
+.nav a.on{color:#2B44C8;border-bottom-color:#2B44C8}
+.site-foot .wrap{padding-top:80px;padding-bottom:40px;display:flex;flex-direction:column;gap:56px}
+.foot-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:end}
+.foot-title{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:clamp(44px,5vw,64px);line-height:.95;letter-spacing:-.035em}
+.foot-blurb{font-size:19px;line-height:1.55;color:#C9CED8;max-width:30em}
+.foot-mail{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:clamp(22px,2.4vw,28px);color:#EDEFF2;text-decoration:none;border-bottom:2px solid #8FA2FF;padding-bottom:4px;align-self:flex-start;overflow-wrap:anywhere}
+.foot-mail:hover{color:#FFFFFF}
+.social{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 18px;border:1px solid #8FA2FF;color:#EDEFF2;text-decoration:none;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.05em}
+.social:hover{background:#EDEFF2;color:#10131C}
+.social:hover svg{stroke:#10131C}
+.tblock{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid #3A4152;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.06em}
+.tblock div{padding:14px 16px;display:flex;flex-direction:column;gap:6px;border-right:1px solid #3A4152}
+.tblock div:last-child{border-right:0}
+.tblock span:first-child{color:#8FA2FF}
+.brand-hero{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:clamp(64px,10vw,136px);line-height:.88;letter-spacing:-.045em}
+.code-chip{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:14px;padding:8px 14px;border:1px solid #10131C;background:#FFFFFF}
+.quote{font-size:clamp(24px,2.7vw,34px);line-height:1.35;font-style:italic;max-width:34em;letter-spacing:-.005em}
+.board{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px 20px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:15px;line-height:1.4}
+.tile{display:flex;flex-direction:column;color:#10131C;text-decoration:none;border:1px solid #10131C;background:#EDEFF2}
+.tile:hover{color:#10131C}
+.tile:hover h3{color:#2B44C8}
+.tile-art{height:220px;border-bottom:1px solid #10131C;display:flex;align-items:center;justify-content:center;position:relative}
+.tile-art .kicker{position:absolute;top:16px;left:16px}
+.lib{display:flex;flex-direction:column;justify-content:space-between;gap:48px;min-height:220px;padding:28px;border:1px solid #10131C;background:#FFFFFF;color:#10131C;text-decoration:none}
+.lib:hover{color:#10131C;background:#10131C}
+.lib:hover h3,.lib:hover .go{color:#FFFFFF}
+.lib:hover svg{stroke:#8FA2FF}
+.lib .go{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;color:#2B44C8}
+.latest{display:flex;align-items:center;gap:18px;padding:22px 28px;background:#10131C;color:#EDEFF2;text-decoration:none}
+.latest:hover{color:#FFFFFF;background:#1A2C8F}
+@media (max-width:960px){
+.split,.split.rev{grid-template-columns:minmax(0,1fr);gap:40px}
+.cols-3{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cols-4{grid-template-columns:repeat(2,minmax(0,1fr))}
+.foot-top{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:640px){
+.wrap{padding:0 20px}
+.sec{padding:64px 0}
+.sec.tight{padding:48px 0}
+.cols-2,.cols-3,.cols-4{grid-template-columns:minmax(0,1fr)}
+.tblock{grid-template-columns:repeat(2,minmax(0,1fr))}
+.tblock div:nth-child(2){border-right:0}
+.tblock div:nth-child(-n+2){border-bottom:1px solid #3A4152}
+.nav{gap:0 18px}
+.board{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+.hero{position:relative;overflow:hidden;background:#0B0D14;color:#FFFFFF;min-height:680px;display:flex;align-items:center}
+.hero>.wrap{position:relative;z-index:2;width:100%}
+.hero-slides{position:absolute;inset:0;z-index:0}
+.hero-slides img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;animation:heroFade 120s linear infinite both}
+@keyframes heroFade{0%{opacity:0;transform:scale(1.02)}1.25%{opacity:1}5%{opacity:1}6.25%{opacity:0;transform:scale(1.09)}100%{opacity:0;transform:scale(1.09)}}
+.hero-shade{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(11,13,20,.9) 0%,rgba(11,13,20,.72) 48%,rgba(11,13,20,.38) 100%),linear-gradient(0deg,rgba(11,13,20,.55) 0%,rgba(11,13,20,0) 40%);}
+.hero-shade::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:32px 32px}
+.hero .kicker{color:#C9D2FF}
+.hero .lead{color:#E3E6EE}
+.hero .code-chip{color:#10131C}
+.hero .brand-hero .ink{color:#8FA2FF}
+.hero-vessel{background:transparent;border:0;padding:12px 0 0;display:flex;flex-direction:column;align-items:center;max-width:380px;justify-self:end;width:100%}
+.hero-vessel svg [stroke="#10131C"]{stroke:#F4F5F8}
+.hero-vessel svg path[fill="#10131C"]{fill:#F4F5F8}
+.hero-vessel svg path[fill="#2B44C8"]{fill:#4F68E8;fill-opacity:.82}
+.hero-vessel svg text{fill:#DDE1EA}
+.hero-vessel svg{filter:drop-shadow(0 2px 10px rgba(0,0,0,.45))}
+.hero-vessel figcaption{color:#DDE1EA}
+.hero-link{position:absolute;right:32px;bottom:20px;z-index:2;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;min-height:44px;display:inline-flex;align-items:center;gap:8px}
+.hero-link:hover{color:#C9D2FF;text-decoration:underline}
+@media (prefers-reduced-motion:reduce){.hero-slides img{animation:none}.hero-slides img:first-child{opacity:1}}
+@media (max-width:960px){.hero{min-height:0}.hero-vessel{justify-self:start;max-width:320px}}
+@media (max-width:640px){.hero-link{right:20px;bottom:8px}.hero{padding-bottom:72px}.hero-vessel{max-width:220px;padding:0}}
+.fq{margin:8px 0;padding:20px 0 20px 24px;border-left:4px solid #2B44C8}
+.fq p{font-family:'Newsreader',Georgia,serif;font-style:italic;font-size:clamp(22px,2.3vw,28px);line-height:1.35;letter-spacing:-.005em}
+.fq cite{display:block;margin-top:10px;font-style:normal;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#3A4152}
+.tile-art.photo{height:300px;padding:0;overflow:hidden;background:#10131C}
+.tile-art.photo img{width:100%;height:100%;object-fit:cover}
+.tile-art .tag{position:absolute;top:16px;left:16px;z-index:1;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;background:#10131C;color:#FFFFFF;padding:6px 10px}
+</style>
+</helmet>
+<div style="min-height:100vh">
+
+<header class="site-head">
+<div class="wrap">
+<a href="Main.dc.html" class="brand"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M9.6 20 6.3 26.4A1.7 1.7 0 0 0 7.8 29h16.4a1.7 1.7 0 0 0 1.5-2.6L22.4 20z" fill="#2B44C8"></path><path d="M11 3h10M13 3v9L6 26.4A1.7 1.7 0 0 0 7.8 29h16.4a1.7 1.7 0 0 0 1.5-2.6L19 12V3" stroke="#10131C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>GelasTinta</a>
+<nav class="nav" aria-label="Main">
+<a href="Main.dc.html" class="on" aria-current="page">Home</a>
+<a href="Projects.dc.html">Projects</a>
+<a href="Talks.dc.html">Talks</a>
+<a href="Products.dc.html">Products</a>
+<a href="Author.dc.html">Author</a>
+</nav>
+</div>
+</header>
+
+<section class="sec hero rule-b" aria-label="Introduction">
+<div class="hero-slides" aria-hidden="true">
+<img src="/_blob/1cbb25cb1a353957951010a42aa58fc0" alt="" style="object-position:50% 50%;animation-delay:0s" fetchpriority="high">
+<img src="/_blob/54e236f0eae207dc01d1ee7e8e745b14" alt="" style="object-position:50% 50%;animation-delay:6s">
+<img src="/_blob/23e08ad3db1cd3399987c346362c040e" alt="" style="object-position:50% 35%;animation-delay:12s">
+<img src="/_blob/925865cb85607eb2acd1f76463392e38" alt="" style="object-position:50% 40%;animation-delay:18s">
+<img src="/_blob/74947f581310c4a58b511d52b0cf453a" alt="" style="object-position:50% 50%;animation-delay:24s">
+<img src="/_blob/56cca24a2040f046eb4863ee0c4e43b3" alt="" style="object-position:50% 45%;animation-delay:30s">
+<img src="/_blob/d0b69a4315655f68a6b39c11a4d7cd41" alt="" style="object-position:50% 40%;animation-delay:36s">
+<img src="/_blob/ac313a03702e49c46817e6592cccc59a" alt="" style="object-position:50% 45%;animation-delay:42s">
+<img src="/_blob/c29e846553651da3a89b2de97a131f51" alt="" style="object-position:50% 30%;animation-delay:48s">
+<img src="/_blob/249cc5a7a8debd1fc9946cfc9cdb6339" alt="" style="object-position:50% 40%;animation-delay:54s">
+<img src="/_blob/1f97d750e619e2798cb7b950bafd4e55" alt="" style="object-position:50% 55%;animation-delay:60s">
+<img src="/_blob/eb1ac40f26eec653825ed28360ae1ea5" alt="" style="object-position:50% 50%;animation-delay:66s">
+<img src="/_blob/574bcab85e93313f5104960f53d17495" alt="" style="object-position:50% 45%;animation-delay:72s">
+<img src="/_blob/2f91849e973c1cb47463883f45873c92" alt="" style="object-position:50% 30%;animation-delay:78s">
+<img src="/_blob/33efd841aaa3072adf596960a61e97cb" alt="" style="object-position:50% 45%;animation-delay:84s">
+<img src="/_blob/892c6d09ed4da6ce4df609c079b7b366" alt="" style="object-position:50% 55%;animation-delay:90s">
+<img src="/_blob/ba4b06e7983f90f6ed932b3e45b9f3c4" alt="" style="object-position:50% 60%;animation-delay:96s">
+<img src="/_blob/02a467c9baf6582f2ca67ac1c3522b32" alt="" style="object-position:50% 50%;animation-delay:102s">
+<img src="/_blob/6dbf7e766dcb2dc97f4c02e2787cb4ca" alt="" style="object-position:50% 45%;animation-delay:108s">
+<img src="/_blob/03497783b08521d4753e9b37d687b41d" alt="" style="object-position:50% 40%;animation-delay:114s">
+</div>
+<div class="hero-shade" aria-hidden="true"></div>
+<div class="wrap split rev mid">
+<div class="stack g24">
+<p class="kicker">Vol. 2026 — Jakarta · London · Singapore</p>
+<h1 class="brand-hero">Gelas<span class="ink">Tinta</span></h1>
+<p class="lead" style="max-width:24em">The website about the author's work and personal interest.</p>
+<div class="chips" style="gap:10px">
+<span class="code-chip">&lt;run&gt;</span>
+<span class="code-chip" style="background:#10131C;color:#EDEFF2">&lt;idea.exe&gt;</span>
+<span class="code-chip" style="border-color:#C2410C;color:#C2410C">&lt;error&gt;</span>
+</div>
+</div>
+<figure class="hero-vessel">
+<svg viewBox="0 0 320 400" width="100%" style="max-width:320px" role="img" aria-label="Illustration: a laboratory glass filled with ink, a drop falling in">
+<path d="M75 250 Q118 236 160 250 T245 250 L289 350 Q295 371 274 371 H46 Q25 371 31 350 Z" fill="#2B44C8"></path>
+<path d="M102 40 H218 M122 40 V150 L31 350 Q25 371 46 371 H274 Q295 371 289 350 L198 150 V40" fill="none" stroke="#10131C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M198 70 H186 M198 95 H190 M198 120 H186" stroke="#10131C" stroke-width="2"></path>
+<text x="214" y="74" font-family="JetBrains Mono, monospace" font-size="11" fill="#3A4152">300</text>
+<text x="214" y="124" font-family="JetBrains Mono, monospace" font-size="11" fill="#3A4152">200</text>
+<path d="M160 168 C160 168 148 186 148 195 a12 12 0 0 0 24 0 C172 186 160 168 160 168Z" fill="#10131C"></path>
+<circle cx="112" cy="300" r="6" fill="#EDEFF2" opacity="0.5"></circle>
+<circle cx="200" cy="320" r="4" fill="#EDEFF2" opacity="0.5"></circle>
+<circle cx="168" cy="286" r="3" fill="#EDEFF2" opacity="0.5"></circle>
+</svg>
+<figcaption>FIG. 00 — THE VESSEL</figcaption>
+</figure>
+</div>
+<a class="hero-link" href="Author.dc.html#activities">Photos — activities around the studies <span aria-hidden="true">→</span></a>
+</section>
+
+<section class="sec dark">
+<div class="wrap stack g24">
+<p class="kicker">01 — The name</p>
+<p class="quote">a metaphorical vessel where ideas flow like ink, shaped by structure yet free in spirit. It symbolizes intelligence as fluid creativity, balancing imagination and order to turn thoughts into meaningful stories and designs.</p>
+</div>
+</section>
+
+<section class="sec">
+<div class="wrap split">
+<div class="stack g16">
+<p class="kicker">02 — About</p>
+<h2 class="t-h2">About</h2>
+<div class="prose intro" style="margin-top:8px">
+<p>This is a visual interpretation of my works and hobbies, some things are essential in my professional persona and some are just fun, quirky drop of thoughts.</p>
+<p>While it’s important to highlight skills and journey of my life, I find comfort in sharing bits of my interest, from short thoughts to full-length rants.</p>
+<p>Much of how I think was shaped by Richard Feynman, and one line of his stays with me more than any equation:</p>
+</div>
+<blockquote class="fq">
+<p>“The highest forms of understanding we can achieve are laughter and human compassion.”</p>
+<cite>— Richard P. Feynman</cite>
+</blockquote>
+<div class="prose intro">
+<p>It reminds me that science doesn’t have to be cold: the best ideas make people smile and bring them closer. And over the years, the most valuable thing I have learned is not to answer every question, but to ask better questions.</p>
+</div>
+</div>
+<figure class="stack g12" style="align-items:center">
+<img src="/_blob/e84839724dd90af91b564067f0c20f92" alt="Book cover of “Surely You’re Joking, Mr. Feynman!” by Richard P. Feynman, showing Feynman smiling in front of a blackboard" style="width:100%;max-width:300px;height:auto;border:1px solid #10131C;box-shadow:12px 12px 0 #2B44C8">
+<figcaption style="text-align:center;max-width:300px">ON MY SHELF — “SURELY YOU’RE JOKING, MR. FEYNMAN!”</figcaption>
+</figure>
+</div>
+</section>
+
+<section class="sec white rule-t rule-b">
+<div class="wrap">
+<div class="sec-head row">
+<div class="stack g12">
+<p class="kicker">03 — Dissertations</p>
+<h2 class="t-h2">Featured Works</h2>
+</div>
+<a class="btn" href="Projects.dc.html">All projects <span aria-hidden="true">→</span></a>
+</div>
+<div class="cols-2" style="gap:32px">
+<a class="tile" href="Thesis-MSc.dc.html">
+<div class="tile-art photo">
+<span class="tag">Dissertation 02 · UCL · MSc</span>
+<img src="/_blob/e6b092fd16f445a4cdd7dec4374667d7" alt="Rayang holding the finished soft underwater robot prototype at UCL" style="object-position:55% 60%">
+</div>
+<div class="stack g12" style="padding:28px">
+<h3 class="t-h3" style="font-size:24px">Bio-Inspired Pneumatic Soft Actuators for Underwater Robots Sea Life Exploration and Conservation</h3>
+<p class="muted">A soft underwater robot for coral reefs, with limbs inspired by sea creatures.</p>
+<p class="meta">University College London — 2025</p>
+</div>
+</a>
+<a class="tile" href="Thesis-BEng.dc.html">
+<div class="tile-art photo">
+<span class="tag">Dissertation 01 · Exeter · BEng</span>
+<img src="/_blob/d694dc45d8f43526db8f49c7eb77877a" alt="The finished 3D-printed prosthetic hand, palm side" style="object-position:50% 50%">
+</div>
+<div class="stack g12" style="padding:28px">
+<h3 class="t-h3" style="font-size:24px">Constructing and Analysing the Performance of a Modified Prosthetic Hand</h3>
+<p class="muted">Building and testing a modified 3D-printed prosthetic hand.</p>
+<p class="meta">University of Exeter — 2023</p>
+</div>
+</a>
+</div>
+</div>
+</section>
+
+<section class="sec">
+<div class="wrap">
+<div class="sec-head row">
+<div class="stack g12">
+<p class="kicker">04 — Talks</p>
+<h2 class="t-h2">What’s New?</h2>
+</div>
+<a class="btn" href="Talks.dc.html">All talks <span aria-hidden="true">→</span></a>
+</div>
+<div class="cols-3" style="gap:24px">
+<a class="tile" href="Talk-Necro.dc.html">
+<div class="tile-art photo" style="background:#FFFFFF">
+<span class="tag">Talk 03 · Adv. Science</span>
+<img src="/_blob/b585acf52a9ff4707595ad6bdf782693" alt="Cartoon of a masked superhero in a red and blue web-patterned suit shrugging" style="object-fit:contain">
+</div>
+<div class="stack g12" style="padding:28px">
+<h3 class="t-h3" style="font-size:22px">“When Necromancy is no longer <em>locked in game</em> and available in life Skill Trees”</h3>
+<p class="muted">A dead spider, a needle and a drop of superglue: meet necrobotics.</p>
+<p class="meta">Rayang T Mendrofa — 23rd February 2026</p>
+</div>
+</a>
+<a class="tile" href="Talk-Salmon.dc.html">
+<div class="tile-art photo" style="background:#FFFFFF">
+<span class="tag">Talk 02 · Current Biology</span>
+<img src="/_blob/d3947cf4818667fc579934352a7d8ec6" alt="Pixel-art salmon with a size label of 7 by 2.5" style="object-fit:contain;image-rendering:pixelated">
+</div>
+<div class="stack g12" style="padding:28px">
+<h3 class="t-h3" style="font-size:22px">“How Crack-headed Salmon Influence the Dynamics between Human and the Environment”</h3>
+<p class="muted">How could fish study makes you not want to do drugs.</p>
+<p class="meta">Rayang T Mendrofa — 23rd January 2026</p>
+</div>
+</a>
+<a class="tile" href="Talk-CacioPepe.dc.html">
+<div class="tile-art photo">
+<span class="tag">Talk 01 · Phys. Fluids</span>
+<img src="/_blob/4ca28eb6e7b1ff4c8088c495f96663a7" alt="Cartoon character leaning protectively over a bowl of spaghetti" style="object-position:50% 40%">
+</div>
+<div class="stack g12" style="padding:28px">
+<h3 class="t-h3" style="font-size:22px">“The Art of Combining Cooking and Science”</h3>
+<p class="muted">My personal take about the paper in the pasta making science.</p>
+<p class="meta">Rayang T Mendrofa — 23rd December 2025</p>
+</div>
+</a>
+</div>
+</div>
+</section>
+
+<section class="sec white rule-t">
+<div class="wrap">
+<div class="sec-head">
+<p class="kicker">05 — Library</p>
+<h2 class="t-h2">Library</h2>
+</div>
+<div class="cols-3">
+<a class="lib" href="Projects.dc.html">
+<svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#2B44C8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"></path></svg>
+<div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px"><h3 class="t-h2" style="font-size:32px">Projects</h3><span class="go">Go →</span></div>
+</a>
+<a class="lib" href="Talks.dc.html">
+<svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#2B44C8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path><path d="M8 10h.01M12 10h.01M16 10h.01"></path></svg>
+<div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px"><h3 class="t-h2" style="font-size:32px">Talks</h3><span class="go">Go →</span></div>
+</a>
+<a class="lib" href="Author.dc.html">
+<svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#2B44C8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"></path></svg>
+<div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px"><h3 class="t-h2" style="font-size:32px">Author</h3><span class="go">Go →</span></div>
+</a>
+</div>
+</div>
+</section>
+
+<footer class="site-foot dark">
+<div class="wrap">
+<div class="foot-top">
+<div class="stack g16">
+<p class="kicker">Get in touch</p>
+<p class="foot-title">GelasTinta</p>
+<p class="foot-blurb">Open to collaborations, discussions, projects, and work in discussing creative science, design, and engineering work.</p>
+</div>
+<div class="stack g16">
+<a class="foot-mail" href="mailto:mendrofarayang@gmail.com">mendrofarayang@gmail.com</a>
+<p class="meta muted">Jakarta . London . Singapore</p>
+<div class="chips" style="gap:10px">
+<a class="social" href="https://www.linkedin.com/in/raysmendrofa/" aria-label="LinkedIn profile: raysmendrofa"><img src="/_blob/49604cde322d454326d28d8c5cfe5ff8" alt="" style="width:22px;height:22px">LinkedIn</a>
+<a class="social" href="mailto:mendrofarayang@gmail.com" aria-label="Email: mendrofarayang@gmail.com"><img src="/_blob/ee68aabd0584895696ec1ef146936038" alt="" style="width:22px;height:auto">Email</a>
+<a class="social" href="https://wa.me/447376459918" aria-label="WhatsApp: +44 7376459918"><img src="/_blob/d7adca6684b39bdbd090afff2eeb09ea" alt="" style="width:22px;height:22px">WhatsApp +44</a>
+</div>
+</div>
+</div>
+<div class="tblock">
+<div><span>DRAWN BY</span><span>Rayang T Mendrofa</span></div>
+<div><span>SHEET</span><span>01 — HOME</span></div>
+<div><span>SCALE</span><span>1 : IDEA</span></div>
+<div><span>REV.</span><span>Website 2026 Gelastinta.</span></div>
+</div>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":4400}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

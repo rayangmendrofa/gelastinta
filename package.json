@@ -1,0 +1,7 @@
+{
+  "name": "gelastinta",
+  "private": true,
+  "type": "module",
+  "scripts": { "build": "node build.mjs", "preview": "npx --yes serve public -l 4173" },
+  "devDependencies": { "jsdom": "^25.0.0" }
+}

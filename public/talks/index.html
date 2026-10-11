@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GelasTinta — Talks</title>
+<link rel="canonical" href="https://gelastinta.com/talks/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&amp;family=JetBrains+Mono:wght@400;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#EDEFF2;color:#10131C;font-family:'Newsreader',Georgia,serif;font-size:18px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{max-width:100%;display:block}
+a{color:#2B44C8;text-underline-offset:3px}
+a:hover{color:#1A2C8F}
+h1,h2,h3,p,figure,ul,ol{margin:0}
+.wrap{max-width:1160px;margin:0 auto;padding:0 32px}
+.sec{padding:96px 0}
+.sec.tight{padding:64px 0}
+.dark{background:#10131C;color:#EDEFF2}
+.white{background:#FFFFFF}
+.blue{background:#2B44C8;color:#FFFFFF}
+.rule-t{border-top:1px solid #10131C}
+.rule-b{border-bottom:1px solid #10131C}
+.grid-bg{background-color:#EDEFF2;background-image:linear-gradient(#DCE0E7 1px,transparent 1px),linear-gradient(90deg,#DCE0E7 1px,transparent 1px);background-size:32px 32px}
+.disp{font-family:'Bricolage Grotesque',system-ui,sans-serif}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+.kicker{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;line-height:1.5;letter-spacing:.14em;text-transform:uppercase;color:#3A4152}
+.dark .kicker{color:#8FA2FF}
+.blue .kicker{color:#DDE3FF}
+.t-hero{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:clamp(44px,6.2vw,84px);line-height:.96;letter-spacing:-.035em}
+.t-title{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:clamp(34px,4.2vw,56px);line-height:1.04;letter-spacing:-.03em}
+.t-h2{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:clamp(30px,3.2vw,42px);line-height:1.06;letter-spacing:-.025em}
+.t-h3{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:700;font-size:22px;line-height:1.22;letter-spacing:-.01em}
+.lead{font-size:clamp(20px,1.9vw,23px);line-height:1.5}
+.intro{font-size:19px;line-height:1.65}
+.prose{max-width:66ch}
+.prose p+p{margin-top:1.1em}
+.small{font-size:16px;line-height:1.55}
+.muted{color:#3A4152}
+.dark .muted{color:#C9CED8}
+.meta{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;line-height:1.6;letter-spacing:.03em}
+.stack{display:flex;flex-direction:column}
+.g8{gap:8px}.g12{gap:12px}.g16{gap:16px}.g24{gap:24px}.g32{gap:32px}.g48{gap:48px}
+.sec-head{display:flex;flex-direction:column;gap:12px;margin-bottom:40px}
+.sec-head.row{flex-direction:row;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 32px}
+.cols-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.cols-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.cols-4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.split{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:start}
+.split.rev{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
+.split.mid{align-items:center}
+.card{background:#FFFFFF;border:1px solid #10131C;padding:28px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;line-height:1.4;letter-spacing:.05em;padding:6px 10px;border:1px solid currentColor}
+.chip.fill{background:#2B44C8;border-color:#2B44C8;color:#FFFFFF}
+.chip.warn{background:#C2410C;border-color:#C2410C;color:#FFFFFF}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 22px;background:#2B44C8;color:#FFFFFF;text-decoration:none;border-radius:999px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:14px;letter-spacing:.03em;border:1px solid #2B44C8}
+.btn:hover{background:#1A2C8F;border-color:#1A2C8F;color:#FFFFFF}
+.btn.ghost{background:transparent;color:inherit;border-color:currentColor}
+.btn.ghost:hover{background:#10131C;color:#EDEFF2;border-color:#10131C}
+.dark .btn.ghost:hover,.blue .btn.ghost:hover{background:#EDEFF2;color:#10131C;border-color:#EDEFF2}
+.back{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:inherit;min-height:44px;display:inline-flex;align-items:center;align-self:flex-start}
+.back:hover{color:inherit;text-decoration:underline}
+figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;line-height:1.5;letter-spacing:.06em;color:#3A4152;margin-top:10px}
+.dark figcaption{color:#C9CED8}
+.site-head{background:#EDEFF2;border-bottom:1px solid #10131C}
+.site-head .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 24px;min-height:72px}
+.brand{display:flex;align-items:center;gap:10px;color:#10131C;text-decoration:none;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:22px;letter-spacing:-.01em}
+.brand:hover{color:#10131C}
+.nav{display:flex;flex-wrap:wrap;gap:0 28px}
+.nav a{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#10131C;text-decoration:none;min-height:44px;display:inline-flex;align-items:center;border-bottom:2px solid transparent}
+.nav a:hover{color:#2B44C8}
+.nav a.on{color:#2B44C8;border-bottom-color:#2B44C8}
+.site-foot .wrap{padding-top:80px;padding-bottom:40px;display:flex;flex-direction:column;gap:56px}
+.foot-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:end}
+.foot-title{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:clamp(44px,5vw,64px);line-height:.95;letter-spacing:-.035em}
+.foot-blurb{font-size:19px;line-height:1.55;color:#C9CED8;max-width:30em}
+.foot-mail{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:clamp(22px,2.4vw,28px);color:#EDEFF2;text-decoration:none;border-bottom:2px solid #8FA2FF;padding-bottom:4px;align-self:flex-start;overflow-wrap:anywhere}
+.foot-mail:hover{color:#FFFFFF}
+.social{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 18px;border:1px solid #8FA2FF;color:#EDEFF2;text-decoration:none;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.05em}
+.social:hover{background:#EDEFF2;color:#10131C}
+.social:hover svg{stroke:#10131C}
+.tblock{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid #3A4152;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.06em}
+.tblock div{padding:14px 16px;display:flex;flex-direction:column;gap:6px;border-right:1px solid #3A4152}
+.tblock div:last-child{border-right:0}
+.tblock span:first-child{color:#8FA2FF}
+.art-list{border-top:2px solid #10131C}
+.art-row{display:grid;grid-template-columns:64px minmax(0,1fr) 240px;gap:32px;align-items:center;padding:32px 16px;border-bottom:1px solid #10131C;color:#10131C;text-decoration:none}
+.art-row:hover{background:#FFFFFF;color:#10131C}
+.art-row:hover h3{color:#2B44C8}
+.art-num{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:44px;line-height:1;color:#2B44C8;align-self:start}
+.art-thumb{aspect-ratio:4/3;border:1px solid #10131C;display:flex;align-items:center;justify-content:center}
+@media (max-width:960px){
+.split,.split.rev{grid-template-columns:minmax(0,1fr);gap:40px}
+.cols-3{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cols-4{grid-template-columns:repeat(2,minmax(0,1fr))}
+.foot-top{grid-template-columns:minmax(0,1fr)}
+.art-row{grid-template-columns:48px minmax(0,1fr);gap:16px 20px}
+.art-thumb{grid-column:2;max-width:320px}
+.art-num{font-size:32px}
+}
+@media (max-width:640px){
+.wrap{padding:0 20px}
+.sec{padding:64px 0}
+.sec.tight{padding:48px 0}
+.cols-2,.cols-3,.cols-4{grid-template-columns:minmax(0,1fr)}
+.tblock{grid-template-columns:repeat(2,minmax(0,1fr))}
+.tblock div:nth-child(2){border-right:0}
+.tblock div:nth-child(-n+2){border-bottom:1px solid #3A4152}
+.nav{gap:0 18px}
+.art-row{padding:24px 0}
+}
+</style>
+</head>
+<body>
+<div style="min-height:100vh">
+
+<header class="site-head">
+<div class="wrap">
+<a href="/" class="brand"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M9.6 20 6.3 26.4A1.7 1.7 0 0 0 7.8 29h16.4a1.7 1.7 0 0 0 1.5-2.6L22.4 20z" fill="#2B44C8"></path><path d="M11 3h10M13 3v9L6 26.4A1.7 1.7 0 0 0 7.8 29h16.4a1.7 1.7 0 0 0 1.5-2.6L19 12V3" stroke="#10131C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>GelasTinta</a>
+<nav class="nav" aria-label="Main">
+<a href="/">Home</a>
+<a href="/projects/">Projects</a>
+<a href="/talks/" class="on" aria-current="page">Talks</a>
+<a href="/products/">Products</a>
+<a href="/author/">Author</a>
+</nav>
+</div>
+</header>
+
+<section class="sec dark">
+<div class="wrap split">
+<div class="stack g16">
+<p class="kicker">Sheet 05 — Talk &amp; reviews</p>
+<h1 class="t-hero">Talks</h1>
+<p class="meta muted">logic ⇄ laughter</p>
+</div>
+<div class="prose intro" style="align-self:end">
+<p>“Talk” is the space where I sit down with ideas, whether they come from research papers, music compositions, or everyday curiosities and give them a voice. It’s part review, part reflection, and part playful debate with myself. Here, I attempt to break down complex topics into accessible stories, sprinkle in scientific humor, and add my own commentary to show how engineering, science, and creativity connect in unexpected ways. Think of it as a conversation between logic and laughter, where serious insights meet lighthearted observations, and every topic becomes a chance to explore the rhythm of knowledge.</p>
+</div>
+</div>
+</section>
+
+<section class="sec">
+<div class="wrap">
+<div class="sec-head row">
+<div class="stack g12">
+<p class="kicker">01 — Reading list</p>
+<h2 class="t-h2">Articles</h2>
+</div>
+<span class="meta muted">3 entries</span>
+</div>
+<div class="art-list">
+<a class="art-row" href="/talks/necrobotics/">
+<span class="art-num">03</span>
+<div class="stack g12">
+<h3 class="t-h3" style="font-size:26px">“When Necromancy is no longer <em>locked in game</em> and available in life Skill Trees”</h3>
+<p class="muted">A dead spider, a needle and a drop of superglue: meet necrobotics.</p>
+<p class="meta">Rayang T Mendrofa - 23rd February 2026</p>
+</div>
+<div class="art-thumb" style="background:#FFFFFF;overflow:hidden"><img src="/assets/b585acf52a9ff4707595ad6bdf782693.jpg" alt="Cartoon of a masked superhero in a red and blue web-patterned suit shrugging" style="width:100%;height:100%;object-fit:contain"></div>
+</a>
+<a class="art-row" href="/talks/crack-headed-salmon/">
+<span class="art-num">02</span>
+<div class="stack g12">
+<h3 class="t-h3" style="font-size:26px">“How Crack-headed Salmon Influence the Dynamics between Human and the Environment”</h3>
+<p class="muted">How could fish study makes you not want to do drugs.</p>
+<p class="meta">Rayang T Mendrofa - 23rd January 2026</p>
+</div>
+<div class="art-thumb" style="background:#FFFFFF;overflow:hidden"><img src="/assets/d3947cf4818667fc579934352a7d8ec6.png" alt="Pixel-art salmon with a size label of 7 by 2.5" style="width:100%;height:100%;object-fit:contain;image-rendering:pixelated"></div>
+</a>
+<a class="art-row" href="/talks/cooking-and-science/">
+<span class="art-num">01</span>
+<div class="stack g12">
+<h3 class="t-h3" style="font-size:26px">“The Art of Combining Cooking and Science”</h3>
+<p class="muted">My personal take about the paper in the pasta making science.</p>
+<p class="meta">Rayang T Mendrofa - 23rd December 2025</p>
+</div>
+<div class="art-thumb" style="overflow:hidden;background:#10131C"><img src="/assets/4ca28eb6e7b1ff4c8088c495f96663a7.jpg" alt="Cartoon character leaning protectively over a bowl of spaghetti" style="width:100%;height:100%;object-fit:cover;object-position:50% 40%"></div>
+</a>
+</div>
+</div>
+</section>
+
+<footer class="site-foot dark">
+<div class="wrap">
+<div class="foot-top">
+<div class="stack g16">
+<p class="kicker">Get in touch</p>
+<p class="foot-title">GelasTinta</p>
+<p class="foot-blurb">Open to collaborations, discussions, projects, and work in discussing creative science, design, and engineering work.</p>
+</div>
+<div class="stack g16">
+<a class="foot-mail" href="mailto:mendrofarayang@gmail.com">mendrofarayang@gmail.com</a>
+<p class="meta muted">Jakarta . London . Singapore</p>
+<div class="chips" style="gap:10px">
+<a class="social" href="https://www.linkedin.com/in/raysmendrofa/" aria-label="LinkedIn profile: raysmendrofa"><img src="/assets/49604cde322d454326d28d8c5cfe5ff8.png" alt="" style="width:22px;height:22px">LinkedIn</a>
+<a class="social" href="mailto:mendrofarayang@gmail.com" aria-label="Email: mendrofarayang@gmail.com"><img src="/assets/ee68aabd0584895696ec1ef146936038.png" alt="" style="width:22px;height:auto">Email</a>
+<a class="social" href="https://wa.me/447376459918" aria-label="WhatsApp: +44 7376459918"><img src="/assets/d7adca6684b39bdbd090afff2eeb09ea.png" alt="" style="width:22px;height:22px">WhatsApp +44</a>
+</div>
+</div>
+</div>
+<div class="tblock">
+<div><span>DRAWN BY</span><span>Rayang T Mendrofa</span></div>
+<div><span>SHEET</span><span>05 — TALKS</span></div>
+<div><span>SCALE</span><span>1 : IDEA</span></div>
+<div><span>REV.</span><span>Website 2026 Gelastinta.</span></div>
+</div>
+</div>
+</footer>
+
+</div>
+</body>
+</html>
