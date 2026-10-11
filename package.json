@@ -2,6 +2,15 @@
   "name": "gelastinta",
   "private": true,
   "type": "module",
-  "scripts": { "build": "node build.mjs", "preview": "npx --yes serve public -l 4173" },
-  "devDependencies": { "jsdom": "^25.0.0" }
+  "scripts": {
+    "build": "node build.mjs",
+    "preview": "npx --yes serve public -l 4173"
+  },
+  "devDependencies": {
+    "jsdom": "^25.0.0"
+  },
+  "dependencies": {
+    "@netlify/blobs": "^11.1.4",
+    "@netlify/functions": "^6.0.2"
+  }
 }
