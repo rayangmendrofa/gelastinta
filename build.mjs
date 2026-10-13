@@ -23,8 +23,10 @@ export const ROUTES = {
   'Talk-Necro.dc.html': '/talks/necrobotics/',
   'Talk-Salmon.dc.html': '/talks/crack-headed-salmon/',
   'Talk-CacioPepe.dc.html': '/talks/cooking-and-science/',
+  'Talk-NavierStokes.dc.html': '/talks/navier-stokes/',
   'Thesis-BEng.dc.html': '/projects/beng-dissertation/',
   'Thesis-MSc.dc.html': '/projects/msc-dissertation/',
+  'Hobby-InMoov.dc.html': '/projects/inmoov-hand/',
 };
 
 const SITE_URL = 'https://gelastinta.com';

@@ -134,6 +134,32 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 .tblock div:nth-child(-n+2){border-bottom:1px solid #3A4152}
 .nav{gap:0 18px}
 }
+.hb{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:48px;align-items:start}
+.hb-media{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.hb-ph{aspect-ratio:4/5;border:1px dashed #3A4152;background-color:#FFFFFF;background-image:repeating-linear-gradient(45deg,#EDEFF2 0 1px,transparent 1px 12px);display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;color:#3A4152}
+.hb-ph.wide{grid-column:1 / -1;aspect-ratio:16/9}
+.credit{border:1px solid #10131C;background:#FFFFFF;padding:20px 22px;display:flex;flex-direction:column;gap:10px}
+.credit.shout{background:#2B44C8;border-color:#2B44C8;color:#FFFFFF}
+.credit.shout a{color:#FFFFFF}
+@media (max-width:960px){.hb{grid-template-columns:minmax(0,1fr)}}
+.hb-diary{margin-top:72px;padding-top:48px;border-top:2px solid #10131C}
+.hb-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px 20px}
+.hb-step{margin:0;display:flex;flex-direction:column;gap:12px}
+.hb-clip{position:relative;aspect-ratio:9/16;overflow:hidden;border:1px solid #10131C;background:#10131C}
+.hb-clip img{width:100%;height:100%;object-fit:cover;display:block}
+.hb-speed{position:absolute;top:10px;right:10px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.06em;background:rgba(16,19,28,.85);color:#FFFFFF;padding:4px 8px}
+.hb-n{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:28px;line-height:1;color:#2B44C8}
+.hb-txt{font-family:'Newsreader',Georgia,serif;font-size:16px;line-height:1.5;letter-spacing:0;text-transform:none;color:#3A4152}
+@media (max-width:960px){.hb-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:640px){.hb-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 12px}.hb-txt{font-size:15px}}
+.hb-feature{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);border:1px solid #10131C;background:#EDEFF2;color:#10131C;text-decoration:none}
+.hb-feature:hover{color:#10131C;background:#FFFFFF}
+.hb-feature:hover h3{color:#2B44C8}
+.hb-feature-media{position:relative;min-height:420px;background:#10131C;border-right:1px solid #10131C;overflow:hidden}
+.hb-feature-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hb-feature-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.hb-feature-strip img{width:100%;aspect-ratio:1/1;object-fit:cover;border:1px solid #10131C}
+@media (max-width:960px){.hb-feature{grid-template-columns:minmax(0,1fr)}.hb-feature-media{min-height:360px;border-right:0;border-bottom:1px solid #10131C}}
 </style>
 </helmet>
 <div style="min-height:100vh">
@@ -165,8 +191,9 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <p class="kicker">On this page</p>
 <div class="stack">
 <a href="#dissertations">Dissertations <span>01 ↓</span></a>
-<a href="#infographics">Infographics <span>02 ↓</span></a>
-<a href="#cad">CAD Designs <span>03 ↓</span></a>
+<a href="#hobby">Hobby Builds <span>02 ↓</span></a>
+<a href="#infographics">Infographics <span>03 ↓</span></a>
+<a href="#cad">CAD Designs <span>04 ↓</span></a>
 </div>
 </nav>
 </div>
@@ -201,11 +228,35 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 </div>
 </section>
 
+<section id="hobby" class="sec white rule-b">
+<div class="wrap">
+<div class="sec-head row">
+<div class="stack g12">
+<p class="kicker">02 — Learning by rebuilding</p>
+<h2 class="t-h2">Hobby Builds</h2>
+</div>
+<p class="meta muted">Personal projects, made out of curiosity</p>
+</div>
+<a class="hb-feature" href="Hobby-InMoov.dc.html">
+<div class="hb-feature-media"><img src="/_blob/6d123e2e48f893c58e0a02cfa8ec74e3" alt="Looping clip: the finished InMoov hand curling its fingers" loading="lazy"><span class="hb-speed" style="left:12px;right:auto">Featured</span></div>
+<div class="stack g16" style="padding:32px">
+<div class="chips"><span class="chip fill">2023 – 2024</span><span class="chip">Personal project</span><span class="chip">3D printing</span></div>
+<h3 class="t-h3" style="font-size:30px;line-height:1.15">Rebuilding the InMoov robot hand</h3>
+<p class="muted" style="font-size:18px;line-height:1.6">After my BEng dissertation on prosthetic hands, I printed and assembled Gaël Langevin’s open-source InMoov hand, out of curiosity and as a hobby. I didn’t design it; this is the story of building it, from the first print to the first movement.</p>
+<div class="hb-feature-strip" aria-hidden="true">
+<img src="/_blob/8dcea2945392b3e0d9b3bd41927badc4" alt="" loading="lazy"><img src="/_blob/a485ec11601233869c4f5e9ccb8a9b6b" alt="" loading="lazy"><img src="/_blob/3631abc35653b352affafa4f116d5d1a" alt="" loading="lazy">
+</div>
+<span class="meta" style="color:#2B44C8;margin-top:auto">Read the build diary · 11 clips →</span>
+</div>
+</a>
+</div>
+</section>
+
 <section id="infographics" class="sec">
 <div class="wrap">
 <div class="sec-head row">
 <div class="stack g12">
-<p class="kicker">02 — Visual stories</p>
+<p class="kicker">03 — Visual stories</p>
 <h2 class="t-h2">Infographics</h2>
 </div>
 <p class="meta muted">Hover a poster to see it full size · click to open it</p>
@@ -248,7 +299,7 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <section id="cad" class="sec white rule-t">
 <div class="wrap">
 <div class="sec-head">
-<p class="kicker">03 — Models &amp; prototypes</p>
+<p class="kicker">04 — Models &amp; prototypes</p>
 <h2 class="t-h2">CAD Designs</h2>
 <p class="intro prose muted">Each model is rendered straight from its CAD file as a 360° turntable. Pick a tab to see it spin.</p>
 </div>
@@ -317,7 +368,7 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":4200}}'>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":5000}}'>
 class Component extends DCLogic {
   renderVals() {
     const B = '/_blob/';
