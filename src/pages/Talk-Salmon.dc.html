@@ -260,6 +260,19 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 @media (max-width:640px){.cm-row{grid-template-columns:minmax(0,1fr)}.cm-box{padding:18px}}
 .gt-progress{position:fixed;left:0;top:0;width:100%;height:3px;background:#2B44C8;transform:scaleX(0);transform-origin:0 50%;z-index:70;pointer-events:none}
 @media (prefers-reduced-motion:reduce){.gt-progress{display:none}}
+.talk-nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border:1px solid #10131C;margin-top:48px}
+.tn{display:flex;flex-direction:column;gap:10px;padding:24px;color:#10131C;text-decoration:none;background:#FFFFFF;min-height:44px}
+.tn + .tn{border-left:1px solid #10131C}
+.tn.next{text-align:right;align-items:flex-end}
+.tn:hover{background:#10131C;color:#FFFFFF}
+.tn:hover .tn-k{color:#8FA2FF}
+.tn:focus-visible{outline:3px solid #2B44C8;outline-offset:2px}
+.tn-k{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#2B44C8}
+.tn-t{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:700;font-size:19px;line-height:1.25;letter-spacing:-.01em}
+.tn-t em{font-style:italic}
+.tn-m{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.03em;opacity:.75}
+.tn.none{background:transparent;justify-content:center;color:#3A4152}
+@media (max-width:640px){.talk-nav{grid-template-columns:minmax(0,1fr)}.tn + .tn{border-left:0;border-top:1px solid #10131C}.tn.next{text-align:left;align-items:flex-start}}
 </style>
 </helmet>
 <div style="min-height:100vh" data-gt-root="">
@@ -286,7 +299,7 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <a href="Talks.dc.html" class="back">← All talks</a>
 <p class="kicker">Talk 02 — Review</p>
 <h1 class="t-title">“How Crack-headed Salmon Influence the Dynamics between Human and the Environment”</h1>
-<p class="meta">Rayang T Mendrofa - 23rd January 2026</p>
+<p class="meta">Rayang T Mendrofa - 23rd January 2026 · 8 min read</p>
 <aside style="margin-top:24px;border:1px solid #10131C;background:#FFFFFF">
 <div class="dark" style="padding:12px 20px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px"><span class="kicker" style="font-size:11px">Paper under review</span><span class="meta" style="font-size:11px;color:#8FA2FF">Current Biology · ARTICLE · OPEN ACCESS</span></div>
 <div class="stack g12" style="padding:22px 20px">
@@ -515,7 +528,8 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <p>Even on my casual trips, you notice that fish move with purpose: where they feed, where they hide, when they decide to bite. If our habits can quietly redraw that map, then pollution isn’t only about dead fish floating on the surface; it is also about living fish behaving in ways nobody notices.</p>
 <p>It’s also a fun one to bring up with friends, most of whom never say no to salmon sushi or sashimi. Atlantic salmon, the species in this study, is the same fish behind most of the salmon on a sushi plate. Nobody is saying their nigiri is spiked: the fish here were dosed on purpose for the experiment, and sushi salmon is mostly farmed far away from this lake. But it is a good reminder that the fish we love to eat share their water with whatever we wash down the drain.</p>
 <p>I came for the laugh, and left seeing both the fishing pond and the sushi counter in a new light.</p>
-<a href="Talks.dc.html" class="back" style="margin-top:40px;color:#2B44C8">← Back to all talks</a>
+<nav class="talk-nav" aria-label="More talks"><a class="tn prev" href="Talk-CacioPepe.dc.html"><span class="tn-k">← Previous talk · 01</span><span class="tn-t">“The Art of Combining Cooking and Science”</span><span class="tn-m">23rd December 2025 · 6 min read</span></a><a class="tn next" href="Talk-Necro.dc.html"><span class="tn-k">Next talk · 03 →</span><span class="tn-t">“When Necromancy is no longer <em>locked in game</em> and available in life Skill Trees”</span><span class="tn-m">23rd February 2026 · 7 min read</span></a></nav>
+<a href="Talks.dc.html" class="back" style="margin-top:24px;color:#2B44C8">← Back to all talks</a>
 </div>
 <div class="stack g32" style="position:sticky;top:24px">
 <figure class="stack g12">
@@ -606,9 +620,12 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":10300}}'>
 class Component extends DCLogic {
   // ── GelasTinta motion layer (anime.js v4) ─────────────────────────────
-  componentDidMount() { this.gtStart(0); this.cmMount(); }
+  componentDidMount() { this.gtStart(0); this.gtMedia(0); this.cmMount(); }
   componentWillUnmount() {
     clearTimeout(this.gtWait);
+    clearInterval(this.gtSlideT);
+    clearTimeout(this.gtMediaWait);
+    if (this.gtVIO) this.gtVIO.disconnect();
     if (this.gtIO) this.gtIO.disconnect();
     if (this.gtScope) this.gtScope.revert();
   }
@@ -645,6 +662,52 @@ class Component extends DCLogic {
       if (z) A.animate(z, { scale: { from: 0.9 }, opacity: { from: 0 }, ease: A.spring({ bounce: 0.35, duration: 500 }) });
     }
     this.gtPrev = { sel: st.sel, slide: st.slide, zoom: st.zoom, seen: true };
+  }
+  // Media loading (independent of anime.js): hero slides load just before their turn; clips play only on screen
+  gtMedia(tries) {
+    const root = document.querySelector('[data-gt-root]') || document.body;
+    if (!root.querySelector('img[data-src], video[data-gt-autoplay]')) {
+      if (tries < 20) this.gtMediaWait = setTimeout(() => this.gtMedia(tries + 1), 150);
+      return;
+    }
+    const still = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+    // 1 · Home hero slideshow: slide k fades in at k×6 s, so fetch it ~5 s ahead
+    const slides = Array.from(root.querySelectorAll('.hero-slides img[data-src]'));
+    if (slides.length && !still) {
+      const t0 = performance.now();
+      const tick = () => {
+        const t = (performance.now() - t0) / 1000;
+        let left = 0;
+        slides.forEach((img, i) => {
+          if (img.getAttribute('src')) return;
+          const k = i + 1;
+          if (t >= k * 6 - 5) { img.decoding = 'async'; img.src = img.getAttribute('data-src'); }
+          else left++;
+        });
+        if (!left) clearInterval(this.gtSlideT);
+      };
+      tick();
+      this.gtSlideT = setInterval(tick, 1000);
+    }
+    // 2 · Looping clips: muted inline video, playing only while visible
+    const vids = Array.from(root.querySelectorAll('video[data-gt-autoplay]'));
+    if (vids.length) {
+      vids.forEach((v) => { v.muted = true; v.defaultMuted = true; v.playsInline = true; v.loop = true; });
+      if (still) {
+        vids.forEach((v) => { v.removeAttribute('autoplay'); v.autoplay = false; v.pause(); v.controls = true; });
+      } else if ('IntersectionObserver' in window) {
+        this.gtVIO = new IntersectionObserver((entries) => {
+          entries.forEach((e) => {
+            const v = e.target;
+            if (e.isIntersecting) { const p = v.play(); if (p && p.catch) p.catch(() => {}); }
+            else v.pause();
+          });
+        }, { rootMargin: '120px 0px' });
+        vids.forEach((v) => this.gtVIO.observe(v));
+      } else {
+        vids.forEach((v) => { const p = v.play(); if (p && p.catch) p.catch(() => {}); });
+      }
+    }
   }
   gtStart(tries) {
     const A = window.anime;
