@@ -24,6 +24,7 @@ export const ROUTES = {
   'Talk-Salmon.dc.html': '/talks/crack-headed-salmon/',
   'Talk-CacioPepe.dc.html': '/talks/cooking-and-science/',
   'Talk-NavierStokes.dc.html': '/talks/navier-stokes/',
+  'Talk-ProjectHailMary.dc.html': '/talks/project-hail-mary/',
   'Thesis-BEng.dc.html': '/projects/beng-dissertation/',
   'Thesis-MSc.dc.html': '/projects/msc-dissertation/',
   'Hobby-InMoov.dc.html': '/projects/inmoov-hand/',
@@ -69,6 +70,7 @@ function prerender(template, logic) {
     `<script type="text/x-dc" id="dc-logic">${logic}</script></body></html>`,
     { runScripts: 'outside-only', pretendToBeVisual: true });
   dom.window.__DC_NO_AUTOBOOT = true;
+  dom.window.__DC_PRERENDER = true; // render markup only: no lifecycle hooks, timers or network
   dom.window.eval(runtime);
   dom.window.DCLite.boot();
   const html = dom.window.document.getElementById('dc-root').innerHTML;
@@ -98,7 +100,13 @@ for (const file of pages) {
   const body = xdc.replace(/<helmet>[\s\S]*?<\/helmet>/, '').trim();
   const logicMatch = src.match(/<script type="text\/x-dc"[^>]*>([\s\S]*?)<\/script>/);
   const logic = logicMatch ? logicMatch[1] : '';
-  const dynamic = /\{\{|<sc-(if|for)\b/.test(body);
+  // pages with template holes, or with lifecycle code (e.g. the motion layer), need the runtime
+  const dynamic = /\{\{|<sc-(if|for)\b/.test(body) || /componentDidMount/.test(logic);
+  // extra scripts the page loads in <head> (e.g. the anime.js motion library), minus the canvas runtime
+  const headSrc = between(src, '<head>', '</head>');
+  const headScripts = [...headSrc.matchAll(/<script[^>]*\ssrc="([^"]+)"[^>]*><\/script>/g)]
+    .map((m) => m[1]).filter((u) => !/support\.js$/.test(u))
+    .map((u) => `<script src="${u}"></script>`).join('\n');
 
   let main;
   if (dynamic) {
@@ -119,6 +127,7 @@ for (const file of pages) {
 <title>${title}</title>
 <link rel="canonical" href="${SITE_URL}${route}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+${headScripts}
 ${helmet}
 </head>
 <body>

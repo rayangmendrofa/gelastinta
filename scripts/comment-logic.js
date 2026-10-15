@@ -1,4 +1,4 @@
-  componentDidMount() {
+  cmMount() {
     // Load saved comments for this page, and remember a returning commenter.
     const page = (typeof location !== 'undefined' ? location.pathname : '/').replace(/\/+$/, '') || '/';
     let saved = null;

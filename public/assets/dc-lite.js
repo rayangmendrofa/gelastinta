@@ -4,11 +4,16 @@
  * Each interactive page ships three things:
  *   <template id="dc-tpl">  the page markup, with {{holes}}, <sc-if> and <sc-for>
  *   <script type="text/x-dc" id="dc-logic">  class Component extends DCLogic { renderVals() {...} }
- *   <div id="dc-root">  the pre-rendered page (filled at build time, patched here)
+ *   <div id="dc-root">  the pre-rendered page (filled at build time, hydrated here)
  *
- * This file renders the template with the values from renderVals(), wires up
- * onClick / onChange / ... handlers, and re-renders whenever setState() is called.
- * It patches the existing DOM in place, so focus and scroll are kept.
+ * It renders the template with the values from renderVals(), wires up onClick / onChange / ...
+ * handlers, and re-renders whenever setState() is called. Like React, it compares each render
+ * with the PREVIOUS RENDER (not with the live page), so changes made to the page by other code —
+ * the motion layer splitting titles into letters, inline animation styles — are left alone
+ * unless the template output for that spot actually changes.
+ *
+ * Lifecycle: componentDidMount() after the first render, componentDidUpdate() after each later
+ * render, componentWillUnmount() when the page is left.
  */
 (function () {
   'use strict';
@@ -20,8 +25,9 @@
   };
   var HOLE = /\{\{\s*([^}]*?)\s*\}\}/g;
   var WHOLE = /^\s*\{\{\s*([^}]*?)\s*\}\}\s*$/;
+  var PRERENDER = !!window.__DC_PRERENDER;
 
-  var instance = null, tpl = null, root = null, pending = false;
+  var instance = null, tpl = null, root = null, pending = false, mounted = false;
 
   function DCLogic(props) { this.props = props || {}; this.state = null; }
   DCLogic.prototype.setState = function (patch) {
@@ -33,7 +39,7 @@
   DCLogic.prototype.renderVals = function () { return {}; };
 
   function schedule() {
-    if (pending) return;
+    if (pending || PRERENDER) return;
     pending = true;
     var run = function () { pending = false; update(); };
     if (typeof requestAnimationFrame === 'function') requestAnimationFrame(run); else setTimeout(run, 0);
@@ -62,8 +68,13 @@
     });
   }
   function child(scope, extra) { extra.__parent = scope; return extra; }
+  function valueOf(attr, scope) {
+    if (attr == null) return undefined;
+    var w = attr.match(WHOLE);
+    return w ? lookup(w[1], scope) : attr;
+  }
 
-  // ---- render template -> fresh nodes ------------------------------------
+  // ---- render template -> fresh (detached) nodes ---------------------------
   function renderChildren(parentTpl, scope, out) {
     for (var n = parentTpl.firstChild; n; n = n.nextSibling) renderNode(n, scope, out);
     return out;
@@ -75,8 +86,7 @@
     var name = t.localName;
 
     if (name === 'sc-if') {
-      var cond = valueOf(t.getAttribute('value'), scope);
-      if (cond) renderChildren(t, scope, out);
+      if (valueOf(t.getAttribute('value'), scope)) renderChildren(t, scope, out);
       return;
     }
     if (name === 'sc-for') {
@@ -113,13 +123,27 @@
     out.push(el);
   }
 
-  function valueOf(attr, scope) {
-    if (attr == null) return undefined;
-    var w = attr.match(WHOLE);
-    return w ? lookup(w[1], scope) : attr;
+  // ---- bookkeeping: what we rendered last time ----------------------------
+  function attrMap(el) {
+    var m = {};
+    for (var i = 0; i < el.attributes.length; i++) m[el.attributes[i].name] = el.attributes[i].value;
+    return m;
+  }
+  function liveKids(el) {
+    var out = [];
+    for (var c = el.firstChild; c; c = c.nextSibling) if (c.nodeType === 1 || c.nodeType === 3) out.push(c);
+    return out;
+  }
+  function record(node) { // remember a freshly inserted subtree as "last render"
+    if (node.nodeType === 3) { node.__dcText = node.data; return; }
+    if (node.nodeType !== 1) return;
+    node.__dcAttrs = attrMap(node);
+    node.__dcKids = liveKids(node);
+    bind(node, node.__dcH); syncProps(node, node.__dcProp);
+    for (var i = 0; i < node.__dcKids.length; i++) record(node.__dcKids[i]);
   }
 
-  // ---- patch live DOM ----------------------------------------------------
+  // ---- patch live DOM -----------------------------------------------------
   function bind(el, handlers) {
     el.__dcH = handlers || {};
     el.__dcBound = el.__dcBound || {};
@@ -144,51 +168,61 @@
       (a.localName === b.localName && a.namespaceURI === b.namespaceURI));
   }
 
-  function patchChildren(parent, fresh) {
-    var i = 0;
-    for (; i < fresh.length; i++) {
-      var old = parent.childNodes[i], nu = fresh[i];
-      if (!old) { appendFresh(parent, nu); continue; }
-      if (old.nodeType === 8) { parent.removeChild(old); i--; continue; } // drop comments
-      if (sameKind(old, nu)) patchNode(old, nu);
-      else { parent.replaceChild(nu, old); wire(nu); }
-    }
-    while (parent.childNodes.length > fresh.length) parent.removeChild(parent.lastChild);
+  function placeAfter(parent, node, prev) {
+    // insert `node` right after `prev` (a node we rendered) — or first, if there is none
+    var ref = prev && prev.parentNode === parent ? prev.nextSibling : parent.firstChild;
+    parent.insertBefore(node, ref);
   }
 
-  function appendFresh(parent, nu) { parent.appendChild(nu); wire(nu); }
-
-  function wire(node) { // attach handlers + props on a newly inserted subtree
-    if (node.nodeType !== 1) return;
-    bind(node, node.__dcH); syncProps(node, node.__dcProp);
-    for (var c = node.firstChild; c; c = c.nextSibling) wire(c);
+  function patchChildren(parent, fresh) {
+    var olds = parent.__dcKids || liveKids(parent); // first update: hydrate the pre-rendered page
+    var kept = [], prev = null;
+    for (var i = 0; i < fresh.length; i++) {
+      var old = olds[i], nu = fresh[i];
+      if (old && sameKind(old, nu)) {
+        patchNode(old, nu);
+        kept.push(old); prev = old;
+      } else {
+        if (old && old.parentNode === parent) parent.replaceChild(nu, old);
+        else placeAfter(parent, nu, prev);
+        record(nu);
+        kept.push(nu); prev = nu;
+      }
+    }
+    for (var j = fresh.length; j < olds.length; j++) {
+      if (olds[j].parentNode === parent) parent.removeChild(olds[j]);
+    }
+    parent.__dcKids = kept;
   }
 
   function patchNode(old, nu) {
-    if (old.nodeType === 3) { if (old.data !== nu.data) old.data = nu.data; return; }
-    var a, i;
-    for (i = old.attributes.length - 1; i >= 0; i--) {
-      a = old.attributes[i];
-      if (!nu.hasAttribute(a.name)) old.removeAttribute(a.name);
+    if (old.nodeType === 3) {
+      var lastText = old.__dcText != null ? old.__dcText : old.data;
+      if (lastText !== nu.data) old.data = nu.data;
+      old.__dcText = nu.data;
+      return;
     }
-    for (i = 0; i < nu.attributes.length; i++) {
-      a = nu.attributes[i];
-      if (old.getAttribute(a.name) !== a.value) old.setAttribute(a.name, a.value);
-    }
+    var last = old.__dcAttrs || attrMap(old), next = attrMap(nu), k;
+    for (k in last) if (!(k in next) && old.hasAttribute(k)) old.removeAttribute(k);
+    for (k in next) if (last[k] !== next[k] || !old.hasAttribute(k)) old.setAttribute(k, next[k]);
+    old.__dcAttrs = next;
     bind(old, nu.__dcH);
     syncProps(old, nu.__dcProp);
-    if (old.localName === 'textarea') return; // content lives in .value
+    if (old.localName === 'textarea') return; // its content lives in .value
     patchChildren(old, Array.prototype.slice.call(nu.childNodes));
   }
 
   // ---- boot --------------------------------------------------------------
+  function call(name) {
+    if (PRERENDER || typeof instance[name] !== 'function') return;
+    try { instance[name](); } catch (e) { if (window.console) console.warn('[dc-lite] ' + name, e); }
+  }
+
   function update() {
     var vals = instance.renderVals() || {};
-    var fresh = renderChildren(tpl.content, vals, []);
-    patchChildren(root, fresh);
-    if (!root.__dcDidMount && typeof instance.componentDidMount === 'function') {
-      root.__dcDidMount = true; instance.componentDidMount();
-    }
+    patchChildren(root, renderChildren(tpl.content, vals, []));
+    if (!mounted) { mounted = true; call('componentDidMount'); }
+    else call('componentDidUpdate');
   }
 
   function boot() {
@@ -202,6 +236,7 @@
     }
     instance = new Component({});
     update();
+    if (!PRERENDER) window.addEventListener('pagehide', function () { call('componentWillUnmount'); });
   }
 
   window.DCLite = { boot: boot, DCLogic: DCLogic };

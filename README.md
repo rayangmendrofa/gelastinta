@@ -19,6 +19,7 @@ and *Talks* — reviews of scientific papers told with a personal take, somewher
 | ↳ [BEng dissertation](https://gelastinta.com/projects/beng-dissertation/) | Constructing and analysing a modified prosthetic hand (Exeter) |
 | ↳ [InMoov hand](https://gelastinta.com/projects/inmoov-hand/) | Hobby replication of Gaël Langevin's open-source InMoov robot hand |
 | [Talks](https://gelastinta.com/talks/) | Paper reviews with interactive figures and a personal take |
+| ↳ [Project Hail Mary](https://gelastinta.com/talks/project-hail-mary/) | *Amaze, Amaze, Amaze* — the science (and the heart) of the story |
 | ↳ [Navier–Stokes](https://gelastinta.com/talks/navier-stokes/) | *Mathematician vs Clanker* — the Millennium Prize question |
 | ↳ [Necrobotics](https://gelastinta.com/talks/necrobotics/) | When necromancy leaves the game and enters the skill tree |
 | ↳ [Crack-headed salmon](https://gelastinta.com/talks/crack-headed-salmon/) | Pharmaceutical pollution and fish behaviour |
@@ -38,6 +39,8 @@ A small, dependency-light static site:
   links, and interactive pages pre-rendered so they load instantly and are readable by search engines.
 - **Interactivity** — a tiny script (`src/runtime/dc-lite.js`) powers slideshows, the CAD viewer,
   poster zoom, charts and expandable explanations. No framework.
+- **Motion** — page animations use [Anime.js](https://animejs.com/) (MIT licence) and respect the
+  visitor's *reduce motion* setting.
 - **Comments** — a serverless function (`netlify/functions/comments.mts`) backed by Netlify Blobs.
   Commenters register with a name and email; emails are private and never shown on the site.
 - **Hosting** — [Netlify](https://www.netlify.com/), deployed automatically from the `main` branch.
@@ -62,6 +65,7 @@ new content goes live within a minute or two.
 - InMoov is an open-source project created by [Gaël Langevin](https://inmoov.fr/); the hand on this
   site is a hobby replication, not an original design.
 - Papers reviewed in *Talks* are cited and linked on each article page.
+- Animation library: [Anime.js](https://animejs.com/) by Julian Garnier (MIT).
 - Typefaces: Bricolage Grotesque, Newsreader and JetBrains Mono (Google Fonts).
 
 ## Contact

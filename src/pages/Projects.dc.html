@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <title>GelasTinta — Projects</title>
 <script src="./support.js"></script>
+<script src="/_blob/59800ae8dd311e216394a93b57b5c5e9"></script>
 </head>
 <body>
 <x-dc>
@@ -162,7 +163,7 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 @media (max-width:960px){.hb-feature{grid-template-columns:minmax(0,1fr)}.hb-feature-media{min-height:360px;border-right:0;border-bottom:1px solid #10131C}}
 </style>
 </helmet>
-<div style="min-height:100vh">
+<div style="min-height:100vh" data-gt-root="">
 
 <header class="site-head">
 <div class="wrap">
@@ -370,6 +371,392 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":5000}}'>
 class Component extends DCLogic {
+  // ── GelasTinta motion layer (anime.js v4) ─────────────────────────────
+  componentDidMount() { this.gtStart(0); }
+  componentWillUnmount() {
+    clearTimeout(this.gtWait);
+    if (this.gtIO) this.gtIO.disconnect();
+    if (this.gtScope) this.gtScope.revert();
+  }
+  componentDidUpdate() {
+    const A = window.anime;
+    if (!A || !this.gtReady) return;
+    // "Show the science" panels: grow open inside their own box (height + fade), never overlapping the page
+    if (this.gtRoot && !(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) {
+      Array.from(this.gtRoot.querySelectorAll('.more-body:not([data-gt-in])')).forEach((el) => {
+        el.setAttribute('data-gt-in', '');
+        const h = el.scrollHeight;
+        el.style.overflow = 'hidden';
+        A.animate(el, {
+          height: [0, h], opacity: [0, 1], duration: 480, ease: 'out(3)',
+          onComplete: () => { el.style.height = ''; el.style.overflow = ''; el.style.opacity = ''; }
+        });
+      });
+    }
+    const st = this.state || {};
+    const prev = this.gtPrev || {};
+    const root = this.gtRoot;
+    if (root && st.sel !== prev.sel && prev.seen) {
+      const panel = root.querySelector('[role="tabpanel"]');
+      if (panel) A.animate(panel.children, { opacity: { from: 0 }, x: { from: 18 }, delay: A.stagger(70), duration: 520, ease: 'out(3)' });
+    }
+    if (root && st.slide !== prev.slide && prev.seen) {
+      const img = root.querySelector('.gal-img');
+      if (img) A.waapi.animate(img, { opacity: [0, 1], scale: [1.04, 1], duration: 600, ease: 'out(3)' });
+      const cap = root.querySelectorAll('.gal-cap > *');
+      if (cap.length) A.animate(cap, { opacity: { from: 0 }, y: { from: 10 }, delay: A.stagger(60), duration: 450, ease: 'out(3)' });
+    }
+    if (root && st.zoom && st.zoom !== prev.zoom) {
+      const z = root.querySelector('.zoom img');
+      if (z) A.animate(z, { scale: { from: 0.9 }, opacity: { from: 0 }, ease: A.spring({ bounce: 0.35, duration: 500 }) });
+    }
+    this.gtPrev = { sel: st.sel, slide: st.slide, zoom: st.zoom, seen: true };
+  }
+  gtStart(tries) {
+    const A = window.anime;
+    if (!A) {
+      if (tries < 60) this.gtWait = setTimeout(() => this.gtStart(tries + 1), 100);
+      return;
+    }
+    const root = document.querySelector('[data-gt-root]');
+    if (!root || this.gtScope) return;
+    this.gtRoot = root;
+    this.gtLayouts = [];
+    this.gtPrev = { sel: (this.state || {}).sel, slide: (this.state || {}).slide, seen: true };
+    A.engine.pauseOnDocumentHidden = false;
+    const self = this;
+    this.gtScope = A.createScope({
+      root: root,
+      mediaQueries: { still: '(prefers-reduced-motion: reduce)', touch: '(hover: none)', small: '(max-width: 640px)' }
+    }).add((scope) => {
+      if (scope.matches.still) return;
+      const m = scope.matches;
+      const run = (name, fn) => { try { fn(); } catch (e) { console.warn('[gt-motion] ' + name, e); } };
+      run('motion', () => self.gtMotion(A, root, m));
+    });
+    this.gtReady = true;
+  }
+  gtMotion(A, root, m) {
+    const { animate, createTimeline, createTimer, stagger, splitText, scrambleText, onScroll, createDrawable,
+      morphTo, createMotionPath, createAnimatable, createDraggable, createLayout, waapi, spring, cubicBezier,
+      steps, irregular, utils } = A;
+    const $ = (sel, el) => Array.from((el || root).querySelectorAll(sel));
+    const DYN = '.gal, [role="tabpanel"], [role="tablist"], #comments, [id^="comments"], .ratio, .lm-row, .readout, .viz-body, .zoom, .cad, sc-for';
+    const isStatic = (el) => !el.closest(DYN);
+    const plain = (el) => el.children.length === 0 && el.textContent.trim().length > 0 && !/[<>]/.test(el.textContent);
+    const glide = cubicBezier(0.2, 0.75, 0.1, 1);
+    const done = new Set();
+    // Content is never hidden ahead of time: an element only animates once it is actually on screen
+    // (IntersectionObserver also works when the page sits inside a frame scrolled by its parent),
+    // and every reveal has a timer that snaps it to its finished state if the animation stalls.
+    const pending = new Map();
+    const io = window.IntersectionObserver ? new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        const fn = pending.get(e.target);
+        pending.delete(e.target);
+        io.unobserve(e.target);
+        if (fn) { try { fn(); } catch (err) { console.warn('[gt-motion] reveal', err); } }
+      });
+    }, { rootMargin: '0px 0px -4% 0px' }) : null;
+    this.gtIO = io;
+    const when = (el, fn) => { if (!io || !el) return; pending.set(el, fn); io.observe(el); };
+    const guard = (anim, ms) => { setTimeout(() => { try { if (anim && !anim.completed) anim.complete(); } catch (e) {} }, ms); return anim; };
+    const safe = (name, fn) => { try { fn(); } catch (e) { console.warn('[gt-motion] ' + name, e); } };
+    const calm = m.touch || m.small;
+    const head = root.querySelector('.site-head');
+    const hero = head ? head.nextElementSibling : null;
+    const intro = createTimeline({ defaults: { ease: glide, duration: 700 } });
+
+    // 1 ── header: brand flask fills, outline draws, nav staggers in
+    safe('1', () => {
+      if (head) {
+        const flask = head.querySelector('.brand svg');
+        if (flask) {
+          const [liquid, glass] = flask.querySelectorAll('path');
+          if (glass) intro.add(createDrawable(glass), { draw: ['0 0', '0 1'], duration: 900, ease: 'inOut(3)' }, 0);
+          if (liquid) {
+            liquid.style.transformBox = 'fill-box';
+            liquid.style.transformOrigin = '50% 100%';
+            intro.add(liquid, { scaleY: { from: 0 }, ease: spring({ bounce: 0.45, duration: 900 }) }, 350);
+          }
+        }
+        intro.add($('.nav a', head), { opacity: { from: 0 }, y: { from: -10 }, delay: stagger(60), duration: 500 }, 100);
+      }
+    });
+
+    // 2 ── hero: kicker scramble → split title rises → the rest follows
+    safe('2', () => {
+      if (hero) {
+        intro.label('hero', 200);
+        const hk = hero.querySelector('.kicker');
+        if (hk && plain(hk) && isStatic(hk)) {
+          intro.add(hk, { innerHTML: scrambleText({ chars: 'A-Z0-9—·', cursor: '_', revealRate: 70, settleDuration: 260 }) }, 'hero');
+          done.add(hk);
+        }
+        const h1 = hero.querySelector('h1');
+        if (h1 && isStatic(h1)) {
+          const split = splitText(h1, { words: { wrap: 'clip' }, chars: true });
+          this.gtSplits = (this.gtSplits || []).concat([split]);
+          const each = utils.clamp(900 / Math.max(1, split.chars.length), 8, 34);
+          intro.add(split.chars, {
+            y: { from: '110%' }, rotate: { from: () => utils.random(-14, 14) },
+            delay: stagger(each, { ease: 'out(2)' }), ease: spring({ bounce: 0.3, duration: 900 })
+          }, 'hero+=120');
+          done.add(h1);
+        }
+        const BG = /hero-slides|hero-shade|cp-hero-bg|cp-hero-shade/;
+        const restSet = new Set();
+        if (h1) {
+          const P = h1.parentElement;
+          Array.from(P.children).forEach((c) => { if (c !== h1 && c !== hk) restSet.add(c); });
+          const W = P.parentElement;
+          if (W && W !== hero && hero.contains(W)) Array.from(W.children).forEach((c) => { if (c !== P) restSet.add(c); });
+        }
+        $(':scope > .hero-link', hero).forEach((c) => restSet.add(c));
+        const rest = Array.from(restSet).filter((el) => !BG.test(el.className || '') && el.tagName !== 'IMG');
+        if (rest.length) intro.add(rest, { opacity: { from: 0 }, y: { from: 22 }, delay: stagger(80) }, 'hero+=420');
+        rest.forEach((el) => done.add(el));
+
+        // parallax on hero photography / CFD background
+        const bg = hero.querySelector('.cp-hero-bg, .hero-slides');
+        if (bg) animate(bg, { y: [0, 140], scale: [1.06, 1.06], ease: 'linear', autoplay: onScroll({ target: hero, enter: 'top top', leave: 'bottom top', sync: 0.25 }) });
+      }
+    });
+
+    // 3 ── Home hero vessel: ink sloshes (morphTo), outline draws, drop falls, bubbles rise, glass is draggable
+    safe('3', () => {
+      const vessel = root.querySelector('.hero-vessel svg');
+      if (vessel) {
+        const ink = vessel.querySelector('.gt-ink');
+        const inkB = vessel.querySelector('.gt-ink-b');
+        if (ink && inkB) {
+          animate(ink, { d: morphTo(inkB, 0), duration: 2600, ease: 'inOut(2)', loop: true, alternate: true });
+        }
+        const glass = vessel.querySelector('.gt-glass');
+        if (glass) animate(createDrawable(glass), { draw: ['0 0', '0 1'], duration: 1800, delay: 300, ease: 'inOut(3)' });
+        const drop = vessel.querySelector('.gt-drop');
+        if (drop) {
+          animate(drop, {
+            keyframes: [
+              { y: -40, opacity: 0, duration: 0 },
+              { y: 0, opacity: 1, duration: 500, ease: 'out(2)' },
+              { y: 62, scaleY: 1.25, duration: 650, ease: 'in(3)' },
+              { opacity: 0, scaleY: 0.4, duration: 120 }
+            ],
+            loop: true, loopDelay: 1400
+          });
+        }
+        const bubbles = $('.gt-bubble', vessel);
+        if (bubbles.length) {
+          animate(bubbles, {
+            y: { to: () => -utils.random(40, 90) }, opacity: [0.5, 0], scale: [1, 0.4],
+            duration: () => utils.random(2200, 3400), delay: stagger(500, { from: 'random' }),
+            loop: true, ease: 'out(2)'
+          });
+        }
+        if (!m.touch && !m.small) {
+          createDraggable(vessel, {
+            container: vessel.closest('section'),
+            releaseStiffness: 260, releaseDamping: 14, cursor: { onHover: 'grab', onGrab: 'grabbing' },
+            onRelease: (d) => { animate(d, { x: 0, y: 0, ease: spring({ bounce: 0.55, duration: 1100 }) }); }
+          });
+          vessel.style.touchAction = 'none';
+        }
+      }
+    });
+
+    // 4 ── code chips: a timer re-scrambles one chip at a time; <error> glitches on steps
+    safe('4', () => {
+      const chips = $('.code-chip');
+      if (chips.length) {
+        createTimer({
+          duration: 3200, loop: true,
+          onLoop: () => {
+            const c = utils.randomPick(chips);
+            const txt = c.dataset.gtText || (c.dataset.gtText = c.textContent);
+            const pool = 'abcdefghijklmnopqrstuvwxyz01#_'.split('');
+            const o = { p: 0 };
+            animate(o, {
+              p: 1, duration: 650, ease: steps(txt.length),
+              onUpdate: () => {
+                const n = Math.round(o.p * txt.length);
+                c.textContent = txt.slice(0, n) + Array.from(txt.slice(n)).map((ch) => (/[a-z.]/i.test(ch) ? utils.randomPick(pool) : ch)).join('');
+              },
+              onComplete: () => { c.textContent = txt; }
+            });
+          }
+        });
+        const err = chips.find((c) => /error/i.test(c.textContent));
+        if (err) animate(err, { x: [0, -3, 3, -2, 0], ease: steps(5), duration: 360, loop: true, loopDelay: 2600 });
+      }
+    });
+
+    // 5 ── "coming soon" chips flicker like a faulty neon tube
+    safe('5', () => {
+      $('.chip.warn').forEach((c) => {
+        animate(c, { opacity: [1, 0.35, 1], ease: irregular(14, 1.6), duration: 1400, loop: true, loopDelay: 2200 });
+      });
+    });
+
+    // 6 ── kickers scramble in, h2 headings rise word by word
+    safe('6', () => {
+      $('.kicker').filter((k) => !done.has(k) && plain(k) && isStatic(k)).forEach((k) => {
+        when(k, () => guard(animate(k, { innerHTML: scrambleText({ chars: 'A-Z0-9—', revealRate: 80, settleDuration: 220 }) }), 2500));
+      });
+      $('h2.t-h2, .foot-title').filter((h) => isStatic(h) && !done.has(h)).forEach((h) => {
+        when(h, () => {
+          // the split is undone as soon as the animation ends, so the heading's markup goes back to plain text
+          // (otherwise editing it in the canvas would save the animation's word wrappers into the page)
+          const s = splitText(h, { words: { wrap: 'clip' } });
+          guard(animate(s.words, { y: { from: '105%' }, delay: stagger(55), duration: 800, ease: glide, onComplete: () => s.revert() }), 800 + s.words.length * 55 + 800);
+        });
+      });
+    });
+
+    // 7 ── grids reveal with a staggered wave (grid-aware where the layout is a grid)
+    safe('7', () => {
+      const groups = $('.cols-2, .cols-3, .cols-4, .terms, .cost, .quotes, .mp, .art-list, .steps, .tl, .ef, .toy-tab, .spec, .chips')
+        .filter((g) => isStatic(g) && !done.has(g) && !g.closest('.site-head') && !(hero && hero.contains(g)));
+      groups.forEach((g) => {
+        const kids = Array.from(g.children).filter((k) => !done.has(k));
+        if (!kids.length) return;
+        kids.forEach((k) => done.add(k));
+        const cols = (getComputedStyle(g).gridTemplateColumns || 'none').split(' ').filter((x) => x !== 'none').length;
+        const rows = cols > 1 ? Math.ceil(kids.length / cols) : 0;
+        const delay = cols > 1 && rows > 1 ? stagger(70, { grid: [cols, rows], from: 'first' }) : stagger(70);
+        when(g, () => guard(animate(kids, {
+          opacity: { from: 0 }, y: { from: 28 }, scale: { from: 0.97 },
+          delay: delay, duration: 750, ease: glide
+        }), 750 + kids.length * 70 + 900));
+      });
+    });
+
+    // 8 ── single blocks fade up as they enter
+    safe('8', () => {
+      $('.col > p, .col-wide > p, .article figure, .viz, .eq-wrap, .paper-fig, .card, blockquote, .meme, .meme-sm, .take, .side, .stat, .quote, .prose > p')
+        .filter((el) => isStatic(el) && !done.has(el) && !el.closest('.site-head') && !(hero && hero.contains(el)) && !Array.from(done).some((d) => d !== el && d.contains && d.contains(el)))
+        .forEach((el) => {
+          done.add(el);
+          when(el, () => guard(animate(el, { opacity: { from: 0 }, y: { from: 18 }, duration: 700, ease: glide }), 1500));
+        });
+    });
+
+    // 9 ── photos: hardware-accelerated clip reveal (WAAPI) as they enter
+    safe('9', () => {
+      $('figure img, .tile-art img, .art-thumb img, .paper-fig img, .wfig img')
+        .filter((img) => isStatic(img) && !(hero && hero.contains(img)) && !img.closest('.hero-slides'))
+        .forEach((img) => {
+          when(img, () => waapi.animate(img, {
+            clipPath: ['inset(0 0 100% 0)', 'inset(0 0 0% 0)'], scale: [1.08, 1], duration: 1100, ease: 'out(4)'
+          }));
+        });
+    });
+
+    // 10 ── numbers count up (keeps prefix, suffix, commas and decimals)
+    safe('10', () => {
+      $('.stat b, .art-num, .mp b').filter((b) => plain(b) && isStatic(b)).forEach((b) => {
+        const raw = b.textContent;
+        const mm = raw.match(/^([^\d]*?)(\d[\d,]*(?:\.\d+)?)(.*)$/);
+        if (!mm) return;
+        const target = parseFloat(mm[2].replace(/,/g, ''));
+        const decimals = (mm[2].split('.')[1] || '').length;
+        const comma = mm[2].indexOf(',') >= 0;
+        const pad = /^0\d/.test(mm[2]) ? mm[2].length : 0;
+        const isYear = !comma && !decimals && target >= 1800 && target <= 2100;
+        const fmt = (v) => {
+          let s = decimals ? utils.round(v, decimals).toFixed(decimals) : String(Math.round(v));
+          if (comma) s = Number(s).toLocaleString('en-GB', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+          if (pad) s = utils.padStart(s, pad, '0');
+          return mm[1] + s + mm[3];
+        };
+        when(b, () => {
+          const o = { v: isYear ? target - 80 : 0 };
+          guard(animate(o, {
+            v: target, duration: 1600, ease: 'out(4)',
+            onUpdate: () => { b.textContent = fmt(o.v); },
+            onComplete: () => { b.textContent = raw; }
+          }), 2600);
+        });
+      });
+    });
+
+    // 11 ── line drawings: stroked chart lines draw themselves in (createDrawable)
+    safe('11', () => {
+      $('svg[role="img"]').filter((s) => isStatic(s) && !s.closest('.hero-vessel') && !s.closest('.site-head')).forEach((s) => {
+        const strokes = $('path, line, polyline, rect, circle', s).filter((p) => {
+          const cs = getComputedStyle(p);
+          return cs.stroke && cs.stroke !== 'none' && (cs.fill === 'none' || p.getAttribute('fill') === 'none') && !p.classList.contains('gt-rider');
+        });
+        if (!strokes.length) return;
+        when(s, () => guard(animate(createDrawable(strokes), { draw: ['0 0', '0 1'], delay: stagger(40), duration: 1400, ease: 'inOut(3)' }), 1400 + strokes.length * 40 + 900));
+      });
+    });
+
+    // 12 ── Navier–Stokes chart B: a dot rides the y² curve up to the blowup (createMotionPath)
+    safe('12', () => {
+      const curve = root.querySelector('.gt-curve');
+      const rider = root.querySelector('.gt-rider');
+      if (curve && rider) {
+        animate(rider, Object.assign({}, createMotionPath(curve), {
+          ease: 'in(3)', duration: 2600, loop: true, loopDelay: 700,
+          opacity: [{ to: 1, duration: 200 }, { to: 1, duration: 2200 }, { to: 0, duration: 200 }]
+        }));
+      }
+    });
+
+    // 13 ── reading progress bar synced to scroll
+    safe('13', () => {
+      const bar = root.querySelector('.gt-progress');
+      if (bar) animate(bar, { scaleX: [0, 1], ease: 'linear', autoplay: onScroll({ target: root, enter: 'top top', leave: 'bottom bottom', sync: 0.15 }) });
+    });
+
+    // 14 ── "Show the science" panels: mark the ones already open so only new openings animate
+    safe('14', () => { $('.more-body').forEach((el) => el.setAttribute('data-gt-in', '')); });
+
+    // 15 ── magnetic buttons (createAnimatable)
+    safe('15', () => {
+      if (calm) return;
+      $('.btn, .social, .hero-link, .back, .foot-mail, .gal-nav').forEach((el) => {
+        let a = null;
+        el.addEventListener('pointermove', (e) => {
+          if (!a) a = createAnimatable(el, { x: 500, y: 500, ease: 'out(3)' });
+          const r = el.getBoundingClientRect();
+          a.x(utils.clamp((e.clientX - (r.left + r.width / 2)) * 0.25, -10, 10));
+          a.y(utils.clamp((e.clientY - (r.top + r.height / 2)) * 0.35, -8, 8));
+        });
+        el.addEventListener('pointerleave', () => { if (a) { a.x(0); a.y(0); } });
+      });
+    });
+
+    // 16 ── cards tilt toward the pointer and spring back
+    safe('16', () => {
+      if (calm) return;
+      $('.tile, .art-row, .poster-link, .card, .term, .stat').filter(isStatic).forEach((el) => {
+        let a = null;
+        el.addEventListener('pointerenter', () => {
+          if (!a) { utils.set(el, { perspective: '900px' }); a = createAnimatable(el, { rotateX: 400, rotateY: 400, ease: 'out(3)' }); }
+          animate(el, { translateY: -6, ease: spring({ bounce: 0.5, duration: 600 }) });
+        });
+        el.addEventListener('pointermove', (e) => {
+          if (!a) return;
+          const r = el.getBoundingClientRect();
+          a.rotateY(utils.mapRange(e.clientX, r.left, r.right, -4, 4));
+          a.rotateX(utils.mapRange(e.clientY, r.top, r.bottom, 4, -4));
+        });
+        el.addEventListener('pointerleave', () => {
+          if (a) { a.rotateX(0); a.rotateY(0); }
+          animate(el, { translateY: 0, ease: spring({ bounce: 0.5, duration: 700 }) });
+        });
+      });
+    });
+
+    // 17 ── safety net: the opening sequence always ends fully visible, even if the animation clock stalls
+    const unsplit = () => { (this.gtSplits || []).forEach((sp) => { try { sp.revert(); } catch (e) {} }); this.gtSplits = []; };
+    intro.then(unsplit);
+    setTimeout(() => { try { if (!intro.completed) intro.complete(); } catch (e) {} unsplit(); }, 4500);
+  }
+  // ── end motion layer ──────────────────────────────────────────────────
   renderVals() {
     const B = '/_blob/';
     const st = this.state || {};
