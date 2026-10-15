@@ -37,6 +37,9 @@ A small, dependency-light static site:
 - **Assets** — photographs, renders, papers and video clips in `src/assets/`.
 - **Build** — `build.mjs` turns the pages into a static site in `public/`: clean URLs, optimised
   links, and interactive pages pre-rendered so they load instantly and are readable by search engines.
+  Photos are published as WebP no larger than they appear on screen (`src/image-widths.json`), and
+  the build writes each page's link-preview card (title, summary, picture), `sitemap.xml`,
+  `robots.txt` and a branded 404 page.
 - **Interactivity** — a tiny script (`src/runtime/dc-lite.js`) powers slideshows, the CAD viewer,
   poster zoom, charts and expandable explanations. No framework.
 - **Motion** — page animations use [Anime.js](https://animejs.com/) (MIT licence) and respect the

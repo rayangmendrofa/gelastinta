@@ -157,7 +157,7 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 .hb-feature:hover{color:#10131C;background:#FFFFFF}
 .hb-feature:hover h3{color:#2B44C8}
 .hb-feature-media{position:relative;min-height:420px;background:#10131C;border-right:1px solid #10131C;overflow:hidden}
-.hb-feature-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hb-feature-media img,.hb-feature-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .hb-feature-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
 .hb-feature-strip img{width:100%;aspect-ratio:1/1;object-fit:cover;border:1px solid #10131C}
 @media (max-width:960px){.hb-feature{grid-template-columns:minmax(0,1fr)}.hb-feature-media{min-height:360px;border-right:0;border-bottom:1px solid #10131C}}
@@ -239,13 +239,13 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <p class="meta muted">Personal projects, made out of curiosity</p>
 </div>
 <a class="hb-feature" href="Hobby-InMoov.dc.html">
-<div class="hb-feature-media"><img src="/_blob/6d123e2e48f893c58e0a02cfa8ec74e3" alt="Looping clip: the finished InMoov hand curling its fingers" loading="lazy"><span class="hb-speed" style="left:12px;right:auto">Featured</span></div>
+<div class="hb-feature-media"><video src="/_blob/aa004a7c7e20eab3afed0df407315599" poster="/_blob/0087f1bc08e04a247f0f750ac5a2c050" autoplay muted loop playsinline preload="metadata" aria-label="Looping clip: the finished InMoov hand curling its fingers" data-gt-autoplay=""></video><span class="hb-speed" style="left:12px;right:auto">Featured</span></div>
 <div class="stack g16" style="padding:32px">
 <div class="chips"><span class="chip fill">2023 – 2024</span><span class="chip">Personal project</span><span class="chip">3D printing</span></div>
 <h3 class="t-h3" style="font-size:30px;line-height:1.15">Rebuilding the InMoov robot hand</h3>
 <p class="muted" style="font-size:18px;line-height:1.6">After my BEng dissertation on prosthetic hands, I printed and assembled Gaël Langevin’s open-source InMoov hand, out of curiosity and as a hobby. I didn’t design it; this is the story of building it, from the first print to the first movement.</p>
 <div class="hb-feature-strip" aria-hidden="true">
-<img src="/_blob/8dcea2945392b3e0d9b3bd41927badc4" alt="" loading="lazy"><img src="/_blob/a485ec11601233869c4f5e9ccb8a9b6b" alt="" loading="lazy"><img src="/_blob/3631abc35653b352affafa4f116d5d1a" alt="" loading="lazy">
+<img src="/_blob/8dcea2945392b3e0d9b3bd41927badc4" alt="" loading="lazy"><img src="/_blob/7e4b48ecc4056ee3c7176f0dbb5e642c" alt="" loading="lazy"><img src="/_blob/78cd774e32e94555f03e4e64a394727d" alt="" loading="lazy">
 </div>
 <span class="meta" style="color:#2B44C8;margin-top:auto">Read the build diary · 11 clips →</span>
 </div>
@@ -372,9 +372,12 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":5000}}'>
 class Component extends DCLogic {
   // ── GelasTinta motion layer (anime.js v4) ─────────────────────────────
-  componentDidMount() { this.gtStart(0); }
+  componentDidMount() { this.gtStart(0); this.gtMedia(0); }
   componentWillUnmount() {
     clearTimeout(this.gtWait);
+    clearInterval(this.gtSlideT);
+    clearTimeout(this.gtMediaWait);
+    if (this.gtVIO) this.gtVIO.disconnect();
     if (this.gtIO) this.gtIO.disconnect();
     if (this.gtScope) this.gtScope.revert();
   }
@@ -411,6 +414,52 @@ class Component extends DCLogic {
       if (z) A.animate(z, { scale: { from: 0.9 }, opacity: { from: 0 }, ease: A.spring({ bounce: 0.35, duration: 500 }) });
     }
     this.gtPrev = { sel: st.sel, slide: st.slide, zoom: st.zoom, seen: true };
+  }
+  // Media loading (independent of anime.js): hero slides load just before their turn; clips play only on screen
+  gtMedia(tries) {
+    const root = document.querySelector('[data-gt-root]') || document.body;
+    if (!root.querySelector('img[data-src], video[data-gt-autoplay]')) {
+      if (tries < 20) this.gtMediaWait = setTimeout(() => this.gtMedia(tries + 1), 150);
+      return;
+    }
+    const still = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+    // 1 · Home hero slideshow: slide k fades in at k×6 s, so fetch it ~5 s ahead
+    const slides = Array.from(root.querySelectorAll('.hero-slides img[data-src]'));
+    if (slides.length && !still) {
+      const t0 = performance.now();
+      const tick = () => {
+        const t = (performance.now() - t0) / 1000;
+        let left = 0;
+        slides.forEach((img, i) => {
+          if (img.getAttribute('src')) return;
+          const k = i + 1;
+          if (t >= k * 6 - 5) { img.decoding = 'async'; img.src = img.getAttribute('data-src'); }
+          else left++;
+        });
+        if (!left) clearInterval(this.gtSlideT);
+      };
+      tick();
+      this.gtSlideT = setInterval(tick, 1000);
+    }
+    // 2 · Looping clips: muted inline video, playing only while visible
+    const vids = Array.from(root.querySelectorAll('video[data-gt-autoplay]'));
+    if (vids.length) {
+      vids.forEach((v) => { v.muted = true; v.defaultMuted = true; v.playsInline = true; v.loop = true; });
+      if (still) {
+        vids.forEach((v) => { v.removeAttribute('autoplay'); v.autoplay = false; v.pause(); v.controls = true; });
+      } else if ('IntersectionObserver' in window) {
+        this.gtVIO = new IntersectionObserver((entries) => {
+          entries.forEach((e) => {
+            const v = e.target;
+            if (e.isIntersecting) { const p = v.play(); if (p && p.catch) p.catch(() => {}); }
+            else v.pause();
+          });
+        }, { rootMargin: '120px 0px' });
+        vids.forEach((v) => this.gtVIO.observe(v));
+      } else {
+        vids.forEach((v) => { const p = v.play(); if (p && p.catch) p.catch(() => {}); });
+      }
+    }
   }
   gtStart(tries) {
     const A = window.anime;

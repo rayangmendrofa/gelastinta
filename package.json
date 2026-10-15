@@ -7,7 +7,8 @@
     "preview": "npx --yes serve public -l 4173"
   },
   "devDependencies": {
-    "jsdom": "^25.0.0"
+    "jsdom": "^25.0.0",
+    "sharp": "^0.34.4"
   },
   "dependencies": {
     "@netlify/blobs": "^11.1.4",
