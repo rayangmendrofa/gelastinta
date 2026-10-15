@@ -1309,6 +1309,36 @@ class Component extends DCLogic {
       }
     };
   }
+  phmStop() { (this.phmT || []).forEach((t) => clearTimeout(t)); this.phmT = []; }
+  phmPlay(freqs, mode) {
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return;
+    if (!this.phmAC) this.phmAC = new AC();
+    const ac = this.phmAC;
+    if (ac.resume) ac.resume();
+    const out = ac.createGain();
+    out.gain.value = 0.9;
+    out.connect(ac.destination);
+    const tone = (f, t0, dur, type, bend) => {
+      const o = ac.createOscillator();
+      const g = ac.createGain();
+      o.type = type;
+      o.frequency.setValueAtTime(f, t0);
+      if (bend) o.frequency.linearRampToValueAtTime(f * bend, t0 + dur * 0.6);
+      g.gain.setValueAtTime(0.0001, t0);
+      g.gain.exponentialRampToValueAtTime(0.16, t0 + 0.02);
+      g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+      o.connect(g); g.connect(out);
+      o.start(t0); o.stop(t0 + dur + 0.05);
+    };
+    const t = ac.currentTime + 0.03;
+    if (mode === 'chord') freqs.forEach((f) => tone(f, t, 1.6, 'triangle'));
+    if (mode === 'arp') freqs.forEach((f, i) => tone(f, t + i * 0.45, 0.6, 'triangle'));
+    if (mode === 'rocky') {
+      const phrase = [[392, 494, 587], [440, 523, 659, 784], [349, 440, 523], [523, 659, 784]];
+      phrase.forEach((ch, i) => ch.forEach((f) => tone(f, t + i * 0.24, 0.22, 'sine', i % 2 ? 1.04 : 0.98)));
+    }
+  }
   renderVals() {
     const st = this.state || {};
     // Chart A: spin rate → gravity 78 m from the centre

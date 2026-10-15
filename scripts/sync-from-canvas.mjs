@@ -12,8 +12,13 @@ const comment = fs.readFileSync(path.join(ROOT, 'scripts', 'comment-logic.js'), 
 for (const f of fs.readdirSync(from).filter((x) => x.endsWith('.dc.html'))) {
   let s = fs.readFileSync(path.join(from, f), 'utf8');
   if (s.includes('commentVals() {')) {
+    // replace only the commentVals() method: it ends where the next method of the class starts
+    // (pages can have their own methods after it, e.g. the Project Hail Mary sound player)
     const a = s.indexOf('  commentVals() {');
-    const b = s.indexOf('  renderVals() {', a);
+    const next = /\n  [A-Za-z_$][\w$]*\([^)]*\) \{/g;
+    next.lastIndex = a + 1;
+    const m = a < 0 ? null : next.exec(s);
+    const b = m ? m.index + 1 : -1;
     if (a < 0 || b < 0) throw new Error(`${f}: comment block not found`);
     s = s.slice(0, a) + comment + s.slice(b);
     s = s.replace(/componentDidMount\(\) \{ this\.gtStart\(0\);( this\.gtMedia\(0\);)? \}/,
