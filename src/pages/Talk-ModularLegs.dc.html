@@ -287,8 +287,13 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 .readout.r3 b{font-size:24px}
 .gbar.wide{grid-template-columns:200px minmax(0,1fr) 150px}
 .gbar.wide .vl{white-space:nowrap}
+.duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border:1px solid #10131C;background:#10131C}
+.duo figure{margin:0;position:relative;aspect-ratio:16 / 9;overflow:hidden}
+.duo figure + figure{border-left:1px solid #10131C}
+.duo img{width:100%;height:100%;object-fit:cover;display:block}
+.duo figcaption{position:absolute;left:10px;top:10px;background:rgba(16,19,28,.85);color:#FFFFFF;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.06em;padding:4px 8px}
 .catch{border:1px solid #3A4152;background:#1A1F2E;padding:22px;display:flex;flex-direction:column;gap:8px}
-@media (max-width:640px){.readout.r3{grid-template-columns:minmax(0,1fr)}.readout.r3 div{border-right:0;border-bottom:1px solid #10131C}.readout.r3 div:last-child{border-bottom:0}.gbar.wide{grid-template-columns:minmax(0,1fr) auto;gap:6px 12px}.gbar.wide .vl{font-size:17px}.gbar.wide .nm{grid-column:1 / -1}}
+@media (max-width:640px){.duo{grid-template-columns:minmax(0,1fr)}.duo figure + figure{border-left:0;border-top:1px solid #10131C}.readout.r3{grid-template-columns:minmax(0,1fr)}.readout.r3 div{border-right:0;border-bottom:1px solid #10131C}.readout.r3 div:last-child{border-bottom:0}.gbar.wide{grid-template-columns:minmax(0,1fr) auto;gap:6px 12px}.gbar.wide .vl{font-size:17px}.gbar.wide .nm{grid-column:1 / -1}}
 </style>
 </helmet>
 <div style="min-height:100vh" data-gt-root="">
@@ -341,6 +346,10 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <div class="stat"><b>≈ 10¹¹</b><p>Possible bodies you can bolt together from five modules.</p></div>
 <div class="stat"><b>0 tuning</b><p>Controllers trained in simulation worked outdoors first try.</p></div>
 </div>
+<div class="col-wide duo" style="margin-top:40px">
+<figure><img src="/_blob/58adc5b5cb21c58891e4c3bd7a9f59b8" alt="Animated film still: a hand holds up one tiny dark robot piece while a boy presents on stage beside a tall tower of the same pieces" loading="lazy"><figcaption>ONE MICROBOT…</figcaption></figure>
+<figure><img src="/_blob/8f704499d54d379c5b2a6c0d22f70924" alt="Animated: on a stage, a swarm of tiny robots rises into tall shifting towers while the audience watches" loading="lazy"><figcaption>…AND THOUSANDS OF THEM, BECOMING ANYTHING.</figcaption></figure>
+</div>
 </div>
 </section>
 
@@ -351,6 +360,10 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <h2 class="t-h2" style="margin:12px 0 18px">What’s in the paper?</h2>
 <p>Look at legged robots from the last ten years and you mostly see two shapes: four legs or two. Animals, meanwhile, have rearranged and reshaped legs into millions of body plans. Robots that can be reconfigured do exist, but the legs usually hang off a central torso that holds the battery, computer and motors. Damage the torso and the whole thing stops, and most of those robots are slow, weak, and stay indoors.</p>
 <p>The team flipped the idea. Here, every leg <i>is</i> the robot. Each module is a sphere with two 24 cm links sticking out of it, joined by a single motor. Everything else (battery, circuit board, sensors, Wi-Fi) is packed inside the sphere. On its own, one module can already do three tricks.</p>
+</div>
+<div class="col meme-sm" style="margin-top:32px">
+<img src="/_blob/09dd0c22768a1e38e6b04605a008e7f9" alt="Animated: a yellow four-legged robot dog walks away, captioned I'm out" loading="lazy">
+<div class="stack g8"><p class="kicker">Asking a fixed-shape robot to become something else</p><p>One body plan, decided at the factory. It politely declines.</p></div>
 </div>
 <div class="col-wide viz" style="margin-top:48px" role="group" aria-label="Chart A: what a single module can do">
 <div class="viz-head">
@@ -546,10 +559,16 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <nav class="talk-nav" aria-label="More talks"><a class="tn prev" href="Talk-DreamPuzzles.dc.html"><span class="tn-k">← Previous talk · 05</span><span class="tn-t">“Inception, but for Homework: Solving Puzzles Inside Your Dreams”</span><span class="tn-m">23rd April 2026 · 8 min read</span></a><a class="tn next" href="Talk-NavierStokes.dc.html"><span class="tn-k">Next talk · 07 →</span><span class="tn-t">“Mathematician vs Clanker: Navier–Stokes, the Millennium Prize Question Answered?”</span><span class="tn-m">23rd September 2026 · 16 min read</span></a></nav>
 <a href="Talks.dc.html" class="back" style="margin-top:24px;color:#2B44C8">← Back to all talks</a>
 </div>
+<div class="stack g24">
+<figure class="stack g12">
+<img src="/_blob/4517c32da45cc91d070b2f79e7fef63d" alt="Cartoon superhero in a red web-patterned suit making an OK sign, captioned almost, but not quite" style="width:100%;height:auto;border:1px solid #10131C" loading="lazy">
+<figcaption>MICRO? ALMOST, BUT NOT QUITE.</figcaption>
+</figure>
 <figure class="stack g12">
 <svg viewBox="0 0 280 220" role="img" aria-label="Scale check: one 62-centimetre module next to a one-centimetre cube" style="display:block;width:100%;height:auto;border:1px solid #10131C;background:#FBFBFA"><line x1="140" y1="120" x2="22" y2="120" stroke="#2A2F3B" stroke-width="10" stroke-linecap="round" opacity="1"></line><circle cx="90.4" cy="120" r="1.4" fill="#8C93A3" opacity="1"></circle><circle cx="69.2" cy="120" r="1.4" fill="#8C93A3" opacity="1"></circle><circle cx="48" cy="120" r="1.4" fill="#8C93A3" opacity="1"></circle><circle cx="29.1" cy="120" r="1.4" fill="#8C93A3" opacity="1"></circle><line x1="140" y1="120" x2="258" y2="120" stroke="#2A2F3B" stroke-width="10" stroke-linecap="round" opacity="1"></line><circle cx="189.6" cy="120" r="1.4" fill="#8C93A3" opacity="1"></circle><circle cx="210.8" cy="120" r="1.4" fill="#8C93A3" opacity="1"></circle><circle cx="232" cy="120" r="1.4" fill="#8C93A3" opacity="1"></circle><circle cx="250.9" cy="120" r="1.4" fill="#8C93A3" opacity="1"></circle><circle cx="140" cy="120" r="16" fill="#10131C" opacity="1"></circle><circle cx="134.4" cy="113.9" r="3.5" fill="#FFFFFF" opacity="0.2"></circle><line x1="22" y1="70" x2="258" y2="70" stroke="#C2410C" stroke-width="1.5"></line><line x1="22" y1="64" x2="22" y2="76" stroke="#C2410C" stroke-width="1.5"></line><line x1="258" y1="64" x2="258" y2="76" stroke="#C2410C" stroke-width="1.5"></line><text x="140" y="60" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#C2410C">62 cm · this paper</text><rect x="136" y="176" width="4" height="4" fill="#10131C"></rect><line x1="144" y1="178" x2="168" y2="178" stroke="#8A8F9C" stroke-width="1"></line><text x="172" y="182" font-family="JetBrains Mono, monospace" font-size="11" fill="#3A4152">≈ 1 cm · “micro”</text></svg>
 <figcaption>SCALE CHECK: NOT QUITE MICRO (YET).</figcaption>
 </figure>
+</div>
 </div>
 </div>
 </section>
