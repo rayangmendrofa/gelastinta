@@ -27,6 +27,7 @@ export const ROUTES = {
   'Talk-CacioPepe.dc.html': '/talks/cooking-and-science/',
   'Talk-NavierStokes.dc.html': '/talks/navier-stokes/',
   'Talk-ProjectHailMary.dc.html': '/talks/project-hail-mary/',
+  'Talk-DreamPuzzles.dc.html': '/talks/dream-puzzles/',
   'Thesis-BEng.dc.html': '/projects/beng-dissertation/',
   'Thesis-MSc.dc.html': '/projects/msc-dissertation/',
   'Hobby-InMoov.dc.html': '/projects/inmoov-hand/',
@@ -67,6 +68,8 @@ export const META = {
     desc: 'A spinning spaceship that makes its own gravity, a language made of chords and the friendliest alien in fiction.' },
   'Talk-NavierStokes.dc.html': { title: 'Mathematician vs Clanker: Navier–Stokes Answered? — GelasTinta', img: '8640ecc3e79609c3709944fae4972088', fit: 'contain', date: '2026-09-23',
     desc: 'The equation every engineer meets, the AI-made proof that it can break, and the fight over who gets the credit.' },
+  'Talk-DreamPuzzles.dc.html': { title: 'Inception, but for Homework: Solving Puzzles Inside Your Dreams — GelasTinta', img: '515bbb256ab40f87ea976b100e2ef7a2', pos: 'centre', date: '2026-10-23',
+    desc: 'Twenty sleepers, a soundtrack for every puzzle, and a sniff that means “I’m working on it”: can a dream help you solve tomorrow’s problem?' },
 };
 
 // 1200×630 preview card: one picture, or a 2×2 grid when META lists four.
