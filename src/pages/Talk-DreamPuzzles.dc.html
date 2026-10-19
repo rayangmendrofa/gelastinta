@@ -289,9 +289,19 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 .readout.r3 b{font-size:24px}
 .gbar.wide{grid-template-columns:220px minmax(0,1fr) 80px}
 .gbar.wide .vl{white-space:nowrap}
+.pz-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:32px;align-items:center}
+.pz-box{background:#FBFBFA;border:1px solid #10131C;aspect-ratio:320 / 252;display:flex;align-items:center;justify-content:center;padding:12px}
+.pz-svg{display:block;width:100%;height:100%;animation:pzIn .4s cubic-bezier(.2,.75,.1,1)}
+@keyframes pzIn{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.pz-svg{animation:none}}
+.duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border:1px solid #10131C;background:#10131C}
+.duo figure{margin:0;position:relative;aspect-ratio:4 / 3;overflow:hidden}
+.duo figure + figure{border-left:1px solid #10131C}
+.duo img{width:100%;height:100%;object-fit:cover;display:block}
+.duo figcaption{position:absolute;left:10px;top:10px;background:rgba(16,19,28,.85);color:#FFFFFF;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.06em;padding:4px 8px}
 .catch{border:1px solid #3A4152;background:#1A1F2E;padding:22px;display:flex;flex-direction:column;gap:8px}
-@media (max-width:960px){.night-card{grid-template-columns:minmax(0,1fr)}}
-@media (max-width:640px){.readout.r3{grid-template-columns:minmax(0,1fr)}.readout.r3 div{border-right:0;border-bottom:1px solid #10131C}.readout.r3 div:last-child{border-bottom:0}.gbar.wide{grid-template-columns:minmax(0,1fr) 84px;gap:6px 12px}.gbar.wide .nm{grid-column:1 / -1}}
+@media (max-width:960px){.night-card,.pz-grid{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:640px){.duo{grid-template-columns:minmax(0,1fr)}.duo figure + figure{border-left:0;border-top:1px solid #10131C}.readout.r3{grid-template-columns:minmax(0,1fr)}.readout.r3 div{border-right:0;border-bottom:1px solid #10131C}.readout.r3 div:last-child{border-bottom:0}.gbar.wide{grid-template-columns:minmax(0,1fr) 84px;gap:6px 12px}.gbar.wide .nm{grid-column:1 / -1}}
 </style>
 </helmet>
 <div style="min-height:100vh" data-gt-root="">
@@ -316,9 +326,9 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <div class="wrap" style="position:relative;z-index:2">
 <div class="col stack g16">
 <a href="Talks.dc.html" class="back">← All talks</a>
-<p class="kicker">Talk 06 — Review</p>
+<p class="kicker">Talk 05 — Review</p>
 <h1 class="t-title">“Inception, but for Homework: Solving Puzzles Inside Your Dreams”</h1>
-<p class="meta">Rayang T Mendrofa - 23rd October 2026 · 8 min read</p>
+<p class="meta">Rayang T Mendrofa - 23rd April 2026 · 8 min read</p>
 <aside style="margin-top:24px;border:1px solid #10131C;background:#FFFFFF">
 <div class="dark" style="padding:12px 20px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px"><span class="kicker" style="font-size:11px">Paper under review</span><span class="meta" style="font-size:11px;color:#8FA2FF">Neuroscience of Consciousness · RESEARCH ARTICLE · OPEN ACCESS</span></div>
 <div class="stack g12" style="padding:22px 20px">
@@ -343,6 +353,10 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <div class="stat"><b>71</b><p>Dream reports, collected over 35 nights in the lab.</p></div>
 <div class="stat"><b>26 %</b><p>Of unsolved puzzles turned up in a dream, on average.</p></div>
 <div class="stat"><b>42 vs 17 %</b><p>Solved next morning: puzzles dreamed about vs not.</p></div>
+</div>
+<div class="col meme-sm" style="margin-top:40px">
+<img src="/_blob/ff686c784217f02e8a58dbd3671f1710" alt="Leonardo DiCaprio in a suit, squinting suspiciously" loading="lazy">
+<div class="stack g8"><p class="kicker">Pre-sleep viewing</p><p>While the sensors went on, 16 of the 20 participants watched <i>Inception</i>. No pressure, then.</p></div>
 </div>
 </div>
 </section>
@@ -384,6 +398,10 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <p class="fig-cap"><b>Paper Fig. 1.</b> (A) Two lab nights about a week apart, with a dream diary in between and a video call a week later. (B) One lab night: puzzles with their sounds at 10 pm, normal sleep until 4 am, lucidity training, puzzle cues during REM sleep, and a retest at 9 am.</p>
 <span class="meta muted" style="font-size:11px">Source: Konkoly et al., Neuroscience of Consciousness 2026(1), niaf067, CC BY-NC 4.0</span></div></sc-if></div>
 </div>
+<div class="col-wide duo" style="margin-top:32px">
+<figure><img src="/_blob/fcbc348c54997c61750e10dfed128819" alt="Animated: hands turning a Rubik’s cube" loading="lazy"><figcaption>10 PM: GET STUCK, ON PURPOSE.</figcaption></figure>
+<figure><img src="/_blob/47c1b8d8ce1c7088ab87cdfcfc17772e" alt="A Minecraft-style character tucked into a red bed, captioned goodnight" loading="lazy"><figcaption>11 PM: LIGHTS OUT. NO THINKING ABOUT PUZZLES.</figcaption></figure>
+</div>
 </div>
 </section>
 
@@ -417,17 +435,27 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <p class="fig-cap"><b>Paper Fig. 2A.</b> The real recording. After signalling lucidity with left-right eye movements (pink), the participant heard the cue “Balanced scale” (blue) and answered with rapid sniffs (green).</p>
 <span class="meta muted" style="font-size:11px">Source: Konkoly et al., Neuroscience of Consciousness 2026(1), niaf067, CC BY-NC 4.0</span></div></sc-if></div>
 </div>
-<div class="col-wide split" style="margin-top:48px;gap:40px;align-items:center">
-<figure class="stack g12" style="max-width:360px">
-<img src="/_blob/3281266e4d6f885603ce04a6d3b459d6" alt="A hanging scale made of matchsticks: a tilted beam on a vertical post, with a matchstick triangle hanging from each end" style="width:100%;height:auto;border:1px solid #10131C;background:#FFFFFF" loading="lazy">
-<figcaption>THE PUZZLE SHE WAS DREAMING ABOUT.</figcaption>
-</figure>
+<div class="col-wide viz" style="margin-top:48px" role="group" aria-label="Try the Balanced scale puzzle, with a hint and the solution">
+<div class="viz-head">
+<span class="kicker">Your turn — the puzzle she was dreaming about</span>
+<h3 class="t-h3">Balanced scale: move exactly 5 matches to make this hanging scale balanced</h3>
+</div>
+<div class="viz-body pz-grid">
+<div class="pz-box">
+<sc-if value="{{pz.s0}}" hint-placeholder-val="{{ true }}"><svg class="pz-svg" viewBox="60 14 320 252" role="img" aria-label="Balanced scale: puzzle. A matchstick hanging scale: a vertical post, a tilted two-match beam, and a matchstick triangle hanging from each end."><line x1="215" y1="31" x2="215" y2="115" stroke="#B7811C" stroke-width="10"></line><line x1="215" y1="31" x2="215" y2="115" stroke="#F2C24A" stroke-width="6.5"></line><circle cx="215" cy="112" r="5.6" fill="#3A2418"></circle><line x1="212.3" y1="119.3" x2="136.2" y2="154.8" stroke="#B7811C" stroke-width="10"></line><line x1="212.3" y1="119.3" x2="136.2" y2="154.8" stroke="#F2C24A" stroke-width="6.5"></line><circle cx="138.9" cy="153.5" r="5.6" fill="#3A2418"></circle><line x1="217.7" y1="116.7" x2="293.8" y2="81.2" stroke="#B7811C" stroke-width="10"></line><line x1="217.7" y1="116.7" x2="293.8" y2="81.2" stroke="#F2C24A" stroke-width="6.5"></line><circle cx="291.1" cy="82.5" r="5.6" fill="#3A2418"></circle><line x1="131.9" y1="158.6" x2="89.9" y2="231.4" stroke="#B7811C" stroke-width="10"></line><line x1="131.9" y1="158.6" x2="89.9" y2="231.4" stroke="#F2C24A" stroke-width="6.5"></line><circle cx="91.4" cy="228.8" r="5.6" fill="#3A2418"></circle><line x1="134.9" y1="158.6" x2="176.9" y2="231.4" stroke="#B7811C" stroke-width="10"></line><line x1="134.9" y1="158.6" x2="176.9" y2="231.4" stroke="#F2C24A" stroke-width="6.5"></line><circle cx="175.4" cy="228.8" r="5.6" fill="#3A2418"></circle><line x1="91.4" y1="234" x2="175.4" y2="234" stroke="#B7811C" stroke-width="10"></line><line x1="91.4" y1="234" x2="175.4" y2="234" stroke="#F2C24A" stroke-width="6.5"></line><circle cx="172.4" cy="234" r="5.6" fill="#3A2418"></circle><line x1="295.1" y1="82.6" x2="253.1" y2="155.3" stroke="#B7811C" stroke-width="10"></line><line x1="295.1" y1="82.6" x2="253.1" y2="155.3" stroke="#F2C24A" stroke-width="6.5"></line><circle cx="254.6" cy="152.7" r="5.6" fill="#3A2418"></circle><line x1="298.1" y1="82.6" x2="340.1" y2="155.3" stroke="#B7811C" stroke-width="10"></line><line x1="298.1" y1="82.6" x2="340.1" y2="155.3" stroke="#F2C24A" stroke-width="6.5"></line><circle cx="338.6" cy="152.7" r="5.6" fill="#3A2418"></circle><line x1="254.6" y1="157.9" x2="338.6" y2="157.9" stroke="#B7811C" stroke-width="10"></line><line x1="254.6" y1="157.9" x2="338.6" y2="157.9" stroke="#F2C24A" stroke-width="6.5"></line><circle cx="335.6" cy="157.9" r="5.6" fill="#3A2418"></circle></svg></sc-if>
+<sc-if value="{{pz.s1}}" hint-placeholder-val="{{ false }}"><svg class="pz-svg" viewBox="60 14 320 252" role="img" aria-label="Balanced scale: hint, the highlighted match never moves. A matchstick hanging scale: a vertical post, a tilted two-match beam, and a matchstick triangle hanging from each end."><line x1="215" y1="31" x2="215" y2="115" stroke="#B7811C" stroke-width="10"></line><line x1="215" y1="31" x2="215" y2="115" stroke="#F2C24A" stroke-width="6.5"></line><circle cx="215" cy="112" r="5.6" fill="#3A2418"></circle><line x1="212.3" y1="119.3" x2="136.2" y2="154.8" stroke="#B7811C" stroke-width="10"></line><line x1="212.3" y1="119.3" x2="136.2" y2="154.8" stroke="#F2C24A" stroke-width="6.5"></line><circle cx="138.9" cy="153.5" r="5.6" fill="#3A2418"></circle><line x1="217.7" y1="116.7" x2="293.8" y2="81.2" stroke="#B7811C" stroke-width="10"></line><line x1="217.7" y1="116.7" x2="293.8" y2="81.2" stroke="#F2C24A" stroke-width="6.5"></line><circle cx="291.1" cy="82.5" r="5.6" fill="#3A2418"></circle><line x1="131.9" y1="158.6" x2="89.9" y2="231.4" stroke="#B7811C" stroke-width="10"></line><line x1="131.9" y1="158.6" x2="89.9" y2="231.4" stroke="#F2C24A" stroke-width="6.5"></line><circle cx="91.4" cy="228.8" r="5.6" fill="#3A2418"></circle><line x1="134.9" y1="158.6" x2="176.9" y2="231.4" stroke="#B7811C" stroke-width="10"></line><line x1="134.9" y1="158.6" x2="176.9" y2="231.4" stroke="#F2C24A" stroke-width="6.5"></line><circle cx="175.4" cy="228.8" r="5.6" fill="#3A2418"></circle><line x1="91.4" y1="234" x2="175.4" y2="234" stroke="#B7811C" stroke-width="10"></line><line x1="91.4" y1="234" x2="175.4" y2="234" stroke="#F2C24A" stroke-width="6.5"></line><circle cx="172.4" cy="234" r="5.6" fill="#3A2418"></circle><line x1="295.1" y1="82.6" x2="253.1" y2="155.3" stroke="#B7811C" stroke-width="10"></line><line x1="295.1" y1="82.6" x2="253.1" y2="155.3" stroke="#F2C24A" stroke-width="6.5"></line><circle cx="254.6" cy="152.7" r="5.6" fill="#3A2418"></circle><line x1="298.1" y1="82.6" x2="340.1" y2="155.3" stroke="#B7811C" stroke-width="10"></line><line x1="298.1" y1="82.6" x2="340.1" y2="155.3" stroke="#F2C24A" stroke-width="6.5"></line><circle cx="338.6" cy="152.7" r="5.6" fill="#3A2418"></circle><line x1="254.6" y1="157.9" x2="338.6" y2="157.9" stroke="#1F9D6E" stroke-width="20" stroke-linecap="round" opacity=".25"></line><line x1="254.6" y1="157.9" x2="338.6" y2="157.9" stroke="#B7811C" stroke-width="10"></line><line x1="254.6" y1="157.9" x2="338.6" y2="157.9" stroke="#F2C24A" stroke-width="6.5"></line><circle cx="335.6" cy="157.9" r="5.6" fill="#3A2418"></circle></svg></sc-if>
+<sc-if value="{{pz.s2}}" hint-placeholder-val="{{ false }}"><svg class="pz-svg" viewBox="40 14 360 252" role="img" aria-label="Balanced scale: solution. The beam is now level with the post standing on its centre. Five matches moved, shown in blue: the post, the left half of the beam, and all three sides of the right-hand triangle. The old base of the right triangle stays put and becomes the right half of the beam."><line x1="195" y1="33" x2="195" y2="117" stroke="#2B44C8" stroke-width="10"></line><line x1="195" y1="33" x2="195" y2="117" stroke="#8FA6FF" stroke-width="6.5"></line><circle cx="195" cy="114" r="5.6" fill="#3A2418"></circle><line x1="192" y1="120" x2="108" y2="120" stroke="#2B44C8" stroke-width="10"></line><line x1="192" y1="120" x2="108" y2="120" stroke="#8FA6FF" stroke-width="6.5"></line><circle cx="111" cy="120" r="5.6" fill="#3A2418"></circle><line x1="198" y1="120" x2="282" y2="120" stroke="#B7811C" stroke-width="10"></line><line x1="198" y1="120" x2="282" y2="120" stroke="#F2C24A" stroke-width="6.5"></line><circle cx="279" cy="120" r="5.6" fill="#3A2418"></circle><line x1="103.5" y1="122.6" x2="61.5" y2="195.3" stroke="#B7811C" stroke-width="10"></line><line x1="103.5" y1="122.6" x2="61.5" y2="195.3" stroke="#F2C24A" stroke-width="6.5"></line><circle cx="63" cy="192.7" r="5.6" fill="#3A2418"></circle><line x1="106.5" y1="122.6" x2="148.5" y2="195.3" stroke="#B7811C" stroke-width="10"></line><line x1="106.5" y1="122.6" x2="148.5" y2="195.3" stroke="#F2C24A" stroke-width="6.5"></line><circle cx="147" cy="192.7" r="5.6" fill="#3A2418"></circle><line x1="63" y1="197.9" x2="147" y2="197.9" stroke="#B7811C" stroke-width="10"></line><line x1="63" y1="197.9" x2="147" y2="197.9" stroke="#F2C24A" stroke-width="6.5"></line><circle cx="144" cy="197.9" r="5.6" fill="#3A2418"></circle><line x1="283.5" y1="122.6" x2="241.5" y2="195.3" stroke="#2B44C8" stroke-width="10"></line><line x1="283.5" y1="122.6" x2="241.5" y2="195.3" stroke="#8FA6FF" stroke-width="6.5"></line><circle cx="243" cy="192.7" r="5.6" fill="#3A2418"></circle><line x1="286.5" y1="122.6" x2="328.5" y2="195.3" stroke="#2B44C8" stroke-width="10"></line><line x1="286.5" y1="122.6" x2="328.5" y2="195.3" stroke="#8FA6FF" stroke-width="6.5"></line><circle cx="327" cy="192.7" r="5.6" fill="#3A2418"></circle><line x1="243" y1="197.9" x2="327" y2="197.9" stroke="#2B44C8" stroke-width="10"></line><line x1="243" y1="197.9" x2="327" y2="197.9" stroke="#8FA6FF" stroke-width="6.5"></line><circle cx="324" cy="197.9" r="5.6" fill="#3A2418"></circle></svg></sc-if>
+</div>
 <div class="stack g16">
-<p class="kicker">Your turn: Balanced scale</p>
-<p class="t-h3" style="font-size:24px;line-height:1.3">Move exactly 5 matches to make this hanging scale balanced.</p>
-<p>When she woke, she described searching her dream for the puzzle and asking dream characters for help, then getting on a seesaw: “That’s how I realized the scales weren’t flat.” She never solved this one. Can you?</p>
-<div><button type="button" class="more" aria-expanded="{{ex.c.aria}}" onClick="{{ex.c.toggle}}"><span class="more-ico" aria-hidden="true">{{ex.c.ico}}</span>{{ex.c.text}} the solution</button><sc-if value="{{ex.c.open}}"><div class="more-body"><div class="paper-fig"><img src="/_blob/0a483dc0addc2c8540ff47ea5532a670" alt="Paper Figure 2B: the Balanced scale puzzle and its solution, with the moved matches circled" loading="lazy"></div>
-<p class="fig-cap"><b>Paper Fig. 2B.</b> The trick: the bottom rung of the right-hand triangle can stay where it is and become part of the beam. The paper notes it’s unclear whether her dream gave her anything useful.</p>
+<div class="ratio" aria-label="Puzzle view">
+<sc-for list="{{pzTabs}}" as="t" hint-placeholder-count="3"><button type="button" class="{{t.on}}" aria-pressed="{{t.aria}}" onClick="{{t.pick}}">{{t.label}}</button></sc-for>
+</div>
+<p aria-live="polite">{{pz.note}}</p>
+<p class="small muted">When she woke, she described searching her dream for the puzzle and asking dream characters for help, then getting on a seesaw: “That’s how I realized the scales weren’t flat.” She never solved this one. Can you?</p>
+</div>
+</div>
+<div class="viz-more"><button type="button" class="more" aria-expanded="{{ex.c.aria}}" onClick="{{ex.c.toggle}}"><span class="more-ico" aria-hidden="true">{{ex.c.ico}}</span>{{ex.c.text}} the paper’s figure</button><sc-if value="{{ex.c.open}}"><div class="more-body"><div class="paper-fig"><img src="/_blob/0a483dc0addc2c8540ff47ea5532a670" alt="Paper Figure 2B: the Balanced scale puzzle and its solution, with the moved matches circled" loading="lazy"></div>
+<p class="fig-cap"><b>Paper Fig. 2B.</b> The original drawing. The puzzle above is redrawn from it; the paper notes it’s unclear whether her dream gave her anything useful.</p>
 <span class="meta muted" style="font-size:11px">Source: Konkoly et al., Neuroscience of Consciousness 2026(1), niaf067, CC BY-NC 4.0</span></div></sc-if></div>
 </div>
 </div>
@@ -464,6 +492,10 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <div class="paper-fig"><img src="/_blob/bb2b4adc703b819a6d259a7d6c4bd1c9" alt="Paper Figure 3: bar chart of proportion incorporated for uncued and cued puzzles, and a dot plot splitting participants into 12 targeted dreamers and 8 non-responders" loading="lazy" style="max-width:560px;margin:0 auto"></div>
 <p class="fig-cap"><b>Paper Fig. 3.</b> (A) Cued puzzles were incorporated into dreams far more often than uncued ones. (B) Each dot is one person: cued minus uncued incorporation. Above zero are the 12 targeted dreamers; at or below zero, the 8 non-responders.</p>
 <span class="meta muted" style="font-size:11px">Source: Konkoly et al., Neuroscience of Consciousness 2026(1), niaf067, CC BY-NC 4.0</span></div></sc-if></div>
+</div>
+<div class="col meme-sm" style="margin-top:32px">
+<img src="/_blob/b57126a85fa85f9aa4747b1097db2dca" alt="A woman lying in bed looking annoyed while the man next to her stares into space, lost in thought" loading="lazy">
+<div class="stack g8"><p class="kicker">Meanwhile, in the sleep lab</p><p>“I bet he’s thinking about someone else.” He is thinking about how to move exactly five matches.</p></div>
 </div>
 </div>
 </section>
@@ -547,24 +579,12 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <p>“Sleep on it” is advice I have heard my whole life, usually as a polite way of saying “stop thinking about it for now”. What I like about this paper is that it stops treating that advice as folklore and builds an instrument to test it. As an engineer, the part that impressed me most isn’t even the result; it’s the interface. A person in REM sleep can’t speak or move, so the team built a communication protocol out of the only two channels left: the eyes and the breath. That is real-time telemetry from inside a dream.</p>
 <p>The finding that surprised me is the lucid one. You would expect being aware inside your dream to be the superpower, the moment you can sit down and deliberately work on the problem. Instead, puzzles that appeared in ordinary dreams were solved more often, and the best rate came from dreams people had already forgotten. I find that oddly comforting. Sometimes the most useful thing your brain can do with a problem is to stop holding it so tightly.</p>
 <p>I wouldn’t plan an exam around it yet: twenty people, a handful of puzzles each, and the clearest effect only shows up after splitting the group. But as a first step it is exactly the kind of experiment I enjoy. Take an old anecdote, design a clever rig, and make the question measurable. Next time I am stuck on a design problem, I might just go to bed.</p>
-<nav class="talk-nav" aria-label="More talks"><a class="tn prev" href="Talk-NavierStokes.dc.html"><span class="tn-k">← Previous talk · 05</span><span class="tn-t">“Mathematician vs Clanker: Navier–Stokes, the Millennium Prize Question Answered?”</span><span class="tn-m">23rd September 2026 · 16 min read</span></a><div class="tn next none"><span class="tn-k">You’re all caught up</span><span class="tn-m">This is the newest talk</span></div></nav>
+<nav class="talk-nav" aria-label="More talks"><a class="tn prev" href="Talk-ProjectHailMary.dc.html"><span class="tn-k">← Previous talk · 04</span><span class="tn-t">“Amaze, Amaze, Amaze: The Science (and the Heart) of Project Hail Mary”</span><span class="tn-m">23rd March 2026 · 13 min read</span></a><a class="tn next" href="Talk-NavierStokes.dc.html"><span class="tn-k">Next talk · 06 →</span><span class="tn-t">“Mathematician vs Clanker: Navier–Stokes, the Millennium Prize Question Answered?”</span><span class="tn-m">23rd September 2026 · 16 min read</span></a></nav>
 <a href="Talks.dc.html" class="back" style="margin-top:24px;color:#2B44C8">← Back to all talks</a>
 </div>
 <figure class="stack g12" style="position:sticky;top:24px">
-<svg viewBox="0 0 280 300" role="img" aria-label="Illustration: a crescent moon and a sleeping z z z, with a thought bubble holding a little matchstick scale" style="display:block;width:100%;height:auto;border:1px solid #10131C;background:#10131C">
-<circle cx="70" cy="74" r="38" fill="#EDEFF2"></circle><circle cx="88" cy="62" r="34" fill="#10131C"></circle>
-<text x="122" y="70" font-family="JetBrains Mono, monospace" font-size="18" fill="#8FA2FF">z</text><text x="140" y="52" font-family="JetBrains Mono, monospace" font-size="24" fill="#8FA2FF">z</text><text x="164" y="30" font-family="JetBrains Mono, monospace" font-size="30" fill="#8FA2FF">z</text>
-<circle cx="78" cy="146" r="6" fill="#EDEFF2"></circle><circle cx="98" cy="170" r="10" fill="#EDEFF2"></circle>
-<ellipse cx="176" cy="226" rx="94" ry="62" fill="#EDEFF2"></ellipse>
-<g stroke-linecap="round" stroke-width="7">
-<line x1="112" y1="236" x2="214" y2="200" stroke="#E7B63A"></line>
-<line x1="146" y1="224" x2="146" y2="184" stroke="#E7B63A"></line>
-<line x1="120" y1="234" x2="104" y2="262" stroke="#E7B63A"></line><line x1="120" y1="234" x2="136" y2="262" stroke="#E7B63A"></line><line x1="104" y1="262" x2="136" y2="262" stroke="#E7B63A"></line>
-<line x1="206" y1="203" x2="190" y2="231" stroke="#E7B63A"></line><line x1="206" y1="203" x2="222" y2="231" stroke="#E7B63A"></line><line x1="190" y1="231" x2="222" y2="231" stroke="#E7B63A"></line>
-</g>
-<g fill="#10131C"><circle cx="146" cy="184" r="4.5"></circle><circle cx="214" cy="200" r="4.5"></circle><circle cx="136" cy="262" r="4.5"></circle><circle cx="222" cy="231" r="4.5"></circle></g>
-</svg>
-<figcaption>ME, SLEEPING ON IT. LITERALLY.</figcaption>
+<img src="/_blob/e9695a0384b061637568301a5186ac36" alt="Comic: a brain asks a woman in bed if she is going to sleep; she says yes, now shut up; the brain says it figured out how to debug her program, and she lies wide awake" style="width:100%;height:auto;border:1px solid #10131C;background:#FFFFFF" loading="lazy">
+<figcaption>THE WHOLE PAPER, IN ONE COMIC.</figcaption>
 </figure>
 </div>
 </div>
@@ -633,7 +653,7 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 </div>
 <div class="tblock">
 <div><span>DRAWN BY</span><span>Rayang T Mendrofa</span></div>
-<div><span>SHEET</span><span>05.6 — DREAM PUZZLES</span></div>
+<div><span>SHEET</span><span>05.5 — DREAM PUZZLES</span></div>
 <div><span>SCALE</span><span>1 : IDEA</span></div>
 <div><span>REV.</span><span>Website 2026 Gelastinta.</span></div>
 </div>
@@ -1181,6 +1201,12 @@ class Component extends DCLogic {
       lucid: { label: 'Lucid or not?', title: 'The best results came from dreams people forgot', rows: [['In a lucid dream (1 of 9)', 11, '11 %', RD], ['In an ordinary dream (6 of 13)', 46, '46 %', BL], ['Signalled, then forgotten (4 of 6)', 67, '67 %', BL]],
         note: 'The surprise: lucid dreams, where people could deliberately work on the puzzle, had the lowest solve rate. The best came from puzzles people signalled about in real time but couldn’t remember dreaming about. Tiny numbers, so treat it as a hint.' }
     };
+    const PZ = [
+      { label: 'The puzzle', note: 'A hanging scale made of 9 matches: a post, a tilted beam and a triangle on each end. Move exactly 5 of them so it hangs level.' },
+      { label: 'Hint', note: 'Not every match has to move. The highlighted one can stay exactly where it is and still be part of the answer.' },
+      { label: 'Solution', note: 'The old base of the right triangle stays put and becomes the right half of a level beam. The 5 blue matches move: the post, the left half of the beam, and three matches that form a new right-hand triangle.' }
+    ];
+    const pi = st.pz >= 0 && st.pz < 3 ? st.pz : 0;
     const order = ['dream', 'all', 'split', 'lucid'];
     const dk = T[st.dk] ? st.dk : 'dream';
     const cur = T[dk];
@@ -1198,6 +1224,8 @@ class Component extends DCLogic {
       nt: Object.assign({}, N[ni], { pct: Math.round((ni + 1) / N.length * 100) + '%' }),
       sigSteps: ['a', 'b', 'c', 'd'].map((k) => ({ label: S[k].label, on: k === sk ? 'on' : '', aria: k === sk ? 'true' : 'false', pick: () => this.setState({ sg: k }) })),
       sig: sig,
+      pz: { s0: pi === 0, s1: pi === 1, s2: pi === 2, note: PZ[pi].note },
+      pzTabs: PZ.map((x, k) => ({ label: x.label, on: k === pi ? 'on' : '', aria: k === pi ? 'true' : 'false', pick: () => this.setState({ pz: k }) })),
       dTabs: order.map((k) => ({ label: T[k].label, on: k === dk ? 'on' : '', aria: k === dk ? 'true' : 'false', pick: () => this.setState({ dk: k }) })),
       d: { title: cur.title, note: cur.note, rows: cur.rows.map((r) => ({ n: r[0], w: Math.round(r[1] / 70 * 1000) / 10 + '%', v: r[2], c: r[3] })) }
     };
