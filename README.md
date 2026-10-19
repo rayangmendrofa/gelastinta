@@ -19,6 +19,7 @@ and *Talks* — reviews of scientific papers told with a personal take, somewher
 | ↳ [BEng dissertation](https://gelastinta.com/projects/beng-dissertation/) | Constructing and analysing a modified prosthetic hand (Exeter) |
 | ↳ [InMoov hand](https://gelastinta.com/projects/inmoov-hand/) | Hobby replication of Gaël Langevin's open-source InMoov robot hand |
 | [Talks](https://gelastinta.com/talks/) | Paper reviews with interactive figures and a personal take |
+| ↳ [Modular legs](https://gelastinta.com/talks/modular-legs/) | *Microbot is not quite Micro* — reconfigurable robot legs that design themselves |
 | ↳ [Dream puzzles](https://gelastinta.com/talks/dream-puzzles/) | *Inception, but for Homework* — solving puzzles inside your dreams |
 | ↳ [Project Hail Mary](https://gelastinta.com/talks/project-hail-mary/) | *Amaze, Amaze, Amaze* — the science (and the heart) of the story |
 | ↳ [Navier–Stokes](https://gelastinta.com/talks/navier-stokes/) | *Mathematician vs Clanker* — the Millennium Prize question |
