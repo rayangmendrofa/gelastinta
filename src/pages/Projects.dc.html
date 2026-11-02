@@ -161,6 +161,12 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 .hb-feature-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
 .hb-feature-strip img{width:100%;aspect-ratio:1/1;object-fit:cover;border:1px solid #10131C}
 @media (max-width:960px){.hb-feature{grid-template-columns:minmax(0,1fr)}.hb-feature-media{min-height:360px;border-right:0;border-bottom:1px solid #10131C}}
+/* wadasite:start */.site-foot{position:relative}
+.site-foot::before{content:"";position:absolute;left:0;right:0;top:-6px;height:6px;background:linear-gradient(90deg,#A36AA5 0.0% 25.0%,#FDC57E 25.0% 50.0%,#10131C 50.0% 75.0%,#2B44C8 75.0% 100.0%)}
+::selection{background:#FDC57E;color:#10131C}
+.wada-credit{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:11px;letter-spacing:.06em;color:#C9CED8}
+.wada-credit .wada-mini{margin-left:0;border-color:#3A4152}
+/* wadasite:end */
 </style>
 </helmet>
 <div style="min-height:100vh" data-gt-root="">
@@ -355,6 +361,8 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <div><span>SCALE</span><span>1 : IDEA</span></div>
 <div><span>REV.</span><span>Website 2026 Gelastinta.</span></div>
 </div>
+<!-- wadasite:start --><p class="wada-credit"><span class="wada-mini" aria-hidden="true"><i style="background:#A36AA5"></i><i style="background:#FDC57E"></i><i style="background:#10131C"></i><i style="background:#2B44C8"></i></span><span>SITE PALETTE · Sanzo Wada, <i>A Dictionary of Color Combinations</i>, No. 344 · Aconite Violet, Cinnamon Buff, with the site ink and blue in place of Wada’s Black and Deep Lyons Blue</span></p>
+<!-- wadasite:end -->
 </div>
 </footer>
 

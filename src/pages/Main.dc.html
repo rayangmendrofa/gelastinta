@@ -151,6 +151,14 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 .tile-art.photo{height:300px;padding:0;overflow:hidden;background:#10131C}
 .tile-art.photo img{width:100%;height:100%;object-fit:cover}
 .tile-art .tag{position:absolute;top:16px;left:16px;z-index:1;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;background:#10131C;color:#FFFFFF;padding:6px 10px}
+/* wada:start */.wada-mini{display:inline-flex;vertical-align:middle;margin-left:10px;border:1px solid #10131C}.wada-mini i{display:block;width:12px;height:12px}
+/* wada:end */
+/* wadasite:start */.site-foot{position:relative}
+.site-foot::before{content:"";position:absolute;left:0;right:0;top:-6px;height:6px;background:linear-gradient(90deg,#A36AA5 0.0% 25.0%,#FDC57E 25.0% 50.0%,#10131C 50.0% 75.0%,#2B44C8 75.0% 100.0%)}
+::selection{background:#FDC57E;color:#10131C}
+.wada-credit{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:11px;letter-spacing:.06em;color:#C9CED8}
+.wada-credit .wada-mini{margin-left:0;border-color:#3A4152}
+/* wadasite:end */
 </style>
 </helmet>
 <div style="min-height:100vh" data-gt-root="">
@@ -302,7 +310,7 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <div class="cols-3" style="gap:24px">
 <a class="tile" href="Talk-NavierStokes.dc.html">
 <div class="tile-art photo" style="background:#FFFFFF">
-<span class="tag">Talk 09 · New</span>
+<span class="tag" style="box-shadow:inset 6px 0 0 #064F6E">Talk 09 · New</span>
 <img src="/_blob/8640ecc3e79609c3709944fae4972088" alt="Illustration of the blowup vortex: streamlines spiralling inward and stretching along a central axis" style="object-fit:cover">
 </div>
 <div class="stack g12" style="padding:28px">
@@ -313,7 +321,7 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 </a>
 <a class="tile" href="Talk-FlyConnectome.dc.html">
 <div class="tile-art photo" style="background:#10131C">
-<span class="tag">Talk 08 · Neuroscience</span>
+<span class="tag" style="box-shadow:inset 6px 0 0 #FDBF68">Talk 08 · Neuroscience</span>
 <img src="/_blob/1463589e642fabbb0136f68a398bab10" alt="A glowing translucent blue fruit fly on black, with its brain highlighted in pink, orange and blue" style="object-fit:cover;object-position:62% 50%">
 </div>
 <div class="stack g12" style="padding:28px">
@@ -324,7 +332,7 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 </a>
 <a class="tile" href="Talk-HairClipFish.dc.html">
 <div class="tile-art photo" style="background:#10131C">
-<span class="tag">Talk 07 · Soft robots</span>
+<span class="tag" style="box-shadow:inset 6px 0 0 #F48067">Talk 07 · Soft robots</span>
 <img src="/_blob/87bb5c724908d043bd6a33eaf01e5814" alt="Illustration: a kinked pink ribbon, a double-valley energy curve, and a robot fish with a flicking tail" style="object-fit:cover;object-position:50% 50%">
 </div>
 <div class="stack g12" style="padding:28px">
@@ -384,6 +392,8 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <div><span>SCALE</span><span>1 : IDEA</span></div>
 <div><span>REV.</span><span>Website 2026 Gelastinta.</span></div>
 </div>
+<!-- wadasite:start --><p class="wada-credit"><span class="wada-mini" aria-hidden="true"><i style="background:#A36AA5"></i><i style="background:#FDC57E"></i><i style="background:#10131C"></i><i style="background:#2B44C8"></i></span><span>SITE PALETTE · Sanzo Wada, <i>A Dictionary of Color Combinations</i>, No. 344 · Aconite Violet, Cinnamon Buff, with the site ink and blue in place of Wada’s Black and Deep Lyons Blue</span></p>
+<!-- wadasite:end -->
 </div>
 </footer>
 

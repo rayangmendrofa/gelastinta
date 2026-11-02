@@ -277,6 +277,22 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 .tn-m{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.03em;opacity:.75}
 .tn.none{background:transparent;justify-content:center;color:#3A4152}
 @media (max-width:640px){.talk-nav{grid-template-columns:minmax(0,1fr)}.tn + .tn{border-left:0;border-top:1px solid #10131C}.tn.next{text-align:left;align-items:flex-start}}
+/* wada:start */:root{--wada-ink:#AB544D;--wada-fill:#AB544D}
+.cp-hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:8px;z-index:3;background:linear-gradient(90deg,#2B44C8 0.0% 33.33%,#AB544D 33.33% 66.67%,#806E4B 66.67% 100.0%)}
+.gt-progress{background:linear-gradient(90deg,#2B44C8 0.0% 33.33%,#AB544D 33.33% 66.67%,#806E4B 66.67% 100.0%)}
+.dropcap::first-letter{color:var(--wada-ink)}
+.stat{box-shadow:inset 0 4px 0 var(--wada-fill)}
+.pull{border-top-color:var(--wada-ink) !important;border-bottom-color:var(--wada-ink) !important}
+.wada-note{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px}
+.wada-sw{display:flex;border:1px solid #10131C}
+.wada-sw i{display:block;width:28px;height:28px}
+/* wada:end */
+/* wadasite:start */.site-foot{position:relative}
+.site-foot::before{content:"";position:absolute;left:0;right:0;top:-6px;height:6px;background:linear-gradient(90deg,#A36AA5 0.0% 25.0%,#FDC57E 25.0% 50.0%,#10131C 50.0% 75.0%,#2B44C8 75.0% 100.0%)}
+::selection{background:#FDC57E;color:#10131C}
+.wada-credit{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:11px;letter-spacing:.06em;color:#C9CED8}
+.wada-credit .wada-mini{margin-left:0;border-color:#3A4152}
+/* wadasite:end */
 </style>
 </helmet>
 <div style="min-height:100vh" data-gt-root="">
@@ -503,6 +519,9 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 </div>
 </section>
 
+<!-- wada:start --><section class="sec rule-t" aria-label="Colour palette" style="padding-top:28px;padding-bottom:28px">
+<div class="wrap article"><div class="col wada-note"><span class="wada-sw" aria-hidden="true"><i style="background:#2B44C8"></i><i style="background:#AB544D"></i><i style="background:#806E4B"></i></span><p class="meta" style="font-size:12px;margin:0">Palette: Sanzo Wada, <i>A Dictionary of Color Combinations</i>, No. 199 · Ochre Red, Light Brownish Olive, with the site blue standing in for Wada’s Deep Lyons Blue</p></div></div></section>
+<!-- wada:end -->
 <section class="sec white rule-t" id="comments" aria-labelledby="cm-title-nec">
 <div class="wrap">
 <div class="cm-wrap">
@@ -570,6 +589,8 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <div><span>SCALE</span><span>1 : IDEA</span></div>
 <div><span>REV.</span><span>Website 2026 Gelastinta.</span></div>
 </div>
+<!-- wadasite:start --><p class="wada-credit"><span class="wada-mini" aria-hidden="true"><i style="background:#A36AA5"></i><i style="background:#FDC57E"></i><i style="background:#10131C"></i><i style="background:#2B44C8"></i></span><span>SITE PALETTE · Sanzo Wada, <i>A Dictionary of Color Combinations</i>, No. 344 · Aconite Violet, Cinnamon Buff, with the site ink and blue in place of Wada’s Black and Deep Lyons Blue</span></p>
+<!-- wadasite:end -->
 </div>
 </footer>
 
