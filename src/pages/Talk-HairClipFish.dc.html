@@ -305,6 +305,8 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 .wada-credit{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:11px;letter-spacing:.06em;color:#DFDECD}
 .wada-credit .wada-mini{margin-left:0;border-color:#5B5939}
 /* wadasite:end */
+.meme-sm.wide{grid-template-columns:minmax(0,340px) minmax(0,1fr)}
+@media (max-width:640px){.meme-sm.wide{grid-template-columns:minmax(0,1fr)}}
 /* theme:start */
 .kicker{color:#6F6B29}
 .dropcap::first-letter{color:#837E31 !important}
@@ -378,6 +380,10 @@ h2.t-h2::after,.sec-head .t-h2::after{content:"";display:block;width:56px;height
 <p>Take a flat ribbon of plastic or steel, cut in the shape of a tall, narrow “A” with a kink at the top. Bring the two feet together and pin them with a rivet. The ribbon can’t stay flat any more, so it buckles and twists into a three-dimensional loop. That loop has two stable shapes, mirror images of each other. To get from one to the other, it has to pass through a strained, high-energy shape in between.</p>
 <p>Nature uses the same idea for speed. A Venus flytrap closes by snapping its leaves, and hummingbird beaks and trap-jaw ants use elastic snaps for movements far faster than muscle alone could manage. Soft robots badly need this: they are safe and flexible, but usually slow and weak. A snap lets a slow, gentle actuator store energy and release it all at once.</p>
 </div>
+<div class="col meme-sm" style="margin-top:32px">
+<img src="/_blob/6f091f0f96ab6ba6c84c965555e9bd4e" alt="A Venus flytrap snapping shut on an insect" loading="lazy">
+<div class="stack g8"><p class="kicker">Nature’s hair clip</p><p>A Venus flytrap’s leaves are curved shells that flip from one shape to the other, closing in about a tenth of a second. The same snap-through trick, minus the rivet.</p></div>
+</div>
 <div class="col-wide viz" style="margin-top:48px" role="group" aria-label="Chart A: the two stable states of a hair clip mechanism and the snap between them">
 <div class="viz-head">
 <span class="kicker">Chart A — Try it: snap the clip</span>
@@ -437,6 +443,12 @@ h2.t-h2::after,.sec-head .t-h2::after{content:"";display:block;width:56px;height
 <p class="kicker">03</p>
 <h2 class="t-h2" style="margin:12px 0 18px">Fish one: snapping versus bending</h2>
 <p>Real fish like mackerel and tuna swim “carangiform”: the front of the body stays fairly still and a wave of bending runs back to a stiff, flicking tail. A snapping clip, released at one end, sends just that kind of wave along its length. So the first robot uses a plastic clip as the fish’s body, with a 3D-printed head and a thin plastic tail fin riveted on.</p>
+</div>
+<div class="col meme-sm wide" style="margin-top:32px">
+<img src="/_blob/3ca51ecc4d2cd1ba4d64204fbe0a0d1b" alt="Is this a pigeon meme relabelled: robotics engineers point at a butterfly labelled a hair clip and ask, is this a fish?" loading="lazy">
+<div class="stack g8"><p class="kicker">Fish one, conceptually</p><p>Give a clip a head and a tail fin, and as far as the water can tell, yes.</p></div>
+</div>
+<div class="col" style="margin-top:32px">
 <p>Two small air-powered bending actuators sit either side of the clip. Inflate one and the clip snaps one way; inflate the other and it snaps back. For a fair-ish test, the team also built a conventional fish of the same size and almost the same weight, where the same actuators simply bend a flat plastic strip from side to side.</p>
 </div>
 <div class="col-wide viz" style="margin-top:48px" role="group" aria-label="Chart B: snapping fish compared with conventional fish">
@@ -467,6 +479,12 @@ h2.t-h2::after,.sec-head .t-h2::after{content:"";display:block;width:56px;height
 <p class="kicker">04</p>
 <h2 class="t-h2" style="margin:12px 0 18px">Fish two: no air hose, into a lake</h2>
 <p>Air-powered robots are tied to a pump. As the paper puts it, untethered robots “usually provide more convincing evidence”. So the second fish carries everything on board: a 7.4 V battery, a Bluetooth microcontroller and one small servo in a 3D-printed head. The servo turns the centre of a thicker clip (0.762 mm PETG) through a silicone seal, and the clip snaps a blue tail fin back and forth. It is 21.5 cm long and weighs 125 g.</p>
+</div>
+<div class="col meme-sm" style="margin-top:32px">
+<img src="/_blob/a18ce64d1e0da9ea16982c85ff376ac8" alt="A singing wall-mounted fish toy captioned take me to the river" loading="lazy">
+<div class="stack g8"><p class="kicker">Fish two, no longer tied to a pump</p><p>Battery, Bluetooth board and one servo, all on board. Next stop: an actual lake.</p></div>
+</div>
+<div class="col" style="margin-top:32px">
 <p>Out in a lake, running at 3 tail beats per second (six snaps), it swam 554 cm in 12.7 seconds: 43.6 cm/s, or 2.03 body lengths per second. It swam in a circle on purpose, steered by putting slightly more weight on one side, to keep it in the camera frame. In a straight dash it accelerated at about 20 cm/s². And, a lovely detail: local fish chased it, then fled when it touched them.</p>
 </div>
 <div class="col-wide cols-3" style="margin-top:40px">
@@ -482,6 +500,10 @@ h2.t-h2::after,.sec-head .t-h2::after{content:"";display:block;width:56px;height
 </div>
 <div class="col" style="margin-top:48px">
 <p>One thing the paper mentions only in passing matters a lot for a real swimmer: plastic clips crack. The team’s earlier work found that a 0.381 mm plastic clip survives roughly 20,000 actuation cycles before it fails. At several snaps a second, that number runs out quickly.</p>
+</div>
+<div class="col meme-sm wide" style="margin-top:32px">
+<img src="/_blob/3a634106703474e212ba1a3dbbdfcf96" alt="Two cartoon fish, one cheerfully saying just keep snapping, just keep snapping" loading="lazy">
+<div class="stack g8"><p class="kicker">The clip, somewhere around snap 19,999</p><p>About 20,000 cycles is plenty for a demo. A fish meant to swim for days would need a tougher clip, or a different material.</p></div>
 </div>
 <div class="col-wide viz" style="margin-top:32px" role="group" aria-label="Chart D: how long a plastic clip might last at different tail-beat frequencies">
 <div class="viz-head">
@@ -527,6 +549,10 @@ h2.t-h2::after,.sec-head .t-h2::after{content:"";display:block;width:56px;height
 </div>
 <div class="col" style="margin-top:40px">
 <p class="pull">Per body length, the hair clip fish is near the top. In plain centimetres per second, two robots in the same table are faster. Both statements are true, which is exactly why speed claims need their ruler stated.</p>
+</div>
+<div class="col meme-sm wide" style="margin-top:32px">
+<img src="/_blob/34a030762a2187c586bb940b4aed6091" alt="A man in a hat and sunglasses saying I reject your cm/s and substitute body lengths" loading="lazy">
+<div class="stack g8"><p class="kicker">Every soft-robot speed record</p><p>Body lengths per second flatter small robots; centimetres per second flatter big ones. Pick the ruler and you can often pick the winner.</p></div>
 </div>
 </div>
 </section>
