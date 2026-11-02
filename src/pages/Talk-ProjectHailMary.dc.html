@@ -927,6 +927,10 @@ class Component extends DCLogic {
     }
   }
   gtStart(tries) {
+    // Inside a frame (the design canvas, an embed), keep the page static: browsers pause or slow
+    // animation in off-screen frames, which can leave reveals stuck half-way and the canvas laggy.
+    // The live site always runs as a normal tab, so the motion layer still plays there.
+    try { if (window.self !== window.top) return; } catch (e) { return; }
     const A = window.anime;
     if (!A) {
       if (tries < 60) this.gtWait = setTimeout(() => this.gtStart(tries + 1), 100);
