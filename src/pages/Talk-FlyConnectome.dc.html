@@ -312,14 +312,14 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 </header>
 
 <section class="sec cp-hero rule-b" style="padding-top:48px">
-<img class="cp-hero-bg" src="/_blob/54f814247118da21200c6c3e75a422aa" alt="" aria-hidden="true" style="object-position:50% 50%">
+<img class="cp-hero-bg" src="/_blob/1463589e642fabbb0136f68a398bab10" alt="" aria-hidden="true" style="object-position:62% 50%">
 <div class="cp-hero-shade" aria-hidden="true"></div>
 <div class="wrap" style="position:relative;z-index:2">
 <div class="col stack g16">
 <a href="Talks.dc.html" class="back">← All talks</a>
 <p class="kicker">Talk 08 — Triple review</p>
 <h1 class="t-title">“The Whole Fly, Wired: Mapping, Running and Comparing a Brain”</h1>
-<p class="meta">Rayang T Mendrofa - 23rd July 2026 · 13 min read</p>
+<p class="meta">Rayang T Mendrofa - 23rd July 2026 · 14 min read</p>
 </div>
 <div class="papers3">
 <aside style="border:1px solid #10131C;background:#FFFFFF">
@@ -376,6 +376,10 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <p>The raw material was already public: a female fly brain cut into thousands of slices about 40 nanometres thick, each photographed with an electron microscope. The FlyWire team aligned the images, let neural networks trace every neuron automatically, and then had people fix the mistakes. That proofreading took an estimated 33 person-years, shared between research labs, central teams at Princeton and Cambridge, and citizen scientists around the world. Synapses and the likely chemical messenger (neurotransmitter) of each neuron were predicted by separate machine-learning tools.</p>
 <p>The result: 139,255 neurons and 54.5 million synapses between them, plus annotations for more than 8,400 cell types in a companion paper. It is the first wiring diagram of an entire adult brain, and it was open to the community while it was still being built.</p>
 </div>
+<div class="col meme-sm" style="margin-top:32px">
+<img src="/_blob/4fda422ccc500976e61e6ea5b7c53243" alt="A man in a shirt and tie points wildly at a wall covered in papers joined by red string" loading="lazy">
+<div class="stack g8"><p class="kicker">Me explaining 54.5 million synapses</p><p>Every red string is a connection. Counting only strong ones, there are still about 2.7 million.</p></div>
+</div>
 <div class="col-wide viz" style="margin-top:48px" role="group" aria-label="Chart A: size of nervous system wiring diagrams over time">
 <div class="viz-head">
 <span class="kicker">Chart A — Try it: how big is big?</span>
@@ -391,6 +395,12 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <div class="col" style="margin-top:48px">
 <p>Some findings simply come from finally having the whole thing. 85% of the brain’s neurons are “intrinsic”: they start and end inside the brain, so the brain mostly talks to itself. Synapses are packed at 7.4 per cubic micrometre, several times denser than mammalian cortex. Most neurons belong to the optic lobes, a reminder that the fly is a very visual animal. And the brain constantly talks back to its eyes: about half of all optic lobe neurons get at least five synapses from just 524 neurons coming back from the central brain.</p>
 <p>The authors also show how to use the map. Following the wiring from the three small ocelli on top of the fly’s head (simple light-sensing eyes) down to the neurons that leave the brain, they find each side excited by the opposite ocellus and inhibited by its own. That arrangement would roll the fly towards the light, like a simple robot that steers by comparing two light sensors. It is a hypothesis, generated purely from wiring, that experiments can now test.</p>
+</div>
+<div class="col-wide" style="margin-top:40px">
+<figure class="stack g12" style="margin:0">
+<img src="/_blob/b2fcb035678bd7dd6b5778bc45c666ca" alt="Animated 3D rendering of a few dozen fly neurons in blue, pink and yellow, with cell bodies on long stalks and tangled branches, rotating against black" loading="lazy" style="width:100%;height:auto;border:1px solid #10131C;background:#000000">
+<figcaption>WHAT “RECONSTRUCTED” MEANS: A HANDFUL OF FLY NEURONS, TRACED FROM ELECTRON MICROSCOPE IMAGES AND RENDERED IN 3D.</figcaption>
+</figure>
 </div>
 <div class="col-wide viz" style="margin-top:32px">
 <div class="viz-more"><button type="button" class="more" aria-expanded="{{ex.a.aria}}" onClick="{{ex.a.toggle}}"><span class="more-ico" aria-hidden="true">{{ex.a.ico}}</span>{{ex.a.text}} the map</button><sc-if value="{{ex.a.open}}"><div class="more-body"><p>Accuracy was checked by sending 826 already-proofread neurons for another round; the dataset scored an average F1 of 99.2% by volume. Completeness is uneven, though: 93.7% of output sites (presynapses) are attached to a proofread neuron, but only 44.7% of input sites (postsynapses), because the finest twigs are hard to join up. So the team only counts a connection when there are at least five synapses. That leaves about 2.7 million connections. Electrical synapses (gap junctions) can’t be seen at this resolution and are missing entirely.</p>
@@ -410,6 +420,12 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <p class="kicker">02 · Paper B</p>
 <h2 class="t-h2" style="margin:12px 0 18px">Running the map as a brain</h2>
 <p>A wiring diagram is a static object. The second paper asks a bold question: what if you simply turn it on? The team, led from UC Berkeley, gave every one of 127,400 FlyWire neurons the simplest reasonable behaviour, a “leaky integrate-and-fire” neuron that adds up inputs, slowly forgets them, and fires a spike when it crosses a threshold. Each synapse pushes the next neuron up or down depending on the predicted neurotransmitter, with strength proportional to the synapse count. Almost every number came from earlier fly studies; only one, the size of a single synapse’s push, was tuned.</p>
+</div>
+<div class="col meme-sm" style="margin-top:32px">
+<img src="/_blob/9e2438dd600b346d721cec33ff5e0c70" alt="Close-up of a man lying back in a chair, captioned I know kung fu" loading="lazy">
+<div class="stack g8"><p class="kicker">The model, after loading 54.5 million synapses</p><p>No training, one tuned number. Then it started predicting what real flies do.</p></div>
+</div>
+<div class="col" style="margin-top:32px">
 <p>Then they poked it. Activating sugar-sensing taste neurons in the model switched on the motor neuron (MN9) that lifts the proboscis, the fly’s mouth, exactly as sugar does in real flies. Shuffle the wiring while keeping the same set of weights, and that happened in only 1 of 100 runs: the result depends on the real map, not just its statistics.</p>
 </div>
 <div class="col-wide cols-3" style="margin-top:40px">
@@ -447,6 +463,10 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <p class="fig-cap"><b>Paper B, Fig. 3.</b> Ir94e taste neurons suppress feeding, but less strongly than bitter. (f) Overlap of the sugar, water, bitter and Ir94e pathways.</p>
 <span class="meta muted" style="font-size:11px">Source: Shiu et al., Nature 634, 210–219 (2024), CC BY 4.0. Figure reproduced unaltered.</span></div></sc-if></div>
 </div>
+<div class="col meme-sm" style="margin-top:32px">
+<img src="/_blob/b311edf5291f740f2b69d268adfbdcae" alt="Animated: a yellow cartoon creature with a blank, unimpressed stare" loading="lazy">
+<div class="stack g8"><p class="kicker">When “always say no” scores 87%</p><p>A good reminder to ask what an accuracy number is being compared against.</p></div>
+</div>
 </div>
 </section>
 
@@ -457,6 +477,10 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <h2 class="t-h2" style="margin:12px 0 18px">A whole male, compared with a female</h2>
 <p>The FlyWire brain stops at the neck. Paper C, from Janelia and Cambridge, images an entire male central nervous system, brain plus nerve cord (the fly’s spinal cord), with seven focused-ion-beam microscopes running for 13 months at 8 nanometres in every direction. After 44 person-years of proofreading it contains 166,700 neurons sorted into 11,710 cell types. 97.9% of neurons were matched to cell types in earlier datasets, so the paper also works as a “Rosetta Stone” for fly neuron names.</p>
 <p>The bigger prize is a comparison. With a male and a female brain mapped to the same detail, the team sorted every cell type into four groups: isomorphic (the same in both sexes), dimorphic (present in both but shaped differently), and male-specific or female-specific. They found 8,069 isomorphic, 138 dimorphic, 289 male-specific and 71 female-specific types.</p>
+</div>
+<div class="col meme-sm" style="margin-top:32px">
+<img src="/_blob/60a171cfadeee96925d5a02cc1640403" alt="Cartoon of two identical red and blue superheroes pointing at each other" loading="lazy">
+<div class="stack g8"><p class="kicker">Male and female flies, comparing their 8,069 shared cell types</p><p>Almost everything matches. The interesting part is the small slice that doesn’t.</p></div>
 </div>
 <div class="col-wide viz" style="margin-top:48px" role="group" aria-label="Chart C: how much of the central brain differs between the sexes">
 <div class="viz-head">
@@ -497,6 +521,12 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <p>These aren’t three separate stories. Paper B is built directly on Paper A’s map, and Paper C uses Paper A’s brain as its female reference and points to whole-brain simulations like Paper B as the way to test what its sex differences actually do. Map, run, compare: each step only became possible because the one before it was shared openly.</p>
 </div>
 <div class="col-wide" style="margin-top:40px"><div class="cmp-wrap"><table class="cmp"><thead><tr><th scope="col"></th><th scope="col">A · Map</th><th scope="col">B · Run</th><th scope="col">C · Compare</th></tr></thead><tbody><tr><th scope="row">Question</th><td data-l="A · Map">What is connected to what, across a whole brain?</td><td data-l="B · Run">If you only know the wiring, can you predict what the brain does?</td><td data-l="C · Compare">What is different between a male and a female nervous system?</td></tr><tr><th scope="row">Animal and region</th><td data-l="A · Map">One adult female fly: brain and both optic lobes</td><td data-l="B · Run">The same female brain (FlyWire), simulated</td><td data-l="C · Compare">One adult male fly: brain, optic lobes and nerve cord</td></tr><tr><th scope="row">Scale</th><td data-l="A · Map">139,255 neurons · 54.5 million synapses</td><td data-l="B · Run">127,400 model neurons</td><td data-l="C · Compare">166,700 neurons · 11,710 cell types</td></tr><tr><th scope="row">Method</th><td data-l="A · Map">Thin-slice electron microscopy, AI segmentation, 33 person-years of proofreading</td><td data-l="B · Run">Leaky integrate-and-fire spiking model with one free parameter, tested with optogenetics</td><td data-l="C · Compare">Block-face electron microscopy at 8 nm, 44 person-years of proofreading, matched to FlyWire</td></tr><tr><th scope="row">Headline</th><td data-l="A · Map">The first wiring diagram of a whole adult brain, open to everyone</td><td data-l="B · Run">91% of 164 tested predictions matched experiments</td><td data-l="C · Compare">Sex differences sit in higher brain centres, not at the senses or muscles</td></tr><tr><th scope="row">Biggest limit</th><td data-l="A · Map">Chemical synapses only; most input synapses are not attached to a neuron</td><td data-l="B · Run">No neuromodulators, gap junctions or resting activity</td><td data-l="C · Compare">One male compared with one female</td></tr></tbody></table></div></div>
+<div class="col-wide" style="margin-top:40px">
+<figure class="stack g12" style="margin:0">
+<img src="/_blob/79db4b5f33fa8e00de0bf3a2ca95fbde" alt="Screenshot of a web app: a 3D fly on a ball holding two glowing light sticks, next to a dot cloud of a brain and nerve cord labelled 165,122 neurons and 25.56M connections" loading="lazy" style="width:100%;height:auto;border:1px solid #10131C;background:#10131C">
+<figcaption>WHERE THIS IS HEADING: A WEB DEMO DRIVING A VIRTUAL FLY FROM A 165,122-NEURON MODEL, ABOUT THE SIZE OF PAPER C’S MALE CNS. NOT FROM ANY OF THE THREE PAPERS.</figcaption>
+</figure>
+</div>
 <div class="col" style="margin-top:40px">
 <p class="pull">A connectome tells you who can talk to whom. It doesn’t tell you who is talking, how loudly, or what the chemicals floating around are saying.</p>
 </div>
@@ -510,6 +540,10 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <h2 class="t-h2" style="margin:12px 0 18px">It matters? How?</h2>
 <p>Neuroscience has mostly worked backwards, recording a few neurons and guessing the circuit around them. Whole connectomes flip that: you can start from the complete circuit, form a hypothesis (the ocellar steering circuit, the courtship love spot, the song feedback loop) and then go and test it. Paper B shows the hypotheses can be surprisingly good even from a crude model, and that a computer can run thousands of experiments before anyone touches a fly.</p>
 <p>The methods also scale. FlyWire’s tools have already been used on millimetre-sized pieces of mammalian brain, and a project to map a whole mouse brain has begun. Paper C’s approach of comparing whole nervous systems, using the left and right sides as a check on noise, is a template for asking how brains differ between individuals, sexes, species, or experiences.</p>
+</div>
+<div class="col meme-sm" style="margin-top:32px">
+<img src="/_blob/aa4613933a4da79a700ef69cb7d6d30e" alt="Illustration of a translucent blue human head in profile with a glowing brain" loading="lazy">
+<div class="stack g8"><p class="kicker">Next stop: bigger brains</p><p>A human brain has roughly 86 billion neurons, about 600,000 times as many as a fly’s. A whole human connectome is still a long way off.</p></div>
 </div>
 <div class="col" style="margin-top:40px">
 <div class="catch">
@@ -536,6 +570,10 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <li><b>4</b>Paper C maps a whole male nervous system and finds sex differences concentrated in higher brain centres, not the senses or muscles.</li>
 <li><b style="color:#2B44C8">5</b>Wiring is a powerful starting point, but chemistry, state and individuality still have to come from experiments.</li>
 </ol>
+<figure class="stack g12" style="margin:32px 0 0">
+<img src="/_blob/2e38df200c6c248dc26f118f964b8ef9" alt="Four-panel cartoon of a bald villain presenting a plan on whiteboards: map every neuron in a fly brain; turn the wiring into a working brain model; compare male and female brains; then, looking worried, compare male and female brains, n equals 1 each" loading="lazy" style="width:100%;height:auto;border:1px solid #10131C">
+<figcaption>THE PLAN, AND ITS CATCH.</figcaption>
+</figure>
 </div>
 </div>
 </section>

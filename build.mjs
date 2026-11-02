@@ -71,7 +71,7 @@ export const META = {
     desc: 'A spinning spaceship that makes its own gravity, a language made of chords and the friendliest alien in fiction.' },
   'Talk-NavierStokes.dc.html': { title: 'Mathematician vs Clanker: Navier–Stokes Answered? — GelasTinta', img: '8640ecc3e79609c3709944fae4972088', fit: 'contain', date: '2026-09-23',
     desc: 'The equation every engineer meets, the AI-made proof that it can break, and the fight over who gets the credit.' },
-  'Talk-FlyConnectome.dc.html': { title: 'The Whole Fly, Wired: Mapping, Running and Comparing a Brain — GelasTinta', img: '54f814247118da21200c6c3e75a422aa', pos: 'centre', date: '2026-07-23',
+  'Talk-FlyConnectome.dc.html': { title: 'The Whole Fly, Wired: Mapping, Running and Comparing a Brain — GelasTinta', img: '1463589e642fabbb0136f68a398bab10', pos: 'centre', date: '2026-07-23',
     desc: 'A triple review: the first whole adult fly brain connectome, a spiking brain model built from it, and a whole male nervous system compared with a female brain.' },
   'Talk-HairClipFish.dc.html': { title: 'Snap Out of It: A Fish Robot That Swims on a Hair Clip — GelasTinta', img: '87bb5c724908d043bd6a33eaf01e5814', pos: 'centre', date: '2026-06-23',
     desc: 'A snap hair clip becomes the spine of a robot fish: how bistability makes it fast, what the maths says, and why “fastest” depends on how you measure.' },
