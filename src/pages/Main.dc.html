@@ -159,6 +159,54 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 .wada-credit{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:11px;letter-spacing:.06em;color:#C9CED8}
 .wada-credit .wada-mini{margin-left:0;border-color:#3A4152}
 /* wadasite:end */
+/* shelf:start */
+.shelf{position:relative;display:flex;align-items:flex-end;gap:5px;height:440px;padding:0 6px;border-bottom:14px solid #10131C;box-shadow:0 10px 0 -4px #C9CED8}
+.shelf.tall{height:470px}
+.shelf-hint{margin:0 0 14px;font-size:12px}
+.book{position:relative;display:flex;flex:0 0 58px;height:var(--h,94%);min-width:0;overflow:hidden;background:var(--c);color:var(--t);border:1px solid #10131C;border-bottom:0;text-decoration:none;transition:flex-basis .5s cubic-bezier(.2,.7,.2,1),height .5s cubic-bezier(.2,.7,.2,1),transform .25s ease}
+.book:hover{color:var(--t)}
+.spine{flex:0 0 56px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:10px;padding:18px 0 16px;position:relative}
+.spine::before,.spine::after{content:"";position:absolute;left:0;right:0;height:7px}
+.spine::before{top:6px;background:var(--b1);box-shadow:0 10px 0 -3px var(--b2)}
+.spine::after{bottom:6px;background:var(--b1);box-shadow:0 -10px 0 -3px var(--b2)}
+.sp-n{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;font-weight:700;margin-top:14px}
+.sp-t{writing-mode:vertical-rl;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:17px;letter-spacing:-.01em;line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-height:100%;flex:1 1 auto;min-height:0}
+.sp-y{writing-mode:vertical-rl;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;opacity:.85;margin-bottom:14px}
+.cover{flex:1 0 420px;display:grid;grid-template-rows:minmax(0,52%) minmax(0,1fr);background:#FFFFFF;color:#10131C;border-left:1px solid #10131C}
+.cv-img{overflow:hidden;border-bottom:1px solid #10131C}
+.cv-img img{display:block;width:100%;height:100%}
+.cv-body{display:flex;flex-direction:column;gap:8px;padding:18px 22px 20px;min-height:0}
+.cv-body .kicker{font-size:11px}
+.cv-t{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:700;font-size:21px;line-height:1.2;letter-spacing:-.01em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.cv-p{font-size:15px;line-height:1.5;color:#3A4152;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.cv-m{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;color:#3A4152;margin-top:auto}
+.cv-go{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#2B44C8}
+.book.open{flex:1 1 auto;height:100%}
+.shelf:hover .book.open{flex:0 0 58px;height:var(--h,94%)}
+.shelf:hover .book:hover,.shelf .book:focus-visible,.shelf:hover .book:focus-visible{flex:1 1 auto;height:100%}
+.shelf:has(.book:focus-visible) .book.open:not(:focus-visible){flex:0 0 58px;height:var(--h,94%)}
+.book:not(.open):hover .spine,.book:focus-visible .spine{filter:brightness(1.06)}
+.book:focus-visible{outline:3px solid #2B44C8;outline-offset:3px}
+.bookend{flex:0 0 26px;height:48%;margin-left:auto;background:#10131C;border-radius:14px 0 0 0}
+@media (prefers-reduced-motion:reduce){.book{transition:none}}
+@media (max-width:760px){
+.shelf,.shelf.tall{flex-direction:column;align-items:stretch;height:auto;gap:6px;padding:0;border-bottom:0;box-shadow:none}
+.shelf-hint,.bookend{display:none}
+.book{flex:none;height:auto;flex-direction:column;border-bottom:1px solid #10131C}
+.spine{flex:0 0 auto;flex-direction:row;justify-content:flex-start;gap:14px;padding:0 16px;height:56px}
+.spine::before,.spine::after{top:0;bottom:0;left:auto;right:auto;width:6px;height:auto;box-shadow:none}
+.spine::before{left:0}.spine::after{right:0}
+.sp-n{margin:0}
+.sp-t,.sp-y{writing-mode:horizontal-tb}
+.sp-t{font-size:16px;flex:1 1 auto}
+.sp-y{margin:0}
+.cover{display:none;flex:none;border-left:0;border-top:1px solid #10131C;grid-template-rows:200px auto}
+.book.open .cover{display:grid}
+.shelf:hover .book.open{flex:none;height:auto}
+.shelf:hover .book:hover,.shelf .book:focus-visible{flex:none;height:auto}
+.cv-p{-webkit-line-clamp:3}
+}
+/* shelf:end */
 </style>
 </helmet>
 <div style="min-height:100vh" data-gt-root="">
@@ -271,30 +319,7 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 </div>
 <a class="btn" href="Projects.dc.html">All projects <span aria-hidden="true">→</span></a>
 </div>
-<div class="cols-2" style="gap:32px">
-<a class="tile" href="Thesis-MSc.dc.html">
-<div class="tile-art photo">
-<span class="tag">Dissertation 02 · UCL · MSc</span>
-<img src="/_blob/e6b092fd16f445a4cdd7dec4374667d7" alt="Rayang holding the finished soft underwater robot prototype at UCL" style="object-position:55% 60%">
-</div>
-<div class="stack g12" style="padding:28px">
-<h3 class="t-h3" style="font-size:24px">Bio-Inspired Pneumatic Soft Actuators for Underwater Robots Sea Life Exploration and Conservation</h3>
-<p class="muted">A soft underwater robot for coral reefs, with limbs inspired by sea creatures.</p>
-<p class="meta">University College London — 2025</p>
-</div>
-</a>
-<a class="tile" href="Thesis-BEng.dc.html">
-<div class="tile-art photo">
-<span class="tag">Dissertation 01 · Exeter · BEng</span>
-<img src="/_blob/d694dc45d8f43526db8f49c7eb77877a" alt="The finished 3D-printed prosthetic hand, palm side" style="object-position:50% 50%">
-</div>
-<div class="stack g12" style="padding:28px">
-<h3 class="t-h3" style="font-size:24px">Constructing and Analysing the Performance of a Modified Prosthetic Hand</h3>
-<p class="muted">Building and testing a modified 3D-printed prosthetic hand.</p>
-<p class="meta">University of Exeter — 2023</p>
-</div>
-</a>
-</div>
+<p class="shelf-hint meta muted">Hover or tab along the spines to pull a book out · click to open it</p><nav class="shelf" aria-label="Featured works"><a class="book open" href="Thesis-MSc.dc.html" style="--c:#2B44C8;--t:#FFFFFF;--b1:#FDC57E;--b2:#10131C;--h:100%"><span class="spine" aria-hidden="true"><span class="sp-n">MSc</span><span class="sp-t">Soft Actuators, Underwater</span><span class="sp-y">UCL 25</span></span><span class="cover"><span class="cv-img" style="background:#10131C"><img src="/_blob/e6b092fd16f445a4cdd7dec4374667d7" alt="Rayang holding the finished soft underwater robot prototype at UCL" loading="lazy" style="object-fit:cover;object-position:50% 32%"></span><span class="cv-body"><span class="kicker">Dissertation · MSc · UCL · 2025</span><span class="cv-t">Bio-Inspired Pneumatic Soft Actuators for Underwater Robots</span><span class="cv-p">Soft silicone limbs modelled on manta rays and trilobites, pumped with water so a robot can explore coral reefs without harming them.</span><span class="cv-m">University College London · 2025</span><span class="cv-go">Nutshell + full paper →</span></span></span></a><a class="book" href="Thesis-BEng.dc.html" style="--c:#10131C;--t:#FFFFFF;--b1:#A36AA5;--b2:#FDC57E;--h:94%"><span class="spine" aria-hidden="true"><span class="sp-n">BEng</span><span class="sp-t">A Modified Prosthetic Hand</span><span class="sp-y">EXE 23</span></span><span class="cover"><span class="cv-img" style="background:#10131C"><img src="/_blob/d694dc45d8f43526db8f49c7eb77877a" alt="The finished 3D-printed prosthetic hand, palm side" loading="lazy" style="object-fit:cover;object-position:50% 50%"></span><span class="cv-body"><span class="kicker">Dissertation · BEng · Exeter · 2023</span><span class="cv-t">Constructing and Analysing the Performance of a Modified Prosthetic Hand</span><span class="cv-p">A low-cost, 3D-printed five-finger hand that closes when you flex your forearm muscles.</span><span class="cv-m">University of Exeter · 2023</span><span class="cv-go">Nutshell + full paper →</span></span></span></a><a class="book" href="Hobby-InMoov.dc.html" style="--c:#A36AA5;--t:#10131C;--b1:#10131C;--b2:#FDC57E;--h:97%"><span class="spine" aria-hidden="true"><span class="sp-n">H1</span><span class="sp-t">Rebuilding InMoov</span><span class="sp-y">23–24</span></span><span class="cover"><span class="cv-img" style="background:#10131C"><img src="/_blob/8dcea2945392b3e0d9b3bd41927badc4" alt="Freshly printed black InMoov parts laid out on a cutting mat beside a craft knife" loading="lazy" style="object-fit:cover;object-position:50% 50%"></span><span class="cv-body"><span class="kicker">Hobby build · 2023 – 2024</span><span class="cv-t">Rebuilding the InMoov robot hand</span><span class="cv-p">Printing and assembling Gaël Langevin’s open-source InMoov hand, from the first print to the first movement.</span><span class="cv-m">Build diary · 11 clips</span><span class="cv-go">Read the build diary →</span></span></span></a><a class="book" href="Hobby-FlyBrain.dc.html" style="--c:#FDC57E;--t:#10131C;--b1:#A36AA5;--b2:#2B44C8;--h:91%"><span class="spine" aria-hidden="true"><span class="sp-n">H2</span><span class="sp-t">A Fly’s Brain on Sugar</span><span class="sp-y">2026</span></span><span class="cover"><span class="cv-img" style="background:#10131C"><img src="/_blob/217a041e95fae2bb0ca236c2a9de533e" alt="Simulation replay: a glowing cloud of fruit-fly neurons inside a see-through fly head" loading="lazy" style="object-fit:cover;object-position:42% 55%"></span><span class="cv-body"><span class="kicker">Hobby build · 2026 · New</span><span class="cv-t">A fly’s brain when it tastes sugar?</span><span class="cv-p">The published whole-brain model of the fruit fly, fed sugar and followed spike by spike, then run again with two neurons silenced.</span><span class="cv-m">127,400 neurons · 5 interactive figures</span><span class="cv-go">Explore the simulation →</span></span></span></a><a class="book" href="Hobby-GestureMusic.dc.html" style="--c:#1A1F2E;--t:#FFFFFF;--b1:#2B44C8;--b2:#A36AA5;--h:98%"><span class="spine" aria-hidden="true"><span class="sp-n">H3</span><span class="sp-t">Gesture Music</span><span class="sp-y">25–26</span></span><span class="cover"><span class="cv-img" style="background:#FFFFFF"><img src="/_blob/a50cc93e9ed9fa232711a3f74eb2bf40" alt="The Gesture Music hand-sign dictionary: nine hand skeletons" loading="lazy" style="object-fit:contain;object-position:50% 50%;padding:18px"></span><span class="cv-body"><span class="kicker">Hobby build · 2025 – 2026 · New</span><span class="cv-t">Gesture Music: an instrument you play with hand signs</span><span class="cv-p">A webcam watches both hands and each sign plays a note, a chord or a drum, with a looper, live MIDI, a rhythm game and a 61-page handbook.</span><span class="cv-m">Open on GitHub · 61-page handbook</span><span class="cv-go">See it and try it →</span></span></span></a><span class="bookend" aria-hidden="true"></span></nav>
 </div>
 </section>
 
@@ -307,41 +332,7 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 </div>
 <a class="btn" href="Talks.dc.html">All talks <span aria-hidden="true">→</span></a>
 </div>
-<div class="cols-3" style="gap:24px">
-<a class="tile" href="Talk-Cyberpunk.dc.html">
-<div class="tile-art photo" style="background:#10131C">
-<span class="tag" style="box-shadow:inset 6px 0 0 #FFF200">Talk 10 · New</span>
-<img src="/_blob/654691c00363657dd58c94a152c33ac5" alt="Close-up of a human eye with a Kiroshi implant: a glowing purple display in the iris and the brand name printed around it" style="object-fit:cover;object-position:55% 45%">
-</div>
-<div class="stack g12" style="padding:28px">
-<h3 class="t-h3" style="font-size:22px">Chrome and Consequences: The Science and Fiction of Cyberpunk’s Implants</h3>
-<p class="muted">Sandevistans, Kiroshi eyes, biochips and engrams, set against the real implants of 2026, plus rogue AI and cyberpsychosis.</p>
-<p class="meta">Rayang T Mendrofa — 23rd October 2026 · 18 min read</p>
-</div>
-</a>
-<a class="tile" href="Talk-NavierStokes.dc.html">
-<div class="tile-art photo" style="background:#FFFFFF">
-<span class="tag" style="box-shadow:inset 6px 0 0 #064F6E">Talk 09 · Maths</span>
-<img src="/_blob/8640ecc3e79609c3709944fae4972088" alt="Illustration of the blowup vortex: streamlines spiralling inward and stretching along a central axis" style="object-fit:cover">
-</div>
-<div class="stack g12" style="padding:28px">
-<h3 class="t-h3" style="font-size:22px">Mathematician vs Clanker: Navier–Stokes, the Millennium Prize Question Answered?</h3>
-<p class="muted">The equation every engineer meets, the AI-made proof that it can break, and the fight over who gets the credit.</p>
-<p class="meta">Rayang T Mendrofa — 23rd September 2026 · 16 min read</p>
-</div>
-</a>
-<a class="tile" href="Talk-FlyConnectome.dc.html">
-<div class="tile-art photo" style="background:#10131C">
-<span class="tag" style="box-shadow:inset 6px 0 0 #FDBF68">Talk 08 · Neuroscience</span>
-<img src="/_blob/1463589e642fabbb0136f68a398bab10" alt="A glowing translucent blue fruit fly on black, with its brain highlighted in pink, orange and blue" style="object-fit:cover;object-position:62% 50%">
-</div>
-<div class="stack g12" style="padding:28px">
-<h3 class="t-h3" style="font-size:22px">The Whole Fly, Wired: Mapping, Running and Comparing a Brain</h3>
-<p class="muted">Three papers: the first whole adult fly brain wiring diagram, a brain model built from it, and a whole male nervous system compared with a female brain.</p>
-<p class="meta">Rayang T Mendrofa — 23rd July 2026 · 14 min read</p>
-</div>
-</a>
-</div>
+<nav class="shelf" aria-label="Latest talks"><a class="book open" href="Talk-Cyberpunk.dc.html" style="--c:#FFF200;--t:#10131C;--b1:#CC1236;--b2:#2B44C8;--h:100%"><span class="spine" aria-hidden="true"><span class="sp-n">10</span><span class="sp-t">Chrome and Consequences</span><span class="sp-y">Oct 26</span></span><span class="cover"><span class="cv-img" style="background:#10131C"><img src="/_blob/654691c00363657dd58c94a152c33ac5" alt="Close-up of a human eye with a Kiroshi implant: a glowing purple display in the iris and the brand name printed around it" loading="lazy" style="object-fit:cover;object-position:55% 45%"></span><span class="cv-body"><span class="kicker">Talk 10 · New</span><span class="cv-t">Chrome and Consequences: The Science and Fiction of Cyberpunk’s Implants</span><span class="cv-p">Sandevistans, Kiroshi eyes, biochips and engrams from Cyberpunk 2077 and Edgerunners, set against the real implants of 2026, plus rogue AI and cyberpsychosis.</span><span class="cv-m">23rd October 2026 · 18 min read</span><span class="cv-go">Read the talk →</span></span></span></a><a class="book" href="Talk-NavierStokes.dc.html" style="--c:#A7D4E4;--t:#10131C;--b1:#C2AE93;--b2:#064F6E;--h:94%"><span class="spine" aria-hidden="true"><span class="sp-n">09</span><span class="sp-t">Mathematician vs Clanker</span><span class="sp-y">Sep 26</span></span><span class="cover"><span class="cv-img" style="background:#FFFFFF"><img src="/_blob/8640ecc3e79609c3709944fae4972088" alt="Illustration of the blowup vortex: streamlines spiralling inward and stretching along a central axis" loading="lazy" style="object-fit:cover;object-position:50% 50%"></span><span class="cv-body"><span class="kicker">Talk 09</span><span class="cv-t">Mathematician vs Clanker: Navier–Stokes, the Millennium Prize Question Answered?</span><span class="cv-p">The equation every engineer meets, the AI-made proof that it can break, and the fight over who gets the credit.</span><span class="cv-m">23rd September 2026 · 16 min read</span><span class="cv-go">Read the talk →</span></span></span></a><a class="book" href="Talk-FlyConnectome.dc.html" style="--c:#FDBF68;--t:#10131C;--b1:#BF5892;--b2:#2B44C8;--h:97%"><span class="spine" aria-hidden="true"><span class="sp-n">08</span><span class="sp-t">The Whole Fly, Wired</span><span class="sp-y">Jul 26</span></span><span class="cover"><span class="cv-img" style="background:#10131C"><img src="/_blob/1463589e642fabbb0136f68a398bab10" alt="A glowing translucent blue fruit fly on black, with its brain highlighted in pink, orange and blue" loading="lazy" style="object-fit:cover;object-position:62% 50%"></span><span class="cv-body"><span class="kicker">Talk 08</span><span class="cv-t">The Whole Fly, Wired: Mapping, Running and Comparing a Brain</span><span class="cv-p">Three papers: the first whole adult fly brain wiring diagram, a brain model built from it, and a whole male nervous system compared with a female brain.</span><span class="cv-m">23rd July 2026 · 14 min read</span><span class="cv-go">Read the talk →</span></span></span></a><a class="book" href="Talk-HairClipFish.dc.html" style="--c:#96D1AA;--t:#10131C;--b1:#837E31;--b2:#F48067;--h:91%"><span class="spine" aria-hidden="true"><span class="sp-n">07</span><span class="sp-t">Snap Out of It</span><span class="sp-y">Jun 26</span></span><span class="cover"><span class="cv-img" style="background:#FFFFFF"><img src="/_blob/2e55726856ef14984a4a87555e84760e" alt="Diagram of a duck-bill hair clip: upper and lower jaws, a coiled metal spring and the pivot hinge" loading="lazy" style="object-fit:contain;object-position:50% 50%;padding:18px"></span><span class="cv-body"><span class="kicker">Talk 07</span><span class="cv-t">Snap Out of It: A Fish Robot That Swims on a Hair Clip</span><span class="cv-p">A snap hair clip becomes a robot fish’s spine: why bistability makes it fast, and why “fast” depends on your ruler.</span><span class="cv-m">23rd June 2026 · 12 min read</span><span class="cv-go">Read the talk →</span></span></span></a><a class="book" href="Talk-ModularLegs.dc.html" style="--c:#34454C;--t:#FFFFFF;--b1:#F3A257;--b2:#007190;--h:98%"><span class="spine" aria-hidden="true"><span class="sp-n">06</span><span class="sp-t">Microbot, not quite Micro</span><span class="sp-y">May 26</span></span><span class="cover"><span class="cv-img" style="background:#10131C"><img src="/_blob/58adc5b5cb21c58891e4c3bd7a9f59b8" alt="Animated film still: a hand holds up one tiny dark robot piece while a boy presents on stage beside a tower of the same pieces" loading="lazy" style="object-fit:cover;object-position:30% 50%"></span><span class="cv-body"><span class="kicker">Talk 06</span><span class="cv-t">Microbot is not quite Micro, but it’s a step towards the effort</span><span class="cv-p">Bolt-together robot legs that jump, roll and keep walking when you cut a piece off.</span><span class="cv-m">23rd May 2026 · 9 min read</span><span class="cv-go">Read the talk →</span></span></span></a><span class="bookend" aria-hidden="true"></span></nav>
 </div>
 </section>
 

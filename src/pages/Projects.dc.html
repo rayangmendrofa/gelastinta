@@ -173,6 +173,54 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 .hb-feature-facts dt{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#3A4152}
 .hb-feature-facts dd{margin:0;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:26px;line-height:1.05;color:#10131C}
 @media (max-width:640px){.hb-feature-facts{grid-template-columns:minmax(0,1fr)}.hb-feature-facts div{border-right:0;border-bottom:1px solid #10131C}.hb-feature-facts div:last-child{border-bottom:0}}
+/* shelf:start */
+.shelf{position:relative;display:flex;align-items:flex-end;gap:5px;height:440px;padding:0 6px;border-bottom:14px solid #10131C;box-shadow:0 10px 0 -4px #C9CED8}
+.shelf.tall{height:470px}
+.shelf-hint{margin:0 0 14px;font-size:12px}
+.book{position:relative;display:flex;flex:0 0 58px;height:var(--h,94%);min-width:0;overflow:hidden;background:var(--c);color:var(--t);border:1px solid #10131C;border-bottom:0;text-decoration:none;transition:flex-basis .5s cubic-bezier(.2,.7,.2,1),height .5s cubic-bezier(.2,.7,.2,1),transform .25s ease}
+.book:hover{color:var(--t)}
+.spine{flex:0 0 56px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:10px;padding:18px 0 16px;position:relative}
+.spine::before,.spine::after{content:"";position:absolute;left:0;right:0;height:7px}
+.spine::before{top:6px;background:var(--b1);box-shadow:0 10px 0 -3px var(--b2)}
+.spine::after{bottom:6px;background:var(--b1);box-shadow:0 -10px 0 -3px var(--b2)}
+.sp-n{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;font-weight:700;margin-top:14px}
+.sp-t{writing-mode:vertical-rl;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:17px;letter-spacing:-.01em;line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-height:100%;flex:1 1 auto;min-height:0}
+.sp-y{writing-mode:vertical-rl;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;opacity:.85;margin-bottom:14px}
+.cover{flex:1 0 420px;display:grid;grid-template-rows:minmax(0,52%) minmax(0,1fr);background:#FFFFFF;color:#10131C;border-left:1px solid #10131C}
+.cv-img{overflow:hidden;border-bottom:1px solid #10131C}
+.cv-img img{display:block;width:100%;height:100%}
+.cv-body{display:flex;flex-direction:column;gap:8px;padding:18px 22px 20px;min-height:0}
+.cv-body .kicker{font-size:11px}
+.cv-t{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:700;font-size:21px;line-height:1.2;letter-spacing:-.01em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.cv-p{font-size:15px;line-height:1.5;color:#3A4152;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.cv-m{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;color:#3A4152;margin-top:auto}
+.cv-go{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#2B44C8}
+.book.open{flex:1 1 auto;height:100%}
+.shelf:hover .book.open{flex:0 0 58px;height:var(--h,94%)}
+.shelf:hover .book:hover,.shelf .book:focus-visible,.shelf:hover .book:focus-visible{flex:1 1 auto;height:100%}
+.shelf:has(.book:focus-visible) .book.open:not(:focus-visible){flex:0 0 58px;height:var(--h,94%)}
+.book:not(.open):hover .spine,.book:focus-visible .spine{filter:brightness(1.06)}
+.book:focus-visible{outline:3px solid #2B44C8;outline-offset:3px}
+.bookend{flex:0 0 26px;height:48%;margin-left:auto;background:#10131C;border-radius:14px 0 0 0}
+@media (prefers-reduced-motion:reduce){.book{transition:none}}
+@media (max-width:760px){
+.shelf,.shelf.tall{flex-direction:column;align-items:stretch;height:auto;gap:6px;padding:0;border-bottom:0;box-shadow:none}
+.shelf-hint,.bookend{display:none}
+.book{flex:none;height:auto;flex-direction:column;border-bottom:1px solid #10131C}
+.spine{flex:0 0 auto;flex-direction:row;justify-content:flex-start;gap:14px;padding:0 16px;height:56px}
+.spine::before,.spine::after{top:0;bottom:0;left:auto;right:auto;width:6px;height:auto;box-shadow:none}
+.spine::before{left:0}.spine::after{right:0}
+.sp-n{margin:0}
+.sp-t,.sp-y{writing-mode:horizontal-tb}
+.sp-t{font-size:16px;flex:1 1 auto}
+.sp-y{margin:0}
+.cover{display:none;flex:none;border-left:0;border-top:1px solid #10131C;grid-template-rows:200px auto}
+.book.open .cover{display:grid}
+.shelf:hover .book.open{flex:none;height:auto}
+.shelf:hover .book:hover,.shelf .book:focus-visible{flex:none;height:auto}
+.cv-p{-webkit-line-clamp:3}
+}
+/* shelf:end */
 </style>
 </helmet>
 <div style="min-height:100vh" data-gt-root="">
@@ -203,85 +251,25 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <nav class="card jump stack g16" aria-label="On this page" style="align-self:end">
 <p class="kicker">On this page</p>
 <div class="stack">
-<a href="#dissertations">Dissertations <span>01 ↓</span></a>
-<a href="#hobby">Hobby Builds <span>02 ↓</span></a>
-<a href="#infographics">Infographics <span>03 ↓</span></a>
-<a href="#cad">CAD Designs <span>04 ↓</span></a>
+<a href="#dissertations">Dissertations &amp; Hobby Builds <span>01 ↓</span></a>
+<a href="#infographics">Infographics <span>02 ↓</span></a>
+<a href="#cad">CAD Designs <span>03 ↓</span></a>
 </div>
 </nav>
 </div>
 </section>
 
-<section id="dissertations" class="sec dark">
-<div class="wrap">
-<div class="sec-head">
-<p class="kicker">01 — Research, built and tested</p>
-<h2 class="t-h2">Dissertations</h2>
-</div>
-<div class="cols-2">
-<a class="diss" href="Thesis-MSc.dc.html">
-<img src="/_blob/e6b092fd16f445a4cdd7dec4374667d7" alt="Rayang holding the finished soft underwater robot prototype at UCL" style="object-position:50% 68%">
-<div class="stack g12" style="padding:28px;flex:1">
-<div class="chips"><span class="chip fill">MSc · 2025</span><span class="chip">University College London</span></div>
-<h3 class="t-h3" style="font-size:24px">Bio-Inspired Pneumatic Soft Actuators for Underwater Robots Sea Life Exploration and Conservation</h3>
-<p class="muted small" style="color:#3A4152">Soft silicone limbs modelled on manta rays and trilobites, pumped with water so a robot can explore coral reefs without harming them.</p>
-<span class="meta" style="margin-top:auto;padding-top:8px;color:#2B44C8">Read the nutshell + full paper →</span>
-</div>
-</a>
-<a class="diss" href="Thesis-BEng.dc.html">
-<img src="/_blob/8e932d982eca909e0fe96403e2526daf" alt="The 3D-printed prosthetic hand being controlled by forearm muscle signals">
-<div class="stack g12" style="padding:28px;flex:1">
-<div class="chips"><span class="chip fill">BEng · 2023</span><span class="chip">University of Exeter</span></div>
-<h3 class="t-h3" style="font-size:24px">Constructing and Analysing the Performance of a Modified Prosthetic Hand</h3>
-<p class="muted small" style="color:#3A4152">A low-cost, 3D-printed five-finger hand that closes when you flex your forearm muscles.</p>
-<span class="meta" style="margin-top:auto;padding-top:8px;color:#2B44C8">Read the nutshell + full paper →</span>
-</div>
-</a>
-</div>
-</div>
-</section>
-
-<section id="hobby" class="sec white rule-b">
+<section id="dissertations" class="sec white rule-b">
 <div class="wrap">
 <div class="sec-head row">
 <div class="stack g12">
-<p class="kicker">02 — Learning by rebuilding</p>
-<h2 class="t-h2">Hobby Builds</h2>
+<p class="kicker">01 — Research, built and rebuilt</p>
+<h2 class="t-h2">Dissertations &amp; Hobby Builds</h2>
 </div>
-<p class="meta muted">Personal projects, made out of curiosity</p>
+<p class="meta muted">Two dissertations and three personal projects</p>
 </div>
-<a class="hb-feature" href="Hobby-InMoov.dc.html">
-<div class="hb-feature-media"><video src="/_blob/aa004a7c7e20eab3afed0df407315599" poster="/_blob/0087f1bc08e04a247f0f750ac5a2c050" autoplay="" muted="" loop="" playsinline="" preload="metadata" aria-label="Looping clip: the finished InMoov hand curling its fingers" data-gt-autoplay=""></video><span class="hb-speed" style="left:12px;right:auto">Featured</span></div>
-<div class="stack g16" style="padding:32px">
-<div class="chips"><span class="chip fill">2023 – 2024</span><span class="chip">Personal project</span><span class="chip">3D printing</span></div>
-<h3 class="t-h3" style="font-size:30px;line-height:1.15">Rebuilding the InMoov robot hand</h3>
-<p class="muted" style="font-size:18px;line-height:1.6">After my BEng dissertation on prosthetic hands, I printed and assembled Gaël Langevin’s open-source InMoov hand, out of curiosity and as a hobby. I didn’t design it; this is the story of building it, from the first print to the first movement.</p>
-<div class="hb-feature-strip" aria-hidden="true">
-<img src="/_blob/8dcea2945392b3e0d9b3bd41927badc4" alt="" loading="lazy"><img src="/_blob/7e4b48ecc4056ee3c7176f0dbb5e642c" alt="" loading="lazy"><img src="/_blob/78cd774e32e94555f03e4e64a394727d" alt="" loading="lazy">
-</div>
-<span class="meta" style="color:#2B44C8;margin-top:auto">Read the build diary · 11 clips →</span>
-</div>
-</a>
-<a class="hb-feature" href="Hobby-FlyBrain.dc.html" style="margin-top:32px">
-<div class="hb-feature-media"><img src="/_blob/217a041e95fae2bb0ca236c2a9de533e" alt="Simulation replay: a glowing cloud of fruit-fly neurons inside a see-through fly head, with spikes flashing out from the sugar-taste neurons" loading="lazy" style="object-position:42% 55%"><span class="hb-speed" style="left:12px;right:auto">New</span></div>
-<div class="stack g16" style="padding:32px">
-<div class="chips"><span class="chip fill">2026</span><span class="chip">Personal project</span><span class="chip">Brain simulation</span></div>
-<h3 class="t-h3" style="font-size:30px;line-height:1.15">A fly’s brain when it tastes sugar?</h3>
-<p class="muted" style="font-size:18px;line-height:1.6">I ran the published whole-brain model of the fruit fly, all 127,400 neurons, on my laptop. I fed it sugar, followed the spikes to the motor neuron that lifts its feeding tube, then silenced two neurons and ran it again. The model and the brain map are other people’s work; the runs, checks and explanations are mine.</p>
-<dl class="hb-feature-facts"><div><dd>127,400</dd><dt>Neurons</dt></div><div><dd>21</dd><dt>Sugar neurons in</dt></div><div><dd>−62%</dd><dt>Feeding output, <br>2 silenced</dt></div></dl>
-<span class="meta" style="color:#2B44C8;margin-top:auto">Explore the simulation · 5 interactive figures →</span>
-</div>
-</a>
-<a class="hb-feature" href="Hobby-GestureMusic.dc.html" style="margin-top:32px">
-<div class="hb-feature-media" style="background:#FFFFFF"><img src="/_blob/a50cc93e9ed9fa232711a3f74eb2bf40" alt="The Gesture Music hand-sign dictionary: nine hand skeletons, from one raised finger to rock, call me and a fist" loading="lazy" style="object-fit:contain;padding:24px"><span class="hb-speed" style="left:12px;right:auto">New</span></div>
-<div class="stack g16" style="padding:32px">
-<div class="chips"><span class="chip fill">2025 – 2026</span><span class="chip">Personal project</span><span class="chip">Computer vision</span><span class="chip">Music</span></div>
-<h3 class="t-h3" style="font-size:30px;line-height:1.15">Gesture Music: an instrument you play with hand signs</h3>
-<p class="muted" style="font-size:18px;line-height:1.6">A webcam watches both hands and each hand sign plays a note, a chord or a drum. It grew into a looper, live MIDI, a rhythm game that charts your own songs, and a 61-page handbook. Hand tracking by Google MediaPipe; the rest is my own code, open on GitHub.</p>
-<dl class="hb-feature-facts"><div><dd>8</dd><dt>Signs per hand</dt></div><div><dd>10</dd><dt>Instruments</dt></div><div><dd>61</dd><dt>Handbook pages</dt></div></dl>
-<span class="meta" style="color:#2B44C8;margin-top:auto">See the timeline, try it and read the handbook →</span>
-</div>
-</a>
+<span id="hobby"></span>
+<p class="shelf-hint meta muted">Hover or tab along the spines to pull a book out · click to open it</p><nav class="shelf" aria-label="Dissertations and hobby builds"><a class="book open" href="Thesis-MSc.dc.html" style="--c:#2B44C8;--t:#FFFFFF;--b1:#FDC57E;--b2:#10131C;--h:100%"><span class="spine" aria-hidden="true"><span class="sp-n">MSc</span><span class="sp-t">Soft Actuators, Underwater</span><span class="sp-y">UCL 25</span></span><span class="cover"><span class="cv-img" style="background:#10131C"><img src="/_blob/e6b092fd16f445a4cdd7dec4374667d7" alt="Rayang holding the finished soft underwater robot prototype at UCL" loading="lazy" style="object-fit:cover;object-position:50% 32%"></span><span class="cv-body"><span class="kicker">Dissertation · MSc · UCL · 2025</span><span class="cv-t">Bio-Inspired Pneumatic Soft Actuators for Underwater Robots</span><span class="cv-p">Soft silicone limbs modelled on manta rays and trilobites, pumped with water so a robot can explore coral reefs without harming them.</span><span class="cv-m">University College London · 2025</span><span class="cv-go">Nutshell + full paper →</span></span></span></a><a class="book" href="Thesis-BEng.dc.html" style="--c:#10131C;--t:#FFFFFF;--b1:#A36AA5;--b2:#FDC57E;--h:94%"><span class="spine" aria-hidden="true"><span class="sp-n">BEng</span><span class="sp-t">A Modified Prosthetic Hand</span><span class="sp-y">EXE 23</span></span><span class="cover"><span class="cv-img" style="background:#10131C"><img src="/_blob/d694dc45d8f43526db8f49c7eb77877a" alt="The finished 3D-printed prosthetic hand, palm side" loading="lazy" style="object-fit:cover;object-position:50% 50%"></span><span class="cv-body"><span class="kicker">Dissertation · BEng · Exeter · 2023</span><span class="cv-t">Constructing and Analysing the Performance of a Modified Prosthetic Hand</span><span class="cv-p">A low-cost, 3D-printed five-finger hand that closes when you flex your forearm muscles.</span><span class="cv-m">University of Exeter · 2023</span><span class="cv-go">Nutshell + full paper →</span></span></span></a><a class="book" href="Hobby-InMoov.dc.html" style="--c:#A36AA5;--t:#10131C;--b1:#10131C;--b2:#FDC57E;--h:97%"><span class="spine" aria-hidden="true"><span class="sp-n">H1</span><span class="sp-t">Rebuilding InMoov</span><span class="sp-y">23–24</span></span><span class="cover"><span class="cv-img" style="background:#10131C"><img src="/_blob/8dcea2945392b3e0d9b3bd41927badc4" alt="Freshly printed black InMoov parts laid out on a cutting mat beside a craft knife" loading="lazy" style="object-fit:cover;object-position:50% 50%"></span><span class="cv-body"><span class="kicker">Hobby build · 2023 – 2024</span><span class="cv-t">Rebuilding the InMoov robot hand</span><span class="cv-p">Printing and assembling Gaël Langevin’s open-source InMoov hand, from the first print to the first movement.</span><span class="cv-m">Build diary · 11 clips</span><span class="cv-go">Read the build diary →</span></span></span></a><a class="book" href="Hobby-FlyBrain.dc.html" style="--c:#FDC57E;--t:#10131C;--b1:#A36AA5;--b2:#2B44C8;--h:91%"><span class="spine" aria-hidden="true"><span class="sp-n">H2</span><span class="sp-t">A Fly’s Brain on Sugar</span><span class="sp-y">2026</span></span><span class="cover"><span class="cv-img" style="background:#10131C"><img src="/_blob/217a041e95fae2bb0ca236c2a9de533e" alt="Simulation replay: a glowing cloud of fruit-fly neurons inside a see-through fly head" loading="lazy" style="object-fit:cover;object-position:42% 55%"></span><span class="cv-body"><span class="kicker">Hobby build · 2026 · New</span><span class="cv-t">A fly’s brain when it tastes sugar?</span><span class="cv-p">The published whole-brain model of the fruit fly, fed sugar and followed spike by spike, then run again with two neurons silenced.</span><span class="cv-m">127,400 neurons · 5 interactive figures</span><span class="cv-go">Explore the simulation →</span></span></span></a><a class="book" href="Hobby-GestureMusic.dc.html" style="--c:#1A1F2E;--t:#FFFFFF;--b1:#2B44C8;--b2:#A36AA5;--h:98%"><span class="spine" aria-hidden="true"><span class="sp-n">H3</span><span class="sp-t">Gesture Music</span><span class="sp-y">25–26</span></span><span class="cover"><span class="cv-img" style="background:#FFFFFF"><img src="/_blob/a50cc93e9ed9fa232711a3f74eb2bf40" alt="The Gesture Music hand-sign dictionary: nine hand skeletons" loading="lazy" style="object-fit:contain;object-position:50% 50%;padding:18px"></span><span class="cv-body"><span class="kicker">Hobby build · 2025 – 2026 · New</span><span class="cv-t">Gesture Music: an instrument you play with hand signs</span><span class="cv-p">A webcam watches both hands and each sign plays a note, a chord or a drum, with a looper, live MIDI, a rhythm game and a 61-page handbook.</span><span class="cv-m">Open on GitHub · 61-page handbook</span><span class="cv-go">See it and try it →</span></span></span></a><span class="bookend" aria-hidden="true"></span></nav>
 </div>
 </section>
 
@@ -289,7 +277,7 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <div class="wrap">
 <div class="sec-head row">
 <div class="stack g12">
-<p class="kicker">03 — Visual stories</p>
+<p class="kicker">02 — Visual stories</p>
 <h2 class="t-h2">Infographics</h2>
 </div>
 <p class="meta muted">Hover a poster to see it full size · click to open it</p>
@@ -332,7 +320,7 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <section id="cad" class="sec white rule-t">
 <div class="wrap">
 <div class="sec-head">
-<p class="kicker">04 — Models &amp; prototypes</p>
+<p class="kicker">03 — Models &amp; prototypes</p>
 <h2 class="t-h2">CAD Designs</h2>
 <p class="intro prose muted">Each model is rendered straight from its CAD file as a 360° turntable. Pick a tab to see it spin.</p>
 </div>

@@ -354,44 +354,42 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 .cp-tag.real{background:#2B44C8}
 .cp-real{border-left:6px solid #2B44C8}
 .cp-real img{object-fit:contain;max-height:320px}
-.cp-map{display:grid;grid-template-columns:220px minmax(0,1fr);gap:32px;align-items:center}
-.cp-map svg{display:block;width:100%;height:auto}
-.cm-head{display:grid;grid-template-columns:40px minmax(0,1fr) minmax(0,1fr);gap:0;padding-bottom:8px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
-.cm-head span:nth-child(2){color:#CC1236}
-.cm-head span:nth-child(3){color:#2B44C8;padding-left:8px}
-.cm-list2{list-style:none;margin:0;padding:0;border-top:1px solid #281014}
-.cm-list2 li{display:grid;grid-template-columns:40px minmax(0,1fr);gap:0;padding:12px 0;border-bottom:1px solid #DFCDD1}
-.cm-list2 li > b{width:26px;height:26px;border-radius:50%;background:#CC1236;color:#FFFFF7;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px}
-.cm-part{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:4px 16px}
-.cm-reg{grid-column:1 / -1;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:700;font-size:17px}
-.cm-part p{margin:0 !important;font-size:15px;line-height:1.5}
+.cc-wrap{display:grid;grid-template-columns:200px minmax(0,1fr);gap:28px;align-items:center}
+.cc-body{display:block;width:100%;height:auto}
+.cc-mk{cursor:pointer;outline:none}
+.cc-mk:focus-visible .mk{stroke:#281014;stroke-width:3}
+.cc-tabs button{min-width:0;padding:0 10px;font-size:12px}
+.cc-gap{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;margin:0}
+.cc-gap .kicker{font-size:11px}
+.cc-gap span[data-r]{font-weight:700}
+.rb-row{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.rb-row p{margin:0;flex:1 1 280px}
+.rb-play{min-height:44px;padding:0 18px;border:1px solid #2B44C8;background:#2B44C8;color:#FFFFF7;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;cursor:pointer}
+.rb-play:hover{background:#281014;border-color:#281014}
+.rb-play:focus-visible{outline:3px solid #FFF200;outline-offset:2px}
+.cp-more{border-top:1px solid #281014;border-bottom:1px solid #281014}
+.cp-more summary{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:52px;cursor:pointer;list-style:none}
+.cp-more summary::-webkit-details-marker{display:none}
+.cp-more summary .meta::after{content:" ↓"}
+.cp-more[open] summary .meta::after{content:" ↑"}
+.cp-more .cp-src{margin:0 0 18px}
 .cp-tl{list-style:none;margin:0;padding:0;border-top:1px solid #281014}
-.cp-tl li{display:grid;grid-template-columns:72px minmax(0,1fr);gap:16px;padding:14px 0;border-bottom:1px solid #DFCDD1}
-.tl-y{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:24px;line-height:1.1;color:#2B44C8}
-.cp-tl b{display:block;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:18px;margin:2px 0 4px}
-.cp-tl p{margin:0;font-size:16px;line-height:1.55}
-.tl-tag{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#60343C}
+.cp-tl li{display:grid;grid-template-columns:64px minmax(0,1fr);gap:14px;padding:9px 0;border-bottom:1px solid #DFCDD1;align-items:baseline}
+.tl-y{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:20px;line-height:1.1;color:#2B44C8}
+.cp-tl p{margin:0;font-size:16px;line-height:1.5}
+.cp-tl b{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:700}
 @media (max-width:640px){
 .cp-vs{grid-template-columns:minmax(0,1fr)}
-.cp-map{grid-template-columns:minmax(0,1fr);justify-items:center}
-.cp-map svg{max-width:180px}
-.cm-head{display:none}
-.cm-list2 li{grid-template-columns:34px minmax(0,1fr)}
-.cm-part{grid-template-columns:minmax(0,1fr)}
-.cm-part p::before{content:attr(data-k) " · ";font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase}
-.cm-part p:nth-of-type(1)::before{color:#CC1236}
-.cm-part p:nth-of-type(2)::before{color:#2B44C8}
-.cp-tl li{grid-template-columns:56px minmax(0,1fr);gap:12px}
-.tl-y{font-size:20px}
+.cc-wrap{grid-template-columns:minmax(0,1fr);justify-items:center}
+.cc-wrap > .stack{width:100%}
+.cc-body{max-width:150px}
+.cc-tabs{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin}
+.cc-tabs button{flex:0 0 auto}
+.cc-steps span{font-size:9px;letter-spacing:0;padding:0 1px}
+.cp-tl li{grid-template-columns:48px minmax(0,1fr);gap:10px}
+.tl-y{font-size:17px}
 .cp-strip{display:none}
 }
-/* fig:start */
-.fig-ch{align-items:center}
-.ratio button.fig-play{margin-left:auto;min-width:92px}
-.fig-track{height:3px;background:#FFFBB3;margin-top:-14px;overflow:hidden}
-.fig-track i{display:block;height:100%;background:#2B44C8;transform-origin:0 50%;transform:scaleX(0)}
-@media (max-width:640px){.ratio button.fig-play{margin-left:0}}
-/* fig:end */
 /* wada:start */:root{--wada-ink:#CC1236;--wada-fill:#FFF200}
 .cp-hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:8px;z-index:3;background:linear-gradient(90deg,#CC1236 0.0% 33.33%,#FFF200 33.33% 66.67%,#2B44C8 66.67% 100.0%)}
 .gt-progress{background:linear-gradient(90deg,#CC1236 0.0% 33.33%,#FFF200 33.33% 66.67%,#2B44C8 66.67% 100.0%)}
@@ -444,7 +442,7 @@ h2.t-h2::after,.sec-head .t-h2::after{content:"";display:block;width:56px;height
 <a href="Talks.dc.html" class="back">← All talks</a>
 <p class="kicker">Talk 10 — Review</p>
 <h1 class="t-title">Chrome and Consequences: The Science and Fiction of Cyberpunk’s Implants</h1>
-<p class="meta">Rayang T Mendrofa - 23rd October 2026 · 18 min read</p>
+<p class="meta">Rayang T Mendrofa - 23rd October 2026 · 16 min read</p>
 <aside style="margin-top:24px;border:1px solid #281014;background:#FFFFF7">
 <div class="dark" style="padding:12px 20px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px"><span class="kicker" style="font-size:11px">Game &amp; series under review</span><span class="meta" style="font-size:11px;color:#FFF200">Science fiction · game 2020 · anime 2022</span></div>
 <div class="stack g12" style="padding:22px 20px">
@@ -498,8 +496,8 @@ h2.t-h2::after,.sec-head .t-h2::after{content:"";display:block;width:56px;height
 </div>
 <div class="col-wide viz" style="margin-top:32px" role="group" aria-label="Timeline of real implant milestones from 1958 to 2025">
 <div class="viz-head"><span class="kicker">Timeline — Real implants, 1958 to 2025</span><h3 class="t-h3">Almost every milestone fixes something</h3></div>
-<div class="viz-body stack g24"><svg class="cp-svg cp-strip" viewBox="0 0 760 80" role="img" aria-label="Ten milestones on a 1950 to 2030 axis: one each in 1958, 1984, 1997 and 2004, then six between 2013 and 2025."><line x1="30" x2="730" y1="46" y2="46" stroke="#281014" stroke-width="1.5"></line><line x1="30.0" x2="30.0" y1="46" y2="54" stroke="#281014"></line><text x="30.0" y="72" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="#60343C">1950</text><line x1="117.5" x2="117.5" y1="46" y2="54" stroke="#281014"></line><text x="117.5" y="72" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="#60343C">1960</text><line x1="205.0" x2="205.0" y1="46" y2="54" stroke="#281014"></line><text x="205.0" y="72" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="#60343C">1970</text><line x1="292.5" x2="292.5" y1="46" y2="54" stroke="#281014"></line><text x="292.5" y="72" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="#60343C">1980</text><line x1="380.0" x2="380.0" y1="46" y2="54" stroke="#281014"></line><text x="380.0" y="72" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="#60343C">1990</text><line x1="467.5" x2="467.5" y1="46" y2="54" stroke="#281014"></line><text x="467.5" y="72" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="#60343C">2000</text><line x1="555.0" x2="555.0" y1="46" y2="54" stroke="#281014"></line><text x="555.0" y="72" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="#60343C">2010</text><line x1="642.5" x2="642.5" y1="46" y2="54" stroke="#281014"></line><text x="642.5" y="72" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="#60343C">2020</text><line x1="730.0" x2="730.0" y1="46" y2="54" stroke="#281014"></line><text x="730.0" y="72" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="#60343C">2030</text><circle cx="100.0" cy="34" r="7" fill="#2B44C8" stroke="#FFFFF7" stroke-width="1.5"></circle><circle cx="327.5" cy="34" r="7" fill="#2B44C8" stroke="#FFFFF7" stroke-width="1.5"></circle><circle cx="441.2" cy="34" r="7" fill="#2B44C8" stroke="#FFFFF7" stroke-width="1.5"></circle><circle cx="502.5" cy="34" r="7" fill="#2B44C8" stroke="#FFFFF7" stroke-width="1.5"></circle><circle cx="581.2" cy="34" r="7" fill="#2B44C8" stroke="#FFFFF7" stroke-width="1.5"></circle><circle cx="590.0" cy="34" r="7" fill="#2B44C8" stroke="#FFFFF7" stroke-width="1.5"></circle><circle cx="642.5" cy="34" r="7" fill="#2B44C8" stroke="#FFFFF7" stroke-width="1.5"></circle><circle cx="677.5" cy="34" r="7" fill="#2B44C8" stroke="#FFFFF7" stroke-width="1.5"></circle><circle cx="677.5" cy="16" r="7" fill="#2B44C8" stroke="#FFFFF7" stroke-width="1.5"></circle><circle cx="686.2" cy="34" r="7" fill="#2B44C8" stroke="#FFFFF7" stroke-width="1.5"></circle><rect x="571.2" y="6" width="133.8" height="40" fill="none" stroke="#CC1236" stroke-width="1.5" stroke-dasharray="4 3"></rect><text x="563.2" y="18" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="12" font-weight="700" fill="#CC1236">6 OF 10 SINCE 2013</text></svg><ol class="cp-tl"><li><span class="tl-y">1958</span><div><span class="tl-tag">Heart</span><b>The first fully implanted pacemaker</b><p>On 8 October 1958, surgeons in Stockholm put a pacemaker inside Arne Larsson’s chest. The first device lasted only hours, but he lived for decades on later models.</p></div></li><li><span class="tl-y">1984</span><div><span class="tl-tag">Hearing</span><b>A cochlear implant approved in the US</b><p>The FDA approves the 3M/House single-channel cochlear implant for adults, the first device to turn sound into electrical signals for the hearing nerve.</p></div></li><li><span class="tl-y">1997</span><div><span class="tl-tag">Brain</span><b>Deep brain stimulation approved for tremor</b><p>Medtronic’s Activa system calms tremor with electrodes deep in the brain. Approval for Parkinson’s disease follows in 2002.</p></div></li><li><span class="tl-y">2004</span><div><span class="tl-tag">Brain</span><b>The first BrainGate implant</b><p>Matt Nagle, paralysed from the neck down, moves a computer cursor by thought. The results are published in <i>Nature</i> in 2006.</p></div></li><li><span class="tl-y">2013</span><div><span class="tl-tag">Sight</span><b>The first retinal implant approved in the US</b><p>Argus II gives some light and shape perception to people blinded by retinitis pigmentosa. Its maker later wound the product down, leaving users without support.</p></div></li><li><span class="tl-y">2014</span><div><span class="tl-tag">Limbs</span><b>The LUKE arm reaches the market</b><p>The FDA allows the DEKA “LUKE” arm, developed with DARPA funding, which can make several grips from muscle and foot signals.</p></div></li><li><span class="tl-y">2020</span><div><span class="tl-tag">Limbs</span><b>A prosthesis anchored to the bone</b><p>The FDA approves the OPRA implant, which attaches an above-knee prosthesis directly to the thigh bone, with no socket.</p></div></li><li><span class="tl-y">2024</span><div><span class="tl-tag">Brain</span><b>Neuralink’s first human participant</b><p>In January, Neuralink implants its first participant, who goes on to control a computer by thought. By January 2026 there are 21.</p></div></li><li><span class="tl-y">2024</span><div><span class="tl-tag">Limbs</span><b>A leg the nervous system can feel</b><p>MIT reports a bionic ankle controlled through reconnected leg muscles: more natural walking and top speeds 41% higher than a matched group.</p></div></li><li><span class="tl-y">2025</span><div><span class="tl-tag">Sight</span><b>Reading again with a chip under the retina</b><p>The PRIMA trial in the <i>New England Journal of Medicine</i>: 80% of 38 people with macular degeneration gain meaningful reading vision.</p></div></li></ol></div>
-<div class="viz-foot"><span class="meta muted" style="font-size:12px">A selection, not a full history. Dates are first implants or first US approvals; sources at the end of this talk.</span></div>
+<div class="viz-body stack g16"><svg class="cp-svg cp-strip" viewBox="0 0 760 80" role="img" aria-label="Ten milestones on a 1950 to 2030 axis: one each in 1958, 1984, 1997 and 2004, then six between 2013 and 2025."><line x1="30" x2="730" y1="46" y2="46" stroke="#281014" stroke-width="1.5"></line><line x1="30.0" x2="30.0" y1="46" y2="54" stroke="#281014"></line><text x="30.0" y="72" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="#60343C">1950</text><line x1="117.5" x2="117.5" y1="46" y2="54" stroke="#281014"></line><text x="117.5" y="72" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="#60343C">1960</text><line x1="205.0" x2="205.0" y1="46" y2="54" stroke="#281014"></line><text x="205.0" y="72" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="#60343C">1970</text><line x1="292.5" x2="292.5" y1="46" y2="54" stroke="#281014"></line><text x="292.5" y="72" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="#60343C">1980</text><line x1="380.0" x2="380.0" y1="46" y2="54" stroke="#281014"></line><text x="380.0" y="72" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="#60343C">1990</text><line x1="467.5" x2="467.5" y1="46" y2="54" stroke="#281014"></line><text x="467.5" y="72" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="#60343C">2000</text><line x1="555.0" x2="555.0" y1="46" y2="54" stroke="#281014"></line><text x="555.0" y="72" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="#60343C">2010</text><line x1="642.5" x2="642.5" y1="46" y2="54" stroke="#281014"></line><text x="642.5" y="72" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="#60343C">2020</text><line x1="730.0" x2="730.0" y1="46" y2="54" stroke="#281014"></line><text x="730.0" y="72" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="#60343C">2030</text><circle cx="100.0" cy="34" r="7" fill="#2B44C8" stroke="#FFFFF7" stroke-width="1.5"></circle><circle cx="327.5" cy="34" r="7" fill="#2B44C8" stroke="#FFFFF7" stroke-width="1.5"></circle><circle cx="441.2" cy="34" r="7" fill="#2B44C8" stroke="#FFFFF7" stroke-width="1.5"></circle><circle cx="502.5" cy="34" r="7" fill="#2B44C8" stroke="#FFFFF7" stroke-width="1.5"></circle><circle cx="581.2" cy="34" r="7" fill="#2B44C8" stroke="#FFFFF7" stroke-width="1.5"></circle><circle cx="590.0" cy="34" r="7" fill="#2B44C8" stroke="#FFFFF7" stroke-width="1.5"></circle><circle cx="642.5" cy="34" r="7" fill="#2B44C8" stroke="#FFFFF7" stroke-width="1.5"></circle><circle cx="677.5" cy="34" r="7" fill="#2B44C8" stroke="#FFFFF7" stroke-width="1.5"></circle><circle cx="677.5" cy="16" r="7" fill="#2B44C8" stroke="#FFFFF7" stroke-width="1.5"></circle><circle cx="686.2" cy="34" r="7" fill="#2B44C8" stroke="#FFFFF7" stroke-width="1.5"></circle><rect x="571.2" y="6" width="133.8" height="40" fill="none" stroke="#CC1236" stroke-width="1.5" stroke-dasharray="4 3"></rect><text x="563.2" y="18" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="12" font-weight="700" fill="#CC1236">6 OF 10 SINCE 2013</text></svg><ol class="cp-tl"><li><span class="tl-y">1958</span><p><b>First implanted pacemaker.</b> Stockholm, 8 October. The first device lasted hours; the patient lived decades on later models.</p></li><li><span class="tl-y">1984</span><p><b>First US-approved cochlear implant.</b> The 3M/House single-channel device, for adults.</p></li><li><span class="tl-y">1997</span><p><b>Deep brain stimulation for tremor.</b> Medtronic Activa; Parkinson’s disease followed in 2002.</p></li><li><span class="tl-y">2004</span><p><b>First BrainGate implant.</b> A paralysed man moves a cursor by thought (<i>Nature</i>, 2006).</p></li><li><span class="tl-y">2013</span><p><b>First US retinal implant, Argus II.</b> Later discontinued, leaving users without support.</p></li><li><span class="tl-y">2014</span><p><b>LUKE arm cleared.</b> A DARPA-funded arm with several muscle-controlled grips.</p></li><li><span class="tl-y">2020</span><p><b>OPRA implant approved.</b> An above-knee prosthesis anchored straight to the thigh bone.</p></li><li><span class="tl-y">2024</span><p><b>Neuralink’s first participant.</b> January; 21 people by January 2026.</p></li><li><span class="tl-y">2024</span><p><b>MIT nerve-controlled ankle.</b> More natural walking, top speeds 41% higher.</p></li><li><span class="tl-y">2025</span><p><b>PRIMA retinal chip results.</b> 80% of 38 patients regain meaningful reading vision.</p></li></ol></div>
+<div class="viz-foot"><span class="meta muted" style="font-size:12px">A selection: first implants or first US approvals. Sources are listed at the end.</span></div>
 </div>
 <div class="col" style="margin-top:32px">
 <p>It is also personal for me. My BEng dissertation was a 3D-printed prosthetic hand that closes when you flex your forearm, and I later rebuilt the open-source InMoov hand as a hobby. Neither comes close to a cyberarm, but both taught me how much engineering it takes just to make five fingers do what you meant.</p>
@@ -513,44 +511,12 @@ h2.t-h2::after,.sec-head .t-h2::after{content:"";display:block;width:56px;height
 <div class="col">
 <p class="kicker">02</p>
 <h2 class="t-h2" style="margin:12px 0 18px">The chrome catalogue: fiction against today</h2>
-<p>Here are six implants from the game and the series, each set against the closest thing that exists in 2026. The map shows where each one sits on the body; the chart after it shows how far each has got, from pure fiction to something a patient can actually receive.</p>
+<p>Here are six implants from the game and the series, each set against the closest thing that exists in 2026. Tap a marker on the body, or a tab, to see what each implant does in Night City, its closest real counterpart, and how far that counterpart has got.</p>
 </div>
-<div class="col-wide viz" style="margin-top:32px" role="group" aria-label="Map: where each Night City implant sits on the body, and its real counterpart">
-<div class="viz-head"><span class="kicker">Map — Night City vs 2026</span><h3 class="t-h3">One body, two catalogues</h3></div>
-<div class="viz-body cp-map"><svg viewBox="0 0 240 520" role="img" aria-label="Outline of a human body with five numbered markers: brain, eye, spine, forearm and lower leg."><path d="M82 112 Q120 100 158 112 Q170 118 168 132 Q158 200 150 250 L154 292 Q120 304 86 292 L90 250 Q82 200 72 132 Q70 118 82 112 Z" fill="#281014" stroke="#281014" stroke-width="3"></path><line x1="120" y1="88" x2="120" y2="114" stroke="#281014" stroke-width="27" stroke-linecap="round"></line><line x1="78" y1="126" x2="60" y2="212" stroke="#281014" stroke-width="27" stroke-linecap="round"></line><line x1="60" y1="212" x2="50" y2="292" stroke="#281014" stroke-width="27" stroke-linecap="round"></line><line x1="162" y1="126" x2="180" y2="212" stroke="#281014" stroke-width="27" stroke-linecap="round"></line><line x1="180" y1="212" x2="190" y2="292" stroke="#281014" stroke-width="27" stroke-linecap="round"></line><line x1="106" y1="286" x2="100" y2="398" stroke="#281014" stroke-width="27" stroke-linecap="round"></line><line x1="100" y1="398" x2="98" y2="488" stroke="#281014" stroke-width="27" stroke-linecap="round"></line><line x1="134" y1="286" x2="140" y2="398" stroke="#281014" stroke-width="27" stroke-linecap="round"></line><line x1="140" y1="398" x2="142" y2="488" stroke="#281014" stroke-width="27" stroke-linecap="round"></line><circle cx="48" cy="304" r="12.5" fill="#281014"></circle><circle cx="192" cy="304" r="12.5" fill="#281014"></circle><ellipse cx="90" cy="498" rx="19.5" ry="9.5" fill="#281014"></ellipse><ellipse cx="150" cy="498" rx="19.5" ry="9.5" fill="#281014"></ellipse><circle cx="120" cy="56" r="35.5" fill="#281014"></circle><path d="M82 112 Q120 100 158 112 Q170 118 168 132 Q158 200 150 250 L154 292 Q120 304 86 292 L90 250 Q82 200 72 132 Q70 118 82 112 Z" fill="#FFFEE6" stroke="#FFFEE6" stroke-width="0"></path><line x1="120" y1="88" x2="120" y2="114" stroke="#FFFEE6" stroke-width="23" stroke-linecap="round"></line><line x1="78" y1="126" x2="60" y2="212" stroke="#FFFEE6" stroke-width="23" stroke-linecap="round"></line><line x1="60" y1="212" x2="50" y2="292" stroke="#FFFEE6" stroke-width="23" stroke-linecap="round"></line><line x1="162" y1="126" x2="180" y2="212" stroke="#FFFEE6" stroke-width="23" stroke-linecap="round"></line><line x1="180" y1="212" x2="190" y2="292" stroke="#FFFEE6" stroke-width="23" stroke-linecap="round"></line><line x1="106" y1="286" x2="100" y2="398" stroke="#FFFEE6" stroke-width="23" stroke-linecap="round"></line><line x1="100" y1="398" x2="98" y2="488" stroke="#FFFEE6" stroke-width="23" stroke-linecap="round"></line><line x1="134" y1="286" x2="140" y2="398" stroke="#FFFEE6" stroke-width="23" stroke-linecap="round"></line><line x1="140" y1="398" x2="142" y2="488" stroke="#FFFEE6" stroke-width="23" stroke-linecap="round"></line><circle cx="48" cy="304" r="11" fill="#FFFEE6"></circle><circle cx="192" cy="304" r="11" fill="#FFFEE6"></circle><ellipse cx="90" cy="498" rx="18" ry="8" fill="#FFFEE6"></ellipse><ellipse cx="150" cy="498" rx="18" ry="8" fill="#FFFEE6"></ellipse><circle cx="120" cy="56" r="34" fill="#FFFEE6"></circle><path d="M98 46 Q100 28 120 26 Q140 28 142 46" fill="none" stroke="#281014" stroke-width="1.5" stroke-dasharray="3 3"></path><circle cx="108" cy="58" r="3" fill="#281014"></circle><circle cx="132" cy="58" r="5" fill="#FFFFF7" stroke="#281014" stroke-width="1.5"></circle><circle cx="132" cy="58" r="2" fill="#281014"></circle><line x1="120" y1="122" x2="120" y2="282" stroke="#281014" stroke-width="1.5" stroke-dasharray="2 5"></line><line x1="116" y1="130" x2="124" y2="130" stroke="#281014" stroke-width="1.2"></line><line x1="116" y1="142" x2="124" y2="142" stroke="#281014" stroke-width="1.2"></line><line x1="116" y1="154" x2="124" y2="154" stroke="#281014" stroke-width="1.2"></line><line x1="116" y1="166" x2="124" y2="166" stroke="#281014" stroke-width="1.2"></line><line x1="116" y1="178" x2="124" y2="178" stroke="#281014" stroke-width="1.2"></line><line x1="116" y1="190" x2="124" y2="190" stroke="#281014" stroke-width="1.2"></line><line x1="116" y1="202" x2="124" y2="202" stroke="#281014" stroke-width="1.2"></line><line x1="116" y1="214" x2="124" y2="214" stroke="#281014" stroke-width="1.2"></line><line x1="116" y1="226" x2="124" y2="226" stroke="#281014" stroke-width="1.2"></line><line x1="116" y1="238" x2="124" y2="238" stroke="#281014" stroke-width="1.2"></line><line x1="116" y1="250" x2="124" y2="250" stroke="#281014" stroke-width="1.2"></line><line x1="116" y1="262" x2="124" y2="262" stroke="#281014" stroke-width="1.2"></line><line x1="116" y1="274" x2="124" y2="274" stroke="#281014" stroke-width="1.2"></line><circle cx="120" cy="36" r="12" fill="#CC1236" stroke="#FFFFF7" stroke-width="2"></circle><text x="120" y="40.5" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700" fill="#FFFFF7">1</text><circle cx="150" cy="66" r="12" fill="#CC1236" stroke="#FFFFF7" stroke-width="2"></circle><text x="150" y="70.5" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700" fill="#FFFFF7">2</text><circle cx="120" cy="196" r="12" fill="#CC1236" stroke="#FFFFF7" stroke-width="2"></circle><text x="120" y="200.5" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700" fill="#FFFFF7">3</text><circle cx="196" cy="260" r="12" fill="#CC1236" stroke="#FFFFF7" stroke-width="2"></circle><text x="196" y="264.5" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700" fill="#FFFFF7">4</text><circle cx="88" cy="448" r="12" fill="#CC1236" stroke="#FFFFF7" stroke-width="2"></circle><text x="88" y="452.5" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700" fill="#FFFFF7">5</text></svg><div><div class="cm-head" aria-hidden="true"><span></span><span>In Night City</span><span>In 2026</span></div><ol class="cm-list2"><li><b aria-hidden="true">1</b><div class="cm-part"><span class="cm-reg">1 · Brain</span><p data-k="In Night City">Biochips and engrams: extra memory, faster thinking, even a copy of a whole mind.</p><p data-k="In 2026">Brain–computer interfaces that read movement intentions from a small patch of cortex (Neuralink, BrainGate, Synchron).</p></div></li><li><b aria-hidden="true">2</b><div class="cm-part"><span class="cm-reg">2 · Eyes</span><p data-k="In Night City">Kiroshi optics: zoom, face scanning and a heads-up display over the world.</p><p data-k="In 2026">The PRIMA retinal chip, restoring some reading vision to people with macular degeneration.</p></div></li><li><b aria-hidden="true">3</b><div class="cm-part"><span class="cm-reg">3 · Nervous system</span><p data-k="In Night City">The Sandevistan along the spine, slowing the world to a crawl.</p><p data-k="In 2026">Muscle stimulation that starts a movement about 80 ms early, so far only in the lab.</p></div></li><li><b aria-hidden="true">4</b><div class="cm-part"><span class="cm-reg">4 · Arms and hands</span><p data-k="In Night City">Mantis Blades and Gorilla Arms that cut and punch through metal.</p><p data-k="In 2026">Muscle-controlled prosthetic hands, the LUKE arm, and implants that anchor a prosthesis to the bone.</p></div></li><li><b aria-hidden="true">5</b><div class="cm-part"><span class="cm-reg">5 · Legs</span><p data-k="In Night City">Reinforced Tendons and Lynx Paws for double jumps and silent steps.</p><p data-k="In 2026">A powered ankle wired to the nervous system, which made walking faster and more natural (MIT, 2024).</p></div></li></ol></div></div>
-<div class="viz-foot"><span class="meta muted" style="font-size:12px">Original drawing. Each real counterpart is described in its section below.</span></div>
-</div>
-
-<div class="col-wide viz" style="margin-top:32px" role="group" aria-label="Chart A: six cyberpunk implants and how close real technology is to each" data-cp-cat>
-<div class="viz-head">
-<span class="kicker">Chart A — Try it: how far is Night City?</span>
-<h3 class="t-h3" data-r="cctitle">Sandevistan: reflexes on fast-forward</h3>
-</div>
-<div class="viz-body stack g24">
-<div class="ratio" role="tablist" aria-label="Choose an implant">
-<button type="button" role="tab" data-cc="0" class="on" aria-selected="true">Sandevistan</button>
-<button type="button" role="tab" data-cc="1" aria-selected="false">Arms &amp; hands</button>
-<button type="button" role="tab" data-cc="2" aria-selected="false">Legs</button>
-<button type="button" role="tab" data-cc="3" aria-selected="false">Optics</button>
-<button type="button" role="tab" data-cc="4" aria-selected="false">Biochip</button>
-<button type="button" role="tab" data-cc="5" aria-selected="false">Engram</button>
-</div>
-<div class="cc-grid">
-<div class="cc-card"><span class="kicker">In Night City</span><p data-r="ccfic">A spinal implant that speeds up your nervous system so much that the world seems to stop. David uses one to move between bullets.</p></div>
-<div class="cc-card real"><span class="kicker">Closest real thing</span><p data-r="ccreal">Electrical muscle stimulation that fires your muscles a little before your brain would. In a 2019 study it made people react about 80 ms faster, and most still felt the movement was their own.</p></div>
-</div>
-<div class="cc-scale" aria-hidden="true">
-<div class="cc-steps"><span>Fiction only</span><span>Lab research</span><span>First human trials</span><span>Approved for patients</span><span>Everyday</span></div>
-<div class="cc-track"><i data-r="ccfill"></i><b data-r="ccdot"></b></div>
-</div>
-<div class="readout r3">
-<div><span>Where it stands</span><b data-r="ccstage">Lab research</b></div>
-<div><span>Used for</span><b data-r="ccuse">Lab experiments</b></div>
-<div><span>Still fiction</span><b data-r="ccgap">Slowing time down</b></div>
-</div>
-<p class="small" data-r="ccnote">Nothing real changes how fast time feels. The best we can do is shave tens of milliseconds off a reaction by letting a machine start the movement.</p>
-</div>
-<div class="viz-foot"><span class="meta muted" style="font-size:12px">Stages are my own judgement from the sources at the end of this talk. “Approved” means approved somewhere for patients, not available everywhere.</span></div>
+<div class="col-wide viz" style="margin-top:32px" role="group" aria-label="Chart A: six cyberpunk implants, where they sit on the body, and how close real technology is to each" data-cp-cat>
+<div class="viz-head"><span class="kicker">Chart A — Try it: how far is Night City?</span><h3 class="t-h3" data-r="cctitle">Sandevistan: reflexes on fast-forward</h3></div>
+<div class="viz-body cc-wrap"><svg class="cc-body" viewBox="0 0 240 520" role="img" aria-label="Outline of a human body with six numbered implant markers: spine, forearm, lower leg, eye, neck and head."><path d="M82 112 Q120 100 158 112 Q170 118 168 132 Q158 200 150 250 L154 292 Q120 304 86 292 L90 250 Q82 200 72 132 Q70 118 82 112 Z" fill="#281014" stroke="#281014" stroke-width="3"></path><line x1="120" y1="88" x2="120" y2="114" stroke="#281014" stroke-width="27" stroke-linecap="round"></line><line x1="78" y1="126" x2="60" y2="212" stroke="#281014" stroke-width="27" stroke-linecap="round"></line><line x1="60" y1="212" x2="50" y2="292" stroke="#281014" stroke-width="27" stroke-linecap="round"></line><line x1="162" y1="126" x2="180" y2="212" stroke="#281014" stroke-width="27" stroke-linecap="round"></line><line x1="180" y1="212" x2="190" y2="292" stroke="#281014" stroke-width="27" stroke-linecap="round"></line><line x1="106" y1="286" x2="100" y2="398" stroke="#281014" stroke-width="27" stroke-linecap="round"></line><line x1="100" y1="398" x2="98" y2="488" stroke="#281014" stroke-width="27" stroke-linecap="round"></line><line x1="134" y1="286" x2="140" y2="398" stroke="#281014" stroke-width="27" stroke-linecap="round"></line><line x1="140" y1="398" x2="142" y2="488" stroke="#281014" stroke-width="27" stroke-linecap="round"></line><circle cx="48" cy="304" r="12.5" fill="#281014"></circle><circle cx="192" cy="304" r="12.5" fill="#281014"></circle><ellipse cx="90" cy="498" rx="19.5" ry="9.5" fill="#281014"></ellipse><ellipse cx="150" cy="498" rx="19.5" ry="9.5" fill="#281014"></ellipse><circle cx="120" cy="56" r="35.5" fill="#281014"></circle><path d="M82 112 Q120 100 158 112 Q170 118 168 132 Q158 200 150 250 L154 292 Q120 304 86 292 L90 250 Q82 200 72 132 Q70 118 82 112 Z" fill="#FFFEE6" stroke="#FFFEE6" stroke-width="0"></path><line x1="120" y1="88" x2="120" y2="114" stroke="#FFFEE6" stroke-width="23" stroke-linecap="round"></line><line x1="78" y1="126" x2="60" y2="212" stroke="#FFFEE6" stroke-width="23" stroke-linecap="round"></line><line x1="60" y1="212" x2="50" y2="292" stroke="#FFFEE6" stroke-width="23" stroke-linecap="round"></line><line x1="162" y1="126" x2="180" y2="212" stroke="#FFFEE6" stroke-width="23" stroke-linecap="round"></line><line x1="180" y1="212" x2="190" y2="292" stroke="#FFFEE6" stroke-width="23" stroke-linecap="round"></line><line x1="106" y1="286" x2="100" y2="398" stroke="#FFFEE6" stroke-width="23" stroke-linecap="round"></line><line x1="100" y1="398" x2="98" y2="488" stroke="#FFFEE6" stroke-width="23" stroke-linecap="round"></line><line x1="134" y1="286" x2="140" y2="398" stroke="#FFFEE6" stroke-width="23" stroke-linecap="round"></line><line x1="140" y1="398" x2="142" y2="488" stroke="#FFFEE6" stroke-width="23" stroke-linecap="round"></line><circle cx="48" cy="304" r="11" fill="#FFFEE6"></circle><circle cx="192" cy="304" r="11" fill="#FFFEE6"></circle><ellipse cx="90" cy="498" rx="18" ry="8" fill="#FFFEE6"></ellipse><ellipse cx="150" cy="498" rx="18" ry="8" fill="#FFFEE6"></ellipse><circle cx="120" cy="56" r="34" fill="#FFFEE6"></circle><path d="M98 46 Q100 28 120 26 Q140 28 142 46" fill="none" stroke="#281014" stroke-width="1.5" stroke-dasharray="3 3"></path><circle cx="108" cy="58" r="3" fill="#281014"></circle><circle cx="132" cy="58" r="5" fill="#FFFFF7" stroke="#281014" stroke-width="1.5"></circle><circle cx="132" cy="58" r="2" fill="#281014"></circle><line x1="120" y1="122" x2="120" y2="282" stroke="#281014" stroke-width="1.5" stroke-dasharray="2 5"></line><line x1="116" y1="130" x2="124" y2="130" stroke="#281014" stroke-width="1.2"></line><line x1="116" y1="142" x2="124" y2="142" stroke="#281014" stroke-width="1.2"></line><line x1="116" y1="154" x2="124" y2="154" stroke="#281014" stroke-width="1.2"></line><line x1="116" y1="166" x2="124" y2="166" stroke="#281014" stroke-width="1.2"></line><line x1="116" y1="178" x2="124" y2="178" stroke="#281014" stroke-width="1.2"></line><line x1="116" y1="190" x2="124" y2="190" stroke="#281014" stroke-width="1.2"></line><line x1="116" y1="202" x2="124" y2="202" stroke="#281014" stroke-width="1.2"></line><line x1="116" y1="214" x2="124" y2="214" stroke="#281014" stroke-width="1.2"></line><line x1="116" y1="226" x2="124" y2="226" stroke="#281014" stroke-width="1.2"></line><line x1="116" y1="238" x2="124" y2="238" stroke="#281014" stroke-width="1.2"></line><line x1="116" y1="250" x2="124" y2="250" stroke="#281014" stroke-width="1.2"></line><line x1="116" y1="262" x2="124" y2="262" stroke="#281014" stroke-width="1.2"></line><line x1="116" y1="274" x2="124" y2="274" stroke="#281014" stroke-width="1.2"></line><g class="cc-mk" data-cc="0" role="button" tabindex="0" aria-label="Sandevistan, along the spine"><circle cx="120" cy="196" r="16" fill="transparent"></circle><circle class="mk" cx="120" cy="196" r="12" fill="#2B44C8" stroke="#FFFFF7" stroke-width="2"></circle><text x="120" y="200.5" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700" fill="#FFFFF7" style="pointer-events:none">1</text></g><g class="cc-mk" data-cc="1" role="button" tabindex="0" aria-label="Arms and hands"><circle cx="196" cy="260" r="16" fill="transparent"></circle><circle class="mk" cx="196" cy="260" r="12" fill="#CC1236" stroke="#FFFFF7" stroke-width="2"></circle><text x="196" y="264.5" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700" fill="#FFFFF7" style="pointer-events:none">2</text></g><g class="cc-mk" data-cc="2" role="button" tabindex="0" aria-label="Legs"><circle cx="88" cy="448" r="16" fill="transparent"></circle><circle class="mk" cx="88" cy="448" r="12" fill="#CC1236" stroke="#FFFFF7" stroke-width="2"></circle><text x="88" y="452.5" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700" fill="#FFFFF7" style="pointer-events:none">3</text></g><g class="cc-mk" data-cc="3" role="button" tabindex="0" aria-label="Optics, the eyes"><circle cx="150" cy="66" r="16" fill="transparent"></circle><circle class="mk" cx="150" cy="66" r="12" fill="#CC1236" stroke="#FFFFF7" stroke-width="2"></circle><text x="150" y="70.5" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700" fill="#FFFFF7" style="pointer-events:none">4</text></g><g class="cc-mk" data-cc="4" role="button" tabindex="0" aria-label="Biochip, in the neck"><circle cx="146" cy="102" r="16" fill="transparent"></circle><circle class="mk" cx="146" cy="102" r="12" fill="#CC1236" stroke="#FFFFF7" stroke-width="2"></circle><text x="146" y="106.5" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700" fill="#FFFFF7" style="pointer-events:none">5</text></g><g class="cc-mk" data-cc="5" role="button" tabindex="0" aria-label="Engram, the mind"><circle cx="120" cy="30" r="16" fill="transparent"></circle><circle class="mk" cx="120" cy="30" r="12" fill="#CC1236" stroke="#FFFFF7" stroke-width="2"></circle><text x="120" y="34.5" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700" fill="#FFFFF7" style="pointer-events:none">6</text></g></svg><div class="stack g16"><div class="ratio cc-tabs" role="tablist" aria-label="Choose an implant"><button type="button" role="tab" data-cc="0" class="on" aria-selected="true">1 · Sandevistan</button><button type="button" role="tab" data-cc="1" class="" aria-selected="false">2 · Arms &amp; hands</button><button type="button" role="tab" data-cc="2" class="" aria-selected="false">3 · Legs</button><button type="button" role="tab" data-cc="3" class="" aria-selected="false">4 · Optics</button><button type="button" role="tab" data-cc="4" class="" aria-selected="false">5 · Biochip</button><button type="button" role="tab" data-cc="5" class="" aria-selected="false">6 · Engram</button></div><div class="cc-grid"><div class="cc-card"><span class="kicker">In Night City</span><p data-r="ccfic">A spinal implant that speeds up your nervous system until the world seems to stop.</p></div><div class="cc-card real"><span class="kicker">In 2026</span><p data-r="ccreal">Muscle stimulation that starts your movement early: about 80 ms faster in a 2019 lab study.</p></div></div><div class="cc-scale" aria-hidden="true"><div class="cc-steps"><span class="">Fiction only</span><span class="on">Lab</span><span class="">First humans</span><span class="">Approved</span><span class="">Everyday</span></div><div class="cc-track"><i data-r="ccfill"></i><b data-r="ccdot"></b></div></div><p class="small cc-gap"><span class="kicker">Still fiction</span> <span data-r="ccgap">Slowing time down</span></p></div></div>
+<div class="viz-foot"><span class="meta muted" style="font-size:12px">Original drawing. Stages are my own judgement from the sources; “Approved” means approved somewhere for patients.</span></div>
 </div>
 
 <div class="col" style="margin-top:48px">
@@ -569,23 +535,13 @@ h2.t-h2::after,.sec-head .t-h2::after{content:"";display:block;width:56px;height
 <figure class="stack g8" style="margin:0"><img src="/_blob/a8c29437154787cdd786f19c7fdf74f9" alt="Animated anime clip: a figure in a green jacket streaks across a dim green scene, leaving a blur of afterimages" loading="lazy" style="width:100%;height:auto;border:1px solid #281014;background:#281014"><figcaption>THE FICTION: A SANDEVISTAN SPRINT, WHERE THE USER BECOMES A GREEN BLUR. CYBERPUNK: EDGERUNNERS, © CD PROJEKT RED / STUDIO TRIGGER.</figcaption></figure>
 <p style="margin-top:24px">The real version is far less cinematic. Here is what that 80 ms head start looks like, slowed down ten times.</p>
 </div>
-<div class="col-wide viz" style="margin-top:32px" role="group" aria-label="Chart B, animated: a normal reaction against one sped up by electrical muscle stimulation" data-fig="race">
-<div class="viz-head">
-<span class="kicker">Chart B — Watch it: beat your own reflexes</span>
-<h3 class="t-h3" data-fig-f="title">Get ready</h3>
-</div>
-<div class="viz-body stack g24">
-<div class="ratio fig-ch" aria-label="Jump to a moment"><button type="button" data-ch="0" class="on" aria-pressed="true">Light on</button><button type="button" data-ch="1" class="" aria-pressed="false">Stimulation</button><button type="button" data-ch="2" class="" aria-pressed="false">Assisted tap</button><button type="button" data-ch="3" class="" aria-pressed="false">Your tap</button><button type="button" class="fig-play" data-fig-play aria-pressed="true" aria-label="Pause the animation"><span aria-hidden="true">‖</span> Pause</button></div>
+<div class="col-wide viz" style="margin-top:32px" role="group" aria-label="Chart B, animated: a normal reaction against one sped up by electrical muscle stimulation" data-cp-race>
+<div class="viz-head"><span class="kicker">Chart B — Watch it: beat your own reflexes</span><h3 class="t-h3" data-r="rbtitle">Get ready</h3></div>
+<div class="viz-body stack g16">
 <div class="cp-box"><svg class="cp-svg cp-wide" viewBox="0 0 760 262" data-sx="1.84375" data-x0="150" role="img" aria-label="Two lanes on a 0 to 320 millisecond timeline: your own tap lands at about 267 ms; with muscle stimulation fired at 160 ms, the tap lands at about 187 ms."><rect width="760" height="262" fill="#FFFFF7"></rect><circle cx="40" cy="34" r="20" fill="#FFF200" opacity="0" data-r="glow" style="filter:blur(6px)"></circle><circle cx="40" cy="34" r="11" fill="#FFFBB3" stroke="#281014" stroke-width="1.5" data-r="lamp"></circle><text x="60" y="38" font-family="JetBrains Mono, monospace" font-size="11" fill="#60343C">LIGHT</text><rect x="150" y="74" width="590" height="40" fill="#FBF6E4"></rect><text x="20" y="91" font-family="JetBrains Mono, monospace" font-size="11" fill="#281014" font-weight="700">WITH</text><text x="20" y="106" font-family="JetBrains Mono, monospace" font-size="11" fill="#281014" font-weight="700">STIMULATION</text><rect x="150" y="150" width="590" height="40" fill="#FBF6E4"></rect><text x="20" y="167" font-family="JetBrains Mono, monospace" font-size="11" fill="#281014" font-weight="700">ON YOUR</text><text x="20" y="182" font-family="JetBrains Mono, monospace" font-size="11" fill="#281014" font-weight="700">OWN</text><rect x="150" y="80" width="0" height="28" fill="#2B44C8" data-r="b1"></rect><rect x="150" y="156" width="0" height="28" fill="#60343C" data-r="b2"></rect><line x1="150" x2="150" y1="62" y2="206" stroke="#DFCDD1" stroke-width="1"></line><line x1="150" x2="150" y1="206" y2="212" stroke="#281014"></line><text x="150" y="228" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#60343C">0</text><line x1="223.8" x2="223.8" y1="62" y2="206" stroke="#DFCDD1" stroke-width="1"></line><line x1="223.8" x2="223.8" y1="206" y2="212" stroke="#281014"></line><text x="223.8" y="228" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#60343C">40</text><line x1="297.5" x2="297.5" y1="62" y2="206" stroke="#DFCDD1" stroke-width="1"></line><line x1="297.5" x2="297.5" y1="206" y2="212" stroke="#281014"></line><text x="297.5" y="228" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#60343C">80</text><line x1="371.2" x2="371.2" y1="62" y2="206" stroke="#DFCDD1" stroke-width="1"></line><line x1="371.2" x2="371.2" y1="206" y2="212" stroke="#281014"></line><text x="371.2" y="228" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#60343C">120</text><line x1="445" x2="445" y1="62" y2="206" stroke="#DFCDD1" stroke-width="1"></line><line x1="445" x2="445" y1="206" y2="212" stroke="#281014"></line><text x="445" y="228" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#60343C">160</text><line x1="518.8" x2="518.8" y1="62" y2="206" stroke="#DFCDD1" stroke-width="1"></line><line x1="518.8" x2="518.8" y1="206" y2="212" stroke="#281014"></line><text x="518.8" y="228" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#60343C">200</text><line x1="592.5" x2="592.5" y1="62" y2="206" stroke="#DFCDD1" stroke-width="1"></line><line x1="592.5" x2="592.5" y1="206" y2="212" stroke="#281014"></line><text x="592.5" y="228" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#60343C">240</text><line x1="666.2" x2="666.2" y1="62" y2="206" stroke="#DFCDD1" stroke-width="1"></line><line x1="666.2" x2="666.2" y1="206" y2="212" stroke="#281014"></line><text x="666.2" y="228" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#60343C">280</text><line x1="740" x2="740" y1="62" y2="206" stroke="#DFCDD1" stroke-width="1"></line><line x1="740" x2="740" y1="206" y2="212" stroke="#281014"></line><text x="740" y="228" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#60343C">320</text><line x1="150" x2="740" y1="206" y2="206" stroke="#281014"></line><text x="150" y="250" font-family="JetBrains Mono, monospace" font-size="11" fill="#60343C">MILLISECONDS AFTER THE LIGHT</text><g data-r="ems" opacity="0.25"><line x1="445" x2="445" y1="66" y2="114" stroke="#CC1236" stroke-width="2" stroke-dasharray="4 3"></line><path d="M440 52 l7 -10 l-2 7 h5 l-7 10 l2 -7 z" fill="#CC1236"></path><text x="435" y="58" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="11" fill="#CC1236">STIMULATION 160</text></g><g data-r="t1" opacity="0"><circle cx="494.8" cy="94" r="9" fill="#FFFFF7" stroke="#2B44C8" stroke-width="3"></circle><circle cx="494.8" cy="94" r="3.5" fill="#2B44C8"></circle><text x="508.8" y="98" font-family="JetBrains Mono, monospace" font-size="11" fill="#281014" font-weight="700">TAP 187</text></g><g data-r="t2" opacity="0"><circle cx="642.3" cy="170" r="9" fill="#FFFFF7" stroke="#60343C" stroke-width="3"></circle><circle cx="642.3" cy="170" r="3.5" fill="#60343C"></circle><text x="656.3" y="174" font-family="JetBrains Mono, monospace" font-size="11" fill="#281014" font-weight="700">TAP 267</text></g><g data-r="gain" opacity="0"><path d="M494.8 124 v8 H642.3 v-8" fill="none" stroke="#CC1236" stroke-width="2"></path><text x="568.5" y="146" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" font-weight="700" fill="#CC1236">≈80 MS SOONER</text></g><g data-r="cur" opacity="0"><line x1="150" x2="150" y1="62" y2="206" stroke="#281014" stroke-width="1.5"></line><path d="M144 206 h12 l-6 -8 z" fill="#281014"></path></g></svg><svg class="cp-svg cp-phone" viewBox="0 0 360 300" data-sx="1" data-x0="20" role="img" aria-label="Two lanes on a 0 to 320 millisecond timeline: your own tap lands at about 267 ms; with muscle stimulation fired at 160 ms, the tap lands at about 187 ms."><rect width="360" height="300" fill="#FFFFF7"></rect><circle cx="32" cy="30" r="20" fill="#FFF200" opacity="0" data-r="glow" style="filter:blur(6px)"></circle><circle cx="32" cy="30" r="11" fill="#FFFBB3" stroke="#281014" stroke-width="1.5" data-r="lamp"></circle><text x="52" y="34" font-family="JetBrains Mono, monospace" font-size="13" fill="#60343C">LIGHT</text><rect x="20" y="86" width="320" height="40" fill="#FBF6E4"></rect><text x="20" y="66" font-family="JetBrains Mono, monospace" font-size="13" fill="#281014" font-weight="700">WITH STIMULATION</text><rect x="20" y="184" width="320" height="40" fill="#FBF6E4"></rect><text x="20" y="164" font-family="JetBrains Mono, monospace" font-size="13" fill="#281014" font-weight="700">ON YOUR OWN</text><rect x="20" y="92" width="0" height="28" fill="#2B44C8" data-r="b1"></rect><rect x="20" y="190" width="0" height="28" fill="#60343C" data-r="b2"></rect><line x1="20" x2="20" y1="74" y2="242" stroke="#DFCDD1" stroke-width="1"></line><line x1="20" x2="20" y1="242" y2="248" stroke="#281014"></line><text x="20" y="264" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="13" fill="#60343C">0</text><line x1="100" x2="100" y1="74" y2="242" stroke="#DFCDD1" stroke-width="1"></line><line x1="100" x2="100" y1="242" y2="248" stroke="#281014"></line><text x="100" y="264" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="13" fill="#60343C">80</text><line x1="180" x2="180" y1="74" y2="242" stroke="#DFCDD1" stroke-width="1"></line><line x1="180" x2="180" y1="242" y2="248" stroke="#281014"></line><text x="180" y="264" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="13" fill="#60343C">160</text><line x1="260" x2="260" y1="74" y2="242" stroke="#DFCDD1" stroke-width="1"></line><line x1="260" x2="260" y1="242" y2="248" stroke="#281014"></line><text x="260" y="264" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="13" fill="#60343C">240</text><line x1="340" x2="340" y1="74" y2="242" stroke="#DFCDD1" stroke-width="1"></line><line x1="340" x2="340" y1="242" y2="248" stroke="#281014"></line><text x="340" y="264" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="13" fill="#60343C">320</text><line x1="20" x2="340" y1="242" y2="242" stroke="#281014"></line><text x="20" y="286" font-family="JetBrains Mono, monospace" font-size="13" fill="#60343C">MILLISECONDS AFTER THE LIGHT</text><g data-r="ems" opacity="0.25"><line x1="180" x2="180" y1="78" y2="126" stroke="#CC1236" stroke-width="2" stroke-dasharray="4 3"></line><path d="M175 64 l7 -10 l-2 7 h5 l-7 10 l2 -7 z" fill="#CC1236"></path><text x="188" y="70" text-anchor="start" font-family="JetBrains Mono, monospace" font-size="13" fill="#CC1236">160</text></g><g data-r="t1" opacity="0"><circle cx="207" cy="106" r="9" fill="#FFFFF7" stroke="#2B44C8" stroke-width="3"></circle><circle cx="207" cy="106" r="3.5" fill="#2B44C8"></circle></g><g data-r="t2" opacity="0"><circle cx="287" cy="204" r="9" fill="#FFFFF7" stroke="#60343C" stroke-width="3"></circle><circle cx="287" cy="204" r="3.5" fill="#60343C"></circle></g><g data-r="gain" opacity="0"><path d="M207 134 v8 H287 v-8" fill="none" stroke="#CC1236" stroke-width="2"></path><text x="247" y="156" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="14" font-weight="700" fill="#CC1236">≈80 MS</text></g><g data-r="cur" opacity="0"><line x1="20" x2="20" y1="74" y2="242" stroke="#281014" stroke-width="1.5"></line><path d="M14 242 h12 l-6 -8 z" fill="#281014"></path></g></svg></div>
-<div class="fig-track" aria-hidden="true"><i data-fig-bar></i></div>
-<div class="readout r3">
-<div><span>Time since the light</span><b data-r="rt">—</b></div>
-<div><span>With stimulation</span><b data-fig-f="v1">Waiting</b></div>
-<div><span>On your own</span><b data-fig-f="v2">Waiting</b></div>
+<div class="rb-row"><button type="button" class="rb-play" data-rb-play>▶ Play</button><p class="small" data-r="rbnote" aria-live="polite">Both lanes wait for the same light. Only one has a machine ready to help.</p></div>
 </div>
-<p class="small" data-fig-f="note" data-fig-note aria-live="off">Both lanes wait for the same light. Only one has a machine ready to help.</p>
-</div>
-<div class="viz-foot"><span class="meta muted" style="font-size:12px">Played 10× slower than real time. Averages from the first study of Kasahara, Nishida &amp; Lopes (CHI 2019): 267 ms on your own, stimulation fired at 160 ms, about 80 ms gained. Individual taps vary a lot around these.</span></div>
+<div class="viz-foot"><span class="meta muted" style="font-size:12px">Played 10× slower than real time. Averages from the first study of Kasahara, Nishida &amp; Lopes (CHI 2019).</span></div>
 </div>
 
 <div class="col" style="margin-top:56px">
@@ -690,7 +646,7 @@ h2.t-h2::after,.sec-head .t-h2::after{content:"";display:block;width:56px;height
 </ol>
 </div>
 <div class="col" style="margin-top:40px">
-<p class="kicker">Sources</p>
+<details class="cp-more"><summary><span class="kicker">Sources</span><span class="meta">19 references · show</span></summary>
 <ul class="cp-src">
 <li>Kasahara, S., Nishida, J. &amp; Lopes, P. Preemptive Action: Accelerating Human Reaction using Electrical Muscle Stimulation Without Compromising Agency. CHI 2019. <a href="https://lab.plopes.org/published/2019-CHI-AgencyEMS.pdf">PDF ↗</a></li>
 <li>Song, H., Hsieh, T.-H., Yeon, S.H. et al. Continuous neural control of a bionic limb restores biomimetic gait after amputation. <i>Nature Medicine</i>, July 2024. <a href="https://www.media.mit.edu/publications/continuous-neural-control-of-a-bionic-limb-restores-biomimetic-gait-after-amputation/">MIT Media Lab ↗</a></li>
@@ -712,13 +668,14 @@ h2.t-h2::after,.sec-head .t-h2::after{content:"";display:block;width:56px;height
 <li>Timeline: Neuralink’s first human participant, January 2024. <a href="https://en.wikipedia.org/wiki/Noland_Arbaugh">Wikipedia ↗</a></li>
 <li><i>Cyberpunk: Edgerunners 2</i> premiere date, CD PROJEKT RED press release. <a href="https://press.cdprojektred.com/en/news/1837/cyberpunk-edgerunners-2-premiere-date-announced-alongside-new-trailer">Press ↗</a></li>
 </ul>
+</details>
 </div>
 </div>
 </section>
 
 <section class="sec">
 <div class="wrap article">
-<div class="col-wide take">
+<div class="col">
 <div>
 <p class="kicker">06</p>
 <h2 class="t-h2" style="margin:12px 0 18px">Personal Take</h2>
@@ -729,12 +686,6 @@ h2.t-h2::after,.sec-head .t-h2::after{content:"";display:block;width:56px;height
 <p>So I am hyped and wary at the same time. I want this technology to keep arriving, but I would like the rules on ownership, access and consent to arrive with it, not after the first people are left with chrome that nobody will support.</p>
 <nav class="talk-nav" aria-label="More talks"><a class="tn prev" href="Talk-NavierStokes.dc.html"><span class="tn-k">← Previous talk · 09</span><span class="tn-t">Mathematician vs Clanker: Navier–Stokes, the Millennium Prize Question Answered?</span><span class="tn-m">23rd September 2026 · 16 min read</span></a><div class="tn next none"><span class="tn-k">You’re all caught up</span><span class="tn-m">This is the newest talk</span></div></nav>
 <a href="Talks.dc.html" class="back" style="margin-top:24px;color:#2B44C8">← Back to all talks</a>
-</div>
-<div class="stack g24">
-<figure class="stack g12">
-<img src="/_blob/f0e0ba1e2e75a6ff8ed0c2af836ce6ad" alt="Render of a dark grey robotic hand with segmented metal fingers, exposed cables and orange accents" loading="lazy" style="width:100%;height:auto;border:1px solid #281014;background:#000000">
-<figcaption>CHROME, AND WHAT IT COSTS. CONCEPT RENDER OF A CYBERNETIC HAND.</figcaption>
-</figure>
 </div>
 </div>
 </div>
@@ -1328,190 +1279,147 @@ class Component extends DCLogic {
       }
     };
   }
-  gtFigsHelper() {
-    const defs = this.figDefs ? this.figDefs() : [];
-    this.gtFigList = this.gtFigList || [];
-    defs.forEach((d) => {
-      const el = document.querySelector('[data-fig="' + d.id + '"]');
-      if (el && !el.__fig) this.gtFigList.push(this.gtFigRun(el, d));
+  gtFigs() {
+    if (this.cpOn) return;
+    this.cpOn = true;
+    const guard = (fn) => (e) => { try { fn.call(this, e); } catch (err) { if (window.console) console.warn('[cp-charts]', err); } };
+    const onClick = guard(this.cpClick), onKey = guard(this.cpKey);
+    document.addEventListener('click', onClick, true);
+    document.addEventListener('keydown', onKey, true);
+    this.cpOff = () => { document.removeEventListener('click', onClick, true); document.removeEventListener('keydown', onKey, true); };
+    const scan = guard(this.cpScan);
+    scan();
+    this.cpInt = setInterval(scan, 600);
+  }
+  gtFigStop() {
+    clearInterval(this.cpInt);
+    if (this.cpOff) this.cpOff();
+    Array.from(document.querySelectorAll('[data-cp-race]')).forEach((el) => { if (el.__cp && el.__cp.raf) cancelAnimationFrame(el.__cp.raf); });
+    this.cpOn = false;
+  }
+  cpScan() {
+    Array.from(document.querySelectorAll('[data-cp-cat]')).forEach((el) => { if (!el.__cp) { el.__cp = { i: 0 }; this.cpShow(el, 0); } });
+    Array.from(document.querySelectorAll('[data-cp-race]')).forEach((el) => {
+      if (!el.__cp) { el.__cp = { t: 0, auto: false }; this.cpDraw(el); }
+      const s = el.__cp;
+      if (!s.auto) {
+        const r = el.getBoundingClientRect(), h = window.innerHeight || 800;
+        if (r.top < h * 0.8 && r.bottom > h * 0.2) { s.auto = true; this.cpPlay(el); }
+      }
     });
   }
-  gtFigStopHelper() { (this.gtFigList || []).forEach((f) => f && f.stop && f.stop()); this.gtFigList = []; }
-  gtFigRun(root, d) {
-    const still = () => !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
-    const q = (s) => root.querySelector(s);
-    const qa = (s) => Array.from(root.querySelectorAll(s));
-    const btns = qa('[data-ch]'), play = q('[data-fig-play]'), bar = q('[data-fig-bar]'), note = q('[data-fig-note]');
-    const fields = qa('[data-fig-f]');
-    const F = { t: d.chapters[0], target: null, stopAt: null, playing: d.autoplay !== false && !still(), visible: false, raf: 0, last: 0, k: -1, ph: null };
-    root.__fig = F;
-    const label = () => {
-      if (!play) return;
-      play.setAttribute('aria-pressed', F.playing ? 'true' : 'false');
-      play.setAttribute('aria-label', F.playing ? 'Pause the animation' : 'Play the animation');
-      play.innerHTML = F.playing ? '<span aria-hidden="true">‖</span> Pause' : '<span aria-hidden="true">▶</span> Play';
-      if (note) note.setAttribute('aria-live', F.playing ? 'off' : 'polite');
-    };
-    const draw = () => {
-      const r = d.frame(F.t, root) || {};
-      if (r.k !== F.k) {
-        F.k = r.k;
-        btns.forEach((b, i) => { const on = i === r.k; b.className = on ? 'on' : ''; b.setAttribute('aria-pressed', on ? 'true' : 'false'); });
-      }
-      if (r.ph !== F.ph && d.phases && d.phases[r.ph]) {
-        F.ph = r.ph;
-        const P = d.phases[r.ph];
-        fields.forEach((el) => { const k = el.getAttribute('data-fig-f'); if (P[k] != null && el.textContent !== P[k]) el.textContent = P[k]; });
-      }
-      if (bar) bar.style.transform = 'scaleX(' + (F.t / d.dur).toFixed(4) + ')';
-    };
-    const tick = (now) => {
-      F.raf = 0;
-      const dt = F.last ? Math.min((now - F.last) / 1000, 1 / 30) : 1 / 60;
-      F.last = now;
-      if (F.target != null) {
-        const gap = F.target - F.t;
-        F.t += gap * (1 - Math.exp(-dt / 0.16));
-        if (Math.abs(F.target - F.t) < 0.004) { F.t = F.target; F.target = null; }
-      } else if (F.playing) {
-        F.t += dt;
-        if (F.stopAt != null && F.t >= F.stopAt) { F.t = F.stopAt; F.stopAt = null; F.playing = false; label(); }
-        else if (F.t >= d.dur) F.t = d.loop === false ? d.dur : F.t % d.dur;
-      }
-      draw();
-      if (F.visible && (F.playing || F.target != null)) F.raf = requestAnimationFrame(tick);
-    };
-    const kick = () => { if (!F.raf && F.visible) { F.last = 0; F.raf = requestAnimationFrame(tick); } };
-    const seek = (t) => {
-      F.playing = false; label();
-      if (still()) { F.t = t; F.target = null; draw(); } else { F.target = t; kick(); }
-    };
-    // segments: a chapter plays its own stretch at normal speed and stops (used where autoplay would spoil a puzzle)
-    const playSeg = (i) => {
-      const a = d.segments[i][0], b = d.segments[i][1];
-      F.target = null;
-      if (still()) { F.t = b; F.playing = false; label(); draw(); return; }
-      if (b < F.t - 0.01) { F.playing = false; F.stopAt = null; F.target = b; label(); kick(); return; }
-      if (F.t < a) F.t = a;
-      F.stopAt = b; F.playing = true; label(); kick();
-    };
-    btns.forEach((b, i) => b.addEventListener('click', () => (d.segments ? playSeg(i) : seek(d.chapters[i]))));
-    if (play) play.addEventListener('click', () => { F.playing = !F.playing; F.target = null; F.stopAt = null; label(); kick(); });
-    const io = window.IntersectionObserver ? new IntersectionObserver((es) => {
-      F.visible = es[es.length - 1].isIntersecting;
-      if (F.visible) kick();
-    }, { rootMargin: '120px 0px' }) : null;
-    if (io) io.observe(root); else { F.visible = true; }
-    F.show = (t) => { F.playing = false; F.target = null; F.t = t; label(); draw(); };
-    label(); draw(); kick();
-    return { stop: () => { if (F.raf) cancelAnimationFrame(F.raf); F.raf = 0; if (io) io.disconnect(); root.__fig = null; } };
+  cpClick(e) {
+    const t = e.target && e.target.closest ? e.target.closest('[data-cc], [data-rb-play]') : null;
+    if (!t) return;
+    if (t.hasAttribute('data-cc')) {
+      const el = t.closest('[data-cp-cat]');
+      if (el) { el.__cp = el.__cp || {}; this.cpShow(el, +t.getAttribute('data-cc')); }
+    } else {
+      const el = t.closest('[data-cp-race]');
+      if (el) { el.__cp = el.__cp || { t: 0 }; el.__cp.auto = true; this.cpPlay(el); }
+    }
   }
-  // ── Talk 10: Chart A (implant catalogue tabs) is wired here; Chart B (reaction race) runs on the figure helper ──
-  gtFigs() { this.gtFigsHelper(); this.cpCat(0); }
-  gtFigStop() { clearTimeout(this.cpWait); this.cpOn = false; this.gtFigStopHelper(); }
-  cpCat(tries) {
-    if (this.cpOn) return;
-    const el = document.querySelector('[data-cp-cat]');
-    if (!el) { if (tries < 40) this.cpWait = setTimeout(() => this.cpCat(tries + 1), 150); return; }
-    this.cpOn = true;
+  cpKey(e) {
+    const t = e.target && e.target.closest ? e.target.closest('[data-cc]') : null;
+    if (!t) return;
+    const el = t.closest('[data-cp-cat]');
+    if (!el) return;
+    const i = +t.getAttribute('data-cc'), n = 6;
+    if (e.key === 'Enter' || e.key === ' ') { if (t.tagName !== 'BUTTON') { e.preventDefault(); el.__cp = el.__cp || {}; this.cpShow(el, i); } return; }
+    const d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+    if (!d || t.tagName !== 'BUTTON') return;
+    e.preventDefault();
+    const k = (i + d + n) % n;
+    el.__cp = el.__cp || {};
+    this.cpShow(el, k);
+    const b = el.querySelector('button[data-cc="' + k + '"]'); if (b) b.focus();
+  }
+  cpShow(el, i) {
     const STAGES = ['Fiction only', 'Lab research', 'First human trials', 'Approved for patients', 'Everyday'];
     const C = [
-      { t: 'Sandevistan: reflexes on fast-forward', s: 1, use: 'Lab experiments', gap: 'Slowing time down',
-        fic: 'A spinal implant that speeds up your nervous system so much that the world seems to stop. David uses one to move between bullets.',
-        real: 'Electrical muscle stimulation that fires your muscles a little before your brain would. In a 2019 study it made people react about 80 ms faster, and most still felt the movement was their own.',
-        note: 'Nothing real changes how fast time feels. The best we can do is shave tens of milliseconds off a reaction by letting a machine start the movement.' },
-      { t: 'Arms and hands: a grip you control', s: 3, use: 'Replacing a lost arm', gap: 'Super strength, built-in blades',
-        fic: 'Gorilla Arms that punch through doors, Mantis Blades that unfold from the forearm, and hands with built-in tools.',
-        real: 'Prosthetic hands driven by the arm’s own muscle signals, like the DEKA “LUKE” arm cleared in the US in 2014, and implants that anchor a prosthesis straight to the bone.',
-        note: 'Strength is the easy part for a motor. The hard part is control and touch: moving many fingers the way you intend, and feeling what you hold.' },
-      { t: 'Legs: walking with the nervous system', s: 2, use: 'Replacing a lost leg', gap: 'Jumping higher than a human',
-        fic: 'Reinforced Tendons for a double jump, Lynx Paws for silent steps, Fortified Ankles for a charged leap.',
-        real: 'A bionic ankle controlled by the nervous system. In a 2024 MIT study, seven people with surgically reconnected leg muscles walked more naturally and reached top speeds 41% higher than a matched group.',
-        note: 'Today’s bionic legs aim to match a healthy leg, not beat one. Even that took new surgery as well as a new controller.' },
-      { t: 'Optics: seeing again', s: 3, use: 'Restoring some sight', gap: 'Zoom, scanning, overlays',
-        fic: 'Kiroshi eyes that zoom, scan people for data and draw a heads-up display over the world.',
-        real: 'The PRIMA chip, 2 × 2 mm, under the retina. In a 2025 trial, 80% of 38 people with macular degeneration gained meaningful reading vision. It has a CE mark in Europe.',
-        note: 'Implanted vision is grainy and black and white. Augmented-reality glasses come closer to Kiroshi’s overlays, with no surgery at all.' },
-      { t: 'Biochip: a computer in your head', s: 2, use: 'Typing and pointing after paralysis', gap: 'Storing memories or a mind',
-        fic: 'Chips slotted into the neck that store data, speed up thinking, and in the Relic’s case carry a whole personality.',
-        real: 'Brain–computer interfaces. Neuralink had implanted 21 people by January 2026, letting people with paralysis move a cursor or type by thinking.',
-        note: 'Today’s implants read signals from a small patch of brain. Writing thoughts or memories back in is far beyond them.' },
-      { t: 'Engram: a mind copied as data', s: 0, use: 'Research maps of tiny brains', gap: 'All of it',
-        fic: 'Soulkiller scans a mind into an engram, a digital copy like Johnny Silverhand that talks, remembers and can take over a body.',
-        real: 'Wiring maps of brains, called connectomes. The first complete map of an adult fly brain has 139,255 neurons; one cubic millimetre of mouse brain filled 1.6 petabytes.',
-        note: 'A human brain has around 86 billion neurons, and even a perfect wiring map leaves out the chemistry and learning that make a mind.' }
+      { t: 'Sandevistan: reflexes on fast-forward', s: 1, gap: 'Slowing time down',
+        fic: 'A spinal implant that speeds up your nervous system until the world seems to stop.',
+        real: 'Muscle stimulation that starts your movement early: about 80 ms faster in a 2019 lab study.' },
+      { t: 'Arms and hands: a grip you control', s: 3, gap: 'Super strength, built-in blades',
+        fic: 'Gorilla Arms that punch through doors; Mantis Blades that unfold from the forearm.',
+        real: 'Muscle-controlled prosthetic hands like the LUKE arm (cleared in the US in 2014), and implants that anchor a prosthesis to the bone.' },
+      { t: 'Legs: walking with the nervous system', s: 2, gap: 'Jumping higher than a human',
+        fic: 'Reinforced Tendons for a double jump; Lynx Paws for silent steps.',
+        real: 'A nerve-controlled bionic ankle: in MIT’s 2024 study, seven people walked more naturally, with top speeds 41% higher.' },
+      { t: 'Optics: seeing again', s: 3, gap: 'Zoom, face scanning, overlays',
+        fic: 'Kiroshi eyes that zoom, scan strangers and draw a heads-up display over the world.',
+        real: 'The PRIMA chip under the retina: 80% of 38 people with macular degeneration regained meaningful reading vision (2025). CE marked in Europe.' },
+      { t: 'Biochip: a computer in your head', s: 2, gap: 'Storing memories or a mind',
+        fic: 'Chips slotted into the neck that store data, speed up thinking, or, like the Relic, carry a personality.',
+        real: 'Brain–computer interfaces: 21 Neuralink participants by January 2026 move a cursor or type by thinking.' },
+      { t: 'Engram: a mind copied as data', s: 0, gap: 'All of it',
+        fic: 'Soulkiller scans a mind into an engram, like Johnny Silverhand, that talks, remembers and can take over a body.',
+        real: 'Wiring maps of brains: the whole adult fly brain has 139,255 neurons. A human brain has about 86 billion.' }
     ];
+    if (!(i >= 0 && i < C.length)) i = 0;
+    el.__cp.i = i;
+    const c = C[i], pos = ((c.s + 0.5) / STAGES.length * 100).toFixed(1) + '%';
     const R = (k) => el.querySelector('[data-r="' + k + '"]');
-    const r = {}; ['cctitle', 'ccfic', 'ccreal', 'ccfill', 'ccdot', 'ccstage', 'ccuse', 'ccgap', 'ccnote'].forEach((k) => { r[k] = R(k); });
-    const steps = Array.from(el.querySelectorAll('.cc-steps span'));
-    const tabs = Array.from(el.querySelectorAll('[data-cc]'));
-    const txt = (e, v) => { if (e && e.textContent !== v) e.textContent = v; };
-    const show = (i) => {
-      const c = C[i], pos = ((c.s + 0.5) / STAGES.length * 100).toFixed(1) + '%';
-      tabs.forEach((b, j) => { const on = j === i; b.className = on ? 'on' : ''; b.setAttribute('aria-selected', on ? 'true' : 'false'); b.tabIndex = on ? 0 : -1; });
-      steps.forEach((sp, j) => { sp.className = j === c.s ? 'on' : ''; });
-      txt(r.cctitle, c.t); txt(r.ccfic, c.fic); txt(r.ccreal, c.real); txt(r.ccnote, c.note);
-      txt(r.ccstage, STAGES[c.s]); txt(r.ccuse, c.use); txt(r.ccgap, c.gap);
-      r.ccfill.style.width = pos; r.ccdot.style.left = pos;
-      r.ccdot.className = c.s === 0 ? 'fic' : '';
-    };
-    tabs.forEach((b, i) => {
-      b.addEventListener('click', () => show(i));
-      b.addEventListener('keydown', (e) => {
-        const d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
-        if (!d) return;
-        e.preventDefault();
-        const n = (i + d + tabs.length) % tabs.length; show(n); tabs[n].focus();
-      });
+    const txt = (k, v) => { const e = R(k); if (e && e.textContent !== v) e.textContent = v; };
+    Array.from(el.querySelectorAll('button[data-cc]')).forEach((b) => {
+      const on = +b.getAttribute('data-cc') === i;
+      b.className = on ? 'on' : ''; b.setAttribute('aria-selected', on ? 'true' : 'false'); b.tabIndex = on ? 0 : -1;
     });
-    show(0);
+    Array.from(el.querySelectorAll('g[data-cc] .mk')).forEach((m) => {
+      const on = +m.parentNode.getAttribute('data-cc') === i;
+      m.setAttribute('fill', on ? '#2B44C8' : '#CC1236'); m.setAttribute('r', on ? '14' : '12');
+    });
+    Array.from(el.querySelectorAll('.cc-steps span')).forEach((sp, j) => { sp.className = j === c.s ? 'on' : ''; });
+    txt('cctitle', c.t); txt('ccfic', c.fic); txt('ccreal', c.real); txt('ccgap', c.gap);
+    const fill = R('ccfill'), dot = R('ccdot');
+    if (fill) fill.style.width = pos;
+    if (dot) { dot.style.left = pos; dot.className = c.s === 0 ? 'fic' : ''; }
   }
-  figDefs() {
+  // Chart B: 0.6 s wait, then 320 ms of reaction shown 10× slower, then hold. Play/Replay restarts.
+  cpPlay(el) {
+    const s = el.__cp, END = 0.6 + 3.2;
+    if (s.raf) cancelAnimationFrame(s.raf);
+    s.raf = 0;
+    const still = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+    if (still) { s.t = END; this.cpDraw(el); return; }
+    s.t = 0; s.last = 0;
+    const step = (now) => {
+      const dt = s.last ? Math.min((now - s.last) / 1000, 0.05) : 0;
+      s.last = now; s.t = Math.min(END, s.t + dt);
+      s.raf = s.t < END ? requestAnimationFrame(step) : 0;
+      this.cpDraw(el);
+    };
+    s.raf = requestAnimationFrame(step);
+    this.cpDraw(el);
+  }
+  cpDraw(el) {
     const f1 = (v) => Math.round(v * 10) / 10;
-    const EMS = 160, T1 = 187, T2 = 267, LEAD = 0.6;
-    const phases = {
-      wait: { title: 'Get ready', v1: 'Waiting', v2: 'Waiting', note: 'Both lanes wait for the same light. Only one has a machine ready to help.' },
-      see: { title: 'A light comes on', v1: 'Seeing', v2: 'Seeing', note: 'The light reaches the eye at 0 ms. For the next 150 ms or more, the brain is still recognising it and deciding to move.' },
-      ems: { title: 'The machine fires the muscle', v1: 'Muscle stimulated', v2: 'Still deciding', note: 'At 160 ms, electrodes on the forearm make the muscle contract, a little before the brain’s own command would get there.' },
-      tap1: { title: 'Assisted tap at about 187 ms', v1: '≈187 ms', v2: 'On its way', note: 'The stimulated finger lands first. At this timing, most people in the study still felt they had made the movement themselves.' },
-      tap2: { title: 'About 80 ms faster', v1: '≈187 ms', v2: '≈267 ms', note: 'On their own, people averaged 267 ms. Firing earlier gives a bigger head start, but then people feel the machine moved them, not the other way round.' }
-    };
-    const race = {
-      id: 'race', dur: 6.4,
-      chapters: [LEAD + 0.02, LEAD + EMS / 100, LEAD + T1 / 100, LEAD + T2 / 100],
-      phases: phases,
-      frame: (t, root) => {
-        if (!root.__r) {
-          const pick = (el, k) => el.querySelector('[data-r="' + k + '"]');
-          root.__r = { rt: pick(root, 'rt'), svgs: Array.from(root.querySelectorAll('svg[data-sx]')).map((el) => {
-            const o = { sx: +el.getAttribute('data-sx'), x0: +el.getAttribute('data-x0') };
-            ['lamp', 'glow', 'cur', 'b1', 'b2', 'ems', 't1', 't2', 'gain'].forEach((k) => { o[k] = pick(el, k); });
-            return o;
-          }) };
-        }
-        const r = root.__r;
-        const ms = (t - LEAD) * 100, m = Math.max(0, Math.min(320, ms));
-        const on = ms >= 0;
-        r.svgs.forEach((v) => {
-          v.lamp.setAttribute('fill', on ? '#FFF200' : '#FFFBB3');
-          v.glow.setAttribute('opacity', on ? '1' : '0');
-          v.cur.setAttribute('opacity', on && ms <= 320 ? '1' : '0');
-          v.cur.setAttribute('transform', 'translate(' + f1(m * v.sx) + ' 0)');
-          v.b1.setAttribute('width', f1(Math.min(m, T1) * v.sx));
-          v.b2.setAttribute('width', f1(Math.min(m, T2) * v.sx));
-          v.ems.setAttribute('opacity', ms >= EMS ? '1' : '0.25');
-          v.t1.setAttribute('opacity', ms >= T1 ? '1' : '0');
-          v.t2.setAttribute('opacity', ms >= T2 ? '1' : '0');
-          v.gain.setAttribute('opacity', ms >= T2 ? '1' : '0');
-        });
-        const rt = on ? Math.round(m) + ' ms' : '—';
-        if (r.rt.textContent !== rt) r.rt.textContent = rt;
-        const k = ms < EMS ? 0 : ms < T1 ? 1 : ms < T2 ? 2 : 3;
-        const ph = ms < 0 ? 'wait' : ms < EMS ? 'see' : ms < T1 ? 'ems' : ms < T2 ? 'tap1' : 'tap2';
-        return { k: k, ph: ph };
-      }
-    };
-    return [race];
+    const s = el.__cp, EMS = 160, T1 = 187, T2 = 267;
+    const ms = (s.t - 0.6) * 100, m = Math.max(0, Math.min(320, ms)), on = ms >= 0;
+    Array.from(el.querySelectorAll('svg[data-sx]')).forEach((v) => {
+      const sx = +v.getAttribute('data-sx');
+      const set = (k, a, val) => { const e = v.querySelector('[data-r="' + k + '"]'); if (e) e.setAttribute(a, val); };
+      set('lamp', 'fill', on ? '#FFF200' : '#FFFBB3');
+      set('glow', 'opacity', on ? '1' : '0');
+      set('cur', 'opacity', on && ms < 320 ? '1' : '0');
+      set('cur', 'transform', 'translate(' + f1(m * sx) + ' 0)');
+      set('b1', 'width', f1(Math.min(m, T1) * sx));
+      set('b2', 'width', f1(Math.min(m, T2) * sx));
+      set('ems', 'opacity', ms >= EMS ? '1' : '0.25');
+      set('t1', 'opacity', ms >= T1 ? '1' : '0');
+      set('t2', 'opacity', ms >= T2 ? '1' : '0');
+      set('gain', 'opacity', ms >= T2 ? '1' : '0');
+    });
+    const P = ms < 0 ? ['Get ready', 'Both lanes wait for the same light. Only one has a machine ready to help.']
+      : ms < EMS ? ['A light comes on: ' + Math.round(m) + ' ms', 'The eye has seen it; the brain is still recognising it and deciding to move.']
+      : ms < T1 ? ['The machine fires the muscle: ' + Math.round(m) + ' ms', 'At 160 ms, electrodes on the forearm contract the muscle, before the brain’s own command arrives.']
+      : ms < T2 ? ['Assisted tap at 187 ms', 'The stimulated finger lands first, and most people still felt the movement was their own.']
+      : ['About 80 ms faster', 'On their own, people averaged 267 ms. Fire the stimulation earlier and the head start grows, but then it feels like the machine moved you.'];
+    const ti = el.querySelector('[data-r="rbtitle"]'), no = el.querySelector('[data-r="rbnote"]'), b = el.querySelector('[data-rb-play]');
+    if (ti && ti.textContent !== P[0]) ti.textContent = P[0];
+    if (no && no.textContent !== P[1]) no.textContent = P[1];
+    const lab = s.raf ? '↺ Restart' : ms >= 320 ? '↺ Replay' : '▶ Play';
+    if (b && b.textContent !== lab) b.textContent = lab;
   }
   renderVals() {
     return { cm: this.commentVals() };
