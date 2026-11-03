@@ -160,19 +160,31 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 .wada-credit .wada-mini{margin-left:0;border-color:#3A4152}
 /* wadasite:end */
 /* shelf:start */
-.shelf{position:relative;display:flex;align-items:flex-end;gap:5px;height:440px;padding:0 6px;border-bottom:14px solid #10131C;box-shadow:0 10px 0 -4px #C9CED8}
+.shelf-wrap{display:flex;flex-direction:column;gap:14px}
+.shelf-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.sh-btn{min-height:40px;min-width:44px;padding:0 12px;border:1px solid #10131C;background:#FFFFFF;color:#10131C;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:14px;cursor:pointer}
+.sh-btn:hover{background:#10131C;color:#FFFFFF}
+.sh-btn:focus-visible{outline:3px solid #2B44C8;outline-offset:2px}
+.sh-count{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;min-width:52px;text-align:center}
+.sh-hint{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;color:#3A4152;margin-left:8px}
+.sh-sound{margin-left:auto;font-size:12px}
+.sh-sound[aria-pressed="false"]{color:#3A4152;border-style:dashed}
+.shelf{position:relative;display:flex;align-items:flex-end;gap:5px;height:440px;padding:0 6px;border-bottom:14px solid #10131C;box-shadow:0 10px 0 -4px #C9CED8;perspective:1600px}
 .shelf.tall{height:470px}
-.shelf-hint{margin:0 0 14px;font-size:12px}
-.book{position:relative;display:flex;flex:0 0 58px;height:var(--h,94%);min-width:0;overflow:hidden;background:var(--c);color:var(--t);border:1px solid #10131C;border-bottom:0;text-decoration:none;transition:flex-basis .5s cubic-bezier(.2,.7,.2,1),height .5s cubic-bezier(.2,.7,.2,1),transform .25s ease}
-.book:hover{color:var(--t)}
-.spine{flex:0 0 56px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:10px;padding:18px 0 16px;position:relative}
+.book{position:relative;display:flex;flex:0 0 58px;height:var(--h,94%);min-width:0;overflow:hidden;background:var(--c);color:var(--t);border:1px solid #10131C;border-bottom:0;transition:flex-basis .55s cubic-bezier(.2,.7,.2,1),height .55s cubic-bezier(.2,.7,.2,1),transform .25s ease}
+.spine{flex:0 0 56px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:10px;padding:18px 0 16px;position:relative;background:transparent;border:0;color:inherit;cursor:pointer;font:inherit;text-align:center}
+.spine:focus-visible{outline:3px solid #2B44C8;outline-offset:-4px}
+.book:not(.open):hover{transform:translateY(-8px)}
 .spine::before,.spine::after{content:"";position:absolute;left:0;right:0;height:7px}
 .spine::before{top:6px;background:var(--b1);box-shadow:0 10px 0 -3px var(--b2)}
 .spine::after{bottom:6px;background:var(--b1);box-shadow:0 -10px 0 -3px var(--b2)}
 .sp-n{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;font-weight:700;margin-top:14px}
 .sp-t{writing-mode:vertical-rl;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:17px;letter-spacing:-.01em;line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-height:100%;flex:1 1 auto;min-height:0}
 .sp-y{writing-mode:vertical-rl;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;opacity:.85;margin-bottom:14px}
-.cover{flex:1 0 420px;display:grid;grid-template-rows:minmax(0,52%) minmax(0,1fr);background:#FFFFFF;color:#10131C;border-left:1px solid #10131C}
+.cover{flex:1 0 420px;display:grid;grid-template-rows:minmax(0,52%) minmax(0,1fr);background:#FFFFFF;color:#10131C;border-left:1px solid #10131C;text-decoration:none;transform-origin:0 50%}
+.cover:hover{color:#10131C}
+.cover:hover .cv-go{text-decoration:underline}
+.cover:focus-visible{outline:3px solid #2B44C8;outline-offset:-4px}
 .cv-img{overflow:hidden;border-bottom:1px solid #10131C}
 .cv-img img{display:block;width:100%;height:100%}
 .cv-body{display:flex;flex-direction:column;gap:8px;padding:18px 22px 20px;min-height:0}
@@ -182,18 +194,19 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 .cv-m{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;color:#3A4152;margin-top:auto}
 .cv-go{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#2B44C8}
 .book.open{flex:1 1 auto;height:100%}
-.shelf:hover .book.open{flex:0 0 58px;height:var(--h,94%)}
-.shelf:hover .book:hover,.shelf .book:focus-visible,.shelf:hover .book:focus-visible{flex:1 1 auto;height:100%}
-.shelf:has(.book:focus-visible) .book.open:not(:focus-visible){flex:0 0 58px;height:var(--h,94%)}
-.book:not(.open):hover .spine,.book:focus-visible .spine{filter:brightness(1.06)}
-.book:focus-visible{outline:3px solid #2B44C8;outline-offset:3px}
+.book.flip .cover{animation:sh-flip .6s cubic-bezier(.2,.7,.2,1) both}
+@keyframes sh-flip{0%{transform:rotateY(-88deg);box-shadow:-30px 0 40px -20px rgba(16,19,28,.6)}60%{box-shadow:-12px 0 24px -14px rgba(16,19,28,.35)}100%{transform:rotateY(0);box-shadow:none}}
+.shelf:not([data-ready]):hover .book.open{flex:0 0 58px;height:var(--h,94%)}
+.shelf:not([data-ready]):hover .book:hover{flex:1 1 auto;height:100%}
+.shelf-wrap:not([data-ready]) .shelf-bar .sh-btn,.shelf-wrap:not([data-ready]) .sh-count{visibility:hidden}
 .bookend{flex:0 0 26px;height:48%;margin-left:auto;background:#10131C;border-radius:14px 0 0 0}
-@media (prefers-reduced-motion:reduce){.book{transition:none}}
+@media (prefers-reduced-motion:reduce){.book{transition:none}.book.flip .cover{animation:none}}
 @media (max-width:760px){
-.shelf,.shelf.tall{flex-direction:column;align-items:stretch;height:auto;gap:6px;padding:0;border-bottom:0;box-shadow:none}
-.shelf-hint,.bookend{display:none}
-.book{flex:none;height:auto;flex-direction:column;border-bottom:1px solid #10131C}
-.spine{flex:0 0 auto;flex-direction:row;justify-content:flex-start;gap:14px;padding:0 16px;height:56px}
+.shelf,.shelf.tall{flex-direction:column;align-items:stretch;height:auto;gap:6px;padding:0;border-bottom:0;box-shadow:none;perspective:none}
+.sh-hint,.bookend{display:none}
+.book{flex:none !important;height:auto !important;flex-direction:column;border-bottom:1px solid #10131C}
+.book:not(.open):hover{transform:none}
+.spine{flex:0 0 auto;flex-direction:row;justify-content:flex-start;gap:14px;padding:0 16px;height:56px;width:100%;text-align:left}
 .spine::before,.spine::after{top:0;bottom:0;left:auto;right:auto;width:6px;height:auto;box-shadow:none}
 .spine::before{left:0}.spine::after{right:0}
 .sp-n{margin:0}
@@ -202,10 +215,10 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 .sp-y{margin:0}
 .cover{display:none;flex:none;border-left:0;border-top:1px solid #10131C;grid-template-rows:200px auto}
 .book.open .cover{display:grid}
-.shelf:hover .book.open{flex:none;height:auto}
-.shelf:hover .book:hover,.shelf .book:focus-visible{flex:none;height:auto}
+.book.flip .cover{animation:sh-drop .45s cubic-bezier(.2,.7,.2,1) both;transform-origin:50% 0}
 .cv-p{-webkit-line-clamp:3}
 }
+@keyframes sh-drop{0%{transform:rotateX(-70deg);opacity:0}100%{transform:none;opacity:1}}
 /* shelf:end */
 </style>
 </helmet>
@@ -319,7 +332,7 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 </div>
 <a class="btn" href="Projects.dc.html">All projects <span aria-hidden="true">→</span></a>
 </div>
-<p class="shelf-hint meta muted">Hover or tab along the spines to pull a book out · click to open it</p><nav class="shelf" aria-label="Featured works"><a class="book open" href="Thesis-MSc.dc.html" style="--c:#2B44C8;--t:#FFFFFF;--b1:#FDC57E;--b2:#10131C;--h:100%"><span class="spine" aria-hidden="true"><span class="sp-n">MSc</span><span class="sp-t">Soft Actuators, Underwater</span><span class="sp-y">UCL 25</span></span><span class="cover"><span class="cv-img" style="background:#10131C"><img src="/_blob/e6b092fd16f445a4cdd7dec4374667d7" alt="Rayang holding the finished soft underwater robot prototype at UCL" loading="lazy" style="object-fit:cover;object-position:50% 32%"></span><span class="cv-body"><span class="kicker">Dissertation · MSc · UCL · 2025</span><span class="cv-t">Bio-Inspired Pneumatic Soft Actuators for Underwater Robots</span><span class="cv-p">Soft silicone limbs modelled on manta rays and trilobites, pumped with water so a robot can explore coral reefs without harming them.</span><span class="cv-m">University College London · 2025</span><span class="cv-go">Nutshell + full paper →</span></span></span></a><a class="book" href="Thesis-BEng.dc.html" style="--c:#10131C;--t:#FFFFFF;--b1:#A36AA5;--b2:#FDC57E;--h:94%"><span class="spine" aria-hidden="true"><span class="sp-n">BEng</span><span class="sp-t">A Modified Prosthetic Hand</span><span class="sp-y">EXE 23</span></span><span class="cover"><span class="cv-img" style="background:#10131C"><img src="/_blob/d694dc45d8f43526db8f49c7eb77877a" alt="The finished 3D-printed prosthetic hand, palm side" loading="lazy" style="object-fit:cover;object-position:50% 50%"></span><span class="cv-body"><span class="kicker">Dissertation · BEng · Exeter · 2023</span><span class="cv-t">Constructing and Analysing the Performance of a Modified Prosthetic Hand</span><span class="cv-p">A low-cost, 3D-printed five-finger hand that closes when you flex your forearm muscles.</span><span class="cv-m">University of Exeter · 2023</span><span class="cv-go">Nutshell + full paper →</span></span></span></a><a class="book" href="Hobby-InMoov.dc.html" style="--c:#A36AA5;--t:#10131C;--b1:#10131C;--b2:#FDC57E;--h:97%"><span class="spine" aria-hidden="true"><span class="sp-n">H1</span><span class="sp-t">Rebuilding InMoov</span><span class="sp-y">23–24</span></span><span class="cover"><span class="cv-img" style="background:#10131C"><img src="/_blob/8dcea2945392b3e0d9b3bd41927badc4" alt="Freshly printed black InMoov parts laid out on a cutting mat beside a craft knife" loading="lazy" style="object-fit:cover;object-position:50% 50%"></span><span class="cv-body"><span class="kicker">Hobby build · 2023 – 2024</span><span class="cv-t">Rebuilding the InMoov robot hand</span><span class="cv-p">Printing and assembling Gaël Langevin’s open-source InMoov hand, from the first print to the first movement.</span><span class="cv-m">Build diary · 11 clips</span><span class="cv-go">Read the build diary →</span></span></span></a><a class="book" href="Hobby-FlyBrain.dc.html" style="--c:#FDC57E;--t:#10131C;--b1:#A36AA5;--b2:#2B44C8;--h:91%"><span class="spine" aria-hidden="true"><span class="sp-n">H2</span><span class="sp-t">A Fly’s Brain on Sugar</span><span class="sp-y">2026</span></span><span class="cover"><span class="cv-img" style="background:#10131C"><img src="/_blob/217a041e95fae2bb0ca236c2a9de533e" alt="Simulation replay: a glowing cloud of fruit-fly neurons inside a see-through fly head" loading="lazy" style="object-fit:cover;object-position:42% 55%"></span><span class="cv-body"><span class="kicker">Hobby build · 2026 · New</span><span class="cv-t">A fly’s brain when it tastes sugar?</span><span class="cv-p">The published whole-brain model of the fruit fly, fed sugar and followed spike by spike, then run again with two neurons silenced.</span><span class="cv-m">127,400 neurons · 5 interactive figures</span><span class="cv-go">Explore the simulation →</span></span></span></a><a class="book" href="Hobby-GestureMusic.dc.html" style="--c:#1A1F2E;--t:#FFFFFF;--b1:#2B44C8;--b2:#A36AA5;--h:98%"><span class="spine" aria-hidden="true"><span class="sp-n">H3</span><span class="sp-t">Gesture Music</span><span class="sp-y">25–26</span></span><span class="cover"><span class="cv-img" style="background:#FFFFFF"><img src="/_blob/a50cc93e9ed9fa232711a3f74eb2bf40" alt="The Gesture Music hand-sign dictionary: nine hand skeletons" loading="lazy" style="object-fit:contain;object-position:50% 50%;padding:18px"></span><span class="cv-body"><span class="kicker">Hobby build · 2025 – 2026 · New</span><span class="cv-t">Gesture Music: an instrument you play with hand signs</span><span class="cv-p">A webcam watches both hands and each sign plays a note, a chord or a drum, with a looper, live MIDI, a rhythm game and a 61-page handbook.</span><span class="cv-m">Open on GitHub · 61-page handbook</span><span class="cv-go">See it and try it →</span></span></span></a><span class="bookend" aria-hidden="true"></span></nav>
+<div class="shelf-wrap" data-shelf><div class="shelf-bar"><button type="button" class="sh-btn" data-shelf-step="-1" aria-label="Previous book">←</button><span class="sh-count" aria-live="polite"><b data-shelf-pos>1</b> / 5</span><button type="button" class="sh-btn" data-shelf-step="1" aria-label="Next book">→</button><span class="sh-hint">Click a spine to pull it out · click the cover to read</span><button type="button" class="sh-btn sh-sound" data-shelf-sound aria-pressed="true">♪ Sound on</button></div><div class="shelf" role="group" aria-label="Featured works"><div class="book open" data-book="0" style="--c:#2B44C8;--t:#FFFFFF;--b1:#FDC57E;--b2:#10131C;--h:100%"><button type="button" class="spine" data-pick="0" aria-expanded="true" aria-controls="sh-works-0" aria-label="MSc: Bio-Inspired Pneumatic Soft Actuators for Underwater Robots"><span class="sp-n">MSc</span><span class="sp-t">Soft Actuators, Underwater</span><span class="sp-y">UCL 25</span></button><a class="cover" id="sh-works-0" href="Thesis-MSc.dc.html"><span class="cv-img" style="background:#10131C"><img src="/_blob/e6b092fd16f445a4cdd7dec4374667d7" alt="Rayang holding the finished soft underwater robot prototype at UCL" loading="lazy" style="object-fit:cover;object-position:50% 32%"></span><span class="cv-body"><span class="kicker">Dissertation · MSc · UCL · 2025</span><span class="cv-t">Bio-Inspired Pneumatic Soft Actuators for Underwater Robots</span><span class="cv-p">Soft silicone limbs modelled on manta rays and trilobites, pumped with water so a robot can explore coral reefs without harming them.</span><span class="cv-m">University College London · 2025</span><span class="cv-go">Nutshell + full paper →</span></span></a></div><div class="book" data-book="1" style="--c:#10131C;--t:#FFFFFF;--b1:#A36AA5;--b2:#FDC57E;--h:94%"><button type="button" class="spine" data-pick="1" aria-expanded="false" aria-controls="sh-works-1" aria-label="BEng: Constructing and Analysing the Performance of a Modified Prosthetic Hand"><span class="sp-n">BEng</span><span class="sp-t">A Modified Prosthetic Hand</span><span class="sp-y">EXE 23</span></button><a class="cover" id="sh-works-1" href="Thesis-BEng.dc.html"><span class="cv-img" style="background:#10131C"><img src="/_blob/d694dc45d8f43526db8f49c7eb77877a" alt="The finished 3D-printed prosthetic hand, palm side" loading="lazy" style="object-fit:cover;object-position:50% 50%"></span><span class="cv-body"><span class="kicker">Dissertation · BEng · Exeter · 2023</span><span class="cv-t">Constructing and Analysing the Performance of a Modified Prosthetic Hand</span><span class="cv-p">A low-cost, 3D-printed five-finger hand that closes when you flex your forearm muscles.</span><span class="cv-m">University of Exeter · 2023</span><span class="cv-go">Nutshell + full paper →</span></span></a></div><div class="book" data-book="2" style="--c:#A36AA5;--t:#10131C;--b1:#10131C;--b2:#FDC57E;--h:97%"><button type="button" class="spine" data-pick="2" aria-expanded="false" aria-controls="sh-works-2" aria-label="H1: Rebuilding the InMoov robot hand"><span class="sp-n">H1</span><span class="sp-t">Rebuilding InMoov</span><span class="sp-y">23–24</span></button><a class="cover" id="sh-works-2" href="Hobby-InMoov.dc.html"><span class="cv-img" style="background:#10131C"><img src="/_blob/8dcea2945392b3e0d9b3bd41927badc4" alt="Freshly printed black InMoov parts laid out on a cutting mat beside a craft knife" loading="lazy" style="object-fit:cover;object-position:50% 50%"></span><span class="cv-body"><span class="kicker">Hobby build · 2023 – 2024</span><span class="cv-t">Rebuilding the InMoov robot hand</span><span class="cv-p">Printing and assembling Gaël Langevin’s open-source InMoov hand, from the first print to the first movement.</span><span class="cv-m">Build diary · 11 clips</span><span class="cv-go">Read the build diary →</span></span></a></div><div class="book" data-book="3" style="--c:#FDC57E;--t:#10131C;--b1:#A36AA5;--b2:#2B44C8;--h:91%"><button type="button" class="spine" data-pick="3" aria-expanded="false" aria-controls="sh-works-3" aria-label="H2: A fly’s brain when it tastes sugar?"><span class="sp-n">H2</span><span class="sp-t">A Fly’s Brain on Sugar</span><span class="sp-y">2026</span></button><a class="cover" id="sh-works-3" href="Hobby-FlyBrain.dc.html"><span class="cv-img" style="background:#10131C"><img src="/_blob/217a041e95fae2bb0ca236c2a9de533e" alt="Simulation replay: a glowing cloud of fruit-fly neurons inside a see-through fly head" loading="lazy" style="object-fit:cover;object-position:42% 55%"></span><span class="cv-body"><span class="kicker">Hobby build · 2026 · New</span><span class="cv-t">A fly’s brain when it tastes sugar?</span><span class="cv-p">The published whole-brain model of the fruit fly, fed sugar and followed spike by spike, then run again with two neurons silenced.</span><span class="cv-m">127,400 neurons · 5 interactive figures</span><span class="cv-go">Explore the simulation →</span></span></a></div><div class="book" data-book="4" style="--c:#1A1F2E;--t:#FFFFFF;--b1:#2B44C8;--b2:#A36AA5;--h:98%"><button type="button" class="spine" data-pick="4" aria-expanded="false" aria-controls="sh-works-4" aria-label="H3: Gesture Music: an instrument you play with hand signs"><span class="sp-n">H3</span><span class="sp-t">Gesture Music</span><span class="sp-y">25–26</span></button><a class="cover" id="sh-works-4" href="Hobby-GestureMusic.dc.html"><span class="cv-img" style="background:#FFFFFF"><img src="/_blob/a50cc93e9ed9fa232711a3f74eb2bf40" alt="The Gesture Music hand-sign dictionary: nine hand skeletons" loading="lazy" style="object-fit:contain;object-position:50% 50%;padding:18px"></span><span class="cv-body"><span class="kicker">Hobby build · 2025 – 2026 · New</span><span class="cv-t">Gesture Music: an instrument you play with hand signs</span><span class="cv-p">A webcam watches both hands and each sign plays a note, a chord or a drum, with a looper, live MIDI, a rhythm game and a 61-page handbook.</span><span class="cv-m">Open on GitHub · 61-page handbook</span><span class="cv-go">See it and try it →</span></span></a></div><span class="bookend" aria-hidden="true"></span></div></div>
 </div>
 </section>
 
@@ -332,7 +345,7 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 </div>
 <a class="btn" href="Talks.dc.html">All talks <span aria-hidden="true">→</span></a>
 </div>
-<nav class="shelf" aria-label="Latest talks"><a class="book open" href="Talk-Cyberpunk.dc.html" style="--c:#FFF200;--t:#10131C;--b1:#CC1236;--b2:#2B44C8;--h:100%"><span class="spine" aria-hidden="true"><span class="sp-n">10</span><span class="sp-t">Chrome and Consequences</span><span class="sp-y">Oct 26</span></span><span class="cover"><span class="cv-img" style="background:#10131C"><img src="/_blob/654691c00363657dd58c94a152c33ac5" alt="Close-up of a human eye with a Kiroshi implant: a glowing purple display in the iris and the brand name printed around it" loading="lazy" style="object-fit:cover;object-position:55% 45%"></span><span class="cv-body"><span class="kicker">Talk 10 · New</span><span class="cv-t">Chrome and Consequences: The Science and Fiction of Cyberpunk’s Implants</span><span class="cv-p">Sandevistans, Kiroshi eyes, biochips and engrams from Cyberpunk 2077 and Edgerunners, set against the real implants of 2026, plus rogue AI and cyberpsychosis.</span><span class="cv-m">23rd October 2026 · 18 min read</span><span class="cv-go">Read the talk →</span></span></span></a><a class="book" href="Talk-NavierStokes.dc.html" style="--c:#A7D4E4;--t:#10131C;--b1:#C2AE93;--b2:#064F6E;--h:94%"><span class="spine" aria-hidden="true"><span class="sp-n">09</span><span class="sp-t">Mathematician vs Clanker</span><span class="sp-y">Sep 26</span></span><span class="cover"><span class="cv-img" style="background:#FFFFFF"><img src="/_blob/8640ecc3e79609c3709944fae4972088" alt="Illustration of the blowup vortex: streamlines spiralling inward and stretching along a central axis" loading="lazy" style="object-fit:cover;object-position:50% 50%"></span><span class="cv-body"><span class="kicker">Talk 09</span><span class="cv-t">Mathematician vs Clanker: Navier–Stokes, the Millennium Prize Question Answered?</span><span class="cv-p">The equation every engineer meets, the AI-made proof that it can break, and the fight over who gets the credit.</span><span class="cv-m">23rd September 2026 · 16 min read</span><span class="cv-go">Read the talk →</span></span></span></a><a class="book" href="Talk-FlyConnectome.dc.html" style="--c:#FDBF68;--t:#10131C;--b1:#BF5892;--b2:#2B44C8;--h:97%"><span class="spine" aria-hidden="true"><span class="sp-n">08</span><span class="sp-t">The Whole Fly, Wired</span><span class="sp-y">Jul 26</span></span><span class="cover"><span class="cv-img" style="background:#10131C"><img src="/_blob/1463589e642fabbb0136f68a398bab10" alt="A glowing translucent blue fruit fly on black, with its brain highlighted in pink, orange and blue" loading="lazy" style="object-fit:cover;object-position:62% 50%"></span><span class="cv-body"><span class="kicker">Talk 08</span><span class="cv-t">The Whole Fly, Wired: Mapping, Running and Comparing a Brain</span><span class="cv-p">Three papers: the first whole adult fly brain wiring diagram, a brain model built from it, and a whole male nervous system compared with a female brain.</span><span class="cv-m">23rd July 2026 · 14 min read</span><span class="cv-go">Read the talk →</span></span></span></a><a class="book" href="Talk-HairClipFish.dc.html" style="--c:#96D1AA;--t:#10131C;--b1:#837E31;--b2:#F48067;--h:91%"><span class="spine" aria-hidden="true"><span class="sp-n">07</span><span class="sp-t">Snap Out of It</span><span class="sp-y">Jun 26</span></span><span class="cover"><span class="cv-img" style="background:#FFFFFF"><img src="/_blob/2e55726856ef14984a4a87555e84760e" alt="Diagram of a duck-bill hair clip: upper and lower jaws, a coiled metal spring and the pivot hinge" loading="lazy" style="object-fit:contain;object-position:50% 50%;padding:18px"></span><span class="cv-body"><span class="kicker">Talk 07</span><span class="cv-t">Snap Out of It: A Fish Robot That Swims on a Hair Clip</span><span class="cv-p">A snap hair clip becomes a robot fish’s spine: why bistability makes it fast, and why “fast” depends on your ruler.</span><span class="cv-m">23rd June 2026 · 12 min read</span><span class="cv-go">Read the talk →</span></span></span></a><a class="book" href="Talk-ModularLegs.dc.html" style="--c:#34454C;--t:#FFFFFF;--b1:#F3A257;--b2:#007190;--h:98%"><span class="spine" aria-hidden="true"><span class="sp-n">06</span><span class="sp-t">Microbot, not quite Micro</span><span class="sp-y">May 26</span></span><span class="cover"><span class="cv-img" style="background:#10131C"><img src="/_blob/58adc5b5cb21c58891e4c3bd7a9f59b8" alt="Animated film still: a hand holds up one tiny dark robot piece while a boy presents on stage beside a tower of the same pieces" loading="lazy" style="object-fit:cover;object-position:30% 50%"></span><span class="cv-body"><span class="kicker">Talk 06</span><span class="cv-t">Microbot is not quite Micro, but it’s a step towards the effort</span><span class="cv-p">Bolt-together robot legs that jump, roll and keep walking when you cut a piece off.</span><span class="cv-m">23rd May 2026 · 9 min read</span><span class="cv-go">Read the talk →</span></span></span></a><span class="bookend" aria-hidden="true"></span></nav>
+<div class="shelf-wrap" data-shelf><div class="shelf-bar"><button type="button" class="sh-btn" data-shelf-step="-1" aria-label="Previous book">←</button><span class="sh-count" aria-live="polite"><b data-shelf-pos>1</b> / 5</span><button type="button" class="sh-btn" data-shelf-step="1" aria-label="Next book">→</button><span class="sh-hint">Click a spine to pull it out · click the cover to read</span><button type="button" class="sh-btn sh-sound" data-shelf-sound aria-pressed="true">♪ Sound on</button></div><div class="shelf" role="group" aria-label="Latest talks"><div class="book open" data-book="0" style="--c:#FFF200;--t:#10131C;--b1:#CC1236;--b2:#2B44C8;--h:100%"><button type="button" class="spine" data-pick="0" aria-expanded="true" aria-controls="sh-latest-0" aria-label="10: Chrome and Consequences: The Science and Fiction of Cyberpunk’s Implants"><span class="sp-n">10</span><span class="sp-t">Chrome and Consequences</span><span class="sp-y">Oct 26</span></button><a class="cover" id="sh-latest-0" href="Talk-Cyberpunk.dc.html"><span class="cv-img" style="background:#10131C"><img src="/_blob/654691c00363657dd58c94a152c33ac5" alt="Close-up of a human eye with a Kiroshi implant: a glowing purple display in the iris and the brand name printed around it" loading="lazy" style="object-fit:cover;object-position:55% 45%"></span><span class="cv-body"><span class="kicker">Talk 10 · New</span><span class="cv-t">Chrome and Consequences: The Science and Fiction of Cyberpunk’s Implants</span><span class="cv-p">Sandevistans, Kiroshi eyes, biochips and engrams from Cyberpunk 2077 and Edgerunners, set against the real implants of 2026, plus rogue AI and cyberpsychosis.</span><span class="cv-m">23rd October 2026 · 18 min read</span><span class="cv-go">Read the talk →</span></span></a></div><div class="book" data-book="1" style="--c:#A7D4E4;--t:#10131C;--b1:#C2AE93;--b2:#064F6E;--h:94%"><button type="button" class="spine" data-pick="1" aria-expanded="false" aria-controls="sh-latest-1" aria-label="09: Mathematician vs Clanker: Navier–Stokes, the Millennium Prize Question Answered?"><span class="sp-n">09</span><span class="sp-t">Mathematician vs Clanker</span><span class="sp-y">Sep 26</span></button><a class="cover" id="sh-latest-1" href="Talk-NavierStokes.dc.html"><span class="cv-img" style="background:#FFFFFF"><img src="/_blob/8640ecc3e79609c3709944fae4972088" alt="Illustration of the blowup vortex: streamlines spiralling inward and stretching along a central axis" loading="lazy" style="object-fit:cover;object-position:50% 50%"></span><span class="cv-body"><span class="kicker">Talk 09</span><span class="cv-t">Mathematician vs Clanker: Navier–Stokes, the Millennium Prize Question Answered?</span><span class="cv-p">The equation every engineer meets, the AI-made proof that it can break, and the fight over who gets the credit.</span><span class="cv-m">23rd September 2026 · 16 min read</span><span class="cv-go">Read the talk →</span></span></a></div><div class="book" data-book="2" style="--c:#FDBF68;--t:#10131C;--b1:#BF5892;--b2:#2B44C8;--h:97%"><button type="button" class="spine" data-pick="2" aria-expanded="false" aria-controls="sh-latest-2" aria-label="08: The Whole Fly, Wired: Mapping, Running and Comparing a Brain"><span class="sp-n">08</span><span class="sp-t">The Whole Fly, Wired</span><span class="sp-y">Jul 26</span></button><a class="cover" id="sh-latest-2" href="Talk-FlyConnectome.dc.html"><span class="cv-img" style="background:#10131C"><img src="/_blob/1463589e642fabbb0136f68a398bab10" alt="A glowing translucent blue fruit fly on black, with its brain highlighted in pink, orange and blue" loading="lazy" style="object-fit:cover;object-position:62% 50%"></span><span class="cv-body"><span class="kicker">Talk 08</span><span class="cv-t">The Whole Fly, Wired: Mapping, Running and Comparing a Brain</span><span class="cv-p">Three papers: the first whole adult fly brain wiring diagram, a brain model built from it, and a whole male nervous system compared with a female brain.</span><span class="cv-m">23rd July 2026 · 14 min read</span><span class="cv-go">Read the talk →</span></span></a></div><div class="book" data-book="3" style="--c:#96D1AA;--t:#10131C;--b1:#837E31;--b2:#F48067;--h:91%"><button type="button" class="spine" data-pick="3" aria-expanded="false" aria-controls="sh-latest-3" aria-label="07: Snap Out of It: A Fish Robot That Swims on a Hair Clip"><span class="sp-n">07</span><span class="sp-t">Snap Out of It</span><span class="sp-y">Jun 26</span></button><a class="cover" id="sh-latest-3" href="Talk-HairClipFish.dc.html"><span class="cv-img" style="background:#FFFFFF"><img src="/_blob/2e55726856ef14984a4a87555e84760e" alt="Diagram of a duck-bill hair clip: upper and lower jaws, a coiled metal spring and the pivot hinge" loading="lazy" style="object-fit:contain;object-position:50% 50%;padding:18px"></span><span class="cv-body"><span class="kicker">Talk 07</span><span class="cv-t">Snap Out of It: A Fish Robot That Swims on a Hair Clip</span><span class="cv-p">A snap hair clip becomes a robot fish’s spine: why bistability makes it fast, and why “fast” depends on your ruler.</span><span class="cv-m">23rd June 2026 · 12 min read</span><span class="cv-go">Read the talk →</span></span></a></div><div class="book" data-book="4" style="--c:#34454C;--t:#FFFFFF;--b1:#F3A257;--b2:#007190;--h:98%"><button type="button" class="spine" data-pick="4" aria-expanded="false" aria-controls="sh-latest-4" aria-label="06: Microbot is not quite Micro, but it’s a step towards the effort"><span class="sp-n">06</span><span class="sp-t">Microbot, not quite Micro</span><span class="sp-y">May 26</span></button><a class="cover" id="sh-latest-4" href="Talk-ModularLegs.dc.html"><span class="cv-img" style="background:#10131C"><img src="/_blob/58adc5b5cb21c58891e4c3bd7a9f59b8" alt="Animated film still: a hand holds up one tiny dark robot piece while a boy presents on stage beside a tower of the same pieces" loading="lazy" style="object-fit:cover;object-position:30% 50%"></span><span class="cv-body"><span class="kicker">Talk 06</span><span class="cv-t">Microbot is not quite Micro, but it’s a step towards the effort</span><span class="cv-p">Bolt-together robot legs that jump, roll and keep walking when you cut a piece off.</span><span class="cv-m">23rd May 2026 · 9 min read</span><span class="cv-go">Read the talk →</span></span></a></div><span class="bookend" aria-hidden="true"></span></div></div>
 </div>
 </section>
 
@@ -393,8 +406,9 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":4400}}'>
 class Component extends DCLogic {
   // ── GelasTinta motion layer (anime.js v4) ─────────────────────────────
-  componentDidMount() { this.gtStart(0); this.gtMedia(0); }
+  componentDidMount() { this.gtStart(0); this.gtMedia(0); this.gtFigs(); }
   componentWillUnmount() {
+    this.gtFigStop();
     clearTimeout(this.gtWait);
     clearInterval(this.gtSlideT);
     clearTimeout(this.gtMediaWait);
@@ -831,6 +845,126 @@ class Component extends DCLogic {
     setTimeout(() => { try { if (!intro.completed) intro.complete(); } catch (e) {} unsplit(); }, 4500);
   }
   // ── end motion layer ──────────────────────────────────────────────────
+  // ── Bookshelf: click a spine to pull a book out; ←/→, arrow keys and wheel/swipe step one book at a time,
+  // each with a page-flip sound (synthesized, mutable). One document listener + a light rescan, so it keeps
+  // working if the page re-renders. Without the script the shelf falls back to hover (CSS).
+  gtFigs() {
+    if (this.shOn) return;
+    this.shOn = true;
+    const guard = (fn) => (e) => { try { fn.call(this, e); } catch (err) { if (window.console) console.warn('[shelf]', err); } };
+    const L = [['click', guard(this.shClick), true], ['keydown', guard(this.shKey), true], ['wheel', guard(this.shWheel), { passive: false, capture: true }],
+               ['touchstart', guard(this.shTouch), { passive: true, capture: true }], ['touchend', guard(this.shTouch), { passive: true, capture: true }]];
+    L.forEach((l) => document.addEventListener(l[0], l[1], l[2]));
+    this.shOff = () => L.forEach((l) => document.removeEventListener(l[0], l[1], l[2]));
+    const scan = guard(this.shScan);
+    scan();
+    this.shInt = setInterval(scan, 600);
+  }
+  gtFigStop() { clearInterval(this.shInt); if (this.shOff) this.shOff(); this.shOn = false; }
+  shMuted() { try { return localStorage.getItem('gt-shelf-sound') === 'off'; } catch (e) { return !!this.shMute; } }
+  shScan() {
+    const muted = this.shMuted();
+    Array.from(document.querySelectorAll('[data-shelf]')).forEach((w) => {
+      if (!w.hasAttribute('data-ready')) {
+        w.setAttribute('data-ready', '');
+        const sh = w.querySelector('.shelf'); if (sh) sh.setAttribute('data-ready', '');
+      }
+      const s = w.querySelector('[data-shelf-sound]');
+      const lab = muted ? '♪ Sound off' : '♪ Sound on';
+      if (s && s.textContent !== lab) { s.textContent = lab; s.setAttribute('aria-pressed', muted ? 'false' : 'true'); }
+    });
+  }
+  shOpen(w, i, how) {
+    const books = Array.from(w.querySelectorAll('.book'));
+    if (!books.length) return;
+    i = Math.max(0, Math.min(books.length - 1, i));
+    const cur = books.findIndex((b) => b.classList.contains('open'));
+    if (i === cur) return;
+    books.forEach((b, k) => {
+      const on = k === i;
+      b.classList.toggle('open', on);
+      b.classList.toggle('flip', on);
+      const sp = b.querySelector('.spine'); if (sp) sp.setAttribute('aria-expanded', on ? 'true' : 'false');
+    });
+    const pos = w.querySelector('[data-shelf-pos]'); if (pos) pos.textContent = String(i + 1);
+    this.shFlip(i > cur ? 1 : -1);
+    clearTimeout(w.__flipT); w.__flipT = setTimeout(() => books.forEach((b) => b.classList.remove('flip')), 700);
+    if (how === 'tap' && window.matchMedia && matchMedia('(max-width: 760px)').matches) {
+      const b = books[i]; setTimeout(() => { try { b.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); } catch (e) {} }, 60);
+    }
+  }
+  shIndex(w) { return Math.max(0, Array.from(w.querySelectorAll('.book')).findIndex((b) => b.classList.contains('open'))); }
+  shClick(e) {
+    const t = e.target && e.target.closest ? e.target.closest('[data-pick], [data-shelf-step], [data-shelf-sound]') : null;
+    if (!t) return;
+    const w = t.closest('[data-shelf]'); if (!w) return;
+    if (t.hasAttribute('data-shelf-sound')) {
+      const m = !this.shMuted(); this.shMute = m;
+      try { localStorage.setItem('gt-shelf-sound', m ? 'off' : 'on'); } catch (err) {}
+      this.shScan(); if (!m) this.shFlip(1);
+      return;
+    }
+    if (t.hasAttribute('data-pick')) this.shOpen(w, +t.getAttribute('data-pick'), 'tap');
+    else this.shOpen(w, this.shIndex(w) + +t.getAttribute('data-shelf-step'));
+  }
+  shKey(e) {
+    if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+    const t = e.target && e.target.closest ? e.target.closest('[data-shelf]') : null;
+    if (!t) return;
+    e.preventDefault();
+    const i = this.shIndex(t) + (e.key === 'ArrowRight' ? 1 : -1);
+    this.shOpen(t, i);
+    const b = t.querySelectorAll('.book')[Math.max(0, Math.min(i, t.querySelectorAll('.book').length - 1))];
+    const sp = b && b.querySelector('.spine'); if (sp) sp.focus();
+  }
+  // wheel over the shelf steps one book per gesture; at either end the page scrolls normally
+  shWheel(e) {
+    if (window.matchMedia && matchMedia('(max-width: 760px)').matches) return;
+    const sh = e.target && e.target.closest ? e.target.closest('.shelf') : null;
+    const w = sh && sh.closest('[data-shelf]'); if (!w) return;
+    const d = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+    if (Math.abs(d) < 4) return;
+    const n = w.querySelectorAll('.book').length, i = this.shIndex(w), dir = d > 0 ? 1 : -1;
+    if ((dir > 0 && i >= n - 1) || (dir < 0 && i <= 0)) return;
+    e.preventDefault();
+    const now = Date.now();
+    if (now - (w.__wheelT || 0) < 420) return;
+    w.__wheelT = now;
+    this.shOpen(w, i + dir);
+  }
+  shTouch(e) {
+    const sh = e.target && e.target.closest ? e.target.closest('.shelf') : null;
+    const w = sh && sh.closest('[data-shelf]'); if (!w) return;
+    const p = (e.changedTouches || [])[0]; if (!p) return;
+    if (e.type === 'touchstart') { w.__tx = p.clientX; w.__ty = p.clientY; return; }
+    if (window.matchMedia && matchMedia('(max-width: 760px)').matches) return;
+    const dx = p.clientX - (w.__tx || p.clientX), dy = p.clientY - (w.__ty || p.clientY);
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.5) this.shOpen(w, this.shIndex(w) + (dx < 0 ? 1 : -1));
+  }
+  // page-flip sound: a short burst of filtered noise with a falling pitch and a paper flutter
+  shFlip(dir) {
+    if (this.shMuted()) return;
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return;
+    const ctx = this.shAC || (this.shAC = new AC());
+    if (ctx.state === 'suspended' && ctx.resume) ctx.resume();
+    const t0 = ctx.currentTime + 0.005, dur = 0.34;
+    const buf = ctx.createBuffer(1, Math.ceil(ctx.sampleRate * dur), ctx.sampleRate);
+    const d = buf.getChannelData(0);
+    for (let k = 0; k < d.length; k++) d[k] = Math.random() * 2 - 1;
+    const src = ctx.createBufferSource(); src.buffer = buf;
+    const bp = ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.Q.value = 0.8;
+    bp.frequency.setValueAtTime(dir > 0 ? 3200 : 2600, t0); bp.frequency.exponentialRampToValueAtTime(700, t0 + dur);
+    const hp = ctx.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 350;
+    const g = ctx.createGain();
+    g.gain.setValueAtTime(0.0001, t0);
+    g.gain.exponentialRampToValueAtTime(0.22, t0 + 0.025);
+    g.gain.exponentialRampToValueAtTime(0.07, t0 + 0.09);
+    g.gain.exponentialRampToValueAtTime(0.16, t0 + 0.15);
+    g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+    src.connect(bp); bp.connect(hp); hp.connect(g); g.connect(ctx.destination);
+    src.start(t0); src.stop(t0 + dur + 0.02);
+  }
   renderVals() {
     return {};
   }
