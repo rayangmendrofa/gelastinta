@@ -189,7 +189,18 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 .fb-tags li{display:grid;grid-template-columns:72px minmax(0,1fr);gap:10px;align-items:baseline;font-size:16px;line-height:1.45}
 .fb-tags .cat{margin-left:0;text-align:center}
 .fb-hero{position:relative;aspect-ratio:16/9;overflow:hidden;border:1px solid #10131C;background:#0B0E17}
-.fb-hero img{width:100%;height:100%;object-fit:cover;display:block}
+.fb-hero img,.fb-hero video{width:100%;height:100%;object-fit:cover;display:block}
+.fb-lab{margin:0;background:#FFFFFF;border:1px solid #FFFFFF}
+.fb-lab img{width:100%;height:auto;display:block}
+.fb-people{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.fb-person{display:grid;grid-template-columns:96px minmax(0,1fr);gap:16px;align-items:start;background:#FFFFFF;color:#10131C;border:1px solid #FFFFFF;padding:18px}
+.fb-person > img{width:96px;height:96px;object-fit:cover;border-radius:50%;border:1px solid #10131C}
+.fb-person .t-h3{font-size:20px}
+.fb-role{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;line-height:1.5;letter-spacing:.03em;color:#3A4152}
+.fb-li{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;border:1px solid #10131C;color:#10131C;text-decoration:none;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;align-self:flex-start}
+.fb-li img{width:18px;height:18px}
+.fb-li:hover{background:#2B44C8;border-color:#2B44C8;color:#FFFFFF}
+@media (max-width:960px){.fb-people{grid-template-columns:minmax(0,1fr)}}
 .fb-facts{margin:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border:1px solid #3A4152}
 .fb-facts div{padding:18px 20px;border-right:1px solid #3A4152;display:flex;flex-direction:column-reverse;gap:6px}
 .fb-facts div:last-child{border-right:0}
@@ -384,8 +395,8 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 </div>
 </div>
 <figure class="stack g8" style="margin:0">
-<div class="fb-hero"><img src="/_blob/8f58e0323e192faeaf33954fce75bbb4" alt="Simulation replay: the fruit-fly brain drawn as a glowing cloud of neurons inside a see-through fly head. Flashes mark simulated spikes spreading from the sugar-taste neurons at the bottom; a panel reads 150 ms of simulated time, MN9 at 59 spikes per second, proboscis 56%." loading="eager"></div>
-<figcaption>FIG. 01 — SUGAR NEURONS ON, 150 MS IN. A FRAME FROM MY 3D REPLAY. SIMULATED, NOT RECORDED.</figcaption>
+<div class="fb-hero"><video src="/_blob/00994075334f3ff4f2e727ec94f33ce7" poster="/_blob/8f58e0323e192faeaf33954fce75bbb4" controls playsinline preload="metadata" aria-label="76-second animation with on-screen captions: in a computer model of the fly brain, 21 sugar-taste neurons are switched on, simulated spikes spread through the brain to MN9 and the proboscis extends; then the same experiment runs with the two Roundup neurons silenced and MN9 drops from 65.5 to 24.7 spikes per second."></video></div>
+<figcaption>FIG. 01 — THE WHOLE EXPERIMENT IN 76 SECONDS: SUGAR ON, INSIDE THE HEAD, THEN ROUNDUP SILENCED. MY 3D REPLAY OF SIMULATED ACTIVITY, SLOWED 20×, CAPTIONED, NO SOUND.</figcaption>
 </figure>
 </div>
 </section>
@@ -419,6 +430,7 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <div class="credit">
 <p class="kicker" style="color:#10131C">Credit where it’s due</p>
 <p style="font-size:17px;line-height:1.55">I did not build the brain model or the wiring map. The model is the work of Philip Shiu, Gabriella Sterne, Nico Spiller and colleagues in Kristin Scott’s lab, shared openly under the MIT licence. The map is the FlyWire connectome. My part is running the model, checking it against the original, and showing what it does.</p>
+<a class="meta" href="#people" style="min-height:44px;display:inline-flex;align-items:center;align-self:flex-start">Meet the people behind the model ↓</a>
 </div>
 <div class="credit shout">
 <p class="kicker" style="color:#DDE3FF">How to read this page</p>
@@ -431,6 +443,25 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 </div>
 </div>
 </div>
+</div>
+</section>
+
+<section class="sec blue rule-b" id="people">
+<div class="wrap stack g32">
+<div class="hb" style="align-items:center">
+<div class="stack g16">
+<p class="kicker">Credits — the people behind the model</p>
+<h2 class="t-h2">From the Scott Lab at UC Berkeley</h2>
+<p style="font-size:18px;line-height:1.6;max-width:36em">This project only exists because Philip Shiu, Gabriella Sterne, Nico Spiller and their colleagues, in work led by Kristin Scott, built the model and shared their code openly for anyone to run. Thank you.</p>
+</div>
+<figure class="fb-lab"><img src="/_blob/715cb3dcfd7cb3ce28ae84104fc5c4ee" alt="Scott Lab at UC Berkeley banner: a dashed fly flight path above five pictures, from fluorescent taste neurons and brain imaging to a close-up of a fly’s mouthparts and a fruit fly on a leaf" loading="lazy"></figure>
+</div>
+<div class="fb-people">
+<div class="fb-person"><img src="/_blob/5a014d6a94d17a38fa6aead769b09d46" alt="Portrait of Philip Shiu" loading="lazy"><div class="stack g8"><p class="t-h3">Philip K. Shiu</p><p class="fb-role">First author of the paper; co-author of the model code</p><a class="fb-li" href="https://www.linkedin.com/in/philip-shiu/" aria-label="Philip Shiu on LinkedIn"><img src="/_blob/49604cde322d454326d28d8c5cfe5ff8" alt="">LinkedIn ↗</a></div></div>
+<div class="fb-person"><img src="/_blob/dedadb365e5e013aa5b4bec3a2857f34" alt="Portrait of Gabriella Sterne" loading="lazy"><div class="stack g8"><p class="t-h3">Gabriella R. Sterne</p><p class="fb-role">Co-author of the paper</p><a class="fb-li" href="https://www.linkedin.com/in/gabriella-sterne-29605413/" aria-label="Gabriella Sterne on LinkedIn"><img src="/_blob/49604cde322d454326d28d8c5cfe5ff8" alt="">LinkedIn ↗</a></div></div>
+<div class="fb-person"><img src="/_blob/639f9bbdd48aa727772c1b0fb7530939" alt="Portrait of Nico Spiller" loading="lazy"><div class="stack g8"><p class="t-h3">Nico Spiller</p><p class="fb-role">Co-author of the paper; co-author of the model code</p><a class="fb-li" href="https://www.linkedin.com/in/nspiller/" aria-label="Nico Spiller on LinkedIn"><img src="/_blob/49604cde322d454326d28d8c5cfe5ff8" alt="">LinkedIn ↗</a></div></div>
+</div>
+<p class="meta" style="color:#DDE3FF;font-size:12px">Paper: Shiu, P.K., Sterne, G.R., Spiller, N. et al. <i>Nature</i> 634, 210–219 (2024). Photos and lab banner shared for credit.</p>
 </div>
 </section>
 
@@ -786,6 +817,7 @@ input spike  →  g += synapses × 0.275 mV</pre>
 <ul class="fb-list small">
 <li>Model: Shiu, P.K., Sterne, G.R., Spiller, N. et al. A <i>Drosophila</i> computational brain model reveals sensorimotor processing. <i>Nature</i> 634, 210–219 (2024). <a href="https://doi.org/10.1038/s41586-024-07763-9">doi.org/10.1038/s41586-024-07763-9</a>. Code: <a href="https://github.com/philshiu/Drosophila_brain_model">philshiu/Drosophila_brain_model</a> (MIT), commit 91bdd1e.</li>
 <li>Connectome: FlyWire public release v630 (Dorkenwald et al. 2024; Schlegel et al. 2024, <i>Nature</i> 634).</li>
+<li>Lab: the Scott Lab at UC Berkeley, where the work was led by Kristin Scott (see the <a href="#people">credits above</a>).</li>
 <li>Neuron positions: <a href="https://github.com/flyconnectome/flywire_annotations">flyconnectome/flywire_annotations</a> v1.1.0 (Schlegel et al. 2024).</li>
 <li>Simulation: my Numba re-implementation of the published model, checked spike for spike against the original Brian2 code. Runs computed on 23 October 2026.</li>
 <li>3D fly in the top frame: a house-fly model generated with Tripo AI, simplified for the web.</li>

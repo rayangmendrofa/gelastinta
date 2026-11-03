@@ -321,6 +321,10 @@ h2.t-h2::after,.sec-head .t-h2::after{content:"";display:block;width:56px;height
 .find{border-top:5px solid #BF5892}
 ::selection{background:#FDBF68;color:#26121D}
 /* theme:end */
+.fb-tryit{display:grid;grid-template-columns:200px minmax(0,1fr);gap:20px;align-items:center;text-decoration:none;color:inherit}
+.fb-tryit img{width:100%;aspect-ratio:4/3;object-fit:cover;border:1px solid #26121D}
+.fb-tryit:hover .t-h3{color:#2B44C8}
+@media (max-width:640px){.fb-tryit{grid-template-columns:minmax(0,1fr)}}
 </style>
 </helmet>
 <div style="min-height:100vh" data-gt-root="">
@@ -455,6 +459,12 @@ h2.t-h2::after,.sec-head .t-h2::after{content:"";display:block;width:56px;height
 </div>
 <div class="col" style="margin-top:32px">
 <p>Then they poked it. Activating sugar-sensing taste neurons in the model switched on the motor neuron (MN9) that lifts the proboscis, the fly’s mouth, exactly as sugar does in real flies. Shuffle the wiring while keeping the same set of weights, and that happened in only 1 of 100 runs: the result depends on the real map, not just its statistics.</p>
+</div>
+<div class="col" style="margin-top:32px">
+<a class="find fb-tryit" href="Hobby-FlyBrain.dc.html">
+<img src="/_blob/217a041e95fae2bb0ca236c2a9de533e" alt="Simulation replay: a glowing cloud of fruit-fly neurons with spikes flashing out from the sugar-taste neurons" loading="lazy">
+<div class="stack g8"><p class="kicker">I ran this model myself</p><p class="t-h3" style="font-size:20px">What happens in a fly’s brain when it tastes sugar?</p><p>After this review I ran Paper B’s published model on my laptop as a hobby project: the same sugar test with MN9 as the readout, then the same run with two neurons silenced, with every spike replayed in 3D.</p><span class="meta" style="color:#2B44C8">See the hobby project →</span></div>
+</a>
 </div>
 <div class="col-wide cols-3" style="margin-top:40px">
 <div class="stat"><b>Ir94e</b><p>A taste neuron type thought to be attractive. The model said it suppresses feeding; flies agreed.</p></div>
@@ -615,6 +625,7 @@ h2.t-h2::after,.sec-head .t-h2::after{content:"";display:block;width:56px;height
 <p>What impresses me most here isn’t any single number. It is the way the work was done in the open. FlyWire let other labs use the map while it was still being proofread, citizen scientists did real work, and the next two papers could exist only because the first one was shared. That is how infrastructure should be built.</p>
 <p>The result I find most surprising is Paper B. A model that ignores neuron shape, chemistry beyond “excite or inhibit”, and everything the fly has learned, with one tuned number, still worked out what a poorly understood taste neuron type does to feeding, and predicted how the grooming circuit responds to different touch neurons. That says a lot about how much of the brain’s logic is written into its wiring. But I also think the 91% headline flatters it a little: in a screen where most answers are “no”, a lazy guess scores almost as well. I would lead with “10 of 11 positive predictions were right”, which is the genuinely impressive part.</p>
 <p>Paper C is the one I keep thinking about. The idea that the sexes share the same senses and muscles, and differ mainly in the middle where decisions are made, is elegant and makes evolutionary sense. The authors are careful to say it rests on one animal of each sex. The obvious next steps are more brains, and then running Paper B-style simulations on both sexes to see whether those wiring differences really produce different behaviour.</p>
+<p><b>Update, November 2026:</b> I have since run Paper B’s model myself, as a hobby project: <a href="Hobby-FlyBrain.dc.html">What happens in a fly’s brain when it tastes sugar?</a> It repeats the paper’s sugar-to-MN9 test, silences Roundup (the pre-motor cell type the paper predicts matters most) and replays every simulated spike in 3D.</p>
 <nav class="talk-nav" aria-label="More talks"><a class="tn prev" href="Talk-HairClipFish.dc.html"><span class="tn-k">← Previous talk · 07</span><span class="tn-t">“Snap Out of It: A Fish Robot That Swims on a Hair Clip”</span><span class="tn-m">23rd June 2026 · 12 min read</span></a><a class="tn next" href="Talk-NavierStokes.dc.html"><span class="tn-k">Next talk · 09 →</span><span class="tn-t">“Mathematician vs Clanker: Navier–Stokes, the Millennium Prize Question Answered?”</span><span class="tn-m">23rd September 2026 · 16 min read</span></a></nav>
 <a href="Talks.dc.html" class="back" style="margin-top:24px;color:#2B44C8">← Back to all talks</a>
 </div>
