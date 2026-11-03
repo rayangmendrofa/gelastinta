@@ -62,7 +62,7 @@ export const META = {
     desc: 'MSc thesis, UCL: soft robot limbs modelled on manta rays and trilobites, pumped with water so a robot can study coral reefs without harming them.' },
   'Hobby-InMoov.dc.html': { title: 'Rebuilding the InMoov Robot Hand — GelasTinta', img: '8dcea2945392b3e0d9b3bd41927badc4', pos: 'centre',
     desc: 'A build diary: printing and assembling Gaël Langevin’s open-source InMoov hand, from the first layers to the first movement.' },
-  'Hobby-FlyBrain.dc.html': { title: 'What Happens in a Fly’s Brain When It Tastes Sugar? — GelasTinta', img: '217a041e95fae2bb0ca236c2a9de533e', pos: 'centre',
+  'Hobby-FlyBrain.dc.html': { title: 'A Fly’s Brain When It Tastes Sugar? — GelasTinta', img: '217a041e95fae2bb0ca236c2a9de533e', pos: 'centre',
     desc: 'A hobby simulation: the published whole-brain model of the fruit fly, fed sugar, watched spike by spike, then run again with two neurons silenced.' },
   'Talk-CacioPepe.dc.html': { title: 'The Art of Combining Cooking and Science — GelasTinta', img: '4f9fc858b3f233d90a5db49a21bd6b1f', date: '2025-12-23',
     desc: 'Why cacio e pepe turns clumpy, and the Ig Nobel-winning physics paper that fixes it with a little starch.' },
