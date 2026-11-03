@@ -548,8 +548,8 @@ input spike  →  g += synapses × 0.275 mV</pre>
 </div>
 <div class="viz-body stack g24">
 <div class="fb-lifctl">
-<label class="fb-range"><span>Input spikes per second <b data-r="lrate">150</b></span><input type="range" min="0" max="400" step="10" value="150" data-r="lratein" aria-label="Input spikes per second"></label>
-<label class="fb-range"><span>Synapses per connection <b data-r="lsyn">25</b></span><input type="range" min="1" max="60" step="1" value="25" data-r="lsynin" aria-label="Synapses per connection"></label>
+<label class="fb-range"><span>Input spikes per second <b data-r="lrate">150</b></span><input type="range" min="0" max="400" step="10" data-r="lratein" aria-label="Input spikes per second"></label>
+<label class="fb-range"><span>Synapses per connection <b data-r="lsyn">25</b></span><input type="range" min="1" max="60" step="1" data-r="lsynin" aria-label="Synapses per connection"></label>
 <button type="button" class="fb-play" data-r="lplay" aria-pressed="true" aria-label="Pause the animation"><span aria-hidden="true">‖</span> Pause</button>
 </div>
 <div class="fb-box"><svg class="fb-svg" viewBox="0 0 760 250" role="img" data-r="lsvg" aria-label="A bucket fills as input spikes arrive and drains through a leak; when the level crosses the firing line the neuron spikes and the bucket empties. Beside it, the neuron’s voltage over 400 ms of simulated time.">
@@ -636,7 +636,7 @@ input spike  →  g += synapses × 0.275 mV</pre>
 <small>0% below 5 spikes/s, 100% at 100</small></div>
 </div>
 </div>
-<input class="fb-scrub" type="range" min="0" max="1000" step="1" value="0" data-r="rscrub" aria-label="Simulated time, milliseconds">
+<input class="fb-scrub" type="range" min="0" max="1000" step="1" data-r="rscrub" aria-label="Simulated time, milliseconds">
 <p class="small" data-r="rnote" aria-live="off">Each flash is one simulated spike. Activity starts at the sugar-taste neurons in the lower brain.</p>
 <div class="fb-box night"><svg class="fb-svg" viewBox="0 0 760 170" role="img" data-r="rsvg" aria-label="MN9 firing rate over one simulated second: about 65 spikes per second with sugar only, about 25 with Roundup silenced.">
 <g font-family="JetBrains Mono, monospace" font-size="10" fill="#C9CED8">
@@ -1669,6 +1669,8 @@ class Component extends DCLogic {
     const r = {}; ['lrate', 'lsyn', 'lratein', 'lsynin', 'lplay', 'ldrops', 'lwater', 'ldrip', 'lspk', 'lin', 'lout', 'ltrace', 'ltrace2', 'lhead', 'lnin', 'lnout', 'lv', 'lnote'].forEach((k) => { r[k] = K.R(el, k); });
     const F = { t: 0, hold: 0, playing: !K.still(), visible: false, raf: 0, last: 0 };
     let S, pts, rate = 150, syn = 25;
+    // the sliders carry no value in the template (a template value would pin them in place); set it here
+    r.lratein.value = String(rate); r.lsynin.value = String(syn);
     const build = () => {
       S = sim(rate, syn);
       pts = [];
