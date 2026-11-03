@@ -403,6 +403,25 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 .gm-pages{grid-template-columns:repeat(2,minmax(0,1fr))}
 .gm-pdf{display:none}
 }
+.gm-clip{border:1px solid #10131C;background:#10131C;overflow:hidden}
+.gm-clip img{width:100%;height:auto;display:block}
+.gm-prog{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:6px}
+.gm-prog figure{margin:0;display:flex;flex-direction:column;gap:6px}
+.gm-prog figcaption{margin-top:0;font-size:11px}
+.gm-by{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.gm-by span{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;color:#3A4152}
+.gm-by img{width:auto;display:block}
+.gm-logos{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.gm-logos a{display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:10px;border:1px solid #10131C;background:#FFFFFF;padding:16px 12px 12px;text-decoration:none;color:#3A4152;min-height:112px}
+.gm-logos a:hover{background:#EDEFF2}
+.gm-logos img{max-height:46px;max-width:100%;width:auto;height:auto;object-fit:contain;flex:1 1 auto;min-height:0}
+.gm-logos span{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.04em;text-align:center}
+.viewer{height:85vh;max-height:1100px;min-height:520px;overflow-y:auto;background:#3A4152;padding:28px 16px;display:flex;flex-direction:column;align-items:center;gap:20px;border:1px solid #3A4152}
+.viewer .vpage{width:100%;max-width:820px;display:flex;flex-direction:column;gap:6px}
+.viewer img{width:100%;height:auto;background:#FFFFFF;box-shadow:0 2px 0 rgba(0,0,0,.25);aspect-ratio:993/1404}
+.viewer .meta{font-size:11px;color:#C9CED8;align-self:flex-end}
+@media (max-width:960px){.gm-logos{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:640px){.gm-prog{grid-template-columns:minmax(0,1fr)}.gm-logos{grid-template-columns:repeat(2,minmax(0,1fr))}.viewer{padding:12px 8px}}
 /* gm:end */
 </style>
 </helmet>
@@ -436,8 +455,8 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 </div>
 </div>
 <figure class="stack g8" style="margin:0">
-<div class="gm-shot"><img src="/_blob/0d09cc6643b788a0dfb024a69f1939cd" alt="Diagram of the Gesture Music window: a top bar of settings, the camera view with both hands tracked and labelled L and R above a keyboard of sounding notes, a green hand stage showing my hand in 3D beside a ghost hand for the next sign, coloured rhythm-game lanes, and a row of note pads for each hand." loading="eager"></div>
-<figcaption>FIG. 01 — THE WINDOW AT A GLANCE, FROM THE HANDBOOK. CAMERA, HAND STAGE, GAME LANES AND ONE PAD PER SIGN.</figcaption>
+<div class="gm-clip"><img src="/_blob/3e81961aa7ee6335d2f2b188f7b29e0e" alt="Screen recording of the Gesture Music window: I hold up signs with both hands; the camera view tracks them and labels the notes, the hand stage redraws both hands, the keyboard lights up the notes and the matching pads glow." loading="eager"></div>
+<figcaption>FIG. 01 — THE APP ON 3 NOVEMBER 2026: SIGNS PLAYING NOTES, THE HAND STAGE AND THE PADS. SCREEN RECORDING, LOOPED.</figcaption>
 </figure>
 </div>
 </section>
@@ -470,6 +489,7 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <div class="stack g16">
 <div class="credit">
 <p class="kicker" style="color:#10131C">Credit where it’s due</p>
+<div class="gm-by"><a href="https://github.com/google-ai-edge/mediapipe" aria-label="MediaPipe"><img src="/_blob/b12055483cad8920196868f9abc6c0e8" alt="MediaPipe" style="height:30px"></a><span>by</span><a href="https://ai.google.dev/edge/mediapipe/solutions/guide" aria-label="Google"><img src="/_blob/e296546278c56d13955cc0afe50bb37a" alt="Google" style="height:26px"></a></div>
 <p style="font-size:17px;line-height:1.55">The hand tracking is Google’s <a href="https://github.com/google-ai-edge/mediapipe">MediaPipe</a>: its Hand Landmarker finds 21 points on each hand in every frame, and its Selfie Segmenter separates me from the room. Everything after that (reading the signs, the sound, the looper, the game) is my own code, released under the MIT licence.</p>
 <a class="meta" href="#credits" style="min-height:44px;display:inline-flex;align-items:center;align-self:flex-start">All credits and sources ↓</a>
 </div>
@@ -497,9 +517,10 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <li><span class="gm-when">Then</span><div class="gm-card"><p class="kicker">Record and share</p><h3 class="t-h3">Looper, MIDI and demos</h3><p>A looper that records actions rather than audio, with overdub layers; live MIDI into music software; demo videos with the exact sound. The background blur went from 35 ms per frame in its first version to about 1 ms, by running alongside hand tracking.</p></div></li>
 <li><span class="gm-when">Then</span><div class="gm-card"><p class="kicker">Play along</p><h3 class="t-h3">A rhythm game</h3><p>Song sheets scroll toward a hit line, and you make the right sign on the beat: Perfect, Good or Miss, combos, grades and best scores.</p></div></li>
 <li><span class="gm-when">11 Oct 2026</span><div class="gm-card"><p class="kicker">On GitHub</p><h3 class="t-h3">The repository opens</h3><p>The project gets its public home: <a href="https://github.com/rayangmendrofa/OpenCV-handsign-midi">rayangmendrofa/OpenCV-handsign-midi</a>.</p></div></li>
+<li><span class="gm-when">3 Nov 2026</span><div class="gm-card"><p class="kicker">Development progress</p><h3 class="t-h3">One afternoon, two windows</h3><p>Two screen recordings from the same day. At 16:38 the window is still the first design: the camera view with volume bars and one coloured pad per sign. By 17:46 it has the redesigned layout, with a hand stage that redraws both hands, a keyboard of the notes that are sounding and live meters for every finger.</p><div class="gm-prog"><figure><div class="gm-clip"><img src="/_blob/9f8972320de40b64b4887e5e0b19f78e" alt="Screen recording at 16:38: the first Gesture Music window, with both hands tracked over the camera image, volume bars beside each hand and a row of drum and chord pads along the bottom" loading="lazy"></div><figcaption>16:38 — THE FIRST WINDOW (SHOWN 2× FASTER)</figcaption></figure><figure><div class="gm-clip"><img src="/_blob/3e81961aa7ee6335d2f2b188f7b29e0e" alt="Screen recording at 17:46: the redesigned Gesture Music window with camera view, hand stage, keyboard and pads" loading="lazy"></div><figcaption>17:46 — THE REDESIGNED WINDOW</figcaption></figure></div></div></li>
 <li class="now"><span class="gm-when">3 Nov 2026</span><div class="gm-card"><p class="kicker">Released, with a handbook</p><h3 class="t-h3">The 3 November edition</h3><p>The code goes up under the MIT licence with the handbook. This edition adds calibration, hand sessions, a metronome and quantise, MIDI files, strike dynamics, a mixer with reverb, key-mapping presets, ghost-hand hints, and songs made from your own music files.</p></div></li>
 </ol>
-<p class="meta muted" style="font-size:12px">Only the last two dates come from the repository. The stages before them are grouped by what was added, not dated.</p>
+<p class="meta muted" style="font-size:12px">The dated entries come from the repository and the screen recordings. The stages before them are grouped by what was added, not dated.</p>
 </div>
 </section>
 
@@ -509,6 +530,7 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <p class="kicker">03 — What it does</p>
 <h2 class="t-h2">Everything your hands can control</h2>
 </div>
+<figure class="stack g8" style="margin:0"><div class="gm-shot"><img src="/_blob/0d09cc6643b788a0dfb024a69f1939cd" alt="Diagram of the Gesture Music window: a top bar of settings, the camera view with both hands tracked and labelled L and R above a keyboard of sounding notes, a green hand stage showing a hand in 3D beside a ghost hand for the next sign, coloured rhythm-game lanes, and a row of note pads for each hand." loading="lazy"></div><figcaption>THE WINDOW AT A GLANCE, FROM THE HANDBOOK.</figcaption></figure>
 <div class="gm-feat">
 <div><p class="kicker">Play</p><h3 class="t-h3">Six modes</h3><p>Notes, Chords, Drums, Band, Custom (your own sound on every sign) and Song, where a song sheet chooses every sound.</p></div>
 <div><p class="kicker">Shape</p><h3 class="t-h3">Loudness and pitch</h3><p>A quick, snappy sign plays louder than a slow one. Raise your hand for volume, or move it while holding a sign to bend the pitch by up to two semitones.</p></div>
@@ -658,6 +680,7 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <p class="kicker">05 — Credits, inspiration and sources</p>
 <h2 class="t-h2">Built on open work</h2>
 <p class="prose" style="font-size:18px;line-height:1.65">Gesture Music stands on open-source libraries and published research. Thank you to everyone below.</p>
+<div class="gm-logos" aria-label="Main libraries"><a href="https://github.com/google-ai-edge/mediapipe"><img src="/_blob/b12055483cad8920196868f9abc6c0e8" alt="MediaPipe"><span>Hand tracking</span></a><a href="https://ai.google.dev/edge/mediapipe/solutions/guide"><img src="/_blob/e296546278c56d13955cc0afe50bb37a" alt="Google"><span>Makers of MediaPipe</span></a><a href="https://github.com/opencv/opencv-python"><img src="/_blob/fbd6fa06ee924de56703bc6c33ad2e1f" alt="OpenCV"><span>Camera and images</span></a><a href="https://github.com/numpy/numpy"><img src="/_blob/23e9b7ff1d076f3e29b78be898f7894b" alt="NumPy"><span>Sound and analysis</span></a><a href="https://github.com/pygame/pygame"><img src="/_blob/ae524e8bf637a2cff5e89ba8927472d2" alt="pygame"><span>Window and MIDI</span></a></div>
 <table class="fb-tbl wide">
 <thead><tr><th>Library</th><th>Used for</th><th>Licence</th></tr></thead>
 <tr><td><a href="https://github.com/google-ai-edge/mediapipe">MediaPipe</a> (Google)</td><td>hand landmarks, person segmentation</td><td>Apache 2.0</td></tr>
@@ -694,30 +717,79 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 </div>
 </section>
 
-<section class="sec rule-b" id="handbook">
-<div class="wrap stack g32">
-<div class="sec-head row" style="margin-bottom:0">
+<section id="handbook" class="sec dark">
+<div class="wrap">
+<div class="sec-head row">
 <div class="stack g12">
 <p class="kicker">06 — The handbook</p>
-<h2 class="t-h2">Gesture Music handbook, visual edition</h2>
+<h2 class="t-h2">Read it here</h2>
+<p class="meta muted">Gesture Music handbook, visual edition · 61 pages · scroll inside the frame</p>
 </div>
-<p class="meta muted">61 pages · PDF · 1 MB · 3 November 2026</p>
+<div class="chips" style="gap:12px"><a class="btn" href="/_blob/68bde4e9a82a69531b9eef1198a85210" download="Gesture_Music_Handbook_Visual_Edition.pdf">Download PDF ↓</a><a class="btn ghost" href="https://github.com/rayangmendrofa/OpenCV-handsign-midi">View the code on GitHub ↗</a></div>
 </div>
-<p class="prose" style="font-size:18px;line-height:1.65">Thirteen illustrated pages first, then the full handbook: how to play, how to calibrate, how the code is built, and the theory behind it, from finger angles and smoothing filters to sound synthesis, MIDI and music analysis.</p>
-<div class="gm-pages">
-<a href="/_blob/68bde4e9a82a69531b9eef1198a85210" aria-label="Open the handbook PDF: From hand to music"><img src="/_blob/3283003f1a7dae66180ff40452a9f3cb" alt="Handbook page V1, From hand to music: the six steps from camera to sound" loading="lazy"><span>V1 · From hand to music</span></a>
-<a href="/_blob/68bde4e9a82a69531b9eef1198a85210" aria-label="Open the handbook PDF: Your hand-sign dictionary"><img src="/_blob/62e04aa8b901ffeffc6fa55ba9a497d3" alt="Handbook page V2, Your hand-sign dictionary" loading="lazy"><span>V2 · Hand-sign dictionary</span></a>
-<a href="/_blob/68bde4e9a82a69531b9eef1198a85210" aria-label="Open the handbook PDF: Follow the rhythm"><img src="/_blob/3d26846d486f6496aac30c5fa1e02569" alt="Handbook page V6, Follow the rhythm: the game's timing windows" loading="lazy"><span>V6 · Follow the rhythm</span></a>
-<a href="/_blob/68bde4e9a82a69531b9eef1198a85210" aria-label="Open the handbook PDF: Calibrate once"><img src="/_blob/793be3ce8d9f4ce2129f6e060a4c2496" alt="Handbook page V9, Calibrate once, read every sign reliably" loading="lazy"><span>V9 · Calibration</span></a>
-<a href="/_blob/68bde4e9a82a69531b9eef1198a85210" aria-label="Open the handbook PDF: Loop in time"><img src="/_blob/1f1c762e5875d8c11d9cd3409a9b4027" alt="Handbook page V11, Loop in time, keep it as MIDI" loading="lazy"><span>V11 · Loop and MIDI</span></a>
-<a href="/_blob/68bde4e9a82a69531b9eef1198a85210" aria-label="Open the handbook PDF: Turn your own music into a chart"><img src="/_blob/eded3b00f54c00310cf38a8625d6f5a4" alt="Handbook page V12, Turn your own music into a chart" loading="lazy"><span>V12 · Your music as a chart</span></a>
-</div>
-<div class="gm-pdf">
-<iframe src="/_blob/68bde4e9a82a69531b9eef1198a85210" title="Gesture Music handbook, visual edition (PDF)" loading="lazy"></iframe>
-</div>
-<div class="chips" style="gap:12px">
-<a class="btn" href="/_blob/68bde4e9a82a69531b9eef1198a85210">Open the handbook (PDF) ↗</a>
-<a class="btn ghost" href="https://github.com/rayangmendrofa/OpenCV-handsign-midi">View the code on GitHub ↗</a>
+<p style="font-size:18px;line-height:1.65;max-width:62ch;color:#C9CED8;margin-bottom:28px">Thirteen illustrated pages first, then the full handbook: how to play, how to calibrate, how the code is built, and the theory behind it, from finger angles and smoothing filters to sound synthesis, MIDI and music analysis.</p>
+<div class="viewer" role="region" aria-label="The Gesture Music handbook, scrollable" tabindex="0">
+<div class="vpage"><img src="/_blob/d8e6807c95275d5d3e1481b40dffd02e" alt="Gesture Music handbook, visual guide page V1" loading="lazy"><span class="meta">Visual guide V1 · PDF page 1 of 61</span></div>
+<div class="vpage"><img src="/_blob/2d5b3eee929a93b01a8002c127c150e2" alt="Gesture Music handbook, visual guide page V2" loading="lazy"><span class="meta">Visual guide V2 · PDF page 2 of 61</span></div>
+<div class="vpage"><img src="/_blob/f9c93bcf45cc04d63605df6ab6249959" alt="Gesture Music handbook, visual guide page V3" loading="lazy"><span class="meta">Visual guide V3 · PDF page 3 of 61</span></div>
+<div class="vpage"><img src="/_blob/24251856ae21d98420b54ed3f47b9752" alt="Gesture Music handbook, visual guide page V4" loading="lazy"><span class="meta">Visual guide V4 · PDF page 4 of 61</span></div>
+<div class="vpage"><img src="/_blob/1043118903d6a70a03f96f12a9000213" alt="Gesture Music handbook, visual guide page V5" loading="lazy"><span class="meta">Visual guide V5 · PDF page 5 of 61</span></div>
+<div class="vpage"><img src="/_blob/dc57a2ecbd705e36b74701c4e86e1a4c" alt="Gesture Music handbook, visual guide page V6" loading="lazy"><span class="meta">Visual guide V6 · PDF page 6 of 61</span></div>
+<div class="vpage"><img src="/_blob/22b9f1340bf77a4e1df9611608a32700" alt="Gesture Music handbook, visual guide page V7" loading="lazy"><span class="meta">Visual guide V7 · PDF page 7 of 61</span></div>
+<div class="vpage"><img src="/_blob/b973f87567d802f4c1a1f5a87cfe3c6c" alt="Gesture Music handbook, visual guide page V8" loading="lazy"><span class="meta">Visual guide V8 · PDF page 8 of 61</span></div>
+<div class="vpage"><img src="/_blob/490e9295e638895ee3f5e3fcc66e285d" alt="Gesture Music handbook, visual guide page V9" loading="lazy"><span class="meta">Visual guide V9 · PDF page 9 of 61</span></div>
+<div class="vpage"><img src="/_blob/4b9e13e1744e96fee14c92750d89d389" alt="Gesture Music handbook, visual guide page V10" loading="lazy"><span class="meta">Visual guide V10 · PDF page 10 of 61</span></div>
+<div class="vpage"><img src="/_blob/082992e2dd10d55d1b8bc616c1dd0dff" alt="Gesture Music handbook, visual guide page V11" loading="lazy"><span class="meta">Visual guide V11 · PDF page 11 of 61</span></div>
+<div class="vpage"><img src="/_blob/19c79ca2c84ee01006651878bf2947d8" alt="Gesture Music handbook, visual guide page V12" loading="lazy"><span class="meta">Visual guide V12 · PDF page 12 of 61</span></div>
+<div class="vpage"><img src="/_blob/577210b778b73b617daa69e05084f334" alt="Gesture Music handbook, visual guide page V13" loading="lazy"><span class="meta">Visual guide V13 · PDF page 13 of 61</span></div>
+<div class="vpage"><img src="/_blob/04ce387626a2fc37f1cd5bb7f8e1f1ea" alt="Gesture Music handbook, page 1" loading="lazy"><span class="meta">Handbook p. 1 · PDF page 14 of 61</span></div>
+<div class="vpage"><img src="/_blob/cdb2061365eb435da01b1b1f94bcc8af" alt="Gesture Music handbook, page 2" loading="lazy"><span class="meta">Handbook p. 2 · PDF page 15 of 61</span></div>
+<div class="vpage"><img src="/_blob/a8d12e868742b0e1ad04ec185e794f5e" alt="Gesture Music handbook, page 3" loading="lazy"><span class="meta">Handbook p. 3 · PDF page 16 of 61</span></div>
+<div class="vpage"><img src="/_blob/9232ebcd153bde17b90a6933bef41446" alt="Gesture Music handbook, page 4" loading="lazy"><span class="meta">Handbook p. 4 · PDF page 17 of 61</span></div>
+<div class="vpage"><img src="/_blob/824dc1941b75671bf7e31094a8f73b11" alt="Gesture Music handbook, page 5" loading="lazy"><span class="meta">Handbook p. 5 · PDF page 18 of 61</span></div>
+<div class="vpage"><img src="/_blob/cf35a9e49c345abc2045a459dbbea2e5" alt="Gesture Music handbook, page 6" loading="lazy"><span class="meta">Handbook p. 6 · PDF page 19 of 61</span></div>
+<div class="vpage"><img src="/_blob/a2996a1b6d8a6a834b76f67d304fea6e" alt="Gesture Music handbook, page 7" loading="lazy"><span class="meta">Handbook p. 7 · PDF page 20 of 61</span></div>
+<div class="vpage"><img src="/_blob/6e58dfeb4a5b55bd9bae6b4ecac1b109" alt="Gesture Music handbook, page 8" loading="lazy"><span class="meta">Handbook p. 8 · PDF page 21 of 61</span></div>
+<div class="vpage"><img src="/_blob/83f0f837f94c43c29429e4accc494b53" alt="Gesture Music handbook, page 9" loading="lazy"><span class="meta">Handbook p. 9 · PDF page 22 of 61</span></div>
+<div class="vpage"><img src="/_blob/78fa36fcee181d3924fa8292bd0a7aa2" alt="Gesture Music handbook, page 10" loading="lazy"><span class="meta">Handbook p. 10 · PDF page 23 of 61</span></div>
+<div class="vpage"><img src="/_blob/b6458fd7587cc43bb232d7972d3fa5a8" alt="Gesture Music handbook, page 11" loading="lazy"><span class="meta">Handbook p. 11 · PDF page 24 of 61</span></div>
+<div class="vpage"><img src="/_blob/fde557168a9b56cd8a32e314c16e293d" alt="Gesture Music handbook, page 12" loading="lazy"><span class="meta">Handbook p. 12 · PDF page 25 of 61</span></div>
+<div class="vpage"><img src="/_blob/1608443d812ac9e195957a77da277b68" alt="Gesture Music handbook, page 13" loading="lazy"><span class="meta">Handbook p. 13 · PDF page 26 of 61</span></div>
+<div class="vpage"><img src="/_blob/99dc868da4e0a33a7d6842210b2a1847" alt="Gesture Music handbook, page 14" loading="lazy"><span class="meta">Handbook p. 14 · PDF page 27 of 61</span></div>
+<div class="vpage"><img src="/_blob/e45be6d5d7a22f2a97f39a08e3a6f411" alt="Gesture Music handbook, page 15" loading="lazy"><span class="meta">Handbook p. 15 · PDF page 28 of 61</span></div>
+<div class="vpage"><img src="/_blob/c697ffc1ca7f42ee03142bec3f7a3764" alt="Gesture Music handbook, page 16" loading="lazy"><span class="meta">Handbook p. 16 · PDF page 29 of 61</span></div>
+<div class="vpage"><img src="/_blob/b7ae1d8ca9efafc235d5fb3f10e1187e" alt="Gesture Music handbook, page 17" loading="lazy"><span class="meta">Handbook p. 17 · PDF page 30 of 61</span></div>
+<div class="vpage"><img src="/_blob/36ebc2713fc9776d83099e82e172ea27" alt="Gesture Music handbook, page 18" loading="lazy"><span class="meta">Handbook p. 18 · PDF page 31 of 61</span></div>
+<div class="vpage"><img src="/_blob/32787cceb48860300f80b0b550a2ccac" alt="Gesture Music handbook, page 19" loading="lazy"><span class="meta">Handbook p. 19 · PDF page 32 of 61</span></div>
+<div class="vpage"><img src="/_blob/c82dd8c1128ac483bfc7e614e87aa212" alt="Gesture Music handbook, page 20" loading="lazy"><span class="meta">Handbook p. 20 · PDF page 33 of 61</span></div>
+<div class="vpage"><img src="/_blob/0a4c06b61af201e26de2042e817c3032" alt="Gesture Music handbook, page 21" loading="lazy"><span class="meta">Handbook p. 21 · PDF page 34 of 61</span></div>
+<div class="vpage"><img src="/_blob/5cf6270c8a0534f8adfd45c72959ec47" alt="Gesture Music handbook, page 22" loading="lazy"><span class="meta">Handbook p. 22 · PDF page 35 of 61</span></div>
+<div class="vpage"><img src="/_blob/2d9786c9008e90c38211439bc7752fe8" alt="Gesture Music handbook, page 23" loading="lazy"><span class="meta">Handbook p. 23 · PDF page 36 of 61</span></div>
+<div class="vpage"><img src="/_blob/f470359409b50b7354c43dfc97dadd21" alt="Gesture Music handbook, page 24" loading="lazy"><span class="meta">Handbook p. 24 · PDF page 37 of 61</span></div>
+<div class="vpage"><img src="/_blob/6193baf43eb5b7d7269fd85b13832d66" alt="Gesture Music handbook, page 25" loading="lazy"><span class="meta">Handbook p. 25 · PDF page 38 of 61</span></div>
+<div class="vpage"><img src="/_blob/deea9c81f703e05c2b44fbd608629052" alt="Gesture Music handbook, page 26" loading="lazy"><span class="meta">Handbook p. 26 · PDF page 39 of 61</span></div>
+<div class="vpage"><img src="/_blob/dd0fe02a1f11986c96384354f8921f28" alt="Gesture Music handbook, page 27" loading="lazy"><span class="meta">Handbook p. 27 · PDF page 40 of 61</span></div>
+<div class="vpage"><img src="/_blob/3c2ff1f8f60c822a9dcf752bf965a044" alt="Gesture Music handbook, page 28" loading="lazy"><span class="meta">Handbook p. 28 · PDF page 41 of 61</span></div>
+<div class="vpage"><img src="/_blob/044b87bdc6dddc27f7fb3a8c2e6a768d" alt="Gesture Music handbook, page 29" loading="lazy"><span class="meta">Handbook p. 29 · PDF page 42 of 61</span></div>
+<div class="vpage"><img src="/_blob/fd67c5f0b030cd4311c0cb7fa568be5b" alt="Gesture Music handbook, page 30" loading="lazy"><span class="meta">Handbook p. 30 · PDF page 43 of 61</span></div>
+<div class="vpage"><img src="/_blob/d98409338d641154779457a592b59e8f" alt="Gesture Music handbook, page 31" loading="lazy"><span class="meta">Handbook p. 31 · PDF page 44 of 61</span></div>
+<div class="vpage"><img src="/_blob/faaa18895e9c855dc22512a34d6b6e78" alt="Gesture Music handbook, page 32" loading="lazy"><span class="meta">Handbook p. 32 · PDF page 45 of 61</span></div>
+<div class="vpage"><img src="/_blob/fa436d533941f794583850d8ccbeb3d6" alt="Gesture Music handbook, page 33" loading="lazy"><span class="meta">Handbook p. 33 · PDF page 46 of 61</span></div>
+<div class="vpage"><img src="/_blob/1961fb48e3da8488081700e892440c5b" alt="Gesture Music handbook, page 34" loading="lazy"><span class="meta">Handbook p. 34 · PDF page 47 of 61</span></div>
+<div class="vpage"><img src="/_blob/044a15f6ef224b4b607b0c71df786804" alt="Gesture Music handbook, page 35" loading="lazy"><span class="meta">Handbook p. 35 · PDF page 48 of 61</span></div>
+<div class="vpage"><img src="/_blob/c1533e51635638ab2eb4dbea9731dc87" alt="Gesture Music handbook, page 36" loading="lazy"><span class="meta">Handbook p. 36 · PDF page 49 of 61</span></div>
+<div class="vpage"><img src="/_blob/5ba4ce623d51b0156017c49b76d020cd" alt="Gesture Music handbook, page 37" loading="lazy"><span class="meta">Handbook p. 37 · PDF page 50 of 61</span></div>
+<div class="vpage"><img src="/_blob/e8100aac9f39adb8f1c94767b659e5cd" alt="Gesture Music handbook, page 38" loading="lazy"><span class="meta">Handbook p. 38 · PDF page 51 of 61</span></div>
+<div class="vpage"><img src="/_blob/6aea28095d94a08b55aa4a4b6a2ac080" alt="Gesture Music handbook, page 39" loading="lazy"><span class="meta">Handbook p. 39 · PDF page 52 of 61</span></div>
+<div class="vpage"><img src="/_blob/f88da50963c8c79a45d3c79045f7fe9b" alt="Gesture Music handbook, page 40" loading="lazy"><span class="meta">Handbook p. 40 · PDF page 53 of 61</span></div>
+<div class="vpage"><img src="/_blob/2f76a1f62106d627524efb12172dfe1d" alt="Gesture Music handbook, page 41" loading="lazy"><span class="meta">Handbook p. 41 · PDF page 54 of 61</span></div>
+<div class="vpage"><img src="/_blob/aad18b3b3e6ab359bc787d25da6f971c" alt="Gesture Music handbook, page 42" loading="lazy"><span class="meta">Handbook p. 42 · PDF page 55 of 61</span></div>
+<div class="vpage"><img src="/_blob/c1a0d0745521ee8e011377b073814073" alt="Gesture Music handbook, page 43" loading="lazy"><span class="meta">Handbook p. 43 · PDF page 56 of 61</span></div>
+<div class="vpage"><img src="/_blob/39d259fb301d68a84a79851af431ae73" alt="Gesture Music handbook, page 44" loading="lazy"><span class="meta">Handbook p. 44 · PDF page 57 of 61</span></div>
+<div class="vpage"><img src="/_blob/edf84322801a2b031b3994bf3ab95473" alt="Gesture Music handbook, page 45" loading="lazy"><span class="meta">Handbook p. 45 · PDF page 58 of 61</span></div>
+<div class="vpage"><img src="/_blob/07a9523ca35a36fb2bdc1c3f6a542f2b" alt="Gesture Music handbook, page 46" loading="lazy"><span class="meta">Handbook p. 46 · PDF page 59 of 61</span></div>
+<div class="vpage"><img src="/_blob/4d481dd3da88b923e4eeb25970278118" alt="Gesture Music handbook, page 47" loading="lazy"><span class="meta">Handbook p. 47 · PDF page 60 of 61</span></div>
+<div class="vpage"><img src="/_blob/c6192ac21b9ae9f2ef4e68a4b2737da0" alt="Gesture Music handbook, page 48" loading="lazy"><span class="meta">Handbook p. 48 · PDF page 61 of 61</span></div>
 </div>
 </div>
 </section>
