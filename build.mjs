@@ -27,9 +27,16 @@ export const ROUTES = {
   'Talk-CacioPepe.dc.html': '/talks/cooking-and-science/',
   'Talk-NavierStokes.dc.html': '/talks/navier-stokes/',
   'Talk-ProjectHailMary.dc.html': '/talks/project-hail-mary/',
+  'Talk-DreamPuzzles.dc.html': '/talks/dream-puzzles/',
+  'Talk-ModularLegs.dc.html': '/talks/modular-legs/',
+  'Talk-HairClipFish.dc.html': '/talks/hair-clip-fish/',
+  'Talk-FlyConnectome.dc.html': '/talks/fly-connectome/',
+  'Talk-Cyberpunk.dc.html': '/talks/cyberpunk-implants/',
   'Thesis-BEng.dc.html': '/projects/beng-dissertation/',
   'Thesis-MSc.dc.html': '/projects/msc-dissertation/',
   'Hobby-InMoov.dc.html': '/projects/inmoov-hand/',
+  'Hobby-FlyBrain.dc.html': '/projects/fly-brain-sugar/',
+  'Hobby-GestureMusic.dc.html': '/projects/gesture-music/',
 };
 
 const SITE_URL = 'https://gelastinta.com';
@@ -43,7 +50,7 @@ export const META = {
   'Main.dc.html': { title: 'GelasTinta — Rayang T Mendrofa', img: '54e236f0eae207dc01d1ee7e8e745b14',
     desc: 'The notebook of mechanical engineer Rayang T Mendrofa (BEng Exeter, MSc UCL): robot hands, soft robots, science reviews and the ideas in between.' },
   'Projects.dc.html': { title: 'Projects — GelasTinta', img: 'e6b092fd16f445a4cdd7dec4374667d7', pos: 'centre',
-    desc: 'The workshop: a 3D-printed prosthetic hand, bio-inspired soft actuators for underwater robots, and an InMoov robot hand built as a hobby.' },
+    desc: 'The workshop: a 3D-printed prosthetic hand, bio-inspired soft actuators for underwater robots, an InMoov robot hand, a fruit-fly brain simulation and a hand-sign music instrument built as hobbies.' },
   'Talks.dc.html': { title: 'Talks — GelasTinta', pos: 'centre',
     img: ['ec28ec78594bd9ac3bed820bb5857e7f', '6c50dd80c38fa40df5aac2eea7534976', '4f9fc858b3f233d90a5db49a21bd6b1f', '8640ecc3e79609c3709944fae4972088'],
     desc: 'Part review, part reflection: research papers, films and everyday curiosities, explained by a mechanical engineer.' },
@@ -57,6 +64,10 @@ export const META = {
     desc: 'MSc thesis, UCL: soft robot limbs modelled on manta rays and trilobites, pumped with water so a robot can study coral reefs without harming them.' },
   'Hobby-InMoov.dc.html': { title: 'Rebuilding the InMoov Robot Hand — GelasTinta', img: '8dcea2945392b3e0d9b3bd41927badc4', pos: 'centre',
     desc: 'A build diary: printing and assembling Gaël Langevin’s open-source InMoov hand, from the first layers to the first movement.' },
+  'Hobby-FlyBrain.dc.html': { title: 'A Fly’s Brain When It Tastes Sugar? — GelasTinta', img: '217a041e95fae2bb0ca236c2a9de533e', pos: 'centre',
+    desc: 'A hobby simulation: the published whole-brain model of the fruit fly, fed sugar, watched spike by spike, then run again with two neurons silenced.' },
+  'Hobby-GestureMusic.dc.html': { title: 'Gesture Music: An Instrument You Play With Hand Signs — GelasTinta', img: '0d09cc6643b788a0dfb024a69f1939cd', fit: 'contain',
+    desc: 'A webcam instrument: hand signs play notes, chords and drums, with a looper, live MIDI, a rhythm game and a 61-page handbook. Built with OpenCV and Google MediaPipe.' },
   'Talk-CacioPepe.dc.html': { title: 'The Art of Combining Cooking and Science — GelasTinta', img: '4f9fc858b3f233d90a5db49a21bd6b1f', date: '2025-12-23',
     desc: 'Why cacio e pepe turns clumpy, and the Ig Nobel-winning physics paper that fixes it with a little starch.' },
   'Talk-Salmon.dc.html': { title: 'How Crack-headed Salmon Influence Human and Environment — GelasTinta', img: 'cda359f19fa6c877bb9c7a27d1d81add', date: '2026-01-23',
@@ -67,6 +78,16 @@ export const META = {
     desc: 'A spinning spaceship that makes its own gravity, a language made of chords and the friendliest alien in fiction.' },
   'Talk-NavierStokes.dc.html': { title: 'Mathematician vs Clanker: Navier–Stokes Answered? — GelasTinta', img: '8640ecc3e79609c3709944fae4972088', fit: 'contain', date: '2026-09-23',
     desc: 'The equation every engineer meets, the AI-made proof that it can break, and the fight over who gets the credit.' },
+  'Talk-Cyberpunk.dc.html': { title: 'Chrome and Consequences: The Science and Fiction of Cyberpunk’s Implants — GelasTinta', img: '654691c00363657dd58c94a152c33ac5', pos: 'centre', date: '2026-10-23',
+    desc: 'Sandevistans, Kiroshi eyes, biochips and engrams from Cyberpunk 2077 and Edgerunners, set against the real implants of 2026, plus rogue AI and cyberpsychosis.' },
+  'Talk-FlyConnectome.dc.html': { title: 'The Whole Fly, Wired: Mapping, Running and Comparing a Brain — GelasTinta', img: '1463589e642fabbb0136f68a398bab10', pos: 'centre', date: '2026-07-23',
+    desc: 'A triple review: the first whole adult fly brain connectome, a spiking brain model built from it, and a whole male nervous system compared with a female brain.' },
+  'Talk-HairClipFish.dc.html': { title: 'Snap Out of It: A Fish Robot That Swims on a Hair Clip — GelasTinta', img: '2e55726856ef14984a4a87555e84760e', fit: 'contain', date: '2026-06-23',
+    desc: 'A snap hair clip becomes the spine of a robot fish: how bistability makes it fast, what the maths says, and why “fastest” depends on how you measure.' },
+  'Talk-ModularLegs.dc.html': { title: 'Microbot is not quite Micro, but it’s a step towards the effort — GelasTinta', img: '0e45cc7060159fc868b4b68026135d65', pos: 'east', date: '2026-05-23',
+    desc: 'Robot legs that are each a whole robot: they jump, roll, bolt together into new bodies designed by AI, and keep walking when you cut a piece off.' },
+  'Talk-DreamPuzzles.dc.html': { title: 'Inception, but for Homework: Solving Puzzles Inside Your Dreams — GelasTinta', img: '515bbb256ab40f87ea976b100e2ef7a2', pos: 'centre', date: '2026-04-23',
+    desc: 'Twenty sleepers, a soundtrack for every puzzle, and a sniff that means “I’m working on it”: can a dream help you solve tomorrow’s problem?' },
 };
 
 // 1200×630 preview card: one picture, or a 2×2 grid when META lists four.

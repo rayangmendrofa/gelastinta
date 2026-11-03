@@ -13,7 +13,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&amp;family=JetBrains+Mono:wght@400;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#EDEFF2;color:#10131C;font-family:'Newsreader',Georgia,serif;font-size:18px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{margin:0;background:#F9F2E3;color:#2A220F;font-family:'Newsreader',Georgia,serif;font-size:18px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 img{max-width:100%;display:block}
 a{color:#2B44C8;text-underline-offset:3px}
 a:hover{color:#1A2C8F}
@@ -21,17 +21,17 @@ h1,h2,h3,p,figure,ul,ol{margin:0}
 .wrap{max-width:1160px;margin:0 auto;padding:0 32px}
 .sec{padding:96px 0}
 .sec.tight{padding:64px 0}
-.dark{background:#10131C;color:#EDEFF2}
-.white{background:#FFFFFF}
-.blue{background:#2B44C8;color:#FFFFFF}
-.rule-t{border-top:1px solid #10131C}
-.rule-b{border-bottom:1px solid #10131C}
-.grid-bg{background-color:#EDEFF2;background-image:linear-gradient(#DCE0E7 1px,transparent 1px),linear-gradient(90deg,#DCE0E7 1px,transparent 1px);background-size:32px 32px}
+.dark{background:#2A220F;color:#F9F2E3}
+.white{background:#FDFBF6}
+.blue{background:#2B44C8;color:#FDFBF6}
+.rule-t{border-top:1px solid #2A220F}
+.rule-b{border-bottom:1px solid #2A220F}
+.grid-bg{background-color:#F9F2E3;background-image:linear-gradient(#F6EBD5 1px,transparent 1px),linear-gradient(90deg,#F6EBD5 1px,transparent 1px);background-size:32px 32px}
 .disp{font-family:'Bricolage Grotesque',system-ui,sans-serif}
 .mono{font-family:'JetBrains Mono',ui-monospace,monospace}
-.kicker{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;line-height:1.5;letter-spacing:.14em;text-transform:uppercase;color:#3A4152}
-.dark .kicker{color:#8FA2FF}
-.blue .kicker{color:#DDE3FF}
+.kicker{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;line-height:1.5;letter-spacing:.14em;text-transform:uppercase;color:#605434}
+.dark .kicker{color:#E2B540}
+.blue .kicker{color:#F8F0DE}
 .t-hero{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:clamp(44px,6.2vw,84px);line-height:.96;letter-spacing:-.035em}
 .t-title{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:clamp(34px,4.2vw,56px);line-height:1.04;letter-spacing:-.03em}
 .t-h2{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:clamp(30px,3.2vw,42px);line-height:1.06;letter-spacing:-.025em}
@@ -41,8 +41,8 @@ h1,h2,h3,p,figure,ul,ol{margin:0}
 .prose{max-width:66ch}
 .prose p+p{margin-top:1.1em}
 .small{font-size:16px;line-height:1.55}
-.muted{color:#3A4152}
-.dark .muted{color:#C9CED8}
+.muted{color:#605434}
+.dark .muted{color:#DFDACD}
 .meta{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;line-height:1.6;letter-spacing:.03em}
 .stack{display:flex;flex-direction:column}
 .g8{gap:8px}.g12{gap:12px}.g16{gap:16px}.g24{gap:24px}.g32{gap:32px}.g48{gap:48px}
@@ -54,52 +54,52 @@ h1,h2,h3,p,figure,ul,ol{margin:0}
 .split{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:start}
 .split.rev{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
 .split.mid{align-items:center}
-.card{background:#FFFFFF;border:1px solid #10131C;padding:28px}
+.card{background:#FDFBF6;border:1px solid #2A220F;padding:28px}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chip{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;line-height:1.4;letter-spacing:.05em;padding:6px 10px;border:1px solid currentColor}
-.chip.fill{background:#2B44C8;border-color:#2B44C8;color:#FFFFFF}
-.chip.warn{background:#C2410C;border-color:#C2410C;color:#FFFFFF}
-.btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 22px;background:#2B44C8;color:#FFFFFF;text-decoration:none;border-radius:999px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:14px;letter-spacing:.03em;border:1px solid #2B44C8}
-.btn:hover{background:#1A2C8F;border-color:#1A2C8F;color:#FFFFFF}
+.chip.fill{background:#2B44C8;border-color:#2B44C8;color:#FDFBF6}
+.chip.warn{background:#907018;border-color:#907018;color:#FDFBF6}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 22px;background:#2B44C8;color:#FDFBF6;text-decoration:none;border-radius:999px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:14px;letter-spacing:.03em;border:1px solid #2B44C8}
+.btn:hover{background:#1A2C8F;border-color:#1A2C8F;color:#FDFBF6}
 .btn.ghost{background:transparent;color:inherit;border-color:currentColor}
-.btn.ghost:hover{background:#10131C;color:#EDEFF2;border-color:#10131C}
-.dark .btn.ghost:hover,.blue .btn.ghost:hover{background:#EDEFF2;color:#10131C;border-color:#EDEFF2}
+.btn.ghost:hover{background:#2A220F;color:#F9F2E3;border-color:#2A220F}
+.dark .btn.ghost:hover,.blue .btn.ghost:hover{background:#F9F2E3;color:#2A220F;border-color:#F9F2E3}
 .back{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:inherit;min-height:44px;display:inline-flex;align-items:center;align-self:flex-start}
 .back:hover{color:inherit;text-decoration:underline}
-figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;line-height:1.5;letter-spacing:.06em;color:#3A4152;margin-top:10px}
-.dark figcaption{color:#C9CED8}
-.site-head{background:#EDEFF2;border-bottom:1px solid #10131C}
+figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;line-height:1.5;letter-spacing:.06em;color:#605434;margin-top:10px}
+.dark figcaption{color:#DFDACD}
+.site-head{background:#F9F2E3;border-bottom:1px solid #2A220F}
 .site-head .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 24px;min-height:72px}
-.brand{display:flex;align-items:center;gap:10px;color:#10131C;text-decoration:none;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:22px;letter-spacing:-.01em}
-.brand:hover{color:#10131C}
+.brand{display:flex;align-items:center;gap:10px;color:#2A220F;text-decoration:none;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:22px;letter-spacing:-.01em}
+.brand:hover{color:#2A220F}
 .nav{display:flex;flex-wrap:wrap;gap:0 28px}
-.nav a{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#10131C;text-decoration:none;min-height:44px;display:inline-flex;align-items:center;border-bottom:2px solid transparent}
+.nav a{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#2A220F;text-decoration:none;min-height:44px;display:inline-flex;align-items:center;border-bottom:2px solid transparent}
 .nav a:hover{color:#2B44C8}
 .nav a.on{color:#2B44C8;border-bottom-color:#2B44C8}
 .site-foot .wrap{padding-top:80px;padding-bottom:40px;display:flex;flex-direction:column;gap:56px}
 .foot-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:end}
 .foot-title{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:clamp(44px,5vw,64px);line-height:.95;letter-spacing:-.035em}
-.foot-blurb{font-size:19px;line-height:1.55;color:#C9CED8;max-width:30em}
-.foot-mail{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:clamp(22px,2.4vw,28px);color:#EDEFF2;text-decoration:none;border-bottom:2px solid #8FA2FF;padding-bottom:4px;align-self:flex-start;overflow-wrap:anywhere}
-.foot-mail:hover{color:#FFFFFF}
-.social{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 18px;border:1px solid #8FA2FF;color:#EDEFF2;text-decoration:none;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.05em}
-.social:hover{background:#EDEFF2;color:#10131C}
-.social:hover svg{stroke:#10131C}
-.tblock{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid #3A4152;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.06em}
-.tblock div{padding:14px 16px;display:flex;flex-direction:column;gap:6px;border-right:1px solid #3A4152}
+.foot-blurb{font-size:19px;line-height:1.55;color:#DFDACD;max-width:30em}
+.foot-mail{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:clamp(22px,2.4vw,28px);color:#F9F2E3;text-decoration:none;border-bottom:2px solid #E2B540;padding-bottom:4px;align-self:flex-start;overflow-wrap:anywhere}
+.foot-mail:hover{color:#FDFBF6}
+.social{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 18px;border:1px solid #E2B540;color:#F9F2E3;text-decoration:none;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.05em}
+.social:hover{background:#F9F2E3;color:#2A220F}
+.social:hover svg{stroke:#2A220F}
+.tblock{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid #605434;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.06em}
+.tblock div{padding:14px 16px;display:flex;flex-direction:column;gap:6px;border-right:1px solid #605434}
 .tblock div:last-child{border-right:0}
-.tblock span:first-child{color:#8FA2FF}
+.tblock span:first-child{color:#E2B540}
 .col{max-width:720px;margin:0 auto}
 .col-wide{max-width:1000px;margin:0 auto}
 .article p{font-size:19px;line-height:1.7}
 .article p+p{margin-top:1.1em}
 .dropcap::first-letter{float:left;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:4.4em;line-height:.8;color:#2B44C8;padding:8px 12px 0 0}
-.hatch{background-color:#FFFFFF;background-image:repeating-linear-gradient(45deg,#E3E6EC 0 1px,transparent 1px 12px)}
-.find{border:1px solid #10131C;padding:22px;display:flex;flex-direction:column;gap:10px;background:#FFFFFF}
+.hatch{background-color:#FDFBF6;background-image:repeating-linear-gradient(45deg,#FBF6EC 0 1px,transparent 1px 12px)}
+.find{border:1px solid #2A220F;padding:22px;display:flex;flex-direction:column;gap:10px;background:#FDFBF6}
 .find p{font-size:16px !important;line-height:1.55 !important}
-.fig-cap{font-size:15px !important;line-height:1.6 !important;color:#3A4152}
-.steps{list-style:none;padding:0;border-top:1px solid #10131C}
-.steps li{display:grid;grid-template-columns:48px minmax(0,1fr);gap:12px;padding:18px 0;border-bottom:1px solid #10131C;font-size:19px;line-height:1.55}
+.fig-cap{font-size:15px !important;line-height:1.6 !important;color:#605434}
+.steps{list-style:none;padding:0;border-top:1px solid #2A220F}
+.steps li{display:grid;grid-template-columns:48px minmax(0,1fr);gap:12px;padding:18px 0;border-bottom:1px solid #2A220F;font-size:19px;line-height:1.55}
 .steps li b{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:24px;color:#2B44C8;line-height:1.2}
 @media (max-width:960px){
 .split,.split.rev{grid-template-columns:minmax(0,1fr);gap:40px}
@@ -114,53 +114,53 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 .cols-2,.cols-3,.cols-4{grid-template-columns:minmax(0,1fr)}
 .tblock{grid-template-columns:repeat(2,minmax(0,1fr))}
 .tblock div:nth-child(2){border-right:0}
-.tblock div:nth-child(-n+2){border-bottom:1px solid #3A4152}
+.tblock div:nth-child(-n+2){border-bottom:1px solid #605434}
 .nav{gap:0 18px}
 .article p{font-size:18px}
 }
-.paper-fig{background:#FFFFFF;border:1px solid #10131C;padding:16px}
+.paper-fig{background:#FDFBF6;border:1px solid #2A220F;padding:16px}
 .paper-fig img{width:100%;height:auto}
-.viz{border:1px solid #10131C;background:#FFFFFF}
-.viz-head{padding:22px 24px;border-bottom:1px solid #10131C;display:flex;flex-direction:column;gap:8px}
+.viz{border:1px solid #2A220F;background:#FDFBF6}
+.viz-head{padding:22px 24px;border-bottom:1px solid #2A220F;display:flex;flex-direction:column;gap:8px}
 .viz-body{padding:24px}
-.viz-foot{padding:14px 24px;border-top:1px solid #C9CED8;display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center}
+.viz-foot{padding:14px 24px;border-top:1px solid #DFDACD;display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center}
 .lg{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.03em}
-.lg i{width:16px;height:16px;border:1px solid #10131C;display:inline-block}
+.lg i{width:16px;height:16px;border:1px solid #2A220F;display:inline-block}
 .wgrid{display:grid;grid-template-columns:200px repeat(10,minmax(0,1fr));gap:4px;align-items:stretch}
 .wgrid .lab{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:600;font-size:15px;line-height:1.25;display:flex;flex-direction:column;justify-content:center;padding-right:10px}
-.wgrid .lab small{font-family:'JetBrains Mono',ui-monospace,monospace;font-weight:400;font-size:11px;color:#3A4152;letter-spacing:.03em}
-.wgrid .grp{grid-column:1 / -1;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#2B44C8;padding:14px 0 2px;border-bottom:1px solid #C9CED8;margin-bottom:2px}
-.wgrid .tc{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;text-align:center;color:#3A4152;padding-top:6px}
-.cell{height:40px;border:1px solid #9AA6D6;background:#DDE3FF}
-.cell.m{background:#3A4152;border-color:#3A4152}
+.wgrid .lab small{font-family:'JetBrains Mono',ui-monospace,monospace;font-weight:400;font-size:11px;color:#605434;letter-spacing:.03em}
+.wgrid .grp{grid-column:1 / -1;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#2B44C8;padding:14px 0 2px;border-bottom:1px solid #DFDACD;margin-bottom:2px}
+.wgrid .tc{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;text-align:center;color:#605434;padding-top:6px}
+.cell{height:40px;border:1px solid #BBA77D;background:#F8F0DE}
+.cell.m{background:#605434;border-color:#605434}
 .ratio{display:flex;flex-wrap:wrap;gap:8px}
-.ratio button{min-height:44px;min-width:58px;padding:0 12px;border:1px solid #10131C;background:#FFFFFF;color:#10131C;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;cursor:pointer}
-.ratio button:hover{background:#EDEFF2}
-.ratio button.on{background:#2B44C8;border-color:#2B44C8;color:#FFFFFF}
-.ratio button:focus-visible{outline:3px solid #8FA2FF;outline-offset:2px}
-.readout{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border:1px solid #10131C}
-.readout div{padding:14px 16px;border-right:1px solid #10131C;display:flex;flex-direction:column;gap:4px}
+.ratio button{min-height:44px;min-width:58px;padding:0 12px;border:1px solid #2A220F;background:#FDFBF6;color:#2A220F;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;cursor:pointer}
+.ratio button:hover{background:#F9F2E3}
+.ratio button.on{background:#2B44C8;border-color:#2B44C8;color:#FDFBF6}
+.ratio button:focus-visible{outline:3px solid #E2B540;outline-offset:2px}
+.readout{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border:1px solid #2A220F}
+.readout div{padding:14px 16px;border-right:1px solid #2A220F;display:flex;flex-direction:column;gap:4px}
 .readout div:last-child{border-right:0}
 .readout.v{grid-template-columns:minmax(0,1fr)}
-.readout.v div{border-right:0;border-bottom:1px solid #10131C}
+.readout.v div{border-right:0;border-bottom:1px solid #2A220F}
 .readout.v div:last-child{border-bottom:0}
 .article p.kicker{font-size:12px;line-height:1.5}
 .article p.small{font-size:16px;line-height:1.55}
 .readout b{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:30px;line-height:1.05;letter-spacing:-.02em}
-.readout span{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#3A4152}
+.readout span{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#605434}
 .bin-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:32px;align-items:start}
-.stat{border:1px solid #10131C;background:#FFFFFF;padding:22px;display:flex;flex-direction:column;gap:6px}
+.stat{border:1px solid #2A220F;background:#FDFBF6;padding:22px;display:flex;flex-direction:column;gap:6px}
 .stat b{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:clamp(30px,3vw,40px);line-height:1;letter-spacing:-.03em;color:#2B44C8}
 .stat p{font-size:16px !important;line-height:1.5 !important}
 .dose{display:flex;flex-direction:column;gap:10px}
-.dose-bar{position:relative;display:flex;height:56px;border:1px solid #10131C;margin-top:30px}
-.dose-bar div{display:flex;align-items:center;justify-content:center;text-align:center;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;line-height:1.25;padding:0 6px;border-right:1px solid #10131C}
+.dose-bar{position:relative;display:flex;height:56px;border:1px solid #2A220F;margin-top:30px}
+.dose-bar div{display:flex;align-items:center;justify-content:center;text-align:center;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;line-height:1.25;padding:0 6px;border-right:1px solid #2A220F}
 .dose-bar div:last-child{border-right:0}
-.dose-axis{position:relative;height:22px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;color:#3A4152}
+.dose-axis{position:relative;height:22px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;color:#605434}
 .dose-axis span{position:absolute;top:0;transform:translateX(-50%);white-space:nowrap}
-.dose-pin{position:absolute;top:-34px;bottom:-8px;width:0;border-left:3px solid #10131C}
-.dose-pin em{position:absolute;top:0;left:0;transform:translateX(-50%);white-space:nowrap;font-style:normal;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.04em;background:#10131C;color:#FFFFFF;padding:3px 7px}
-.mix{display:flex;height:52px;border:1px solid #10131C}
+.dose-pin{position:absolute;top:-34px;bottom:-8px;width:0;border-left:3px solid #2A220F}
+.dose-pin em{position:absolute;top:0;left:0;transform:translateX(-50%);white-space:nowrap;font-style:normal;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.04em;background:#2A220F;color:#FDFBF6;padding:3px 7px}
+.mix{display:flex;height:52px;border:1px solid #2A220F}
 .mix div{display:flex;align-items:center;padding:0 12px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;white-space:nowrap;overflow:hidden}
 @media (max-width:960px){
 .bin-grid{grid-template-columns:minmax(0,1fr)}
@@ -170,7 +170,7 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 }
 @media (max-width:640px){
 .readout{grid-template-columns:minmax(0,1fr)}
-.readout div{border-right:0;border-bottom:1px solid #10131C}
+.readout div{border-right:0;border-bottom:1px solid #2A220F}
 .readout div:last-child{border-bottom:0}
 .cell{height:30px}
 .wgrid .tc{font-size:10px}
@@ -178,75 +178,101 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 .viz-body{padding:16px}
 .mix div{font-size:10px;padding:0 6px}
 }
-.cp-hero{position:relative;overflow:hidden;background:#1A1712;color:#FFFFFF}
+.cp-hero{position:relative;overflow:hidden;background:#2A220F;color:#FDFBF6}
 .cp-hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:70% 50%}
-.cp-hero-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(16,19,28,.92) 0%,rgba(16,19,28,.78) 45%,rgba(16,19,28,.35) 100%)}
-.cp-hero .kicker{color:#C9D2FF}
-.cp-hero .back{color:#FFFFFF}
-.cp-hero .t-title{color:#FFFFFF}
-.cp-hero > .wrap > .col > .meta{color:#E3E6EE}
-.cp-hero aside{color:#10131C}
-.more{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 16px;border:1px solid #10131C;background:#FFFFFF;color:#10131C;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.04em;cursor:pointer}
-.more:hover{background:#10131C;color:#FFFFFF}
-.more:focus-visible{outline:3px solid #8FA2FF;outline-offset:2px}
+.cp-hero-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(42,34,15,.92) 0%,rgba(42,34,15,.78) 45%,rgba(42,34,15,.35) 100%)}
+.cp-hero .kicker{color:#E2B540}
+.cp-hero .back{color:#FDFBF6}
+.cp-hero .t-title{color:#FDFBF6}
+.cp-hero > .wrap > .col > .meta{color:#FBF6EC}
+.cp-hero aside{color:#2A220F}
+.more{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 16px;border:1px solid #2A220F;background:#FDFBF6;color:#2A220F;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.04em;cursor:pointer}
+.more:hover{background:#2A220F;color:#FDFBF6}
+.more:focus-visible{outline:3px solid #E2B540;outline-offset:2px}
 .more-ico{display:inline-flex;width:18px;height:18px;align-items:center;justify-content:center;border:1px solid currentColor;font-size:13px;line-height:1}
 .more-body{margin-top:16px;border-left:3px solid #2B44C8;padding:4px 0 4px 20px;display:flex;flex-direction:column;gap:16px}
 .more-body p{font-size:17px !important;line-height:1.6 !important}
-.viz-more{padding:16px 24px 20px;border-top:1px solid #C9CED8}
-.eq-wrap{background:#FFFFFF;border:1px solid #10131C;padding:28px 24px;display:flex;flex-direction:column;gap:18px;align-items:center}
-.eq{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 8px;font-family:'Newsreader',Georgia,serif;font-style:italic;font-size:clamp(22px,2.6vw,32px);line-height:1.2;color:#10131C}
+.viz-more{padding:16px 24px 20px;border-top:1px solid #DFDACD}
+.eq-wrap{background:#FDFBF6;border:1px solid #2A220F;padding:28px 24px;display:flex;flex-direction:column;gap:18px;align-items:center}
+.eq{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 8px;font-family:'Newsreader',Georgia,serif;font-style:italic;font-size:clamp(22px,2.6vw,32px);line-height:1.2;color:#2A220F}
 .eq .up{font-style:normal}
 .eq .frac{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle}
 .eq .frac>span:first-child{border-bottom:1.5px solid currentColor;padding:0 4px 2px}
 .eq .frac>span:last-child{padding:2px 4px 0}
 .eq .br{font-style:normal;font-size:1.9em;line-height:1;font-weight:300}
 .hl{display:inline-flex;align-items:center;gap:6px;border:2.5px solid;border-radius:999px;padding:4px 14px}
-.hl.t{border-color:#C62828;padding:0 8px}
-.hl.e{border-color:#1F5FA8}
-.hl.i{border-color:#2E8B57}
+.hl.t{border-color:#B5452A;padding:0 8px}
+.hl.e{border-color:#2B44C8}
+.hl.i{border-color:#8A6A12}
 .eq-legend{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:center}
 .eq-legend span{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.05em}
 .eq-legend i{width:14px;height:14px;border-radius:999px;border:2.5px solid;display:inline-block}
-.gloss{display:grid;grid-template-columns:72px minmax(0,1fr);border-top:1px solid #10131C}
-.gloss dt,.gloss dd{margin:0;padding:10px 0;border-bottom:1px solid #C9CED8;font-size:17px;line-height:1.45}
+.gloss{display:grid;grid-template-columns:72px minmax(0,1fr);border-top:1px solid #2A220F}
+.gloss dt,.gloss dd{margin:0;padding:10px 0;border-bottom:1px solid #DFDACD;font-size:17px;line-height:1.45}
 .gloss dt{font-family:'Newsreader',Georgia,serif;font-style:italic;font-size:21px}
-.meme{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:28px;align-items:center;border:1px solid #10131C;background:#FFFFFF;padding:20px}
-.meme img{width:100%;height:auto;border:1px solid #10131C}
+.meme{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:28px;align-items:center;border:1px solid #2A220F;background:#FDFBF6;padding:20px}
+.meme img{width:100%;height:auto;border:1px solid #2A220F}
 .take{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
 @media (max-width:960px){.take{grid-template-columns:minmax(0,1fr)}.take figure{max-width:280px}}
 @media (max-width:640px){.meme{grid-template-columns:minmax(0,1fr)}.eq{font-size:19px}.hl{padding:2px 8px}.eq-wrap{padding:20px 12px}.viz-more{padding:14px 16px 18px}}
 .cm-wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:24px}
-.cm-box{border:1px solid #10131C;background:#FFFFFF;padding:24px;display:flex;flex-direction:column;gap:16px}
+.cm-box{border:1px solid #2A220F;background:#FDFBF6;padding:24px;display:flex;flex-direction:column;gap:16px}
 .cm-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
 .cm-field{display:flex;flex-direction:column;gap:6px}
-.cm-field label{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#3A4152}
-.cm-field input,.cm-field textarea{font-family:'Newsreader',Georgia,serif;font-size:18px;line-height:1.5;color:#10131C;background:#FFFFFF;border:1px solid #10131C;padding:10px 12px;min-height:48px;width:100%;border-radius:0}
+.cm-field label{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#605434}
+.cm-field input,.cm-field textarea{font-family:'Newsreader',Georgia,serif;font-size:18px;line-height:1.5;color:#2A220F;background:#FDFBF6;border:1px solid #2A220F;padding:10px 12px;min-height:48px;width:100%;border-radius:0}
 .cm-field textarea{min-height:120px;resize:vertical}
-.cm-field input:focus,.cm-field textarea:focus{outline:3px solid #8FA2FF;outline-offset:1px}
+.cm-field input:focus,.cm-field textarea:focus{outline:3px solid #E2B540;outline-offset:1px}
 .cm-err{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;color:#B42318}
 .cm-actions{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center}
 .cm-actions .btn{cursor:pointer;font-size:14px}
 .cm-link{background:none;border:0;padding:0;min-height:44px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;color:#2B44C8;text-decoration:underline;cursor:pointer}
-.cm-list{list-style:none;margin:0;padding:0;border-top:2px solid #10131C}
-.cm-list li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:16px;padding:20px 0;border-bottom:1px solid #C9CED8}
-.cm-av{width:44px;height:44px;border-radius:999px;background:#2B44C8;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:18px}
+.cm-list{list-style:none;margin:0;padding:0;border-top:2px solid #2A220F}
+.cm-list li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:16px;padding:20px 0;border-bottom:1px solid #DFDACD}
+.cm-av{width:44px;height:44px;border-radius:999px;background:#2B44C8;color:#FDFBF6;display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:18px}
 .cm-text{font-size:18px;line-height:1.6;white-space:pre-wrap;overflow-wrap:anywhere}
 @media (max-width:640px){.cm-row{grid-template-columns:minmax(0,1fr)}.cm-box{padding:18px}}
 .gt-progress{position:fixed;left:0;top:0;width:100%;height:3px;background:#2B44C8;transform:scaleX(0);transform-origin:0 50%;z-index:70;pointer-events:none}
 @media (prefers-reduced-motion:reduce){.gt-progress{display:none}}
-.talk-nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border:1px solid #10131C;margin-top:48px}
-.tn{display:flex;flex-direction:column;gap:10px;padding:24px;color:#10131C;text-decoration:none;background:#FFFFFF;min-height:44px}
-.tn + .tn{border-left:1px solid #10131C}
+.talk-nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border:1px solid #2A220F;margin-top:48px}
+.tn{display:flex;flex-direction:column;gap:10px;padding:24px;color:#2A220F;text-decoration:none;background:#FDFBF6;min-height:44px}
+.tn + .tn{border-left:1px solid #2A220F}
 .tn.next{text-align:right;align-items:flex-end}
-.tn:hover{background:#10131C;color:#FFFFFF}
-.tn:hover .tn-k{color:#8FA2FF}
+.tn:hover{background:#2A220F;color:#FDFBF6}
+.tn:hover .tn-k{color:#E2B540}
 .tn:focus-visible{outline:3px solid #2B44C8;outline-offset:2px}
 .tn-k{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#2B44C8}
 .tn-t{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:700;font-size:19px;line-height:1.25;letter-spacing:-.01em}
 .tn-t em{font-style:italic}
 .tn-m{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.03em;opacity:.75}
-.tn.none{background:transparent;justify-content:center;color:#3A4152}
-@media (max-width:640px){.talk-nav{grid-template-columns:minmax(0,1fr)}.tn + .tn{border-left:0;border-top:1px solid #10131C}.tn.next{text-align:left;align-items:flex-start}}
+.tn.none{background:transparent;justify-content:center;color:#605434}
+@media (max-width:640px){.talk-nav{grid-template-columns:minmax(0,1fr)}.tn + .tn{border-left:0;border-top:1px solid #2A220F}.tn.next{text-align:left;align-items:flex-start}}
+/* wada:start */:root{--wada-ink:#2B44C8;--wada-fill:#E2B540}
+.cp-hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:8px;z-index:3;background:linear-gradient(90deg,#E2B540 0.0% 33.33%,#2B44C8 33.33% 66.67%,#EBD3A2 66.67% 100.0%)}
+.gt-progress{background:linear-gradient(90deg,#E2B540 0.0% 33.33%,#2B44C8 33.33% 66.67%,#EBD3A2 66.67% 100.0%)}
+.dropcap::first-letter{color:var(--wada-ink)}
+.stat{box-shadow:inset 0 4px 0 var(--wada-fill)}
+.pull{border-top-color:var(--wada-ink) !important;border-bottom-color:var(--wada-ink) !important}
+.wada-note{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px}
+.wada-sw{display:flex;border:1px solid #2A220F}
+.wada-sw i{display:block;width:28px;height:28px}
+/* wada:end */
+/* wadasite:start */.site-foot{position:relative}
+.site-foot::before{content:"";position:absolute;left:0;right:0;top:-6px;height:6px;background:linear-gradient(90deg,#A36AA5 0.0% 25.0%,#FDC57E 25.0% 50.0%,#2A220F 50.0% 75.0%,#2B44C8 75.0% 100.0%)}
+::selection{background:#FDC57E;color:#2A220F}
+.wada-credit{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:11px;letter-spacing:.06em;color:#DFDACD}
+.wada-credit .wada-mini{margin-left:0;border-color:#605434}
+/* wadasite:end */
+/* theme:start */
+.kicker{color:#7F6724}
+.dropcap::first-letter{color:#A3832F !important}
+.steps li b{color:#A3832F}
+h2.t-h2::after,.sec-head .t-h2::after{content:"";display:block;width:56px;height:6px;margin-top:16px;background:#E2B540}
+.dark h2.t-h2::after,.dark .sec-head .t-h2::after{background:#E2B540}
+.paper-fig,.paper-fig img{background:#FFFFFF}
+.find{border-top:5px solid #E2B540}
+::selection{background:#E2B540;color:#2A220F}
+/* theme:end */
 </style>
 </helmet>
 <div style="min-height:100vh" data-gt-root="">
@@ -254,7 +280,7 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 
 <header class="site-head">
 <div class="wrap">
-<a href="Main.dc.html" class="brand"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M9.6 20 6.3 26.4A1.7 1.7 0 0 0 7.8 29h16.4a1.7 1.7 0 0 0 1.5-2.6L22.4 20z" fill="#2B44C8"></path><path d="M11 3h10M13 3v9L6 26.4A1.7 1.7 0 0 0 7.8 29h16.4a1.7 1.7 0 0 0 1.5-2.6L19 12V3" stroke="#10131C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>GelasTinta</a>
+<a href="Main.dc.html" class="brand"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M9.6 20 6.3 26.4A1.7 1.7 0 0 0 7.8 29h16.4a1.7 1.7 0 0 0 1.5-2.6L22.4 20z" fill="#2B44C8"></path><path d="M11 3h10M13 3v9L6 26.4A1.7 1.7 0 0 0 7.8 29h16.4a1.7 1.7 0 0 0 1.5-2.6L19 12V3" stroke="#2A220F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>GelasTinta</a>
 <nav class="nav" aria-label="Main">
 <a href="Main.dc.html">Home</a>
 <a href="Projects.dc.html">Projects</a>
@@ -272,10 +298,10 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <div class="col stack g16">
 <a href="Talks.dc.html" class="back">← All talks</a>
 <p class="kicker">Talk 01 — Review</p>
-<h1 class="t-title">“The Art of Combining Cooking and Science”</h1>
+<h1 class="t-title">The Art of Combining Cooking and Science</h1>
 <p class="meta">Rayang T Mendrofa - 23rd December 2025 · 6 min read</p>
-<aside style="margin-top:24px;border:1px solid #10131C;background:#FFFFFF">
-<div class="dark" style="padding:12px 20px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px"><span class="kicker" style="font-size:11px">Paper under review</span><span class="meta" style="font-size:11px;color:#8FA2FF">Physics of Fluids · ARTICLE</span></div>
+<aside style="margin-top:24px;border:1px solid #2A220F;background:#FDFBF6">
+<div class="dark" style="padding:12px 20px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px"><span class="kicker" style="font-size:11px">Paper under review</span><span class="meta" style="font-size:11px;color:#E2B540">Physics of Fluids · ARTICLE</span></div>
 <div class="stack g12" style="padding:22px 20px">
 <h2 class="t-h3" style="font-size:24px">Phase behavior of Cacio e Pepe sauce</h2>
 <p class="small muted">G. Bartolucci, D. M. Busiello, M. Ciarchi, A. Corticelli, I. Di Terlizzi, F. Olmeda, D. Revignas, and V. M. Schimmenti</p>
@@ -295,7 +321,7 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <p>They tested how much starch, how much water and which helpers keep the sauce smooth as it heats up. The result is a map of the sauce’s “phases”, including the dreaded <b>Mozzarella Phase</b>, when the cheese gives up and turns into one big rubbery clump.</p>
 </div>
 <figure class="stack g12">
-<img src="/_blob/65184f3eef8287ff5ff465f5d7c86b78" alt="The research team on stage at the Ig Nobel ceremony, laughing, one holding a mandolin and another holding the prize" style="width:100%;height:auto;border:1px solid #10131C" loading="lazy">
+<img src="/_blob/65184f3eef8287ff5ff465f5d7c86b78" alt="The research team on stage at the Ig Nobel ceremony, laughing, one holding a mandolin and another holding the prize" style="width:100%;height:auto;border:1px solid #2A220F" loading="lazy">
 <figcaption>THE AUTHORS AT THE 2025 IG NOBEL PRIZE CEREMONY, WHERE THE PAPER WON THE PHYSICS PRIZE</figcaption>
 </figure>
 </div>
@@ -316,10 +342,10 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <h2 class="t-h2">What did they find?</h2>
 </div>
 <div class="cols-4">
-<div class="find" style="background:#C2410C;color:#FFFFFF;border-color:#C2410C"><span class="meta" style="font-size:12px">01</span><h3 class="t-h3" style="font-size:21px">Mozzarella Phase</h3><p>Too little starch and the cheese melts into one big rubbery lump.</p></div>
+<div class="find" style="background:#907018;color:#FDFBF6;border-color:#907018"><span class="meta" style="font-size:12px">01</span><h3 class="t-h3" style="font-size:21px">Mozzarella Phase</h3><p>Too little starch and the cheese melts into one big rubbery lump.</p></div>
 <div class="find"><span class="meta" style="font-size:12px;color:#2B44C8">02</span><h3 class="t-h3" style="font-size:21px">Starch = Key</h3><p>Starch from the pasta water stops cheese proteins sticking to each other.</p></div>
 <div class="find"><span class="meta" style="font-size:12px;color:#2B44C8">03</span><h3 class="t-h3" style="font-size:21px">Cheese Concentration Matters</h3><p>Equal parts cheese and water is the easiest mix to break. A little more or less water is safer.</p></div>
-<div class="find" style="background:#2B44C8;color:#FFFFFF;border-color:#2B44C8"><span class="meta" style="font-size:12px">04</span><h3 class="t-h3" style="font-size:21px">Trisodium citrate</h3><p>A pinch of this salt stops lumps completely, but it isn’t traditional.</p></div>
+<div class="find" style="background:#2B44C8;color:#FDFBF6;border-color:#2B44C8"><span class="meta" style="font-size:12px">04</span><h3 class="t-h3" style="font-size:21px">Trisodium citrate</h3><p>A pinch of this salt stops lumps completely, but it isn’t traditional.</p></div>
 </div>
 
 <div class="viz" style="margin-top:56px" role="figure" aria-label="Chart A: the temperature at which the sauce splits, with and without starch or citrate">
@@ -331,8 +357,8 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <div class="viz-body"><div class="wgrid"><div class="grp">With starch</div><div class="lab">No starch<small>plain water</small></div><div class="cell" title="No starch, 50 °C: holds"></div><div class="cell" title="No starch, 55 °C: holds"></div><div class="cell m" title="No starch, 60 °C: splits"></div><div class="cell m" title="No starch, 65 °C: splits"></div><div class="cell m" title="No starch, 70 °C: splits"></div><div class="cell m" title="No starch, 75 °C: splits"></div><div class="cell m" title="No starch, 80 °C: splits"></div><div class="cell m" title="No starch, 85 °C: splits"></div><div class="cell m" title="No starch, 90 °C: splits"></div><div class="cell m" title="No starch, 95 °C: splits"></div><div class="lab">A pinch of starch<small>0.5 %</small></div><div class="cell" title="A pinch of starch, 50 °C: holds"></div><div class="cell" title="A pinch of starch, 55 °C: holds"></div><div class="cell" title="A pinch of starch, 60 °C: holds"></div><div class="cell m" title="A pinch of starch, 65 °C: splits"></div><div class="cell m" title="A pinch of starch, 70 °C: splits"></div><div class="cell m" title="A pinch of starch, 75 °C: splits"></div><div class="cell m" title="A pinch of starch, 80 °C: splits"></div><div class="cell m" title="A pinch of starch, 85 °C: splits"></div><div class="cell m" title="A pinch of starch, 90 °C: splits"></div><div class="cell m" title="A pinch of starch, 95 °C: splits"></div><div class="lab">Enough starch<small>1 % or more</small></div><div class="cell" title="Enough starch, 50 °C: holds"></div><div class="cell" title="Enough starch, 55 °C: holds"></div><div class="cell" title="Enough starch, 60 °C: holds"></div><div class="cell" title="Enough starch, 65 °C: holds"></div><div class="cell" title="Enough starch, 70 °C: holds"></div><div class="cell" title="Enough starch, 75 °C: holds"></div><div class="cell" title="Enough starch, 80 °C: holds"></div><div class="cell" title="Enough starch, 85 °C: holds"></div><div class="cell" title="Enough starch, 90 °C: holds"></div><div class="cell" title="Enough starch, 95 °C: holds"></div><div class="grp">With trisodium citrate instead</div><div class="lab">A little citrate<small>1 %</small></div><div class="cell" title="A little citrate, 50 °C: holds"></div><div class="cell" title="A little citrate, 55 °C: holds"></div><div class="cell" title="A little citrate, 60 °C: holds"></div><div class="cell" title="A little citrate, 65 °C: holds"></div><div class="cell m" title="A little citrate, 70 °C: splits"></div><div class="cell m" title="A little citrate, 75 °C: splits"></div><div class="cell m" title="A little citrate, 80 °C: splits"></div><div class="cell m" title="A little citrate, 85 °C: splits"></div><div class="cell m" title="A little citrate, 90 °C: splits"></div><div class="cell m" title="A little citrate, 95 °C: splits"></div><div class="lab">Enough citrate<small>2 % or more</small></div><div class="cell" title="Enough citrate, 50 °C: holds"></div><div class="cell" title="Enough citrate, 55 °C: holds"></div><div class="cell" title="Enough citrate, 60 °C: holds"></div><div class="cell" title="Enough citrate, 65 °C: holds"></div><div class="cell" title="Enough citrate, 70 °C: holds"></div><div class="cell" title="Enough citrate, 75 °C: holds"></div><div class="cell" title="Enough citrate, 80 °C: holds"></div><div class="cell" title="Enough citrate, 85 °C: holds"></div><div class="cell" title="Enough citrate, 90 °C: holds"></div><div class="cell" title="Enough citrate, 95 °C: holds"></div><div class="sp"></div><div class="tc">50</div><div class="tc">55</div><div class="tc">60</div><div class="tc">65</div><div class="tc">70</div><div class="tc">75</div><div class="tc">80</div><div class="tc">85</div><div class="tc">90</div><div class="tc">95</div></div>
 <p class="meta muted" style="text-align:right;margin-top:6px;font-size:11px">Temperature [°C]</p></div>
 <div class="viz-foot">
-<span class="lg"><i style="background:#DDE3FF;border-color:#9AA6D6"></i>Sauce holds</span>
-<span class="lg"><i style="background:#3A4152;border-color:#3A4152"></i>Mozzarella Phase</span>
+<span class="lg"><i style="background:#F8F0DE;border-color:#BBA77D"></i>Sauce holds</span>
+<span class="lg"><i style="background:#605434;border-color:#605434"></i>Mozzarella Phase</span>
 </div>
 <div class="viz-more"><button type="button" class="more" aria-expanded="{{ex.a.aria}}" onClick="{{ex.a.toggle}}"><span class="more-ico" aria-hidden="true">{{ex.a.ico}}</span>{{ex.a.text}} the science</button><sc-if value="{{ex.a.open}}"><div class="more-body"><p>How they measured it: each sample was spooned onto a backlit Petri dish and photographed. Software picked out the dark cheese clumps, fitted each one with an ellipse and averaged their lengths into a <b>mean aggregate size</b> in millimetres. That number is the colour of every square in the paper’s phase diagram below. Starch is given as a percentage of the water, with cheese and water mixed 1 : 1; citrate as a percentage of the cheese weight.</p>
 <p>“Sauce holds” in Chart A still allows small lumps: with starch, little aggregates remain even when the Mozzarella Phase is gone, while 2 % citrate leaves no visible aggregates at all. Chart A is read from the paper’s Figs. 2(b) and 5.</p>
@@ -362,12 +388,12 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <span class="hl i">χ φ (1 <span class="up">−</span> φ)</span>
 <span class="br">]</span>
 </div>
-<div class="eq-legend"><span><i style="border-color:#C62828"></i>Temperature</span><span><i style="border-color:#1F5FA8"></i>Entropy term</span><span><i style="border-color:#2E8B57"></i>Interaction term</span></div>
+<div class="eq-legend"><span><i style="border-color:#B5452A"></i>Temperature</span><span><i style="border-color:#2B44C8"></i>Entropy term</span><span><i style="border-color:#8A6A12"></i>Interaction term</span></div>
 </div>
 <div class="cols-3" style="margin-top:20px">
-<div class="card stack g8" style="border-top:5px solid #1F5FA8"><h3 class="t-h3" style="color:#1F5FA8">Entropy term</h3><p style="font-size:17px">“ideas want to spread out” → proteins and water naturally mix.</p></div>
-<div class="card stack g8" style="border-top:5px solid #2E8B57"><h3 class="t-h3" style="color:#2E8B57">Interaction term</h3><p style="font-size:17px">“friendship or rivalry” → proteins either cooperate with water (smooth sauce) or gang up on each other (clumps).</p></div>
-<div class="card stack g8" style="border-top:5px solid #C62828"><h3 class="t-h3" style="color:#C62828">Temperature</h3><p style="font-size:17px">“energy level of the party” → higher heat makes proteins more likely to denature and aggregate.</p></div>
+<div class="card stack g8" style="border-top:5px solid #2B44C8"><h3 class="t-h3" style="color:#2B44C8">Entropy term</h3><p style="font-size:17px">“ideas want to spread out” → proteins and water naturally mix.</p></div>
+<div class="card stack g8" style="border-top:5px solid #8A6A12"><h3 class="t-h3" style="color:#8A6A12">Interaction term</h3><p style="font-size:17px">“friendship or rivalry” → proteins either cooperate with water (smooth sauce) or gang up on each other (clumps).</p></div>
+<div class="card stack g8" style="border-top:5px solid #B5452A"><h3 class="t-h3" style="color:#B5452A">Temperature</h3><p style="font-size:17px">“energy level of the party” → higher heat makes proteins more likely to denature and aggregate.</p></div>
 </div>
 <div style="margin-top:20px"><button type="button" class="more" aria-expanded="{{ex.g.aria}}" onClick="{{ex.g.toggle}}"><span class="more-ico" aria-hidden="true">{{ex.g.ico}}</span>{{ex.g.text}} what each symbol means</button><sc-if value="{{ex.g.open}}"><div class="more-body"><dl class="gloss">
 <dt>f</dt><dd>Free-energy density of the mixture: the “score” of how happy the mix is.</dd>
@@ -392,32 +418,32 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 </div>
 <div class="bin-grid">
 <div><svg viewBox="0 0 560 390" width="100%" role="img" aria-label="U-shaped curve: the temperature where lumps start, for different amounts of water. Lowest, about 60 degrees, near equal parts water and cheese. The dot marks your choice.">
-<rect x="56" y="20" width="484" height="310" fill="#DDE3FF"></rect>
-<path d="M56.0,47.4 L62.1,56.7 L68.3,65.8 L74.4,74.7 L80.5,83.4 L86.6,91.9 L92.8,100.1 L98.9,108.2 L105.0,116.1 L111.1,123.7 L117.3,131.1 L123.4,138.4 L129.5,145.4 L135.6,152.2 L141.8,158.8 L147.9,165.2 L154.0,171.4 L160.2,177.4 L166.3,183.2 L172.4,188.8 L178.5,194.2 L184.7,199.3 L190.8,204.3 L196.9,209.0 L203.0,213.6 L209.2,217.9 L215.3,222.0 L221.4,226.0 L227.5,229.7 L233.7,233.2 L239.8,236.5 L245.9,239.6 L252.1,242.4 L258.2,245.1 L264.3,247.6 L270.4,249.9 L276.6,251.9 L282.7,253.8 L288.8,255.4 L294.9,256.8 L301.1,258.1 L307.2,259.1 L313.3,259.9 L319.4,260.5 L325.6,260.9 L331.7,261.1 L337.8,261.1 L343.9,260.9 L350.1,260.4 L356.2,259.8 L362.3,258.9 L368.5,257.9 L374.6,256.6 L380.7,255.2 L386.8,253.5 L393.0,251.6 L399.1,249.5 L405.2,247.2 L411.3,244.7 L417.5,242.0 L423.6,239.1 L429.7,236.0 L435.8,232.7 L442.0,229.1 L448.1,225.4 L454.2,221.4 L460.4,217.3 L466.5,212.9 L472.6,208.3 L478.7,203.6 L484.9,198.6 L491.0,193.4 L497.1,188.0 L503.2,182.4 L509.4,176.5 L515.5,170.5 L521.6,164.3 L527.7,157.9 L533.9,151.2 L540.0,144.4 L540.0,20.0 L56.0,20.0 Z" fill="#F6D5C5"></path>
-<line x1="56" x2="540" y1="330.0" y2="330.0" stroke="#10131C" stroke-opacity=".12"></line><text x="48" y="335.0" text-anchor="end" font-size="14" fill="#3A4152" font-family="JetBrains Mono, monospace">50</text><line x1="56" x2="540" y1="261.1" y2="261.1" stroke="#10131C" stroke-opacity=".12"></line><text x="48" y="266.1" text-anchor="end" font-size="14" fill="#3A4152" font-family="JetBrains Mono, monospace">60</text><line x1="56" x2="540" y1="192.2" y2="192.2" stroke="#10131C" stroke-opacity=".12"></line><text x="48" y="197.2" text-anchor="end" font-size="14" fill="#3A4152" font-family="JetBrains Mono, monospace">70</text><line x1="56" x2="540" y1="123.3" y2="123.3" stroke="#10131C" stroke-opacity=".12"></line><text x="48" y="128.3" text-anchor="end" font-size="14" fill="#3A4152" font-family="JetBrains Mono, monospace">80</text><line x1="56" x2="540" y1="54.4" y2="54.4" stroke="#10131C" stroke-opacity=".12"></line><text x="48" y="59.4" text-anchor="end" font-size="14" fill="#3A4152" font-family="JetBrains Mono, monospace">90</text><line x1="112.5" x2="112.5" y1="20" y2="330" stroke="#10131C" stroke-opacity=".12"></line><text x="112.5" y="352" text-anchor="middle" font-size="14" fill="#3A4152" font-family="JetBrains Mono, monospace">200%</text><line x1="220.6" x2="220.6" y1="20" y2="330" stroke="#10131C" stroke-opacity=".12"></line><text x="220.6" y="352" text-anchor="middle" font-size="14" fill="#3A4152" font-family="JetBrains Mono, monospace">150%</text><line x1="309.0" x2="309.0" y1="20" y2="330" stroke="#10131C" stroke-opacity=".12"></line><text x="309.0" y="352" text-anchor="middle" font-size="14" fill="#3A4152" font-family="JetBrains Mono, monospace">120%</text><line x1="382.7" x2="382.7" y1="20" y2="330" stroke="#10131C" stroke-opacity=".12"></line><text x="382.7" y="352" text-anchor="middle" font-size="14" fill="#3A4152" font-family="JetBrains Mono, monospace">100%</text><line x1="472.8" x2="472.8" y1="20" y2="330" stroke="#10131C" stroke-opacity=".12"></line><text x="472.8" y="352" text-anchor="middle" font-size="14" fill="#3A4152" font-family="JetBrains Mono, monospace">80%</text>
-<text x="530" y="44" text-anchor="end" font-size="14" fill="#9A3412" font-family="JetBrains Mono, monospace">LUMPY</text>
+<rect x="56" y="20" width="484" height="310" fill="#F8F0DE"></rect>
+<path d="M56.0,47.4 L62.1,56.7 L68.3,65.8 L74.4,74.7 L80.5,83.4 L86.6,91.9 L92.8,100.1 L98.9,108.2 L105.0,116.1 L111.1,123.7 L117.3,131.1 L123.4,138.4 L129.5,145.4 L135.6,152.2 L141.8,158.8 L147.9,165.2 L154.0,171.4 L160.2,177.4 L166.3,183.2 L172.4,188.8 L178.5,194.2 L184.7,199.3 L190.8,204.3 L196.9,209.0 L203.0,213.6 L209.2,217.9 L215.3,222.0 L221.4,226.0 L227.5,229.7 L233.7,233.2 L239.8,236.5 L245.9,239.6 L252.1,242.4 L258.2,245.1 L264.3,247.6 L270.4,249.9 L276.6,251.9 L282.7,253.8 L288.8,255.4 L294.9,256.8 L301.1,258.1 L307.2,259.1 L313.3,259.9 L319.4,260.5 L325.6,260.9 L331.7,261.1 L337.8,261.1 L343.9,260.9 L350.1,260.4 L356.2,259.8 L362.3,258.9 L368.5,257.9 L374.6,256.6 L380.7,255.2 L386.8,253.5 L393.0,251.6 L399.1,249.5 L405.2,247.2 L411.3,244.7 L417.5,242.0 L423.6,239.1 L429.7,236.0 L435.8,232.7 L442.0,229.1 L448.1,225.4 L454.2,221.4 L460.4,217.3 L466.5,212.9 L472.6,208.3 L478.7,203.6 L484.9,198.6 L491.0,193.4 L497.1,188.0 L503.2,182.4 L509.4,176.5 L515.5,170.5 L521.6,164.3 L527.7,157.9 L533.9,151.2 L540.0,144.4 L540.0,20.0 L56.0,20.0 Z" fill="#F3E2B6"></path>
+<line x1="56" x2="540" y1="330.0" y2="330.0" stroke="#2A220F" stroke-opacity=".12"></line><text x="48" y="335.0" text-anchor="end" font-size="14" fill="#605434" font-family="JetBrains Mono, monospace">50</text><line x1="56" x2="540" y1="261.1" y2="261.1" stroke="#2A220F" stroke-opacity=".12"></line><text x="48" y="266.1" text-anchor="end" font-size="14" fill="#605434" font-family="JetBrains Mono, monospace">60</text><line x1="56" x2="540" y1="192.2" y2="192.2" stroke="#2A220F" stroke-opacity=".12"></line><text x="48" y="197.2" text-anchor="end" font-size="14" fill="#605434" font-family="JetBrains Mono, monospace">70</text><line x1="56" x2="540" y1="123.3" y2="123.3" stroke="#2A220F" stroke-opacity=".12"></line><text x="48" y="128.3" text-anchor="end" font-size="14" fill="#605434" font-family="JetBrains Mono, monospace">80</text><line x1="56" x2="540" y1="54.4" y2="54.4" stroke="#2A220F" stroke-opacity=".12"></line><text x="48" y="59.4" text-anchor="end" font-size="14" fill="#605434" font-family="JetBrains Mono, monospace">90</text><line x1="112.5" x2="112.5" y1="20" y2="330" stroke="#2A220F" stroke-opacity=".12"></line><text x="112.5" y="352" text-anchor="middle" font-size="14" fill="#605434" font-family="JetBrains Mono, monospace">200%</text><line x1="220.6" x2="220.6" y1="20" y2="330" stroke="#2A220F" stroke-opacity=".12"></line><text x="220.6" y="352" text-anchor="middle" font-size="14" fill="#605434" font-family="JetBrains Mono, monospace">150%</text><line x1="309.0" x2="309.0" y1="20" y2="330" stroke="#2A220F" stroke-opacity=".12"></line><text x="309.0" y="352" text-anchor="middle" font-size="14" fill="#605434" font-family="JetBrains Mono, monospace">120%</text><line x1="382.7" x2="382.7" y1="20" y2="330" stroke="#2A220F" stroke-opacity=".12"></line><text x="382.7" y="352" text-anchor="middle" font-size="14" fill="#605434" font-family="JetBrains Mono, monospace">100%</text><line x1="472.8" x2="472.8" y1="20" y2="330" stroke="#2A220F" stroke-opacity=".12"></line><text x="472.8" y="352" text-anchor="middle" font-size="14" fill="#605434" font-family="JetBrains Mono, monospace">80%</text>
+<text x="530" y="44" text-anchor="end" font-size="14" fill="#7A5A12" font-family="JetBrains Mono, monospace">LUMPY</text>
 <text x="530" y="318" text-anchor="end" font-size="14" fill="#1A2C8F" font-family="JetBrains Mono, monospace">SMOOTH</text>
-<path d="M56.0,47.4 L62.3,56.9 L68.5,66.2 L74.8,75.2 L81.0,84.1 L87.3,92.7 L93.5,101.1 L99.8,109.3 L106.0,117.3 L112.3,125.1" fill="none" stroke="#10131C" stroke-width="2.5" stroke-dasharray="5 5"></path>
-<path d="M473.4,207.7 L480.8,201.9 L488.2,195.7 L495.6,189.3 L503.0,182.6 L510.4,175.5 L517.8,168.2 L525.2,160.5 L532.6,152.6 L540.0,144.4" fill="none" stroke="#10131C" stroke-width="2.5" stroke-dasharray="5 5"></path>
-<path d="M112.3,125.1 L118.4,132.5 L124.5,139.7 L130.6,146.7 L136.8,153.4 L142.9,160.0 L149.0,166.4 L155.1,172.5 L161.2,178.5 L167.4,184.2 L173.5,189.8 L179.6,195.1 L185.7,200.2 L191.8,205.1 L198.0,209.8 L204.1,214.3 L210.2,218.6 L216.3,222.7 L222.5,226.6 L228.6,230.3 L234.7,233.7 L240.8,237.0 L246.9,240.1 L253.1,242.9 L259.2,245.5 L265.3,248.0 L271.4,250.2 L277.6,252.2 L283.7,254.0 L289.8,255.6 L295.9,257.0 L302.0,258.2 L308.2,259.2 L314.3,260.0 L320.4,260.6 L326.5,260.9 L332.6,261.1 L338.8,261.1 L344.9,260.8 L351.0,260.3 L357.1,259.7 L363.3,258.8 L369.4,257.7 L375.5,256.4 L381.6,254.9 L387.7,253.2 L393.9,251.3 L400.0,249.2 L406.1,246.9 L412.2,244.4 L418.4,241.6 L424.5,238.7 L430.6,235.5 L436.7,232.2 L442.8,228.6 L449.0,224.8 L455.1,220.9 L461.2,216.7 L467.3,212.3 L473.4,207.7" fill="none" stroke="#10131C" stroke-width="3"></path>
+<path d="M56.0,47.4 L62.3,56.9 L68.5,66.2 L74.8,75.2 L81.0,84.1 L87.3,92.7 L93.5,101.1 L99.8,109.3 L106.0,117.3 L112.3,125.1" fill="none" stroke="#2A220F" stroke-width="2.5" stroke-dasharray="5 5"></path>
+<path d="M473.4,207.7 L480.8,201.9 L488.2,195.7 L495.6,189.3 L503.0,182.6 L510.4,175.5 L517.8,168.2 L525.2,160.5 L532.6,152.6 L540.0,144.4" fill="none" stroke="#2A220F" stroke-width="2.5" stroke-dasharray="5 5"></path>
+<path d="M112.3,125.1 L118.4,132.5 L124.5,139.7 L130.6,146.7 L136.8,153.4 L142.9,160.0 L149.0,166.4 L155.1,172.5 L161.2,178.5 L167.4,184.2 L173.5,189.8 L179.6,195.1 L185.7,200.2 L191.8,205.1 L198.0,209.8 L204.1,214.3 L210.2,218.6 L216.3,222.7 L222.5,226.6 L228.6,230.3 L234.7,233.7 L240.8,237.0 L246.9,240.1 L253.1,242.9 L259.2,245.5 L265.3,248.0 L271.4,250.2 L277.6,252.2 L283.7,254.0 L289.8,255.6 L295.9,257.0 L302.0,258.2 L308.2,259.2 L314.3,260.0 L320.4,260.6 L326.5,260.9 L332.6,261.1 L338.8,261.1 L344.9,260.8 L351.0,260.3 L357.1,259.7 L363.3,258.8 L369.4,257.7 L375.5,256.4 L381.6,254.9 L387.7,253.2 L393.9,251.3 L400.0,249.2 L406.1,246.9 L412.2,244.4 L418.4,241.6 L424.5,238.7 L430.6,235.5 L436.7,232.2 L442.8,228.6 L449.0,224.8 L455.1,220.9 L461.2,216.7 L467.3,212.3 L473.4,207.7" fill="none" stroke="#2A220F" stroke-width="3"></path>
 <line x1="{{bin.x}}" x2="{{bin.x}}" y1="{{bin.y}}" y2="330" stroke="#2B44C8" stroke-width="2" stroke-dasharray="4 4"></line>
 <line x1="56" x2="{{bin.x}}" y1="{{bin.y}}" y2="{{bin.y}}" stroke="#2B44C8" stroke-width="2" stroke-dasharray="4 4"></line>
-<circle cx="{{bin.x}}" cy="{{bin.y}}" r="9" fill="#2B44C8" stroke="#FFFFFF" stroke-width="3"></circle>
-<text x="298" y="382" text-anchor="middle" font-size="14" fill="#10131C" font-family="JetBrains Mono, monospace">← more water · water as % of cheese · more cheese →</text>
-<text x="14" y="175" text-anchor="middle" font-size="14" fill="#10131C" font-family="JetBrains Mono, monospace" transform="rotate(-90 14 175)">°C</text>
+<circle cx="{{bin.x}}" cy="{{bin.y}}" r="9" fill="#2B44C8" stroke="#FDFBF6" stroke-width="3"></circle>
+<text x="298" y="382" text-anchor="middle" font-size="14" fill="#2A220F" font-family="JetBrains Mono, monospace">← more water · water as % of cheese · more cheese →</text>
+<text x="14" y="175" text-anchor="middle" font-size="14" fill="#2A220F" font-family="JetBrains Mono, monospace" transform="rotate(-90 14 175)">°C</text>
 </svg></div>
 <div class="stack g16">
 <div class="readout v">
 <div><span>Water vs cheese</span><b>{{bin.w}} %</b></div>
-<div><span>Lumps start around</span><b style="color:#C2410C">{{bin.t}} °C</b></div>
+<div><span>Lumps start around</span><b style="color:#907018">{{bin.t}} °C</b></div>
 </div>
 <p class="small">{{bin.note}}</p>
 </div>
 </div>
 </div>
 <div class="viz-foot">
-<span class="lg"><i style="background:#F6D5C5"></i>Lumpy</span>
-<span class="lg"><i style="background:#DDE3FF"></i>Smooth</span>
+<span class="lg"><i style="background:#F3E2B6"></i>Lumpy</span>
+<span class="lg"><i style="background:#F8F0DE"></i>Smooth</span>
 </div>
 <div class="viz-more"><button type="button" class="more" aria-expanded="{{ex.b.aria}}" onClick="{{ex.b.toggle}}"><span class="more-ico" aria-hidden="true">{{ex.b.ico}}</span>{{ex.b.text}} the science</button><sc-if value="{{ex.b.open}}"><div class="more-body"><p>The U-shaped line is the <b>binodal</b>: the boundary between a well-mixed sauce and one where protein aggregates form, measured with starch fixed at 1 %. Plotted against the protein mass fraction φ (here {{bin.phi}} for your choice), its lowest point sits just above 60 °C. Physicists call that a <b>lower critical solution temperature</b>: unusually, this mixture separates when heated rather than cooled.</p>
 <p>The team fitted the equation above to this boundary. As the sauce heats, both χ (how sticky the proteins are) and n (their effective size) rise in a straight line, because heat unfolds the whey proteins and lets them latch onto each other and onto casein micelles. With those two lines, the model redraws the measured boundary almost exactly.</p>
@@ -452,22 +478,22 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 </div>
 <div class="viz-body stack g48" style="padding-top:44px">
 <div class="dose">
-<p class="kicker" style="color:#10131C">Starch, % of cheese weight</p>
+<p class="kicker" style="color:#2A220F">Starch, % of cheese weight</p>
 <div class="dose-bar">
-<div style="width:20%;background:#C2410C;color:#FFFFFF">Under 1 %: splits</div>
-<div style="width:20%;background:#EEF1FF">1–2 %</div>
-<div style="width:20%;background:#2B44C8;color:#FFFFFF">2–3 %: ideal</div>
-<div style="width:20%;background:#EEF1FF">3–4 %</div>
-<div style="width:20%;background:#C9CED8">Over 4 %: stiff when cool</div>
+<div style="width:20%;background:#907018;color:#FDFBF6">Under 1 %: splits</div>
+<div style="width:20%;background:#F7EED8">1–2 %</div>
+<div style="width:20%;background:#2B44C8;color:#FDFBF6">2–3 %: ideal</div>
+<div style="width:20%;background:#F7EED8">3–4 %</div>
+<div style="width:20%;background:#DFDACD">Over 4 %: stiff when cool</div>
 <span class="dose-pin" style="left:50%"><em>Recipe · 2.5 %</em></span>
 </div>
 <div class="dose-axis"><span style="left:0;transform:none">0</span><span style="left:20%">1</span><span style="left:40%">2</span><span style="left:60%">3</span><span style="left:80%">4</span><span style="left:100%;transform:translateX(-100%)">5 %</span></div>
 </div>
 <div class="dose">
-<p class="kicker" style="color:#10131C">Trisodium citrate, % of cheese weight</p>
+<p class="kicker" style="color:#2A220F">Trisodium citrate, % of cheese weight</p>
 <div class="dose-bar">
-<div style="width:40%;background:#3A4152;color:#FFFFFF">Under 2 %: still splits</div>
-<div style="width:60%;background:#2B44C8;color:#FFFFFF">2 % or more: no lumps at all</div>
+<div style="width:40%;background:#605434;color:#FDFBF6">Under 2 %: still splits</div>
+<div style="width:60%;background:#2B44C8;color:#FDFBF6">2 % or more: no lumps at all</div>
 <span class="dose-pin" style="left:50%"><em>Alt. recipe · 2.5 %</em></span>
 </div>
 <div class="dose-axis"><span style="left:0;transform:none">0</span><span style="left:20%">1</span><span style="left:40%">2</span><span style="left:60%">3</span><span style="left:80%">4</span><span style="left:100%;transform:translateX(-100%)">5 %</span></div>
@@ -492,9 +518,9 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <p class="kicker">Sauce for two</p>
 <h3 class="t-h3" style="font-size:26px">300 g pasta · 200 g Pecorino Romano</h3>
 <div class="mix" role="img" aria-label="Sauce by weight: 200 grams cheese, 150 grams water, 5 grams starch">
-<div style="flex:200;background:#F2E6B8">Pecorino 200 g</div>
-<div style="flex:150;background:#DDE3FF;border-left:1px solid #10131C">Water 150 g</div>
-<div style="flex:12;background:#2B44C8;border-left:1px solid #10131C" title="Starch 5 g"></div>
+<div style="flex:200;background:#EBD3A2">Pecorino 200 g</div>
+<div style="flex:150;background:#F8F0DE;border-left:1px solid #2A220F">Water 150 g</div>
+<div style="flex:12;background:#2B44C8;border-left:1px solid #2A220F" title="Starch 5 g"></div>
 </div>
 <p class="meta muted" style="font-size:12px"><span class="lg" style="font-size:12px"><i style="background:#2B44C8"></i>Starch 5 g</span> · plus black pepper, toasted</p>
 </div>
@@ -503,7 +529,7 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <li><b>2</b>Add 100 g of cold water, then blend in the cheese until smooth.</li>
 <li><b>3</b>Toast black pepper in a pan and stir it in.</li>
 <li><b>4</b>Cook the pasta al dente, keep some pasta water, and let the drained pasta cool for up to a minute.</li>
-<li><b style="color:#C2410C">5</b>Mix, loosen with pasta water as needed. Reheats happily in a pan.</li>
+<li><b style="color:#907018">5</b>Mix, loosen with pasta water as needed. Reheats happily in a pan.</li>
 </ol>
 </div>
 </div>
@@ -528,13 +554,13 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <p style="font-style:italic;font-size:22px">Think of the pasta sauce as a dance floor...</p>
 <div class="chips" style="margin:20px 0">
 <span class="chip fill">Water</span>
-<span class="chip" style="background:#FFFFFF">Starch</span>
+<span class="chip" style="background:#FDFBF6">Starch</span>
 </div>
 <ol class="steps">
 <li><b>1</b>Protein dances in the midst of Water as music and Starch as their environment</li>
 <li><b>2</b>Entropy as the instructor suggest that they dance freely and spread out</li>
 <li><b>3</b>But some Protein wanna dance closer due to interaction between them</li>
-<li><b style="color:#C2410C">4</b>Temperature set the “music” (water) and made the Protein even closer</li>
+<li><b style="color:#907018">4</b>Temperature set the “music” (water) and made the Protein even closer</li>
 </ol>
 </div>
 </div>
@@ -547,17 +573,20 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <p class="kicker">06</p>
 <h2 class="t-h2" style="margin:12px 0 18px">Personal Take</h2>
 <p>I love how this paper turns a kitchen challenge into a physics experiment. As a former international student, there were times when I spent an evening trying to experiment different ways to cook pasta. It’s a perfect example of how engineering curiosity meets everyday life. The “Mozzarella Phase” is not just a funny name — it’s a vivid reminder that even simple recipes hide complex thermodynamics. It confirmed something I'd felt intuitively — that a little starch changes the whole texture of a sauce. While the flavour of the food itself is more of personal taste, this paper gives an idea of what a true preparation to which we could do for our creation. While the application of this particular equation and model is designed for Cacio e Pepe, I believe some dish in Asia and Africa could also benefit in this, such as Tsukemen of which it uses thick broth as dipping sauce to enrich its flavour. For me, this resonates with the idea that science and music share a rhythm: both are about finding harmony in systems, whether it’s molecules in sauce or notes in a melody.</p>
-<nav class="talk-nav" aria-label="More talks"><div class="tn none"><span class="tn-k">This is where it started</span><span class="tn-m">Talk 01, the first entry</span></div><a class="tn next" href="Talk-Salmon.dc.html"><span class="tn-k">Next talk · 02 →</span><span class="tn-t">“How Crack-headed Salmon Influence the Dynamics between Human and the Environment”</span><span class="tn-m">23rd January 2026 · 8 min read</span></a></nav>
+<nav class="talk-nav" aria-label="More talks"><div class="tn none"><span class="tn-k">This is where it started</span><span class="tn-m">Talk 01, the first entry</span></div><a class="tn next" href="Talk-Salmon.dc.html"><span class="tn-k">Next talk · 02 →</span><span class="tn-t">How Crack-headed Salmon Influence the Dynamics between Human and the Environment</span><span class="tn-m">23rd January 2026 · 8 min read</span></a></nav>
 <a href="Talks.dc.html" class="back" style="margin-top:24px;color:#2B44C8">← Back to all talks</a>
 </div>
 <figure class="stack g12" style="position:sticky;top:24px">
-<img src="/_blob/c36630a6700e50004a0187a9b38f2e97" alt="Two men making the Italian pinched-fingers gesture, captioned Approved" style="width:100%;height:auto;border:1px solid #10131C" loading="lazy">
+<img src="/_blob/c36630a6700e50004a0187a9b38f2e97" alt="Two men making the Italian pinched-fingers gesture, captioned Approved" style="width:100%;height:auto;border:1px solid #2A220F" loading="lazy">
 <figcaption>VERDICT: APPROVED.</figcaption>
 </figure>
 </div>
 </div>
 </section>
 
+<!-- wada:start --><section class="sec rule-t" aria-label="Colour palette" style="padding-top:28px;padding-bottom:28px">
+<div class="wrap article"><div class="col wada-note"><span class="wada-sw" aria-hidden="true"><i style="background:#E2B540"></i><i style="background:#2B44C8"></i><i style="background:#EBD3A2"></i></span><p class="meta" style="font-size:12px;margin:0">Palette: Sanzo Wada, <i>A Dictionary of Color Combinations</i>, No. 126 · Yellow Ocher, Ivory Buff, with the site blue standing in for Wada’s Deep Lyons Blue</p></div></div></section>
+<!-- wada:end -->
 <section class="sec white rule-t" id="comments" aria-labelledby="cm-title-cp">
 <div class="wrap">
 <div class="cm-wrap">
@@ -625,6 +654,8 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <div><span>SCALE</span><span>1 : IDEA</span></div>
 <div><span>REV.</span><span>Website 2026 Gelastinta.</span></div>
 </div>
+<!-- wadasite:start --><p class="wada-credit"><span class="wada-mini" aria-hidden="true"><i style="background:#A36AA5"></i><i style="background:#FDC57E"></i><i style="background:#2A220F"></i><i style="background:#2B44C8"></i></span><span>SITE PALETTE · Sanzo Wada, <i>A Dictionary of Color Combinations</i>, No. 344 · Aconite Violet, Cinnamon Buff, with the site ink and blue in place of Wada’s Black and Deep Lyons Blue</span></p>
+<!-- wadasite:end -->
 </div>
 </footer>
 
@@ -723,6 +754,10 @@ class Component extends DCLogic {
     }
   }
   gtStart(tries) {
+    // Inside a frame (the design canvas, an embed), keep the page static: browsers pause or slow
+    // animation in off-screen frames, which can leave reveals stuck half-way and the canvas laggy.
+    // The live site always runs as a normal tab, so the motion layer still plays there.
+    try { if (window.self !== window.top) return; } catch (e) { return; }
     const A = window.anime;
     if (!A) {
       if (tries < 60) this.gtWait = setTimeout(() => this.gtStart(tries + 1), 100);

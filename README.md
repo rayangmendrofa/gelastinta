@@ -18,7 +18,14 @@ and *Talks* — reviews of scientific papers told with a personal take, somewher
 | ↳ [MSc dissertation](https://gelastinta.com/projects/msc-dissertation/) | Bio-inspired pneumatic soft actuators for underwater robots (UCL) |
 | ↳ [BEng dissertation](https://gelastinta.com/projects/beng-dissertation/) | Constructing and analysing a modified prosthetic hand (Exeter) |
 | ↳ [InMoov hand](https://gelastinta.com/projects/inmoov-hand/) | Hobby replication of Gaël Langevin's open-source InMoov robot hand |
+| ↳ [Fly brain on sugar](https://gelastinta.com/projects/fly-brain-sugar/) | Hobby simulation: the published whole-brain model of the fruit fly (Shiu et al. 2024), fed sugar and replayed spike by spike |
+| ↳ [Gesture Music](https://gelastinta.com/projects/gesture-music/) | Hobby build: a webcam instrument played with hand signs ([code](https://github.com/rayangmendrofa/OpenCV-handsign-midi)), with its handbook |
 | [Talks](https://gelastinta.com/talks/) | Paper reviews with interactive figures and a personal take |
+| ↳ [Cyberpunk implants](https://gelastinta.com/talks/cyberpunk-implants/) | *Chrome and Consequences* — the science and fiction of Cyberpunk 2077 and Edgerunners’ implants |
+| ↳ [Fly connectome](https://gelastinta.com/talks/fly-connectome/) | *The Whole Fly, Wired* — mapping, simulating and comparing fruit fly brains (three papers) |
+| ↳ [Hair clip fish](https://gelastinta.com/talks/hair-clip-fish/) | *Snap Out of It* — a robot fish that swims on a bistable hair clip mechanism |
+| ↳ [Modular legs](https://gelastinta.com/talks/modular-legs/) | *Microbot is not quite Micro* — reconfigurable robot legs that design themselves |
+| ↳ [Dream puzzles](https://gelastinta.com/talks/dream-puzzles/) | *Inception, but for Homework* — solving puzzles inside your dreams |
 | ↳ [Project Hail Mary](https://gelastinta.com/talks/project-hail-mary/) | *Amaze, Amaze, Amaze* — the science (and the heart) of the story |
 | ↳ [Navier–Stokes](https://gelastinta.com/talks/navier-stokes/) | *Mathematician vs Clanker* — the Millennium Prize question |
 | ↳ [Necrobotics](https://gelastinta.com/talks/necrobotics/) | When necromancy leaves the game and enters the skill tree |
@@ -67,6 +74,8 @@ new content goes live within a minute or two.
 
 - InMoov is an open-source project created by [Gaël Langevin](https://inmoov.fr/); the hand on this
   site is a hobby replication, not an original design.
+- The fly-brain hobby page replays the published model of Shiu et al. (Nature, 2024; MIT-licensed
+  code) built from the FlyWire connectome; full sources are listed on the page.
 - Papers reviewed in *Talks* are cited and linked on each article page.
 - Animation library: [Anime.js](https://animejs.com/) by Julian Garnier (MIT).
 - Typefaces: Bricolage Grotesque, Newsreader and JetBrains Mono (Google Fonts).

@@ -15,9 +15,16 @@ const PAGES = new Set([
   "/talks/cooking-and-science",
   "/talks/navier-stokes",
   "/talks/project-hail-mary",
+  "/talks/dream-puzzles",
+  "/talks/modular-legs",
+  "/talks/hair-clip-fish",
+  "/talks/fly-connectome",
+  "/talks/cyberpunk-implants",
   "/projects/beng-dissertation",
   "/projects/msc-dissertation",
   "/projects/inmoov-hand",
+  "/projects/fly-brain-sugar",
+  "/projects/gesture-music",
 ])
 
 type Stored = { name: string; email: string; text: string; at: number }
