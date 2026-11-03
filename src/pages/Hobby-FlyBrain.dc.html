@@ -1,0 +1,1961 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>GelasTinta — Fly Brain on Sugar</title>
+<script src="./support.js"></script>
+<script src="/_blob/59800ae8dd311e216394a93b57b5c5e9"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&amp;family=JetBrains+Mono:wght@400;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#EDEFF2;color:#10131C;font-family:'Newsreader',Georgia,serif;font-size:18px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{max-width:100%;display:block}
+a{color:#2B44C8;text-underline-offset:3px}
+a:hover{color:#1A2C8F}
+h1,h2,h3,p,figure,ul,ol{margin:0}
+.wrap{max-width:1160px;margin:0 auto;padding:0 32px}
+.sec{padding:96px 0}
+.sec.tight{padding:64px 0}
+.dark{background:#10131C;color:#EDEFF2}
+.white{background:#FFFFFF}
+.blue{background:#2B44C8;color:#FFFFFF}
+.rule-t{border-top:1px solid #10131C}
+.rule-b{border-bottom:1px solid #10131C}
+.grid-bg{background-color:#EDEFF2;background-image:linear-gradient(#DCE0E7 1px,transparent 1px),linear-gradient(90deg,#DCE0E7 1px,transparent 1px);background-size:32px 32px}
+.disp{font-family:'Bricolage Grotesque',system-ui,sans-serif}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+.kicker{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;line-height:1.5;letter-spacing:.14em;text-transform:uppercase;color:#3A4152}
+.dark .kicker{color:#8FA2FF}
+.blue .kicker{color:#DDE3FF}
+.t-hero{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:clamp(44px,6.2vw,84px);line-height:.96;letter-spacing:-.035em}
+.t-title{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:clamp(34px,4.2vw,56px);line-height:1.04;letter-spacing:-.03em}
+.t-h2{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:clamp(30px,3.2vw,42px);line-height:1.06;letter-spacing:-.025em}
+.t-h3{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:700;font-size:22px;line-height:1.22;letter-spacing:-.01em}
+.lead{font-size:clamp(20px,1.9vw,23px);line-height:1.5}
+.intro{font-size:19px;line-height:1.65}
+.prose{max-width:66ch}
+.prose p+p{margin-top:1.1em}
+.small{font-size:16px;line-height:1.55}
+.muted{color:#3A4152}
+.dark .muted{color:#C9CED8}
+.meta{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;line-height:1.6;letter-spacing:.03em}
+.stack{display:flex;flex-direction:column}
+.g8{gap:8px}.g12{gap:12px}.g16{gap:16px}.g24{gap:24px}.g32{gap:32px}.g48{gap:48px}
+.sec-head{display:flex;flex-direction:column;gap:12px;margin-bottom:40px}
+.sec-head.row{flex-direction:row;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 32px}
+.cols-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.cols-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.cols-4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.split{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:start}
+.split.rev{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
+.split.mid{align-items:center}
+.card{background:#FFFFFF;border:1px solid #10131C;padding:28px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;line-height:1.4;letter-spacing:.05em;padding:6px 10px;border:1px solid currentColor}
+.chip.fill{background:#2B44C8;border-color:#2B44C8;color:#FFFFFF}
+.chip.warn{background:#C2410C;border-color:#C2410C;color:#FFFFFF}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 22px;background:#2B44C8;color:#FFFFFF;text-decoration:none;border-radius:999px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:14px;letter-spacing:.03em;border:1px solid #2B44C8}
+.btn:hover{background:#1A2C8F;border-color:#1A2C8F;color:#FFFFFF}
+.btn.ghost{background:transparent;color:inherit;border-color:currentColor}
+.btn.ghost:hover{background:#10131C;color:#EDEFF2;border-color:#10131C}
+.dark .btn.ghost:hover,.blue .btn.ghost:hover{background:#EDEFF2;color:#10131C;border-color:#EDEFF2}
+.back{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:inherit;min-height:44px;display:inline-flex;align-items:center;align-self:flex-start}
+.back:hover{color:inherit;text-decoration:underline}
+figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;line-height:1.5;letter-spacing:.06em;color:#3A4152;margin-top:10px}
+.dark figcaption{color:#C9CED8}
+.site-head{background:#EDEFF2;border-bottom:1px solid #10131C}
+.site-head .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 24px;min-height:72px}
+.brand{display:flex;align-items:center;gap:10px;color:#10131C;text-decoration:none;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:22px;letter-spacing:-.01em}
+.brand:hover{color:#10131C}
+.nav{display:flex;flex-wrap:wrap;gap:0 28px}
+.nav a{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#10131C;text-decoration:none;min-height:44px;display:inline-flex;align-items:center;border-bottom:2px solid transparent}
+.nav a:hover{color:#2B44C8}
+.nav a.on{color:#2B44C8;border-bottom-color:#2B44C8}
+.site-foot .wrap{padding-top:80px;padding-bottom:40px;display:flex;flex-direction:column;gap:56px}
+.foot-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:end}
+.foot-title{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:clamp(44px,5vw,64px);line-height:.95;letter-spacing:-.035em}
+.foot-blurb{font-size:19px;line-height:1.55;color:#C9CED8;max-width:30em}
+.foot-mail{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:clamp(22px,2.4vw,28px);color:#EDEFF2;text-decoration:none;border-bottom:2px solid #8FA2FF;padding-bottom:4px;align-self:flex-start;overflow-wrap:anywhere}
+.foot-mail:hover{color:#FFFFFF}
+.social{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 18px;border:1px solid #8FA2FF;color:#EDEFF2;text-decoration:none;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.05em}
+.social:hover{background:#EDEFF2;color:#10131C}
+.social:hover svg{stroke:#10131C}
+.tblock{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid #3A4152;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.06em}
+.tblock div{padding:14px 16px;display:flex;flex-direction:column;gap:6px;border-right:1px solid #3A4152}
+.tblock div:last-child{border-right:0}
+.tblock span:first-child{color:#8FA2FF}
+.jump a{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:56px;border-bottom:1px solid #10131C;color:#10131C;text-decoration:none;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:600;font-size:20px}
+.jump a:first-of-type{border-top:1px solid #10131C}
+.jump a:hover{color:#2B44C8}
+.jump a span{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;font-weight:400;color:#2B44C8}
+.diss{display:flex;flex-direction:column;background:#EDEFF2;color:#10131C;text-decoration:none;border:1px solid #EDEFF2}
+.diss:hover{color:#10131C}
+.diss:hover h3{color:#2B44C8}
+.diss img{width:100%;aspect-ratio:16/10;object-fit:cover;border-bottom:1px solid #10131C}
+.poster-link{display:block;position:relative;border:1px solid #10131C;background:#FFFFFF;cursor:zoom-in;transition:transform .2s ease,box-shadow .2s ease}
+.poster-link:hover,.poster-link:focus-visible{transform:translateY(-4px);box-shadow:0 12px 0 -4px #2B44C8}
+.poster-link img{width:100%;aspect-ratio:707/1000;object-fit:cover}
+.poster-hint{position:absolute;right:10px;bottom:10px;background:#10131C;color:#EDEFF2;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.08em;padding:5px 8px}
+.poster-cap{display:flex;flex-direction:column;gap:6px;margin-top:14px}
+.zoom{position:fixed;inset:0;z-index:60;background:rgba(16,19,28,.88);display:flex;align-items:center;justify-content:center;padding:24px;pointer-events:none}
+.zoom figure{display:flex;flex-direction:column;align-items:center;gap:12px}
+.zoom img{max-height:calc(100vh - 96px);max-width:min(94vw,1200px);width:auto;height:auto;object-fit:contain;background:#FFFFFF;box-shadow:0 24px 64px rgba(0,0,0,.55)}
+.zoom figcaption{color:#EDEFF2;margin:0}
+@media (hover:none){.zoom{display:none}.poster-hint{display:none}}
+.cad{display:grid;grid-template-columns:300px minmax(0,1fr);border:1px solid #10131C;background:#FFFFFF}
+.cad-tabs{border-right:1px solid #10131C;max-height:740px;overflow-y:auto}
+.cad-group{padding:14px 18px 10px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;line-height:1.5;letter-spacing:.12em;text-transform:uppercase;color:#3A4152;background:#EDEFF2;border-bottom:1px solid #C9CED8}
+.cad-tab{display:flex;gap:12px;align-items:baseline;width:100%;text-align:left;min-height:48px;padding:12px 18px;border:0;border-bottom:1px solid #C9CED8;border-left:4px solid transparent;background:#FFFFFF;color:#10131C;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:16px;line-height:1.3;font-weight:500;cursor:pointer}
+.cad-tab:hover{background:#EDEFF2}
+.cad-tab.on{background:#10131C;color:#FFFFFF;border-left-color:#2B44C8;font-weight:600}
+.cad-tab .code{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;font-weight:400;color:#2B44C8;flex:none}
+.cad-tab.on .code{color:#8FA2FF}
+.cad-stage{background:#10131C;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center}
+.cad-stage img{width:100%;height:100%;object-fit:contain}
+@media (max-width:960px){
+.split,.split.rev{grid-template-columns:minmax(0,1fr);gap:40px}
+.cols-3{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cols-4{grid-template-columns:repeat(2,minmax(0,1fr))}
+.foot-top{grid-template-columns:minmax(0,1fr)}
+.cad{grid-template-columns:minmax(0,1fr)}
+.cad-tabs{max-height:300px;border-right:0;border-bottom:1px solid #10131C}
+}
+@media (max-width:640px){
+.wrap{padding:0 20px}
+.sec{padding:64px 0}
+.sec.tight{padding:48px 0}
+.cols-2,.cols-3,.cols-4{grid-template-columns:minmax(0,1fr)}
+.tblock{grid-template-columns:repeat(2,minmax(0,1fr))}
+.tblock div:nth-child(2){border-right:0}
+.tblock div:nth-child(-n+2){border-bottom:1px solid #3A4152}
+.nav{gap:0 18px}
+}
+.hb{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:48px;align-items:start}
+.hb-media{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.hb-ph{aspect-ratio:4/5;border:1px dashed #3A4152;background-color:#FFFFFF;background-image:repeating-linear-gradient(45deg,#EDEFF2 0 1px,transparent 1px 12px);display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;color:#3A4152}
+.hb-ph.wide{grid-column:1 / -1;aspect-ratio:16/9}
+.credit{border:1px solid #10131C;background:#FFFFFF;padding:20px 22px;display:flex;flex-direction:column;gap:10px}
+.credit.shout{background:#2B44C8;border-color:#2B44C8;color:#FFFFFF}
+.credit.shout a{color:#FFFFFF}
+@media (max-width:960px){.hb{grid-template-columns:minmax(0,1fr)}}
+.hb-diary{margin-top:72px;padding-top:48px;border-top:2px solid #10131C}
+.hb-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px 20px}
+.hb-step{margin:0;display:flex;flex-direction:column;gap:12px}
+.hb-clip{position:relative;aspect-ratio:9/16;overflow:hidden;border:1px solid #10131C;background:#10131C}
+.hb-clip img,.hb-clip video{width:100%;height:100%;object-fit:cover;display:block}
+.hb-speed{position:absolute;top:10px;right:10px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.06em;background:rgba(16,19,28,.85);color:#FFFFFF;padding:4px 8px}
+.hb-n{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:28px;line-height:1;color:#2B44C8}
+.hb-txt{font-family:'Newsreader',Georgia,serif;font-size:16px;line-height:1.5;letter-spacing:0;text-transform:none;color:#3A4152}
+@media (max-width:960px){.hb-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:640px){.hb-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 12px}.hb-txt{font-size:15px}}
+.cm-wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:24px}
+.cm-box{border:1px solid #10131C;background:#FFFFFF;padding:24px;display:flex;flex-direction:column;gap:16px}
+.cm-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.cm-field{display:flex;flex-direction:column;gap:6px}
+.cm-field label{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#3A4152}
+.cm-field input,.cm-field textarea{font-family:'Newsreader',Georgia,serif;font-size:18px;line-height:1.5;color:#10131C;background:#FFFFFF;border:1px solid #10131C;padding:10px 12px;min-height:48px;width:100%;border-radius:0}
+.cm-field textarea{min-height:120px;resize:vertical}
+.cm-field input:focus,.cm-field textarea:focus{outline:3px solid #8FA2FF;outline-offset:1px}
+.cm-err{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;color:#B42318}
+.cm-actions{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center}
+.cm-actions .btn{cursor:pointer;font-size:14px}
+.cm-link{background:none;border:0;padding:0;min-height:44px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;color:#2B44C8;text-decoration:underline;cursor:pointer}
+.cm-list{list-style:none;margin:0;padding:0;border-top:2px solid #10131C}
+.cm-list li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:16px;padding:20px 0;border-bottom:1px solid #C9CED8}
+.cm-av{width:44px;height:44px;border-radius:999px;background:#2B44C8;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:18px}
+.cm-text{font-size:18px;line-height:1.6;white-space:pre-wrap;overflow-wrap:anywhere}
+@media (max-width:640px){.cm-row{grid-template-columns:minmax(0,1fr)}.cm-box{padding:18px}}
+.t-thesis{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:clamp(34px,4.2vw,56px);line-height:1.04;letter-spacing:-.03em}
+.hero-clip{position:relative;aspect-ratio:4/5;overflow:hidden;border:1px solid #10131C;background:#10131C}
+.hero-clip img,.hero-clip video{width:100%;height:100%;object-fit:cover;display:block}
+.hb-diary{margin-top:0;padding-top:0;border-top:0}
+.gt-progress{position:fixed;left:0;top:0;width:100%;height:3px;background:#2B44C8;transform:scaleX(0);transform-origin:0 50%;z-index:70;pointer-events:none}
+@media (prefers-reduced-motion:reduce){.gt-progress{display:none}}
+/* wadasite:start */.site-foot{position:relative}
+.site-foot::before{content:"";position:absolute;left:0;right:0;top:-6px;height:6px;background:linear-gradient(90deg,#A36AA5 0.0% 25.0%,#FDC57E 25.0% 50.0%,#10131C 50.0% 75.0%,#2B44C8 75.0% 100.0%)}
+::selection{background:#FDC57E;color:#10131C}
+.wada-credit{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:11px;letter-spacing:.06em;color:#C9CED8}
+.wada-credit .wada-mini{margin-left:0;border-color:#3A4152}
+/* wadasite:end */
+/* fly:start */
+.cat{display:inline-block;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10.5px;font-weight:600;line-height:1.4;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;color:#10131C;vertical-align:2px;margin-left:6px}
+.cat.data{background:#4FD1C5}.cat.model{background:#F6C945}.cat.app{background:#F472B6}
+.fb-tags{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.fb-tags li{display:grid;grid-template-columns:72px minmax(0,1fr);gap:10px;align-items:baseline;font-size:16px;line-height:1.45}
+.fb-tags .cat{margin-left:0;text-align:center}
+.fb-hero{position:relative;aspect-ratio:16/9;overflow:hidden;border:1px solid #10131C;background:#0B0E17}
+.fb-hero img{width:100%;height:100%;object-fit:cover;display:block}
+.fb-facts{margin:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border:1px solid #3A4152}
+.fb-facts div{padding:18px 20px;border-right:1px solid #3A4152;display:flex;flex-direction:column-reverse;gap:6px}
+.fb-facts div:last-child{border-right:0}
+.fb-facts dt{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#C9CED8}
+.fb-facts dd{margin:0;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:clamp(28px,3vw,40px);line-height:1;letter-spacing:-.02em;color:#FFFFFF}
+.fb-facts div:last-child dd{color:#F6C945}
+.fb-mini{margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border:1px solid #10131C;background:#FFFFFF}
+.fb-mini.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.fb-mini div{padding:16px 18px;border-right:1px solid #10131C;border-bottom:1px solid #10131C;display:flex;flex-direction:column-reverse;gap:4px}
+.fb-mini div:nth-child(2n){border-right:0}
+.fb-mini div:nth-last-child(-n+2){border-bottom:0}
+.fb-mini.three div{border-bottom:0;border-right:1px solid #10131C}
+.fb-mini.three div:last-child{border-right:0}
+.fb-mini dt{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#3A4152}
+.fb-mini dd{margin:0;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:30px;line-height:1.05;letter-spacing:-.02em}
+.viz{border:1px solid #10131C;background:#FFFFFF}
+.viz-head{padding:22px 24px;border-bottom:1px solid #10131C;display:flex;flex-direction:column;gap:8px}
+.viz-body{padding:24px}
+.viz-foot{padding:14px 24px;border-top:1px solid #C9CED8;display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center}
+.viz.night{background:#161B29;border-color:#3A4152;color:#EDEFF2}
+.viz.night .viz-head{border-color:#3A4152}
+.viz.night .t-h3{color:#FFFFFF}
+.lg{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.03em}
+.lg i{width:16px;height:16px;border:1px solid #10131C;display:inline-block;flex:none}
+.ratio{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.ratio button{min-height:44px;min-width:58px;padding:0 12px;border:1px solid #10131C;background:#FFFFFF;color:#10131C;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;cursor:pointer}
+.ratio button:hover{background:#EDEFF2}
+.ratio button.on{background:#2B44C8;border-color:#2B44C8;color:#FFFFFF}
+.ratio button:focus-visible,.fb-play:focus-visible,.fb-code-tabs button:focus-visible{outline:3px solid #8FA2FF;outline-offset:2px}
+.ratio button.fig-play{margin-left:auto;min-width:92px}
+.viz.night .ratio button{background:#10131C;color:#EDEFF2;border-color:#8A8F9C}
+.viz.night .ratio button:hover{background:#262C3D}
+.viz.night .ratio button.on{background:#2B44C8;border-color:#2B44C8;color:#FFFFFF}
+.fig-track{height:3px;background:#DCE0E7;margin-top:-14px;overflow:hidden}
+.fig-track i{display:block;height:100%;background:#2B44C8;transform-origin:0 50%;transform:scaleX(0)}
+.readout{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid #10131C}
+.readout div{padding:14px 16px;border-right:1px solid #10131C;display:flex;flex-direction:column;gap:4px}
+.readout div:last-child{border-right:0}
+.readout span{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#3A4152}
+.readout b{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:26px;line-height:1.05;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.fb-stage{position:relative;aspect-ratio:16/8;background:#0B0E17;border:1px solid #10131C;overflow:hidden;touch-action:pan-y;cursor:grab}
+.fb-stage:active{cursor:grabbing}
+.fb-stage.night{border-color:#3A4152}
+.fb-stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.fb-stage canvas:focus-visible{outline:3px solid #8FA2FF;outline-offset:-3px}
+.fb-badge{position:absolute;left:12px;top:12px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.06em;background:rgba(16,19,28,.85);color:#F9A8D4;padding:4px 8px;pointer-events:none}
+.fb-hint{position:absolute;right:12px;bottom:12px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.06em;background:rgba(16,19,28,.85);color:#C9CED8;padding:4px 8px;pointer-events:none}
+.fb-replay{display:grid;grid-template-columns:minmax(0,1fr) 230px;gap:16px;align-items:stretch}
+.fb-replay .fb-stage{aspect-ratio:auto;min-height:420px;height:100%}
+.fb-side{min-width:0}
+.fb-ro{border:1px solid #3A4152;padding:12px 14px;display:flex;flex-direction:column;gap:4px;background:#10131C}
+.fb-ro span{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#C9CED8}
+.fb-ro span .cat{font-size:9.5px;vertical-align:1px}
+.fb-ro b{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:26px;line-height:1.05;letter-spacing:-.02em;color:#FFFFFF;font-variant-numeric:tabular-nums}
+.fb-ro small{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;color:#9AA1AE;letter-spacing:.02em}
+.fb-bar{display:block;height:6px;background:#262C3D;margin-top:4px}
+.fb-bar em{display:block;height:100%;width:0}
+.fb-prob svg{width:100%;height:auto;display:block;margin:4px 0}
+.fb-scrub{width:100%;accent-color:#F6C945;min-height:32px;cursor:pointer}
+.fb-legend{border-left:3px solid #F6C945;padding:4px 0 4px 20px}
+.fb-legend p:not(.kicker){display:flex;gap:10px;align-items:center;font-size:17px;line-height:1.4}
+.fb-legend i{width:14px;height:14px;border-radius:50%;flex:none;display:inline-block}
+.fb-box{border:1px solid #10131C;background:#FFFFFF;overflow:hidden}
+.fb-box.night{border-color:#3A4152;background:#10131C}
+.fb-svg{width:100%;height:auto;display:block}
+.fb-lifctl{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto;gap:16px 28px;align-items:end}
+.fb-range{display:flex;flex-direction:column;gap:6px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:#3A4152}
+.fb-range b{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:20px;color:#10131C;letter-spacing:0;margin-left:6px}
+.fb-range input{width:100%;accent-color:#2B44C8;min-height:32px;cursor:pointer}
+.fb-play{min-height:44px;min-width:96px;padding:0 14px;border:1px solid #10131C;background:#FFFFFF;color:#10131C;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;cursor:pointer}
+.fb-play:hover{background:#10131C;color:#FFFFFF}
+.fb-eq{border:1px solid #10131C;background:#EDEFF2;padding:22px;display:flex;flex-direction:column;gap:14px}
+.fb-eq pre{margin:0;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:14px;line-height:1.75;background:#10131C;color:#EDEFF2;padding:16px 18px;overflow-x:auto;white-space:pre}
+.fb-tbl{width:100%;border-collapse:collapse;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;line-height:1.4}
+.fb-tbl td,.fb-tbl th{padding:8px 10px;border-bottom:1px solid #C9CED8;text-align:left;vertical-align:top}
+.fb-tbl td:last-child{text-align:right;font-weight:600}
+.fb-tbl.wide{background:#FFFFFF;border:1px solid #10131C}
+.fb-tbl.wide th{font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#3A4152;border-bottom:1px solid #10131C}
+.fb-tbl.wide td:not(:first-child),.fb-tbl.wide th:not(:first-child){text-align:right}
+.fb-tbl.wide tr:last-child td{border-bottom:0}
+.find{border:1px solid #10131C;padding:22px;display:flex;flex-direction:column;gap:10px;background:#FFFFFF}
+.find p{font-size:16px;line-height:1.55}
+.find .t-h3{font-size:26px;line-height:1.15}
+.fb-loop{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;border:1px solid #10131C;background:#EDEFF2;counter-reset:fb}
+.fb-loop li{display:grid;grid-template-columns:36px minmax(0,1fr) auto;gap:4px 12px;align-items:center;padding:12px 16px;border-bottom:1px solid #C9CED8;counter-increment:fb}
+.fb-loop li::before{content:counter(fb,decimal-leading-zero);grid-row:span 2;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:20px;color:#2B44C8}
+.fb-loop li b{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:18px;line-height:1.2}
+.fb-loop li span:not(.cat){grid-column:2;font-size:15px;line-height:1.4;color:#3A4152}
+.fb-loop li .cat{grid-column:3;grid-row:1 / span 2;margin:0}
+.fb-loop li.fb-loop-back{display:block;border-bottom:0;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.fb-loop li.fb-loop-back::before{content:"↺ ";font-size:14px;grid-row:auto}
+.fb-arenas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.fb-arena{margin:0;display:flex;flex-direction:column;gap:8px}
+.fb-arena svg{width:100%;height:auto;display:block;border:1px solid #10131C;background:#FBFBFA}
+.fb-arena-cap{display:flex;justify-content:space-between;gap:12px;align-items:baseline;margin:0;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:18px;letter-spacing:0;color:#10131C;text-transform:none}
+.fb-arena-cap span{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;background:#EDEFF2;color:#10131C}
+.fb-arena-cap span.feed{background:#F6C945}
+.fb-arena .meta{font-size:12px;color:#3A4152;font-variant-numeric:tabular-nums}
+.fb-code{display:grid;grid-template-columns:300px minmax(0,1fr);border:1px solid #10131C;background:#FFFFFF}
+.fb-code-tabs{border-right:1px solid #10131C;display:flex;flex-direction:column}
+.fb-code-tabs button{display:flex;gap:12px;align-items:baseline;width:100%;text-align:left;min-height:52px;padding:12px 18px;border:0;border-bottom:1px solid #C9CED8;border-left:4px solid transparent;background:#FFFFFF;color:#10131C;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:17px;cursor:pointer}
+.fb-code-tabs button:last-child{border-bottom:0}
+.fb-code-tabs button:hover{background:#EDEFF2}
+.fb-code-tabs button.on{background:#10131C;color:#FFFFFF;border-left-color:#2B44C8;font-weight:600}
+.fb-code-tabs .code{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;font-weight:400;color:#2B44C8;flex:none}
+.fb-code-tabs button.on .code{color:#8FA2FF}
+.fb-code-panels{padding:32px;display:flex}
+.fb-code-panels [role=tabpanel]{display:flex;flex-direction:column;gap:14px;max-width:62ch}
+.fb-code-panels [role=tabpanel][hidden]{display:none}
+.fb-code-panels .t-h3{font-size:26px;line-height:1.15}
+.fb-code-panels p:not(.kicker){font-size:18px;line-height:1.6}
+.fb-files{display:flex;flex-wrap:wrap;gap:8px}
+.fb-code code,.fb-files code{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;background:#EDEFF2;padding:2px 6px}
+.fb-files code{border:1px solid #10131C;background:#FFFFFF;padding:6px 10px}
+.fb-list{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:10px;font-size:18px;line-height:1.55}
+.fb-list.small{font-size:15px;line-height:1.5;gap:8px}
+.fb-list a{overflow-wrap:anywhere}
+@media (max-width:960px){
+.fb-facts{grid-template-columns:repeat(3,minmax(0,1fr))}
+.fb-facts div{border-bottom:1px solid #3A4152}
+.fb-facts div:nth-child(3){border-right:0}
+.fb-facts div:nth-child(n+4){border-bottom:0}
+.fb-replay{grid-template-columns:minmax(0,1fr)}
+.fb-replay .fb-stage{aspect-ratio:16/9;min-height:0;height:auto}
+.fb-side{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.fb-code{grid-template-columns:minmax(0,1fr)}
+.fb-code-tabs{border-right:0;border-bottom:1px solid #10131C;display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.fb-code-tabs button{border-right:1px solid #C9CED8;font-size:15px;min-height:48px}
+}
+@media (max-width:640px){
+.fb-facts{grid-template-columns:repeat(2,minmax(0,1fr))}
+.fb-facts div{border-right:1px solid #3A4152;border-bottom:1px solid #3A4152}
+.fb-facts div:nth-child(2n){border-right:0}
+.fb-facts div:nth-child(3){border-right:1px solid #3A4152}
+.fb-facts div:last-child{grid-column:1 / -1;border-bottom:0;border-right:0}
+.fb-facts div:nth-child(4){border-bottom:1px solid #3A4152}
+.fb-stage,.fb-replay .fb-stage{aspect-ratio:16/11}
+.fb-box{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.fb-box .fb-svg{min-width:640px}
+.fb-side{gap:8px}
+.fb-ro{padding:10px 12px}
+.fb-ro b{font-size:22px}
+.fb-prob svg{max-width:150px}
+.fb-arenas{grid-template-columns:minmax(0,1fr)}
+.fb-lifctl{grid-template-columns:minmax(0,1fr)}
+.fb-lifctl .fb-play{justify-self:start}
+.readout{grid-template-columns:minmax(0,1fr)}
+.readout div{border-right:0;border-bottom:1px solid #10131C}
+.readout div:last-child{border-bottom:0}
+.fb-mini.three{grid-template-columns:minmax(0,1fr)}
+.fb-mini.three div{border-right:0;border-bottom:1px solid #10131C}
+.fb-mini.three div:last-child{border-bottom:0}
+.ratio button.fig-play{margin-left:0}
+.fb-code-panels{padding:22px}
+.fb-code-panels .t-h3{font-size:22px}
+.viz-body{padding:16px}
+.viz-head{padding:18px 16px}
+.fb-tbl.wide{font-size:12px}
+.fb-tbl.wide td,.fb-tbl.wide th{padding:8px 6px}
+}
+@media (max-width:420px){.fb-code-tabs{grid-template-columns:minmax(0,1fr)}}
+/* fly:end */
+</style>
+</helmet>
+<div style="min-height:100vh" data-gt-root="">
+<div class="gt-progress" aria-hidden="true"></div>
+
+<header class="site-head">
+<div class="wrap">
+<a href="Main.dc.html" class="brand"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M9.6 20 6.3 26.4A1.7 1.7 0 0 0 7.8 29h16.4a1.7 1.7 0 0 0 1.5-2.6L22.4 20z" fill="#2B44C8"></path><path d="M11 3h10M13 3v9L6 26.4A1.7 1.7 0 0 0 7.8 29h16.4a1.7 1.7 0 0 0 1.5-2.6L19 12V3" stroke="#10131C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>GelasTinta</a>
+<nav class="nav" aria-label="Main">
+<a href="Main.dc.html">Home</a>
+<a href="Projects.dc.html" class="on">Projects</a>
+<a href="Talks.dc.html">Talks</a>
+<a href="Products.dc.html">Products</a>
+<a href="Author.dc.html">Author</a>
+</nav>
+</div>
+</header>
+
+<section class="sec grid-bg rule-b" style="padding-top:48px">
+<div class="wrap split rev mid">
+<div class="stack g24">
+<a href="Projects.dc.html#hobby" class="back">← Hobby builds</a>
+<p class="kicker">Hobby build — 2026</p>
+<h1 class="t-thesis">What happens in a fly’s brain when it tastes sugar?</h1>
+<div class="chips"><span class="chip fill">2026</span><span class="chip">Personal project</span><span class="chip">Brain simulation</span><span class="chip">Python · Numba · three.js</span></div>
+<p class="lead" style="max-width:30em">Scientists have mapped every neuron and connection in a fruit-fly brain, and a published computer model turns that map into a brain that can be switched on. I ran it: feed it sugar, watch the spikes, then silence two neurons and see what changes.</p>
+<div class="chips" style="gap:12px">
+<a class="btn" href="#replay">Watch it inside the head ↓</a>
+<a class="btn ghost" href="Talk-FlyConnectome.dc.html">Read my review of the paper →</a>
+</div>
+</div>
+<figure class="stack g8" style="margin:0">
+<div class="fb-hero"><img src="/_blob/8f58e0323e192faeaf33954fce75bbb4" alt="Simulation replay: the fruit-fly brain drawn as a glowing cloud of neurons inside a see-through fly head. Flashes mark simulated spikes spreading from the sugar-taste neurons at the bottom; a panel reads 150 ms of simulated time, MN9 at 59 spikes per second, proboscis 56%." loading="eager"></div>
+<figcaption>FIG. 01 — SUGAR NEURONS ON, 150 MS IN. A FRAME FROM MY 3D REPLAY. SIMULATED, NOT RECORDED.</figcaption>
+</figure>
+</div>
+</section>
+
+<section class="sec tight dark rule-b" aria-label="The project in numbers">
+<div class="wrap">
+<dl class="fb-facts">
+<div><dt>Neurons in the model</dt><dd>127,400</dd></div>
+<div><dt>Connections</dt><dd>14.7 M</dd></div>
+<div><dt>Sugar-taste neurons switched on</dt><dd>21</dd></div>
+<div><dt>Motor neuron read out</dt><dd>MN9</dd></div>
+<div><dt>MN9 after silencing 2 neurons</dt><dd>−62%</dd></div>
+</dl>
+</div>
+</section>
+
+<section class="sec white rule-b">
+<div class="wrap">
+<div class="hb">
+<div class="stack g24">
+<p class="kicker">01 — The story</p>
+<h2 class="t-h2">A brain you can switch on</h2>
+<div class="prose stack g16" style="font-size:18px;line-height:1.65">
+<p>In my talk <a href="Talk-FlyConnectome.dc.html">The Whole Fly, Wired</a> I reviewed three papers on the fruit-fly connectome. One of them, by Philip Shiu and colleagues (<i>Nature</i>, 2024), turns the wiring map of a whole fly brain into a computer model that can be switched on. This hobby project runs that published model on a laptop and asks it one question: what happens inside the brain when the fly tastes sugar?</p>
+<p>The page follows the experiment in four steps. First the map, then the simple rule every neuron follows. Then the main test: switch on the 21 sugar-taste neurons the paper used and follow the spikes to <b>MN9</b>, a motor neuron that lifts the proboscis, the fly’s feeding tube. Then silence two neurons out of 127,400, run the exact same experiment again, and plug the brain into a simple walking fly to see what that difference could look like.</p>
+<p>Nothing here was recorded from a living fly. Every spike is computed by the model and replayed from runs I made on 23 October 2026.</p>
+</div>
+<a class="meta" href="Talk-FlyConnectome.dc.html" style="min-height:44px;display:inline-flex;align-items:center;align-self:flex-start">Where it started: my review of the three papers →</a>
+</div>
+<div class="stack g16">
+<div class="credit">
+<p class="kicker" style="color:#10131C">Credit where it’s due</p>
+<p style="font-size:17px;line-height:1.55">I did not build the brain model or the wiring map. The model is the work of Philip Shiu, Gabriella Sterne, Nico Spiller and colleagues in Kristin Scott’s lab, shared openly under the MIT licence. The map is the FlyWire connectome. My part is running the model, checking it against the original, and showing what it does.</p>
+</div>
+<div class="credit shout">
+<p class="kicker" style="color:#DDE3FF">How to read this page</p>
+<p style="font-size:17px;line-height:1.55">Every figure and number carries one of three tags, so you always know where it comes from.</p>
+<ul class="fb-tags">
+<li><span class="cat data">DATA</span><span>Measured: the wiring and where each neuron sits.</span></li>
+<li><span class="cat model">MODEL</span><span>Simulated activity, under the model’s assumptions.</span></li>
+<li><span class="cat app">APP</span><span>My display choices: animation, mappings, the walking fly.</span></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="sec rule-b" id="map">
+<div class="wrap stack g32">
+<div class="hb" style="align-items:end">
+<div class="stack g16">
+<p class="kicker">02 — The map <span class="cat data">DATA</span></p>
+<h2 class="t-h2">Every neuron, in its place</h2>
+<div class="prose stack g16" style="font-size:18px;line-height:1.65">
+<p>The <a href="https://flywire.ai">FlyWire</a> project reconstructed the whole brain of one adult female fruit fly from electron-microscope images: every neuron, and every synapse between them. The release used here (v630) has <b>127,400 neurons</b> joined by about <b>14.7 million connections</b>, made of 52.8 million synapses.</p>
+<p>Each dot below is one of those neurons, placed where it sits in the real brain (positions from Schlegel et al. 2024, matched by neuron ID; 127,320 of the 127,400 have one). More than half of them are in the two optic lobes, the wide wings on either side, which handle vision. Taste and feeding live in the lower middle, in the subesophageal zone.</p>
+</div>
+</div>
+<dl class="fb-mini">
+<div><dt>Neurons</dt><dd>127,400</dd></div>
+<div><dt>Connections</dt><dd>14.7 M</dd></div>
+<div><dt>Synapses</dt><dd>52.8 M</dd></div>
+<div><dt>Brain width</dt><dd>≈ 0.8 mm</dd></div>
+</dl>
+</div>
+<div class="viz" role="group" aria-label="Figure A: the fruit-fly brain as a cloud of 127,320 neurons, coloured by class" data-flymap>
+<div class="viz-head">
+<span class="kicker">Figure A — Turn it: the whole brain, neuron by neuron <span class="cat data">DATA</span></span>
+<h3 class="t-h3" data-r="maptitle">All 127,320 neurons with a known position</h3>
+</div>
+<div class="viz-body stack g16">
+<div class="ratio" aria-label="Highlight one group of neurons">
+<button type="button" data-cls="all" class="on" aria-pressed="true">All</button>
+<button type="button" data-cls="optic" aria-pressed="false">Optic lobes</button>
+<button type="button" data-cls="central" aria-pressed="false">Central brain</button>
+<button type="button" data-cls="sensory" aria-pressed="false">Sensory</button>
+<button type="button" data-cls="body" aria-pressed="false">Links to the body</button>
+<button type="button" class="fig-play" data-map-turn aria-pressed="false">↻ Turn</button>
+</div>
+<div class="fb-stage" data-r="mapstage">
+<canvas data-r="mapcv" tabindex="0" role="img" aria-label="Point cloud of the fruit-fly brain seen from the front. Drag sideways or use the arrow keys to turn it."></canvas>
+<span class="fb-badge">FlyWire v630 · DATA</span>
+<span class="fb-hint" data-r="maphint">Loading 127,400 neurons…</span>
+</div>
+<p class="small" data-r="mapnote">Seen from the front, with the fly’s right on your left. Drag sideways, or focus the picture and use the arrow keys, to turn it.</p>
+</div>
+<div class="viz-foot" data-r="maplegend">
+<span class="lg"><i style="background:#6F7FE0"></i>Optic lobes · 73,618</span>
+<span class="lg"><i style="background:#C9CED8"></i>Central brain · 32,415</span>
+<span class="lg"><i style="background:#4FD1C5"></i>Sensory · 9,145</span>
+<span class="lg"><i style="background:#8FA2FF"></i>Visual projection · 7,851</span>
+<span class="lg"><i style="background:#F6C945"></i>Ascending &amp; descending · 3,618</span>
+<span class="lg"><i style="background:#F472B6"></i>Motor · 100</span>
+</div>
+</div>
+</div>
+</section>
+
+<section class="sec white rule-b" id="neuron">
+<div class="wrap stack g32">
+<div class="hb">
+<div class="stack g16">
+<p class="kicker">03 — Turning the map into a brain <span class="cat model">MODEL</span></p>
+<h2 class="t-h2">Every neuron is a leaky bucket</h2>
+<div class="prose stack g16" style="font-size:18px;line-height:1.65">
+<p>Shiu and colleagues gave all 127,400 neurons the same simple rule, called <i>leaky integrate-and-fire</i>. Think of a bucket with a small hole. Incoming spikes pour charge in, the charge slowly leaks out, and if the level rises past a line the neuron fires a spike of its own and the bucket empties.</p>
+<p>How hard one neuron pushes another depends only on how many synapses connect them, and on whether its chemical messenger excites or inhibits (GABA and glutamate count as inhibitory). Each synapse is worth 0.275 mV, the model’s one tuned number. There is no learning, no hormones and no spontaneous firing. That is the whole model.</p>
+</div>
+</div>
+<div class="fb-eq">
+<p class="kicker" style="color:#10131C">The rule, as the model writes it</p>
+<pre>dv/dt = (v₀ − v + g) / τ_m
+dg/dt = −g / τ_s
+v &gt; v_th  →  spike, v = v₀, g = 0
+input spike  →  g += synapses × 0.275 mV</pre>
+<table class="fb-tbl">
+<tr><td>Resting level v₀</td><td>−52 mV</td></tr>
+<tr><td>Firing line v_th</td><td>−45 mV</td></tr>
+<tr><td>Leak time τ_m</td><td>20 ms</td></tr>
+<tr><td>Input decay τ_s</td><td>5 ms</td></tr>
+<tr><td>Rest after a spike</td><td>2.2 ms</td></tr>
+<tr><td>Travel delay</td><td>1.8 ms</td></tr>
+<tr><td>Time step</td><td>0.1 ms</td></tr>
+</table>
+</div>
+</div>
+<div class="viz" role="group" aria-label="Figure B, animated: one model neuron as a leaky bucket" data-lif>
+<div class="viz-head">
+<span class="kicker">Figure B — Try it: one neuron <span class="cat model">MODEL</span></span>
+<h3 class="t-h3">Pour spikes in and watch it fire</h3>
+</div>
+<div class="viz-body stack g24">
+<div class="fb-lifctl">
+<label class="fb-range"><span>Input spikes per second <b data-r="lrate">150</b></span><input type="range" min="0" max="400" step="10" value="150" data-r="lratein" aria-label="Input spikes per second"></label>
+<label class="fb-range"><span>Synapses per connection <b data-r="lsyn">25</b></span><input type="range" min="1" max="60" step="1" value="25" data-r="lsynin" aria-label="Synapses per connection"></label>
+<button type="button" class="fb-play" data-r="lplay" aria-pressed="true" aria-label="Pause the animation"><span aria-hidden="true">‖</span> Pause</button>
+</div>
+<div class="fb-box"><svg class="fb-svg" viewBox="0 0 760 250" role="img" data-r="lsvg" aria-label="A bucket fills as input spikes arrive and drains through a leak; when the level crosses the firing line the neuron spikes and the bucket empties. Beside it, the neuron’s voltage over 400 ms of simulated time.">
+<defs><clipPath id="fb-bucket"><path d="M42 64 L138 64 L124 206 L56 206 Z"></path></clipPath></defs>
+<rect width="760" height="250" fill="#FFFFFF"></rect>
+<text x="90" y="24" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#3A4152">INPUT SPIKES</text>
+<path d="" fill="#2B44C8" data-r="ldrops"></path>
+<rect x="40" y="64" width="100" height="142" fill="#DDE3FF" clip-path="url(#fb-bucket)"></rect>
+<rect x="40" y="206" width="100" height="0" fill="#2B44C8" clip-path="url(#fb-bucket)" data-r="lwater"></rect>
+<line x1="34" y1="88" x2="146" y2="88" stroke="#C2410C" stroke-width="2" stroke-dasharray="5 4"></line>
+<text x="150" y="84" font-family="JetBrains Mono, monospace" font-size="10" fill="#C2410C">FIRE</text>
+<path d="M42 64 L138 64 L124 206 L56 206 Z" fill="none" stroke="#10131C" stroke-width="2.5"></path>
+<path d="M88 206 L92 206 L91 214 L89 214 Z" fill="#10131C"></path>
+<circle cx="90" cy="226" r="3" fill="#2B44C8" data-r="ldrip"></circle>
+<text x="90" y="246" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#3A4152">LEAK</text>
+<g data-r="lspk" opacity="0"><circle cx="90" cy="64" r="34" fill="#F6C945" opacity=".55"></circle><text x="90" y="52" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="20" fill="#10131C">SPIKE!</text></g>
+<text x="200" y="24" font-family="JetBrains Mono, monospace" font-size="11" fill="#3A4152">INPUTS</text>
+<path d="" fill="none" stroke="#2B44C8" stroke-width="1.4" data-r="lin"></path>
+<line x1="200" y1="99.4" x2="740" y2="99.4" stroke="#C2410C" stroke-dasharray="5 4"></line>
+<text x="204" y="112" font-family="JetBrains Mono, monospace" font-size="10" fill="#C2410C">FIRING LINE −45 mV</text>
+<line x1="200" y1="182.5" x2="740" y2="182.5" stroke="#9AA1AE" stroke-dasharray="2 4"></line>
+<text x="740" y="198" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="10" fill="#3A4152">REST −52 mV</text>
+<path d="" fill="none" stroke="#C2410C" stroke-width="2" data-r="lout"></path>
+<path d="" fill="none" stroke="#C9CED8" stroke-width="1.6" data-r="ltrace"></path>
+<path d="" fill="none" stroke="#2B44C8" stroke-width="2" data-r="ltrace2"></path>
+<line x1="200" y1="34" x2="200" y2="232" stroke="#10131C" stroke-width="1" data-r="lhead"></line>
+<text x="200" y="244" font-family="JetBrains Mono, monospace" font-size="10" fill="#3A4152">0 ms</text>
+<text x="740" y="244" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="10" fill="#3A4152">400 ms (simulated)</text>
+</svg></div>
+<div class="readout r3">
+<div><span>Input spikes so far</span><b data-r="lnin">0</b></div>
+<div><span>Output spikes so far</span><b data-r="lnout">0</b></div>
+<div><span>Bucket level</span><b data-r="lv">−52.0 mV</b></div>
+</div>
+<p class="small" data-r="lnote">Same equations and parameters as the full model. Too few inputs and the leak wins, so it never fires. In the real network each neuron’s inputs come from the neurons wired to it in FlyWire.</p>
+</div>
+<div class="viz-foot"><span class="meta muted" style="font-size:12px">400 ms of simulated time, played 20× slower. Input spikes arrive at random (a fixed seed, so the same settings always give the same picture).</span></div>
+</div>
+</div>
+</section>
+
+<section class="sec dark rule-b" id="replay">
+<div class="wrap stack g32">
+<div class="hb">
+<div class="stack g16">
+<p class="kicker">04 — Sugar in, spikes out <span class="cat model">MODEL</span></p>
+<h2 class="t-h2">Follow one second of sugar through the brain</h2>
+<div class="prose stack g16" style="font-size:18px;line-height:1.65">
+<p>This is the paper’s own test. The 21 sugar-taste neurons (gustatory receptor neurons) get random spikes at 100 per second each for one simulated second, a stand-in for the fly touching sugar, and every spike anywhere in the brain is recorded.</p>
+<p>The readout is MN9. Its firing drives the proboscis drawing beside the brain; how far a real proboscis moves for a given MN9 rate is not known, so that mapping is my choice and tagged APP. Switch to the second run to see the same input with two neurons silenced.</p>
+</div>
+</div>
+<div class="fb-legend stack g12">
+<p class="kicker">In the picture</p>
+<p><i style="background:#FFE29A"></i>A neuron firing a simulated spike</p>
+<p><i style="background:#7FDBFF"></i>The 21 sugar-taste neurons (input)</p>
+<p><i style="background:#F472B6"></i>MN9, the two motor neurons (output)</p>
+<p><i style="background:#8A8F9C"></i>The two Roundup neurons, when silenced</p>
+</div>
+</div>
+<div class="viz night" role="group" aria-label="Figure C, animated: one simulated second of brain activity during sugar stimulation" data-flyreplay>
+<div class="viz-head">
+<span class="kicker">Figure C — Watch it: inside the head <span class="cat model">MODEL</span></span>
+<h3 class="t-h3" data-r="rtitle">Run 1: sugar neurons on</h3>
+</div>
+<div class="viz-body stack g16">
+<div class="ratio" aria-label="Choose the run">
+<button type="button" data-run="0" class="on" aria-pressed="true">Sugar only</button>
+<button type="button" data-run="1" aria-pressed="false">Roundup silenced</button>
+<button type="button" class="fig-play" data-r="rplay" aria-pressed="false" aria-label="Play the animation"><span aria-hidden="true">▶</span> Play</button>
+</div>
+<div class="fb-replay">
+<div class="fb-stage night" data-r="rstage">
+<canvas data-r="rcv" tabindex="0" role="img" aria-label="The fruit-fly brain seen from the front; simulated spikes flash as they happen. Drag sideways or use the arrow keys to turn it."></canvas>
+<span class="fb-badge">SIMULATION REPLAY · not recorded data</span>
+<span class="fb-hint" data-r="rhint">Loading the replay…</span>
+</div>
+<div class="fb-side stack g12">
+<div class="fb-ro"><span>Simulated time</span><b data-r="rt">0 ms</b><small>shown 20× slower</small></div>
+<div class="fb-ro"><span>MN9 now</span><b data-r="rmn9">0 spikes/s</b><i class="fb-bar"><em data-r="rmn9bar" style="background:#F472B6"></em></i></div>
+<div class="fb-ro"><span>Spikes in the last 10 ms</span><b data-r="rn10">0</b><small>all neurons, this trial</small></div>
+<div class="fb-ro fb-prob"><span>Proboscis <span class="cat app">APP</span></span><b data-r="rext">0%</b>
+<svg viewBox="0 0 170 112" aria-hidden="true"><path d="M30 30 Q14 10 6 14 M44 22 Q40 4 30 2" fill="none" stroke="#8A8F9C" stroke-width="1.5"></path><ellipse cx="62" cy="40" rx="36" ry="28" fill="#2A3045" stroke="#8A8F9C"></ellipse><ellipse cx="86" cy="33" rx="14" ry="17" fill="#B04A5A"></ellipse><g transform="translate(76 63)"><g data-r="rpb1" transform="rotate(70)"><rect x="-4.5" y="-2" width="9" height="24" rx="4.5" fill="#F6C945"></rect><g transform="translate(0 21)"><g data-r="rpb2" transform="rotate(150)"><rect x="-3.5" y="-2" width="7" height="22" rx="3.5" fill="#F6C945"></rect><g transform="translate(0 21)"><ellipse data-r="rpb3" cx="0" cy="2" rx="8" ry="3.5" fill="#F6C945" transform="scale(.4)"></ellipse></g></g></g></g></g><rect x="88" y="100" width="30" height="10" rx="2" fill="#FFFFFF" opacity=".9"></rect><ellipse cx="103" cy="100" rx="11" ry="3" fill="#7FDBFF" opacity=".95"></ellipse></svg>
+<small>0% below 5 spikes/s, 100% at 100</small></div>
+</div>
+</div>
+<input class="fb-scrub" type="range" min="0" max="1000" step="1" value="0" data-r="rscrub" aria-label="Simulated time, milliseconds">
+<p class="small" data-r="rnote" aria-live="off">Each flash is one simulated spike. Activity starts at the sugar-taste neurons in the lower brain.</p>
+<div class="fb-box night"><svg class="fb-svg" viewBox="0 0 760 170" role="img" data-r="rsvg" aria-label="MN9 firing rate over one simulated second: about 65 spikes per second with sugar only, about 25 with Roundup silenced.">
+<g font-family="JetBrains Mono, monospace" font-size="10" fill="#C9CED8">
+<text x="50" y="12">MN9 SPIKES PER SECOND (10-TRIAL AVERAGE, SMOOTHED)</text>
+<line x1="50" x2="740" y1="140" y2="140" stroke="#3A4152"></line><text x="44" y="143" text-anchor="end">0</text>
+<line x1="50" x2="740" y1="110" y2="110" stroke="#262C3D"></line><text x="44" y="113" text-anchor="end">25</text>
+<line x1="50" x2="740" y1="80" y2="80" stroke="#262C3D"></line><text x="44" y="83" text-anchor="end">50</text>
+<line x1="50" x2="740" y1="50" y2="50" stroke="#262C3D"></line><text x="44" y="53" text-anchor="end">75</text>
+<line x1="50" x2="740" y1="20" y2="20" stroke="#F472B6" stroke-dasharray="3 4" opacity=".7"></line><text x="44" y="23" text-anchor="end">100</text>
+<text x="736" y="16" text-anchor="end" fill="#F472B6">PROBOSCIS FULLY OUT (APP)</text>
+<text x="50" y="160">0 ms</text><text x="740" y="160" text-anchor="end">1000 ms</text>
+</g>
+<path d="M53.5 140L56.9 140L60.4 140L63.8 140L67.2 140L70.7 140L74.2 135.4L77.6 124.4L81 110L84.5 101.4L88 93.7L91.4 77.5L94.8 69.7L98.3 71.8L101.8 73.8L105.2 73.3L108.7 70.4L112.1 67.9L115.5 70.2L119 70L122.5 72.1L125.9 74L129.4 73.4L132.8 70.6L136.2 75L139.7 74.2L143.2 78.2L146.6 72.7L150.1 69.9L153.5 69.8L156.9 69.6L160.4 67.2L163.9 58.2L167.3 52.2L170.8 51.4L174.2 46.2L177.6 50.5L181.1 52.2L184.6 56L188 61.6L191.4 62.2L194.9 62.8L198.3 65.6L201.8 68.1L205.2 70.4L208.7 74.7L212.1 76.4L215.6 68.7L219 64L222.5 62.1L226 60.4L229.4 56.6L232.9 60L236.3 58.4L239.8 59.4L243.2 64.8L246.6 67.3L250.1 72L253.5 69.3L257 60.1L260.4 56.2L263.9 59.6L267.4 60.4L270.8 61.2L274.2 66.3L277.7 68.8L281.1 64.2L284.6 66.8L288 64.6L291.5 62.7L294.9 58.6L298.4 52.6L301.9 56.4L305.3 52.9L308.8 52L312.2 53.6L315.7 57.2L319.1 60.6L322.6 61.3L326 64.2L329.5 62.2L332.9 65.1L336.3 63.1L339.8 65.8L343.2 70.6L346.7 72.7L350.1 74.5L353.6 64.8L357.1 65L360.5 56.2L363.9 55L367.4 56.2L370.9 52.8L374.3 51.9L377.8 48.9L381.2 50.7L384.6 57L388.1 58L391.6 65.8L395 68.4L398.4 68.2L401.9 72.8L405.4 70L408.8 69.9L412.2 69.7L415.7 60.4L419.2 54.3L422.6 53.2L426.1 54.7L429.5 56L433 54.8L436.4 53.8L439.8 55.2L443.3 63.2L446.7 63.7L450.2 64L453.6 64.4L457.1 62.5L460.5 63.1L464 65.8L467.4 61.4L470.9 62L474.3 60.3L477.8 63.3L481.2 59.2L484.7 57.8L488.2 63.3L491.6 68.4L495.1 68.4L498.5 66L502 61.6L505.4 62.2L508.9 67.3L512.3 69.7L515.8 65L519.2 69.8L522.7 65.1L526.1 65.4L529.5 65.6L533 65.8L536.5 63.8L539.9 57.3L543.3 53.7L546.8 57.4L550.2 58.4L553.7 59.4L557.1 57.9L560.6 58.9L564 59.7L567.5 62.7L571 56.4L574.4 57.6L577.9 65.4L581.3 63.3L584.8 61.5L588.2 64.4L591.6 64.8L595.1 60.4L598.6 58.9L602 57.4L605.5 56.2L608.9 61.9L612.3 64.8L615.8 67.4L619.2 62.8L622.7 56.5L626.1 57.6L629.6 60.8L633 57L636.5 58L639.9 52.2L643.4 55.9L646.9 52.5L650.3 60.8L653.8 63.8L657.2 61.9L660.6 57.9L664.1 63.4L667.6 54.8L671 60.6L674.5 56.7L677.9 60.1L681.4 60.8L684.8 68.4L688.2 61.5L691.7 62.1L695.2 58L698.6 54.4L702 51.2L705.5 48.2L708.9 47.8L712.4 52L715.9 51.2L719.3 48.3L722.8 47.8L726.2 54.3L729.6 51.1L733.1 55L736.5 58.5L740 54.8" fill="none" stroke="#7FDBFF" stroke-width="2.2" data-r="rpath0"></path>
+<path d="M53.5 140L56.9 140L60.4 140L63.8 140L67.2 140L70.7 140L74.2 137.7L77.6 128.8L81 120.7L84.5 122.6L88 119.6L91.4 117.1L94.8 112.4L98.3 112.8L101.8 113L105.2 111L108.7 111.4L112.1 111.9L115.5 112.3L119 110.4L122.5 108.7L125.9 109.3L129.4 112.3L132.8 112.6L136.2 112.9L139.7 115.5L143.2 115.5L146.6 117.9L150.1 120L153.5 119.6L156.9 119.2L160.4 116.7L163.9 107.5L167.3 103.8L170.8 107.1L174.2 105.7L177.6 109L181.1 109.6L184.6 110.2L188 108.6L191.4 109.3L194.9 109.9L198.3 110.5L201.8 104.1L205.2 107.6L208.7 110.6L212.1 111.2L215.6 111.6L219 109.8L222.5 105.8L226 109L229.4 111.9L232.9 114.7L236.3 112.5L239.8 112.9L243.2 113.1L246.6 113.4L250.1 115.9L253.5 113.6L257 113.8L260.4 116.4L263.9 116.4L267.4 116.2L270.8 111.7L274.2 109.9L277.7 110.4L281.1 108.7L284.6 109.4L288 107.7L291.5 103.9L294.9 107.4L298.4 108.2L301.9 108.9L305.3 102.8L308.8 101.7L312.2 100.8L315.7 104.5L319.1 98.7L322.6 100.4L326 101.8L329.5 105.6L332.9 106.5L336.3 105.1L339.8 99.3L343.2 100.9L346.7 104.6L350.1 108L353.6 106.5L357.1 102.8L360.5 104.1L363.9 107.5L367.4 108.3L370.9 99.9L374.3 101.5L377.8 102.8L381.2 104.1L384.6 107.5L388.1 108.3L391.6 111.3L395 109.5L398.4 110.1L401.9 106L405.4 104.7L408.8 103.5L412.2 104.7L415.7 108.1L419.2 108.8L422.6 107.2L426.1 110.4L429.5 113.1L433 113.5L436.4 113.7L439.8 109.3L443.3 110L446.7 110.6L450.2 106.5L453.6 109.6L457.1 108L460.5 104.2L464 107.6L467.4 110.7L470.9 106.6L474.3 109.8L477.8 105.8L481.2 104.5L484.7 98.7L488.2 102.7L491.6 106.3L495.1 104.8L498.5 105.9L502 106.9L505.4 110L508.9 108.3L512.3 109L515.8 109.8L519.2 108.1L522.7 108.8L526.1 109.5L529.5 107.8L533 110.8L536.5 111.3L539.9 111.8L543.3 114.4L546.8 117L550.2 116.8L553.7 116.7L557.1 116.7L560.6 118.9L564 120.9L567.5 120.4L571 122.2L574.4 121.8L577.9 121.2L581.3 120.7L584.8 120.2L588.2 119.8L591.6 119.5L595.1 121.4L598.6 120.9L602 120.4L605.5 122.2L608.9 121.6L612.3 123.4L615.8 118.2L619.2 120.2L622.7 119.8L626.1 117.2L629.6 117.1L633 117L636.5 116.8L639.9 119.1L643.4 116.5L646.9 116.5L650.3 118.6L653.8 116.1L657.2 116.1L660.6 116.1L664.1 116.1L667.6 116.1L671 116.1L674.5 116.1L677.9 116.1L681.4 116.1L684.8 111.4L688.2 109.6L691.7 110.2L695.2 110.8L698.6 111.3L702 114.1L705.5 111.9L708.9 107.7L712.4 104L715.9 107.4L719.3 101.4L722.8 100.5L726.2 102L729.6 105.6L733.1 104.2L736.5 107.7L740 103.9" fill="none" stroke="#C9CED8" stroke-width="2.2" stroke-dasharray="6 4" data-r="rpath1"></path>
+<line x1="50" x2="50" y1="18" y2="140" stroke="#FFE29A" data-r="rhead"></line>
+<circle cx="50" cy="140" r="4.5" fill="#FFE29A" data-r="rdot"></circle>
+</svg></div>
+<div class="viz-foot" style="border-color:#3A4152"><span class="lg"><i style="background:#7FDBFF;border-color:#7FDBFF"></i>Sugar only · 65.5 spikes/s average</span><span class="lg"><i style="background:repeating-linear-gradient(90deg,#C9CED8 0 6px,transparent 6px 10px);border-color:#C9CED8"></i>Roundup silenced · 24.7 spikes/s</span></div>
+</div>
+</div>
+<p class="meta" style="color:#C9CED8;font-size:12px">The flashes show every spike of trial 1 (10,097 with sugar only; 7,647 with Roundup silenced). The MN9 line is the average of all 10 trials. Brain positions: FlyWire v630 (DATA); spikes: the model (MODEL); colours, glow and the proboscis: this page (APP).</p>
+</div>
+</section>
+
+<section class="sec rule-b" id="silence">
+<div class="wrap stack g32">
+<div class="hb">
+<div class="stack g16">
+<p class="kicker">05 — Silence two neurons <span class="cat model">MODEL</span></p>
+<h2 class="t-h2">Two neurons out of 127,400</h2>
+<div class="prose stack g16" style="font-size:18px;line-height:1.65">
+<p>The model can switch any neuron off. Silencing, exactly as in the original code, removes everything a neuron sends: it can still fire, but nothing downstream hears it. I silenced <b>Roundup</b>, a cell type the paper places just before the motor neurons in the sugar-to-feeding pathway (two neurons, one per side), and repeated the same 10 trials.</p>
+<p>The comparison is paired. Trial 3 of the silenced run received exactly the same random sugar input as trial 3 of the normal run, so each pair of bars differs only by the silencing.</p>
+</div>
+</div>
+<div class="stack g16">
+<div class="find"><p class="kicker">Result, within this model</p><p class="t-h3" style="font-size:26px">MN9: 65.5 → 24.7 spikes/s</p><p>A drop of 62%, lower in all 10 of 10 paired trials. The other MN9 fell harder, from 49.8 to 5.4 (−89%).</p></div>
+<div class="find"><p class="kicker">Does it match the paper?</p><p>Yes in direction. The paper calls Roundup “the pre-MN with the strongest predicted silencing phenotype”. This is a result inside the model, not a tested prediction about a living fly.</p></div>
+</div>
+</div>
+<div class="viz" role="group" aria-label="Figure D: MN9 firing rate in each of 10 paired trials, sugar only versus Roundup silenced">
+<div class="viz-head">
+<span class="kicker">Figure D — Ten paired trials <span class="cat model">MODEL</span></span>
+<h3 class="t-h3">MN9 firing in every trial, before and after silencing Roundup</h3>
+</div>
+<div class="viz-body"><div class="fb-box"><svg class="fb-svg" viewBox="0 0 760 290" role="img" data-r="bars" aria-label="Bar chart of 10 paired trials. Sugar only: 61 to 72 spikes per second. Roundup silenced: 17 to 31 spikes per second. Every trial dropped."><rect width="760" height="290" fill="#FFFFFF"></rect><g font-family="JetBrains Mono, monospace" font-size="11" fill="#3A4152"><text x="56" y="16">MN9 SPIKES PER SECOND, EACH TRIAL</text><line x1="56" x2="750" y1="246" y2="246" stroke="#10131C"></line><text x="48" y="250" text-anchor="end">0</text><line x1="56" x2="750" y1="193" y2="193" stroke="#DCE0E7"></line><text x="48" y="197" text-anchor="end">20</text><line x1="56" x2="750" y1="140" y2="140" stroke="#DCE0E7"></line><text x="48" y="144" text-anchor="end">40</text><line x1="56" x2="750" y1="87" y2="87" stroke="#DCE0E7"></line><text x="48" y="91" text-anchor="end">60</text><line x1="56" x2="750" y1="34" y2="34" stroke="#DCE0E7"></line><text x="48" y="38" text-anchor="end">80</text><rect x="65.7" y="68.4" width="23.6" height="177.6" fill="#2B44C8"></rect><rect x="92.3" y="182.4" width="23.6" height="63.6" fill="#F6C945" stroke="#10131C" stroke-width=".8"></rect><text x="77.5" y="63.4" text-anchor="middle" font-size="10">67</text><text x="104.1" y="177.4" text-anchor="middle" font-size="10">24</text><text x="90.8" y="264" text-anchor="middle">1</text><rect x="135.1" y="57.9" width="23.6" height="188.1" fill="#2B44C8"></rect><rect x="161.7" y="169.2" width="23.6" height="76.8" fill="#F6C945" stroke="#10131C" stroke-width=".8"></rect><text x="146.9" y="52.9" text-anchor="middle" font-size="10">71</text><text x="173.5" y="164.2" text-anchor="middle" font-size="10">29</text><text x="160.2" y="264" text-anchor="middle">2</text><rect x="204.5" y="76.4" width="23.6" height="169.6" fill="#2B44C8"></rect><rect x="231.1" y="187.7" width="23.6" height="58.3" fill="#F6C945" stroke="#10131C" stroke-width=".8"></rect><text x="216.3" y="71.4" text-anchor="middle" font-size="10">64</text><text x="242.9" y="182.7" text-anchor="middle" font-size="10">22</text><text x="229.6" y="264" text-anchor="middle">3</text><rect x="273.9" y="68.4" width="23.6" height="177.6" fill="#2B44C8"></rect><rect x="300.5" y="166.5" width="23.6" height="79.5" fill="#F6C945" stroke="#10131C" stroke-width=".8"></rect><text x="285.7" y="63.4" text-anchor="middle" font-size="10">67</text><text x="312.3" y="161.5" text-anchor="middle" font-size="10">30</text><text x="299" y="264" text-anchor="middle">4</text><rect x="343.3" y="55.2" width="23.6" height="190.8" fill="#2B44C8"></rect><rect x="369.9" y="169.2" width="23.6" height="76.8" fill="#F6C945" stroke="#10131C" stroke-width=".8"></rect><text x="355.1" y="50.2" text-anchor="middle" font-size="10">72</text><text x="381.7" y="164.2" text-anchor="middle" font-size="10">29</text><text x="368.4" y="264" text-anchor="middle">5</text><rect x="412.7" y="79.1" width="23.6" height="166.9" fill="#2B44C8"></rect><rect x="439.3" y="187.7" width="23.6" height="58.3" fill="#F6C945" stroke="#10131C" stroke-width=".8"></rect><text x="424.5" y="74.1" text-anchor="middle" font-size="10">63</text><text x="451.1" y="182.7" text-anchor="middle" font-size="10">22</text><text x="437.8" y="264" text-anchor="middle">6</text><rect x="482.1" y="84.4" width="23.6" height="161.6" fill="#2B44C8"></rect><rect x="508.7" y="200.9" width="23.6" height="45.1" fill="#F6C945" stroke="#10131C" stroke-width=".8"></rect><text x="493.9" y="79.4" text-anchor="middle" font-size="10">61</text><text x="520.5" y="195.9" text-anchor="middle" font-size="10">17</text><text x="507.2" y="264" text-anchor="middle">7</text><rect x="551.5" y="81.7" width="23.6" height="164.3" fill="#2B44C8"></rect><rect x="578.1" y="163.8" width="23.6" height="82.2" fill="#F6C945" stroke="#10131C" stroke-width=".8"></rect><text x="563.3" y="76.7" text-anchor="middle" font-size="10">62</text><text x="589.9" y="158.8" text-anchor="middle" font-size="10">31</text><text x="576.6" y="264" text-anchor="middle">8</text><rect x="620.9" y="79.1" width="23.6" height="166.9" fill="#2B44C8"></rect><rect x="647.5" y="195.7" width="23.6" height="50.3" fill="#F6C945" stroke="#10131C" stroke-width=".8"></rect><text x="632.7" y="74.1" text-anchor="middle" font-size="10">63</text><text x="659.3" y="190.7" text-anchor="middle" font-size="10">19</text><text x="646" y="264" text-anchor="middle">9</text><rect x="690.3" y="73.8" width="23.6" height="172.2" fill="#2B44C8"></rect><rect x="716.9" y="182.4" width="23.6" height="63.6" fill="#F6C945" stroke="#10131C" stroke-width=".8"></rect><text x="702.1" y="68.8" text-anchor="middle" font-size="10">65</text><text x="728.7" y="177.4" text-anchor="middle" font-size="10">24</text><text x="715.4" y="264" text-anchor="middle">10</text><text x="56" y="284">TRIAL (SAME RANDOM INPUT IN EACH PAIR)</text></g></svg></div></div>
+<div class="viz-foot"><span class="lg"><i style="background:#2B44C8;border-color:#2B44C8"></i>Sugar only</span><span class="lg"><i style="background:#F6C945"></i>Same input, Roundup silenced</span><span class="meta muted" style="font-size:12px">Spikes counted over the whole simulated second of each trial.</span></div>
+</div>
+</div>
+</section>
+
+<section class="sec white rule-b" id="arena">
+<div class="wrap stack g32">
+<div class="hb">
+<div class="stack g16">
+<p class="kicker">06 — From brain to behaviour <span class="cat app">HYBRID DEMO</span></p>
+<h2 class="t-h2">Give the brain a body (a pretend one)</h2>
+<div class="prose stack g16" style="font-size:18px;line-height:1.65">
+<p>The brain model only produces spikes. To see what they could mean for a fly, I connected it to a simple, <b>hand-written</b> walking controller in a small arena with two sugar patches. The fly wanders at random. When it stands on sugar, the 21 sugar neurons switch on. If MN9 then fires fast enough, the controller stops the fly to feed.</p>
+<p>The walking and turning are mine, not the model’s: the wiring map has no nerve cord, so the brain cannot move legs. Only the decision to stop and feed comes from the simulated brain. Nothing learns, and a fly that finds sugar found it by chance.</p>
+</div>
+</div>
+<ol class="fb-loop">
+<li><b>Arena</b><span>Sugar under the fly? (0–1)</span><span class="cat app">APP</span></li>
+<li><b>Sensory input</b><span>The 21 published sugar neurons, up to 100 spikes/s</span><span class="cat data">DATA</span></li>
+<li><b>Brain model</b><span>All 127,400 neurons, 0.1 ms steps</span><span class="cat model">MODEL</span></li>
+<li><b>MN9 decoder</b><span>Smoothed rate → feed signal</span><span class="cat app">APP</span></li>
+<li><b>Walking controller</b><span>Random walk, stops to feed</span><span class="cat app">APP</span></li>
+<li class="fb-loop-back"><span>Back to the arena, every 50 ms</span></li>
+</ol>
+</div>
+<div class="viz" role="group" aria-label="Figure E, animated: two 15-second arena runs side by side, intact brain and Roundup silenced" data-fig="arena">
+<div class="viz-head">
+<span class="kicker">Figure E — Watch it: two flies, same luck <span class="cat app">HYBRID DEMO</span></span>
+<h3 class="t-h3" data-fig-f="title">Both flies wander</h3>
+</div>
+<div class="viz-body stack g24">
+<div class="ratio fig-ch" aria-label="Jump to a moment"><button type="button" data-ch="0" class="on" aria-pressed="true">Wander</button><button type="button" data-ch="1" aria-pressed="false">Reach sugar</button><button type="button" data-ch="2" aria-pressed="false">One walks off</button><button type="button" data-ch="3" aria-pressed="false">After 15 s</button><button type="button" class="fig-play" data-fig-play aria-pressed="true" aria-label="Pause the animation"><span aria-hidden="true">‖</span> Pause</button></div>
+<div class="fb-arenas">
+<figure class="fb-arena"><figcaption class="fb-arena-cap"><b>Intact brain</b><span data-r="a0state">walking</span></figcaption><svg viewBox="-3 -3 126 86" role="img" aria-label="Arena with the intact brain: the fly walks to the first sugar patch and stays there feeding." data-r="a0"><rect x="0" y="0" width="120" height="80" fill="#FBFBFA" stroke="#10131C" stroke-width=".5"></rect><line x1="10" y1="0" x2="10" y2="80" stroke="#E3E6EC" stroke-width=".25"></line><line x1="20" y1="0" x2="20" y2="80" stroke="#E3E6EC" stroke-width=".25"></line><line x1="30" y1="0" x2="30" y2="80" stroke="#E3E6EC" stroke-width=".25"></line><line x1="40" y1="0" x2="40" y2="80" stroke="#E3E6EC" stroke-width=".25"></line><line x1="50" y1="0" x2="50" y2="80" stroke="#E3E6EC" stroke-width=".25"></line><line x1="60" y1="0" x2="60" y2="80" stroke="#E3E6EC" stroke-width=".25"></line><line x1="70" y1="0" x2="70" y2="80" stroke="#E3E6EC" stroke-width=".25"></line><line x1="80" y1="0" x2="80" y2="80" stroke="#E3E6EC" stroke-width=".25"></line><line x1="90" y1="0" x2="90" y2="80" stroke="#E3E6EC" stroke-width=".25"></line><line x1="100" y1="0" x2="100" y2="80" stroke="#E3E6EC" stroke-width=".25"></line><line x1="110" y1="0" x2="110" y2="80" stroke="#E3E6EC" stroke-width=".25"></line><line x1="0" y1="10" x2="120" y2="10" stroke="#E3E6EC" stroke-width=".25"></line><line x1="0" y1="20" x2="120" y2="20" stroke="#E3E6EC" stroke-width=".25"></line><line x1="0" y1="30" x2="120" y2="30" stroke="#E3E6EC" stroke-width=".25"></line><line x1="0" y1="40" x2="120" y2="40" stroke="#E3E6EC" stroke-width=".25"></line><line x1="0" y1="50" x2="120" y2="50" stroke="#E3E6EC" stroke-width=".25"></line><line x1="0" y1="60" x2="120" y2="60" stroke="#E3E6EC" stroke-width=".25"></line><line x1="0" y1="70" x2="120" y2="70" stroke="#E3E6EC" stroke-width=".25"></line><circle cx="40" cy="30" r="9" fill="#F6C945" fill-opacity="0.80" stroke="#B8901E" stroke-width=".4" data-r="a0p0"></circle><text x="40" y="43.2" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="3" fill="#3A4152">SUGAR 1.0</text><circle cx="90" cy="55" r="9" fill="#F6C945" fill-opacity="0.49" stroke="#B8901E" stroke-width=".4" data-r="a0p1"></circle><text x="90" y="68.2" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="3" fill="#3A4152">SUGAR 0.5</text><rect x="62" y="5" width="5" height="28" fill="#3A4152"></rect><circle cx="12" cy="60" r="1.6" fill="none" stroke="#3A4152" stroke-width=".4"></circle><text x="12" y="66.5" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="3" fill="#3A4152">START</text><path d="M12 60" fill="none" stroke="#2B44C8" stroke-width=".8" stroke-linejoin="round" stroke-linecap="round" data-r="a0trail"></path><g data-r="a0fly" transform="translate(12 60) rotate(-23)"><g transform="scale(1.5)"><circle r="4.6" fill="none" stroke="#C2410C" stroke-width=".7" stroke-dasharray="1.2 1" opacity="0" data-r="a0ring"></circle><ellipse cx="-1.4" cy="-1.1" rx="1.7" ry=".8" fill="#9AA6D6" opacity=".8" transform="rotate(-20 -1.4 -1.1)"></ellipse><ellipse cx="-1.4" cy="1.1" rx="1.7" ry=".8" fill="#9AA6D6" opacity=".8" transform="rotate(20 -1.4 1.1)"></ellipse><ellipse cx="-.5" cy="0" rx="2" ry="1.05" fill="#10131C"></ellipse><circle cx="1.75" cy="0" r=".9" fill="#10131C"></circle><circle cx="2" cy="-.55" r=".42" fill="#C2410C"></circle><circle cx="2" cy=".55" r=".42" fill="#C2410C"></circle></g></g></svg><p class="meta"><span data-r="a0mn9">MN9 0 spikes/s</span> · <span data-r="a0feed">fed 0.0 s</span></p></figure>
+<figure class="fb-arena"><figcaption class="fb-arena-cap"><b>Roundup silenced</b><span data-r="a1state">walking</span></figcaption><svg viewBox="-3 -3 126 86" role="img" aria-label="Arena with Roundup silenced: the fly reaches the same sugar patch, barely feeds and walks away." data-r="a1"><rect x="0" y="0" width="120" height="80" fill="#FBFBFA" stroke="#10131C" stroke-width=".5"></rect><line x1="10" y1="0" x2="10" y2="80" stroke="#E3E6EC" stroke-width=".25"></line><line x1="20" y1="0" x2="20" y2="80" stroke="#E3E6EC" stroke-width=".25"></line><line x1="30" y1="0" x2="30" y2="80" stroke="#E3E6EC" stroke-width=".25"></line><line x1="40" y1="0" x2="40" y2="80" stroke="#E3E6EC" stroke-width=".25"></line><line x1="50" y1="0" x2="50" y2="80" stroke="#E3E6EC" stroke-width=".25"></line><line x1="60" y1="0" x2="60" y2="80" stroke="#E3E6EC" stroke-width=".25"></line><line x1="70" y1="0" x2="70" y2="80" stroke="#E3E6EC" stroke-width=".25"></line><line x1="80" y1="0" x2="80" y2="80" stroke="#E3E6EC" stroke-width=".25"></line><line x1="90" y1="0" x2="90" y2="80" stroke="#E3E6EC" stroke-width=".25"></line><line x1="100" y1="0" x2="100" y2="80" stroke="#E3E6EC" stroke-width=".25"></line><line x1="110" y1="0" x2="110" y2="80" stroke="#E3E6EC" stroke-width=".25"></line><line x1="0" y1="10" x2="120" y2="10" stroke="#E3E6EC" stroke-width=".25"></line><line x1="0" y1="20" x2="120" y2="20" stroke="#E3E6EC" stroke-width=".25"></line><line x1="0" y1="30" x2="120" y2="30" stroke="#E3E6EC" stroke-width=".25"></line><line x1="0" y1="40" x2="120" y2="40" stroke="#E3E6EC" stroke-width=".25"></line><line x1="0" y1="50" x2="120" y2="50" stroke="#E3E6EC" stroke-width=".25"></line><line x1="0" y1="60" x2="120" y2="60" stroke="#E3E6EC" stroke-width=".25"></line><line x1="0" y1="70" x2="120" y2="70" stroke="#E3E6EC" stroke-width=".25"></line><circle cx="40" cy="30" r="9" fill="#F6C945" fill-opacity="0.80" stroke="#B8901E" stroke-width=".4" data-r="a1p0"></circle><text x="40" y="43.2" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="3" fill="#3A4152">SUGAR 1.0</text><circle cx="90" cy="55" r="9" fill="#F6C945" fill-opacity="0.49" stroke="#B8901E" stroke-width=".4" data-r="a1p1"></circle><text x="90" y="68.2" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="3" fill="#3A4152">SUGAR 0.5</text><rect x="62" y="5" width="5" height="28" fill="#3A4152"></rect><circle cx="12" cy="60" r="1.6" fill="none" stroke="#3A4152" stroke-width=".4"></circle><text x="12" y="66.5" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="3" fill="#3A4152">START</text><path d="M12 60" fill="none" stroke="#C99700" stroke-width=".8" stroke-linejoin="round" stroke-linecap="round" data-r="a1trail"></path><g data-r="a1fly" transform="translate(12 60) rotate(-23)"><g transform="scale(1.5)"><circle r="4.6" fill="none" stroke="#C2410C" stroke-width=".7" stroke-dasharray="1.2 1" opacity="0" data-r="a1ring"></circle><ellipse cx="-1.4" cy="-1.1" rx="1.7" ry=".8" fill="#9AA6D6" opacity=".8" transform="rotate(-20 -1.4 -1.1)"></ellipse><ellipse cx="-1.4" cy="1.1" rx="1.7" ry=".8" fill="#9AA6D6" opacity=".8" transform="rotate(20 -1.4 1.1)"></ellipse><ellipse cx="-.5" cy="0" rx="2" ry="1.05" fill="#10131C"></ellipse><circle cx="1.75" cy="0" r=".9" fill="#10131C"></circle><circle cx="2" cy="-.55" r=".42" fill="#C2410C"></circle><circle cx="2" cy=".55" r=".42" fill="#C2410C"></circle></g></g></svg><p class="meta"><span data-r="a1mn9">MN9 0 spikes/s</span> · <span data-r="a1feed">fed 0.0 s</span></p></figure>
+</div>
+<div class="fig-track" aria-hidden="true"><i data-fig-bar></i></div>
+<div class="fb-box"><svg class="fb-svg" viewBox="0 0 760 150" role="img" aria-label="MN9 rate in both arena runs over 15 seconds, with the feeding gate at about 29 spikes per second." data-r="atrace"><rect width="760" height="150" fill="#FFFFFF"></rect><g font-family="JetBrains Mono, monospace" font-size="10" fill="#3A4152"><text x="50" y="12">MN9 SPIKES PER SECOND (SMOOTHED), BOTH ARENA RUNS</text><line x1="50" x2="740" y1="120.0" y2="120.0" stroke="#10131C"></line><text x="44" y="123.0" text-anchor="end">0</text><line x1="50" x2="740" y1="95.0" y2="95.0" stroke="#E3E6EC"></line><text x="44" y="98.0" text-anchor="end">25</text><line x1="50" x2="740" y1="70.0" y2="70.0" stroke="#E3E6EC"></line><text x="44" y="73.0" text-anchor="end">50</text><line x1="50" x2="740" y1="45.0" y2="45.0" stroke="#E3E6EC"></line><text x="44" y="48.0" text-anchor="end">75</text><line x1="50" x2="740" y1="20.0" y2="20.0" stroke="#E3E6EC"></line><text x="44" y="23.0" text-anchor="end">100</text><line x1="50" x2="740" y1="91.2" y2="91.2" stroke="#C2410C" stroke-dasharray="4 3"></line><text x="56" y="86.2" fill="#C2410C">FEEDING GATE ≈ 29 (APP)</text><text x="50" y="140">0 s</text><text x="740" y="140" text-anchor="end">15 s</text><path d="M50 120L52.3 120L54.6 120L56.9 120L59.2 120L61.5 120L63.8 120L66.1 120L68.4 120L70.7 120L73 120L75.3 120L77.6 120L79.9 120L82.2 120L84.5 120L86.8 120L89.1 120L91.4 120L93.7 120L96 120L98.3 120L100.6 120L102.9 120L105.2 120L107.5 120L109.8 120L112.1 120L114.4 120L116.7 120L119 120L121.3 120L123.6 120L125.9 120L128.2 120L130.5 120L132.8 120L135.1 120L137.4 120L139.7 120L142 120L144.3 120L146.6 120L148.9 120L151.2 120L153.5 120L155.8 120L158.1 120L160.4 120L162.7 120L165 120L167.3 120L169.6 120L171.9 120L174.2 120L176.5 120L178.8 120L181.1 120L183.4 120L185.7 120L188 120L190.3 120L192.6 120L194.9 80.7L197.2 72.5L199.5 67.6L201.8 64.6L204.1 70.7L206.4 74.3L208.7 68.7L211 65.3L213.3 47.5L215.6 60.3L217.9 60.2L220.2 60.1L222.5 44.3L224.8 58.4L227.1 66.9L229.4 64.2L231.7 54.7L234 56.8L236.3 58L238.6 50.9L240.9 46.6L243.2 75.5L245.5 77.3L247.8 78.3L250.1 55.4L252.4 65.1L254.7 86.7L257 84.1L259.3 98.2L261.6 67.4L263.9 72.4L266.2 75.4L268.5 53.6L270.8 71.8L273.1 59.3L275.4 51.7L277.7 62.8L280 46L282.3 35.8L284.6 45.3L286.9 51.1L289.2 54.6L291.5 56.7L293.8 81.6L296.1 73.1L298.4 60.1L300.7 52.2L303 78.9L305.3 79.3L307.6 79.6L309.9 64L312.2 62.4L314.5 53.6L316.8 56.1L319.1 65.5L321.4 63.3L323.7 62L326 69.1L328.3 57.7L330.6 66.4L332.9 48.2L335.2 60.7L337.5 60.4L339.8 60.3L342.1 52.3L344.4 63.2L346.7 38.3L349 39L351.3 63L353.6 53.9L355.9 79.9L358.2 64.2L360.5 62.6L362.8 45.8L365.1 67.1L367.4 48.6L369.7 53.1L372 40.1L374.3 55.8L376.6 57.4L378.9 42.7L381.2 49.5L383.5 53.6L385.8 71.9L388.1 67.2L390.4 64.4L392.7 62.7L395 61.6L397.3 76.7L399.6 62.3L401.9 77.1L404.2 70.4L406.5 66.3L408.8 63.8L411.1 54.4L413.4 40.9L415.7 72L418 67.3L420.3 56.6L422.6 42.2L424.9 72.8L427.2 75.6L429.5 85.2L431.8 75.3L434.1 92.9L436.4 79.9L438.7 72.1L441 90.9L443.3 70.9L445.6 66.6L447.9 64L450.2 46.7L452.5 75.5L454.8 77.3L457.1 70.5L459.4 50.6L461.7 46.4L464 51.8L466.3 78.6L468.6 71.3L470.9 74.7L473.2 84.7L475.5 75L477.8 69.1L480.1 57.6L482.4 58.6L484.7 43.4L487 49.9L489.3 46L491.6 43.7L493.9 42.2L496.2 72.8L498.5 91.4L500.8 86.9L503.1 68.4L505.4 80.9L507.7 49L510 61.2L512.3 76.5L514.6 85.7L516.9 59.9L519.2 52.1L521.5 70.9L523.8 58.8L526.1 75L528.4 69.1L530.7 73.4L533 68.1L535.3 64.9L537.6 70.9L539.9 58.7L542.2 75L544.5 92.7L546.8 95.6L549.1 73.7L551.4 76.2L553.7 77.7L556 70.7L558.3 66.5L560.6 48.2L562.9 68.6L565.2 57.3L567.5 58.4L569.8 59L572.1 83L574.4 74L576.7 29.1L579 57L581.3 50.3L583.6 62L585.9 76.9L588.2 62.4L590.5 85.1L592.8 90.9L595.1 86.6L597.4 68.3L599.7 72.9L602 67.8L604.3 64.7L606.6 86.5L608.9 99.7L611.2 84.1L613.5 98.2L615.8 106.8L618.1 88.4L620.4 92.9L622.7 72.1L625 75.2L627.3 77.1L629.6 86.1L631.9 99.4L634.2 76.1L636.5 85.5L638.8 91.2L641.1 78.9L643.4 87.2L645.7 68.6L648 88.8L650.3 77.5L652.6 86.4L654.9 76L657.2 77.6L659.5 86.4L661.8 60.3L664.1 44.4L666.4 74.2L668.7 92.2L671 95.3L673.3 105L675.6 103L677.9 94L680.2 80.6L682.5 56.8L684.8 65.9L687.1 63.6L689.4 85.8L691.7 83.5L694 66.4L696.3 48.1L698.6 76.4L700.9 54.2L703.2 48.6L705.5 61L707.8 84.2L710.1 90.4L712.4 62.7L714.7 77.4L717 86.3L719.3 99.5L721.6 107.6L723.9 104.6L726.2 102.8L728.5 109.6L730.8 113.7L733.1 108.3L735.4 112.9L737.7 92.1L740 95.2" fill="none" stroke="#2B44C8" stroke-width="1.8"></path><path d="M50 120L52.3 120L54.6 120L56.9 120L59.2 120L61.5 120L63.8 120L66.1 120L68.4 120L70.7 120L73 120L75.3 120L77.6 120L79.9 120L82.2 120L84.5 120L86.8 120L89.1 120L91.4 120L93.7 120L96 120L98.3 120L100.6 120L102.9 120L105.2 120L107.5 120L109.8 120L112.1 120L114.4 120L116.7 120L119 120L121.3 120L123.6 120L125.9 120L128.2 120L130.5 120L132.8 120L135.1 120L137.4 120L139.7 120L142 120L144.3 120L146.6 120L148.9 120L151.2 120L153.5 120L155.8 120L158.1 120L160.4 120L162.7 120L165 120L167.3 120L169.6 120L171.9 120L174.2 120L176.5 120L178.8 120L181.1 120L183.4 120L185.7 120L188 120L190.3 120L192.6 120L194.9 112.1L197.2 99.5L199.5 99.7L201.8 91.9L204.1 87.2L206.4 92.3L208.7 87.4L211 92.4L213.3 87.5L215.6 76.7L217.9 85.9L220.2 83.6L222.5 90L224.8 93.9L227.1 96.3L229.4 105.6L231.7 103.4L234 109.9L236.3 98.2L238.6 91L240.9 102.4L243.2 93.6L245.5 80.4L247.8 88.1L250.1 100.7L252.4 100.4L254.7 100.2L257 100.1L259.3 108L261.6 97L263.9 90.3L266.2 102L268.5 109.1L270.8 105.5L273.1 87.6L275.4 92.5L277.7 87.6L280 92.5L282.3 71.8L284.6 82.9L286.9 89.6L289.2 93.7L291.5 104.1L293.8 102.5L296.1 109.4L298.4 105.7L300.7 87.7L303 100.4L305.3 92.4L307.6 87.5L309.9 92.4L312.2 103.3L314.5 94.1L316.8 104.3L319.1 110.5L321.4 114.2L323.7 116.5L326 117.9L328.3 118.7L330.6 119.2L332.9 119.5L335.2 119.7L337.5 119.8L339.8 119.9L342.1 119.9L344.4 120L346.7 120L349 120L351.3 120L353.6 120L355.9 120L358.2 120L360.5 120L362.8 120L365.1 120L367.4 120L369.7 120L372 120L374.3 120L376.6 120L378.9 120L381.2 120L383.5 120L385.8 120L388.1 120L390.4 120L392.7 120L395 120L397.3 120L399.6 120L401.9 120L404.2 120L406.5 120L408.8 120L411.1 120L413.4 120L415.7 120L418 120L420.3 120L422.6 120L424.9 120L427.2 120L429.5 120L431.8 120L434.1 120L436.4 120L438.7 120L441 120L443.3 120L445.6 120L447.9 120L450.2 120L452.5 120L454.8 120L457.1 120L459.4 120L461.7 120L464 120L466.3 120L468.6 120L470.9 120L473.2 120L475.5 120L477.8 120L480.1 120L482.4 120L484.7 120L487 120L489.3 120L491.6 120L493.9 120L496.2 120L498.5 120L500.8 120L503.1 120L505.4 120L507.7 120L510 120L512.3 120L514.6 120L516.9 120L519.2 120L521.5 120L523.8 120L526.1 120L528.4 120L530.7 120L533 120L535.3 120L537.6 120L539.9 120L542.2 120L544.5 120L546.8 120L549.1 120L551.4 120L553.7 120L556 120L558.3 120L560.6 120L562.9 120L565.2 120L567.5 120L569.8 120L572.1 120L574.4 120L576.7 120L579 120L581.3 120L583.6 120L585.9 120L588.2 120L590.5 120L592.8 120L595.1 120L597.4 120L599.7 120L602 120L604.3 120L606.6 120L608.9 120L611.2 120L613.5 120L615.8 120L618.1 120L620.4 120L622.7 120L625 120L627.3 120L629.6 120L631.9 120L634.2 120L636.5 120L638.8 120L641.1 120L643.4 120L645.7 120L648 120L650.3 120L652.6 120L654.9 120L657.2 120L659.5 120L661.8 120L664.1 120L666.4 120L668.7 120L671 120L673.3 120L675.6 120L677.9 120L680.2 120L682.5 120L684.8 120L687.1 120L689.4 120L691.7 120L694 120L696.3 120L698.6 120L700.9 120L703.2 120L705.5 120L707.8 120L710.1 120L712.4 120L714.7 120L717 120L719.3 120L721.6 120L723.9 120L726.2 120L728.5 120L730.8 120L733.1 120L735.4 120L737.7 120L740 120" fill="none" stroke="#C99700" stroke-width="1.8"></path><line x1="50" x2="50" y1="16" y2="120" stroke="#10131C" data-r="ahead"></line></g></svg></div>
+<p class="small" data-fig-f="note" data-fig-note aria-live="off">Same seed, same random walk: until they reach sugar, both flies take exactly the same path. Off the sugar, the sugar neurons are silent and MN9 stays at 0.</p>
+</div>
+<div class="viz-foot"><span class="lg"><i style="background:#2B44C8;border-color:#2B44C8"></i>Intact brain</span><span class="lg"><i style="background:#F6C945"></i>Roundup silenced</span><span class="meta muted" style="font-size:12px">15 simulated seconds, shown at simulated speed. Computing each run took 2.2–3.1 s per simulated second on a laptop, so it is played back afterwards. The fly is drawn larger than scale.</span></div>
+</div>
+<dl class="fb-mini three">
+<div><dt>Time feeding, intact</dt><dd>10.7 s</dd></div>
+<div><dt>Time feeding, Roundup silenced</dt><dd>0.9 s</dd></div>
+<div><dt>Distance walked</dt><dd>50 vs 166 mm</dd></div>
+</dl>
+</div>
+</section>
+
+<section class="sec rule-b" id="code">
+<div class="wrap stack g32">
+<div class="sec-head row" style="margin-bottom:0">
+<div class="stack g12">
+<p class="kicker">07 — Under the hood</p>
+<h2 class="t-h2">How the project works</h2>
+</div>
+<p class="meta muted">Python for the brain, TypeScript for the pictures</p>
+</div>
+<p class="prose" style="font-size:18px;line-height:1.65">The project, which I call FlyBrain Arcade, is a small pipeline. It fetches the original model and its data, runs the whole brain fast enough to experiment with, measures the results honestly, and turns them into the pictures on this page. Pick a stage to see what it does and which files do it.</p>
+<div class="fb-code" data-tabs>
+<div class="fb-code-tabs" role="tablist" aria-label="Stages of the project">
+<button type="button" role="tab" class="on" aria-selected="true" data-tab="0"><span class="code">01</span>Fetch and verify</button>
+<button type="button" role="tab" aria-selected="false" data-tab="1"><span class="code">02</span>Load the wiring</button>
+<button type="button" role="tab" aria-selected="false" data-tab="2"><span class="code">03</span>Simulate</button>
+<button type="button" role="tab" aria-selected="false" data-tab="3"><span class="code">04</span>Stimulate and silence</button>
+<button type="button" role="tab" aria-selected="false" data-tab="4"><span class="code">05</span>Measure and compare</button>
+<button type="button" role="tab" aria-selected="false" data-tab="5"><span class="code">06</span>The hybrid arena</button>
+<button type="button" role="tab" aria-selected="false" data-tab="6"><span class="code">07</span>Show it</button>
+<button type="button" role="tab" aria-selected="false" data-tab="7"><span class="code">08</span>Check it</button>
+</div>
+<div class="fb-code-panels">
+<div role="tabpanel" data-panel="0"><p class="kicker">Stage 01 <span class="cat data">DATA</span></p><h3 class="t-h3">Fetch the original, untouched</h3><p>Downloads the published model at a pinned version (commit 91bdd1e) together with its FlyWire v630 files, about 200 MB, and checks each file’s SHA-256 fingerprint. The model’s parameters are read straight from the original code rather than typed in again, and a test checks them.</p><p class="fb-files"><code>scripts/fetch_upstream.py</code><code>flybrain/upstream.py</code></p></div>
+<div role="tabpanel" data-panel="1" hidden><p class="kicker">Stage 02 <span class="cat data">DATA</span></p><h3 class="t-h3">Turn 14.7 million connections into a fast lookup</h3><p>Loads the connection table into a compressed sparse matrix: for each neuron, the list of neurons it talks to and how strongly (synapse count × ±1 × 0.275 mV). A second file holds the verified neuron IDs: the 21 sugar neurons, both MN9s, Roundup and the 106 feeding-region cell types from the paper’s own files.</p><p class="fb-files"><code>flybrain/network.py</code><code>flybrain/neurons.py</code></p></div>
+<div role="tabpanel" data-panel="2" hidden><p class="kicker">Stage 03 <span class="cat model">MODEL</span></p><h3 class="t-h3">Step the whole brain forward, 0.1 ms at a time</h3><p>Two engines run the same model on all 127,400 neurons, with nothing pruned. The default is my Numba re-implementation, which compiles the update loop to machine code: one simulated second takes about 2.3 s on my laptop. The second engine runs the unmodified original Brian2 code, about 21 s per simulated second, and serves as the reference.</p><p class="fb-files"><code>flybrain/engine_fast.py</code><code>flybrain/engine_brian2.py</code></p></div>
+<div role="tabpanel" data-panel="3" hidden><p class="kicker">Stage 04 <span class="cat model">MODEL</span></p><h3 class="t-h3">Switch neurons on, or off</h3><p>Switching on uses the original mechanism: each target neuron gets random kicks of 68.75 mV at the chosen rate, enough to make it fire. Switching off sets all of a neuron’s outgoing connections to zero, exactly like the original <code>silence()</code>. Settings are checked before a run: 0–200 spikes/s, up to 2 s and up to 30 trials.</p><p class="fb-files"><code>flybrain/experiment.py</code></p></div>
+<div role="tabpanel" data-panel="4" hidden><p class="kicker">Stage 05 <span class="cat model">MODEL</span></p><h3 class="t-h3">Count spikes, compare fairly</h3><p>Computes spike counts, firing rates and rate-over-time curves in 5 ms bins. Comparisons are paired: trial k of both runs uses the same random seed, so a difference comes from the intervention alone. Every result exports as CSV, JSON, SVG or PNG with a record of exactly how it was made.</p><p class="fb-files"><code>flybrain/metrics.py</code><code>flybrain/runs.py</code></p></div>
+<div role="tabpanel" data-panel="5" hidden><p class="kicker">Stage 06 <span class="cat app">APP</span></p><h3 class="t-h3">Close the loop every 50 ms</h3><p>Every 50 ms of simulated time: sugar under the fly sets the sugar neurons’ input rate, the brain runs, MN9’s rate becomes a stop-and-feed signal, and the hand-written controller moves the fly. The brain keeps its full state between windows, and a test proves that chopping a run into windows changes not a single spike.</p><p class="fb-files"><code>flybrain/arena/</code></p></div>
+<div role="tabpanel" data-panel="6" hidden><p class="kicker">Stage 07 <span class="cat app">APP</span></p><h3 class="t-h3">Draw it</h3><p>A FastAPI server runs simulations in a background worker. The React and three.js app draws a 3D fly, the brain cloud with spike flashes and the arena; the frame at the top of this page comes from it. One script exports the precomputed runs that this page replays, so it needs no server.</p><p class="fb-files"><code>flybrain/api.py</code><code>flybrain/jobs.py</code><code>frontend/src/three/</code><code>scripts/export_site_data.py</code></p></div>
+<div role="tabpanel" data-panel="7" hidden><p class="kicker">Stage 08</p><h3 class="t-h3">Prove it matches the original</h3><p>The same random input goes into the original Brian2 code and into my Numba version, and every spike of all 127,400 neurons is compared. They are identical in all four test runs. Against the results bundled with the paper’s code, firing rates agree with a correlation above 0.999. 44 automated tests pass.</p><p class="fb-files"><code>scripts/validate_exact.py</code><code>scripts/validate_statistical.py</code><code>backend/tests/</code></p></div>
+</div>
+</div>
+<div class="cols-2" style="gap:32px">
+<div class="stack g12">
+<p class="kicker">Checked spike for spike against the original</p>
+<table class="fb-tbl wide">
+<thead><tr><th>Test run</th><th>Original</th><th>Mine</th><th>Different</th></tr></thead>
+<tr><td>200 ms, 100 Hz</td><td>1,874</td><td>1,874</td><td>0</td></tr>
+<tr><td>1 s, 100 Hz</td><td>9,242</td><td>9,242</td><td>0</td></tr>
+<tr><td>1 s, 200 Hz, Roundup silenced</td><td>13,689</td><td>13,689</td><td>0</td></tr>
+<tr><td>500 ms, 50 Hz, one Rattle silenced</td><td>1,597</td><td>1,597</td><td>0</td></tr>
+</table>
+<p class="meta muted" style="font-size:12px">Total spikes across all 127,400 neurons. My first version was not identical: the original quietly ignores input that arrives while a neuron is resting after a spike. Copying that rule made them match exactly.</p>
+</div>
+<div class="stack g12">
+<p class="kicker">How fast, on a laptop</p>
+<table class="fb-tbl wide">
+<thead><tr><th>Job</th><th>Time</th><th>Memory</th></tr></thead>
+<tr><td>1 trial × 1 s, Numba</td><td>2.3 s</td><td>0.5 GB</td></tr>
+<tr><td>10 trials × 1 s, Numba</td><td>4.5 s</td><td>0.5 GB</td></tr>
+<tr><td>30 trials × 1 s, Numba</td><td>9.1 s</td><td>0.6 GB</td></tr>
+<tr><td>1 trial × 1 s, original Brian2</td><td>20.8 s</td><td>3.1 GB</td></tr>
+</table>
+<p class="meta muted" style="font-size:12px">Intel Core Ultra 7 laptop, 8 cores. For comparison, the paper reports about 5 minutes per one-second trial per CPU thread on its 2023 setup. Not real time: results are computed first, then replayed.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="sec white rule-b" id="limits">
+<div class="wrap">
+<div class="hb">
+<div class="stack g16">
+<p class="kicker">08 — Honest limits</p>
+<h2 class="t-h2">What this does and doesn’t show</h2>
+<ul class="fb-list">
+<li>Everything moving here is computed by a model. None of it is a recording from a living fly.</li>
+<li>The model leaves a lot out: hormones and other neuromodulators, electrical synapses, neuron shapes, the body and learning. Its neurons never fire on their own.</li>
+<li>Absolute firing rates are uncertain. The paper tested the model mainly on whether switching neurons on or off changes the output in the right direction.</li>
+<li>How strongly MN9 moves the proboscis is not known. The extension shown is my display choice: 0% below 5 spikes per second, 100% at 100.</li>
+<li>The 3D fly in the top frame is a stylised house fly made with an AI 3D tool, not an anatomical model. The brain inside it is a fruit-fly brain.</li>
+<li>In the arena, walking is a hand-written random walk. The brain map has no nerve cord, so the model cannot move legs.</li>
+<li>Nothing here learns. The arena fly does not know where the food is; it only stops when the model’s feeding output is high.</li>
+</ul>
+</div>
+<div class="stack g16">
+<div class="credit">
+<p class="kicker" style="color:#10131C">Sources and credits</p>
+<ul class="fb-list small">
+<li>Model: Shiu, P.K., Sterne, G.R., Spiller, N. et al. A <i>Drosophila</i> computational brain model reveals sensorimotor processing. <i>Nature</i> 634, 210–219 (2024). <a href="https://doi.org/10.1038/s41586-024-07763-9">doi.org/10.1038/s41586-024-07763-9</a>. Code: <a href="https://github.com/philshiu/Drosophila_brain_model">philshiu/Drosophila_brain_model</a> (MIT), commit 91bdd1e.</li>
+<li>Connectome: FlyWire public release v630 (Dorkenwald et al. 2024; Schlegel et al. 2024, <i>Nature</i> 634).</li>
+<li>Neuron positions: <a href="https://github.com/flyconnectome/flywire_annotations">flyconnectome/flywire_annotations</a> v1.1.0 (Schlegel et al. 2024).</li>
+<li>Simulation: my Numba re-implementation of the published model, checked spike for spike against the original Brian2 code. Runs computed on 23 October 2026.</li>
+<li>3D fly in the top frame: a house-fly model generated with Tripo AI, simplified for the web.</li>
+</ul>
+</div>
+<a class="btn ghost" href="Talk-FlyConnectome.dc.html" style="align-self:flex-start">My review of the papers →</a>
+</div>
+</div>
+</div>
+</section>
+
+<section class="sec white rule-t" id="comments" aria-labelledby="cm-title-fly">
+<div class="wrap">
+<div class="cm-wrap">
+<div class="stack g12">
+<p class="kicker">Discussion</p>
+<h2 class="t-h2" id="cm-title-fly">Comments</h2>
+<p class="meta muted">{{cm.count}}</p>
+</div>
+<sc-if value="{{cm.notReg}}" hint-placeholder-val="{{true}}">
+<div class="cm-box">
+<p class="t-h3" style="font-size:20px">Register with your email to join the discussion</p>
+<div class="cm-row">
+<div class="cm-field"><label for="cm-name-fly">Name</label><input id="cm-name-fly" type="text" autocomplete="name" value="{{cm.name}}" onChange="{{cm.onName}}"></div>
+<div class="cm-field"><label for="cm-email-fly">Email</label><input id="cm-email-fly" type="email" autocomplete="email" inputmode="email" value="{{cm.email}}" onChange="{{cm.onEmail}}"></div>
+</div>
+<sc-if value="{{cm.hasErr}}"><p class="cm-err" role="alert">{{cm.err}}</p></sc-if>
+<div class="cm-actions">
+<button type="button" class="btn" onClick="{{cm.register}}">Register &amp; comment</button>
+<span class="meta muted" style="font-size:12px">Your email is never shown publicly.</span>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{cm.reg}}">
+<div class="cm-box">
+<div class="cm-actions" style="justify-content:space-between">
+<span class="meta">Commenting as <b>{{cm.who}}</b></span>
+<button type="button" class="cm-link" onClick="{{cm.signout}}">Not you? Sign out</button>
+</div>
+<div class="cm-field"><label for="cm-text-fly">Your comment</label><textarea id="cm-text-fly" value="{{cm.draft}}" onChange="{{cm.onDraft}}"></textarea></div>
+<sc-if value="{{cm.hasErr}}"><p class="cm-err" role="alert">{{cm.err}}</p></sc-if>
+<div class="cm-actions"><button type="button" class="btn" onClick="{{cm.post}}">Post comment</button></div>
+</div>
+</sc-if>
+<sc-if value="{{cm.empty}}"><p class="muted" style="font-size:18px">No comments yet. Be the first to share your thoughts.</p></sc-if>
+<sc-if value="{{cm.some}}">
+<ol class="cm-list">
+<sc-for list="{{cm.items}}" as="c" hint-placeholder-count="0"><li><span class="cm-av" aria-hidden="true">{{c.initial}}</span><div class="stack g8"><p class="meta"><b>{{c.name}}</b> · {{c.when}}</p><p class="cm-text">{{c.text}}</p></div></li></sc-for>
+</ol>
+</sc-if>
+</div>
+</div>
+</section>
+
+<footer class="site-foot dark">
+<div class="wrap">
+<div class="foot-top">
+<div class="stack g16">
+<p class="kicker">Get in touch</p>
+<p class="foot-title">GelasTinta</p>
+<p class="foot-blurb">Open to collaborations, discussions, projects, and work in discussing creative science, design, and engineering work.</p>
+</div>
+<div class="stack g16">
+<a class="foot-mail" href="mailto:mendrofarayang@gmail.com">mendrofarayang@gmail.com</a>
+<p class="meta muted">Jakarta . London . Singapore</p>
+<div class="chips" style="gap:10px">
+<a class="social" href="https://www.linkedin.com/in/raysmendrofa/" aria-label="LinkedIn profile: raysmendrofa"><img src="/_blob/49604cde322d454326d28d8c5cfe5ff8" alt="" style="width:22px;height:22px">LinkedIn</a>
+<a class="social" href="mailto:mendrofarayang@gmail.com" aria-label="Email: mendrofarayang@gmail.com"><img src="/_blob/ee68aabd0584895696ec1ef146936038" alt="" style="width:22px;height:auto">Email</a>
+<a class="social" href="https://wa.me/447376459918" aria-label="WhatsApp: +44 7376459918"><img src="/_blob/d7adca6684b39bdbd090afff2eeb09ea" alt="" style="width:22px;height:22px">WhatsApp +44</a>
+</div>
+</div>
+</div>
+<div class="tblock">
+<div><span>DRAWN BY</span><span>Rayang T Mendrofa</span></div>
+<div><span>SHEET</span><span>02.H2 — FLY BRAIN</span></div>
+<div><span>SCALE</span><span>1 : IDEA</span></div>
+<div><span>REV.</span><span>Website 2026 Gelastinta.</span></div>
+</div>
+<!-- wadasite:start --><p class="wada-credit"><span class="wada-mini" aria-hidden="true"><i style="background:#A36AA5"></i><i style="background:#FDC57E"></i><i style="background:#10131C"></i><i style="background:#2B44C8"></i></span><span>SITE PALETTE · Sanzo Wada, <i>A Dictionary of Color Combinations</i>, No. 344 · Aconite Violet, Cinnamon Buff, with the site ink and blue in place of Wada’s Black and Deep Lyons Blue</span></p>
+<!-- wadasite:end -->
+</div>
+</footer>
+
+<sc-if value="{{zoomOpen}}" hint-placeholder-val="{{ false }}">
+<div class="zoom" aria-hidden="true">
+<figure>
+<img src="{{zoomSrc}}" alt="">
+<figcaption>{{zoomTitle}}</figcaption>
+</figure>
+</div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":9400}}'>
+class Component extends DCLogic {
+  // ── GelasTinta motion layer (anime.js v4) ─────────────────────────────
+  componentDidMount() { this.gtStart(0); this.gtMedia(0); this.gtFigs(); this.cmMount(); }
+  componentWillUnmount() {
+    this.gtFigStop();
+    clearTimeout(this.gtWait);
+    clearInterval(this.gtSlideT);
+    clearTimeout(this.gtMediaWait);
+    if (this.gtVIO) this.gtVIO.disconnect();
+    if (this.gtIO) this.gtIO.disconnect();
+    if (this.gtScope) this.gtScope.revert();
+  }
+  componentDidUpdate() {
+    const A = window.anime;
+    if (!A || !this.gtReady) return;
+    // "Show the science" panels: grow open inside their own box (height + fade), never overlapping the page
+    if (this.gtRoot && !(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) {
+      Array.from(this.gtRoot.querySelectorAll('.more-body:not([data-gt-in])')).forEach((el) => {
+        el.setAttribute('data-gt-in', '');
+        const h = el.scrollHeight;
+        el.style.overflow = 'hidden';
+        A.animate(el, {
+          height: [0, h], opacity: [0, 1], duration: 480, ease: 'out(3)',
+          onComplete: () => { el.style.height = ''; el.style.overflow = ''; el.style.opacity = ''; }
+        });
+      });
+    }
+    const st = this.state || {};
+    const prev = this.gtPrev || {};
+    const root = this.gtRoot;
+    if (root && st.sel !== prev.sel && prev.seen) {
+      const panel = root.querySelector('[role="tabpanel"]');
+      if (panel) A.animate(panel.children, { opacity: { from: 0 }, x: { from: 18 }, delay: A.stagger(70), duration: 520, ease: 'out(3)' });
+    }
+    if (root && st.slide !== prev.slide && prev.seen) {
+      const img = root.querySelector('.gal-img');
+      if (img) A.waapi.animate(img, { opacity: [0, 1], scale: [1.04, 1], duration: 600, ease: 'out(3)' });
+      const cap = root.querySelectorAll('.gal-cap > *');
+      if (cap.length) A.animate(cap, { opacity: { from: 0 }, y: { from: 10 }, delay: A.stagger(60), duration: 450, ease: 'out(3)' });
+    }
+    if (root && st.zoom && st.zoom !== prev.zoom) {
+      const z = root.querySelector('.zoom img');
+      if (z) A.animate(z, { scale: { from: 0.9 }, opacity: { from: 0 }, ease: A.spring({ bounce: 0.35, duration: 500 }) });
+    }
+    this.gtPrev = { sel: st.sel, slide: st.slide, zoom: st.zoom, seen: true };
+  }
+  // Media loading (independent of anime.js): hero slides load just before their turn; clips play only on screen
+  gtMedia(tries) {
+    const root = document.querySelector('[data-gt-root]') || document.body;
+    if (!root.querySelector('img[data-src], video[data-gt-autoplay]')) {
+      if (tries < 20) this.gtMediaWait = setTimeout(() => this.gtMedia(tries + 1), 150);
+      return;
+    }
+    const still = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+    // 1 · Home hero slideshow: slide k fades in at k×6 s, so fetch it ~5 s ahead
+    const slides = Array.from(root.querySelectorAll('.hero-slides img[data-src]'));
+    if (slides.length && !still) {
+      const t0 = performance.now();
+      const tick = () => {
+        const t = (performance.now() - t0) / 1000;
+        let left = 0;
+        slides.forEach((img, i) => {
+          if (img.getAttribute('src')) return;
+          const k = i + 1;
+          if (t >= k * 6 - 5) { img.decoding = 'async'; img.src = img.getAttribute('data-src'); }
+          else left++;
+        });
+        if (!left) clearInterval(this.gtSlideT);
+      };
+      tick();
+      this.gtSlideT = setInterval(tick, 1000);
+    }
+    // 2 · Looping clips: muted inline video, playing only while visible
+    const vids = Array.from(root.querySelectorAll('video[data-gt-autoplay]'));
+    if (vids.length) {
+      vids.forEach((v) => { v.muted = true; v.defaultMuted = true; v.playsInline = true; v.loop = true; });
+      if (still) {
+        vids.forEach((v) => { v.removeAttribute('autoplay'); v.autoplay = false; v.pause(); v.controls = true; });
+      } else if ('IntersectionObserver' in window) {
+        this.gtVIO = new IntersectionObserver((entries) => {
+          entries.forEach((e) => {
+            const v = e.target;
+            if (e.isIntersecting) { const p = v.play(); if (p && p.catch) p.catch(() => {}); }
+            else v.pause();
+          });
+        }, { rootMargin: '120px 0px' });
+        vids.forEach((v) => this.gtVIO.observe(v));
+      } else {
+        vids.forEach((v) => { const p = v.play(); if (p && p.catch) p.catch(() => {}); });
+      }
+    }
+  }
+  gtStart(tries) {
+    // Inside a frame (the design canvas, an embed), keep the page static: browsers pause or slow
+    // animation in off-screen frames, which can leave reveals stuck half-way and the canvas laggy.
+    // The live site always runs as a normal tab, so the motion layer still plays there.
+    try { if (window.self !== window.top) return; } catch (e) { return; }
+    const A = window.anime;
+    if (!A) {
+      if (tries < 60) this.gtWait = setTimeout(() => this.gtStart(tries + 1), 100);
+      return;
+    }
+    const root = document.querySelector('[data-gt-root]');
+    if (!root || this.gtScope) return;
+    this.gtRoot = root;
+    this.gtLayouts = [];
+    this.gtPrev = { sel: (this.state || {}).sel, slide: (this.state || {}).slide, seen: true };
+    A.engine.pauseOnDocumentHidden = false;
+    const self = this;
+    this.gtScope = A.createScope({
+      root: root,
+      mediaQueries: { still: '(prefers-reduced-motion: reduce)', touch: '(hover: none)', small: '(max-width: 640px)' }
+    }).add((scope) => {
+      if (scope.matches.still) return;
+      const m = scope.matches;
+      const run = (name, fn) => { try { fn(); } catch (e) { console.warn('[gt-motion] ' + name, e); } };
+      run('motion', () => self.gtMotion(A, root, m));
+    });
+    this.gtReady = true;
+  }
+  gtMotion(A, root, m) {
+    const { animate, createTimeline, createTimer, stagger, splitText, scrambleText, onScroll, createDrawable,
+      morphTo, createMotionPath, createAnimatable, createDraggable, createLayout, waapi, spring, cubicBezier,
+      steps, irregular, utils } = A;
+    const $ = (sel, el) => Array.from((el || root).querySelectorAll(sel));
+    const DYN = '.gal, [role="tabpanel"], [role="tablist"], #comments, [id^="comments"], .ratio, .lm-row, .readout, .viz-body, .zoom, .cad, sc-for';
+    const isStatic = (el) => !el.closest(DYN);
+    const plain = (el) => el.children.length === 0 && el.textContent.trim().length > 0 && !/[<>]/.test(el.textContent);
+    const glide = cubicBezier(0.2, 0.75, 0.1, 1);
+    const done = new Set();
+    // Content is never hidden ahead of time: an element only animates once it is actually on screen
+    // (IntersectionObserver also works when the page sits inside a frame scrolled by its parent),
+    // and every reveal has a timer that snaps it to its finished state if the animation stalls.
+    const pending = new Map();
+    const io = window.IntersectionObserver ? new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        const fn = pending.get(e.target);
+        pending.delete(e.target);
+        io.unobserve(e.target);
+        if (fn) { try { fn(); } catch (err) { console.warn('[gt-motion] reveal', err); } }
+      });
+    }, { rootMargin: '0px 0px -4% 0px' }) : null;
+    this.gtIO = io;
+    const when = (el, fn) => { if (!io || !el) return; pending.set(el, fn); io.observe(el); };
+    const guard = (anim, ms) => { setTimeout(() => { try { if (anim && !anim.completed) anim.complete(); } catch (e) {} }, ms); return anim; };
+    const safe = (name, fn) => { try { fn(); } catch (e) { console.warn('[gt-motion] ' + name, e); } };
+    const calm = m.touch || m.small;
+    const head = root.querySelector('.site-head');
+    const hero = head ? head.nextElementSibling : null;
+    const intro = createTimeline({ defaults: { ease: glide, duration: 700 } });
+
+    // 1 ── header: brand flask fills, outline draws, nav staggers in
+    safe('1', () => {
+      if (head) {
+        const flask = head.querySelector('.brand svg');
+        if (flask) {
+          const [liquid, glass] = flask.querySelectorAll('path');
+          if (glass) intro.add(createDrawable(glass), { draw: ['0 0', '0 1'], duration: 900, ease: 'inOut(3)' }, 0);
+          if (liquid) {
+            liquid.style.transformBox = 'fill-box';
+            liquid.style.transformOrigin = '50% 100%';
+            intro.add(liquid, { scaleY: { from: 0 }, ease: spring({ bounce: 0.45, duration: 900 }) }, 350);
+          }
+        }
+        intro.add($('.nav a', head), { opacity: { from: 0 }, y: { from: -10 }, delay: stagger(60), duration: 500 }, 100);
+      }
+    });
+
+    // 2 ── hero: kicker scramble → split title rises → the rest follows
+    safe('2', () => {
+      if (hero) {
+        intro.label('hero', 200);
+        const hk = hero.querySelector('.kicker');
+        if (hk && plain(hk) && isStatic(hk)) {
+          intro.add(hk, { innerHTML: scrambleText({ chars: 'A-Z0-9—·', cursor: '_', revealRate: 70, settleDuration: 260 }) }, 'hero');
+          done.add(hk);
+        }
+        const h1 = hero.querySelector('h1');
+        if (h1 && isStatic(h1)) {
+          const split = splitText(h1, { words: { wrap: 'clip' }, chars: true });
+          this.gtSplits = (this.gtSplits || []).concat([split]);
+          const each = utils.clamp(900 / Math.max(1, split.chars.length), 8, 34);
+          intro.add(split.chars, {
+            y: { from: '110%' }, rotate: { from: () => utils.random(-14, 14) },
+            delay: stagger(each, { ease: 'out(2)' }), ease: spring({ bounce: 0.3, duration: 900 })
+          }, 'hero+=120');
+          done.add(h1);
+        }
+        const BG = /hero-slides|hero-shade|cp-hero-bg|cp-hero-shade/;
+        const restSet = new Set();
+        if (h1) {
+          const P = h1.parentElement;
+          Array.from(P.children).forEach((c) => { if (c !== h1 && c !== hk) restSet.add(c); });
+          const W = P.parentElement;
+          if (W && W !== hero && hero.contains(W)) Array.from(W.children).forEach((c) => { if (c !== P) restSet.add(c); });
+        }
+        $(':scope > .hero-link', hero).forEach((c) => restSet.add(c));
+        const rest = Array.from(restSet).filter((el) => !BG.test(el.className || '') && el.tagName !== 'IMG');
+        if (rest.length) intro.add(rest, { opacity: { from: 0 }, y: { from: 22 }, delay: stagger(80) }, 'hero+=420');
+        rest.forEach((el) => done.add(el));
+
+        // parallax on hero photography / CFD background
+        const bg = hero.querySelector('.cp-hero-bg, .hero-slides');
+        if (bg) animate(bg, { y: [0, 140], scale: [1.06, 1.06], ease: 'linear', autoplay: onScroll({ target: hero, enter: 'top top', leave: 'bottom top', sync: 0.25 }) });
+      }
+    });
+
+    // 3 ── Home hero vessel: ink sloshes (morphTo), outline draws, drop falls, bubbles rise, glass is draggable
+    safe('3', () => {
+      const vessel = root.querySelector('.hero-vessel svg');
+      if (vessel) {
+        const ink = vessel.querySelector('.gt-ink');
+        const inkB = vessel.querySelector('.gt-ink-b');
+        if (ink && inkB) {
+          animate(ink, { d: morphTo(inkB, 0), duration: 2600, ease: 'inOut(2)', loop: true, alternate: true });
+        }
+        const glass = vessel.querySelector('.gt-glass');
+        if (glass) animate(createDrawable(glass), { draw: ['0 0', '0 1'], duration: 1800, delay: 300, ease: 'inOut(3)' });
+        const drop = vessel.querySelector('.gt-drop');
+        if (drop) {
+          animate(drop, {
+            keyframes: [
+              { y: -40, opacity: 0, duration: 0 },
+              { y: 0, opacity: 1, duration: 500, ease: 'out(2)' },
+              { y: 62, scaleY: 1.25, duration: 650, ease: 'in(3)' },
+              { opacity: 0, scaleY: 0.4, duration: 120 }
+            ],
+            loop: true, loopDelay: 1400
+          });
+        }
+        const bubbles = $('.gt-bubble', vessel);
+        if (bubbles.length) {
+          animate(bubbles, {
+            y: { to: () => -utils.random(40, 90) }, opacity: [0.5, 0], scale: [1, 0.4],
+            duration: () => utils.random(2200, 3400), delay: stagger(500, { from: 'random' }),
+            loop: true, ease: 'out(2)'
+          });
+        }
+        if (!m.touch && !m.small) {
+          createDraggable(vessel, {
+            container: vessel.closest('section'),
+            releaseStiffness: 260, releaseDamping: 14, cursor: { onHover: 'grab', onGrab: 'grabbing' },
+            onRelease: (d) => { animate(d, { x: 0, y: 0, ease: spring({ bounce: 0.55, duration: 1100 }) }); }
+          });
+          vessel.style.touchAction = 'none';
+        }
+      }
+    });
+
+    // 4 ── code chips: a timer re-scrambles one chip at a time; <error> glitches on steps
+    safe('4', () => {
+      const chips = $('.code-chip');
+      if (chips.length) {
+        createTimer({
+          duration: 3200, loop: true,
+          onLoop: () => {
+            const c = utils.randomPick(chips);
+            const txt = c.dataset.gtText || (c.dataset.gtText = c.textContent);
+            const pool = 'abcdefghijklmnopqrstuvwxyz01#_'.split('');
+            const o = { p: 0 };
+            animate(o, {
+              p: 1, duration: 650, ease: steps(txt.length),
+              onUpdate: () => {
+                const n = Math.round(o.p * txt.length);
+                c.textContent = txt.slice(0, n) + Array.from(txt.slice(n)).map((ch) => (/[a-z.]/i.test(ch) ? utils.randomPick(pool) : ch)).join('');
+              },
+              onComplete: () => { c.textContent = txt; }
+            });
+          }
+        });
+        const err = chips.find((c) => /error/i.test(c.textContent));
+        if (err) animate(err, { x: [0, -3, 3, -2, 0], ease: steps(5), duration: 360, loop: true, loopDelay: 2600 });
+      }
+    });
+
+    // 5 ── "coming soon" chips flicker like a faulty neon tube
+    safe('5', () => {
+      $('.chip.warn').forEach((c) => {
+        animate(c, { opacity: [1, 0.35, 1], ease: irregular(14, 1.6), duration: 1400, loop: true, loopDelay: 2200 });
+      });
+    });
+
+    // 6 ── kickers scramble in, h2 headings rise word by word
+    safe('6', () => {
+      $('.kicker').filter((k) => !done.has(k) && plain(k) && isStatic(k)).forEach((k) => {
+        when(k, () => guard(animate(k, { innerHTML: scrambleText({ chars: 'A-Z0-9—', revealRate: 80, settleDuration: 220 }) }), 2500));
+      });
+      $('h2.t-h2, .foot-title').filter((h) => isStatic(h) && !done.has(h)).forEach((h) => {
+        when(h, () => {
+          // the split is undone as soon as the animation ends, so the heading's markup goes back to plain text
+          // (otherwise editing it in the canvas would save the animation's word wrappers into the page)
+          const s = splitText(h, { words: { wrap: 'clip' } });
+          guard(animate(s.words, { y: { from: '105%' }, delay: stagger(55), duration: 800, ease: glide, onComplete: () => s.revert() }), 800 + s.words.length * 55 + 800);
+        });
+      });
+    });
+
+    // 7 ── grids reveal with a staggered wave (grid-aware where the layout is a grid)
+    safe('7', () => {
+      const groups = $('.cols-2, .cols-3, .cols-4, .terms, .cost, .quotes, .mp, .art-list, .steps, .tl, .ef, .toy-tab, .spec, .chips')
+        .filter((g) => isStatic(g) && !done.has(g) && !g.closest('.site-head') && !(hero && hero.contains(g)));
+      groups.forEach((g) => {
+        const kids = Array.from(g.children).filter((k) => !done.has(k));
+        if (!kids.length) return;
+        kids.forEach((k) => done.add(k));
+        const cols = (getComputedStyle(g).gridTemplateColumns || 'none').split(' ').filter((x) => x !== 'none').length;
+        const rows = cols > 1 ? Math.ceil(kids.length / cols) : 0;
+        const delay = cols > 1 && rows > 1 ? stagger(70, { grid: [cols, rows], from: 'first' }) : stagger(70);
+        when(g, () => guard(animate(kids, {
+          opacity: { from: 0 }, y: { from: 28 }, scale: { from: 0.97 },
+          delay: delay, duration: 750, ease: glide
+        }), 750 + kids.length * 70 + 900));
+      });
+    });
+
+    // 8 ── single blocks fade up as they enter
+    safe('8', () => {
+      $('.col > p, .col-wide > p, .article figure, .viz, .eq-wrap, .paper-fig, .card, blockquote, .meme, .meme-sm, .take, .side, .stat, .quote, .prose > p')
+        .filter((el) => isStatic(el) && !done.has(el) && !el.closest('.site-head') && !(hero && hero.contains(el)) && !Array.from(done).some((d) => d !== el && d.contains && d.contains(el)))
+        .forEach((el) => {
+          done.add(el);
+          when(el, () => guard(animate(el, { opacity: { from: 0 }, y: { from: 18 }, duration: 700, ease: glide }), 1500));
+        });
+    });
+
+    // 9 ── photos: hardware-accelerated clip reveal (WAAPI) as they enter
+    safe('9', () => {
+      $('figure img, .tile-art img, .art-thumb img, .paper-fig img, .wfig img')
+        .filter((img) => isStatic(img) && !(hero && hero.contains(img)) && !img.closest('.hero-slides'))
+        .forEach((img) => {
+          when(img, () => waapi.animate(img, {
+            clipPath: ['inset(0 0 100% 0)', 'inset(0 0 0% 0)'], scale: [1.08, 1], duration: 1100, ease: 'out(4)'
+          }));
+        });
+    });
+
+    // 10 ── numbers count up (keeps prefix, suffix, commas and decimals)
+    safe('10', () => {
+      $('.stat b, .art-num, .mp b').filter((b) => plain(b) && isStatic(b)).forEach((b) => {
+        const raw = b.textContent;
+        const mm = raw.match(/^([^\d]*?)(\d[\d,]*(?:\.\d+)?)(.*)$/);
+        if (!mm) return;
+        const target = parseFloat(mm[2].replace(/,/g, ''));
+        const decimals = (mm[2].split('.')[1] || '').length;
+        const comma = mm[2].indexOf(',') >= 0;
+        const pad = /^0\d/.test(mm[2]) ? mm[2].length : 0;
+        const isYear = !comma && !decimals && target >= 1800 && target <= 2100;
+        const fmt = (v) => {
+          let s = decimals ? utils.round(v, decimals).toFixed(decimals) : String(Math.round(v));
+          if (comma) s = Number(s).toLocaleString('en-GB', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+          if (pad) s = utils.padStart(s, pad, '0');
+          return mm[1] + s + mm[3];
+        };
+        when(b, () => {
+          const o = { v: isYear ? target - 80 : 0 };
+          guard(animate(o, {
+            v: target, duration: 1600, ease: 'out(4)',
+            onUpdate: () => { b.textContent = fmt(o.v); },
+            onComplete: () => { b.textContent = raw; }
+          }), 2600);
+        });
+      });
+    });
+
+    // 11 ── line drawings: stroked chart lines draw themselves in (createDrawable)
+    safe('11', () => {
+      $('svg[role="img"]').filter((s) => isStatic(s) && !s.closest('.hero-vessel') && !s.closest('.site-head')).forEach((s) => {
+        const strokes = $('path, line, polyline, rect, circle', s).filter((p) => {
+          const cs = getComputedStyle(p);
+          return cs.stroke && cs.stroke !== 'none' && (cs.fill === 'none' || p.getAttribute('fill') === 'none') && !p.classList.contains('gt-rider');
+        });
+        if (!strokes.length) return;
+        when(s, () => guard(animate(createDrawable(strokes), { draw: ['0 0', '0 1'], delay: stagger(40), duration: 1400, ease: 'inOut(3)' }), 1400 + strokes.length * 40 + 900));
+      });
+    });
+
+    // 12 ── Navier–Stokes chart B: a dot rides the y² curve up to the blowup (createMotionPath)
+    safe('12', () => {
+      const curve = root.querySelector('.gt-curve');
+      const rider = root.querySelector('.gt-rider');
+      if (curve && rider) {
+        animate(rider, Object.assign({}, createMotionPath(curve), {
+          ease: 'in(3)', duration: 2600, loop: true, loopDelay: 700,
+          opacity: [{ to: 1, duration: 200 }, { to: 1, duration: 2200 }, { to: 0, duration: 200 }]
+        }));
+      }
+    });
+
+    // 13 ── reading progress bar synced to scroll
+    safe('13', () => {
+      const bar = root.querySelector('.gt-progress');
+      if (bar) animate(bar, { scaleX: [0, 1], ease: 'linear', autoplay: onScroll({ target: root, enter: 'top top', leave: 'bottom bottom', sync: 0.15 }) });
+    });
+
+    // 14 ── "Show the science" panels: mark the ones already open so only new openings animate
+    safe('14', () => { $('.more-body').forEach((el) => el.setAttribute('data-gt-in', '')); });
+
+    // 15 ── magnetic buttons (createAnimatable)
+    safe('15', () => {
+      if (calm) return;
+      $('.btn, .social, .hero-link, .back, .foot-mail, .gal-nav').forEach((el) => {
+        let a = null;
+        el.addEventListener('pointermove', (e) => {
+          if (!a) a = createAnimatable(el, { x: 500, y: 500, ease: 'out(3)' });
+          const r = el.getBoundingClientRect();
+          a.x(utils.clamp((e.clientX - (r.left + r.width / 2)) * 0.25, -10, 10));
+          a.y(utils.clamp((e.clientY - (r.top + r.height / 2)) * 0.35, -8, 8));
+        });
+        el.addEventListener('pointerleave', () => { if (a) { a.x(0); a.y(0); } });
+      });
+    });
+
+    // 16 ── cards tilt toward the pointer and spring back
+    safe('16', () => {
+      if (calm) return;
+      $('.tile, .art-row, .poster-link, .card, .term, .stat').filter(isStatic).forEach((el) => {
+        let a = null;
+        el.addEventListener('pointerenter', () => {
+          if (!a) { utils.set(el, { perspective: '900px' }); a = createAnimatable(el, { rotateX: 400, rotateY: 400, ease: 'out(3)' }); }
+          animate(el, { translateY: -6, ease: spring({ bounce: 0.5, duration: 600 }) });
+        });
+        el.addEventListener('pointermove', (e) => {
+          if (!a) return;
+          const r = el.getBoundingClientRect();
+          a.rotateY(utils.mapRange(e.clientX, r.left, r.right, -4, 4));
+          a.rotateX(utils.mapRange(e.clientY, r.top, r.bottom, 4, -4));
+        });
+        el.addEventListener('pointerleave', () => {
+          if (a) { a.rotateX(0); a.rotateY(0); }
+          animate(el, { translateY: 0, ease: spring({ bounce: 0.5, duration: 700 }) });
+        });
+      });
+    });
+
+    // 17 ── safety net: the opening sequence always ends fully visible, even if the animation clock stalls
+    const unsplit = () => { (this.gtSplits || []).forEach((sp) => { try { sp.revert(); } catch (e) {} }); this.gtSplits = []; };
+    intro.then(unsplit);
+    setTimeout(() => { try { if (!intro.completed) intro.complete(); } catch (e) {} unsplit(); }, 4500);
+  }
+  // ── end motion layer ──────────────────────────────────────────────────
+  cmMount() {
+    // Load saved comments for this page, and remember a returning commenter.
+    const page = (typeof location !== 'undefined' ? location.pathname : '/').replace(/\/+$/, '') || '/';
+    let saved = null;
+    try { saved = JSON.parse(localStorage.getItem('gt-commenter') || 'null'); } catch (e) { saved = null; }
+    const cur = Object.assign({ name: '', email: '', draft: '', user: null, items: [], err: '', busy: false }, (this.state && this.state.cm) || {});
+    if (saved && saved.name && saved.email) cur.user = saved;
+    this.setState({ cm: cur });
+    if (typeof fetch !== 'function') return;
+    fetch('/api/comments?page=' + encodeURIComponent(page))
+      .then((r) => (r.ok ? r.json() : { comments: [] }))
+      .then((d) => {
+        const c = Object.assign({}, (this.state && this.state.cm) || cur);
+        c.items = (d.comments || []).map((x) => ({ name: x.name, initial: (x.name || '?').charAt(0).toUpperCase(), text: x.text, when: x.when }));
+        this.setState({ cm: c });
+      })
+      .catch(() => {});
+  }
+  commentVals() {
+    const blank = { name: '', email: '', draft: '', user: null, items: [], err: '', busy: false };
+    const cur = () => Object.assign({}, blank, (this.state && this.state.cm) || {});
+    const c = cur();
+    const set = (patch) => this.setState({ cm: Object.assign(cur(), patch) });
+    const okEmail = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+    const page = (typeof location !== 'undefined' ? location.pathname : '/').replace(/\/+$/, '') || '/';
+    const n = c.items.length;
+    return {
+      name: c.name, email: c.email, draft: c.draft,
+      notReg: !c.user, reg: !!c.user, who: c.user ? c.user.name : '',
+      hasErr: !!c.err, err: c.err,
+      count: n === 0 ? 'No comments yet' : (n === 1 ? '1 comment' : n + ' comments'),
+      empty: n === 0, some: n > 0,
+      items: c.items,
+      onName: (e) => set({ name: e.target.value, err: '' }),
+      onEmail: (e) => set({ email: e.target.value, err: '' }),
+      onDraft: (e) => set({ draft: e.target.value, err: '' }),
+      register: () => {
+        const s = cur(); const nm = s.name.trim(); const em = s.email.trim();
+        if (!nm) return set({ err: 'Please add your name.' });
+        if (!okEmail(em)) return set({ err: 'Please enter a valid email address.' });
+        const user = { name: nm, email: em };
+        try { localStorage.setItem('gt-commenter', JSON.stringify(user)); } catch (e) {}
+        set({ user: user, err: '' });
+      },
+      post: () => {
+        const s = cur(); const t = s.draft.trim();
+        if (!s.user || s.busy) return;
+        if (!t) return set({ err: 'Write a comment first.' });
+        set({ busy: true, err: '' });
+        fetch('/api/comments', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({ page: page, name: s.user.name, email: s.user.email, text: t })
+        })
+          .then((r) => r.json().then((d) => ({ ok: r.ok, d: d })))
+          .then((res) => {
+            if (!res.ok) return set({ busy: false, err: res.d.error || 'Could not post your comment. Please try again.' });
+            const x = res.d.comment;
+            const now = cur();
+            set({ busy: false, draft: '', err: '', items: now.items.concat([{ name: x.name, initial: x.name.charAt(0).toUpperCase(), text: x.text, when: x.when }]) });
+          })
+          .catch(() => set({ busy: false, err: 'Could not post your comment. Please check your connection and try again.' }));
+      },
+      signout: () => {
+        try { localStorage.removeItem('gt-commenter'); } catch (e) {}
+        set({ user: null, err: '' });
+      }
+    };
+  }
+  gtFigs() {
+    if (this.flyBoot) this.flyBoot();
+    const defs = this.figDefs ? this.figDefs() : [];
+    this.gtFigList = this.gtFigList || [];
+    defs.forEach((d) => {
+      const el = document.querySelector('[data-fig="' + d.id + '"]');
+      if (el && !el.__fig) this.gtFigList.push(this.gtFigRun(el, d));
+    });
+  }
+  gtFigStop() { if (this.flyStop) this.flyStop(); (this.gtFigList || []).forEach((f) => f && f.stop && f.stop()); this.gtFigList = []; }
+  gtFigRun(root, d) {
+    const still = () => !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+    const q = (s) => root.querySelector(s);
+    const qa = (s) => Array.from(root.querySelectorAll(s));
+    const btns = qa('[data-ch]'), play = q('[data-fig-play]'), bar = q('[data-fig-bar]'), note = q('[data-fig-note]');
+    const fields = qa('[data-fig-f]');
+    const F = { t: d.chapters[0], target: null, stopAt: null, playing: d.autoplay !== false && !still(), visible: false, raf: 0, last: 0, k: -1, ph: null };
+    root.__fig = F;
+    const label = () => {
+      if (!play) return;
+      play.setAttribute('aria-pressed', F.playing ? 'true' : 'false');
+      play.setAttribute('aria-label', F.playing ? 'Pause the animation' : 'Play the animation');
+      play.innerHTML = F.playing ? '<span aria-hidden="true">‖</span> Pause' : '<span aria-hidden="true">▶</span> Play';
+      if (note) note.setAttribute('aria-live', F.playing ? 'off' : 'polite');
+    };
+    const draw = () => {
+      const r = d.frame(F.t, root) || {};
+      if (r.k !== F.k) {
+        F.k = r.k;
+        btns.forEach((b, i) => { const on = i === r.k; b.className = on ? 'on' : ''; b.setAttribute('aria-pressed', on ? 'true' : 'false'); });
+      }
+      if (r.ph !== F.ph && d.phases && d.phases[r.ph]) {
+        F.ph = r.ph;
+        const P = d.phases[r.ph];
+        fields.forEach((el) => { const k = el.getAttribute('data-fig-f'); if (P[k] != null && el.textContent !== P[k]) el.textContent = P[k]; });
+      }
+      if (bar) bar.style.transform = 'scaleX(' + (F.t / d.dur).toFixed(4) + ')';
+    };
+    const tick = (now) => {
+      F.raf = 0;
+      const dt = F.last ? Math.min((now - F.last) / 1000, 1 / 30) : 1 / 60;
+      F.last = now;
+      if (F.target != null) {
+        const gap = F.target - F.t;
+        F.t += gap * (1 - Math.exp(-dt / 0.16));
+        if (Math.abs(F.target - F.t) < 0.004) { F.t = F.target; F.target = null; }
+      } else if (F.playing) {
+        F.t += dt;
+        if (F.stopAt != null && F.t >= F.stopAt) { F.t = F.stopAt; F.stopAt = null; F.playing = false; label(); }
+        else if (F.t >= d.dur) F.t = d.loop === false ? d.dur : F.t % d.dur;
+      }
+      draw();
+      if (F.visible && (F.playing || F.target != null)) F.raf = requestAnimationFrame(tick);
+    };
+    const kick = () => { if (!F.raf && F.visible) { F.last = 0; F.raf = requestAnimationFrame(tick); } };
+    const seek = (t) => {
+      F.playing = false; label();
+      if (still()) { F.t = t; F.target = null; draw(); } else { F.target = t; kick(); }
+    };
+    // segments: a chapter plays its own stretch at normal speed and stops (used where autoplay would spoil a puzzle)
+    const playSeg = (i) => {
+      const a = d.segments[i][0], b = d.segments[i][1];
+      F.target = null;
+      if (still()) { F.t = b; F.playing = false; label(); draw(); return; }
+      if (b < F.t - 0.01) { F.playing = false; F.stopAt = null; F.target = b; label(); kick(); return; }
+      if (F.t < a) F.t = a;
+      F.stopAt = b; F.playing = true; label(); kick();
+    };
+    btns.forEach((b, i) => b.addEventListener('click', () => (d.segments ? playSeg(i) : seek(d.chapters[i]))));
+    if (play) play.addEventListener('click', () => { F.playing = !F.playing; F.target = null; F.stopAt = null; label(); kick(); });
+    const io = window.IntersectionObserver ? new IntersectionObserver((es) => {
+      F.visible = es[es.length - 1].isIntersecting;
+      if (F.visible) kick();
+    }, { rootMargin: '120px 0px' }) : null;
+    if (io) io.observe(root); else { F.visible = true; }
+    F.show = (t) => { F.playing = false; F.target = null; F.t = t; label(); draw(); };
+    label(); draw(); kick();
+    return { stop: () => { if (F.raf) cancelAnimationFrame(F.raf); F.raf = 0; if (io) io.disconnect(); root.__fig = null; } };
+  }
+  flyData() {
+    return {"lo":[88.31600189208984,51.36000061035156,0.6399999856948853],"hi":[901.1240234375,408.0039978027344,278.7200012207031],"n":127400,"roles":{"sugar":[65153,90982,113421,114820,27680,93880,102632,48902,47685,119716,117163,27293,116889,44337,31392,100853,103321,14231,84634,86214,11916],"mn9":[127193,123773],"roundup":[4346,56488]},"arena":{"intact":{"x":[12.34,12.62,13.06,13.22,13.21,13.35,13.35,13.64,13.88,14.19,14.61,15.04,15.52,16.03,16.58,17.14,17.62,18.03,18.4,18.65,18.79,18.71,18.73,19.0,19.17,19.46,19.79,20.14,20.35,20.59,20.98,21.29,21.7,22.13,22.68,23.05,23.53,23.96,24.5,25.06,25.58,26.01,26.45,26.82,27.07,27.32,27.63,27.69,27.96,28.18,28.18,28.21,28.48,28.83,29.18,29.49,29.72,29.88,30.36,30.96,31.56,32.1,32.1,32.1,32.1,32.1,32.1,32.1,32.1,32.1,32.1,32.1,32.1,32.1,32.1,32.1,32.1,32.1,32.1,32.1,32.1,32.1,32.1,32.1,32.1,32.1,32.1,32.1,32.1,32.1,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.45,32.77,32.77,32.77,32.77,32.77,32.77,32.77,32.77,32.77,32.77,32.77,32.77,32.77,32.77,32.77,32.77,32.77,32.77,32.77,32.77,32.77,32.77,32.77,32.77,32.77,32.77,32.77,32.77,33.2,33.2,33.2,33.2,33.2,33.2,33.2,33.2,33.2,33.2,33.2,33.2,33.2,33.2,33.2,33.2,33.2,33.2,33.2,33.2,33.63,34.09,34.09,34.09,34.09,34.09,34.09,34.09,34.09,34.09,34.09,34.09,34.09,34.09,34.09,34.09,34.09,34.09,34.09,34.09,34.09,34.09,34.09,34.09,34.09,34.09,34.09,34.09,34.51,34.51,34.97,35.5,35.5,35.91,35.91,35.91,35.91,35.91,36.41,36.41,36.41,36.41,36.41,36.41,36.41,36.41,36.41,36.41,36.41,36.41,36.41,36.41,36.41,36.41,36.86,37.33,37.77,38.16,38.51,38.51,38.51,38.51,38.51,38.51,38.51,38.51,38.51,38.51,38.51,38.51,38.51,38.51,38.51,38.51,38.51,38.51,38.9,39.17,39.63,40.11,40.67,41.25,41.8,42.37,42.81,43.26],"y":[59.5,58.97,58.57,57.99,57.39,56.81,56.21,55.68,55.13,54.61,54.19,53.77,53.4,53.08,52.84,52.65,52.28,51.85,51.37,50.83,50.24,49.65,49.05,48.52,47.94,47.42,46.91,46.43,45.87,45.31,44.86,44.34,43.91,43.49,43.26,42.78,42.42,42.0,41.74,41.54,41.24,40.82,40.42,39.94,39.4,38.85,38.34,37.74,37.2,36.65,36.05,35.45,34.91,34.43,33.94,33.42,32.87,32.29,31.94,31.86,31.91,32.16,32.16,32.16,32.16,32.16,32.16,32.16,32.16,32.16,32.16,32.16,32.16,32.16,32.16,32.16,32.16,32.16,32.16,32.16,32.16,32.16,32.16,32.16,32.16,32.16,32.16,32.16,32.16,32.16,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.52,32.84,32.84,32.84,32.84,32.84,32.84,32.84,32.84,32.84,32.84,32.84,32.84,32.84,32.84,32.84,32.84,32.84,32.84,32.84,32.84,32.84,32.84,32.84,32.84,32.84,32.84,32.84,32.84,32.99,32.99,32.99,32.99,32.99,32.99,32.99,32.99,32.99,32.99,32.99,32.99,32.99,32.99,32.99,32.99,32.99,32.99,32.99,32.99,33.15,33.27,33.27,33.27,33.27,33.27,33.27,33.27,33.27,33.27,33.27,33.27,33.27,33.27,33.27,33.27,33.27,33.27,33.27,33.27,33.27,33.27,33.27,33.27,33.27,33.27,33.27,33.27,33.54,33.54,33.74,33.88,33.88,34.08,34.08,34.08,34.08,34.08,34.06,34.06,34.06,34.06,34.06,34.06,34.06,34.06,34.06,34.06,34.06,34.06,34.06,34.06,34.06,34.06,34.12,34.22,34.52,34.88,35.19,35.19,35.19,35.19,35.19,35.19,35.19,35.19,35.19,35.19,35.19,35.19,35.19,35.19,35.19,35.19,35.19,35.19,35.5,35.98,36.26,36.44,36.55,36.67,36.74,36.91,36.98,37.15],"h":[-0.98,-1.08,-0.74,-1.3,-1.58,-1.34,-1.57,-1.08,-1.15,-1.03,-0.78,-0.77,-0.66,-0.56,-0.41,-0.33,-0.66,-0.8,-0.92,-1.13,-1.33,-1.71,-1.54,-1.1,-1.28,-1.07,-1.0,-0.94,-1.21,-1.17,-0.86,-1.03,-0.8,-0.79,-0.39,-0.91,-0.65,-0.77,-0.45,-0.34,-0.53,-0.77,-0.74,-0.92,-1.13,-1.14,-1.03,-1.48,-1.1,-1.19,-1.58,-1.52,-1.11,-0.93,-0.96,-1.02,-1.17,-1.31,-0.64,-0.13,0.08,0.44,0.44,0.44,0.44,0.44,0.44,0.44,0.44,0.44,0.44,0.44,0.44,0.44,0.44,0.44,0.44,0.44,0.44,0.44,0.44,0.44,0.44,0.44,0.44,0.44,0.44,0.44,0.44,0.44,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.79,0.34,0.34,0.34,0.34,0.34,0.34,0.34,0.34,0.34,0.34,0.34,0.34,0.34,0.34,0.34,0.34,0.34,0.34,0.34,0.34,0.36,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.57,0.57,0.4,0.26,0.26,0.46,0.46,0.46,0.46,0.46,-0.03,-0.03,-0.03,-0.03,-0.03,-0.03,-0.03,-0.03,-0.03,-0.03,-0.03,-0.03,-0.03,-0.03,-0.03,-0.03,0.13,0.2,0.6,0.74,0.73,0.73,0.73,0.73,0.73,0.73,0.73,0.73,0.73,0.73,0.73,0.73,0.73,0.73,0.73,0.73,0.73,0.73,0.67,1.07,0.54,0.36,0.19,0.2,0.13,0.29,0.16,0.38],"f":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,0,0,1,0,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0],"s":[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,39.3,47.5,52.4,55.4,49.3,45.7,51.3,54.7,72.5,59.7,59.8,59.9,75.7,61.6,53.1,55.8,65.3,63.2,62.0,69.1,73.4,44.5,42.7,41.7,64.6,54.9,33.3,35.9,21.8,52.6,47.6,44.6,66.4,48.2,60.7,68.3,57.2,74.0,84.2,74.7,68.9,65.4,63.3,38.4,46.9,59.9,67.8,41.1,40.7,40.4,56.0,57.6,66.4,63.9,54.5,56.7,58.0,50.9,62.3,53.6,71.8,59.3,59.6,59.7,67.7,56.8,81.7,81.0,57.0,66.1,40.1,55.8,57.4,74.2,52.9,71.4,66.9,79.9,64.2,62.6,77.3,70.5,66.4,48.1,52.8,55.6,57.3,58.4,43.3,57.7,42.9,49.6,53.7,56.2,65.6,79.1,48.0,52.7,63.4,77.8,47.2,44.4,34.8,44.7,27.1,40.1,47.9,29.1,49.1,53.4,56.0,73.3,44.5,42.7,49.5,69.4,73.6,68.2,41.4,48.7,45.3,35.3,45.0,50.9,62.4,61.4,76.6,70.1,74.0,76.3,77.8,47.2,28.6,33.1,51.6,39.1,71.0,58.8,43.5,34.3,60.1,67.9,49.1,61.2,45.0,50.9,46.6,51.9,55.1,49.1,61.3,45.0,27.3,24.4,46.3,43.8,42.3,49.3,53.5,71.8,51.4,62.7,61.6,61.0,37.0,46.0,90.9,63.0,69.7,58.0,43.1,57.6,34.9,29.1,33.4,51.7,47.1,52.2,55.3,33.5,20.3,35.9,21.8,13.2,31.6,27.1,47.9,44.8,42.9,33.9,20.6,43.9,34.5,28.8,41.1,32.8,51.4,31.2,42.5,33.6,44.0,42.4,33.6,59.7,75.6,45.8,27.8,24.7,15.0,17.0,26.0,39.4,63.2,54.1,56.4,34.2,36.5,53.6,71.9,43.6,65.8,71.4,59.0,35.8,29.6,57.3,42.6,33.7,20.5,12.4,15.4,17.2,10.4,6.3,11.7,7.1,27.9,24.8],"p":[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"am":[[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[0.99,0.5],[0.99,0.5],[0.99,0.5],[0.99,0.5],[0.99,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.97,0.5],[0.97,0.5],[0.97,0.5],[0.97,0.5],[0.96,0.5],[0.96,0.5],[0.96,0.5],[0.96,0.5],[0.95,0.5],[0.95,0.5],[0.95,0.5],[0.95,0.5],[0.95,0.5],[0.94,0.5],[0.94,0.5],[0.94,0.5],[0.94,0.5],[0.94,0.5],[0.94,0.5],[0.94,0.5],[0.93,0.5],[0.93,0.5],[0.93,0.5],[0.93,0.5],[0.92,0.5],[0.92,0.5],[0.92,0.5],[0.91,0.5],[0.91,0.5],[0.91,0.5],[0.91,0.5],[0.91,0.5],[0.9,0.5],[0.9,0.5],[0.9,0.5],[0.9,0.5],[0.9,0.5],[0.89,0.5],[0.89,0.5],[0.89,0.5],[0.89,0.5],[0.88,0.5],[0.88,0.5],[0.88,0.5],[0.88,0.5],[0.88,0.5],[0.87,0.5],[0.87,0.5],[0.87,0.5],[0.87,0.5],[0.86,0.5],[0.86,0.5],[0.86,0.5],[0.86,0.5],[0.85,0.5],[0.85,0.5],[0.85,0.5],[0.85,0.5],[0.84,0.5],[0.84,0.5],[0.84,0.5],[0.84,0.5],[0.84,0.5],[0.83,0.5],[0.83,0.5],[0.83,0.5],[0.82,0.5],[0.82,0.5],[0.82,0.5],[0.82,0.5],[0.81,0.5],[0.81,0.5],[0.81,0.5],[0.81,0.5],[0.81,0.5],[0.8,0.5],[0.8,0.5],[0.8,0.5],[0.8,0.5],[0.8,0.5],[0.79,0.5],[0.79,0.5],[0.79,0.5],[0.79,0.5],[0.78,0.5],[0.78,0.5],[0.78,0.5],[0.78,0.5],[0.77,0.5],[0.77,0.5],[0.77,0.5],[0.77,0.5],[0.77,0.5],[0.77,0.5],[0.77,0.5],[0.77,0.5],[0.76,0.5],[0.76,0.5],[0.76,0.5],[0.76,0.5],[0.76,0.5],[0.75,0.5],[0.75,0.5],[0.75,0.5],[0.75,0.5],[0.74,0.5],[0.74,0.5],[0.74,0.5],[0.74,0.5],[0.74,0.5],[0.74,0.5],[0.73,0.5],[0.73,0.5],[0.73,0.5],[0.73,0.5],[0.72,0.5],[0.72,0.5],[0.72,0.5],[0.71,0.5],[0.71,0.5],[0.71,0.5],[0.71,0.5],[0.71,0.5],[0.71,0.5],[0.71,0.5],[0.7,0.5],[0.7,0.5],[0.7,0.5],[0.7,0.5],[0.69,0.5],[0.69,0.5],[0.69,0.5],[0.69,0.5],[0.69,0.5],[0.69,0.5],[0.68,0.5],[0.68,0.5],[0.68,0.5],[0.68,0.5],[0.68,0.5],[0.68,0.5],[0.68,0.5],[0.67,0.5],[0.67,0.5],[0.67,0.5],[0.67,0.5],[0.67,0.5],[0.66,0.5],[0.66,0.5],[0.66,0.5],[0.66,0.5],[0.65,0.5],[0.65,0.5],[0.65,0.5],[0.65,0.5],[0.65,0.5],[0.64,0.5],[0.64,0.5],[0.64,0.5],[0.64,0.5],[0.64,0.5],[0.63,0.5],[0.63,0.5],[0.63,0.5],[0.63,0.5],[0.63,0.5],[0.63,0.5],[0.62,0.5],[0.62,0.5],[0.62,0.5],[0.62,0.5],[0.62,0.5],[0.62,0.5],[0.62,0.5],[0.62,0.5],[0.62,0.5],[0.62,0.5],[0.62,0.5],[0.62,0.5],[0.61,0.5],[0.61,0.5],[0.61,0.5],[0.61,0.5],[0.61,0.5],[0.61,0.5],[0.61,0.5],[0.6,0.5],[0.6,0.5],[0.6,0.5],[0.6,0.5],[0.6,0.5],[0.6,0.5],[0.59,0.5],[0.59,0.5],[0.59,0.5],[0.59,0.5],[0.59,0.5],[0.59,0.5],[0.59,0.5],[0.59,0.5],[0.59,0.5],[0.59,0.5],[0.58,0.5],[0.58,0.5],[0.58,0.5],[0.58,0.5],[0.58,0.5],[0.57,0.5],[0.57,0.5],[0.57,0.5],[0.57,0.5],[0.57,0.5],[0.56,0.5],[0.56,0.5],[0.56,0.5],[0.56,0.5],[0.56,0.5],[0.56,0.5],[0.56,0.5],[0.56,0.5],[0.56,0.5],[0.56,0.5],[0.56,0.5],[0.56,0.5],[0.56,0.5],[0.56,0.5]]},"roundup_silenced":{"x":[12.34,12.62,13.06,13.22,13.21,13.35,13.35,13.64,13.88,14.19,14.61,15.04,15.52,16.03,16.58,17.14,17.62,18.03,18.4,18.65,18.79,18.71,18.73,19.0,19.17,19.46,19.79,20.14,20.35,20.59,20.98,21.29,21.7,22.13,22.68,23.05,23.53,23.96,24.5,25.06,25.58,26.01,26.45,26.82,27.07,27.32,27.63,27.69,27.96,28.18,28.18,28.21,28.48,28.83,29.18,29.49,29.72,29.88,30.36,30.96,31.56,32.1,32.65,33.16,33.65,34.07,34.07,34.5,34.5,34.95,34.95,34.95,34.95,34.95,34.95,35.41,35.89,36.41,36.93,37.43,37.92,37.92,38.42,38.89,38.89,38.89,39.4,39.9,40.41,40.89,41.45,41.87,41.87,42.31,42.84,43.38,43.38,43.83,43.83,44.28,44.28,44.28,44.28,44.75,45.27,45.75,46.25,46.78,46.78,47.28,47.74,47.74,48.16,48.66,49.1,49.43,49.76,50.07,50.3,50.52,50.58,50.74,50.78,50.69,50.61,50.58,50.62,50.61,50.28,49.94,49.62,49.42,49.1,48.75,48.38,47.99,47.59,47.11,46.54,45.95,45.36,44.77,44.17,43.63,43.03,42.44,41.85,41.25,40.72,40.19,39.63,39.03,38.45,37.87,37.28,36.68,36.1,35.5,34.92,34.32,33.86,33.35,33.02,32.77,32.67,32.29,31.9,31.43,31.12,30.78,30.52,30.23,29.94,29.74,29.33,28.83,28.4,27.87,27.4,27.07,26.79,26.36,25.81,25.23,24.66,24.09,23.52,22.99,22.59,22.25,21.79,21.47,21.12,20.99,21.14,21.16,21.29,21.62,21.91,22.09,22.43,22.56,22.71,22.79,22.84,23.0,23.09,23.1,23.06,23.15,23.28,23.45,23.8,24.34,24.87,25.43,25.98,26.46,26.83,27.24,27.8,28.32,28.9,29.49,30.09,30.69,31.27,31.79,32.26,32.7,33.16,33.66,33.99,34.35,34.9,35.35,35.84,36.34,36.87,37.39,37.88,38.39,38.79,39.22,39.72,40.26,40.75,41.17,41.4,41.63,42.0,42.28,42.77,43.35,43.94,44.5,44.92,45.45,46.02,46.59,47.06,47.65,48.23,48.74,49.21,49.68,50.16,50.67,51.11,51.53,51.74,51.87,52.01,52.29,52.74,53.07,53.34,53.65,54.03,54.63,55.23,55.8,56.38,56.98,57.57,58.12,58.61,59.15,59.67,60.18,60.66,61.24,61.68,62.03,62.3,62.57,62.81,63.13,63.38,63.74],"y":[59.5,58.97,58.57,57.99,57.39,56.81,56.21,55.68,55.13,54.61,54.19,53.77,53.4,53.08,52.84,52.65,52.28,51.85,51.37,50.83,50.24,49.65,49.05,48.52,47.94,47.42,46.91,46.43,45.87,45.31,44.86,44.34,43.91,43.49,43.26,42.78,42.42,42.0,41.74,41.54,41.24,40.82,40.42,39.94,39.4,38.85,38.34,37.74,37.2,36.65,36.05,35.45,34.91,34.43,33.94,33.42,32.87,32.29,31.94,31.86,31.91,32.16,32.34,32.36,32.26,32.1,32.1,31.92,31.92,31.89,31.89,31.89,31.89,31.89,31.89,31.83,31.78,31.62,31.53,31.25,31.18,31.18,31.07,31.07,31.07,31.07,31.1,31.12,31.2,31.07,31.13,31.37,31.37,31.64,31.83,31.89,31.89,31.82,31.82,31.81,31.81,31.81,31.81,31.76,31.65,31.84,32.11,32.17,32.17,32.09,32.13,32.13,32.32,32.17,32.01,31.59,31.12,30.61,30.06,29.5,28.9,28.33,27.73,27.14,26.54,25.94,25.34,24.74,24.24,23.75,23.24,22.68,22.17,21.68,21.21,20.75,20.3,19.95,19.75,19.64,19.57,19.68,19.63,19.37,19.3,19.21,19.11,19.05,18.77,18.48,18.29,18.31,18.46,18.63,18.71,18.68,18.84,18.79,18.66,18.62,19.0,19.32,19.83,20.37,20.96,21.42,21.89,22.25,22.76,23.26,23.8,24.32,24.85,25.41,25.85,26.18,26.6,26.89,27.25,27.75,28.29,28.71,28.94,29.1,29.28,29.47,29.67,29.94,30.39,30.88,31.27,31.77,32.26,32.85,33.43,34.03,34.61,35.12,35.64,36.21,36.71,37.29,37.87,38.47,39.07,39.64,40.24,40.84,41.44,42.03,42.62,43.19,43.68,43.94,44.21,44.42,44.66,45.03,45.5,45.94,46.16,46.46,46.62,46.66,46.7,46.79,46.92,47.23,47.59,48.0,48.39,48.73,49.22,49.71,49.93,50.33,50.68,51.01,51.3,51.59,51.94,52.24,52.7,53.11,53.45,53.71,54.05,54.48,55.03,55.59,56.06,56.59,56.93,57.08,57.19,57.42,57.84,58.13,58.32,58.49,58.87,59.01,59.13,59.45,59.82,60.19,60.55,60.88,61.28,61.71,62.27,62.86,63.44,63.97,64.37,64.87,65.41,65.92,66.39,66.44,66.49,66.32,66.16,66.12,66.03,65.79,65.44,65.18,64.88,64.56,64.21,64.07,63.66,63.17,62.63,62.1,61.55,61.04,60.49,60.02],"h":[-0.98,-1.08,-0.74,-1.3,-1.58,-1.34,-1.57,-1.08,-1.15,-1.03,-0.78,-0.77,-0.66,-0.56,-0.41,-0.33,-0.66,-0.8,-0.92,-1.13,-1.33,-1.71,-1.54,-1.1,-1.28,-1.07,-1.0,-0.94,-1.21,-1.17,-0.86,-1.03,-0.8,-0.79,-0.39,-0.91,-0.65,-0.77,-0.45,-0.34,-0.53,-0.77,-0.74,-0.92,-1.13,-1.14,-1.03,-1.48,-1.1,-1.19,-1.58,-1.52,-1.11,-0.93,-0.96,-1.02,-1.17,-1.31,-0.64,-0.13,0.08,0.44,0.32,0.04,-0.21,-0.35,-0.35,-0.4,-0.4,-0.08,-0.08,-0.08,-0.08,-0.08,-0.08,-0.11,-0.11,-0.29,-0.18,-0.5,-0.15,-0.15,-0.21,-0.01,-0.01,-0.01,0.06,0.06,0.16,-0.26,0.1,0.53,0.53,0.55,0.33,0.12,0.12,-0.17,-0.17,-0.01,-0.01,-0.01,-0.01,-0.1,-0.22,0.38,0.5,0.11,0.11,-0.16,0.1,0.1,0.42,-0.29,-0.36,-0.91,-0.94,-1.03,-1.18,-1.19,-1.47,-1.3,-1.5,-1.73,-1.71,-1.62,-1.51,-1.58,-2.16,-2.17,-2.14,-1.91,-2.13,-2.2,-2.23,-2.28,-2.29,-2.51,-2.81,-2.95,-3.03,2.95,-3.05,-2.7,-3.02,-2.98,-2.98,-3.03,-2.66,-2.64,-2.82,3.11,2.89,2.85,3.0,-3.09,2.86,-3.06,-2.92,-3.07,2.45,2.57,2.15,2.0,1.74,2.26,2.26,2.49,2.12,2.17,2.01,2.08,2.08,1.9,2.32,2.57,2.36,2.63,2.49,2.16,2.04,2.37,2.74,2.87,2.84,2.81,2.81,2.67,2.29,2.18,2.44,2.14,2.2,1.78,1.32,1.54,1.34,0.99,1.07,1.25,0.96,1.36,1.31,1.44,1.48,1.31,1.42,1.55,1.64,1.43,1.35,1.27,0.97,0.44,0.47,0.36,0.42,0.65,0.91,0.82,0.38,0.51,0.28,0.06,0.07,0.15,0.23,0.53,0.65,0.75,0.7,0.6,0.97,0.94,0.38,0.74,0.61,0.6,0.49,0.5,0.63,0.53,0.85,0.76,0.59,0.45,0.6,0.8,1.17,1.18,0.92,1.09,0.6,0.24,0.19,0.39,0.78,0.5,0.32,0.3,0.67,0.24,0.2,0.56,0.67,0.67,0.64,0.57,0.74,0.81,1.21,1.35,1.34,1.08,0.73,0.98,1.1,1.03,0.89,0.09,0.08,-0.28,-0.28,-0.06,-0.15,-0.41,-0.63,-0.44,-0.52,-0.57,-0.63,-0.23,-0.76,-0.94,-1.11,-1.1,-1.17,-1.01,-1.14,-0.92],"f":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,1,1,1,1,1,0,0,0,0,0,0,1,0,0,1,1,0,0,0,0,0,0,1,0,0,0,1,0,1,0,1,1,1,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"s":[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,7.9,20.5,20.3,28.1,32.8,27.7,32.6,27.6,32.5,43.3,34.1,36.4,30.0,26.1,23.7,14.4,16.6,10.1,21.8,29.0,17.6,26.4,39.6,31.9,19.3,19.6,19.8,19.9,12.0,23.0,29.7,18.0,10.9,14.5,32.4,27.5,32.4,27.5,48.2,37.1,30.4,26.3,15.9,17.5,10.6,14.3,32.3,19.6,27.6,32.5,27.6,16.7,25.9,15.7,9.5,5.8,3.5,2.1,1.3,0.8,0.5,0.3,0.2,0.1,0.1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],"p":[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],"am":[[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[1.0,0.5],[0.99,0.5],[0.99,0.5],[0.99,0.5],[0.99,0.5],[0.99,0.5],[0.99,0.5],[0.99,0.5],[0.99,0.5],[0.99,0.5],[0.99,0.5],[0.99,0.5],[0.99,0.5],[0.99,0.5],[0.99,0.5],[0.99,0.5],[0.99,0.5],[0.99,0.5],[0.99,0.5],[0.99,0.5],[0.99,0.5],[0.99,0.5],[0.99,0.5],[0.99,0.5],[0.99,0.5],[0.99,0.5],[0.99,0.5],[0.99,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5],[0.98,0.5]]} },"smB":[0.0,0.0,0.0,0.0,0.0,0.0,3.8,13.0,25.0,32.2,38.6,52.1,58.6,56.8,55.2,55.6,58.0,60.1,58.2,58.3,56.6,55.0,55.5,57.8,54.2,54.8,51.5,56.1,58.4,58.5,58.7,60.7,68.2,73.2,73.8,78.2,74.6,73.2,70.0,65.3,64.8,64.3,62.0,59.9,58.0,54.4,53.0,59.4,63.3,64.9,66.3,69.5,66.7,68.0,67.2,62.7,60.6,56.7,58.9,66.6,69.8,67.0,66.3,65.7,61.4,59.3,63.2,61.0,62.8,64.4,67.8,72.8,69.7,72.6,73.3,72.0,69.0,66.2,65.6,63.2,64.8,62.4,64.1,61.8,57.8,56.1,54.6,62.7,62.5,69.8,70.8,69.8,72.7,73.4,75.9,74.4,69.2,68.3,61.8,59.7,59.8,56.0,58.3,58.4,58.6,66.3,71.4,72.3,71.1,70.0,71.0,71.8,70.7,64.0,63.6,63.3,63.0,64.6,64.1,61.8,65.5,65.0,66.4,63.9,67.3,68.5,63.9,59.7,59.7,61.7,65.3,64.8,60.6,58.6,62.5,58.5,62.4,62.2,62.0,61.8,63.5,68.9,71.9,68.8,68.0,67.2,68.4,67.6,66.9,64.4,69.7,68.7,62.2,63.9,65.4,63.0,62.7,66.3,67.6,68.8,69.8,65.1,62.7,60.5,64.3,69.6,68.7,66.0,69.2,68.3,73.2,70.1,72.9,66.0,63.5,65.1,68.4,63.8,71.0,66.2,69.4,66.6,66.0,59.7,65.4,64.9,68.3,71.3,74.0,76.5,76.8,73.3,74.0,76.4,76.8,71.4,74.1,70.8,67.9,71.0],"smI":[0.0,0.0,0.0,0.0,0.0,0.0,1.9,9.3,16.1,14.5,17.0,19.1,23.0,22.7,22.5,24.2,23.8,23.4,23.1,24.7,26.1,25.6,23.1,22.8,22.6,20.4,20.4,18.4,16.7,17.0,17.3,19.4,27.1,30.2,27.4,28.6,25.8,25.3,24.8,26.2,25.6,25.1,24.6,29.9,27.0,24.5,24.0,23.7,25.2,28.5,25.8,23.4,21.1,22.9,22.6,22.4,22.2,20.1,22.0,21.8,19.7,19.7,19.8,23.6,25.1,24.7,26.1,25.5,26.9,30.1,27.2,26.5,25.9,31.0,31.9,32.7,29.6,34.4,33.0,31.8,28.7,27.9,29.1,33.9,32.6,29.5,26.7,27.9,31.0,29.9,27.1,26.4,33.4,32.1,31.0,29.9,27.1,26.4,23.9,25.4,24.9,28.3,29.4,30.4,29.4,26.6,26.0,27.3,24.7,22.4,22.1,21.9,25.6,25.0,24.5,27.9,25.3,26.7,29.8,27.0,24.4,27.8,25.2,28.5,29.6,34.4,31.1,28.1,29.3,28.4,27.6,25.0,26.4,25.8,25.2,26.6,26.0,25.4,26.8,24.3,23.9,23.5,21.3,19.2,19.3,19.4,19.4,17.6,15.9,16.3,14.8,15.2,15.7,16.1,16.5,16.8,17.1,15.5,15.9,16.3,14.8,15.3,13.8,18.2,16.5,16.8,19.0,19.1,19.2,19.3,17.4,19.6,19.6,17.8,19.9,19.9,19.9,19.9,19.9,19.9,19.9,19.9,19.9,23.8,25.3,24.8,24.3,23.9,21.6,23.4,26.9,30.0,27.2,32.2,32.9,31.7,28.7,29.8,26.9,30.1]};
+  }
+  // ── Fly-brain hobby page: brain cloud (DATA), replay (MODEL), one neuron, arena, code tabs ──
+  // Draws only from precomputed runs; nothing here changes the simulation results.
+  figDefs() {
+    const D = this.flyData();
+    const AR = [D.arena.intact, D.arena.roundup_silenced];
+    const dt = 0.05, n = AR[0].x.length;
+    const f1 = (v) => Math.round(v * 10) / 10;
+    const lerp = (a, b, u) => a + (b - a) * u;
+    // cumulative feeding time per record
+    AR.forEach((a) => { if (!a.cum) { let c = 0; a.cum = a.f.map((v) => (c += v * dt)); } });
+    const arena = {
+      id: 'arena', dur: 16.5, chapters: [0.2, 3.15, 5.85, 15.2],
+      phases: {
+        walk: { title: 'Both flies wander', note: 'Same seed, same random walk: until they reach sugar, both flies take exactly the same path. Off the sugar, the sugar neurons are silent and MN9 stays at 0.' },
+        reach: { title: 'Both reach the sugar', note: 'At 3.1 s both step onto the big patch and their sugar neurons switch on. In the intact brain MN9 climbs past the feeding gate, so the controller stops the fly to feed. With Roundup silenced, MN9 only flickers around the gate.' },
+        leave: { title: 'The silenced fly walks off', note: 'At 5.8 s MN9 has not stayed high enough, so the controller lets the silenced fly walk off the patch. It wanders on and never finds the second patch. The intact fly keeps feeding, slowly draining the sugar.' },
+        end: { title: 'Fifteen seconds later', note: 'Intact brain: 10.7 s of feeding out of 15. Roundup silenced: 0.9 s. Same arena, same controller, same random seed: the difference comes only from the brain model’s MN9 output.' }
+      },
+      frame: (t, root) => {
+        const r = root.__r || (root.__r = [0, 1].map((k) => ({
+          fly: root.querySelector('[data-r="a' + k + 'fly"]'), trail: root.querySelector('[data-r="a' + k + 'trail"]'),
+          ring: root.querySelector('[data-r="a' + k + 'ring"]'), p0: root.querySelector('[data-r="a' + k + 'p0"]'), p1: root.querySelector('[data-r="a' + k + 'p1"]'),
+          state: root.querySelector('[data-r="a' + k + 'state"]'), mn9: root.querySelector('[data-r="a' + k + 'mn9"]'), feed: root.querySelector('[data-r="a' + k + 'feed"]'),
+          head: k === 0 ? root.querySelector('[data-r="ahead"]') : null
+        })));
+        const tt = Math.min(t, 15);
+        const u = tt / dt - 1;
+        const i0 = Math.max(0, Math.min(n - 1, Math.floor(u)));
+        const i1 = Math.min(n - 1, i0 + 1);
+        const fr = u < 0 ? 0 : Math.min(1, u - Math.floor(u));
+        AR.forEach((a, k) => {
+          const R = r[k];
+          let x, y, h;
+          if (u < 0) { const w = (u + 1); x = lerp(12, a.x[0], w); y = lerp(60, a.y[0], w); h = a.h[0]; }
+          else { x = lerp(a.x[i0], a.x[i1], fr); y = lerp(a.y[i0], a.y[i1], fr); const dh = Math.atan2(Math.sin(a.h[i1] - a.h[i0]), Math.cos(a.h[i1] - a.h[i0])); h = a.h[i0] + dh * fr; }
+          const i = u < 0 ? -1 : i0;
+          let d = 'M12 60';
+          for (let j = 0; j <= i; j++) d += 'L' + a.x[j] + ' ' + a.y[j];
+          d += 'L' + f1(x) + ' ' + f1(y);
+          if (R.trail) R.trail.setAttribute('d', d);
+          if (R.fly) R.fly.setAttribute('transform', 'translate(' + f1(x) + ' ' + f1(y) + ') rotate(' + Math.round(h * 180 / Math.PI) + ')');
+          const feeding = i >= 0 && a.f[i] === 1;
+          const onPatch = i >= 0 && a.p[i] >= 0;
+          if (R.ring) R.ring.setAttribute('opacity', feeding ? '1' : '0');
+          const am = i >= 0 ? a.am[i] : [1, 0.5];
+          if (R.p0) R.p0.setAttribute('fill-opacity', (0.18 + 0.62 * am[0]).toFixed(2));
+          if (R.p1) R.p1.setAttribute('fill-opacity', (0.18 + 0.62 * am[1]).toFixed(2));
+          const word = feeding ? 'feeding' : (onPatch ? 'on sugar' : 'walking');
+          if (R.state && R.state.textContent !== word) { R.state.textContent = word; R.state.className = feeding ? 'feed' : ''; }
+          const s = 'MN9 ' + Math.round(i >= 0 ? a.s[i] : 0) + ' spikes/s';
+          if (R.mn9 && R.mn9.textContent !== s) R.mn9.textContent = s;
+          const fs = 'fed ' + (i >= 0 ? Math.round(a.cum[i] * 10 + 1e-6) / 10 : 0).toFixed(1) + ' s';
+          if (R.feed && R.feed.textContent !== fs) R.feed.textContent = fs;
+        });
+        if (r[0].head) { const hx = (50 + tt / 15 * 690).toFixed(1); r[0].head.setAttribute('x1', hx); r[0].head.setAttribute('x2', hx); }
+        const ph = t < 3.1 ? 'walk' : t < 5.8 ? 'reach' : t < 10.6 ? 'leave' : 'end';
+        return { k: { walk: 0, reach: 1, leave: 2, end: 3 }[ph], ph: ph };
+      }
+    };
+    return [arena];
+  }
+  flyBoot() {
+    if (this.flyOn) return;
+    const root = document.querySelector('[data-gt-root]') || document.body;
+    if (!root.querySelector('[data-flyreplay]')) {
+      this.flyTry = (this.flyTry || 0) + 1;
+      if (this.flyTry < 40) this.flyWait = setTimeout(() => this.flyBoot(), 150);
+      return;
+    }
+    this.flyOn = true;
+    const D = this.flyData();
+    const K = {
+      D: D, root: root, stops: (this.flyStops = []),
+      still: () => !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches),
+      framed: (() => { try { return window.self !== window.top; } catch (e) { return true; } })(),
+      R: (el, k) => el.querySelector('[data-r="' + k + '"]'),
+      text: (el, v) => { if (el && el.textContent !== v) el.textContent = v; },
+      watch: (el, cb) => {
+        if (!window.IntersectionObserver) { cb(true); return; }
+        const io = new IntersectionObserver((es) => cb(es[es.length - 1].isIntersecting), { rootMargin: '120px 0px' });
+        io.observe(el); K.stops.push(() => io.disconnect());
+      },
+      play: (btn, on) => {
+        if (!btn) return;
+        btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+        btn.setAttribute('aria-label', on ? 'Pause the animation' : 'Play the animation');
+        btn.innerHTML = on ? '<span aria-hidden="true">‖</span> Pause' : '<span aria-hidden="true">▶</span> Play';
+      }
+    };
+    this.flyTabs(K);
+    this.flyLif(K);
+    this.flyBrain(K);
+  }
+  flyStop() {
+    clearTimeout(this.flyWait);
+    (this.flyStops || []).forEach((f) => { try { f(); } catch (e) {} });
+    this.flyStops = []; this.flyOn = false;
+  }
+  flyTabs(K) {
+    const box = K.root.querySelector('[data-tabs]');
+    if (!box) return;
+    const tabs = Array.from(box.querySelectorAll('[role="tab"]'));
+    const panels = Array.from(box.querySelectorAll('[role="tabpanel"]'));
+    tabs.forEach((t, i) => {
+      t.id = 'fb-tab-' + i; panels[i].id = 'fb-panel-' + i;
+      t.setAttribute('aria-controls', panels[i].id); panels[i].setAttribute('aria-labelledby', t.id);
+      t.tabIndex = i === 0 ? 0 : -1;
+    });
+    const pick = (i, focus) => {
+      tabs.forEach((t, j) => {
+        const on = j === i;
+        t.className = on ? 'on' : ''; t.setAttribute('aria-selected', on ? 'true' : 'false'); t.tabIndex = on ? 0 : -1;
+        panels[j].hidden = !on;
+      });
+      if (focus) tabs[i].focus();
+      const A = window.anime;
+      if (A && !K.still()) { try { A.animate(panels[i].children, { opacity: { from: 0 }, x: { from: 14 }, delay: A.stagger(50), duration: 420, ease: 'out(3)' }); } catch (e) {} }
+    };
+    tabs.forEach((t, i) => {
+      t.addEventListener('click', () => pick(i));
+      t.addEventListener('keydown', (e) => {
+        const n = tabs.length; let j = -1;
+        if (e.key === 'ArrowDown' || e.key === 'ArrowRight') j = (i + 1) % n;
+        else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') j = (i - 1 + n) % n;
+        else if (e.key === 'Home') j = 0; else if (e.key === 'End') j = n - 1;
+        if (j >= 0) { e.preventDefault(); pick(j, true); }
+      });
+    });
+  }
+  // One neuron with the model's own equations and parameters (exact exponential update, 0.1 ms steps,
+  // Brian2's order: update, threshold, input, reset; input that arrives while refractory is dropped).
+  flyLif(K) {
+    const el = K.root.querySelector('[data-lif]');
+    if (!el) return;
+    const P = { v0: -52, vth: -45, vrst: -52, tm: 20, tau: 5, rfc: 2.2, wsyn: 0.275, dt: 0.1 };
+    const TMS = 400, SLOW = 20;
+    const rng = (seed) => () => {
+      seed |= 0; seed = (seed + 0x6d2b79f5) | 0;
+      let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+    const sim = (rate, syn) => {
+      const dt = P.dt, c2 = Math.exp(-dt / P.tau), c8 = P.v0 - P.v0 * Math.exp(-dt / P.tm);
+      const c9 = (P.tau / (P.tm - P.tau)) * (-Math.exp(dt / P.tm) + Math.exp(dt / P.tau)) * Math.exp(-dt / P.tm) * Math.exp(-dt / P.tau);
+      const c10 = Math.exp(-dt / P.tm), rnd = rng(7), n = Math.round(TMS / dt);
+      const v = new Float32Array(n), inputs = [], spikes = [];
+      let vv = P.v0, g = 0, last = -1e9;
+      const pIn = rate * dt / 1000;
+      for (let i = 0; i < n; i++) {
+        const t = i * dt;
+        if (t - last >= P.rfc) {
+          const nv = c8 + c9 * g + c10 * vv; g = c2 * g; vv = nv;
+          if (vv > P.vth) { spikes.push(t); last = t; }
+        }
+        const refr = t - last < P.rfc;
+        if (rnd() < pIn) { inputs.push(t); if (!refr) g += P.wsyn * syn; }
+        if (last === t) vv = P.vrst;
+        v[i] = vv;
+      }
+      return { v: v, inputs: inputs, spikes: spikes };
+    };
+    const X = (t) => 200 + t / TMS * 540;
+    const Yv = (mv) => 40 + ((-40 - Math.max(-56, Math.min(-40, mv))) / 16) * 190;
+    const r = {}; ['lrate', 'lsyn', 'lratein', 'lsynin', 'lplay', 'ldrops', 'lwater', 'ldrip', 'lspk', 'lin', 'lout', 'ltrace', 'ltrace2', 'lhead', 'lnin', 'lnout', 'lv', 'lnote'].forEach((k) => { r[k] = K.R(el, k); });
+    const F = { t: 0, hold: 0, playing: !K.still(), visible: false, raf: 0, last: 0 };
+    let S, pts, rate = 150, syn = 25;
+    const build = () => {
+      S = sim(rate, syn);
+      pts = [];
+      for (let i = 0; i <= 540; i++) { const t = i / 540 * TMS; const k = Math.min(S.v.length - 1, Math.round(t / P.dt)); pts.push(X(t).toFixed(1) + ' ' + Yv(S.v[k]).toFixed(1)); }
+      r.ltrace.setAttribute('d', 'M' + pts.join('L'));
+      r.lin.setAttribute('d', S.inputs.map((t) => 'M' + X(t).toFixed(1) + ' 30V40').join(''));
+      r.lout.setAttribute('d', S.spikes.map((t) => 'M' + X(t).toFixed(1) + ' 99V34').join(''));
+      K.text(r.lrate, String(rate)); K.text(r.lsyn, String(syn));
+      draw();
+    };
+    const count = (arr, t) => { let k = 0; while (k < arr.length && arr[k] <= t) k++; return k; };
+    const draw = () => {
+      const t = F.t;
+      const k = Math.max(0, Math.min(S.v.length - 1, Math.round(t / P.dt)));
+      const v = S.v[k];
+      const ip = Math.round(t / TMS * 540);
+      r.ltrace2.setAttribute('d', 'M' + pts.slice(0, ip + 1).join('L'));
+      const hx = X(t).toFixed(1); r.lhead.setAttribute('x1', hx); r.lhead.setAttribute('x2', hx);
+      const lev = Math.max(0, Math.min(1, (v - P.v0) / (P.vth - P.v0)));
+      r.lwater.setAttribute('y', (206 - 118 * lev).toFixed(1)); r.lwater.setAttribute('height', (118 * lev).toFixed(1));
+      let fl = 0; for (let j = S.spikes.length - 1; j >= 0; j--) { const a = t - S.spikes[j]; if (a < 0) continue; if (a < 8) fl = Math.max(fl, 1 - a / 8); break; }
+      r.lspk.setAttribute('opacity', fl.toFixed(2));
+      let dd = '';
+      for (let j = 0; j < S.inputs.length; j++) { const a = t - S.inputs[j]; if (a < 0) break; if (a < 6) { const y = 30 + a / 6 * 46; const x = 70 + ((j * 37) % 40); dd += 'M' + x + ' ' + y.toFixed(1) + 'm-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0'; } }
+      r.ldrops.setAttribute('d', dd);
+      const ph = (performance.now() / 900) % 1;
+      r.ldrip.setAttribute('cy', (214 + ph * 22).toFixed(1)); r.ldrip.setAttribute('opacity', (lev * (1 - ph)).toFixed(2));
+      const nin = count(S.inputs, t), nout = count(S.spikes, t);
+      K.text(r.lnin, String(nin)); K.text(r.lnout, String(nout));
+      K.text(r.lv, (v < 0 ? '−' : '') + Math.abs(v).toFixed(1) + ' mV');
+      const total = S.spikes.length;
+      K.text(r.lnote, total === 0
+        ? 'At these settings the leak wins: the bucket never reaches the firing line, so this neuron stays silent. Try more inputs or more synapses.'
+        : S.inputs.length + ' input spikes in, ' + total + ' output spike' + (total === 1 ? '' : 's') + ' out, over 400 ms. Same equations and parameters as every neuron in the full model.');
+    };
+    const tick = (now) => {
+      F.raf = 0;
+      const dt = F.last ? Math.min((now - F.last) / 1000, 1 / 30) : 1 / 60; F.last = now;
+      if (F.playing) {
+        if (F.hold > 0) { F.hold -= dt; if (F.hold <= 0) F.t = 0; }
+        else { F.t += dt * 1000 / SLOW; if (F.t >= TMS) { F.t = TMS; F.hold = 1.2; } }
+      }
+      draw();
+      if (F.visible && F.playing) F.raf = requestAnimationFrame(tick);
+    };
+    const kick = () => { if (!F.raf && F.visible && F.playing) { F.last = 0; F.raf = requestAnimationFrame(tick); } };
+    K.play(r.lplay, F.playing);
+    if (!F.playing) F.t = TMS;
+    r.lplay.addEventListener('click', () => { F.playing = !F.playing; if (F.playing && F.t >= TMS) { F.t = 0; F.hold = 0; } K.play(r.lplay, F.playing); kick(); });
+    r.lratein.addEventListener('input', (e) => { rate = +e.target.value; build(); });
+    r.lsynin.addEventListener('input', (e) => { syn = +e.target.value; build(); });
+    K.watch(el, (v) => { F.visible = v; kick(); });
+    K.stops.push(() => { if (F.raf) cancelAnimationFrame(F.raf); F.raf = 0; F.visible = false; });
+    build();
+  }
+  flyBrain(K) {
+    const mapEl = K.root.querySelector('[data-flymap]'), repEl = K.root.querySelector('[data-flyreplay]');
+    const D = K.D;
+    fetch('/_blob/e7ebebedc48f82c6c01bf0d0649e41a8').then((r) => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); }).then((txt) => {
+      if (!this.flyOn) return;
+      const bin = atob(txt.replace(/\s+/g, ''));
+      const u8 = new Uint8Array(bin.length);
+      for (let i = 0; i < bin.length; i++) u8[i] = bin.charCodeAt(i);
+      const N = D.n, buf = u8.buffer;
+      const q = new Uint16Array(buf, 0, N * 3), cls = new Uint8Array(buf, N * 6, N);
+      let off = (N * 7 + 3) & ~3;
+      const cnt = new Uint32Array(buf, off, 2); off += 8;
+      const nb = cnt[0], ni = cnt[1];
+      const nB = new Uint32Array(buf, off, nb); off += nb * 4;
+      const nI = new Uint32Array(buf, off, ni); off += ni * 4;
+      const tB = new Uint16Array(buf, off, nb); off += nb * 2;
+      const tI = new Uint16Array(buf, off, ni);
+      const lo = D.lo, hi = D.hi, c = [0, 1, 2].map((a) => (lo[a] + hi[a]) / 2);
+      const X = new Float32Array(N), Y = new Float32Array(N), Z = new Float32Array(N), ok = new Uint8Array(N);
+      for (let i = 0; i < N; i++) {
+        const a = q[i * 3]; if (a === 65535) continue;
+        ok[i] = 1;
+        X[i] = -(lo[0] + a / 65534 * (hi[0] - lo[0]) - c[0]);
+        Y[i] = lo[1] + q[i * 3 + 1] / 65534 * (hi[1] - lo[1]) - c[1];
+        Z[i] = lo[2] + q[i * 3 + 2] / 65534 * (hi[2] - lo[2]) - c[2];
+      }
+      const A = { N: N, X: X, Y: Y, Z: Z, ok: ok, cls: cls, runs: [{ n: nB, t: tB }, { n: nI, t: tI }] };
+      if (mapEl) this.flyMap(K, mapEl, A);
+      if (repEl) this.flyReplay(K, repEl, A);
+    }).catch(() => {
+      [mapEl && K.R(mapEl, 'maphint'), repEl && K.R(repEl, 'rhint')].forEach((h) => K.text(h, 'Could not load the brain data'));
+    });
+  }
+  // A canvas that follows its box and re-renders on resize; `view` keeps projected screen positions.
+  flyCanvas(K, stage, cv, onSize) {
+    const view = { w: 0, h: 0, dpr: 1, img: null };
+    const fit = () => {
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      const w = Math.max(10, Math.round(stage.clientWidth * dpr)), h = Math.max(10, Math.round(stage.clientHeight * dpr));
+      if (w === view.w && h === view.h && cv.width === w) return false;
+      view.w = w; view.h = h; view.dpr = dpr; cv.width = w; cv.height = h;
+      view.img = cv.getContext('2d').createImageData(w, h);
+      onSize(); return true;
+    };
+    if (window.ResizeObserver) { const ro = new ResizeObserver(() => fit()); ro.observe(stage); K.stops.push(() => ro.disconnect()); }
+    else { const f = () => fit(); window.addEventListener('resize', f); K.stops.push(() => window.removeEventListener('resize', f)); }
+    view.fit = fit;
+    return view;
+  }
+  // Accumulate one pixel per neuron into the view's ImageData (additive), and remember screen positions.
+  flyRender(A, view, yaw, pal, idx, bg) {
+    const w = view.w, h = view.h, d = view.img.data;
+    new Uint32Array(d.buffer).fill((255 << 24) | (bg[2] << 16) | (bg[1] << 8) | bg[0]);
+    const s = Math.min(w * 0.94 / 870, h * 0.9 / 372);
+    const cx = w / 2, cy = h / 2 + h * 0.02, co = Math.cos(yaw), si = Math.sin(yaw);
+    if (!view.px || view.px.length !== A.N) { view.px = new Float32Array(A.N); view.py = new Float32Array(A.N); }
+    const px = view.px, py = view.py, X = A.X, Y = A.Y, Z = A.Z, ok = A.ok;
+    for (let i = 0; i < A.N; i++) {
+      if (!ok[i]) { px[i] = -99; continue; }
+      const x = cx + (X[i] * co + Z[i] * si) * s, y = cy + Y[i] * s;
+      px[i] = x; py[i] = y;
+      const ix = x | 0, iy = y | 0;
+      if (ix < 0 || iy < 0 || ix >= w || iy >= h) continue;
+      const col = pal[idx[i]]; if (!col) continue;
+      const o = (iy * w + ix) << 2;
+      d[o] += col[0]; d[o + 1] += col[1]; d[o + 2] += col[2];
+    }
+    view.s = s;
+  }
+  flyMap(K, el, A) {
+    const stage = K.R(el, 'mapstage'), cv = K.R(el, 'mapcv'), hint = K.R(el, 'maphint'), title = K.R(el, 'maptitle');
+    const ctx = cv.getContext('2d');
+    // class index -> colour group (names: unknown, ascending, central, descending, endocrine, motor, not_a_neuron, optic, sensory, visual_centrifugal, visual_projection)
+    const GROUP = [6, 4, 1, 4, 6, 5, 6, 0, 2, 3, 3];
+    const COL = [[111, 127, 224], [201, 206, 216], [79, 209, 197], [143, 162, 255], [246, 201, 69], [244, 114, 182], [138, 143, 156]];
+    const SEL = { all: null, optic: [0], central: [1], sensory: [2], body: [4, 5] };
+    const TITLE = { all: 'All 127,320 neurons with a known position', optic: 'Optic lobes: 73,618 neurons, more than half the brain', central: 'Central brain: 32,415 neurons', sensory: 'Sensory neurons: 9,145, including the 21 sugar-taste neurons', body: 'Links to the body: 100 motor, 1,299 descending and 2,319 ascending neurons' };
+    const idx = new Uint8Array(A.N);
+    for (let i = 0; i < A.N; i++) idx[i] = GROUP[A.cls[i]] != null ? GROUP[A.cls[i]] : 6;
+    const st = { mode: 'all', yaw: 0, auto: !K.still() && !K.framed, visible: false, raf: 0, t0: 0, dirty: true, last: 0 };
+    const pal = () => {
+      const dens = A.N / Math.max(1, (view.w * view.h));
+      const k = Math.max(0.16, Math.min(0.8, 0.42 * Math.sqrt(0.12 / Math.max(0.01, dens))));
+      const sel = SEL[st.mode];
+      return COL.map((c, g) => {
+        if (!sel) return c.map((v) => Math.round(v * k));
+        if (sel.indexOf(g) >= 0) return c.map((v) => Math.round(v * Math.min(1, k * 2.2)));
+        return [60, 66, 84].map((v) => Math.round(v * k * 0.5));
+      });
+    };
+    const render = () => {
+      if (!view.img) return;
+      this.flyRender(A, view, st.yaw, pal(), idx, [11, 14, 23]);
+      ctx.putImageData(view.img, 0, 0);
+      const sel = SEL[st.mode];
+      if (sel && sel.indexOf(4) >= 0) {
+        // the few neurons that link brain and body are drawn as dots so they can be seen
+        const r = Math.max(1.5, 1.6 * view.dpr);
+        for (let i = 0; i < A.N; i++) {
+          const g = idx[i]; if (g !== 4 && g !== 5) continue;
+          ctx.fillStyle = g === 5 ? '#F472B6' : '#F6C945';
+          ctx.fillRect(view.px[i] - r / 2, view.py[i] - r / 2, r, r);
+        }
+      }
+      st.dirty = false;
+    };
+    const view = this.flyCanvas(K, stage, cv, () => { st.dirty = true; render(); });
+    const tick = (now) => {
+      st.raf = 0;
+      if (st.auto) {
+        if (now - st.last > 33) {
+          st.last = now;
+          if (!st.t0) { const a = Math.asin(Math.max(-1, Math.min(1, st.yaw / 0.9))); st.t0 = now - a / (Math.PI * 2 / 16) * 1000; }
+          st.yaw = 0.9 * Math.sin((now - st.t0) / 1000 * Math.PI * 2 / 16); render();
+        }
+      } else if (st.dirty) render();
+      if (st.visible && (st.auto || st.dirty)) st.raf = requestAnimationFrame(tick);
+    };
+    const kick = () => { if (!st.raf && st.visible) st.raf = requestAnimationFrame(tick); };
+    const turnBtn = el.querySelector('[data-map-turn]');
+    const setAuto = (on) => {
+      st.auto = on; st.t0 = 0;
+      if (turnBtn) { turnBtn.setAttribute('aria-pressed', on ? 'true' : 'false'); turnBtn.className = 'fig-play' + (on ? ' on' : ''); turnBtn.textContent = on ? '‖ Stop turning' : '↻ Turn'; }
+      kick();
+    };
+    if (turnBtn) turnBtn.addEventListener('click', () => setAuto(!st.auto));
+    setAuto(st.auto);
+    Array.from(el.querySelectorAll('[data-cls]')).forEach((b) => b.addEventListener('click', () => {
+      st.mode = b.getAttribute('data-cls');
+      Array.from(el.querySelectorAll('[data-cls]')).forEach((o) => { const on = o === b; o.className = on ? 'on' : ''; o.setAttribute('aria-pressed', on ? 'true' : 'false'); });
+      K.text(title, TITLE[st.mode]);
+      st.dirty = true; render(); kick();
+    }));
+    this.flyDrag(K, stage, cv, (dy) => { if (st.auto) setAuto(false); st.yaw += dy; st.dirty = true; kick(); if (!st.visible) render(); });
+    K.watch(el, (v) => { st.visible = v; if (v) { view.fit(); kick(); } });
+    K.stops.push(() => { if (st.raf) cancelAnimationFrame(st.raf); st.raf = 0; st.visible = false; });
+    view.fit(); render();
+    K.text(hint, 'Drag to turn');
+  }
+  flyDrag(K, stage, cv, turn) {
+    let x0 = null;
+    const down = (e) => { x0 = e.clientX; try { stage.setPointerCapture(e.pointerId); } catch (er) {} };
+    const move = (e) => { if (x0 == null) return; const dx = e.clientX - x0; x0 = e.clientX; if (dx) turn(dx * 0.008); };
+    const up = () => { x0 = null; };
+    const key = (e) => { if (e.key === 'ArrowLeft') { e.preventDefault(); turn(-0.15); } else if (e.key === 'ArrowRight') { e.preventDefault(); turn(0.15); } };
+    stage.addEventListener('pointerdown', down); stage.addEventListener('pointermove', move);
+    stage.addEventListener('pointerup', up); stage.addEventListener('pointercancel', up);
+    cv.addEventListener('keydown', key);
+    K.stops.push(() => { stage.removeEventListener('pointerdown', down); stage.removeEventListener('pointermove', move); stage.removeEventListener('pointerup', up); stage.removeEventListener('pointercancel', up); cv.removeEventListener('keydown', key); });
+  }
+  flyReplay(K, el, A) {
+    const D = K.D, SLOW = 20, TMS = 1000, WIN = 60, TAU = 12;
+    const r = {}; ['rstage', 'rcv', 'rhint', 'rtitle', 'rplay', 'rt', 'rmn9', 'rmn9bar', 'rn10', 'rext', 'rpb1', 'rpb2', 'rpb3', 'rscrub', 'rnote', 'rpath0', 'rpath1', 'rhead', 'rdot'].forEach((k) => { r[k] = K.R(el, k); });
+    const ctx = r.rcv.getContext('2d');
+    const SM = [D.smB, D.smI];
+    const roles = D.roles;
+    const role = new Uint8Array(A.N); // 0 other, 1 sugar, 2 MN9, 3 Roundup
+    roles.sugar.forEach((i) => { role[i] = 1; }); roles.mn9.forEach((i) => { role[i] = 2; }); roles.roundup.forEach((i) => { role[i] = 3; });
+    const sprite = (rgb) => {
+      const c = document.createElement('canvas'); c.width = c.height = 64;
+      const g = c.getContext('2d'), gr = g.createRadialGradient(32, 32, 0, 32, 32, 32);
+      gr.addColorStop(0, 'rgba(255,255,255,1)'); gr.addColorStop(0.18, 'rgba(' + rgb + ',0.95)'); gr.addColorStop(0.5, 'rgba(' + rgb + ',0.28)'); gr.addColorStop(1, 'rgba(' + rgb + ',0)');
+      g.fillStyle = gr; g.fillRect(0, 0, 64, 64); return c;
+    };
+    const SPR = [sprite('255,214,120'), sprite('127,219,255'), sprite('244,114,182'), sprite('138,143,156')];
+    const bgc = document.createElement('canvas');
+    const st = { run: 0, t: 150, hold: 0, yaw: 0, playing: !K.still() && !K.framed, visible: false, raf: 0, last: 0, bgDirty: true, user: false };
+    const NOTE = [
+      (t) => t < 150 ? 'Each flash is one simulated spike. Activity starts at the sugar-taste neurons (light blue) in the lower brain.' : t < 500 ? 'Spikes spread from the taste neurons to the neurons they connect to, and onwards.' : 'MN9 (pink), a motor neuron that lifts the proboscis, fires about 65 times per second.',
+      (t) => t < 400 ? 'Same sugar input, same random seeds, but the two Roundup neurons (grey rings) are silenced: they can still fire, but nothing hears them.' : 'MN9 now fires about 25 times per second: 62% less than with sugar only.'
+    ];
+    const TITLE = ['Run 1: sugar neurons on', 'Run 2: same input, Roundup silenced'];
+    const lb = (a, x) => { let lo = 0, hi = a.length; while (lo < hi) { const m = (lo + hi) >> 1; if (a[m] < x) lo = m + 1; else hi = m; } return lo; };
+    const renderBg = () => {
+      if (!view.img) return;
+      const k = Math.max(0.1, Math.min(0.5, 0.22 * Math.sqrt(0.12 / Math.max(0.01, A.N / (view.w * view.h)))));
+      const pal = [[Math.round(70 * k), Math.round(92 * k), Math.round(230 * k)]];
+      this.flyRender(A, view, st.yaw, pal, zero, [9, 11, 20]);
+      bgc.width = view.w; bgc.height = view.h;
+      bgc.getContext('2d').putImageData(view.img, 0, 0);
+      st.bgDirty = false;
+    };
+    const zero = new Uint8Array(A.N);
+    const draw = () => {
+      if (!view.img) return;
+      if (st.bgDirty) renderBg();
+      const w = view.w, h = view.h, dpr = view.dpr, run = A.runs[st.run], T = st.t;
+      ctx.globalCompositeOperation = 'source-over'; ctx.globalAlpha = 1;
+      ctx.drawImage(bgc, 0, 0);
+      ctx.globalCompositeOperation = 'lighter';
+      // where the inputs and outputs sit
+      ctx.globalAlpha = 0.5;
+      roles.sugar.forEach((i) => { const s = 7 * dpr; ctx.drawImage(SPR[1], view.px[i] - s / 2, view.py[i] - s / 2, s, s); });
+      roles.mn9.forEach((i) => { const s = 12 * dpr; ctx.drawImage(SPR[2], view.px[i] - s / 2, view.py[i] - s / 2, s, s); });
+      const a0 = lb(run.t, Math.max(0, (T - WIN) * 10) + 0.5), a1 = lb(run.t, T * 10 + 0.5);
+      for (let j = a0; j < a1; j++) {
+        const i = run.n[j], age = T - run.t[j] / 10, rl = role[i];
+        const al = Math.exp(-age / TAU); if (al < 0.03) continue;
+        const s = (rl === 2 ? 26 : rl === 1 ? 16 : 11) * dpr * (0.6 + 0.4 * al);
+        ctx.globalAlpha = Math.min(1, al * (rl === 0 ? 0.9 : 1));
+        ctx.drawImage(SPR[rl === 3 ? 3 : rl], view.px[i] - s / 2, view.py[i] - s / 2, s, s);
+      }
+      ctx.globalCompositeOperation = 'source-over'; ctx.globalAlpha = 1;
+      if (st.run === 1) {
+        ctx.strokeStyle = '#C9CED8'; ctx.lineWidth = 1.5 * dpr;
+        roles.roundup.forEach((i) => { ctx.beginPath(); ctx.arc(view.px[i], view.py[i], 7 * dpr, 0, Math.PI * 2); ctx.stroke(); });
+      }
+      // readouts
+      const sm = SM[st.run][Math.min(199, Math.floor(T / 5))] || 0;
+      const e = Math.max(0, Math.min(1, (sm - 5) / 95));
+      K.text(r.rt, Math.round(T) + ' ms');
+      K.text(r.rmn9, Math.round(sm) + ' spikes/s');
+      r.rmn9bar.style.width = Math.min(100, sm).toFixed(1) + '%';
+      K.text(r.rn10, String(a1 - lb(run.t, Math.max(0, (T - 10) * 10) + 0.5)));
+      K.text(r.rext, Math.round(e * 100) + '%');
+      const cl = (v) => Math.max(0, Math.min(1, v));
+      const k1 = cl(e / 0.6), k2 = cl((e - 0.15) / 0.7), k3 = cl((e - 0.55) / 0.45);
+      r.rpb1.setAttribute('transform', 'rotate(' + (70 - 92 * k1).toFixed(1) + ')');
+      r.rpb2.setAttribute('transform', 'rotate(' + (150 - 150 * k2).toFixed(1) + ')');
+      r.rpb3.setAttribute('transform', 'scale(' + (0.4 + 0.6 * k3).toFixed(2) + ')');
+      K.text(r.rnote, NOTE[st.run](T));
+      if (+r.rscrub.value !== Math.round(T)) r.rscrub.value = String(Math.round(T));
+      r.rscrub.setAttribute('aria-valuetext', Math.round(T) + ' ms of simulated time');
+      const hx = (50 + T / TMS * 690).toFixed(1);
+      r.rhead.setAttribute('x1', hx); r.rhead.setAttribute('x2', hx);
+      r.rdot.setAttribute('cx', hx); r.rdot.setAttribute('cy', (140 - Math.min(100, sm) * 1.2).toFixed(1));
+      r.rpath0.setAttribute('stroke-opacity', st.run === 0 ? '1' : '.35');
+      r.rpath1.setAttribute('stroke-opacity', st.run === 1 ? '1' : '.35');
+    };
+    const setRun = (k) => {
+      st.run = k;
+      Array.from(el.querySelectorAll('[data-run]')).forEach((b) => { const on = +b.getAttribute('data-run') === k; b.className = on ? 'on' : ''; b.setAttribute('aria-pressed', on ? 'true' : 'false'); });
+      K.text(r.rtitle, TITLE[k]);
+    };
+    const tick = (now) => {
+      st.raf = 0;
+      const dt = st.last ? Math.min((now - st.last) / 1000, 1 / 30) : 1 / 60; st.last = now;
+      if (st.playing) {
+        if (st.hold > 0) { st.hold -= dt; if (st.hold <= 0) { st.t = 0; if (!st.user) setRun(1 - st.run); } }
+        else { st.t += dt * 1000 / SLOW; if (st.t >= TMS) { st.t = TMS; st.hold = 2; } }
+      }
+      draw();
+      if (st.visible && st.playing) st.raf = requestAnimationFrame(tick);
+    };
+    const kick = () => { if (!st.raf && st.visible && st.playing) { st.last = 0; st.raf = requestAnimationFrame(tick); } };
+    const view = this.flyCanvas(K, r.rstage, r.rcv, () => { st.bgDirty = true; draw(); });
+    K.play(r.rplay, st.playing);
+    r.rplay.addEventListener('click', () => { st.playing = !st.playing; if (st.playing && st.t >= TMS) { st.t = 0; st.hold = 0; } K.play(r.rplay, st.playing); kick(); });
+    Array.from(el.querySelectorAll('[data-run]')).forEach((b) => b.addEventListener('click', () => { st.user = true; setRun(+b.getAttribute('data-run')); st.t = 0; st.hold = 0; draw(); kick(); }));
+    r.rscrub.addEventListener('input', (e) => { st.playing = false; K.play(r.rplay, false); st.t = +e.target.value; st.hold = 0; draw(); });
+    this.flyDrag(K, r.rstage, r.rcv, (dy) => { st.yaw += dy; st.bgDirty = true; draw(); });
+    K.watch(el, (v) => { st.visible = v; if (v) { view.fit(); kick(); } });
+    K.stops.push(() => { if (st.raf) cancelAnimationFrame(st.raf); st.raf = 0; st.visible = false; });
+    setRun(0); view.fit(); draw();
+    K.text(r.rhint, 'Drag to turn');
+    if (st.playing) st.t = 0;
+  }
+  renderVals() {
+    return { cm: this.commentVals() };
+  }
+}
+</script>
+</body>
+</html>
