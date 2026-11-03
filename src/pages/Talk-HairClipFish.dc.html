@@ -318,6 +318,13 @@ h2.t-h2::after,.sec-head .t-h2::after{content:"";display:block;width:56px;height
 ::selection{background:#96D1AA;color:#252413}
 /* theme:end */
 @media (max-width:640px){.cp-hero-shade{background:rgba(37,36,19,.88) !important}}
+/* fig:start */
+.fig-ch{align-items:center}
+.ratio button.fig-play{margin-left:auto;min-width:92px}
+.fig-track{height:3px;background:#D3DCC9;margin-top:-14px;overflow:hidden}
+.fig-track i{display:block;height:100%;background:#F48067;transform-origin:0 50%;transform:scaleX(0)}
+@media (max-width:640px){.ratio button.fig-play{margin-left:0}}
+/* fig:end */
 </style>
 </helmet>
 <div style="min-height:100vh" data-gt-root="">
@@ -386,22 +393,23 @@ h2.t-h2::after,.sec-head .t-h2::after{content:"";display:block;width:56px;height
 <img src="/_blob/6f091f0f96ab6ba6c84c965555e9bd4e" alt="A Venus flytrap snapping shut on an insect" loading="lazy">
 <div class="stack g8"><p class="kicker">Nature’s hair clip</p><p>A Venus flytrap’s leaves are curved shells that flip from one shape to the other, closing in about a tenth of a second. The same snap-through trick, minus the rivet.</p></div>
 </div>
-<div class="col-wide viz" style="margin-top:48px" role="group" aria-label="Chart A: the two stable states of a hair clip mechanism and the snap between them">
+<div class="col-wide viz" style="margin-top:48px" role="group" aria-label="Chart A, animated: the two stable states of a hair clip mechanism and the snap between them" data-fig="snap">
 <div class="viz-head">
-<span class="kicker">Chart A — Try it: snap the clip</span>
-<h3 class="t-h3">{{a.title}}</h3>
+<span class="kicker">Chart A — Watch it: snap the clip</span>
+<h3 class="t-h3" data-fig-f="title">Resting in one valley</h3>
 </div>
 <div class="viz-body stack g24">
-<div class="ratio" aria-label="Choose"><sc-for list="{{aTabs}}" as="t" hint-placeholder-count="3"><button type="button" class="{{t.on}}" aria-pressed="{{t.aria}}" onClick="{{t.pick}}">{{t.label}}</button></sc-for></div>
-<div class="hc-box"><sc-if value="{{a.s0}}" hint-placeholder-val="{{ true }}"><svg class="hc-svg" viewBox="0 0 640 300" role="img" aria-label="Stable state A: tail bent one way, resting in a valley."><rect width="640" height="300" fill="#FEF9F7"></rect><text x="40" y="28" font-family="JetBrains Mono, monospace" font-size="11" fill="#7E8466">ENERGY</text><line x1="40" y1="254" x2="380" y2="254" stroke="#D3DCC9"></line><path d="M40 148.5 L42.8 162.8 L45.7 175.9 L48.5 187.6 L51.3 198.2 L54.2 207.6 L57 216 L59.8 223.3 L62.7 229.6 L65.5 234.9 L68.3 239.4 L71.2 243 L74 245.8 L76.8 247.9 L79.7 249.2 L82.5 249.9 L85.3 249.9 L88.2 249.4 L91 248.3 L93.8 246.7 L96.7 244.6 L99.5 242.1 L102.3 239.1 L105.2 235.9 L108 232.3 L110.8 228.4 L113.7 224.2 L116.5 219.8 L119.3 215.2 L122.2 210.4 L125 205.5 L127.8 200.5 L130.7 195.4 L133.5 190.3 L136.3 185.1 L139.2 179.9 L142 174.7 L144.8 169.6 L147.7 164.5 L150.5 159.5 L153.3 154.6 L156.2 149.8 L159 145.2 L161.8 140.7 L164.7 136.4 L167.5 132.2 L170.3 128.3 L173.2 124.6 L176 121.1 L178.8 117.8 L181.7 114.8 L184.5 112 L187.3 109.6 L190.2 107.3 L193 105.4 L195.8 103.8 L198.7 102.4 L201.5 101.4 L204.3 100.6 L207.2 100.2 L210 100 L212.8 100.2 L215.7 100.6 L218.5 101.4 L221.3 102.4 L224.2 103.8 L227 105.4 L229.8 107.3 L232.7 109.6 L235.5 112 L238.3 114.8 L241.2 117.8 L244 121.1 L246.8 124.6 L249.7 128.3 L252.5 132.2 L255.3 136.4 L258.2 140.7 L261 145.2 L263.8 149.8 L266.7 154.6 L269.5 159.5 L272.3 164.5 L275.2 169.6 L278 174.7 L280.8 179.9 L283.7 185.1 L286.5 190.3 L289.3 195.4 L292.2 200.5 L295 205.5 L297.8 210.4 L300.7 215.2 L303.5 219.8 L306.3 224.2 L309.2 228.4 L312 232.3 L314.8 235.9 L317.7 239.1 L320.5 242.1 L323.3 244.6 L326.2 246.7 L329 248.3 L331.8 249.4 L334.7 249.9 L337.5 249.9 L340.3 249.2 L343.2 247.9 L346 245.8 L348.8 243 L351.7 239.4 L354.5 234.9 L357.3 229.6 L360.2 223.3 L363 216 L365.8 207.6 L368.7 198.2 L371.5 187.6 L374.3 175.9 L377.2 162.8 L380 148.5" fill="none" stroke="#252413" stroke-width="2.5"></path><line x1="210" y1="216" x2="210" y2="100" stroke="#3F8A5A" stroke-width="1.5" stroke-dasharray="4 4"></line><text x="210" y="236" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#3F8A5A">energy barrier</text><circle cx="84.1" cy="239" r="10" fill="#F48067" stroke="#252413" stroke-width="1.5"></circle><circle cx="210" cy="89" r="10" fill="#DFDECD" stroke="#252413" stroke-width="0"></circle><circle cx="335.9" cy="239" r="10" fill="#DFDECD" stroke="#252413" stroke-width="0"></circle><text x="84.1" y="276" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#252413">−ψ</text><text x="210" y="276" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#252413">0</text><text x="335.9" y="276" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#252413">+ψ</text><text x="210.0" y="294" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#7E8466">tail bending angle</text><text x="520" y="22" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#7E8466">TOP VIEW OF THE TAIL</text><ellipse cx="520" cy="74" rx="22" ry="30" fill="#F2F4EE" stroke="#252413" stroke-width="1.5"></ellipse><path d="M520 96 L520 101.4 L520 106.8 L519.9 112.2 L519.9 117.6 L519.8 123 L519.6 128.4 L519.4 133.8 L519.1 139.2 L518.7 144.6 L518.3 150 L517.8 155.3 L517.1 160.7 L516.4 166 L515.5 171.4 L514.6 176.7 L513.4 182 L512.2 187.2 L510.8 192.4 L509.2 197.6 L507.5 202.7 L505.6 207.8 L503.5 212.8 L501.3 217.7 L498.8 222.5 L496.2 227.2 L493.4 231.8 L490.4 236.3" fill="none" stroke="#F48067" stroke-width="9" stroke-linecap="round"></path><path d="M490.4 236.3 L452 246.6 L482.5 247.9 L495.1 275.7 Z" fill="#2B44C8" opacity=".85"></path><text x="520" y="290" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#252413">resting</text></svg></sc-if><sc-if value="{{a.s1}}" hint-placeholder-val="{{ false }}"><svg class="hc-svg" viewBox="0 0 640 300" role="img" aria-label="At the tipping point: the most stored energy, about to snap."><rect width="640" height="300" fill="#FEF9F7"></rect><text x="40" y="28" font-family="JetBrains Mono, monospace" font-size="11" fill="#7E8466">ENERGY</text><line x1="40" y1="254" x2="380" y2="254" stroke="#D3DCC9"></line><path d="M40 148.5 L42.8 162.8 L45.7 175.9 L48.5 187.6 L51.3 198.2 L54.2 207.6 L57 216 L59.8 223.3 L62.7 229.6 L65.5 234.9 L68.3 239.4 L71.2 243 L74 245.8 L76.8 247.9 L79.7 249.2 L82.5 249.9 L85.3 249.9 L88.2 249.4 L91 248.3 L93.8 246.7 L96.7 244.6 L99.5 242.1 L102.3 239.1 L105.2 235.9 L108 232.3 L110.8 228.4 L113.7 224.2 L116.5 219.8 L119.3 215.2 L122.2 210.4 L125 205.5 L127.8 200.5 L130.7 195.4 L133.5 190.3 L136.3 185.1 L139.2 179.9 L142 174.7 L144.8 169.6 L147.7 164.5 L150.5 159.5 L153.3 154.6 L156.2 149.8 L159 145.2 L161.8 140.7 L164.7 136.4 L167.5 132.2 L170.3 128.3 L173.2 124.6 L176 121.1 L178.8 117.8 L181.7 114.8 L184.5 112 L187.3 109.6 L190.2 107.3 L193 105.4 L195.8 103.8 L198.7 102.4 L201.5 101.4 L204.3 100.6 L207.2 100.2 L210 100 L212.8 100.2 L215.7 100.6 L218.5 101.4 L221.3 102.4 L224.2 103.8 L227 105.4 L229.8 107.3 L232.7 109.6 L235.5 112 L238.3 114.8 L241.2 117.8 L244 121.1 L246.8 124.6 L249.7 128.3 L252.5 132.2 L255.3 136.4 L258.2 140.7 L261 145.2 L263.8 149.8 L266.7 154.6 L269.5 159.5 L272.3 164.5 L275.2 169.6 L278 174.7 L280.8 179.9 L283.7 185.1 L286.5 190.3 L289.3 195.4 L292.2 200.5 L295 205.5 L297.8 210.4 L300.7 215.2 L303.5 219.8 L306.3 224.2 L309.2 228.4 L312 232.3 L314.8 235.9 L317.7 239.1 L320.5 242.1 L323.3 244.6 L326.2 246.7 L329 248.3 L331.8 249.4 L334.7 249.9 L337.5 249.9 L340.3 249.2 L343.2 247.9 L346 245.8 L348.8 243 L351.7 239.4 L354.5 234.9 L357.3 229.6 L360.2 223.3 L363 216 L365.8 207.6 L368.7 198.2 L371.5 187.6 L374.3 175.9 L377.2 162.8 L380 148.5" fill="none" stroke="#252413" stroke-width="2.5"></path><line x1="210" y1="216" x2="210" y2="100" stroke="#3F8A5A" stroke-width="1.5" stroke-dasharray="4 4"></line><text x="210" y="236" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#3F8A5A">energy barrier</text><circle cx="84.1" cy="239" r="10" fill="#DFDECD" stroke="#252413" stroke-width="0"></circle><circle cx="210" cy="89" r="10" fill="#F48067" stroke="#252413" stroke-width="1.5"></circle><circle cx="335.9" cy="239" r="10" fill="#DFDECD" stroke="#252413" stroke-width="0"></circle><text x="84.1" y="276" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#252413">−ψ</text><text x="210" y="276" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#252413">0</text><text x="335.9" y="276" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#252413">+ψ</text><text x="210.0" y="294" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#7E8466">tail bending angle</text><text x="520" y="22" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#7E8466">TOP VIEW OF THE TAIL</text><ellipse cx="520" cy="74" rx="22" ry="30" fill="#F2F4EE" stroke="#252413" stroke-width="1.5"></ellipse><path d="M520 96 L520 101.4 L520 106.8 L520.1 112.2 L520.2 117.6 L520.4 123 L520.7 128.4 L521 133.8 L521.4 139.2 L521.8 144.5 L522.3 149.9 L522.8 155.3 L523.3 160.7 L523.8 166.1 L524.2 171.4 L524.6 176.8 L524.9 182.2 L525 187.6 L525 193 L524.9 198.4 L524.5 203.8 L524 209.2 L523.3 214.5 L522.5 219.9 L521.5 225.2 L520.3 230.5 L519.1 235.7 L517.8 240.9" fill="none" stroke="#F48067" stroke-width="9" stroke-linecap="round"></path><path d="M517.8 240.9 L485.3 263.8 L514.4 254.5 L535.7 276.3 Z" fill="#2B44C8" opacity=".85"></path><text x="520" y="290" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#252413">snapping</text></svg></sc-if><sc-if value="{{a.s2}}" hint-placeholder-val="{{ false }}"><svg class="hc-svg" viewBox="0 0 640 300" role="img" aria-label="Stable state B: snapped across into the other valley."><rect width="640" height="300" fill="#FEF9F7"></rect><text x="40" y="28" font-family="JetBrains Mono, monospace" font-size="11" fill="#7E8466">ENERGY</text><line x1="40" y1="254" x2="380" y2="254" stroke="#D3DCC9"></line><path d="M40 148.5 L42.8 162.8 L45.7 175.9 L48.5 187.6 L51.3 198.2 L54.2 207.6 L57 216 L59.8 223.3 L62.7 229.6 L65.5 234.9 L68.3 239.4 L71.2 243 L74 245.8 L76.8 247.9 L79.7 249.2 L82.5 249.9 L85.3 249.9 L88.2 249.4 L91 248.3 L93.8 246.7 L96.7 244.6 L99.5 242.1 L102.3 239.1 L105.2 235.9 L108 232.3 L110.8 228.4 L113.7 224.2 L116.5 219.8 L119.3 215.2 L122.2 210.4 L125 205.5 L127.8 200.5 L130.7 195.4 L133.5 190.3 L136.3 185.1 L139.2 179.9 L142 174.7 L144.8 169.6 L147.7 164.5 L150.5 159.5 L153.3 154.6 L156.2 149.8 L159 145.2 L161.8 140.7 L164.7 136.4 L167.5 132.2 L170.3 128.3 L173.2 124.6 L176 121.1 L178.8 117.8 L181.7 114.8 L184.5 112 L187.3 109.6 L190.2 107.3 L193 105.4 L195.8 103.8 L198.7 102.4 L201.5 101.4 L204.3 100.6 L207.2 100.2 L210 100 L212.8 100.2 L215.7 100.6 L218.5 101.4 L221.3 102.4 L224.2 103.8 L227 105.4 L229.8 107.3 L232.7 109.6 L235.5 112 L238.3 114.8 L241.2 117.8 L244 121.1 L246.8 124.6 L249.7 128.3 L252.5 132.2 L255.3 136.4 L258.2 140.7 L261 145.2 L263.8 149.8 L266.7 154.6 L269.5 159.5 L272.3 164.5 L275.2 169.6 L278 174.7 L280.8 179.9 L283.7 185.1 L286.5 190.3 L289.3 195.4 L292.2 200.5 L295 205.5 L297.8 210.4 L300.7 215.2 L303.5 219.8 L306.3 224.2 L309.2 228.4 L312 232.3 L314.8 235.9 L317.7 239.1 L320.5 242.1 L323.3 244.6 L326.2 246.7 L329 248.3 L331.8 249.4 L334.7 249.9 L337.5 249.9 L340.3 249.2 L343.2 247.9 L346 245.8 L348.8 243 L351.7 239.4 L354.5 234.9 L357.3 229.6 L360.2 223.3 L363 216 L365.8 207.6 L368.7 198.2 L371.5 187.6 L374.3 175.9 L377.2 162.8 L380 148.5" fill="none" stroke="#252413" stroke-width="2.5"></path><line x1="210" y1="216" x2="210" y2="100" stroke="#3F8A5A" stroke-width="1.5" stroke-dasharray="4 4"></line><text x="210" y="236" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#3F8A5A">energy barrier</text><circle cx="84.1" cy="239" r="10" fill="#DFDECD" stroke="#252413" stroke-width="0"></circle><circle cx="210" cy="89" r="10" fill="#DFDECD" stroke="#252413" stroke-width="0"></circle><circle cx="335.9" cy="239" r="10" fill="#F48067" stroke="#252413" stroke-width="1.5"></circle><text x="84.1" y="276" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#252413">−ψ</text><text x="210" y="276" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#252413">0</text><text x="335.9" y="276" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#252413">+ψ</text><text x="210.0" y="294" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#7E8466">tail bending angle</text><text x="520" y="22" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#7E8466">TOP VIEW OF THE TAIL</text><ellipse cx="520" cy="74" rx="22" ry="30" fill="#F2F4EE" stroke="#252413" stroke-width="1.5"></ellipse><path d="M520 96 L520 101.4 L520 106.8 L520.1 112.2 L520.1 117.6 L520.2 123 L520.4 128.4 L520.6 133.8 L520.9 139.2 L521.3 144.6 L521.7 150 L522.2 155.3 L522.9 160.7 L523.6 166 L524.5 171.4 L525.4 176.7 L526.6 182 L527.8 187.2 L529.2 192.4 L530.8 197.6 L532.5 202.7 L534.4 207.8 L536.5 212.8 L538.7 217.7 L541.2 222.5 L543.8 227.2 L546.6 231.8 L549.6 236.3" fill="none" stroke="#F48067" stroke-width="9" stroke-linecap="round"></path><path d="M549.6 236.3 L544.9 275.7 L557.5 247.9 L588 246.6 Z" fill="#2B44C8" opacity=".85"></path><text x="520" y="290" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#252413">resting</text></svg></sc-if></div>
+<div class="ratio fig-ch" aria-label="Jump to a moment"><button type="button" data-ch="0" class="on" aria-pressed="true">Stable state A</button><button type="button" data-ch="1" class="" aria-pressed="false">Tipping point</button><button type="button" data-ch="2" class="" aria-pressed="false">Stable state B</button><button type="button" class="fig-play" data-fig-play aria-pressed="true" aria-label="Pause the animation"><span aria-hidden="true">‖</span> Pause</button></div>
+<div class="hc-box"><svg class="hc-svg" viewBox="0 0 640 300" role="img" aria-label="Animation: a ball on a two-valley energy curve is pushed slowly up the hill, snaps over the top into the other valley, wobbles and settles, then goes back; beside it, a top view of the fish tail bends one way, then whips to the other side."><rect width="640" height="300" fill="#FEF9F7"></rect><text x="40" y="28" font-family="JetBrains Mono, monospace" font-size="11" fill="#7E8466">ENERGY</text><line x1="40" y1="254" x2="380" y2="254" stroke="#D3DCC9"></line><path d="M40 148.5 L42.8 162.8 L45.7 175.9 L48.5 187.6 L51.3 198.2 L54.2 207.6 L57 216 L59.8 223.3 L62.7 229.6 L65.5 234.9 L68.3 239.4 L71.2 243 L74 245.8 L76.8 247.9 L79.7 249.2 L82.5 249.9 L85.3 249.9 L88.2 249.4 L91 248.3 L93.8 246.7 L96.7 244.6 L99.5 242.1 L102.3 239.1 L105.2 235.9 L108 232.3 L110.8 228.4 L113.7 224.2 L116.5 219.8 L119.3 215.2 L122.2 210.4 L125 205.5 L127.8 200.5 L130.7 195.4 L133.5 190.3 L136.3 185.1 L139.2 179.9 L142 174.7 L144.8 169.6 L147.7 164.5 L150.5 159.5 L153.3 154.6 L156.2 149.8 L159 145.2 L161.8 140.7 L164.7 136.4 L167.5 132.2 L170.3 128.3 L173.2 124.6 L176 121.1 L178.8 117.8 L181.7 114.8 L184.5 112 L187.3 109.6 L190.2 107.3 L193 105.4 L195.8 103.8 L198.7 102.4 L201.5 101.4 L204.3 100.6 L207.2 100.2 L210 100 L212.8 100.2 L215.7 100.6 L218.5 101.4 L221.3 102.4 L224.2 103.8 L227 105.4 L229.8 107.3 L232.7 109.6 L235.5 112 L238.3 114.8 L241.2 117.8 L244 121.1 L246.8 124.6 L249.7 128.3 L252.5 132.2 L255.3 136.4 L258.2 140.7 L261 145.2 L263.8 149.8 L266.7 154.6 L269.5 159.5 L272.3 164.5 L275.2 169.6 L278 174.7 L280.8 179.9 L283.7 185.1 L286.5 190.3 L289.3 195.4 L292.2 200.5 L295 205.5 L297.8 210.4 L300.7 215.2 L303.5 219.8 L306.3 224.2 L309.2 228.4 L312 232.3 L314.8 235.9 L317.7 239.1 L320.5 242.1 L323.3 244.6 L326.2 246.7 L329 248.3 L331.8 249.4 L334.7 249.9 L337.5 249.9 L340.3 249.2 L343.2 247.9 L346 245.8 L348.8 243 L351.7 239.4 L354.5 234.9 L357.3 229.6 L360.2 223.3 L363 216 L365.8 207.6 L368.7 198.2 L371.5 187.6 L374.3 175.9 L377.2 162.8 L380 148.5" fill="none" stroke="#252413" stroke-width="2.5"></path><line x1="210" y1="216" x2="210" y2="100" stroke="#3F8A5A" stroke-width="1.5" stroke-dasharray="4 4"></line><text x="210" y="236" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#3F8A5A">energy barrier</text><text x="84.1" y="276" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#252413">−ψ</text><text x="210" y="276" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#252413">0</text><text x="335.9" y="276" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#252413">+ψ</text><text x="210.0" y="294" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#7E8466">tail bending angle</text><text x="520" y="22" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#7E8466">TOP VIEW OF THE TAIL</text><ellipse cx="520" cy="74" rx="22" ry="30" fill="#F2F4EE" stroke="#252413" stroke-width="1.5"></ellipse><circle cx="84.1" cy="239" r="10" fill="#DFDECD"></circle><circle cx="210" cy="89" r="10" fill="#DFDECD"></circle><circle cx="335.9" cy="239" r="10" fill="#DFDECD"></circle><circle data-r="ball" cx="84.1" cy="239" r="10" fill="#F48067" stroke="#252413" stroke-width="1.5"></circle><path data-r="tail" d="M520 96" fill="none" stroke="#F48067" stroke-width="9" stroke-linecap="round"></path><path data-r="fin" d="M520 96" fill="#2B44C8" opacity=".85"></path><text data-r="lab" x="520" y="290" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#252413">resting</text><text data-r="slow" x="380" y="28" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="10" fill="#F48067" opacity="0">SLOWED DOWN ×10</text></svg></div>
+<div class="fig-track" aria-hidden="true"><i data-fig-bar></i></div>
 <div class="readout r3">
-<div><span>Tail angle</span><b>{{a.v1}}</b></div>
-<div><span>Stored energy</span><b>{{a.v2}}</b></div>
-<div><span>Time spent here</span><b>{{a.v3}}</b></div>
+<div><span>Tail angle</span><b data-fig-f="v1">−ψ</b></div>
+<div><span>Stored energy</span><b data-fig-f="v2">Low</b></div>
+<div><span>Time spent here</span><b data-fig-f="v3">As long as you like</b></div>
 </div>
-<p class="small" aria-live="polite">{{a.note}}</p>
+<p class="small" data-fig-f="note" data-fig-note aria-live="off">The clip sits happily in one of its two shapes. Leave it alone and it stays there, with no power needed.</p>
 </div>
-<div class="viz-foot"><span class="meta muted" style="font-size:12px">Schematic. Timings from the paper’s plastic clip: about 5 s of slow loading, a 40 ms snap, then about 1 s of wobbling.</span></div>
+<div class="viz-foot"><span class="meta muted" style="font-size:12px">Schematic, not to scale in time. The paper’s plastic clip takes about 5 s of slow loading, snaps in 40 ms (slowed down here), then wobbles for about 1 s.</span></div>
 <div class="viz-more"><button type="button" class="more" aria-expanded="{{ex.a.aria}}" onClick="{{ex.a.toggle}}"><span class="more-ico" aria-hidden="true">{{ex.a.ico}}</span>{{ex.a.text}} the science</button><sc-if value="{{ex.a.open}}"><div class="more-body"><p>The clips were cut from PETG plastic shim and steel sheet. These materials are normally far too stiff for soft robots, with moduli of 10⁹ to 10¹¹ Pa, but as thin sheets they bend 100,000 to a million times more easily out of plane than they stretch in plane, so a modest force is enough to snap them. Filmed with a high-speed camera, the plastic clip snaps in about 40 ms and the steel one in about 16 ms. The steel clip’s tip swings at roughly 14,000° per second, faster than a professional baseball pitcher’s arm (about 9,000° per second), and the snap makes an audible crack.</p>
 <div class="paper-fig"><img src="/_blob/bb71b2bf31ef35aa06b59269e547203d" alt="Paper Figure 1: the flat A-shaped ribbon with its dimensions, the assembled twisted clip, a strain map from simulation, photos of commercial hair clips and plastic and steel versions, an energy curve with two valleys, and high-speed photo sequences of plastic and steel clips snapping" loading="lazy"></div>
 <p class="fig-cap"><b>Paper Fig. 1.</b> (A) The flat ribbon: kink angle θ, leg length L₂, core half-length L₁. (B, C) Assembled, and its strain from simulation. (D) Real hair clips next to plastic and steel versions. (E) The two-valley energy curve. (F) Snapping in 40 ms (plastic) and 16 ms (steel).</p>
@@ -697,8 +705,9 @@ h2.t-h2::after,.sec-head .t-h2::after{content:"";display:block;width:56px;height
 <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":9200}}'>
 class Component extends DCLogic {
   // ── GelasTinta motion layer (anime.js v4) ─────────────────────────────
-  componentDidMount() { this.gtStart(0); this.gtMedia(0); this.cmMount(); }
+  componentDidMount() { this.gtStart(0); this.gtMedia(0); this.gtFigs(); this.cmMount(); }
   componentWillUnmount() {
+    this.gtFigStop();
     clearTimeout(this.gtWait);
     clearInterval(this.gtSlideT);
     clearTimeout(this.gtMediaWait);
@@ -1203,6 +1212,148 @@ class Component extends DCLogic {
         set({ user: null, err: '' });
       }
     };
+  }
+  gtFigs() {
+    const defs = this.figDefs ? this.figDefs() : [];
+    this.gtFigList = this.gtFigList || [];
+    defs.forEach((d) => {
+      const el = document.querySelector('[data-fig="' + d.id + '"]');
+      if (el && !el.__fig) this.gtFigList.push(this.gtFigRun(el, d));
+    });
+  }
+  gtFigStop() { (this.gtFigList || []).forEach((f) => f && f.stop && f.stop()); this.gtFigList = []; }
+  gtFigRun(root, d) {
+    const still = () => !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+    const q = (s) => root.querySelector(s);
+    const qa = (s) => Array.from(root.querySelectorAll(s));
+    const btns = qa('[data-ch]'), play = q('[data-fig-play]'), bar = q('[data-fig-bar]'), note = q('[data-fig-note]');
+    const fields = qa('[data-fig-f]');
+    const F = { t: d.chapters[0], target: null, stopAt: null, playing: d.autoplay !== false && !still(), visible: false, raf: 0, last: 0, k: -1, ph: null };
+    root.__fig = F;
+    const label = () => {
+      if (!play) return;
+      play.setAttribute('aria-pressed', F.playing ? 'true' : 'false');
+      play.setAttribute('aria-label', F.playing ? 'Pause the animation' : 'Play the animation');
+      play.innerHTML = F.playing ? '<span aria-hidden="true">‖</span> Pause' : '<span aria-hidden="true">▶</span> Play';
+      if (note) note.setAttribute('aria-live', F.playing ? 'off' : 'polite');
+    };
+    const draw = () => {
+      const r = d.frame(F.t, root) || {};
+      if (r.k !== F.k) {
+        F.k = r.k;
+        btns.forEach((b, i) => { const on = i === r.k; b.className = on ? 'on' : ''; b.setAttribute('aria-pressed', on ? 'true' : 'false'); });
+      }
+      if (r.ph !== F.ph && d.phases && d.phases[r.ph]) {
+        F.ph = r.ph;
+        const P = d.phases[r.ph];
+        fields.forEach((el) => { const k = el.getAttribute('data-fig-f'); if (P[k] != null && el.textContent !== P[k]) el.textContent = P[k]; });
+      }
+      if (bar) bar.style.transform = 'scaleX(' + (F.t / d.dur).toFixed(4) + ')';
+    };
+    const tick = (now) => {
+      F.raf = 0;
+      const dt = F.last ? Math.min((now - F.last) / 1000, 1 / 30) : 1 / 60;
+      F.last = now;
+      if (F.target != null) {
+        const gap = F.target - F.t;
+        F.t += gap * (1 - Math.exp(-dt / 0.16));
+        if (Math.abs(F.target - F.t) < 0.004) { F.t = F.target; F.target = null; }
+      } else if (F.playing) {
+        F.t += dt;
+        if (F.stopAt != null && F.t >= F.stopAt) { F.t = F.stopAt; F.stopAt = null; F.playing = false; label(); }
+        else if (F.t >= d.dur) F.t = d.loop === false ? d.dur : F.t % d.dur;
+      }
+      draw();
+      if (F.visible && (F.playing || F.target != null)) F.raf = requestAnimationFrame(tick);
+    };
+    const kick = () => { if (!F.raf && F.visible) { F.last = 0; F.raf = requestAnimationFrame(tick); } };
+    const seek = (t) => {
+      F.playing = false; label();
+      if (still()) { F.t = t; F.target = null; draw(); } else { F.target = t; kick(); }
+    };
+    // segments: a chapter plays its own stretch at normal speed and stops (used where autoplay would spoil a puzzle)
+    const playSeg = (i) => {
+      const a = d.segments[i][0], b = d.segments[i][1];
+      F.target = null;
+      if (still()) { F.t = b; F.playing = false; label(); draw(); return; }
+      if (b < F.t - 0.01) { F.playing = false; F.stopAt = null; F.target = b; label(); kick(); return; }
+      if (F.t < a) F.t = a;
+      F.stopAt = b; F.playing = true; label(); kick();
+    };
+    btns.forEach((b, i) => b.addEventListener('click', () => (d.segments ? playSeg(i) : seek(d.chapters[i]))));
+    if (play) play.addEventListener('click', () => { F.playing = !F.playing; F.target = null; F.stopAt = null; label(); kick(); });
+    const io = window.IntersectionObserver ? new IntersectionObserver((es) => {
+      F.visible = es[es.length - 1].isIntersecting;
+      if (F.visible) kick();
+    }, { rootMargin: '120px 0px' }) : null;
+    if (io) io.observe(root); else { F.visible = true; }
+    F.show = (t) => { F.playing = false; F.target = null; F.t = t; label(); draw(); };
+    label(); draw(); kick();
+    return { stop: () => { if (F.raf) cancelAnimationFrame(F.raf); F.raf = 0; if (io) io.disconnect(); root.__fig = null; } };
+  }
+  figDefs() {
+    const sm = (a, b, x) => { x = Math.max(0, Math.min(1, (x - a) / (b - a))); return x * x * (3 - 2 * x); };
+    const f1 = (v) => Math.round(v * 10) / 10;
+    // ── Chart A: the clip snaps between its two valleys. 10 s loop: A → B, then back B → A (one tail beat).
+    const X0 = 40, W = 340, Y0 = 250, H = 150;
+    const ux = (u) => X0 + W * ((u + 1.35) / 2.7);
+    const uy = (u) => Y0 - H * Math.min(Math.pow(u * u - 1, 2), 1.6);
+    const half = (tt) => {
+      if (tt < 0.8) return { x: -1, ph: 0 };
+      if (tt < 3.4) return { x: -1 + 0.97 * sm(0.8, 3.4, tt), ph: 1 };
+      if (tt < 3.8) return { x: -0.03 + 0.03 * sm(3.4, 3.8, tt), ph: 2 };
+      if (tt < 4.2) { const s = (tt - 3.8) / 0.4; return { x: 1.12 * s * s, ph: 3 }; }
+      const tau = tt - 4.2;
+      return { x: 1 + 0.12 * Math.cos(2 * Math.PI * tau / 0.32) * Math.exp(-tau / 0.26), ph: tau < 0.8 ? 4 : 5 };
+    };
+    const snap = {
+      id: 'snap', dur: 10, chapters: [0.4, 3.6, 5.4],
+      phases: {
+        A: { title: 'Resting in one valley', v1: '−ψ', v2: 'Low', v3: 'As long as you like', note: 'The clip sits happily in one of its two shapes. Leave it alone and it stays there, with no power needed.' },
+        load: { title: 'Pushed slowly up the hill', v1: '−ψ → 0°', v2: 'Rising', v3: '≈ 5 s (plastic clip)', note: 'An actuator pushes the clip slowly. The ribbon bends and twists, storing energy, but nothing dramatic happens yet: this is the slow part, about 5 seconds for the paper’s plastic clip.' },
+        tip: { title: 'Pushed to the top of the hill', v1: '≈ 0°', v2: 'Maximum', v3: 'Seconds to reach', note: 'At the top of the hill the bent ribbon holds the most energy it can. The slightest extra push now tips it over.' },
+        snap: { title: 'Snap!', v1: '0° → +ψ', v2: 'Released', v3: '≈ 40 ms (plastic)', note: 'Over the top, the stored energy is released all at once and the tail whips across: about 40 ms for the plastic clip and 16 ms for the steel one. It is slowed down here so you can see it.' },
+        wob: { title: 'Wobbling into the other valley', v1: '≈ +ψ', v2: 'Draining away', v3: '≈ 1 s', note: 'The tail overshoots and rings back and forth for about a second before it settles.' },
+        B: { title: 'Snapped into the other valley', v1: '+ψ', v2: 'Low', v3: '40 ms to get here', note: 'It now rests in the mirror-image shape, again with no power needed. Push the other way and it snaps back: two snaps make one beat of the tail.' },
+        loadB: { title: 'Pushed back up the hill', v1: '+ψ → 0°', v2: 'Rising', v3: '≈ 5 s (plastic clip)', note: 'Now the actuator pushes the other way, slowly loading the ribbon again.' },
+        snapA: { title: 'Snap back!', v1: '0° → −ψ', v2: 'Released', v3: '≈ 40 ms (plastic)', note: 'Over the top again, and the tail whips back to the first side, slowed down here. Two snaps, one full tail beat.' },
+        wobA: { title: 'Wobbling back into the first valley', v1: '≈ −ψ', v2: 'Draining away', v3: '≈ 1 s', note: 'Another second of wobble, and the clip is back where it started.' }
+      },
+      frame: (t, root) => {
+        const r = root.__r || (root.__r = {
+          ball: root.querySelector('[data-r="ball"]'), tail: root.querySelector('[data-r="tail"]'),
+          fin: root.querySelector('[data-r="fin"]'), lab: root.querySelector('[data-r="lab"]'), slow: root.querySelector('[data-r="slow"]')
+        });
+        const second = t >= 5;
+        const h = half(second ? t - 5 : t);
+        const dir = second ? -1 : 1;
+        const x = h.x * dir;
+        const PH = second ? ['B', 'loadB', 'tip', 'snapA', 'wobA', 'A'] : ['A', 'load', 'tip', 'snap', 'wob', 'B'];
+        const ph = PH[h.ph];
+        const K = { A: 0, wobA: 0, snapA: 0, load: 1, tip: 1, loadB: 1, snap: 2, wob: 2, B: 2 };
+        r.ball.setAttribute('cx', f1(ux(x)));
+        r.ball.setAttribute('cy', f1(uy(x) - 11));
+        // top view of the tail: a quadratic bend at rest, an S-curve near the tipping point
+        const ax = Math.min(Math.abs(x), 1);
+        let px = 520, py = 96, d = 'M520 96', a = 0;
+        for (let i = 1; i < 28; i++) {
+          const s = i / 27;
+          a = (34 * Math.PI / 180) * x * s * s + dir * (14 * Math.PI / 180) * Math.sin(1.5 * Math.PI * s) * s * (1 - ax);
+          px += 5.4 * Math.sin(a); py += 5.4 * Math.cos(a);
+          d += ' L' + f1(px) + ' ' + f1(py);
+        }
+        r.tail.setAttribute('d', d);
+        const fx = (dx, dy) => [px + dx * Math.cos(a) + dy * Math.sin(a), py - dx * Math.sin(a) + dy * Math.cos(a)];
+        const p1 = fx(-26, 30), p2 = fx(0, 14), p3 = fx(26, 30);
+        r.fin.setAttribute('d', 'M' + f1(px) + ' ' + f1(py) + ' L' + f1(p1[0]) + ' ' + f1(p1[1]) + ' L' + f1(p2[0]) + ' ' + f1(p2[1]) + ' L' + f1(p3[0]) + ' ' + f1(p3[1]) + ' Z');
+        const word = { A: 'resting', B: 'resting', load: 'loading', loadB: 'loading', tip: 'at the tipping point', snap: 'snapping', snapA: 'snapping', wob: 'wobbling', wobA: 'wobbling' }[ph];
+        if (r.lab.textContent !== word) r.lab.textContent = word;
+        const sl = h.ph === 3 ? 1 : (h.ph === 4 ? Math.max(0, 1 - (h.ph === 4 ? ((second ? t - 5 : t) - 4.2) / 0.5 : 1)) : 0);
+        r.slow.setAttribute('opacity', f1(sl));
+        return { k: K[ph], ph: ph };
+      }
+    };
+    return [snap];
   }
   renderVals() {
     const st = this.state || {};

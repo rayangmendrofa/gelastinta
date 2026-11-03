@@ -21,8 +21,8 @@ for (const f of fs.readdirSync(from).filter((x) => x.endsWith('.dc.html'))) {
     const b = m ? m.index + 1 : -1;
     if (a < 0 || b < 0) throw new Error(`${f}: comment block not found`);
     s = s.slice(0, a) + comment + s.slice(b);
-    s = s.replace(/componentDidMount\(\) \{ this\.gtStart\(0\);( this\.gtMedia\(0\);)? \}/,
-      (m, media) => `componentDidMount() { this.gtStart(0);${media || ''} this.cmMount(); }`);
+    s = s.replace(/componentDidMount\(\) \{ this\.gtStart\(0\);( this\.gtMedia\(0\);)?( this\.gtFigs\(\);)? \}/,
+      (m, media, figs) => `componentDidMount() { this.gtStart(0);${media || ''}${figs || ''} this.cmMount(); }`);
     if (!s.includes('this.cmMount(); }')) throw new Error(`${f}: componentDidMount hook not found`);
   }
   if (f === 'Projects.dc.html') {

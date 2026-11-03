@@ -303,6 +303,14 @@ h2.t-h2::after,.sec-head .t-h2::after{content:"";display:block;width:56px;height
 .find{border-top:5px solid #AB544D}
 ::selection{background:#D9A79F;color:#231E15}
 /* theme:end */
+/* fig:start */
+.fig-ch{align-items:center}
+.ratio button.fig-play{margin-left:auto;min-width:92px}
+.fig-track{height:3px;background:#DFD9CD;margin-top:-14px;overflow:hidden}
+.fig-track i{display:block;height:100%;background:#AB544D;transform-origin:0 50%;transform:scaleX(0)}
+@media (max-width:640px){.ratio button.fig-play{margin-left:0}}
+.leg-track{margin-top:0}
+/* fig:end */
 </style>
 </helmet>
 <div style="min-height:100vh" data-gt-root="">
@@ -394,34 +402,33 @@ h2.t-h2::after,.sec-head .t-h2::after{content:"";display:block;width:56px;height
 <h2 class="t-h2" style="margin:12px 0 18px">Why a spider?</h2>
 <p>What makes the spider useful here is precisely the feature that makes it unusual. Almost every vertebrate, and most other arthropods, extends limbs through opposing muscle pairs — one muscle pulls, another pushes back. The spider dispensed with the extensor side of that equation entirely, substituting a pressurised fluid system instead. This gives it a higher power density in a smaller space — more force relative to body mass — and the explosive movement capability that makes spiders effective hunters. Evolution solved a mechanical engineering problem in a way that engineers hadn’t seriously considered until they looked at the corpse.</p>
 </div>
-<div class="col-wide viz" style="margin-top:48px" role="group" aria-label="Chart A: choose a pressure and see how far the legs open and how hard they grip">
+<div class="col-wide viz" style="margin-top:48px" role="group" aria-label="Chart A, animated: as pressure rises the legs open and the grip fades; letting go closes them on the bead" data-fig="leg">
 <div class="viz-head">
-<span class="kicker">Chart A — Try it: squeeze the syringe</span>
+<span class="kicker">Chart A — Watch it: squeeze the syringe</span>
 <h3 class="t-h3">More pressure opens the legs; letting go makes it grip</h3>
-<p class="small muted" style="max-width:62ch">Pick a pressure. With none, the legs curl shut and squeeze hardest. Add air and they swing open, and the grip fades away. A live spider’s legs sit at about 4–6 kPa.</p>
+<p class="small muted" style="max-width:62ch">Watch the pressure rise. With none, the legs curl shut and squeeze hardest. Add air and they swing open, and the grip fades away; let go and they close on the bead. A live spider’s legs sit at about 4–6 kPa. Pick a pressure to pause on it.</p>
 </div>
 <div class="viz-body stack g24">
-<div class="ratio" aria-label="Pressure in kilopascals">
-<sc-for list="{{press}}" as="p" hint-placeholder-count="7"><button type="button" class="{{p.on}}" aria-pressed="{{p.aria}}" onClick="{{p.pick}}">{{p.label}}</button></sc-for>
-</div>
+<div class="ratio fig-ch" aria-label="Pressure in kilopascals"><button type="button" data-ch="0" class="on" aria-pressed="true">0 kPa</button><button type="button" data-ch="1" class="" aria-pressed="false">1 kPa</button><button type="button" data-ch="2" class="" aria-pressed="false">2 kPa</button><button type="button" data-ch="3" class="" aria-pressed="false">3 kPa</button><button type="button" data-ch="4" class="" aria-pressed="false">4 kPa</button><button type="button" data-ch="5" class="" aria-pressed="false">5.5 kPa</button><button type="button" data-ch="6" class="" aria-pressed="false">6.9 kPa</button><button type="button" class="fig-play" data-fig-play aria-pressed="true" aria-label="Pause the animation"><span aria-hidden="true">‖</span> Pause</button></div>
 <div class="bin-grid">
 <div><svg class="leg-svg" viewBox="0 0 360 230" role="img" aria-label="Diagram of the necrobotic gripper from the front: a needle enters the spider's body; its legs open as pressure rises and close around a red bead when pressure is released">
 <line x1="180" y1="0" x2="180" y2="56" stroke="#8A7E66" stroke-width="5"></line>
-<ellipse cx="180" cy="54" rx="9" ry="6" fill="#5B7BE8" opacity=".85"></ellipse>
+<ellipse data-r="gas" cx="180" cy="54" rx="9" ry="6" fill="#5B7BE8" opacity=".85"></ellipse>
 <circle cx="180" cy="165" r="10" fill="#AB544D"></circle>
 <line x1="180" y1="175" x2="180" y2="228" stroke="#231E15" stroke-width="3"></line>
-<g transform="rotate({{leg.r1}} 205 82)"><line x1="205" y1="82" x2="233.0" y2="159.1" stroke="#4A3426" stroke-width="9" stroke-linecap="round"></line><g transform="rotate({{leg.r2}} 233.0 159.1)"><line x1="233.0" y1="159.1" x2="185.0" y2="159.1" stroke="#4A3426" stroke-width="7" stroke-linecap="round"></line><circle cx="233.0" cy="159.1" r="6" fill="#2B1D14"></circle></g></g>
-<g transform="translate(360,0) scale(-1,1)"><g transform="rotate({{leg.r1}} 205 82)"><line x1="205" y1="82" x2="233.0" y2="159.1" stroke="#4A3426" stroke-width="9" stroke-linecap="round"></line><g transform="rotate({{leg.r2}} 233.0 159.1)"><line x1="233.0" y1="159.1" x2="185.0" y2="159.1" stroke="#4A3426" stroke-width="7" stroke-linecap="round"></line><circle cx="233.0" cy="159.1" r="6" fill="#2B1D14"></circle></g></g></g>
+<g data-r="r1" transform="rotate(0 205 82)"><line x1="205" y1="82" x2="233.0" y2="159.1" stroke="#4A3426" stroke-width="9" stroke-linecap="round"></line><g data-r="r2" transform="rotate(0 233 159.1)"><line x1="233.0" y1="159.1" x2="185.0" y2="159.1" stroke="#4A3426" stroke-width="7" stroke-linecap="round"></line><circle cx="233.0" cy="159.1" r="6" fill="#2B1D14"></circle></g></g>
+<g transform="translate(360,0) scale(-1,1)"><g data-r="r1" transform="rotate(0 205 82)"><line x1="205" y1="82" x2="233.0" y2="159.1" stroke="#4A3426" stroke-width="9" stroke-linecap="round"></line><g data-r="r2" transform="rotate(0 233 159.1)"><line x1="233.0" y1="159.1" x2="185.0" y2="159.1" stroke="#4A3426" stroke-width="7" stroke-linecap="round"></line><circle cx="233.0" cy="159.1" r="6" fill="#2B1D14"></circle></g></g></g>
 <ellipse cx="180" cy="78" rx="34" ry="25" fill="#5A4030"></ellipse>
 <text x="12" y="22" font-size="13" font-family="JetBrains Mono, monospace" fill="#544D40">needle + glue</text>
-</svg></div>
+<text data-r="pk" x="348" y="22" text-anchor="end" font-size="13" font-family="JetBrains Mono, monospace" fill="#231E15" font-weight="700">0.0 kPa</text>
+</svg><div class="fig-track leg-track" aria-hidden="true"><i data-fig-bar></i></div></div>
 <div class="stack g16">
 <div class="readout v">
-<div><span>State</span><b>{{leg.state}}</b></div>
-<div><span>Leg swings open by</span><b>{{leg.a}}°</b></div>
-<div><span>Grip force</span><b style="color:#AB544D">{{leg.force}}</b></div>
+<div><span>State</span><b data-fig-f="state">Closed · gripping</b></div>
+<div><span>Leg swings open by</span><b data-r="ang">0°</b></div>
+<div><span>Grip force</span><b style="color:#AB544D" data-fig-f="force">0.35 mN</b></div>
 </div>
-<p class="small">{{leg.note}}</p>
+<p class="small" data-fig-f="note" data-fig-note aria-live="off">No pressure: the legs curl shut and squeeze hardest. This is how the gripper holds on, with no power at all.</p>
 </div>
 </div>
 </div>
@@ -609,8 +616,9 @@ h2.t-h2::after,.sec-head .t-h2::after{content:"";display:block;width:56px;height
 <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":9200}}'>
 class Component extends DCLogic {
   // ── GelasTinta motion layer (anime.js v4) ─────────────────────────────
-  componentDidMount() { this.gtStart(0); this.gtMedia(0); this.cmMount(); }
+  componentDidMount() { this.gtStart(0); this.gtMedia(0); this.gtFigs(); this.cmMount(); }
   componentWillUnmount() {
+    this.gtFigStop();
     clearTimeout(this.gtWait);
     clearInterval(this.gtSlideT);
     clearTimeout(this.gtMediaWait);
@@ -1115,6 +1123,141 @@ class Component extends DCLogic {
         set({ user: null, err: '' });
       }
     };
+  }
+  gtFigs() {
+    const defs = this.figDefs ? this.figDefs() : [];
+    this.gtFigList = this.gtFigList || [];
+    defs.forEach((d) => {
+      const el = document.querySelector('[data-fig="' + d.id + '"]');
+      if (el && !el.__fig) this.gtFigList.push(this.gtFigRun(el, d));
+    });
+  }
+  gtFigStop() { (this.gtFigList || []).forEach((f) => f && f.stop && f.stop()); this.gtFigList = []; }
+  gtFigRun(root, d) {
+    const still = () => !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+    const q = (s) => root.querySelector(s);
+    const qa = (s) => Array.from(root.querySelectorAll(s));
+    const btns = qa('[data-ch]'), play = q('[data-fig-play]'), bar = q('[data-fig-bar]'), note = q('[data-fig-note]');
+    const fields = qa('[data-fig-f]');
+    const F = { t: d.chapters[0], target: null, stopAt: null, playing: d.autoplay !== false && !still(), visible: false, raf: 0, last: 0, k: -1, ph: null };
+    root.__fig = F;
+    const label = () => {
+      if (!play) return;
+      play.setAttribute('aria-pressed', F.playing ? 'true' : 'false');
+      play.setAttribute('aria-label', F.playing ? 'Pause the animation' : 'Play the animation');
+      play.innerHTML = F.playing ? '<span aria-hidden="true">‖</span> Pause' : '<span aria-hidden="true">▶</span> Play';
+      if (note) note.setAttribute('aria-live', F.playing ? 'off' : 'polite');
+    };
+    const draw = () => {
+      const r = d.frame(F.t, root) || {};
+      if (r.k !== F.k) {
+        F.k = r.k;
+        btns.forEach((b, i) => { const on = i === r.k; b.className = on ? 'on' : ''; b.setAttribute('aria-pressed', on ? 'true' : 'false'); });
+      }
+      if (r.ph !== F.ph && d.phases && d.phases[r.ph]) {
+        F.ph = r.ph;
+        const P = d.phases[r.ph];
+        fields.forEach((el) => { const k = el.getAttribute('data-fig-f'); if (P[k] != null && el.textContent !== P[k]) el.textContent = P[k]; });
+      }
+      if (bar) bar.style.transform = 'scaleX(' + (F.t / d.dur).toFixed(4) + ')';
+    };
+    const tick = (now) => {
+      F.raf = 0;
+      const dt = F.last ? Math.min((now - F.last) / 1000, 1 / 30) : 1 / 60;
+      F.last = now;
+      if (F.target != null) {
+        const gap = F.target - F.t;
+        F.t += gap * (1 - Math.exp(-dt / 0.16));
+        if (Math.abs(F.target - F.t) < 0.004) { F.t = F.target; F.target = null; }
+      } else if (F.playing) {
+        F.t += dt;
+        if (F.stopAt != null && F.t >= F.stopAt) { F.t = F.stopAt; F.stopAt = null; F.playing = false; label(); }
+        else if (F.t >= d.dur) F.t = d.loop === false ? d.dur : F.t % d.dur;
+      }
+      draw();
+      if (F.visible && (F.playing || F.target != null)) F.raf = requestAnimationFrame(tick);
+    };
+    const kick = () => { if (!F.raf && F.visible) { F.last = 0; F.raf = requestAnimationFrame(tick); } };
+    const seek = (t) => {
+      F.playing = false; label();
+      if (still()) { F.t = t; F.target = null; draw(); } else { F.target = t; kick(); }
+    };
+    // segments: a chapter plays its own stretch at normal speed and stops (used where autoplay would spoil a puzzle)
+    const playSeg = (i) => {
+      const a = d.segments[i][0], b = d.segments[i][1];
+      F.target = null;
+      if (still()) { F.t = b; F.playing = false; label(); draw(); return; }
+      if (b < F.t - 0.01) { F.playing = false; F.stopAt = null; F.target = b; label(); kick(); return; }
+      if (F.t < a) F.t = a;
+      F.stopAt = b; F.playing = true; label(); kick();
+    };
+    btns.forEach((b, i) => b.addEventListener('click', () => (d.segments ? playSeg(i) : seek(d.chapters[i]))));
+    if (play) play.addEventListener('click', () => { F.playing = !F.playing; F.target = null; F.stopAt = null; label(); kick(); });
+    const io = window.IntersectionObserver ? new IntersectionObserver((es) => {
+      F.visible = es[es.length - 1].isIntersecting;
+      if (F.visible) kick();
+    }, { rootMargin: '120px 0px' }) : null;
+    if (io) io.observe(root); else { F.visible = true; }
+    F.show = (t) => { F.playing = false; F.target = null; F.t = t; label(); draw(); };
+    label(); draw(); kick();
+    return { stop: () => { if (F.raf) cancelAnimationFrame(F.raf); F.raf = 0; if (io) io.disconnect(); root.__fig = null; } };
+  }
+  figDefs() {
+    const f1 = (v) => Math.round(v * 10) / 10;
+    const sm = (a, b, x) => { x = Math.max(0, Math.min(1, (x - a) / (b - a))); return x * x * (3 - 2 * x); };
+    // measured rows (pressure kPa, trochanter opening a1°, a2°) from the paper's Fig. 3
+    const P = [
+      { p: 0, a1: 0, a2: 0, f: '0.35 mN', s: 'Closed · gripping', n: 'No pressure: the legs curl shut and squeeze hardest. This is how the gripper holds on, with no power at all.' },
+      { p: 1, a1: 2, a2: 7, f: '≈0.17 mN', s: 'Loosening', n: 'A little pressure barely moves the legs, but it already halves the grip.' },
+      { p: 2, a1: 8, a2: 9, f: '≈0.04 mN', s: 'Loosening', n: 'The grip is almost gone even though the legs have only just started to open.' },
+      { p: 3, a1: 22, a2: 7, f: 'too open to grip', s: 'Opening', n: 'The legs swing outward quickly from here.' },
+      { p: 4, a1: 41, a2: 7, f: 'too open to grip', s: 'Opening', n: 'Now inside the range a living spider uses (about 4–6 kPa).' },
+      { p: 5.5, a1: 55, a2: 6, f: 'too open to grip', s: 'Open · ready to grab', n: '5.5 kPa is the pressure the team used to open the gripper before closing it on an object.' },
+      { p: 6.9, a1: 58, a2: 12, f: 'too open to grip', s: 'Fully open', n: 'Past about 6 kPa the leg barely opens further; pushing harder risks damaging the joints.' }
+    ];
+    const at = (p, key) => {
+      if (p <= 0) return P[0][key];
+      for (let i = 1; i < P.length; i++) if (p <= P[i].p) { const u = (p - P[i - 1].p) / (P[i].p - P[i - 1].p); return P[i - 1][key] + (P[i][key] - P[i - 1][key]) * u; }
+      return P[P.length - 1][key];
+    };
+    // 0–1.4 s closed · 1.4–7.4 s pressure rises steadily to 6.9 kPa · hold · 8.6–9.6 s let go · closed on the bead
+    const RAMP0 = 1.4, RAMP = 6, MAX = 6.9;
+    const pressureAt = (t) => {
+      if (t < RAMP0) return 0;
+      if (t < RAMP0 + RAMP) return MAX * (t - RAMP0) / RAMP;
+      if (t < 8.6) return MAX;
+      return MAX * (1 - sm(8.6, 9.6, t));
+    };
+    const phases = {};
+    P.forEach((r, i) => { phases['p' + i] = { state: r.s, force: r.f, note: r.n }; });
+    phases.rel = { state: 'Letting go · closing', force: 'grip returning', note: 'Release the pressure and the legs spring shut by themselves, closing around the bead. Gripping needs no power at all; only opening does.' };
+    phases.grip = { state: 'Closed · gripping', force: '0.35 mN', note: 'Shut again with the pressure gone: the legs squeeze hardest at 0 kPa and can hold on indefinitely without any energy input.' };
+    const leg = {
+      id: 'leg', dur: 13,
+      chapters: P.map((r, i) => i === 0 ? 0.7 : RAMP0 + RAMP * r.p / MAX + (i === P.length - 1 ? 0.3 : 0)),
+      phases: phases,
+      frame: (t, root) => {
+        const r = root.__r || (root.__r = {
+          r1: Array.from(root.querySelectorAll('[data-r="r1"]')), r2: Array.from(root.querySelectorAll('[data-r="r2"]')),
+          gas: root.querySelector('[data-r="gas"]'), pk: root.querySelector('[data-r="pk"]'), ang: root.querySelector('[data-r="ang"]')
+        });
+        const p = pressureAt(t);
+        const a1 = at(p, 'a1'), a2 = at(p, 'a2');
+        r.r1.forEach((g) => g.setAttribute('transform', 'rotate(' + f1(-a1) + ' 205 82)'));
+        r.r2.forEach((g) => g.setAttribute('transform', 'rotate(' + f1(-a2) + ' 233 159.1)'));
+        r.gas.setAttribute('rx', f1(9 + 1.1 * p)); r.gas.setAttribute('ry', f1(6 + 0.7 * p));
+        const pt = p.toFixed(1) + ' kPa';
+        if (r.pk.textContent !== pt) r.pk.textContent = pt;
+        const at1 = Math.round(a1) + '°';
+        if (r.ang.textContent !== at1) r.ang.textContent = at1;
+        let k = 0; for (let i = 0; i < P.length; i++) if (p >= P[i].p - 1e-6) k = i;
+        let ph = 'p' + k;
+        if (t >= 8.6 && t < 9.6) ph = 'rel';
+        else if (t >= 9.6) ph = 'grip';
+        return { k: k, ph: ph };
+      }
+    };
+    return [leg];
   }
   renderVals() {
     const st = this.state || {};
