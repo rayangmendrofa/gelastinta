@@ -19,6 +19,7 @@ and *Talks* — reviews of scientific papers told with a personal take, somewher
 | ↳ [BEng dissertation](https://gelastinta.com/projects/beng-dissertation/) | Constructing and analysing a modified prosthetic hand (Exeter) |
 | ↳ [InMoov hand](https://gelastinta.com/projects/inmoov-hand/) | Hobby replication of Gaël Langevin's open-source InMoov robot hand |
 | ↳ [Fly brain on sugar](https://gelastinta.com/projects/fly-brain-sugar/) | Hobby simulation: the published whole-brain model of the fruit fly (Shiu et al. 2024), fed sugar and replayed spike by spike |
+| ↳ [Gesture Music](https://gelastinta.com/projects/gesture-music/) | Hobby build: a webcam instrument played with hand signs ([code](https://github.com/rayangmendrofa/OpenCV-handsign-midi)), with its handbook |
 | [Talks](https://gelastinta.com/talks/) | Paper reviews with interactive figures and a personal take |
 | ↳ [Fly connectome](https://gelastinta.com/talks/fly-connectome/) | *The Whole Fly, Wired* — mapping, simulating and comparing fruit fly brains (three papers) |
 | ↳ [Hair clip fish](https://gelastinta.com/talks/hair-clip-fish/) | *Snap Out of It* — a robot fish that swims on a bistable hair clip mechanism |

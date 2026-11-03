@@ -23,6 +23,7 @@ const PAGES = new Set([
   "/projects/msc-dissertation",
   "/projects/inmoov-hand",
   "/projects/fly-brain-sugar",
+  "/projects/gesture-music",
 ])
 
 type Stored = { name: string; email: string; text: string; at: number }
