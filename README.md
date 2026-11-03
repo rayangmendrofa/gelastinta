@@ -21,6 +21,7 @@ and *Talks* — reviews of scientific papers told with a personal take, somewher
 | ↳ [Fly brain on sugar](https://gelastinta.com/projects/fly-brain-sugar/) | Hobby simulation: the published whole-brain model of the fruit fly (Shiu et al. 2024), fed sugar and replayed spike by spike |
 | ↳ [Gesture Music](https://gelastinta.com/projects/gesture-music/) | Hobby build: a webcam instrument played with hand signs ([code](https://github.com/rayangmendrofa/OpenCV-handsign-midi)), with its handbook |
 | [Talks](https://gelastinta.com/talks/) | Paper reviews with interactive figures and a personal take |
+| ↳ [Cyberpunk implants](https://gelastinta.com/talks/cyberpunk-implants/) | *Chrome and Consequences* — the science and fiction of Cyberpunk 2077 and Edgerunners’ implants |
 | ↳ [Fly connectome](https://gelastinta.com/talks/fly-connectome/) | *The Whole Fly, Wired* — mapping, simulating and comparing fruit fly brains (three papers) |
 | ↳ [Hair clip fish](https://gelastinta.com/talks/hair-clip-fish/) | *Snap Out of It* — a robot fish that swims on a bistable hair clip mechanism |
 | ↳ [Modular legs](https://gelastinta.com/talks/modular-legs/) | *Microbot is not quite Micro* — reconfigurable robot legs that design themselves |
