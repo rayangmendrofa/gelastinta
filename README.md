@@ -31,7 +31,7 @@ and *Talks* — reviews of scientific papers told with a personal take, somewher
 | ↳ [Necrobotics](https://gelastinta.com/talks/necrobotics/) | When necromancy leaves the game and enters the skill tree |
 | ↳ [Crack-headed salmon](https://gelastinta.com/talks/crack-headed-salmon/) | Pharmaceutical pollution and fish behaviour |
 | ↳ [Cooking and science](https://gelastinta.com/talks/cooking-and-science/) | The physics of a perfect cacio e pepe |
-| [Products](https://gelastinta.com/products/) | Coming soon — work in progress with [rtechm.com](https://rtechm.com) |
+| [Products](https://gelastinta.com/products/) | Products & Services: explainer packages, things from the workshop, and work in progress with [rtechm.com](https://rtechm.com) |
 | [Author](https://gelastinta.com/author/) | Background, education, skills and life around the studies |
 
 Readers can leave comments on every Talk and project write-up.

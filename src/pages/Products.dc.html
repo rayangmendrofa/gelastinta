@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>GelasTinta — Products</title>
+<title>GelasTinta — Products &amp; Services</title>
 <script src="./support.js"></script>
 <script src="/_blob/59800ae8dd311e216394a93b57b5c5e9"></script>
 </head>
@@ -122,6 +122,47 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 .wada-credit{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:11px;letter-spacing:.06em;color:#C9CED8}
 .wada-credit .wada-mini{margin-left:0;border-color:#3A4152}
 /* wadasite:end */
+/* wwm:start */
+.jump a{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid #C9CED8;color:#10131C;text-decoration:none;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:700;font-size:18px}
+.jump a span{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;font-weight:400;color:#3A4152}
+.jump a:hover{color:#2B44C8}
+.pk-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;align-items:stretch}
+.pk{display:flex;flex-direction:column;background:#FFFFFF;border:1px solid #10131C;border-top:10px solid var(--pc)}
+.pk-top{padding:24px 24px 16px;display:flex;flex-direction:column;gap:8px}
+.pk-n{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.1em;color:#3A4152}
+.pk-price{padding:16px 24px;border-top:1px solid #C9CED8;border-bottom:1px solid #C9CED8;display:flex;flex-direction:column;gap:2px}
+.pk-price b{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:34px;line-height:1.1;letter-spacing:-.02em}
+.pk-list{list-style:none;margin:0;padding:18px 24px;display:flex;flex-direction:column;gap:10px;flex:1}
+.pk-list li{position:relative;padding-left:22px;font-size:16px;line-height:1.45}
+.pk-list li::before{content:"";position:absolute;left:0;top:.55em;width:10px;height:10px;background:var(--pc);border:1px solid #10131C}
+.pk-foot{padding:0 24px 24px;display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+.pk-sample{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;color:#2B44C8}
+.pk-extra{margin-top:40px;display:flex;flex-direction:column;gap:14px}
+.pk-dl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin:0;border-top:1px solid #10131C}
+.pk-dl div{padding:14px 16px 14px 0;border-bottom:1px solid #C9CED8}
+.pk-dl dt{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:700;font-size:17px}
+.pk-dl dd{margin:4px 0 0;font-size:15px;line-height:1.5;color:#3A4152}
+.pr-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:40px;align-items:start}
+.pr-steps{list-style:none;margin:0;padding:0;border-top:1px solid #10131C}
+.pr-steps li{display:grid;grid-template-columns:48px minmax(0,1fr);gap:12px;padding:16px 0;border-bottom:1px solid #C9CED8}
+.pr-steps b{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:28px;line-height:1;color:#2B44C8}
+.pr-steps div{display:flex;flex-direction:column;gap:4px}
+.st-t{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:700;font-size:19px}
+.st-d{font-size:16px;line-height:1.5;color:#3A4152}
+.pr-list{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;font-size:16px;line-height:1.45}
+.ws{display:flex;flex-direction:column;border:1px solid #3A4152;background:#1A1F2E;color:#EDEFF2;text-decoration:none}
+a.ws:hover{border-color:#EDEFF2;color:#EDEFF2}
+a.ws:hover .ws-go{text-decoration:underline}
+.ws-img{display:block;height:200px;overflow:hidden;border-bottom:1px solid #3A4152}
+.ws-img img{display:block;width:100%;height:100%}
+.ws-soon{display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(135deg,#1A1F2E 0 14px,#232A3D 14px 28px)}
+.ws-soon span{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.2em;color:#8FA2FF;border:1px dashed #8FA2FF;padding:8px 14px}
+.ws-body{display:flex;flex-direction:column;gap:10px;padding:22px;align-items:flex-start}
+.ws .muted{color:#C9CED8}
+.ws-go{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#8FA2FF}
+@media (max-width:960px){.pk-grid{grid-template-columns:minmax(0,1fr)}.pk-dl{grid-template-columns:repeat(2,minmax(0,1fr))}.pr-grid{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:640px){.pk-dl{grid-template-columns:minmax(0,1fr)}.pk-price b{font-size:30px}}
+/* wwm:end */
 </style>
 </helmet>
 <div style="min-height:100vh" data-gt-root="">
@@ -140,16 +181,90 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 </header>
 
 <section class="sec grid-bg rule-b">
-<div class="wrap stack g24">
-<p class="kicker">Sheet 03 — Gelas Tinta</p>
-<h1 class="t-hero">Products</h1>
-<div class="chips"><span class="chip warn">Coming soon</span></div>
-<p class="lead prose">This section is unavailable at the moment.<br>Apologies for the inconveniences.</p>
+<div class="wrap split">
+<div class="stack g24">
+<p class="kicker">Sheet 03 — Work with me</p>
+<h1 class="t-hero">Products &amp; Services</h1>
+<p class="lead prose">Every talk and project on this site was researched, written, drawn and built by me. The same work is available for your paper, thesis or project: clear writing, honest figures, and pages people actually want to read.</p>
+<div class="chips" style="gap:12px"><a class="btn" href="#services">See the packages <span aria-hidden="true">↓</span></a><a class="btn ghost" href="#contact">Start a project</a></div>
+</div>
+<nav class="card jump stack g16" aria-label="On this page" style="align-self:end">
+<p class="kicker">On this page</p>
+<div class="stack">
+<a href="#services">Services <span>01 ↓</span></a>
+<a href="#process">How it works <span>02 ↓</span></a>
+<a href="#workshop">From the workshop <span>03 ↓</span></a>
+<a href="#rtm">PT RTM · rtechm.com <span>04 ↓</span></a>
+<a href="#contact">Contact <span>05 ↓</span></a>
+</div>
+</nav>
 </div>
 </section>
 
-<section class="sec">
+<section id="services" class="sec">
 <div class="wrap">
+<div class="sec-head row">
+<div class="stack g12">
+<p class="kicker">01 — Research, made readable</p>
+<h2 class="t-h2">Services</h2>
+</div>
+<p class="meta muted">Fixed packages, clear scope, no hourly surprises</p>
+</div>
+<div class="pk-grid"><article class="pk" style="--pc:#FDC57E"><div class="pk-top"><span class="pk-n">01</span><h3 class="t-h3">Visual Abstract</h3><p class="muted small">One picture that explains a paper or project at a glance.</p></div><div class="pk-price"><span class="kicker">From</span><b>Rp 750rb</b><span class="meta">or $60 · 3 to 5 days</span></div><ul class="pk-list"><li>One designed figure summarising your paper or project</li><li>A square version sized for social media</li><li>Your logo and brand colours if you have them</li><li>PNG, PDF and SVG files</li></ul><div class="pk-foot"><a class="pk-sample" href="Projects.dc.html#infographics">Example: my infographics →</a><a class="btn" href="mailto:mendrofarayang@gmail.com?subject=Visual%20Abstract%20enquiry">Ask about this <span aria-hidden="true">→</span></a></div></article><article class="pk" style="--pc:#A36AA5"><div class="pk-top"><span class="pk-n">02</span><h3 class="t-h3">Paper Explainer</h3><p class="muted small">Your research, written so anyone can follow it.</p></div><div class="pk-price"><span class="kicker">From</span><b>Rp 2,5 jt</b><span class="meta">or $250 · 1 to 2 weeks</span></div><ul class="pk-list"><li>A 1,200 to 2,000 word article in plain language</li><li>2 to 3 figures, redrawn from scratch</li><li>A share image for link previews</li><li>Ready to publish on your site, blog or newsletter</li></ul><div class="pk-foot"><a class="pk-sample" href="Talk-FlyConnectome.dc.html">Example: The Whole Fly, Wired →</a><a class="btn" href="mailto:mendrofarayang@gmail.com?subject=Paper%20Explainer%20enquiry">Ask about this <span aria-hidden="true">→</span></a></div></article><article class="pk" style="--pc:#2B44C8"><div class="pk-top"><span class="pk-n">03</span><h3 class="t-h3">Interactive Explainer</h3><p class="muted small">The full experience: a web page people can read and play with.</p></div><div class="pk-price"><span class="kicker">From</span><b>Rp 6 jt</b><span class="meta">or $600 · 2 to 4 weeks</span></div><ul class="pk-list"><li>Everything in the Paper Explainer</li><li>Built as a web page, like the talks on this site</li><li>One animated or interactive figure</li><li>HTML files you can host, or a page on your site</li></ul><div class="pk-foot"><a class="pk-sample" href="Talk-Cyberpunk.dc.html">Example: Chrome and Consequences →</a><a class="btn" href="mailto:mendrofarayang@gmail.com?subject=Interactive%20Explainer%20enquiry">Ask about this <span aria-hidden="true">→</span></a></div></article></div>
+<div class="pk-extra">
+<p class="kicker">Also available</p>
+<dl class="pk-dl"><div><dt>Thesis to portfolio page</dt><dd>Your thesis as a clean web page, like my dissertation pages. Price on request.</dd></div><div><dt>Monthly retainer</dt><dd>For labs and startups: e.g. 2 explainers + 4 social graphics a month, from Rp 6 jt.</dd></div><div><dt>Extra animated figure</dt><dd>Rp 1 to 2,5 jt</dd></div><div><dt>Second language</dt><dd>Bahasa Indonesia and English: add 30 to 40%</dd></div><div><dt>Rush delivery</dt><dd>Add 25%</dd></div><div><dt>Extra revision round</dt><dd>Rp 300 to 500rb</dd></div></dl>
+<p class="meta muted" style="font-size:12px">Prices are starting points. The final quote depends on the length of the source and how many figures it needs.</p>
+</div>
+</div>
+</section>
+
+<section id="process" class="sec white rule-t rule-b">
+<div class="wrap">
+<div class="sec-head row">
+<div class="stack g12">
+<p class="kicker">02 — The job, step by step</p>
+<h2 class="t-h2">How it works</h2>
+</div>
+<p class="meta muted">The same for every package</p>
+</div>
+<div class="pr-grid">
+<ol class="pr-steps"><li><b>1</b><div><span class="st-t">Kickoff</span><span class="st-d">I read your paper and we have a 30 minute call about the message and the audience.</span></div></li><li><b>2</b><div><span class="st-t">Outline and sketches</span><span class="st-d">You approve the outline and rough figure sketches before any design starts.</span></div></li><li><b>3</b><div><span class="st-t">Draft</span><span class="st-d">I write the text and design the figures.</span></div></li><li><b>4</b><div><span class="st-t">Two revision rounds</span><span class="st-d">Included in every package.</span></div></li><li><b>5</b><div><span class="st-t">Accuracy check</span><span class="st-d">You, or the researcher, sign off that the science is right.</span></div></li><li><b>6</b><div><span class="st-t">Delivery</span><span class="st-d">Final files: PNG, PDF and SVG, plus HTML for interactive work.</span></div></li></ol>
+<div class="stack g24">
+<div class="card stack g12"><p class="kicker">You provide</p><ul class="pr-list"><li>The paper, thesis or data</li><li>The one message people should remember</li><li>Who the audience is</li><li>Your logo and colours, if any</li><li>One contact person who approves things</li></ul></div>
+<div class="card stack g12"><p class="kicker">Not included</p><ul class="pr-list"><li>New research or data analysis beyond the source</li><li>Printing, or hosting on your site</li><li>Rewrites after the outline is approved (charged as a revision)</li></ul></div>
+<div class="chips pr-terms"><span class="chip">50% deposit to start</span><span class="chip">Two revision rounds</span><span class="chip">You own the final work</span><span class="chip">Figures redrawn, licence safe</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="workshop" class="sec dark">
+<div class="wrap">
+<div class="sec-head row">
+<div class="stack g12">
+<p class="kicker">03 — Made here</p>
+<h2 class="t-h2">From the workshop</h2>
+</div>
+<p class="meta muted">Things to download, play with or put on a wall</p>
+</div>
+<div class="cols-3 ws-grid">
+<a class="ws" href="Hobby-GestureMusic.dc.html"><span class="ws-img" style="background:#FFFFFF"><img src="/_blob/a50cc93e9ed9fa232711a3f74eb2bf40" alt="The Gesture Music hand sign dictionary: nine hand skeletons" loading="lazy" style="object-fit:contain;padding:18px"></span><span class="ws-body"><span class="chip fill">Free · open source</span><span class="t-h3">Gesture Music</span><span class="muted small">An instrument you play with hand signs on your webcam, with a 61 page handbook.</span><span class="ws-go">Get it →</span></span></a>
+<div class="ws"><span class="ws-img ws-soon" aria-hidden="true"><span>STARTER KIT</span></span><span class="ws-body"><span class="chip warn">Coming soon</span><span class="t-h3">Science explainer starter kit</span><span class="muted small">The templates, chart styles and colour guide behind my talks, with a short guide on using them.</span></span></div>
+<div class="ws"><span class="ws-img ws-soon" aria-hidden="true"><span>PRINTS</span></span><span class="ws-body"><span class="chip warn">Coming soon</span><span class="t-h3">Prints and postcards</span><span class="muted small">My own infographics and drawings, printed on demand.</span></span></div>
+</div>
+</div>
+</section>
+
+<section id="rtm" class="sec white rule-t rule-b">
+<div class="wrap">
+<div class="sec-head row" style="margin-bottom:28px">
+<div class="stack g12">
+<p class="kicker">04 — Currently working on</p>
+<h2 class="t-h2">PT RTM · rtechm.com</h2>
+</div>
+<p class="meta muted">Products from this work will appear here</p>
+</div>
 <article class="split mid" style="gap:0;border:1px solid #10131C;background:#FFFFFF">
 <div class="stack g24 feat-pad">
 <p class="kicker">Currently working on</p>
@@ -168,7 +283,7 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <dt>Availability</dt><dd>Coming soon</dd>
 </dl>
 <div class="chips" style="align-items:center;gap:12px">
-<span class="chip warn">Disclaimer — coming soon</span>
+<span class="chip warn">Coming soon</span>
 <a class="btn ghost" href="https://rtechm.com">Visit rtechm.com <span aria-hidden="true">↗</span></a>
 </div>
 </div>
@@ -182,17 +297,17 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 </div>
 </section>
 
-<section class="sec tight white rule-t">
+<section id="contact" class="sec tight">
 <div class="wrap split mid">
 <div class="stack g12">
-<p class="kicker">Meanwhile</p>
-<h2 class="t-h2">Reach the author</h2>
-<p class="muted">In the meantime, reach the author at:</p>
+<p class="kicker">05 — Start a project</p>
+<h2 class="t-h2">Let’s talk</h2>
+<p class="muted">Send the paper or a short description of your project, and I’ll reply with a quote.</p>
 </div>
 <div class="chips" style="gap:12px">
-<a class="btn" href="https://www.linkedin.com/in/raysmendrofa/"><img src="/_blob/49604cde322d454326d28d8c5cfe5ff8" alt="" style="width:22px;height:22px;background:#FFFFFF;border-radius:50%">linkedin.com/in/raysmendrofa <span aria-hidden="true">↗</span></a>
-<a class="btn ghost" href="mailto:mendrofarayang@gmail.com"><img src="/_blob/ee68aabd0584895696ec1ef146936038" alt="" style="width:22px;height:auto">Email</a>
+<a class="btn" href="mailto:mendrofarayang@gmail.com?subject=Project%20enquiry"><img src="/_blob/ee68aabd0584895696ec1ef146936038" alt="" style="width:22px;height:auto;background:#FFFFFF;border-radius:4px">Email me</a>
 <a class="btn ghost" href="https://wa.me/447376459918"><img src="/_blob/d7adca6684b39bdbd090afff2eeb09ea" alt="" style="width:22px;height:22px">WhatsApp +44</a>
+<a class="btn ghost" href="https://www.linkedin.com/in/raysmendrofa/"><img src="/_blob/49604cde322d454326d28d8c5cfe5ff8" alt="" style="width:22px;height:22px;background:#FFFFFF;border-radius:50%">LinkedIn <span aria-hidden="true">↗</span></a>
 </div>
 </div>
 </section>
