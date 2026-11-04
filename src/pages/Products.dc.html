@@ -163,13 +163,65 @@ a.ws:hover .ws-go{text-decoration:underline}
 @media (max-width:960px){.pk-grid{grid-template-columns:minmax(0,1fr)}.pk-dl{grid-template-columns:repeat(2,minmax(0,1fr))}.pr-grid{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:640px){.pk-dl{grid-template-columns:minmax(0,1fr)}.pk-price b{font-size:30px}}
 /* wwm:end */
+/* nl:start */
+.nl-box{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:20px 40px;align-items:center}
+.nl-form{display:flex;gap:10px;flex-wrap:wrap}
+.nl-form input[type=email]{flex:1 1 220px;min-height:48px;padding:0 16px;border:1px solid currentColor;border-radius:999px;background:transparent;color:inherit;font:inherit;font-size:16px}
+.nl-form input[type=email]:focus-visible{outline:3px solid #2B44C8;outline-offset:2px}
+.nl-form .btn{border:0;cursor:pointer}
+.nl-hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.nl-msg{display:none;grid-column:1 / -1;margin:0;padding:12px 16px;border:1px solid currentColor;font-size:16px}
+.nl-msg:target{display:block}
+.nl-support{grid-column:1 / -1;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.nl-support[hidden]{display:none}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:760px){.nl-box{grid-template-columns:minmax(0,1fr)}}
+/* nl:end */
+/* quote:start */
+.pk-grid.four{grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.pk-grid.four .pk-price b{font-size:28px}
+.pk-grid.four .pk-top,.pk-grid.four .pk-price,.pk-grid.four .pk-list,.pk-grid.four .pk-foot{padding-left:18px;padding-right:18px}
+.qc{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:32px;align-items:start}
+.qb-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
+.qb{display:flex;flex-direction:column;align-items:flex-start;gap:4px;min-height:64px;padding:12px 14px;border:1px solid #10131C;background:#FFFFFF;color:#10131C;text-align:left;cursor:pointer;font:inherit}
+.qb:hover{background:#EDEFF2}
+.qb:focus-visible{outline:3px solid #2B44C8;outline-offset:2px}
+.qb.on,.qb[aria-pressed="true"]{background:#2B44C8;border-color:#2B44C8;color:#FFFFFF}
+.qb-n{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:700;font-size:16px;line-height:1.2}
+.qb-p{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;opacity:.85}
+.qc-sum{position:sticky;top:96px}
+.qs-list{list-style:none;margin:0;padding:0;border-top:1px solid #10131C}
+.qs-list li{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid #C9CED8;font-size:15px}
+.qs-dl{margin:0;display:flex;flex-direction:column;gap:6px}
+.qs-dl div{display:flex;justify-content:space-between;gap:12px;font-size:15px}
+.qs-dl dt{color:#3A4152}.qs-dl dd{margin:0;text-align:right}
+.qs-total{display:flex;flex-direction:column;gap:2px;padding:12px 0;border-top:2px solid #10131C}
+.qs-total b{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:34px;line-height:1.1}
+.nl-wide{max-width:1000px}
+@media (max-width:1100px){.pk-grid.four{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:960px){.qc{grid-template-columns:minmax(0,1fr)}.qc-sum{position:static}}
+@media (max-width:640px){.pk-grid.four{grid-template-columns:minmax(0,1fr)}}
+/* quote:end */
+/* logo:start */
+.brand .bk-logo{overflow:visible;flex:0 0 auto}
+.bk-tip{transform-box:view-box;transform-origin:26px 29px;animation:bk-tip 3.6s 1.6s cubic-bezier(.45,.05,.3,1) both}
+.bk-liq{transform-box:fill-box;transform-origin:50% 100%;animation:bk-liq 3.6s 1.6s ease-in-out both}
+.bk-drop{opacity:0;animation:bk-drop 3.6s 1.6s ease-in both}
+.bk-drop.d2{animation-delay:1.85s}.bk-drop.d3{animation-delay:2.1s}
+.bk-pud{transform-box:fill-box;transform-origin:30% 50%;transform:scaleX(0);animation:bk-pud 3.6s 1.6s ease-out both}
+@keyframes bk-tip{0%{transform:rotate(0)}7%{transform:rotate(-7deg)}13%{transform:rotate(6deg)}19%{transform:rotate(-3deg)}31%{transform:rotate(56deg)}60%{transform:rotate(56deg)}74%{transform:rotate(-5deg)}81%{transform:rotate(2deg)}88%,100%{transform:rotate(0)}}
+@keyframes bk-liq{0%,30%{transform:scaleY(1)}58%{transform:scaleY(.14)}80%{transform:scaleY(.14)}100%{transform:scaleY(1)}}
+@keyframes bk-drop{0%,30%{opacity:0;transform:translate(0,0)}31%{opacity:1;transform:translate(0,0)}42%{opacity:1;transform:translate(1px,19px)}44%,100%{opacity:0;transform:translate(1px,19px)}}
+@keyframes bk-pud{0%,33%{transform:scaleX(0);opacity:1}58%{transform:scaleX(1);opacity:1}80%{transform:scaleX(1.05);opacity:1}96%,100%{transform:scaleX(1.12);opacity:0}}
+@media (prefers-reduced-motion:reduce){.bk-tip,.bk-liq,.bk-drop,.bk-pud{animation:none}.bk-pud,.bk-drop{opacity:0}}
+/* logo:end */
 </style>
 </helmet>
 <div style="min-height:100vh" data-gt-root="">
 
 <header class="site-head">
 <div class="wrap">
-<a href="Main.dc.html" class="brand"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M9.6 20 6.3 26.4A1.7 1.7 0 0 0 7.8 29h16.4a1.7 1.7 0 0 0 1.5-2.6L22.4 20z" fill="#2B44C8"></path><path d="M11 3h10M13 3v9L6 26.4A1.7 1.7 0 0 0 7.8 29h16.4a1.7 1.7 0 0 0 1.5-2.6L19 12V3" stroke="#10131C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>GelasTinta</a>
+<a href="Main.dc.html" class="brand"><svg class="bk-logo" width="44" height="28" viewBox="0 0 50 32" fill="none" aria-hidden="true"><ellipse class="bk-pud" cx="40" cy="30.2" rx="9" ry="1.7" fill="#2B44C8"></ellipse><circle class="bk-drop d1" cx="42" cy="9" r="1.4" fill="#2B44C8"></circle><circle class="bk-drop d2" cx="42" cy="9" r="1.4" fill="#2B44C8"></circle><circle class="bk-drop d3" cx="42" cy="9" r="1.4" fill="#2B44C8"></circle><g class="bk-tip"><g class="bk-liq"><path d="M9.6 20 6.3 26.4A1.7 1.7 0 0 0 7.8 29h16.4a1.7 1.7 0 0 0 1.5-2.6L22.4 20z" fill="#2B44C8"></path></g><path d="M11 3h10M13 3v9L6 26.4A1.7 1.7 0 0 0 7.8 29h16.4a1.7 1.7 0 0 0 1.5-2.6L19 12V3" stroke="#10131C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></g></svg>GelasTinta</a>
 <nav class="nav" aria-label="Main">
 <a href="Main.dc.html">Home</a>
 <a href="Projects.dc.html">Projects</a>
@@ -192,10 +244,12 @@ a.ws:hover .ws-go{text-decoration:underline}
 <p class="kicker">On this page</p>
 <div class="stack">
 <a href="#services">Services <span>01 ↓</span></a>
-<a href="#process">How it works <span>02 ↓</span></a>
-<a href="#workshop">From the workshop <span>03 ↓</span></a>
-<a href="#rtm">PT RTM · rtechm.com <span>04 ↓</span></a>
-<a href="#contact">Contact <span>05 ↓</span></a>
+<a href="#quote">Build your quote <span>02 ↓</span></a>
+<a href="#process">How it works <span>03 ↓</span></a>
+<a href="#workshop">From the workshop <span>04 ↓</span></a>
+<a href="#newsletter">Newsletter <span>05 ↓</span></a>
+<a href="#rtm">PT RTM · rtechm.com <span>06 ↓</span></a>
+<a href="#contact">Contact <span>07 ↓</span></a>
 </div>
 </nav>
 </div>
@@ -210,12 +264,28 @@ a.ws:hover .ws-go{text-decoration:underline}
 </div>
 <p class="meta muted">Fixed packages, clear scope, no hourly surprises</p>
 </div>
-<div class="pk-grid"><article class="pk" style="--pc:#FDC57E"><div class="pk-top"><span class="pk-n">01</span><h3 class="t-h3">Visual Abstract</h3><p class="muted small">One picture that explains a paper or project at a glance.</p></div><div class="pk-price"><span class="kicker">From</span><b>Rp 750rb</b><span class="meta">or $60 · 3 to 5 days</span></div><ul class="pk-list"><li>One designed figure summarising your paper or project</li><li>A square version sized for social media</li><li>Your logo and brand colours if you have them</li><li>PNG, PDF and SVG files</li></ul><div class="pk-foot"><a class="pk-sample" href="Projects.dc.html#infographics">Example: my infographics →</a><a class="btn" href="mailto:mendrofarayang@gmail.com?subject=Visual%20Abstract%20enquiry">Ask about this <span aria-hidden="true">→</span></a></div></article><article class="pk" style="--pc:#A36AA5"><div class="pk-top"><span class="pk-n">02</span><h3 class="t-h3">Paper Explainer</h3><p class="muted small">Your research, written so anyone can follow it.</p></div><div class="pk-price"><span class="kicker">From</span><b>Rp 2,5 jt</b><span class="meta">or $250 · 1 to 2 weeks</span></div><ul class="pk-list"><li>A 1,200 to 2,000 word article in plain language</li><li>2 to 3 figures, redrawn from scratch</li><li>A share image for link previews</li><li>Ready to publish on your site, blog or newsletter</li></ul><div class="pk-foot"><a class="pk-sample" href="Talk-FlyConnectome.dc.html">Example: The Whole Fly, Wired →</a><a class="btn" href="mailto:mendrofarayang@gmail.com?subject=Paper%20Explainer%20enquiry">Ask about this <span aria-hidden="true">→</span></a></div></article><article class="pk" style="--pc:#2B44C8"><div class="pk-top"><span class="pk-n">03</span><h3 class="t-h3">Interactive Explainer</h3><p class="muted small">The full experience: a web page people can read and play with.</p></div><div class="pk-price"><span class="kicker">From</span><b>Rp 6 jt</b><span class="meta">or $600 · 2 to 4 weeks</span></div><ul class="pk-list"><li>Everything in the Paper Explainer</li><li>Built as a web page, like the talks on this site</li><li>One animated or interactive figure</li><li>HTML files you can host, or a page on your site</li></ul><div class="pk-foot"><a class="pk-sample" href="Talk-Cyberpunk.dc.html">Example: Chrome and Consequences →</a><a class="btn" href="mailto:mendrofarayang@gmail.com?subject=Interactive%20Explainer%20enquiry">Ask about this <span aria-hidden="true">→</span></a></div></article></div>
+<p class="kicker" style="margin-bottom:16px">Explainers</p>
+<div class="pk-grid"><article class="pk" style="--pc:#FDC57E"><div class="pk-top"><span class="pk-n">01</span><h3 class="t-h3">Visual Abstract</h3><p class="muted small">One picture that explains a paper or project at a glance.</p></div><div class="pk-price"><span class="kicker">From</span><b>Rp 375rb</b><span class="meta">or $30 · 3 to 5 days</span></div><ul class="pk-list"><li>One designed figure summarising your paper or project</li><li>A square version sized for social media</li><li>Your logo and brand colours if you have them</li><li>PNG, PDF and SVG files</li></ul><div class="pk-foot"><a class="pk-sample" href="Projects.dc.html#infographics">Example: my infographics →</a><a class="btn" href="mailto:mendrofarayang@gmail.com?subject=Visual%20Abstract%20enquiry">Ask about this <span aria-hidden="true">→</span></a></div></article><article class="pk" style="--pc:#A36AA5"><div class="pk-top"><span class="pk-n">02</span><h3 class="t-h3">Paper Explainer</h3><p class="muted small">Your research, written so anyone can follow it.</p></div><div class="pk-price"><span class="kicker">From</span><b>Rp 1,25 jt</b><span class="meta">or $125 · 1 to 2 weeks</span></div><ul class="pk-list"><li>A 1,200 to 2,000 word article in plain language</li><li>2 to 3 figures, redrawn from scratch</li><li>A share image for link previews</li><li>Ready to publish on your site, blog or newsletter</li></ul><div class="pk-foot"><a class="pk-sample" href="Talk-FlyConnectome.dc.html">Example: The Whole Fly, Wired →</a><a class="btn" href="mailto:mendrofarayang@gmail.com?subject=Paper%20Explainer%20enquiry">Ask about this <span aria-hidden="true">→</span></a></div></article><article class="pk" style="--pc:#2B44C8"><div class="pk-top"><span class="pk-n">03</span><h3 class="t-h3">Interactive Explainer</h3><p class="muted small">The full experience: a web page people can read and play with.</p></div><div class="pk-price"><span class="kicker">From</span><b>Rp 3 jt</b><span class="meta">or $300 · 2 to 4 weeks</span></div><ul class="pk-list"><li>Everything in the Paper Explainer</li><li>Built as a web page, like the talks on this site</li><li>One animated or interactive figure</li><li>HTML files you can host, or a page on your site</li></ul><div class="pk-foot"><a class="pk-sample" href="Talk-Cyberpunk.dc.html">Example: Chrome and Consequences →</a><a class="btn" href="mailto:mendrofarayang@gmail.com?subject=Interactive%20Explainer%20enquiry">Ask about this <span aria-hidden="true">→</span></a></div></article></div>
+<p class="kicker" style="margin:48px 0 16px">More services</p>
+<div class="pk-grid four"><article class="pk" style="--pc:#007190"><div class="pk-top"><span class="pk-n">04</span><h3 class="t-h3">Thesis to Portfolio Page</h3><p class="muted small">Your thesis as a clean web page, like my dissertation pages.</p></div><div class="pk-price"><span class="kicker">From</span><b>Rp 750rb</b><span class="meta">or $60 · 5 to 7 days</span></div><ul class="pk-list"><li>A one page summary in plain language</li><li>Key figures, redrawn</li><li>The full PDF to read or download</li><li>A share image for LinkedIn</li></ul><div class="pk-foot"><a class="pk-sample" href="Thesis-MSc.dc.html">Example: my MSc dissertation →</a><a class="btn" href="mailto:mendrofarayang@gmail.com?subject=Thesis%20page%20enquiry">Ask about this <span aria-hidden="true">→</span></a></div></article><article class="pk" style="--pc:#10131C"><div class="pk-top"><span class="pk-n">05</span><h3 class="t-h3">Personal Website</h3><p class="muted small">A simple site for researchers and students. Optional updates for Rp 150rb ($12) a month.</p></div><div class="pk-price"><span class="kicker">From</span><b>Rp 1,5 jt</b><span class="meta">or $120 · 2 to 3 weeks</span></div><ul class="pk-list"><li>Up to 4 pages: bio, projects, publications, contact</li><li>A contact form</li><li>Works well on phones</li><li>Monthly updates if you want them</li></ul><div class="pk-foot"><a class="pk-sample" href="Main.dc.html">Example: this website →</a><a class="btn" href="mailto:mendrofarayang@gmail.com?subject=Personal%20website%20enquiry">Ask about this <span aria-hidden="true">→</span></a></div></article><article class="pk" style="--pc:#CC1236"><div class="pk-top"><span class="pk-n">06</span><h3 class="t-h3">Pitch Deck Design</h3><p class="muted small">Slides for tech startups that get both the engineering and the business story right.</p></div><div class="pk-price"><span class="kicker">From</span><b>Rp 1 jt</b><span class="meta">or $80 · 1 to 2 weeks</span></div><ul class="pk-list"><li>A story outline before any design</li><li>10 to 15 designed slides</li><li>Charts redrawn from your data</li><li>An editable file plus PDF</li></ul><div class="pk-foot"><a class="pk-sample" href="#contact">Example: ask for samples →</a><a class="btn" href="mailto:mendrofarayang@gmail.com?subject=Pitch%20deck%20enquiry">Ask about this <span aria-hidden="true">→</span></a></div></article><article class="pk" style="--pc:#E2B540"><div class="pk-top"><span class="pk-n">07</span><h3 class="t-h3">Conference Poster</h3><p class="muted small">A poster that reads from across the room.</p></div><div class="pk-price"><span class="kicker">From</span><b>Rp 400rb</b><span class="meta">or $32 · 3 to 5 days</span></div><ul class="pk-list"><li>Layout from your abstract and figures</li><li>A0 or A1, portrait or landscape</li><li>One print proof check</li><li>Print ready PDF</li></ul><div class="pk-foot"><a class="pk-sample" href="Projects.dc.html#infographics">Example: my posters →</a><a class="btn" href="mailto:mendrofarayang@gmail.com?subject=Conference%20poster%20enquiry">Ask about this <span aria-hidden="true">→</span></a></div></article></div>
 <div class="pk-extra">
-<p class="kicker">Also available</p>
-<dl class="pk-dl"><div><dt>Thesis to portfolio page</dt><dd>Your thesis as a clean web page, like my dissertation pages. Price on request.</dd></div><div><dt>Monthly retainer</dt><dd>For labs and startups: e.g. 2 explainers + 4 social graphics a month, from Rp 6 jt.</dd></div><div><dt>Extra animated figure</dt><dd>Rp 1 to 2,5 jt</dd></div><div><dt>Second language</dt><dd>Bahasa Indonesia and English: add 30 to 40%</dd></div><div><dt>Rush delivery</dt><dd>Add 25%</dd></div><div><dt>Extra revision round</dt><dd>Rp 300 to 500rb</dd></div></dl>
+<p class="kicker">Extras and discounts</p>
+<dl class="pk-dl"><div><dt>Monthly retainer</dt><dd>For labs and startups: e.g. 2 explainers + 4 social graphics a month, from Rp 3 jt.</dd></div><div><dt>Extra animated figure</dt><dd>Rp 500rb ($40)</dd></div><div><dt>Extra revision round</dt><dd>Rp 150rb ($12)</dd></div><div><dt>Second language</dt><dd>Bahasa Indonesia and English: add 30%</dd></div><div><dt>Rush delivery</dt><dd>Add 25%</dd></div><div><dt>Bundle and save</dt><dd>2 items 10% off, 3 items 15% off, 4 or more 20% off</dd></div></dl>
 <p class="meta muted" style="font-size:12px">Prices are starting points. The final quote depends on the length of the source and how many figures it needs.</p>
 </div>
+</div>
+</section>
+
+<section id="quote" class="sec white rule-t">
+<div class="wrap">
+<div class="sec-head row">
+<div class="stack g12">
+<p class="kicker">02 — Bundle and save</p>
+<h2 class="t-h2">Build your quote</h2>
+</div>
+<p class="meta muted">The more you add, the more you save</p>
+</div>
+<div class="qc" data-quote><div class="qc-pick stack g16"><p class="kicker">1 · Pick one or more services</p><div class="qb-grid"><button type="button" class="qb" data-q="va" data-kind="svc" aria-pressed="false"><span class="qb-n">Visual Abstract</span><span class="qb-p">Rp 375rb</span></button><button type="button" class="qb" data-q="pe" data-kind="svc" aria-pressed="false"><span class="qb-n">Paper Explainer</span><span class="qb-p">Rp 1,25 jt</span></button><button type="button" class="qb" data-q="ie" data-kind="svc" aria-pressed="false"><span class="qb-n">Interactive Explainer</span><span class="qb-p">Rp 3 jt</span></button><button type="button" class="qb" data-q="th" data-kind="svc" aria-pressed="false"><span class="qb-n">Thesis to Portfolio Page</span><span class="qb-p">Rp 750rb</span></button><button type="button" class="qb" data-q="pw" data-kind="svc" aria-pressed="false"><span class="qb-n">Personal Website</span><span class="qb-p">Rp 1,5 jt</span></button><button type="button" class="qb" data-q="pd" data-kind="svc" aria-pressed="false"><span class="qb-n">Pitch Deck Design</span><span class="qb-p">Rp 1 jt</span></button><button type="button" class="qb" data-q="cp" data-kind="svc" aria-pressed="false"><span class="qb-n">Conference Poster</span><span class="qb-p">Rp 400rb</span></button></div><p class="kicker">2 · Add extras</p><div class="qb-grid"><button type="button" class="qb" data-q="fig" data-kind="item" aria-pressed="false"><span class="qb-n">Extra animated figure</span><span class="qb-p">+ Rp 500rb</span></button><button type="button" class="qb" data-q="rev" data-kind="item" aria-pressed="false"><span class="qb-n">Extra revision round</span><span class="qb-p">+ Rp 150rb</span></button><button type="button" class="qb" data-q="lang" data-kind="pct" aria-pressed="false"><span class="qb-n">Second language</span><span class="qb-p">+ 30%</span></button><button type="button" class="qb" data-q="rush" data-kind="pct" aria-pressed="false"><span class="qb-n">Rush delivery</span><span class="qb-p">+ 25%</span></button></div><p class="meta muted" style="font-size:12px">Every service and extra counts as an item. The more you add, the bigger the bundle discount: 2 items 10% off, 3 items 15%, 4 or more 20%.</p></div><div class="qc-sum card stack g12" aria-live="polite"><p class="kicker">Your estimate</p><ul class="qs-list" data-r="qlist"><li class="muted">Pick a service to see your price.</li></ul><dl class="qs-dl"><div><dt>Subtotal</dt><dd data-r="qsub">Rp 0</dd></div><div><dt>Bundle discount</dt><dd data-r="qdisc">None yet</dd></div><div><dt>Options</dt><dd data-r="qpct">None</dd></div></dl><div class="qs-total"><span class="kicker">Estimated total</span><b data-r="qtot">Rp 0</b><span class="meta" data-r="qusd">≈ $0</span></div><p class="meta muted" data-r="qnext" style="font-size:12px">Add two items to unlock 10% off.</p><a class="btn" data-r="qmail" href="mailto:mendrofarayang@gmail.com?subject=Quote%20request">Email this quote <span aria-hidden="true">→</span></a><p class="meta muted" style="font-size:11px">An estimate, not a final quote. I confirm the price after reading your material.</p></div></div>
 </div>
 </section>
 
@@ -223,7 +293,7 @@ a.ws:hover .ws-go{text-decoration:underline}
 <div class="wrap">
 <div class="sec-head row">
 <div class="stack g12">
-<p class="kicker">02 — The job, step by step</p>
+<p class="kicker">03 — The job, step by step</p>
 <h2 class="t-h2">How it works</h2>
 </div>
 <p class="meta muted">The same for every package</p>
@@ -243,7 +313,7 @@ a.ws:hover .ws-go{text-decoration:underline}
 <div class="wrap">
 <div class="sec-head row">
 <div class="stack g12">
-<p class="kicker">03 — Made here</p>
+<p class="kicker">04 — Made here</p>
 <h2 class="t-h2">From the workshop</h2>
 </div>
 <p class="meta muted">Things to download, play with or put on a wall</p>
@@ -256,11 +326,14 @@ a.ws:hover .ws-go{text-decoration:underline}
 </div>
 </section>
 
+<!-- nl:start --><section class="sec rule-t" id="newsletter" aria-labelledby="nl-title">
+<div class="wrap"><div class="nl-wide nl-box"><div class="stack g8"><p class="kicker">05 — Follow along</p><h2 class="t-h3" id="nl-title">Get each new talk by email</h2><p class="muted small">One email when a new talk goes up, about once a month. Your address is only used for that, and you can unsubscribe any time.</p></div><form class="nl-form" action="/api/newsletter" method="post"><label class="sr" for="nl-email">Email address</label><input id="nl-email" name="email" type="email" required autocomplete="email" placeholder="you@example.com"><input class="nl-hp" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true"><button class="btn" type="submit">Subscribe</button></form><p class="nl-msg" id="subscribed" role="status">Thanks! You’re on the list for the next talk.</p><p class="nl-msg" id="subscribe-error" role="alert">That didn’t work. Please check the email address and try again.</p><div class="nl-support" hidden><span class="meta">Support the talks:</span><a class="btn ghost" href="#" data-support="saweria">Saweria</a><a class="btn ghost" href="#" data-support="trakteer">Trakteer</a><a class="btn ghost" href="#" data-support="kofi">Ko-fi</a><a class="btn ghost" href="#" data-support="bmc">Buy Me a Coffee</a></div></div></div></section>
+<!-- nl:end -->
 <section id="rtm" class="sec white rule-t rule-b">
 <div class="wrap">
 <div class="sec-head row" style="margin-bottom:28px">
 <div class="stack g12">
-<p class="kicker">04 — Currently working on</p>
+<p class="kicker">06 — Currently working on</p>
 <h2 class="t-h2">PT RTM · rtechm.com</h2>
 </div>
 <p class="meta muted">Products from this work will appear here</p>
@@ -300,7 +373,7 @@ a.ws:hover .ws-go{text-decoration:underline}
 <section id="contact" class="sec tight">
 <div class="wrap split mid">
 <div class="stack g12">
-<p class="kicker">05 — Start a project</p>
+<p class="kicker">07 — Start a project</p>
 <h2 class="t-h2">Let’s talk</h2>
 <p class="muted">Send the paper or a short description of your project, and I’ll reply with a quote.</p>
 </div>
@@ -346,8 +419,9 @@ a.ws:hover .ws-go{text-decoration:underline}
 <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2200}}'>
 class Component extends DCLogic {
   // ── GelasTinta motion layer (anime.js v4) ─────────────────────────────
-  componentDidMount() { this.gtStart(0); this.gtMedia(0); }
+  componentDidMount() { this.gtStart(0); this.gtMedia(0); this.gtFigs(); }
   componentWillUnmount() {
+    this.gtFigStop();
     clearTimeout(this.gtWait);
     clearInterval(this.gtSlideT);
     clearTimeout(this.gtMediaWait);
@@ -784,6 +858,75 @@ class Component extends DCLogic {
     setTimeout(() => { try { if (!intro.completed) intro.complete(); } catch (e) {} unsplit(); }, 4500);
   }
   // ── end motion layer ──────────────────────────────────────────────────
+  // ── Quote builder: toggle services and extras; bundle discount grows with the number of items.
+  // One document listener + a light rescan, so it keeps working if the page re-renders.
+  gtFigs() {
+    if (this.qOn) return;
+    this.qOn = true;
+    const onClick = (e) => { try { this.qClick(e); } catch (err) { if (window.console) console.warn('[quote]', err); } };
+    document.addEventListener('click', onClick, true);
+    this.qOff = () => document.removeEventListener('click', onClick, true);
+    const scan = () => { try { Array.from(document.querySelectorAll('[data-quote]')).forEach((el) => { if (!el.__q) { el.__q = {}; this.qDraw(el); } }); } catch (err) {} };
+    scan();
+    this.qInt = setInterval(scan, 700);
+  }
+  gtFigStop() { clearInterval(this.qInt); if (this.qOff) this.qOff(); this.qOn = false; }
+  qClick(e) {
+    const b = e.target && e.target.closest ? e.target.closest('[data-q]') : null;
+    if (!b) return;
+    const el = b.closest('[data-quote]'); if (!el) return;
+    el.__q = el.__q || {};
+    const k = b.getAttribute('data-q');
+    el.__q[k] = !el.__q[k];
+    this.qDraw(el);
+  }
+  qDraw(el) {
+    const P = {
+      va: ['Visual Abstract', 375000, 30], pe: ['Paper Explainer', 1250000, 125], ie: ['Interactive Explainer', 3000000, 300],
+      th: ['Thesis to Portfolio Page', 750000, 60], pw: ['Personal Website', 1500000, 120], pd: ['Pitch Deck Design', 1000000, 80],
+      cp: ['Conference Poster', 400000, 32], fig: ['Extra animated figure', 500000, 40], rev: ['Extra revision round', 150000, 12]
+    };
+    const PCT = { lang: ['Second language', 30], rush: ['Rush delivery', 25] };
+    const st = el.__q || {};
+    const rp = (v) => 'Rp ' + Math.round(v).toLocaleString('id-ID');
+    const usd = (v) => '$' + Math.round(v).toLocaleString('en-US');
+    const R = (k) => el.querySelector('[data-r="' + k + '"]');
+    Array.from(el.querySelectorAll('[data-q]')).forEach((b) => {
+      const on = !!st[b.getAttribute('data-q')];
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      b.classList.toggle('on', on);
+    });
+    const items = Object.keys(P).filter((k) => st[k]);
+    const svc = items.filter((k) => !['fig', 'rev'].includes(k));
+    let sub = 0, subU = 0;
+    items.forEach((k) => { sub += P[k][1]; subU += P[k][2]; });
+    const n = items.length;
+    const rate = n >= 4 ? 0.20 : n === 3 ? 0.15 : n === 2 ? 0.10 : 0;
+    const afterDisc = sub * (1 - rate), afterDiscU = subU * (1 - rate);
+    const pcts = Object.keys(PCT).filter((k) => st[k]);
+    const mult = 1 + pcts.reduce((a, k) => a + PCT[k][1] / 100, 0);
+    const tot = afterDisc * mult, totU = afterDiscU * mult;
+    const list = R('qlist');
+    if (list) {
+      list.innerHTML = '';
+      if (!n) { const li = document.createElement('li'); li.className = 'muted'; li.textContent = svc.length || pcts.length ? 'Add a service to see your price.' : 'Pick a service to see your price.'; list.appendChild(li); }
+      items.forEach((k) => { const li = document.createElement('li'); const a = document.createElement('span'); a.textContent = P[k][0]; const b = document.createElement('span'); b.textContent = rp(P[k][1]); li.appendChild(a); li.appendChild(b); list.appendChild(li); });
+      if (st.pw) { const li = document.createElement('li'); li.className = 'muted'; li.textContent = 'Plus optional website updates: Rp 150.000 ($12) a month'; list.appendChild(li); }
+    }
+    const set = (k, v) => { const x = R(k); if (x && x.textContent !== v) x.textContent = v; };
+    set('qsub', rp(sub));
+    set('qdisc', rate ? '− ' + rp(sub * rate) + ' (' + Math.round(rate * 100) + '% for ' + n + ' items)' : 'None yet');
+    set('qpct', pcts.length ? pcts.map((k) => PCT[k][0] + ' +' + PCT[k][1] + '%').join(', ') : 'None');
+    set('qtot', rp(tot));
+    set('qusd', '≈ ' + usd(totU));
+    set('qnext', n === 0 ? 'Add two items to unlock 10% off.' : n === 1 ? 'Add one more item to unlock 10% off.' : n === 2 ? 'Add one more item to get 15% off.' : n === 3 ? 'Add one more item to get 20% off.' : 'You have the biggest bundle discount: 20% off.');
+    const mail = R('qmail');
+    if (mail) {
+      const lines = items.map((k) => '- ' + P[k][0]).concat(pcts.map((k) => '- ' + PCT[k][0]));
+      const body = 'Hi Rayang,\n\nI would like a quote for:\n' + (lines.length ? lines.join('\n') : '- (not chosen yet)') + '\n\nEstimate on your site: ' + rp(tot) + ' (about ' + usd(totU) + ')\n\nAbout my project:\n';
+      mail.setAttribute('href', 'mailto:mendrofarayang@gmail.com?subject=' + encodeURIComponent('Quote request') + '&body=' + encodeURIComponent(body));
+    }
+  }
   renderVals() {
     return {};
   }

@@ -70,6 +70,9 @@ and images, rebuilding, and pushing to this repository — is handled with the h
 [Claude](https://claude.ai) by Anthropic. Every push to `main` triggers a fresh Netlify build, so
 new content goes live within a minute or two.
 
+### Newsletter
+Each talk, the Talks page and the Products page have a newsletter signup. Addresses go to the Netlify Function `/api/newsletter` and are stored once each in the Netlify Blobs store `newsletter` (Netlify → Data & Storage → Blobs). They are only used to email new talks.
+
 ## Credits
 
 - InMoov is an open-source project created by [Gaël Langevin](https://inmoov.fr/); the hand on this
