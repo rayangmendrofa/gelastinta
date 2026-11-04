@@ -354,6 +354,22 @@ h2.t-h2::after,.sec-head .t-h2::after{content:"";display:block;width:56px;height
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 @media (max-width:760px){.nl-box{grid-template-columns:minmax(0,1fr)}}
 /* nl:end */
+/* dark:start */
+.brand .bk-btn{display:inline-flex;align-items:center;justify-content:center;padding:4px;margin:-4px;border:0;background:transparent;cursor:pointer;border-radius:8px;line-height:0}
+.brand .bk-btn:hover .bk-tip{transform:rotate(-8deg)}
+.brand .bk-btn:focus-visible{outline:3px solid #2B44C8;outline-offset:2px}
+.brand .brand-name{color:inherit;text-decoration:none}
+.brand .brand-name:hover{color:inherit}
+html[data-theme="dark"]{filter:invert(1) hue-rotate(180deg);background:#FFFFFF;color-scheme:dark}
+html[data-theme="dark"] img,html[data-theme="dark"] video,html[data-theme="dark"] canvas,html[data-theme="dark"] iframe,html[data-theme="dark"] picture{filter:invert(1) hue-rotate(180deg)}
+html[data-theme="dark"] :is(.dark,.hero,.cp-hero,.blue,.catch,.book){filter:invert(1) hue-rotate(180deg)}
+html[data-theme="dark"] .book .cover{filter:invert(1) hue-rotate(180deg)}
+html[data-theme="dark"] :is(.dark,.hero,.cp-hero,.blue,.catch) :is(img,video,canvas,iframe,picture){filter:none}
+.gt-flood{position:fixed;inset:0;z-index:9999;background:#10131C;pointer-events:none;clip-path:circle(0 at var(--fx,40px) var(--fy,40px));transition:clip-path .6s cubic-bezier(.55,.05,.4,1),opacity .35s ease}
+.gt-flood.go{clip-path:circle(150vmax at var(--fx,40px) var(--fy,40px))}
+.gt-flood.out{opacity:0}
+@media (prefers-reduced-motion:reduce){.gt-flood{display:none}}
+/* dark:end */
 </style>
 </helmet>
 <div style="min-height:100vh" data-gt-root="">
@@ -361,7 +377,7 @@ h2.t-h2::after,.sec-head .t-h2::after{content:"";display:block;width:56px;height
 
 <header class="site-head">
 <div class="wrap">
-<a href="Main.dc.html" class="brand"><svg class="bk-logo" width="44" height="28" viewBox="0 0 50 32" fill="none" aria-hidden="true"><ellipse class="bk-pud" cx="40" cy="30.2" rx="9" ry="1.7" fill="#2B44C8"></ellipse><circle class="bk-drop d1" cx="42" cy="9" r="1.4" fill="#2B44C8"></circle><circle class="bk-drop d2" cx="42" cy="9" r="1.4" fill="#2B44C8"></circle><circle class="bk-drop d3" cx="42" cy="9" r="1.4" fill="#2B44C8"></circle><g class="bk-tip"><g class="bk-liq"><path d="M9.6 20 6.3 26.4A1.7 1.7 0 0 0 7.8 29h16.4a1.7 1.7 0 0 0 1.5-2.6L22.4 20z" fill="#2B44C8"></path></g><path d="M11 3h10M13 3v9L6 26.4A1.7 1.7 0 0 0 7.8 29h16.4a1.7 1.7 0 0 0 1.5-2.6L19 12V3" stroke="#26121D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></g></svg>GelasTinta</a>
+<div class="brand"><button type="button" class="bk-btn" data-theme-toggle aria-pressed="false" aria-label="Switch to dark mode (spill the ink)" title="Switch to dark mode (spill the ink)"><svg class="bk-logo" width="44" height="28" viewBox="0 0 50 32" fill="none" aria-hidden="true"><ellipse class="bk-pud" cx="40" cy="30.2" rx="9" ry="1.7" fill="#2B44C8"></ellipse><circle class="bk-drop d1" cx="42" cy="9" r="1.4" fill="#2B44C8"></circle><circle class="bk-drop d2" cx="42" cy="9" r="1.4" fill="#2B44C8"></circle><circle class="bk-drop d3" cx="42" cy="9" r="1.4" fill="#2B44C8"></circle><g class="bk-tip"><g class="bk-liq"><path d="M9.6 20 6.3 26.4A1.7 1.7 0 0 0 7.8 29h16.4a1.7 1.7 0 0 0 1.5-2.6L22.4 20z" fill="#2B44C8"></path></g><path d="M11 3h10M13 3v9L6 26.4A1.7 1.7 0 0 0 7.8 29h16.4a1.7 1.7 0 0 0 1.5-2.6L19 12V3" stroke="#26121D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></g></svg></button><a href="Main.dc.html" class="brand-name">GelasTinta</a></div>
 <nav class="nav" aria-label="Main">
 <a href="Main.dc.html">Home</a>
 <a href="Projects.dc.html">Projects</a>
@@ -751,8 +767,9 @@ h2.t-h2::after,.sec-head .t-h2::after{content:"";display:block;width:56px;height
 <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":9200}}'>
 class Component extends DCLogic {
   // ── GelasTinta motion layer (anime.js v4) ─────────────────────────────
-  componentDidMount() { this.gtStart(0); this.gtMedia(0); this.cmMount(); }
+  componentDidMount() { this.gtStart(0); this.gtMedia(0); this.gtTheme(); this.cmMount(); }
   componentWillUnmount() {
+    if (this.thOff) this.thOff();
     clearTimeout(this.gtWait);
     clearInterval(this.gtSlideT);
     clearTimeout(this.gtMediaWait);
@@ -1257,6 +1274,58 @@ class Component extends DCLogic {
         set({ user: null, err: '' });
       }
     };
+  }
+  gtTheme() {
+    if (this.thOn) return;
+    this.thOn = true;
+    const root = document.documentElement;
+    try { if (localStorage.getItem('gt-theme') === 'dark') root.setAttribute('data-theme', 'dark'); } catch (e) {}
+    this.thLabel();
+    const onClick = (e) => {
+      const b = e.target && e.target.closest ? e.target.closest('[data-theme-toggle]') : null;
+      if (!b) return;
+      e.preventDefault();
+      try { this.thToggle(b); } catch (err) { if (window.console) console.warn('[theme]', err); }
+    };
+    document.addEventListener('click', onClick, true);
+    this.thOff = () => document.removeEventListener('click', onClick, true);
+  }
+  thLabel() {
+    const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    Array.from(document.querySelectorAll('[data-theme-toggle]')).forEach((b) => {
+      const t = dark ? 'Switch to light mode' : 'Switch to dark mode (spill the ink)';
+      b.setAttribute('aria-label', t); b.setAttribute('title', t); b.setAttribute('aria-pressed', dark ? 'true' : 'false');
+    });
+  }
+  thToggle(btn) {
+    const root = document.documentElement;
+    const dark = root.getAttribute('data-theme') !== 'dark';
+    const apply = () => {
+      if (dark) root.setAttribute('data-theme', 'dark'); else root.removeAttribute('data-theme');
+      try { localStorage.setItem('gt-theme', dark ? 'dark' : 'light'); } catch (e) {}
+      this.thLabel();
+    };
+    const still = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+    if (still) { apply(); return; }
+    // replay the spill, faster than the page-load version
+    Array.from(btn.querySelectorAll('.bk-tip, .bk-liq, .bk-drop, .bk-pud')).forEach((el, i) => {
+      el.style.animation = 'none'; void el.getBoundingClientRect();
+      const name = el.classList.contains('bk-tip') ? 'bk-tip' : el.classList.contains('bk-liq') ? 'bk-liq' : el.classList.contains('bk-pud') ? 'bk-pud' : 'bk-drop';
+      const delay = el.classList.contains('d2') ? 0.1 : el.classList.contains('d3') ? 0.2 : 0;
+      el.style.animation = name + ' 1.6s ' + delay + 's cubic-bezier(.45,.05,.3,1) both';
+    });
+    // ink flood from the beaker; the overlay is always ink-coloured (it shows light once the page is inverted)
+    const r = btn.getBoundingClientRect();
+    const f = document.createElement('div');
+    f.className = 'gt-flood';
+    f.style.setProperty('--fx', Math.round(r.left + r.width * 0.8) + 'px');
+    f.style.setProperty('--fy', Math.round(r.top + r.height) + 'px');
+    document.body.appendChild(f);
+    void f.getBoundingClientRect();
+    setTimeout(() => f.classList.add('go'), 380);
+    // after the switch the overlay is drawn inverted (or no longer inverted), so give it the paper colour to keep the screen steady while it fades
+    setTimeout(() => { f.style.background = '#EDEFF2'; apply(); f.classList.add('out'); }, 1000);
+    setTimeout(() => { if (f.parentNode) f.parentNode.removeChild(f); }, 1450);
   }
   renderVals() {
     const st = this.state || {};
