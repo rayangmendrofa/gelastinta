@@ -1,6 +1,9 @@
 // Newsletter signups for gelastinta.com
 //   POST /api/newsletter  (HTML form: email, website[honeypot])  -> 303 back to the page, #subscribed or #subscribe-error
 //   POST /api/newsletter  (JSON: { email })                        -> { ok: true } or { error }
+//   GET  /api/newsletter?key=SECRET                                 -> CSV of all subscribers (owner only)
+//   GET  /api/newsletter?key=SECRET&remove=someone@example.com      -> removes that address (owner only)
+// SECRET is the NEWSLETTER_ADMIN_KEY environment variable set in Netlify. Without it, GET does nothing.
 // Each address is stored once in the Netlify Blobs store "newsletter", keyed by a hash of the
 // lower-cased address, with the page it came from and the time. Addresses are only for sending new
 // talks; they are never shown on the site. To export or remove them, open Netlify > Data & Storage >
@@ -29,7 +32,43 @@ const backTo = (req: Request, hash: string) => {
   return new URL(path + hash, site.origin).toString()
 }
 
+const adminKey = () => {
+  const g = globalThis as unknown as { Netlify?: { env?: { get: (k: string) => string | undefined } } }
+  return g.Netlify?.env?.get("NEWSLETTER_ADMIN_KEY") || process.env.NEWSLETTER_ADMIN_KEY || ""
+}
+
+const csvCell = (v: string) => (/[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v)
+
+// Owner tools: download the list as CSV, or remove one address. Hidden (404) without the right key.
+const admin = async (req: Request) => {
+  const url = new URL(req.url)
+  const key = adminKey()
+  if (!key || url.searchParams.get("key") !== key) return new Response("Not found", { status: 404 })
+  const store = getStore({ name: "newsletter", consistency: "strong" })
+  const remove = (url.searchParams.get("remove") || "").trim().toLowerCase()
+  if (remove) {
+    await store.delete(await sha256(remove))
+    return new Response(`Removed ${remove} (if it was on the list).\n`, { headers: { "content-type": "text/plain; charset=utf-8", "cache-control": "no-store" } })
+  }
+  const { blobs } = await store.list()
+  const rows = (await Promise.all(blobs.map((b) => store.get(b.key, { type: "json" }))))
+    .filter(Boolean)
+    .map((r) => r as { email: string; page: string; at: number })
+    .sort((a, b) => a.at - b.at)
+  const csv = ["email,signed_up_on,page"]
+    .concat(rows.map((r) => [r.email, new Date(r.at).toISOString().slice(0, 10), r.page].map(csvCell).join(",")))
+    .join("\n") + "\n"
+  return new Response(csv, {
+    headers: {
+      "content-type": "text/csv; charset=utf-8",
+      "content-disposition": 'attachment; filename="gelastinta-newsletter.csv"',
+      "cache-control": "no-store",
+    },
+  })
+}
+
 export default async (req: Request, context: Context) => {
+  if (req.method === "GET") return admin(req)
   if (req.method !== "POST") return new Response("Method not allowed", { status: 405 })
   const isJson = (req.headers.get("content-type") || "").includes("application/json")
   let email = ""
@@ -75,6 +114,6 @@ export default async (req: Request, context: Context) => {
 
 export const config: Config = {
   path: "/api/newsletter",
-  method: ["POST"],
+  method: ["GET", "POST"],
   rateLimit: { action: "rate_limit", windowLimit: 10, windowSize: 60, aggregateBy: ["ip", "domain"] },
 }
