@@ -957,6 +957,8 @@ class Component extends DCLogic {
       const box = b.closest('[data-td]');
       if (!box || box.querySelector('iframe')) return;
       e.preventDefault();
+      // away from the website (the design canvas, a saved copy) the model opens in its own tab
+      if (!local) { window.open(src, '_blank', 'noopener'); return; }
       const f = document.createElement('iframe');
       f.src = src;
       f.title = 'The BEng prosthetic hand in 3D';
