@@ -7,7 +7,7 @@
 // whose item code is not in lib/packs-config.mjs, so nothing is lost (see /api/packs/admin?orders=1).
 import crypto from 'node:crypto'
 import type { Config } from '@netlify/functions'
-import { itemByKofiCode } from '../../lib/packs-config.mjs'
+import { itemByKofiCode, ITEMS } from '../../lib/packs-config.mjs'
 import { env, cleanEmail, validEmail, grant, saveOrder, sendMail, signInMail, hasKey } from '../../lib/packs-core.mjs'
 
 const ok = (s = 'ok') => new Response(s, { status: 200, headers: { 'content-type': 'text/plain' } })
@@ -36,10 +36,16 @@ export default async (req: Request) => {
     if (hit) items.push(hit[0]); else unknown.push(String(s.direct_link_code || ''))
   }
   const email = cleanEmail(data.email)
-  const order = { id, at: Date.parse(data.timestamp) || Date.now(), email, name: String(data.from_name || ''), amount: String(data.amount || ''), currency: String(data.currency || ''), items, unknown }
+  // Ko-fi items are "pay what you want" with a minimum, so check the payment covers the listed
+  // prices (lib/packs-config.mjs). Underpaid sales are kept but not unlocked; the owner can grant them.
+  const due = items.reduce((t, k) => t + (ITEMS[k as keyof typeof ITEMS]?.price || 0), 0)
+  const paid = parseFloat(String(data.amount || '0'))
+  const underpaid = String(data.currency || 'USD').toUpperCase() === 'USD' && paid + 0.005 < due
+  const order = { id, at: Date.parse(data.timestamp) || Date.now(), email, name: String(data.from_name || ''), amount: String(data.amount || ''), currency: String(data.currency || ''), items, unknown, underpaid }
   if (!(await saveOrder(id, order))) return ok('already handled')
+  if (underpaid) console.error(`Ko-fi order ${id}: paid ${paid} for items worth ${due}; not unlocked`)
 
-  if (items.length && validEmail(email)) {
+  if (items.length && validEmail(email) && !underpaid) {
     const rec = await grant(email, order.name === 'Anonymous' ? '' : order.name, items, { id, at: order.at, amount: order.amount, currency: order.currency, items })
     if (hasKey()) {
       const origin = new URL(req.url).origin

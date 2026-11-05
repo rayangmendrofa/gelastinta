@@ -56,8 +56,8 @@ async function admin(req: Request, url: URL) {
   }
   if (q('orders')) {
     const rows = (await allOrders()).sort((a, b) => a.at - b.at)
-    const csv = ['date,transaction,email,name,amount,currency,items,unmatched_codes']
-      .concat(rows.map((o) => [day(o.at), o.id, o.email, o.name, o.amount, o.currency, (o.items || []).join(' '), (o.unknown || []).join(' ')].map(csvCell).join(',')))
+    const csv = ['date,transaction,email,name,amount,currency,items,unmatched_codes,underpaid']
+      .concat(rows.map((o) => [day(o.at), o.id, o.email, o.name, o.amount, o.currency, (o.items || []).join(' '), (o.unknown || []).join(' '), o.underpaid ? 'yes' : ''].map(csvCell).join(',')))
     return new Response(csv.join('\n') + '\n', { headers: { 'content-type': 'text/csv; charset=utf-8', 'content-disposition': 'attachment; filename="gelastinta-pack-orders.csv"', 'cache-control': 'no-store' } })
   }
   const rows = (await allBuyers()).sort((a, b) => a.at - b.at)
