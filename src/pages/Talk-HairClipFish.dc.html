@@ -91,6 +91,17 @@ figcaption{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;line-
 .tblock span:first-child{color:#96D1AA}
 .col{max-width:720px;margin:0 auto}
 .col-wide{max-width:1000px;margin:0 auto}
+.td-box{position:relative;aspect-ratio:16/9;border:1px solid #252413;background:#E9EDE2;overflow:hidden}
+.td-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.td-play{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:24px;border:0;background:rgba(240,242,244,.6);color:#252413;cursor:pointer;font:inherit;text-align:center;transition:background .2s}
+.td-play:hover{background:rgba(240,242,244,.42)}
+.td-play b{font-family:'Titillium Web',system-ui,sans-serif;font-weight:700;font-size:30px;line-height:1.1}
+.td-pill{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;background:#6F6B29;color:#fff;padding:4px 10px;border-radius:999px}
+.td-sub{max-width:540px;font-size:16px;line-height:1.5}
+.td-box iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#E9EDE2}
+.td-note{margin-top:14px;max-width:880px}
+@media (max-width:640px){.td-sub{display:none}.td-play b{font-size:22px}}
+
 .article p{font-size:19px;line-height:1.7}
 .article p+p{margin-top:1.1em}
 .dropcap::first-letter{float:left;font-family:'Titillium Web',system-ui,sans-serif;font-weight:800;font-size:4.4em;line-height:.8;color:#2B44C8;padding:8px 12px 0 0}
@@ -554,6 +565,14 @@ html[data-theme="dark"] :is(.dark,.hero,.cp-hero,.blue,.catch) :is(img,video,can
 <p class="fig-cap"><b>Paper Fig. 6.</b> (A) Parts of the untethered fish. (B) Swimming a circle in a lake at 2.03 BL/s (43.6 cm/s). (C) A straight dash, accelerating at 20.1 cm/s².</p>
 <span class="meta muted" style="font-size:11px">Source: Xiong et al., npj Robotics 4, 7 (2026), CC BY-NC-ND 4.0. Figure reproduced unaltered.</span></div></sc-if></div>
 </div>
+<div class="col-wide" id="teardown" style="margin-top:40px">
+<div class="stack g8" style="margin-bottom:14px"><p class="kicker">Take it apart · 3D model</p><h3 class="t-h3">The untethered fish, one snap at a time</h3><p class="small">My own model, built from the paper's numbers: drive the tail beat, slow the snap down ten times, and watch the clip climb its energy hill and drop into the other valley. <a href="https://gelastinta.com/teardowns/hair-clip-fish.html" target="_blank" rel="noopener">Open full screen ↗</a></p></div>
+<div class="td-box" data-td>
+<img class="td-poster" src="/_blob/2bcf9d1397c868657eecf37d6bc80fb2" alt="The hair clip fish in 3D seen from above, the clip mid snap, with panels for the double well energy, the tail angle and the swimming speed" loading="lazy">
+<button class="td-play" type="button" data-td-play aria-label="The hair clip fish in 3D"><span class="td-pill">3D model</span><b>Open the 3D model</b><span class="td-sub">It plays a short tour on its own. Drag the tail beat, switch to slow motion or to air, open the head, and watch the dot cross the energy hill.</span></button>
+</div>
+<p class="meta muted td-note" style="font-size:12px">Numbers from Xiong et al. (as in the preprint): 21.5 cm, 125 g, a 0.762 mm PETG clip, 43.6 cm/s at 3 Hz. The snap is modelled as a double well; speeds away from 3 Hz are estimated from St = 0.28. None of the paper's figures are reused.</p>
+</div>
 <div class="col" style="margin-top:48px">
 <p>One thing the paper mentions only in passing matters a lot for a real swimmer: plastic clips crack. The team’s earlier work found that a 0.381 mm plastic clip survives roughly 20,000 actuation cycles before it fails. At several snaps a second, that number runs out quickly.</p>
 </div>
@@ -756,6 +775,7 @@ class Component extends DCLogic {
   // ── GelasTinta motion layer (anime.js v4) ─────────────────────────────
   componentDidMount() { this.gtStart(0); this.gtMedia(0); this.gtTheme(); this.gtFigs(); this.cmMount(); }
   componentWillUnmount() {
+    if (this.tdOff) this.tdOff();
     if (this.thOff) this.thOff();
     this.gtFigStop();
     clearTimeout(this.gtWait);
@@ -1264,6 +1284,7 @@ class Component extends DCLogic {
     };
   }
   gtFigs() {
+    if (!this.tdOff) this.gtTd();
     const defs = this.figDefs ? this.figDefs() : [];
     this.gtFigList = this.gtFigList || [];
     defs.forEach((d) => {
@@ -1406,6 +1427,30 @@ class Component extends DCLogic {
     return [snap];
   }
   // ── Light/dark switch: the header beaker spills its ink and floods the page dark (or back to light).
+  // the 3D teardown: one capture listener, the frame is made only when someone asks for it
+  gtTd() {
+    const local = /(^|\.)gelastinta\.com$|netlify\.app$|^localhost$|^127\./.test(location.hostname);
+    const src = local ? '/teardowns/hair-clip-fish.html' : 'https://gelastinta.com/teardowns/hair-clip-fish.html';
+    const on = (e) => {
+      const b = e.target && e.target.closest ? e.target.closest('[data-td-play]') : null;
+      if (!b) return;
+      const box = b.closest('[data-td]');
+      if (!box || box.querySelector('iframe')) return;
+      e.preventDefault();
+      // away from the website (the design canvas, a saved copy) the model opens in its own tab
+      if (!local) { window.open(src, '_blank', 'noopener'); return; }
+      const f = document.createElement('iframe');
+      f.src = src;
+      f.title = b.getAttribute('aria-label') || '3D model';
+      f.setAttribute('allow', 'fullscreen');
+      f.setAttribute('allowfullscreen', '');
+      box.appendChild(f);
+      b.remove();
+      try { f.focus({preventScroll: true}); } catch (err) { void err; }
+    };
+    document.addEventListener('click', on, true);
+    this.tdOff = () => document.removeEventListener('click', on, true);
+  }
   gtTheme() {
     if (this.thOn) return;
     this.thOn = true;
