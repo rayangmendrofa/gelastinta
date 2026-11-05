@@ -93,6 +93,65 @@ body{padding-bottom:84px}
 </style>`;
 const bar = (text, item, price) => `<div class="gt-sample" role="region" aria-label="Free sample"><p>${text}</p><a class="gt-buy" href="/packs/buy/${item}">Unlock for ${price} on Ko-fi</a><a href="/packs/signin/?next=__GT_NEXT__">Already bought it? Sign in</a><button class="gt-x" type="button" aria-label="Hide" onclick="this.parentNode.remove();document.body.style.paddingBottom='0'">×</button></div>`;
 
+
+// The paywall in the sample: any click or link to a locked sheet (sheet cards, pager, search hits,
+// deep links, tabs) opens a sign in / buy window instead of the sheet. Only the first sheet opens.
+const GATE_CSS = `<style id="gt-gate-css">
+.gt-gate{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(16,19,28,.55);backdrop-filter:blur(3px)}
+.gt-gate[hidden]{display:none}
+.gt-gate-card{position:relative;width:min(460px,100%);padding:28px 24px 22px;background:#fff;color:#10131C;border-radius:18px;box-shadow:0 20px 60px rgba(0,0,0,.3);font:16px/1.5 system-ui,sans-serif}
+.gt-gate-card svg{display:block;width:44px;height:44px;margin-bottom:12px;color:#2B44C8}
+.gt-gate-k{margin:0 0 4px;font:12px ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase;color:#5A6275}
+.gt-gate-card h2{margin:0 0 10px;font:800 24px/1.15 system-ui,sans-serif;letter-spacing:-.01em}
+.gt-gate-card p{margin:0 0 16px}
+.gt-gate-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px}
+.gt-gate-row a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 18px;border-radius:999px;font-weight:600;text-decoration:none}
+.gt-gate-buy{background:#2B44C8;color:#fff}.gt-gate-in{border:1.5px solid #10131C;color:#10131C}
+.gt-gate-free{font-size:14px;color:#2B44C8}
+.gt-gate-x{position:absolute;top:10px;right:12px;border:0;background:none;font-size:24px;line-height:1;color:#5A6275;cursor:pointer;padding:6px}
+a.sheet-card.gt-lock{position:relative}a.sheet-card.gt-lock::after{content:"";position:absolute;top:10px;right:10px;width:16px;height:16px;opacity:.7;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 10V7a5 5 0 0 1 10 0v3h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1zm2 0h6V7a3 3 0 0 0-6 0z'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 10V7a5 5 0 0 1 10 0v3h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1zm2 0h6V7a3 3 0 0 0-6 0z'/%3E%3C/svg%3E") center/contain no-repeat}
+</style>`;
+const gateHtml = (item, price) => `<div class="gt-gate" hidden role="dialog" aria-modal="true" aria-labelledby="gt-gate-t"><div class="gt-gate-card">
+<button class="gt-gate-x" type="button" aria-label="Close">×</button>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+<p class="gt-gate-k">Sheet <span data-gt-code></span> · full pack</p>
+<h2 id="gt-gate-t" data-gt-title></h2>
+<p>Only the first sheet is free. Sign in if you bought this pack, or unlock every sheet, lab, problem and quiz for ${price}.</p>
+<div class="gt-gate-row"><a class="gt-gate-buy" href="/packs/buy/${item}">Unlock for ${price} on Ko-fi</a><a class="gt-gate-in" href="/packs/signin/?next=__GT_NEXT__">Sign in</a></div>
+<a class="gt-gate-free" data-gt-free href="#">Open the free sheet instead →</a>
+</div></div>
+<script>(function () {
+  var gate = document.querySelector('.gt-gate'), last = '';
+  function lists() { var G = window.GT || {}; return G.library && G.library.length ? G.library : [{ topics: G.topics || [] }]; }
+  function find(id) { var L = lists(); for (var i = 0; i < L.length; i++) { var ts = L[i].topics || []; for (var j = 0; j < ts.length; j++) if (ts[j].id === id) return { t: ts[j], e: L[i] }; } return null; }
+  function lockedOf(h) { h = String(h || '').replace(/^#/, ''); var m = h.match(/^(?:debug-)?([a-z][1-3]-\\d\\d)/); var f = m && find(m[1]); return f && f.t.locked ? f : null; }
+  function show(f) {
+    gate.querySelector('[data-gt-code]').textContent = f.t.code;
+    gate.querySelector('[data-gt-title]').innerHTML = f.t.title;
+    var free = (f.e.topics || []).filter(function (t) { return !t.locked; })[0];
+    var fl = gate.querySelector('[data-gt-free]');
+    if (free) { fl.hidden = false; fl.setAttribute('href', '#' + free.id); fl.textContent = 'Open the free sheet, ' + free.code + ', instead →'; } else fl.hidden = true;
+    gate.hidden = false; gate.querySelector('.gt-gate-buy').focus();
+  }
+  function hide() { gate.hidden = true; }
+  function leave(f) {
+    var back = last && !lockedOf(last) ? last : '';
+    history.replaceState(null, '', location.pathname + location.search + back);
+    window.dispatchEvent(new HashChangeEvent('hashchange'));
+    show(f);
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="#"]'); if (!a || gate.contains(a)) return;
+    var f = lockedOf(a.getAttribute('href')); if (f) { e.preventDefault(); e.stopPropagation(); show(f); }
+  }, true);
+  window.addEventListener('hashchange', function () { var f = lockedOf(location.hash); if (f) leave(f); else { last = location.hash; hide(); } });
+  gate.addEventListener('click', function (e) { if (e.target === gate || e.target.closest('.gt-gate-x')) hide(); if (e.target.closest('[data-gt-free]')) hide(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !gate.hidden) hide(); });
+  function mark() { var as = document.querySelectorAll('a[href^="#"]:not([data-gt-seen])'); for (var i = 0; i < as.length; i++) { as[i].setAttribute('data-gt-seen', ''); if (lockedOf(as[i].getAttribute('href'))) as[i].classList.add('gt-lock'); } }
+  new MutationObserver(mark).observe(document.body, { childList: true, subtree: true }); mark();
+  var f0 = lockedOf(location.hash); if (f0) leave(f0); else last = location.hash;
+})();</script>`;
+
 function build(keyName, html) {
   const cfg = PACKS[keyName];
   const a = html.indexOf('<script>');
@@ -133,9 +192,9 @@ function build(keyName, html) {
     ? `<b>Free sample of the whole library.</b> The first sheet of every course is open; the other ${locked} sheets unlock with the library.`
     : `<b>Free sample.</b> Sheet ${cfg.prefix}1.01 is open; the other ${locked} sheets unlock with the full pack.`;
   const head = out.indexOf('</head>'); // the real one comes first; scripts may contain the text later
-  out = out.slice(0, head) + BAR_CSS + out.slice(head);
+  out = out.slice(0, head) + BAR_CSS + GATE_CSS + out.slice(head);
   const end = out.lastIndexOf('</body>');
-  out = out.slice(0, end) + bar(text, cfg.item, '$' + cfg.price) + out.slice(end);
+  out = out.slice(0, end) + bar(text, cfg.item, '$' + cfg.price) + gateHtml(cfg.item, '$' + cfg.price) + out.slice(end);
   // sanity: no locked lesson text survives
   return { sample: out, open, locked };
 }
