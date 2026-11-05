@@ -7,14 +7,14 @@
 //        &grant=mechanics,library&email=E&name=N give packs by hand (e.g. a Rupiah sale, a gift); shows a sign in link
 //        &revoke=mechanics&email=E               take an item away (e.g. a refund)
 //        &link=E                                 make a sign in link to send by hand
-//        &send=E                                 email the sign in link (needs RESEND_API_KEY)
+//        &send=E                                 email the sign in link (needs GMAIL_APP_PASSWORD or RESEND_API_KEY)
 //   Item names: see lib/packs-config.mjs (single packs, foundations, advanced, library).
 import crypto from 'node:crypto'
 import type { Config } from '@netlify/functions'
 import { ITEMS } from '../../lib/packs-config.mjs'
 import {
   env, cleanEmail, validEmail, getBuyer, grant, revoke, allBuyers, allOrders, verify, sessionToken, sessionCookie,
-  safeNext, sendMail, signInMail, linkUrl, page, esc, hasKey, OWNER_EMAIL,
+  safeNext, sendMail, signInMail, linkUrl, page, esc, hasKey, canMail, OWNER_EMAIL,
 } from '../../lib/packs-core.mjs'
 
 const text = (s: string, status = 200, type = 'text/plain') =>
@@ -50,7 +50,7 @@ async function admin(req: Request, url: URL) {
     if (q('send')) {
       const m = signInMail(url.origin, rec, '')
       const ok = await sendMail(email, 'Your GelasTinta study packs', m.html, m.text)
-      return text(ok ? `Sent to ${email}.\n` : 'Could not send (is RESEND_API_KEY set?).\n', ok ? 200 : 500)
+      return text(ok ? `Sent to ${email}.\n` : 'Could not send (is GMAIL_APP_PASSWORD or RESEND_API_KEY set?).\n', ok ? 200 : 500)
     }
     return text(`Sign in link for ${email} (works for 3 days):\n${linkUrl(url.origin, email, '')}\n`)
   }
@@ -86,7 +86,7 @@ export default async (req: Request) => {
     let email = '', next = ''
     try { const f = await req.formData(); email = cleanEmail(f.get('email')); next = String(f.get('next') || '') } catch {}
     if (!validEmail(email)) return page('Check your email address', `<h1>That email does not look right</h1><p><a href="/packs/signin/">Try again</a></p>`, 400)
-    if (!hasKey() || !env('RESEND_API_KEY')) {
+    if (!hasKey() || !canMail()) {
       return page('Almost there', `<p class="kicker">Study packs</p><h1>I will send your link by hand</h1>
 <p>Automatic sign in emails are not switched on yet. Email <a href="mailto:${OWNER_EMAIL}?subject=${encodeURIComponent('Study pack sign in link')}&body=${encodeURIComponent('My Ko-fi email: ' + email)}">${OWNER_EMAIL}</a> from <b>${esc(email)}</b> and I will reply with your sign in link.</p>`)
     }

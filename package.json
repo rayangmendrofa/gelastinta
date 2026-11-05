@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@netlify/blobs": "^11.1.4",
-    "@netlify/functions": "^6.0.2"
+    "@netlify/functions": "^6.0.2",
+    "nodemailer": "^6.9.16"
   }
 }

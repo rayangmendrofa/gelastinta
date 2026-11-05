@@ -1,6 +1,7 @@
 // Ko-fi webhook: Ko-fi calls this after every payment (Ko-fi > Settings > API > Webhook URL:
 // https://gelastinta.com/api/kofi). Shop orders for study packs unlock the packs for the buyer's
-// email and, when RESEND_API_KEY is set, email them a sign in link straight away.
+// email and, when sign in emails are set up (GMAIL_APP_PASSWORD or RESEND_API_KEY), email them
+// a sign in link straight away.
 // Ko-fi sends a form with one field, "data", holding JSON; verification_token must match
 // KOFI_VERIFICATION_TOKEN. Every shop sale is kept in the "packs-orders" store, including sales
 // whose item code is not in lib/packs-config.mjs, so nothing is lost (see /api/packs/admin?orders=1).
