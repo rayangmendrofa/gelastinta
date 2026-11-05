@@ -4,3 +4,5 @@
 
 [functions]
   directory = "netlify/functions"
+  # encrypted study packs and free samples, read by packs.mts (see scripts/build-packs.mjs)
+  included_files = ["packs-data/**"]

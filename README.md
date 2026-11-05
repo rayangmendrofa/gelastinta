@@ -73,6 +73,14 @@ new content goes live within a minute or two.
 ### Newsletter
 Each talk, the Talks page and the Products page have a newsletter signup. Addresses go to the Netlify Function `/api/newsletter` and are stored once each in the Netlify Blobs store `newsletter` (Netlify → Data & Storage → Blobs). They are only used to email new talks.
 
+### Study packs
+The GelasTinta study packs live at `/packs/<pack>/` (for example `/packs/mechanics/`). Everyone gets a free sample: the first sheet of each course is open and the other sheets show an unlock card. Buyers pay on Ko-fi (USD); Ko-fi calls `/api/kofi`, the sale is saved in the Netlify Blobs store `packs-buyers`, and the buyer signs in with a link sent to their email. The full packs sit in `packs-data/` encrypted, so this public repository holds nothing readable; the function `netlify/functions/packs.mts` decrypts a pack only for a signed in buyer and stamps their name in it.
+
+- Prices, items and Ko-fi shop codes: `lib/packs-config.mjs`
+- Rebuild the samples and encrypted files after a pack changes: `PACKS_KEY=... node scripts/build-packs.mjs <folder with the built packs>`
+- Settings on Netlify: `PACKS_KEY`, `KOFI_VERIFICATION_TOKEN`, optional `RESEND_API_KEY` for sign in emails (see `lib/packs-core.mjs`)
+- Owner tools (grant a pack by hand, refunds, buyer and order lists): `/api/packs/admin` (see `netlify/functions/packs-api.mts`)
+
 ## Credits
 
 - InMoov is an open-source project created by [Gaël Langevin](https://inmoov.fr/); the hand on this
