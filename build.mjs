@@ -195,7 +195,7 @@ function prerender(template, logic) {
   return html;
 }
 
-const FAVICON = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none"><path d="M9.6 20 6.3 26.4A1.7 1.7 0 0 0 7.8 29h16.4a1.7 1.7 0 0 0 1.5-2.6L22.4 20z" fill="#2B44C8"/><path d="M11 3h10M13 3v9L6 26.4A1.7 1.7 0 0 0 7.8 29h16.4a1.7 1.7 0 0 0 1.5-2.6L19 12V3" stroke="#10131C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const FAVICON = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none"><path d="M9.6 20 6.3 26.4A1.7 1.7 0 0 0 7.8 29h16.4a1.7 1.7 0 0 0 1.5-2.6L22.4 20z" fill="#064F6E"/><path d="M11 3h10M13 3v9L6 26.4A1.7 1.7 0 0 0 7.8 29h16.4a1.7 1.7 0 0 0 1.5-2.6L19 12V3" stroke="#10131C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 
 // ---- build ----------------------------------------------------------------
 fs.rmSync(OUT, { recursive: true, force: true });
@@ -356,7 +356,7 @@ ${helmet}
 @media (min-width:961px){.nf .split{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}}
 .nf-links .btn{white-space:nowrap}
 @media (max-width:960px){.nf-art{max-width:220px;justify-self:start}.nf{min-height:0}}
-.nf-code{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:clamp(96px,16vw,200px);line-height:.85;letter-spacing:-.05em;color:#2B44C8;margin:0}
+.nf-code{font-family:'Titillium Web',system-ui,sans-serif;font-weight:800;font-size:clamp(96px,16vw,200px);line-height:.85;letter-spacing:-.05em;color:#064F6E;margin:0}
 .nf h1{margin:0}
 .nf-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
 .nf .btn.ghost{color:#EDEFF2;border:1px solid #EDEFF2}
@@ -386,10 +386,10 @@ ${header}
 </div>
 <svg class="nf-art" viewBox="0 0 320 320" role="img" aria-label="An ink flask tipped on its side, ink dripping from its mouth into a puddle">
 <defs><clipPath id="nf-body"><path transform="translate(20 10) rotate(100 140 150)" d="M118 40v70L70 232a10 10 0 0 0 9 14h122a10 10 0 0 0 9-14L162 110V40z"/></clipPath></defs>
-<rect x="0" y="182" width="320" height="120" fill="#2B44C8" clip-path="url(#nf-body)"/>
+<rect x="0" y="182" width="320" height="120" fill="#064F6E" clip-path="url(#nf-body)"/>
 <path transform="translate(20 10) rotate(100 140 150)" d="M110 40h60M118 40v70L70 232a10 10 0 0 0 9 14h122a10 10 0 0 0 9-14L162 110V40" fill="none" stroke="#EDEFF2" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-<circle class="ink" cx="262" cy="206" r="6" fill="#2B44C8"/>
-<ellipse class="pool" cx="262" cy="292" rx="54" ry="8" fill="#2B44C8"/>
+<circle class="ink" cx="262" cy="206" r="6" fill="#064F6E"/>
+<ellipse class="pool" cx="262" cy="292" rx="54" ry="8" fill="#064F6E"/>
 </svg>
 </div>
 </main>

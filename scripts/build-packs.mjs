@@ -84,9 +84,9 @@ function stub(meta, full, packName, buyItem) {
 }
 
 const BAR_CSS = `<style id="gt-sample-css">
-.gt-sample{position:fixed;left:12px;right:12px;bottom:12px;z-index:9999;display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;max-width:980px;margin:0 auto;padding:12px 16px;background:#10131C;color:#EDEFF2;border-radius:14px;box-shadow:0 8px 30px rgba(0,0,0,.25);font:14px/1.45 system-ui,sans-serif}
+.gt-sample{position:fixed;left:12px;right:12px;bottom:12px;z-index:9999;display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;max-width:980px;margin:0 auto;padding:12px 16px;background:#1C1F33;color:#EEF3F4;border-radius:14px;box-shadow:0 8px 30px rgba(0,0,0,.25);font:15px/1.45 'Titillium Web',system-ui,sans-serif}
 .gt-sample b{font-weight:700}.gt-sample p{margin:0;flex:1 1 320px}
-.gt-sample a{color:#EDEFF2}.gt-sample .gt-buy{display:inline-flex;align-items:center;min-height:38px;padding:0 16px;border-radius:999px;background:#2B44C8;color:#fff;text-decoration:none;font-weight:600;white-space:nowrap}
+.gt-sample a{color:#EEF3F4}.gt-sample .gt-buy{display:inline-flex;align-items:center;min-height:38px;padding:0 16px;border-radius:999px;background:#A5C8D1;color:#1C1F33;text-decoration:none;font-weight:600;white-space:nowrap}
 .gt-sample .gt-x{background:none;border:0;color:#9AA3B5;font-size:18px;cursor:pointer;padding:4px 6px}
 .gt-lock-cta{display:flex;flex-wrap:wrap;gap:12px 18px;align-items:center}
 body{padding-bottom:84px}
@@ -97,17 +97,17 @@ const bar = (text, item, price) => `<div class="gt-sample" role="region" aria-la
 // The paywall in the sample: any click or link to a locked sheet (sheet cards, pager, search hits,
 // deep links, tabs) opens a sign in / buy window instead of the sheet. Only the first sheet opens.
 const GATE_CSS = `<style id="gt-gate-css">
-.gt-gate{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(16,19,28,.55);backdrop-filter:blur(3px)}
+.gt-gate{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(28,31,51,.55);backdrop-filter:blur(3px)}
 .gt-gate[hidden]{display:none}
-.gt-gate-card{position:relative;width:min(460px,100%);padding:28px 24px 22px;background:#fff;color:#10131C;border-radius:18px;box-shadow:0 20px 60px rgba(0,0,0,.3);font:16px/1.5 system-ui,sans-serif}
-.gt-gate-card svg{display:block;width:44px;height:44px;margin-bottom:12px;color:#2B44C8}
-.gt-gate-k{margin:0 0 4px;font:12px ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase;color:#5A6275}
-.gt-gate-card h2{margin:0 0 10px;font:800 24px/1.15 system-ui,sans-serif;letter-spacing:-.01em}
+.gt-gate-card{position:relative;width:min(460px,100%);padding:28px 24px 22px;background:#fff;color:#1C1F33;border-radius:18px;box-shadow:0 20px 60px rgba(0,0,0,.3);font:16px/1.5 'Titillium Web',system-ui,sans-serif}
+.gt-gate-card svg{display:block;width:44px;height:44px;margin-bottom:12px;color:#D96629}
+.gt-gate-k{margin:0 0 4px;font:13px 'Ubuntu Mono',ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase;color:#5A6275}
+.gt-gate-card h2{margin:0 0 10px;font:700 26px/1.15 'Titillium Web',system-ui,sans-serif;letter-spacing:-.01em}
 .gt-gate-card p{margin:0 0 16px}
 .gt-gate-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px}
 .gt-gate-row a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 18px;border-radius:999px;font-weight:600;text-decoration:none}
-.gt-gate-buy{background:#2B44C8;color:#fff}.gt-gate-in{border:1.5px solid #10131C;color:#10131C}
-.gt-gate-free{font-size:14px;color:#2B44C8}
+.gt-gate-buy{background:#40456A;color:#fff}.gt-gate-in{border:1.5px solid #1C1F33;color:#1C1F33}
+.gt-gate-free{font-size:14px;color:#40456A}
 .gt-gate-x{position:absolute;top:10px;right:12px;border:0;background:none;font-size:24px;line-height:1;color:#5A6275;cursor:pointer;padding:6px}
 a.sheet-card.gt-lock{position:relative}a.sheet-card.gt-lock::after{content:"";position:absolute;top:10px;right:10px;width:16px;height:16px;opacity:.7;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 10V7a5 5 0 0 1 10 0v3h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1zm2 0h6V7a3 3 0 0 0-6 0z'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 10V7a5 5 0 0 1 10 0v3h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1zm2 0h6V7a3 3 0 0 0-6 0z'/%3E%3C/svg%3E") center/contain no-repeat}
 </style>`;
@@ -160,12 +160,14 @@ function build(keyName, html) {
   let js = html.slice(a + 8, b);
   const comments = [];
   const ast = acorn.parse(js, { ecmaVersion: 'latest', sourceType: 'script', onComment: comments });
-  const edits = [];
+  const edits = [], teardowns = [];
   let open = 0, locked = 0;
-  const figsFor = (id) => (html.match(new RegExp(`attach\\s*:\\s*['"]${id.replace(/[-]/g, '\\-')}['"]`, 'g')) || []).length;
+  const figsFor = (id) => (html.match(new RegExp(`attach['"]?\\s*:\\s*['"]${id.replace(/[-]/g, '\\-')}['"]`, 'g')) || []).length;
   for (const st of ast.body) {
     // the comment right before this statement
     const c = comments.filter((x) => x.end <= st.start && /^\s*$/.test(js.slice(x.end, st.start))).pop();
+    const td = c && /GelasTinta 3D teardown '(\w+)'/.exec(c.value);
+    if (td) { teardowns.push({ key: td[1], start: c.start, end: st.end, st }); continue; }
     const m = c && /^\s*Sheet ([A-Z]+\d\.\d\d)\b/.exec(c.value);
     if (!m) continue;
     const code = m[1];
@@ -181,6 +183,7 @@ function build(keyName, html) {
     edits.push([st.start, st.end, stub(meta, full, cfg.library ? 'GelasTinta library' : cfg.name, cfg.item)]);
     locked++;
   }
+  for (const t of teardowns) edits.push([t.start, t.end, `/* 3D teardown '${t.key}' is in the full pack */`]);
   for (const [s, e, r] of edits.sort((x, y) => y[0] - x[0])) js = js.slice(0, s) + r + js.slice(e);
   js = one(js, 'const figuresFor = t => Object.values(GT.figures)', 'const figuresFor = t => t.locked ? [] : Object.values(GT.figures)', 'figuresFor');
   js = one(js, 'list.forEach(t => { n.slides += t.slides.length;', 'list.forEach(t => { if (t.full) { n.slides += t.full.slides; n.labs += t.full.labs; n.prac += t.full.prac; n.quiz += t.full.quiz; n.f += t.full.f; return; } n.slides += t.slides.length;', 'countsOf');
@@ -196,7 +199,38 @@ function build(keyName, html) {
   const end = out.lastIndexOf('</body>');
   out = out.slice(0, end) + bar(text, cfg.item, '$' + cfg.price) + gateHtml(cfg.item, '$' + cfg.price) + out.slice(end);
   // sanity: no locked lesson text survives
-  return { sample: out, open, locked };
+  return { sample: out, open, locked, teardowns: teardowns.length };
+}
+
+// The 3D teardown pages are big (about 500 KB each), so the full pack keeps only their poster and
+// fetches the page from /packs/td/<key> when a buyer presses "Open the 3D model". Each page is
+// encrypted on its own in packs-data/td-<key>.bin; packs-data/teardowns.json maps key -> pack.
+const TD = {};
+const encrypt = (buf) => { const iv = crypto.randomBytes(12); const c = crypto.createCipheriv('aes-256-gcm', key, iv); const e = Buffer.concat([c.update(buf), c.final()]); return Buffer.concat([iv, c.getAuthTag(), e]); };
+function splitTeardowns(packKey, html) {
+  const a = html.indexOf('<script>'), b = html.indexOf('</script>', a);
+  let js = html.slice(a + 8, b);
+  const comments = [];
+  const ast = acorn.parse(js, { ecmaVersion: 'latest', sourceType: 'script', onComment: comments });
+  const edits = [];
+  for (const st of ast.body) {
+    const c = comments.filter((x) => x.end <= st.start && /^\s*$/.test(js.slice(x.end, st.start))).pop();
+    const m = c && /GelasTinta 3D teardown '(\w+)'/.exec(c.value);
+    if (!m) continue;
+    let gz = null, pack = null;
+    (function walk(n) {
+      if (!n || typeof n.type !== 'string') return;
+      if (n.type === 'Property' && n.key && (n.key.name === 'gz' || n.key.value === 'gz') && n.value.type === 'Literal') gz = n;
+      if (n.type === 'Property' && n.key && (n.key.name === 'pack' || n.key.value === 'pack') && n.value.type === 'Literal' && !pack) pack = n.value.value;
+      for (const k in n) { const v = n[k]; if (Array.isArray(v)) v.forEach(walk); else if (v && typeof v === 'object' && v.type) walk(v); }
+    })(st);
+    if (!gz) throw new Error(`${packKey}: teardown ${m[1]} has no gz page`);
+    if (!TD[m[1]]) { fs.writeFileSync(path.join(OUT, `td-${m[1]}.bin`), encrypt(Buffer.from(gz.value.value))); TD[m[1]] = pack || m[1]; }
+    edits.push([gz.start, gz.end, `gz: "", src: "/packs/td/${m[1]}"`]);
+  }
+  for (const [s, e, r] of edits.sort((x, y) => y[0] - x[0])) js = js.slice(0, s) + r + js.slice(e);
+  if (edits.length) js = one(js, 'async function tdHtml(td) {\n  if (td._html) return td._html;', "async function tdHtml(td) {\n  if (td._html) return td._html;\n  if (!td.gz && td.src) { const r = await fetch(td.src, { credentials: 'same-origin' }); if (!r.ok) throw new Error('3D model locked'); td.gz = (await r.text()).trim(); }", 'tdHtml');
+  return html.slice(0, a + 8) + js + html.slice(b);
 }
 
 const files = (k) => [path.join(from, k, 'index.html'), path.join(from, k + '.html')].find((f) => fs.existsSync(f));
@@ -206,14 +240,16 @@ for (const k of Object.keys(PACKS)) {
   if (!f) { console.log(`skip ${k}: no file`); continue; }
   const html = fs.readFileSync(f, 'utf8');
   if (!html.includes("licensee: '__LICENSEE__'")) throw new Error(`${k}: no __LICENSEE__ placeholder; use an unstamped build`);
-  const { sample, open, locked } = build(k, html);
+  const { sample, open, locked, teardowns } = build(k, html);
+  const full = splitTeardowns(k, html);
   fs.writeFileSync(path.join(OUT, `${k}.sample.gz`), zlib.gzipSync(sample, { level: 9 }));
   const iv = crypto.randomBytes(12);
   const c = crypto.createCipheriv('aes-256-gcm', key, iv);
-  const enc = Buffer.concat([c.update(zlib.gzipSync(html, { level: 9 })), c.final()]);
+  const enc = Buffer.concat([c.update(zlib.gzipSync(full, { level: 9 })), c.final()]);
   fs.writeFileSync(path.join(OUT, `${k}.full.bin`), Buffer.concat([iv, c.getAuthTag(), enc]));
-  console.log(`${k.padEnd(12)} open ${open}, locked ${locked}, sample ${(sample.length / 1e6).toFixed(2)} MB, full ${(html.length / 1e6).toFixed(2)} MB`);
+  console.log(`${k.padEnd(12)} open ${open}, locked ${locked}, 3D ${teardowns}, sample ${(sample.length / 1e6).toFixed(2)} MB, full ${(full.length / 1e6).toFixed(2)} MB`);
   n++;
 }
-fs.writeFileSync(path.join(OUT, 'README.md'), '# packs-data\n\nMade by `scripts/build-packs.mjs`. `*.sample.gz` are the free samples (gzipped HTML). `*.full.bin` are the full packs, gzipped and encrypted with the PACKS_KEY environment variable; they cannot be read without it. Do not edit by hand.\n');
+fs.writeFileSync(path.join(OUT, 'teardowns.json'), JSON.stringify(TD, null, 2) + '\n');
+fs.writeFileSync(path.join(OUT, 'README.md'), '# packs-data\n\nMade by `scripts/build-packs.mjs`. `*.sample.gz` are the free samples (gzipped HTML). `*.full.bin` are the full packs, gzipped and encrypted with the PACKS_KEY environment variable; they cannot be read without it. `td-*.bin` are the 3D teardown pages, encrypted the same way and fetched by the full pack when a buyer opens a 3D model; `teardowns.json` says which pack each belongs to. Do not edit by hand.\n');
 console.log(`${n} packs written to packs-data/`);
