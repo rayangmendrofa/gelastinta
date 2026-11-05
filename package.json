@@ -7,11 +7,13 @@
     "preview": "npx --yes serve public -l 4173"
   },
   "devDependencies": {
+    "acorn": "^8.14.0",
     "jsdom": "^25.0.0",
     "sharp": "^0.34.4"
   },
   "dependencies": {
     "@netlify/blobs": "^11.1.4",
-    "@netlify/functions": "^6.0.2"
+    "@netlify/functions": "^6.0.2",
+    "nodemailer": "^6.9.16"
   }
 }

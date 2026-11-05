@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>GelasTinta — Products</title>
+<title>GelasTinta — Products &amp; Services</title>
 <script src="./support.js"></script>
 <script src="/_blob/59800ae8dd311e216394a93b57b5c5e9"></script>
 </head>
@@ -122,34 +122,325 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 .wada-credit{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:11px;letter-spacing:.06em;color:#C9CED8}
 .wada-credit .wada-mini{margin-left:0;border-color:#3A4152}
 /* wadasite:end */
+/* wwm:start */
+.jump a{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid #C9CED8;color:#10131C;text-decoration:none;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:700;font-size:18px}
+.jump a span{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;font-weight:400;color:#3A4152}
+.jump a:hover{color:#2B44C8}
+.pk-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;align-items:stretch}
+.pk{display:flex;flex-direction:column;background:#FFFFFF;border:1px solid #10131C;border-top:10px solid var(--pc)}
+.pk-top{padding:24px 24px 16px;display:flex;flex-direction:column;gap:8px}
+.pk-n{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.1em;color:#3A4152}
+.pk-price{padding:16px 24px;border-top:1px solid #C9CED8;border-bottom:1px solid #C9CED8;display:flex;flex-direction:column;gap:2px}
+.pk-price b{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:34px;line-height:1.1;letter-spacing:-.02em}
+.pk-list{list-style:none;margin:0;padding:18px 24px;display:flex;flex-direction:column;gap:10px;flex:1}
+.pk-list li{position:relative;padding-left:22px;font-size:16px;line-height:1.45}
+.pk-list li::before{content:"";position:absolute;left:0;top:.55em;width:10px;height:10px;background:var(--pc);border:1px solid #10131C}
+.pk-foot{padding:0 24px 24px;display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+.pk-sample{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;color:#2B44C8}
+.pk-extra{margin-top:40px;display:flex;flex-direction:column;gap:14px}
+.pk-dl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin:0;border-top:1px solid #10131C}
+.pk-dl div{padding:14px 16px 14px 0;border-bottom:1px solid #C9CED8}
+.pk-dl dt{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:700;font-size:17px}
+.pk-dl dd{margin:4px 0 0;font-size:15px;line-height:1.5;color:#3A4152}
+.pr-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:40px;align-items:start}
+.pr-steps{list-style:none;margin:0;padding:0;border-top:1px solid #10131C}
+.pr-steps li{display:grid;grid-template-columns:48px minmax(0,1fr);gap:12px;padding:16px 0;border-bottom:1px solid #C9CED8}
+.pr-steps b{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:28px;line-height:1;color:#2B44C8}
+.pr-steps div{display:flex;flex-direction:column;gap:4px}
+.st-t{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:700;font-size:19px}
+.st-d{font-size:16px;line-height:1.5;color:#3A4152}
+.pr-list{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;font-size:16px;line-height:1.45}
+.ws{display:flex;flex-direction:column;border:1px solid #3A4152;background:#1A1F2E;color:#EDEFF2;text-decoration:none}
+a.ws:hover{border-color:#EDEFF2;color:#EDEFF2}
+a.ws:hover .ws-go{text-decoration:underline}
+.ws-img{display:block;height:200px;overflow:hidden;border-bottom:1px solid #3A4152}
+.ws-img img{display:block;width:100%;height:100%}
+.ws-soon{display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(135deg,#1A1F2E 0 14px,#232A3D 14px 28px)}
+.ws-soon span{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.2em;color:#8FA2FF;border:1px dashed #8FA2FF;padding:8px 14px}
+.ws-body{display:flex;flex-direction:column;gap:10px;padding:22px;align-items:flex-start}
+.ws .muted{color:#C9CED8}
+.ws-go{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#8FA2FF}
+@media (max-width:960px){.pk-grid{grid-template-columns:minmax(0,1fr)}.pk-dl{grid-template-columns:repeat(2,minmax(0,1fr))}.pr-grid{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:640px){.pk-dl{grid-template-columns:minmax(0,1fr)}.pk-price b{font-size:30px}}
+/* wwm:end */
+/* nl:start */
+.nl-box{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:20px 40px;align-items:center}
+.nl-form{display:flex;gap:10px;flex-wrap:wrap}
+.nl-form input[type=email]{flex:1 1 220px;min-height:48px;padding:0 16px;border:1px solid currentColor;border-radius:999px;background:transparent;color:inherit;font:inherit;font-size:16px}
+.nl-form input[type=email]:focus-visible{outline:3px solid #2B44C8;outline-offset:2px}
+.nl-form .btn{border:0;cursor:pointer}
+.nl-hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.nl-msg{display:none;grid-column:1 / -1;margin:0;padding:12px 16px;border:1px solid currentColor;font-size:16px}
+.nl-msg:target{display:block}
+.nl-support{grid-column:1 / -1;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.nl-support[hidden]{display:none}
+.nl-support .meta{flex-basis:100%}
+.nl-support .sp-ico{width:22px;height:22px;border-radius:6px;display:block;flex:0 0 auto}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:760px){.nl-box{grid-template-columns:minmax(0,1fr)}}
+/* nl:end */
+/* quote:start */
+.pk-grid.four{grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.pk-grid.four .pk-price b{font-size:28px}
+.pk-grid.four .pk-top,.pk-grid.four .pk-price,.pk-grid.four .pk-list,.pk-grid.four .pk-foot{padding-left:18px;padding-right:18px}
+.qc{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:32px;align-items:start}
+.qb-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
+.qb{display:flex;flex-direction:column;align-items:flex-start;gap:4px;min-height:64px;padding:12px 14px;border:1px solid #10131C;background:#FFFFFF;color:#10131C;text-align:left;cursor:pointer;font:inherit}
+.qb:hover{background:#EDEFF2}
+.qb:focus-visible{outline:3px solid #2B44C8;outline-offset:2px}
+.qb.on,.qb[aria-pressed="true"]{background:#2B44C8;border-color:#2B44C8;color:#FFFFFF}
+.qb-n{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:700;font-size:16px;line-height:1.2}
+.qb-p{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;opacity:.85}
+.qc-sum{position:sticky;top:96px}
+.qs-list{list-style:none;margin:0;padding:0;border-top:1px solid #10131C}
+.qs-list li{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid #C9CED8;font-size:15px}
+.qs-dl{margin:0;display:flex;flex-direction:column;gap:6px}
+.qs-dl div{display:flex;justify-content:space-between;gap:12px;font-size:15px}
+.qs-dl dt{color:#3A4152}.qs-dl dd{margin:0;text-align:right}
+.qs-total{display:flex;flex-direction:column;gap:2px;padding:12px 0;border-top:2px solid #10131C}
+.qs-total b{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:34px;line-height:1.1}
+.nl-wide{max-width:1000px}
+.sp-intro{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:40px;align-items:start}
+.sp-feat{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;margin:0;border-top:1px solid #10131C}
+.sp-feat div{padding:14px 16px 14px 0;border-bottom:1px solid #C9CED8}
+.sp-feat dt{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:700;font-size:17px}
+.sp-feat dd{margin:4px 0 0;font-size:15px;line-height:1.5;color:#3A4152}
+.sb-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.sb{display:flex;flex-direction:column;gap:8px;align-items:flex-start;padding:24px;border:1px solid #10131C;background:#EDEFF2}
+.sb:last-child{background:#10131C;color:#FFFFFF;border-color:#10131C}
+.sb:last-child .kicker{color:#8FA2FF}.sb:last-child .meta,.sb:last-child .muted{color:#C9CED8}
+.sb-price{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:44px;line-height:1}
+.sb-in{margin:6px 0 0;font-size:16px;line-height:1.5;flex:1}
+.sp-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}
+.sp{display:flex;flex-direction:column;border:1px solid #10131C;background:#FFFFFF}
+.sp-cover{position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:10px;min-height:170px;padding:16px;background:var(--sc);color:#FFFFFF;border-bottom:1px solid #10131C;overflow:hidden}
+.sp-cover::after{content:"";position:absolute;right:-18px;bottom:-18px;width:90px;height:90px;border:10px solid rgba(255,255,255,.18);border-radius:50%}
+.sp-code{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.12em;opacity:.85}
+.sp-name{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:19px;line-height:1.1;letter-spacing:-.01em}
+.sp-brand{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;opacity:.8}
+.sp-body{display:flex;flex-direction:column;gap:10px;padding:16px;flex:1}
+.sp-blurb{margin:0;font-size:15px;line-height:1.5}
+.sp-stats{margin:0;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;line-height:1.6;color:#3A4152;flex:1}
+.sp-buy{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.sp-price{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;color:#3A4152}
+.sp-price b{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:24px;color:#10131C}
+.sp-buy .btn{min-height:40px;padding:0 16px}
+.sp-cover{text-decoration:none}.sp-cover:hover .sp-name{text-decoration:underline;text-underline-offset:4px}
+.sp-try{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;color:#2B44C8;text-decoration:none}.sp-try:hover{text-decoration:underline}
+.sb .chips{margin-top:8px}
+.sp-how{margin-top:40px;padding:24px;border:1px dashed #10131C;display:flex;flex-direction:column;gap:12px}
+.sp-how ol{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:8px;font-size:16px;line-height:1.5}
+@media (max-width:1200px){.sp-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.sp-name{font-size:22px}}
+html[data-theme=dark] .sp-cover,html[data-theme=dark] .sb:last-child{filter:invert(1) hue-rotate(180deg)}
+@media (max-width:960px){.sp-intro{grid-template-columns:minmax(0,1fr)}.sb-grid{grid-template-columns:minmax(0,1fr)}.sp-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.sp-grid{grid-template-columns:minmax(0,1fr)}.sp-feat{grid-template-columns:minmax(0,1fr)}}
+.faq{border-top:1px solid #10131C;max-width:900px}
+.faq details{border-bottom:1px solid #C9CED8}
+.faq summary{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:60px;padding:14px 0;cursor:pointer;list-style:none;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:700;font-size:20px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:'JetBrains Mono',ui-monospace,monospace;font-weight:400;font-size:22px;color:#2B44C8;flex:0 0 auto}
+.faq details[open] summary::after{content:"−"}
+.faq summary:focus-visible{outline:3px solid #2B44C8;outline-offset:2px}
+.faq details > :not(summary){margin:0 0 18px;font-size:17px;line-height:1.6;max-width:720px}
+.faq ul,.faq ol{padding-left:22px;display:flex;flex-direction:column;gap:6px}
+
+@media (max-width:1100px){.pk-grid.four{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:960px){.qc{grid-template-columns:minmax(0,1fr)}.qc-sum{position:static}}
+@media (max-width:640px){.pk-grid.four{grid-template-columns:minmax(0,1fr)}}
+/* quote:end */
+/* logo:start */
+.brand .bk-logo{overflow:visible;flex:0 0 auto}
+.bk-tip{transform-box:view-box;transform-origin:26px 29px;animation:bk-tip 3.6s 1.6s cubic-bezier(.45,.05,.3,1) both}
+.bk-liq{transform-box:fill-box;transform-origin:50% 100%;animation:bk-liq 3.6s 1.6s ease-in-out both}
+.bk-drop{opacity:0;animation:bk-drop 3.6s 1.6s ease-in both}
+.bk-drop.d2{animation-delay:1.85s}.bk-drop.d3{animation-delay:2.1s}
+.bk-pud{transform-box:fill-box;transform-origin:30% 50%;transform:scaleX(0);animation:bk-pud 3.6s 1.6s ease-out both}
+@keyframes bk-tip{0%{transform:rotate(0)}7%{transform:rotate(-7deg)}13%{transform:rotate(6deg)}19%{transform:rotate(-3deg)}31%{transform:rotate(56deg)}60%{transform:rotate(56deg)}74%{transform:rotate(-5deg)}81%{transform:rotate(2deg)}88%,100%{transform:rotate(0)}}
+@keyframes bk-liq{0%,30%{transform:scaleY(1)}58%{transform:scaleY(.14)}80%{transform:scaleY(.14)}100%{transform:scaleY(1)}}
+@keyframes bk-drop{0%,30%{opacity:0;transform:translate(0,0)}31%{opacity:1;transform:translate(0,0)}42%{opacity:1;transform:translate(1px,19px)}44%,100%{opacity:0;transform:translate(1px,19px)}}
+@keyframes bk-pud{0%,33%{transform:scaleX(0);opacity:1}58%{transform:scaleX(1);opacity:1}80%{transform:scaleX(1.05);opacity:1}96%,100%{transform:scaleX(1.12);opacity:0}}
+@media (prefers-reduced-motion:reduce){.bk-tip,.bk-liq,.bk-drop,.bk-pud{animation:none}.bk-pud,.bk-drop{opacity:0}}
+/* logo:end */
+/* dark:start */
+.brand .bk-btn{display:inline-flex;align-items:center;justify-content:center;padding:4px;margin:-4px;border:0;background:transparent;cursor:pointer;border-radius:8px;line-height:0}
+.brand .bk-btn:hover .bk-tip{transform:rotate(-8deg)}
+.brand .bk-btn:focus-visible{outline:3px solid #2B44C8;outline-offset:2px}
+.brand .brand-name{color:inherit;text-decoration:none}
+.brand .brand-name:hover{color:inherit}
+html[data-theme="dark"]{filter:invert(1) hue-rotate(180deg);background:#FFFFFF;color-scheme:dark}
+html[data-theme="dark"] img,html[data-theme="dark"] video,html[data-theme="dark"] canvas,html[data-theme="dark"] iframe,html[data-theme="dark"] picture{filter:invert(1) hue-rotate(180deg)}
+html[data-theme="dark"] :is(.dark,.hero,.cp-hero,.blue,.catch,.book){filter:invert(1) hue-rotate(180deg)}
+html[data-theme="dark"] .book .cover{filter:invert(1) hue-rotate(180deg)}
+html[data-theme="dark"] :is(.dark,.hero,.cp-hero,.blue,.catch) :is(img,video,canvas,iframe,picture){filter:none}
+.gt-flood{position:fixed;inset:0;z-index:9999;background:#10131C;pointer-events:none;clip-path:circle(0 at var(--fx,40px) var(--fy,40px));transition:clip-path .6s cubic-bezier(.55,.05,.4,1),opacity .35s ease}
+.gt-flood.go{clip-path:circle(150vmax at var(--fx,40px) var(--fy,40px))}
+.gt-flood.out{opacity:0}
+@media (prefers-reduced-motion:reduce){.gt-flood{display:none}}
+/* dark:end */
 </style>
 </helmet>
 <div style="min-height:100vh" data-gt-root="">
 
 <header class="site-head">
 <div class="wrap">
-<a href="Main.dc.html" class="brand"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M9.6 20 6.3 26.4A1.7 1.7 0 0 0 7.8 29h16.4a1.7 1.7 0 0 0 1.5-2.6L22.4 20z" fill="#2B44C8"></path><path d="M11 3h10M13 3v9L6 26.4A1.7 1.7 0 0 0 7.8 29h16.4a1.7 1.7 0 0 0 1.5-2.6L19 12V3" stroke="#10131C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>GelasTinta</a>
+<div class="brand"><button type="button" class="bk-btn" data-theme-toggle aria-pressed="false" aria-label="Switch to dark mode (spill the ink)" title="Switch to dark mode (spill the ink)"><svg class="bk-logo" width="44" height="28" viewBox="0 0 50 32" fill="none" aria-hidden="true"><ellipse class="bk-pud" cx="40" cy="30.2" rx="9" ry="1.7" fill="#2B44C8"></ellipse><circle class="bk-drop d1" cx="42" cy="9" r="1.4" fill="#2B44C8"></circle><circle class="bk-drop d2" cx="42" cy="9" r="1.4" fill="#2B44C8"></circle><circle class="bk-drop d3" cx="42" cy="9" r="1.4" fill="#2B44C8"></circle><g class="bk-tip"><g class="bk-liq"><path d="M9.6 20 6.3 26.4A1.7 1.7 0 0 0 7.8 29h16.4a1.7 1.7 0 0 0 1.5-2.6L22.4 20z" fill="#2B44C8"></path></g><path d="M11 3h10M13 3v9L6 26.4A1.7 1.7 0 0 0 7.8 29h16.4a1.7 1.7 0 0 0 1.5-2.6L19 12V3" stroke="#10131C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></g></svg></button><a href="Main.dc.html" class="brand-name">GelasTinta</a></div>
 <nav class="nav" aria-label="Main">
 <a href="Main.dc.html">Home</a>
 <a href="Projects.dc.html">Projects</a>
 <a href="Talks.dc.html">Talks</a>
 <a href="Products.dc.html" class="on" aria-current="page">Products</a>
+<a href="/packs/library/">Library</a>
 <a href="Author.dc.html">Author</a>
 </nav>
 </div>
 </header>
 
 <section class="sec grid-bg rule-b">
-<div class="wrap stack g24">
-<p class="kicker">Sheet 03 — Gelas Tinta</p>
-<h1 class="t-hero">Products</h1>
-<div class="chips"><span class="chip warn">Coming soon</span></div>
-<p class="lead prose">This section is unavailable at the moment.<br>Apologies for the inconveniences.</p>
+<div class="wrap split">
+<div class="stack g24">
+<p class="kicker">Sheet 03 — Work with me</p>
+<h1 class="t-hero">Products &amp; Services</h1>
+<p class="lead prose">Every talk and project on this site was researched, written, drawn and built by me. Now you can take some of it home: ten interactive engineering study packs. And the same work is available for your own paper, thesis or project.</p>
+<div class="chips" style="gap:12px"><a class="btn" href="#packs">Study packs <span aria-hidden="true">↓</span></a><a class="btn ghost" href="#services">Services</a><a class="btn ghost" href="#quote">Build your quote</a></div>
+</div>
+<nav class="card jump stack g16" aria-label="On this page" style="align-self:end">
+<p class="kicker">On this page</p>
+<div class="stack">
+<a href="#packs">Study packs <span>01 ↓</span></a>
+<a href="#services">Services <span>02 ↓</span></a>
+<a href="#quote">Build your quote <span>03 ↓</span></a>
+<a href="#faq">FAQ <span>04 ↓</span></a>
+<a href="#workshop">From the workshop <span>05 ↓</span></a>
+<a href="#newsletter">Newsletter <span>06 ↓</span></a>
+<a href="#rtm">PT RTM · rtechm.com <span>07 ↓</span></a>
+<a href="#contact">Contact <span>08 ↓</span></a>
+</div>
+</nav>
 </div>
 </section>
 
-<section class="sec">
+<section id="packs" class="sec white rule-b">
 <div class="wrap">
+<div class="sec-head row">
+<div class="stack g12">
+<p class="kicker">01 — New · Study packs</p>
+<h2 class="t-h2">GelasTinta study packs</h2>
+</div>
+<p class="meta muted">10 courses · 175 sheets · first sheet free</p>
+</div>
+<div class="sp-intro">
+<p class="lead prose">Engineering courses I wrote from scratch and built like the talks on this site: slide lessons that draw themselves, labs you can play with, and practice problems that never run out.</p>
+<dl class="sp-feat">
+<div><dt>Animated lessons</dt><dd>Slides build up one step at a time, with a Present mode for teaching.</dd></div>
+<div><dt>Interactive labs</dt><dd>Change a value and watch the diagram respond. Four packs include a live machine.</dd></div>
+<div><dt>Endless practice</dt><dd>Every problem makes new numbers each time, with worked steps.</dd></div>
+<div><dt>Quiz and formulas</dt><dd>A quiz and a formula list on every sheet.</dd></div>
+<div><dt>Opens anywhere</dt><dd>Right here on gelastinta.com, in any browser on laptop or phone, light or dark. No app needed.</dd></div>
+<div><dt>Yours to keep</dt><dd>Each copy is stamped with your name. Want it offline too? Ask and I email you the single file.</dd></div>
+</dl>
+</div>
+<p class="kicker" style="margin:40px 0 16px">Bundles · prices in USD</p>
+<div class="sb-grid"><article class="sb"><p class="kicker">Foundations set</p><b class="sb-price">$29</b><span class="meta">USD · instead of $36</span><p class="sb-in">Engineering Maths, Mechanics, Materials, Electronics</p><p class="muted small">The four packs most courses start from.</p><div class="chips" style="gap:12px"><a class="btn" href="/packs/buy/foundations">Buy on Ko-fi</a></div></article><article class="sb"><p class="kicker">Advanced set</p><b class="sb-price">$39</b><span class="meta">USD · instead of $72</span><p class="sb-in">Computational Engineering, Advanced Materials, Thermodynamics, Control, Vibration and Acoustics, Robotics and Digital Control</p><p class="muted small">Six packs, including all four live machines.</p><div class="chips" style="gap:12px"><a class="btn" href="/packs/buy/advanced">Buy on Ko-fi</a></div></article><article class="sb"><p class="kicker">The whole library</p><b class="sb-price">$49</b><span class="meta">USD · instead of $108</span><p class="sb-in">All 10 packs on one page, with the course map, the plan chest and search across all 175 sheets</p><p class="muted small">The best value, and the way the packs were meant to be used together.</p><div class="chips" style="gap:12px"><a class="btn" href="/packs/buy/library">Buy on Ko-fi</a><a class="btn ghost" href="/packs/library/">Try it free</a></div></article></div>
+<p class="kicker" style="margin:44px 0 16px">Single packs · $9 foundation · $12 advanced</p>
+<div class="sp-grid"><article class="sp" style="--sc:#2B44C8"><a class="sp-cover" href="/packs/maths/" aria-label="Try Engineering Maths free"><span class="sp-code">EM</span><span class="sp-name">Engineering Maths</span><span class="sp-brand">GelasTinta · Study pack</span></a><div class="sp-body"><p class="sp-blurb">The maths every engineering course leans on, with interactive graphs and every step shown.</p><p class="sp-stats">19 sheets · 147 slides · 19 labs · 134 quiz questions · 96 problem types</p><div class="sp-buy"><span class="sp-price"><b>$9</b> USD</span><a class="btn" href="/packs/buy/maths">Buy</a></div><a class="sp-try" href="/packs/maths/">Try the first sheet free →</a></div></article><article class="sp" style="--sc:#10131C"><a class="sp-cover" href="/packs/mechanics/" aria-label="Try Mechanics free"><span class="sp-code">T</span><span class="sp-name">Mechanics</span><span class="sp-brand">GelasTinta · Study pack</span></a><div class="sp-body"><p class="sp-blurb">Forces, motion and structures, built up one diagram at a time.</p><p class="sp-stats">21 sheets · 159 slides · 25 labs · 150 quiz questions · 105 problem types</p><div class="sp-buy"><span class="sp-price"><b>$9</b> USD</span><a class="btn" href="/packs/buy/mechanics">Buy</a></div><a class="sp-try" href="/packs/mechanics/">Try the first sheet free →</a></div></article><article class="sp" style="--sc:#A36AA5"><a class="sp-cover" href="/packs/materials/" aria-label="Try Materials free"><span class="sp-code">M</span><span class="sp-name">Materials</span><span class="sp-brand">GelasTinta · Study pack</span></a><div class="sp-body"><p class="sp-blurb">Why materials behave the way they do, from atoms to everyday parts.</p><p class="sp-stats">17 sheets · 133 slides · 20 labs · 121 quiz questions · 85 problem types</p><div class="sp-buy"><span class="sp-price"><b>$9</b> USD</span><a class="btn" href="/packs/buy/materials">Buy</a></div><a class="sp-try" href="/packs/materials/">Try the first sheet free →</a></div></article><article class="sp" style="--sc:#007190"><a class="sp-cover" href="/packs/electronics/" aria-label="Try Electronics free"><span class="sp-code">E</span><span class="sp-name">Electronics</span><span class="sp-brand">GelasTinta · Study pack</span></a><div class="sp-body"><p class="sp-blurb">Circuits you can change and watch respond, from first principles up.</p><p class="sp-stats">18 sheets · 140 slides · 21 labs · 128 quiz questions · 91 problem types</p><div class="sp-buy"><span class="sp-price"><b>$9</b> USD</span><a class="btn" href="/packs/buy/electronics">Buy</a></div><a class="sp-try" href="/packs/electronics/">Try the first sheet free →</a></div></article><article class="sp" style="--sc:#34454C"><a class="sp-cover" href="/packs/fea/" aria-label="Try Computational Engineering free"><span class="sp-code">FE</span><span class="sp-name">Computational Engineering</span><span class="sp-brand">GelasTinta · Study pack</span></a><div class="sp-body"><p class="sp-blurb">Finite elements and CFD: finite volume, convection and diffusion schemes, and how to judge a result.</p><p class="sp-stats">18 sheets · 141 slides · 18 labs · 126 quiz questions · 90 problem types</p><div class="sp-buy"><span class="sp-price"><b>$12</b> USD</span><a class="btn" href="/packs/buy/fea">Buy</a></div><a class="sp-try" href="/packs/fea/">Try the first sheet free →</a></div></article><article class="sp" style="--sc:#59256A"><a class="sp-cover" href="/packs/advmat/" aria-label="Try Advanced Materials free"><span class="sp-code">AM</span><span class="sp-name">Advanced Materials</span><span class="sp-brand">GelasTinta · Study pack</span></a><div class="sp-body"><p class="sp-blurb">Advanced material concepts, ending with biomaterials and tissue scaffolds.</p><p class="sp-stats">20 sheets · 158 slides · 24 labs · 144 quiz questions · 100 problem types</p><div class="sp-buy"><span class="sp-price"><b>$12</b> USD</span><a class="btn" href="/packs/buy/advmat">Buy</a></div><a class="sp-try" href="/packs/advmat/">Try the first sheet free →</a></div></article><article class="sp" style="--sc:#CC1236"><a class="sp-cover" href="/packs/thermo/" aria-label="Try Thermodynamics free"><span class="sp-code">TH</span><span class="sp-name">Thermodynamics</span><span class="sp-brand">GelasTinta · Study pack</span></a><div class="sp-body"><p class="sp-blurb">Cycles, turbomachinery, combustion and fuel cells, with steam and refrigerant tables built in and a live turbine stage.</p><p class="sp-stats">21 sheets · 161 slides · 23 labs · 147 quiz questions · 105 problem types</p><div class="sp-buy"><span class="sp-price"><b>$12</b> USD</span><a class="btn" href="/packs/buy/thermo">Buy</a></div><a class="sp-try" href="/packs/thermo/">Try the first sheet free →</a></div></article><article class="sp" style="--sc:#064F6E"><a class="sp-cover" href="/packs/control/" aria-label="Try Control free"><span class="sp-code">CE</span><span class="sp-name">Control</span><span class="sp-brand">GelasTinta · Study pack</span></a><div class="sp-body"><p class="sp-blurb">Step response, root locus, Bode plots and margins, all computed live as you tune.</p><p class="sp-stats">16 sheets · 125 slides · 16 labs · 113 quiz questions · 80 problem types</p><div class="sp-buy"><span class="sp-price"><b>$12</b> USD</span><a class="btn" href="/packs/buy/control">Buy</a></div><a class="sp-try" href="/packs/control/">Try the first sheet free →</a></div></article><article class="sp" style="--sc:#837E31"><a class="sp-cover" href="/packs/vib/" aria-label="Try Vibration and Acoustics free"><span class="sp-code">VA</span><span class="sp-name">Vibration and Acoustics</span><span class="sp-brand">GelasTinta · Study pack</span></a><div class="sp-body"><p class="sp-blurb">Resonance, damping and isolation, with a live shaker table you can drive.</p><p class="sp-stats">14 sheets · 104 slides · 15 labs · 98 quiz questions · 70 problem types</p><div class="sp-buy"><span class="sp-price"><b>$12</b> USD</span><a class="btn" href="/packs/buy/vib">Buy</a></div><a class="sp-try" href="/packs/vib/">Try the first sheet free →</a></div></article><article class="sp" style="--sc:#C2410C"><a class="sp-cover" href="/packs/robotics/" aria-label="Try Robotics and Digital Control free"><span class="sp-code">RB</span><span class="sp-name">Robotics and Digital Control</span><span class="sp-brand">GelasTinta · Study pack</span></a><div class="sp-body"><p class="sp-blurb">Kinematics and digital control, with a robot arm that solves its own inverse kinematics.</p><p class="sp-stats">11 sheets · 80 slides · 12 labs · 77 quiz questions · 57 problem types</p><div class="sp-buy"><span class="sp-price"><b>$12</b> USD</span><a class="btn" href="/packs/buy/robotics">Buy</a></div><a class="sp-try" href="/packs/robotics/">Try the first sheet free →</a></div></article></div>
+<div class="sp-how" id="packs-signin">
+<p class="kicker">How buying works</p>
+<ol><li><b>Try it first.</b> The first sheet of every pack is free: open any pack above and look around.</li><li><b>Buy on Ko-fi</b> with card or PayPal. Use an email address you can open, because that is where your pack is sent.</li><li><b>Open your pack.</b> Ko-fi tells this site straight away and you get an email with a sign in link. Your pack then opens here on gelastinta.com, stamped with your name.</li></ol>
+<div class="chips" style="gap:12px"><a class="btn ghost" href="/packs/signin/">Already bought? Sign in</a></div>
+<p class="meta muted" style="font-size:12px">All prices are in USD. All content is original; the packs are not affiliated with any university, lecturer or publisher.</p>
+</div>
+</div>
+</section>
+
+<section id="services" class="sec">
+<div class="wrap">
+<div class="sec-head row">
+<div class="stack g12">
+<p class="kicker">02 — Research, made readable</p>
+<h2 class="t-h2">Services</h2>
+</div>
+<p class="meta muted">Fixed packages, clear scope, no hourly surprises</p>
+</div>
+<p class="kicker" style="margin-bottom:16px">Explainers</p>
+<div class="pk-grid"><article class="pk" style="--pc:#FDC57E"><div class="pk-top"><span class="pk-n">01</span><h3 class="t-h3">Visual Abstract</h3><p class="muted small">One picture that explains a paper or project at a glance.</p></div><div class="pk-price"><span class="kicker">From</span><b>$15</b><span class="meta">or Rp 190rb · 3 to 5 days</span></div><ul class="pk-list"><li>One designed figure summarising your paper or project</li><li>A square version sized for social media</li><li>Your logo and brand colours if you have them</li><li>PNG, PDF and SVG files</li></ul><div class="pk-foot"><a class="pk-sample" href="Projects.dc.html#infographics">Example: my infographics →</a><a class="btn" href="mailto:mendrofarayang@gmail.com?subject=Visual%20Abstract%20enquiry">Ask about this <span aria-hidden="true">→</span></a></div></article><article class="pk" style="--pc:#A36AA5"><div class="pk-top"><span class="pk-n">02</span><h3 class="t-h3">Paper Explainer</h3><p class="muted small">Your research, written so anyone can follow it.</p></div><div class="pk-price"><span class="kicker">From</span><b>$62</b><span class="meta">or Rp 625rb · 1 to 2 weeks</span></div><ul class="pk-list"><li>A 1,200 to 2,000 word article in plain language</li><li>2 to 3 figures, redrawn from scratch</li><li>A share image for link previews</li><li>Ready to publish on your site, blog or newsletter</li></ul><div class="pk-foot"><a class="pk-sample" href="Talk-FlyConnectome.dc.html">Example: The Whole Fly, Wired →</a><a class="btn" href="mailto:mendrofarayang@gmail.com?subject=Paper%20Explainer%20enquiry">Ask about this <span aria-hidden="true">→</span></a></div></article><article class="pk" style="--pc:#2B44C8"><div class="pk-top"><span class="pk-n">03</span><h3 class="t-h3">Interactive Explainer</h3><p class="muted small">The full experience: a web page people can read and play with.</p></div><div class="pk-price"><span class="kicker">From</span><b>$150</b><span class="meta">or Rp 1,5 jt · 2 to 4 weeks</span></div><ul class="pk-list"><li>Everything in the Paper Explainer</li><li>Built as a web page, like the talks on this site</li><li>One animated or interactive figure</li><li>HTML files you can host, or a page on your site</li></ul><div class="pk-foot"><a class="pk-sample" href="Talk-Cyberpunk.dc.html">Example: Chrome and Consequences →</a><a class="btn" href="mailto:mendrofarayang@gmail.com?subject=Interactive%20Explainer%20enquiry">Ask about this <span aria-hidden="true">→</span></a></div></article></div>
+<p class="kicker" style="margin:48px 0 16px">More services</p>
+<div class="pk-grid four"><article class="pk" style="--pc:#007190"><div class="pk-top"><span class="pk-n">04</span><h3 class="t-h3">Thesis to Portfolio Page</h3><p class="muted small">Your thesis as a clean web page, like my dissertation pages.</p></div><div class="pk-price"><span class="kicker">From</span><b>$30</b><span class="meta">or Rp 375rb · 5 to 7 days</span></div><ul class="pk-list"><li>A one page summary in plain language</li><li>Key figures, redrawn</li><li>The full PDF to read or download</li><li>A share image for LinkedIn</li></ul><div class="pk-foot"><a class="pk-sample" href="Thesis-MSc.dc.html">Example: my MSc dissertation →</a><a class="btn" href="mailto:mendrofarayang@gmail.com?subject=Thesis%20page%20enquiry">Ask about this <span aria-hidden="true">→</span></a></div></article><article class="pk" style="--pc:#10131C"><div class="pk-top"><span class="pk-n">05</span><h3 class="t-h3">Personal Website</h3><p class="muted small">A simple site for researchers and students. Optional updates for $6 (Rp 75rb) a month.</p></div><div class="pk-price"><span class="kicker">From</span><b>$60</b><span class="meta">or Rp 750rb · 2 to 3 weeks</span></div><ul class="pk-list"><li>Up to 4 pages: bio, projects, publications, contact</li><li>A contact form</li><li>Works well on phones</li><li>Monthly updates if you want them</li></ul><div class="pk-foot"><a class="pk-sample" href="Main.dc.html">Example: this website →</a><a class="btn" href="mailto:mendrofarayang@gmail.com?subject=Personal%20website%20enquiry">Ask about this <span aria-hidden="true">→</span></a></div></article><article class="pk" style="--pc:#CC1236"><div class="pk-top"><span class="pk-n">06</span><h3 class="t-h3">Pitch Deck Design</h3><p class="muted small">Slides for tech startups that get both the engineering and the business story right.</p></div><div class="pk-price"><span class="kicker">From</span><b>$40</b><span class="meta">or Rp 500rb · 1 to 2 weeks</span></div><ul class="pk-list"><li>A story outline before any design</li><li>10 to 15 designed slides</li><li>Charts redrawn from your data</li><li>An editable file plus PDF</li></ul><div class="pk-foot"><a class="pk-sample" href="#contact">Example: ask for samples →</a><a class="btn" href="mailto:mendrofarayang@gmail.com?subject=Pitch%20deck%20enquiry">Ask about this <span aria-hidden="true">→</span></a></div></article><article class="pk" style="--pc:#E2B540"><div class="pk-top"><span class="pk-n">07</span><h3 class="t-h3">Conference Poster</h3><p class="muted small">A poster that reads from across the room.</p></div><div class="pk-price"><span class="kicker">From</span><b>$16</b><span class="meta">or Rp 200rb · 3 to 5 days</span></div><ul class="pk-list"><li>Layout from your abstract and figures</li><li>A0 or A1, portrait or landscape</li><li>One print proof check</li><li>Print ready PDF</li></ul><div class="pk-foot"><a class="pk-sample" href="Projects.dc.html#infographics">Example: my posters →</a><a class="btn" href="mailto:mendrofarayang@gmail.com?subject=Conference%20poster%20enquiry">Ask about this <span aria-hidden="true">→</span></a></div></article></div>
+<div class="pk-extra">
+<p class="kicker">Extras and discounts</p>
+<dl class="pk-dl"><div><dt>Monthly retainer</dt><dd>For labs and startups: e.g. 2 explainers + 4 social graphics a month, from $150 (Rp 1,5 jt).</dd></div><div><dt>Extra animated figure</dt><dd>$20 (Rp 250rb)</dd></div><div><dt>Extra revision round</dt><dd>$6 (Rp 75rb)</dd></div><div><dt>Second language</dt><dd>Bahasa Indonesia and English: add 30%</dd></div><div><dt>Rush delivery</dt><dd>Add 25%</dd></div><div><dt>Bundle and save</dt><dd>2 items 10% off, 3 items 15% off, 4 or more 20% off</dd></div></dl>
+<p class="meta muted" style="font-size:12px">Prices are starting points. The final quote depends on the length of the source and how many figures it needs.</p>
+</div>
+</div>
+</section>
+
+<section id="quote" class="sec white rule-t">
+<div class="wrap">
+<div class="sec-head row">
+<div class="stack g12">
+<p class="kicker">03 — Bundle and save</p>
+<h2 class="t-h2">Build your quote</h2>
+</div>
+<p class="meta muted">The more you add, the more you save</p>
+</div>
+<div class="qc" data-quote><div class="qc-pick stack g16"><p class="kicker">1 · Pick one or more services</p><div class="qb-grid"><button type="button" class="qb" data-q="va" data-kind="svc" aria-pressed="false"><span class="qb-n">Visual Abstract</span><span class="qb-p">$15 · Rp 190rb</span></button><button type="button" class="qb" data-q="pe" data-kind="svc" aria-pressed="false"><span class="qb-n">Paper Explainer</span><span class="qb-p">$62 · Rp 625rb</span></button><button type="button" class="qb" data-q="ie" data-kind="svc" aria-pressed="false"><span class="qb-n">Interactive Explainer</span><span class="qb-p">$150 · Rp 1,5 jt</span></button><button type="button" class="qb" data-q="th" data-kind="svc" aria-pressed="false"><span class="qb-n">Thesis to Portfolio Page</span><span class="qb-p">$30 · Rp 375rb</span></button><button type="button" class="qb" data-q="pw" data-kind="svc" aria-pressed="false"><span class="qb-n">Personal Website</span><span class="qb-p">$60 · Rp 750rb</span></button><button type="button" class="qb" data-q="pd" data-kind="svc" aria-pressed="false"><span class="qb-n">Pitch Deck Design</span><span class="qb-p">$40 · Rp 500rb</span></button><button type="button" class="qb" data-q="cp" data-kind="svc" aria-pressed="false"><span class="qb-n">Conference Poster</span><span class="qb-p">$16 · Rp 200rb</span></button></div><p class="kicker">2 · Add extras</p><div class="qb-grid"><button type="button" class="qb" data-q="fig" data-kind="item" aria-pressed="false"><span class="qb-n">Extra animated figure</span><span class="qb-p">+ $20 · Rp 250rb</span></button><button type="button" class="qb" data-q="rev" data-kind="item" aria-pressed="false"><span class="qb-n">Extra revision round</span><span class="qb-p">+ $6 · Rp 75rb</span></button><button type="button" class="qb" data-q="lang" data-kind="pct" aria-pressed="false"><span class="qb-n">Second language</span><span class="qb-p">+ 30%</span></button><button type="button" class="qb" data-q="rush" data-kind="pct" aria-pressed="false"><span class="qb-n">Rush delivery</span><span class="qb-p">+ 25%</span></button></div><p class="meta muted" style="font-size:12px">Every service and extra counts as an item. The more you add, the bigger the bundle discount: 2 items 10% off, 3 items 15%, 4 or more 20%.</p></div><div class="qc-sum card stack g12" aria-live="polite"><p class="kicker">Your estimate</p><ul class="qs-list" data-r="qlist"><li class="muted">Pick a service to see your price.</li></ul><dl class="qs-dl"><div><dt>Subtotal</dt><dd data-r="qsub">$0</dd></div><div><dt>Bundle discount</dt><dd data-r="qdisc">None yet</dd></div><div><dt>Options</dt><dd data-r="qpct">None</dd></div></dl><div class="qs-total"><span class="kicker">Estimated total</span><b data-r="qtot">$0</b><span class="meta" data-r="qusd">≈ Rp 0</span></div><p class="meta muted" data-r="qnext" style="font-size:12px">Add two items to unlock 10% off.</p><a class="btn" data-r="qmail" href="mailto:mendrofarayang@gmail.com?subject=Quote%20request">Email this quote <span aria-hidden="true">→</span></a><p class="meta muted" style="font-size:11px">An estimate, not a final quote. I confirm the price after reading your material.</p></div></div>
+</div>
+</section>
+
+<section id="faq" class="sec white rule-t rule-b">
+<div class="wrap">
+<div class="sec-head row">
+<div class="stack g12">
+<p class="kicker">04 — Questions</p>
+<h2 class="t-h2">FAQ</h2>
+</div>
+<p class="meta muted">Click a question to open it</p>
+</div>
+<div class="faq">
+<details open><summary>How does a project work?</summary><ol class="faq-steps"><li><b>Kickoff.</b> I read your paper and we have a 30 minute call about the message and the audience.</li><li><b>Outline and sketches.</b> You approve the outline and rough figure sketches before any design starts.</li><li><b>Draft.</b> I write the text and design the figures.</li><li><b>Two revision rounds,</b> included in every package.</li><li><b>Accuracy check.</b> You, or the researcher, sign off that the science is right.</li><li><b>Delivery.</b> Final files: PNG, PDF and SVG, plus HTML for interactive work.</li></ol></details>
+<details><summary>What do I need to send you?</summary><ul><li>The paper, thesis or data</li><li>The one message people should remember</li><li>Who the audience is</li><li>Your logo and colours, if you have them</li><li>One contact person who approves things</li></ul></details>
+<details><summary>What isn’t included?</summary><ul><li>New research or data analysis beyond your source</li><li>Printing, or hosting on your site</li><li>Rewrites after the outline is approved (these count as an extra revision)</li></ul></details>
+<details><summary>How do payments work?</summary><p>A 50% deposit to start, and the rest on delivery. Prices are in US dollars; I can also quote in Rupiah.</p></details>
+<details><summary>How do the bundle discounts work?</summary><p>Every service and extra counts as an item. 2 items get 10% off, 3 items 15%, and 4 or more 20%. Use <a href="#quote">Build your quote</a> to see your price.</p></details>
+<details><summary>How many revisions do I get?</summary><p>Two rounds are included. More rounds are $6 (Rp 75rb) each.</p></details>
+<details><summary>How long does it take?</summary><p>From 3 to 5 days for a visual abstract or poster, up to 2 to 4 weeks for an interactive explainer. Rush delivery is available for 25% extra.</p></details>
+<details><summary>Who owns the final work?</summary><p>You do. I may show it in my portfolio, unless you ask me to keep it private.</p></details>
+<details><summary>Can you use figures from published papers?</summary><p>I redraw figures from scratch, or use your own. Many published figures have licences that don’t allow changes or commercial use, so I don’t copy them.</p></details>
+<details><summary>How do I get a study pack?</summary><p>Open any pack and try the first sheet free. When you are ready, press Buy and pay on Ko-fi (card or PayPal, prices in USD). You get an email with a sign in link, and the whole pack opens here on gelastinta.com, stamped with your name.</p></details>
+<details><summary>Can I share my study pack?</summary><p>Each copy is licensed to the person whose name is on it, for their own study. For a class or a team, ask about a group licence.</p></details>
+<details><summary>Can you work in Bahasa Indonesia?</summary><p>Yes. A second language version (Bahasa Indonesia and English) adds 30%.</p></details>
+</div>
+</div>
+</section>
+
+<section id="workshop" class="sec dark">
+<div class="wrap">
+<div class="sec-head row">
+<div class="stack g12">
+<p class="kicker">05 — Made here</p>
+<h2 class="t-h2">From the workshop</h2>
+</div>
+<p class="meta muted">Things to download, play with or put on a wall</p>
+</div>
+<div class="cols-3 ws-grid">
+<a class="ws" href="Hobby-GestureMusic.dc.html"><span class="ws-img" style="background:#FFFFFF"><img src="/_blob/a50cc93e9ed9fa232711a3f74eb2bf40" alt="The Gesture Music hand sign dictionary: nine hand skeletons" loading="lazy" style="object-fit:contain;padding:18px"></span><span class="ws-body"><span class="chip fill">Free · open source</span><span class="t-h3">Gesture Music</span><span class="muted small">An instrument you play with hand signs on your webcam, with a 61 page handbook.</span><span class="ws-go">Get it →</span></span></a>
+<div class="ws"><span class="ws-img ws-soon" aria-hidden="true"><span>STARTER KIT</span></span><span class="ws-body"><span class="chip warn">Coming soon</span><span class="t-h3">Science explainer starter kit</span><span class="muted small">The templates, chart styles and colour guide behind my talks, with a short guide on using them.</span></span></div>
+<div class="ws"><span class="ws-img ws-soon" aria-hidden="true"><span>PRINTS</span></span><span class="ws-body"><span class="chip warn">Coming soon</span><span class="t-h3">Prints and postcards</span><span class="muted small">My own infographics and drawings, printed on demand.</span></span></div>
+</div>
+</div>
+</section>
+
+<!-- nl:start --><section class="sec rule-t" id="newsletter" aria-labelledby="nl-title">
+<div class="wrap"><div class="nl-wide nl-box"><div class="stack g8"><p class="kicker">06 — Follow along</p><h2 class="t-h3" id="nl-title">Get each new talk by email</h2><p class="muted small">One email when a new talk goes up, about once a month. Your address is only used for that, and you can unsubscribe any time.</p></div><form class="nl-form" action="/api/newsletter" method="post"><label class="sr" for="nl-email">Email address</label><input id="nl-email" name="email" type="email" required autocomplete="email" placeholder="you@example.com"><input class="nl-hp" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true"><button class="btn" type="submit">Subscribe</button></form><p class="nl-msg" id="subscribed" role="status">Thanks! You’re on the list for the next talk.</p><p class="nl-msg" id="subscribe-error" role="alert">That didn’t work. Please check the email address and try again.</p><div class="nl-support"><span class="meta">Like the talks? Support them:</span><a class="btn ghost" href="https://trakteer.id/rayang_mendrofa" target="_blank" rel="noopener"><img class="sp-ico" src="/_blob/44290a29dc16af32e676d4457d9e8df3" alt="" width="22" height="22">Trakteer · Rupiah <span aria-hidden="true">↗</span></a><a class="btn ghost" href="https://ko-fi.com/rayanmendrofa" target="_blank" rel="noopener"><img class="sp-ico" src="/_blob/7efb8554392a4b29c2b2e6ff43bbfd24" alt="" width="22" height="22">Ko-fi · International <span aria-hidden="true">↗</span></a></div></div></div></section>
+<!-- nl:end -->
+<section id="rtm" class="sec white rule-t rule-b">
+<div class="wrap">
+<div class="sec-head row" style="margin-bottom:28px">
+<div class="stack g12">
+<p class="kicker">07 — Currently working on</p>
+<h2 class="t-h2">PT RTM · rtechm.com</h2>
+</div>
+<p class="meta muted">Products from this work will appear here</p>
+</div>
 <article class="split mid" style="gap:0;border:1px solid #10131C;background:#FFFFFF">
 <div class="stack g24 feat-pad">
 <p class="kicker">Currently working on</p>
@@ -168,7 +459,7 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <dt>Availability</dt><dd>Coming soon</dd>
 </dl>
 <div class="chips" style="align-items:center;gap:12px">
-<span class="chip warn">Disclaimer — coming soon</span>
+<span class="chip warn">Coming soon</span>
 <a class="btn ghost" href="https://rtechm.com">Visit rtechm.com <span aria-hidden="true">↗</span></a>
 </div>
 </div>
@@ -182,17 +473,17 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 </div>
 </section>
 
-<section class="sec tight white rule-t">
+<section id="contact" class="sec tight">
 <div class="wrap split mid">
 <div class="stack g12">
-<p class="kicker">Meanwhile</p>
-<h2 class="t-h2">Reach the author</h2>
-<p class="muted">In the meantime, reach the author at:</p>
+<p class="kicker">08 — Start a project</p>
+<h2 class="t-h2">Let’s talk</h2>
+<p class="muted">Send the paper or a short description of your project, and I’ll reply with a quote.</p>
 </div>
 <div class="chips" style="gap:12px">
-<a class="btn" href="https://www.linkedin.com/in/raysmendrofa/"><img src="/_blob/49604cde322d454326d28d8c5cfe5ff8" alt="" style="width:22px;height:22px;background:#FFFFFF;border-radius:50%">linkedin.com/in/raysmendrofa <span aria-hidden="true">↗</span></a>
-<a class="btn ghost" href="mailto:mendrofarayang@gmail.com"><img src="/_blob/ee68aabd0584895696ec1ef146936038" alt="" style="width:22px;height:auto">Email</a>
+<a class="btn" href="mailto:mendrofarayang@gmail.com?subject=Project%20enquiry"><img src="/_blob/ee68aabd0584895696ec1ef146936038" alt="" style="width:22px;height:auto;background:#FFFFFF;border-radius:4px">Email me</a>
 <a class="btn ghost" href="https://wa.me/447376459918"><img src="/_blob/d7adca6684b39bdbd090afff2eeb09ea" alt="" style="width:22px;height:22px">WhatsApp +44</a>
+<a class="btn ghost" href="https://www.linkedin.com/in/raysmendrofa/"><img src="/_blob/49604cde322d454326d28d8c5cfe5ff8" alt="" style="width:22px;height:22px;background:#FFFFFF;border-radius:50%">LinkedIn <span aria-hidden="true">↗</span></a>
 </div>
 </div>
 </section>
@@ -231,8 +522,10 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2200}}'>
 class Component extends DCLogic {
   // ── GelasTinta motion layer (anime.js v4) ─────────────────────────────
-  componentDidMount() { this.gtStart(0); this.gtMedia(0); }
+  componentDidMount() { this.gtStart(0); this.gtMedia(0); this.gtTheme(); this.gtFigs(); }
   componentWillUnmount() {
+    if (this.thOff) this.thOff();
+    this.gtFigStop();
     clearTimeout(this.gtWait);
     clearInterval(this.gtSlideT);
     clearTimeout(this.gtMediaWait);
@@ -669,6 +962,129 @@ class Component extends DCLogic {
     setTimeout(() => { try { if (!intro.completed) intro.complete(); } catch (e) {} unsplit(); }, 4500);
   }
   // ── end motion layer ──────────────────────────────────────────────────
+  // ── Quote builder: toggle services and extras; bundle discount grows with the number of items.
+  // One document listener + a light rescan, so it keeps working if the page re-renders.
+  gtFigs() {
+    if (this.qOn) return;
+    this.qOn = true;
+    const onClick = (e) => { try { this.qClick(e); } catch (err) { if (window.console) console.warn('[quote]', err); } };
+    document.addEventListener('click', onClick, true);
+    this.qOff = () => document.removeEventListener('click', onClick, true);
+    const scan = () => { try { Array.from(document.querySelectorAll('[data-quote]')).forEach((el) => { if (!el.__q) { el.__q = {}; this.qDraw(el); } }); } catch (err) {} };
+    scan();
+    this.qInt = setInterval(scan, 700);
+  }
+  gtFigStop() { clearInterval(this.qInt); if (this.qOff) this.qOff(); this.qOn = false; }
+  qClick(e) {
+    const b = e.target && e.target.closest ? e.target.closest('[data-q]') : null;
+    if (!b) return;
+    const el = b.closest('[data-quote]'); if (!el) return;
+    el.__q = el.__q || {};
+    const k = b.getAttribute('data-q');
+    el.__q[k] = !el.__q[k];
+    this.qDraw(el);
+  }
+  qDraw(el) {
+    const P = {
+      va: ['Visual Abstract', 190000, 15], pe: ['Paper Explainer', 625000, 62], ie: ['Interactive Explainer', 1500000, 150],
+      th: ['Thesis to Portfolio Page', 375000, 30], pw: ['Personal Website', 750000, 60], pd: ['Pitch Deck Design', 500000, 40],
+      cp: ['Conference Poster', 200000, 16], fig: ['Extra animated figure', 250000, 20], rev: ['Extra revision round', 75000, 6]
+    };
+    const PCT = { lang: ['Second language', 30], rush: ['Rush delivery', 25] };
+    const st = el.__q || {};
+    const rp = (v) => 'Rp ' + Math.round(v).toLocaleString('id-ID');
+    const usd = (v) => '$' + Math.round(v).toLocaleString('en-US');
+    const both = (u, i) => usd(u) + ' · ' + rp(i);
+    const R = (k) => el.querySelector('[data-r="' + k + '"]');
+    Array.from(el.querySelectorAll('[data-q]')).forEach((b) => {
+      const on = !!st[b.getAttribute('data-q')];
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      b.classList.toggle('on', on);
+    });
+    const items = Object.keys(P).filter((k) => st[k]);
+    const svc = items.filter((k) => !['fig', 'rev'].includes(k));
+    let sub = 0, subU = 0;
+    items.forEach((k) => { sub += P[k][1]; subU += P[k][2]; });
+    const n = items.length;
+    const rate = n >= 4 ? 0.20 : n === 3 ? 0.15 : n === 2 ? 0.10 : 0;
+    const afterDisc = sub * (1 - rate), afterDiscU = subU * (1 - rate);
+    const pcts = Object.keys(PCT).filter((k) => st[k]);
+    const mult = 1 + pcts.reduce((a, k) => a + PCT[k][1] / 100, 0);
+    const tot = afterDisc * mult, totU = afterDiscU * mult;
+    const list = R('qlist');
+    if (list) {
+      list.innerHTML = '';
+      if (!n) { const li = document.createElement('li'); li.className = 'muted'; li.textContent = svc.length || pcts.length ? 'Add a service to see your price.' : 'Pick a service to see your price.'; list.appendChild(li); }
+      items.forEach((k) => { const li = document.createElement('li'); const a = document.createElement('span'); a.textContent = P[k][0]; const b = document.createElement('span'); b.textContent = usd(P[k][2]); li.appendChild(a); li.appendChild(b); list.appendChild(li); });
+      if (st.pw) { const li = document.createElement('li'); li.className = 'muted'; li.textContent = 'Plus optional website updates: $6 (Rp 75.000) a month'; list.appendChild(li); }
+    }
+    const set = (k, v) => { const x = R(k); if (x && x.textContent !== v) x.textContent = v; };
+    set('qsub', usd(subU));
+    set('qdisc', rate ? '− ' + usd(subU * rate) + ' (' + Math.round(rate * 100) + '% for ' + n + ' items)' : 'None yet');
+    set('qpct', pcts.length ? pcts.map((k) => PCT[k][0] + ' +' + PCT[k][1] + '%').join(', ') : 'None');
+    set('qtot', usd(totU));
+    set('qusd', '≈ ' + rp(tot));
+    set('qnext', n === 0 ? 'Add two items to unlock 10% off.' : n === 1 ? 'Add one more item to unlock 10% off.' : n === 2 ? 'Add one more item to get 15% off.' : n === 3 ? 'Add one more item to get 20% off.' : 'You have the biggest bundle discount: 20% off.');
+    const mail = R('qmail');
+    if (mail) {
+      const lines = items.map((k) => '- ' + P[k][0]).concat(pcts.map((k) => '- ' + PCT[k][0]));
+      const body = 'Hi Rayang,\n\nI would like a quote for:\n' + (lines.length ? lines.join('\n') : '- (not chosen yet)') + '\n\nEstimate on your site: ' + usd(totU) + ' (about ' + rp(tot) + ')\n\nAbout my project:\n';
+      mail.setAttribute('href', 'mailto:mendrofarayang@gmail.com?subject=' + encodeURIComponent('Quote request') + '&body=' + encodeURIComponent(body));
+    }
+  }
+  // ── Light/dark switch: the header beaker spills its ink and floods the page dark (or back to light).
+  gtTheme() {
+    if (this.thOn) return;
+    this.thOn = true;
+    const root = document.documentElement;
+    try { if (localStorage.getItem('gt-theme') === 'dark') root.setAttribute('data-theme', 'dark'); } catch (e) {}
+    this.thLabel();
+    const onClick = (e) => {
+      const b = e.target && e.target.closest ? e.target.closest('[data-theme-toggle]') : null;
+      if (!b) return;
+      e.preventDefault();
+      try { this.thToggle(b); } catch (err) { if (window.console) console.warn('[theme]', err); }
+    };
+    document.addEventListener('click', onClick, true);
+    this.thOff = () => document.removeEventListener('click', onClick, true);
+  }
+  thLabel() {
+    const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    Array.from(document.querySelectorAll('[data-theme-toggle]')).forEach((b) => {
+      const t = dark ? 'Switch to light mode' : 'Switch to dark mode (spill the ink)';
+      b.setAttribute('aria-label', t); b.setAttribute('title', t); b.setAttribute('aria-pressed', dark ? 'true' : 'false');
+    });
+  }
+  thToggle(btn) {
+    const root = document.documentElement;
+    const dark = root.getAttribute('data-theme') !== 'dark';
+    const apply = () => {
+      if (dark) root.setAttribute('data-theme', 'dark'); else root.removeAttribute('data-theme');
+      try { localStorage.setItem('gt-theme', dark ? 'dark' : 'light'); } catch (e) {}
+      this.thLabel();
+    };
+    const still = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+    if (still) { apply(); return; }
+    // replay the spill, faster than the page-load version
+    Array.from(btn.querySelectorAll('.bk-tip, .bk-liq, .bk-drop, .bk-pud')).forEach((el, i) => {
+      el.style.animation = 'none'; void el.getBoundingClientRect();
+      const name = el.classList.contains('bk-tip') ? 'bk-tip' : el.classList.contains('bk-liq') ? 'bk-liq' : el.classList.contains('bk-pud') ? 'bk-pud' : 'bk-drop';
+      const delay = el.classList.contains('d2') ? 0.1 : el.classList.contains('d3') ? 0.2 : 0;
+      el.style.animation = name + ' 1.6s ' + delay + 's cubic-bezier(.45,.05,.3,1) both';
+    });
+    // ink flood from the beaker; the overlay is always ink-coloured (it shows light once the page is inverted)
+    const r = btn.getBoundingClientRect();
+    const f = document.createElement('div');
+    f.className = 'gt-flood';
+    f.style.setProperty('--fx', Math.round(r.left + r.width * 0.8) + 'px');
+    f.style.setProperty('--fy', Math.round(r.top + r.height) + 'px');
+    document.body.appendChild(f);
+    void f.getBoundingClientRect();
+    setTimeout(() => f.classList.add('go'), 380);
+    // after the switch the overlay is drawn inverted (or no longer inverted), so give it the paper colour to keep the screen steady while it fades
+    setTimeout(() => { f.style.background = '#EDEFF2'; apply(); f.classList.add('out'); }, 1000);
+    setTimeout(() => { if (f.parentNode) f.parentNode.removeChild(f); }, 1450);
+  }
   renderVals() {
     return {};
   }

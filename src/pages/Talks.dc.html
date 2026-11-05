@@ -184,18 +184,64 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 }
 @keyframes sh-drop{0%{transform:rotateX(-70deg);opacity:0}100%{transform:none;opacity:1}}
 /* shelf:end */
+/* logo:start */
+.brand .bk-logo{overflow:visible;flex:0 0 auto}
+.bk-tip{transform-box:view-box;transform-origin:26px 29px;animation:bk-tip 3.6s 1.6s cubic-bezier(.45,.05,.3,1) both}
+.bk-liq{transform-box:fill-box;transform-origin:50% 100%;animation:bk-liq 3.6s 1.6s ease-in-out both}
+.bk-drop{opacity:0;animation:bk-drop 3.6s 1.6s ease-in both}
+.bk-drop.d2{animation-delay:1.85s}.bk-drop.d3{animation-delay:2.1s}
+.bk-pud{transform-box:fill-box;transform-origin:30% 50%;transform:scaleX(0);animation:bk-pud 3.6s 1.6s ease-out both}
+@keyframes bk-tip{0%{transform:rotate(0)}7%{transform:rotate(-7deg)}13%{transform:rotate(6deg)}19%{transform:rotate(-3deg)}31%{transform:rotate(56deg)}60%{transform:rotate(56deg)}74%{transform:rotate(-5deg)}81%{transform:rotate(2deg)}88%,100%{transform:rotate(0)}}
+@keyframes bk-liq{0%,30%{transform:scaleY(1)}58%{transform:scaleY(.14)}80%{transform:scaleY(.14)}100%{transform:scaleY(1)}}
+@keyframes bk-drop{0%,30%{opacity:0;transform:translate(0,0)}31%{opacity:1;transform:translate(0,0)}42%{opacity:1;transform:translate(1px,19px)}44%,100%{opacity:0;transform:translate(1px,19px)}}
+@keyframes bk-pud{0%,33%{transform:scaleX(0);opacity:1}58%{transform:scaleX(1);opacity:1}80%{transform:scaleX(1.05);opacity:1}96%,100%{transform:scaleX(1.12);opacity:0}}
+@media (prefers-reduced-motion:reduce){.bk-tip,.bk-liq,.bk-drop,.bk-pud{animation:none}.bk-pud,.bk-drop{opacity:0}}
+/* logo:end */
+/* nl:start */
+.nl-box{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:20px 40px;align-items:center}
+.nl-form{display:flex;gap:10px;flex-wrap:wrap}
+.nl-form input[type=email]{flex:1 1 220px;min-height:48px;padding:0 16px;border:1px solid currentColor;border-radius:999px;background:transparent;color:inherit;font:inherit;font-size:16px}
+.nl-form input[type=email]:focus-visible{outline:3px solid #2B44C8;outline-offset:2px}
+.nl-form .btn{border:0;cursor:pointer}
+.nl-hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.nl-msg{display:none;grid-column:1 / -1;margin:0;padding:12px 16px;border:1px solid currentColor;font-size:16px}
+.nl-msg:target{display:block}
+.nl-support{grid-column:1 / -1;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.nl-support[hidden]{display:none}
+.nl-support .meta{flex-basis:100%}
+.nl-support .sp-ico{width:22px;height:22px;border-radius:6px;display:block;flex:0 0 auto}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:760px){.nl-box{grid-template-columns:minmax(0,1fr)}}
+/* nl:end */
+/* dark:start */
+.brand .bk-btn{display:inline-flex;align-items:center;justify-content:center;padding:4px;margin:-4px;border:0;background:transparent;cursor:pointer;border-radius:8px;line-height:0}
+.brand .bk-btn:hover .bk-tip{transform:rotate(-8deg)}
+.brand .bk-btn:focus-visible{outline:3px solid #2B44C8;outline-offset:2px}
+.brand .brand-name{color:inherit;text-decoration:none}
+.brand .brand-name:hover{color:inherit}
+html[data-theme="dark"]{filter:invert(1) hue-rotate(180deg);background:#FFFFFF;color-scheme:dark}
+html[data-theme="dark"] img,html[data-theme="dark"] video,html[data-theme="dark"] canvas,html[data-theme="dark"] iframe,html[data-theme="dark"] picture{filter:invert(1) hue-rotate(180deg)}
+html[data-theme="dark"] :is(.dark,.hero,.cp-hero,.blue,.catch,.book){filter:invert(1) hue-rotate(180deg)}
+html[data-theme="dark"] .book .cover{filter:invert(1) hue-rotate(180deg)}
+html[data-theme="dark"] :is(.dark,.hero,.cp-hero,.blue,.catch) :is(img,video,canvas,iframe,picture){filter:none}
+.gt-flood{position:fixed;inset:0;z-index:9999;background:#10131C;pointer-events:none;clip-path:circle(0 at var(--fx,40px) var(--fy,40px));transition:clip-path .6s cubic-bezier(.55,.05,.4,1),opacity .35s ease}
+.gt-flood.go{clip-path:circle(150vmax at var(--fx,40px) var(--fy,40px))}
+.gt-flood.out{opacity:0}
+@media (prefers-reduced-motion:reduce){.gt-flood{display:none}}
+/* dark:end */
 </style>
 </helmet>
 <div style="min-height:100vh" data-gt-root="">
 
 <header class="site-head">
 <div class="wrap">
-<a href="Main.dc.html" class="brand"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M9.6 20 6.3 26.4A1.7 1.7 0 0 0 7.8 29h16.4a1.7 1.7 0 0 0 1.5-2.6L22.4 20z" fill="#2B44C8"></path><path d="M11 3h10M13 3v9L6 26.4A1.7 1.7 0 0 0 7.8 29h16.4a1.7 1.7 0 0 0 1.5-2.6L19 12V3" stroke="#10131C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>GelasTinta</a>
+<div class="brand"><button type="button" class="bk-btn" data-theme-toggle aria-pressed="false" aria-label="Switch to dark mode (spill the ink)" title="Switch to dark mode (spill the ink)"><svg class="bk-logo" width="44" height="28" viewBox="0 0 50 32" fill="none" aria-hidden="true"><ellipse class="bk-pud" cx="40" cy="30.2" rx="9" ry="1.7" fill="#2B44C8"></ellipse><circle class="bk-drop d1" cx="42" cy="9" r="1.4" fill="#2B44C8"></circle><circle class="bk-drop d2" cx="42" cy="9" r="1.4" fill="#2B44C8"></circle><circle class="bk-drop d3" cx="42" cy="9" r="1.4" fill="#2B44C8"></circle><g class="bk-tip"><g class="bk-liq"><path d="M9.6 20 6.3 26.4A1.7 1.7 0 0 0 7.8 29h16.4a1.7 1.7 0 0 0 1.5-2.6L22.4 20z" fill="#2B44C8"></path></g><path d="M11 3h10M13 3v9L6 26.4A1.7 1.7 0 0 0 7.8 29h16.4a1.7 1.7 0 0 0 1.5-2.6L19 12V3" stroke="#10131C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></g></svg></button><a href="Main.dc.html" class="brand-name">GelasTinta</a></div>
 <nav class="nav" aria-label="Main">
 <a href="Main.dc.html">Home</a>
 <a href="Projects.dc.html">Projects</a>
 <a href="Talks.dc.html" class="on" aria-current="page">Talks</a>
 <a href="Products.dc.html">Products</a>
+<a href="/packs/library/">Library</a>
 <a href="Author.dc.html">Author</a>
 </nav>
 </div>
@@ -227,6 +273,9 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 </div>
 </section>
 
+<!-- nl:start --><section class="sec rule-t" id="newsletter" aria-labelledby="nl-title">
+<div class="wrap"><div class="nl-wide nl-box"><div class="stack g8"><p class="kicker">Never miss a talk</p><h2 class="t-h3" id="nl-title">Get each new talk by email</h2><p class="muted small">One email when a new talk goes up, about once a month. Your address is only used for that, and you can unsubscribe any time.</p></div><form class="nl-form" action="/api/newsletter" method="post"><label class="sr" for="nl-email">Email address</label><input id="nl-email" name="email" type="email" required autocomplete="email" placeholder="you@example.com"><input class="nl-hp" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true"><button class="btn" type="submit">Subscribe</button></form><p class="nl-msg" id="subscribed" role="status">Thanks! You’re on the list for the next talk.</p><p class="nl-msg" id="subscribe-error" role="alert">That didn’t work. Please check the email address and try again.</p><div class="nl-support"><span class="meta">Like the talks? Support them:</span><a class="btn ghost" href="https://trakteer.id/rayang_mendrofa" target="_blank" rel="noopener"><img class="sp-ico" src="/_blob/44290a29dc16af32e676d4457d9e8df3" alt="" width="22" height="22">Trakteer · Rupiah <span aria-hidden="true">↗</span></a><a class="btn ghost" href="https://ko-fi.com/rayanmendrofa" target="_blank" rel="noopener"><img class="sp-ico" src="/_blob/7efb8554392a4b29c2b2e6ff43bbfd24" alt="" width="22" height="22">Ko-fi · International <span aria-hidden="true">↗</span></a></div></div></div></section>
+<!-- nl:end -->
 <footer class="site-foot dark">
 <div class="wrap">
 <div class="foot-top">
@@ -261,8 +310,9 @@ figcaption{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;li
 <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2100}}'>
 class Component extends DCLogic {
   // ── GelasTinta motion layer (anime.js v4) ─────────────────────────────
-  componentDidMount() { this.gtStart(0); this.gtMedia(0); this.gtFigs(); }
+  componentDidMount() { this.gtStart(0); this.gtMedia(0); this.gtTheme(); this.gtFigs(); }
   componentWillUnmount() {
+    if (this.thOff) this.thOff();
     this.gtFigStop();
     clearTimeout(this.gtWait);
     clearInterval(this.gtSlideT);
@@ -819,6 +869,59 @@ class Component extends DCLogic {
     g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
     src.connect(bp); bp.connect(hp); hp.connect(g); g.connect(ctx.destination);
     src.start(t0); src.stop(t0 + dur + 0.02);
+  }
+  // ── Light/dark switch: the header beaker spills its ink and floods the page dark (or back to light).
+  gtTheme() {
+    if (this.thOn) return;
+    this.thOn = true;
+    const root = document.documentElement;
+    try { if (localStorage.getItem('gt-theme') === 'dark') root.setAttribute('data-theme', 'dark'); } catch (e) {}
+    this.thLabel();
+    const onClick = (e) => {
+      const b = e.target && e.target.closest ? e.target.closest('[data-theme-toggle]') : null;
+      if (!b) return;
+      e.preventDefault();
+      try { this.thToggle(b); } catch (err) { if (window.console) console.warn('[theme]', err); }
+    };
+    document.addEventListener('click', onClick, true);
+    this.thOff = () => document.removeEventListener('click', onClick, true);
+  }
+  thLabel() {
+    const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    Array.from(document.querySelectorAll('[data-theme-toggle]')).forEach((b) => {
+      const t = dark ? 'Switch to light mode' : 'Switch to dark mode (spill the ink)';
+      b.setAttribute('aria-label', t); b.setAttribute('title', t); b.setAttribute('aria-pressed', dark ? 'true' : 'false');
+    });
+  }
+  thToggle(btn) {
+    const root = document.documentElement;
+    const dark = root.getAttribute('data-theme') !== 'dark';
+    const apply = () => {
+      if (dark) root.setAttribute('data-theme', 'dark'); else root.removeAttribute('data-theme');
+      try { localStorage.setItem('gt-theme', dark ? 'dark' : 'light'); } catch (e) {}
+      this.thLabel();
+    };
+    const still = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+    if (still) { apply(); return; }
+    // replay the spill, faster than the page-load version
+    Array.from(btn.querySelectorAll('.bk-tip, .bk-liq, .bk-drop, .bk-pud')).forEach((el, i) => {
+      el.style.animation = 'none'; void el.getBoundingClientRect();
+      const name = el.classList.contains('bk-tip') ? 'bk-tip' : el.classList.contains('bk-liq') ? 'bk-liq' : el.classList.contains('bk-pud') ? 'bk-pud' : 'bk-drop';
+      const delay = el.classList.contains('d2') ? 0.1 : el.classList.contains('d3') ? 0.2 : 0;
+      el.style.animation = name + ' 1.6s ' + delay + 's cubic-bezier(.45,.05,.3,1) both';
+    });
+    // ink flood from the beaker; the overlay is always ink-coloured (it shows light once the page is inverted)
+    const r = btn.getBoundingClientRect();
+    const f = document.createElement('div');
+    f.className = 'gt-flood';
+    f.style.setProperty('--fx', Math.round(r.left + r.width * 0.8) + 'px');
+    f.style.setProperty('--fy', Math.round(r.top + r.height) + 'px');
+    document.body.appendChild(f);
+    void f.getBoundingClientRect();
+    setTimeout(() => f.classList.add('go'), 380);
+    // after the switch the overlay is drawn inverted (or no longer inverted), so give it the paper colour to keep the screen steady while it fades
+    setTimeout(() => { f.style.background = '#EDEFF2'; apply(); f.classList.add('out'); }, 1000);
+    setTimeout(() => { if (f.parentNode) f.parentNode.removeChild(f); }, 1450);
   }
   renderVals() {
     return {};
