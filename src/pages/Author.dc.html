@@ -99,6 +99,40 @@ figcaption{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;line-
 .tools{display:flex;flex-wrap:wrap;gap:10px}
 .tool{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:8px 14px;border:1px solid #10131C;background:#FFFFFF;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.03em}
 .tool img{height:24px;width:auto}
+/* xp:start */
+.xp{position:relative;display:flex;flex-direction:column;gap:28px}
+.xp-r{position:absolute;opacity:0;width:1px;height:1px;margin:0;pointer-events:none}
+.xp-head{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,9fr);border:1px solid #10131C;background:#FFFFFF}
+.xp-total{margin:0;padding:22px 24px;display:flex;flex-direction:column;justify-content:flex-end;gap:2px;border-right:1px solid #10131C;background:#10131C;color:#EDEFF2}
+.xp-total b{font-family:'Titillium Web',system-ui,sans-serif;font-weight:800;font-size:clamp(48px,5vw,68px);line-height:.9;letter-spacing:-.04em}
+.xp-total span,.xp-k{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.xp-total span{color:#8DB0DA}
+.xp-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.xp-tab{display:flex;flex-direction:column;justify-content:flex-end;gap:6px;min-height:112px;padding:18px 20px;cursor:pointer;border-right:1px solid #C9CED8;transition:background .2s ease,color .2s ease}
+.xp-tab:last-child{border-right:0}
+.xp-tab:hover{background:#DCE6F0}
+.xp-n{font-family:'Titillium Web',system-ui,sans-serif;font-weight:800;font-size:40px;line-height:.9;letter-spacing:-.03em;color:#064F6E}
+.xp-k{color:#3A4152}
+.xp-p{display:none}
+.xp-blurb{margin:0 0 14px}
+.xp-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));column-gap:32px;border-top:1px solid #10131C}
+.xp-list li{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-bottom:1px solid #C9CED8}
+.xp-name{font-family:'Titillium Web',system-ui,sans-serif;font-size:18px;font-weight:600;line-height:1.3}
+.xp-lv{display:inline-flex;align-items:center;gap:3px;flex:none}
+.xp-lv i{display:block;width:14px;height:8px;border:1px solid #064F6E}
+.xp-lv[data-l="1"] i:nth-child(-n+1),.xp-lv[data-l="2"] i:nth-child(-n+2),.xp-lv[data-l="3"] i{background:#064F6E}
+.xp-lv em{font-style:normal;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.06em;color:#3A4152;min-width:11ch;margin-left:8px}
+.xp-key{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin:0}
+.xp-key .xp-lv{margin-left:6px}
+.xp-key .xp-lv:first-child{margin-left:0}
+@media (max-width:960px){.xp-head{grid-template-columns:minmax(0,1fr)}.xp-total{border-right:0;border-bottom:1px solid #10131C;flex-direction:row;align-items:baseline;gap:12px;padding:16px 20px}}
+@media (max-width:640px){.xp-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}.xp-tab{min-height:84px;padding:14px 16px;border-bottom:1px solid #C9CED8}.xp-tab:nth-child(2n){border-right:0}.xp-tab:nth-last-child(-n+2){border-bottom:0}.xp-n{font-size:32px}.xp-list{grid-template-columns:minmax(0,1fr)}}
+#xp-eng:checked~.xp-head .xp-tab[for="xp-eng"]{background:#064F6E;color:#FFFFFF}#xp-eng:checked~.xp-head .xp-tab[for="xp-eng"] :is(.xp-n,.xp-k){color:#FFFFFF}#xp-eng:focus-visible~.xp-head .xp-tab[for="xp-eng"]{outline:3px solid #5A82B3;outline-offset:-3px}#xp-eng:checked~#xp-p-eng{display:block}
+#xp-build:checked~.xp-head .xp-tab[for="xp-build"]{background:#064F6E;color:#FFFFFF}#xp-build:checked~.xp-head .xp-tab[for="xp-build"] :is(.xp-n,.xp-k){color:#FFFFFF}#xp-build:focus-visible~.xp-head .xp-tab[for="xp-build"]{outline:3px solid #5A82B3;outline-offset:-3px}#xp-build:checked~#xp-p-build{display:block}
+#xp-code:checked~.xp-head .xp-tab[for="xp-code"]{background:#064F6E;color:#FFFFFF}#xp-code:checked~.xp-head .xp-tab[for="xp-code"] :is(.xp-n,.xp-k){color:#FFFFFF}#xp-code:focus-visible~.xp-head .xp-tab[for="xp-code"]{outline:3px solid #5A82B3;outline-offset:-3px}#xp-code:checked~#xp-p-code{display:block}
+#xp-tools:checked~.xp-head .xp-tab[for="xp-tools"]{background:#064F6E;color:#FFFFFF}#xp-tools:checked~.xp-head .xp-tab[for="xp-tools"] :is(.xp-n,.xp-k){color:#FFFFFF}#xp-tools:focus-visible~.xp-head .xp-tab[for="xp-tools"]{outline:3px solid #5A82B3;outline-offset:-3px}#xp-tools:checked~#xp-p-tools{display:block}
+.xp:not(:has(.xp-r:checked)) .xp-tab[for="xp-eng"]{background:#064F6E;color:#FFFFFF}.xp:not(:has(.xp-r:checked)) .xp-tab[for="xp-eng"] :is(.xp-n,.xp-k){color:#FFFFFF}.xp:not(:has(.xp-r:checked)) #xp-p-eng{display:block}
+/* xp:end */
 .contact-row a{display:inline-flex;align-items:center;gap:10px}
 .contact-row img{width:22px;height:auto;flex:none}
 .edu{border-top:2px solid #10131C}
@@ -292,7 +326,7 @@ html{scroll-padding-top:60px}
 <li><span>06</span>CONCEPT VISUALISATION</li>
 </ol>
 <div class="stack g12" style="margin-top:16px">
-<p class="kicker">Media:</p>
+<p class="kicker">Tools:</p>
 <div class="tools">
 <span class="tool"><img src="/_blob/4ab5ec3b215b569f321a330d886ad546" alt="">Excel</span>
 <span class="tool"><img src="/_blob/25d6b878c857d2e743cea6243a1e7731" alt="">CAD Design</span>
@@ -324,10 +358,30 @@ html{scroll-padding-top:60px}
 </div>
 </section>
 
+<!-- xp:start --><section class="sec rule-t" id="expertise">
+<div class="wrap">
+<div class="sec-head row">
+<div class="stack g12">
+<p class="kicker">02 — Expertise</p>
+<h2 class="t-h2">The kit</h2>
+</div>
+<p class="intro muted" style="max-width:42ch">What I design with, build with and code with. Pick a group to see each one and how well I know it.</p>
+</div>
+<div class="xp">
+<input class="xp-r" type="radio" name="xp" id="xp-eng" aria-controls="xp-p-eng" checked><input class="xp-r" type="radio" name="xp" id="xp-build" aria-controls="xp-p-build"><input class="xp-r" type="radio" name="xp" id="xp-code" aria-controls="xp-p-code"><input class="xp-r" type="radio" name="xp" id="xp-tools" aria-controls="xp-p-tools">
+<div class="xp-head">
+<p class="xp-total"><b>37</b><span>in the kit</span></p>
+<div class="xp-tabs"><label class="xp-tab" for="xp-eng"><span class="xp-n">10</span><span class="xp-k">Engineering</span></label><label class="xp-tab" for="xp-build"><span class="xp-n">8</span><span class="xp-k">Build</span></label><label class="xp-tab" for="xp-code"><span class="xp-n">10</span><span class="xp-k">Code</span></label><label class="xp-tab" for="xp-tools"><span class="xp-n">9</span><span class="xp-k">Tools</span></label></div>
+</div>
+<div class="xp-p" id="xp-p-eng" role="region" aria-label="Engineering"><p class="xp-blurb small muted">How I design a machine and prove it works.</p><ul class="xp-list"><li><span class="xp-name">CAD modelling</span><span class="xp-lv" data-l="3" aria-label="Advanced"><i></i><i></i><i></i><em>Advanced</em></span></li><li><span class="xp-name">Soft robotics</span><span class="xp-lv" data-l="3" aria-label="Advanced"><i></i><i></i><i></i><em>Advanced</em></span></li><li><span class="xp-name">Robot and prosthetic hands</span><span class="xp-lv" data-l="3" aria-label="Advanced"><i></i><i></i><i></i><em>Advanced</em></span></li><li><span class="xp-name">Test rigs and experiments</span><span class="xp-lv" data-l="3" aria-label="Advanced"><i></i><i></i><i></i><em>Advanced</em></span></li><li><span class="xp-name">FEA, structural</span><span class="xp-lv" data-l="3" aria-label="Advanced"><i></i><i></i><i></i><em>Advanced</em></span></li><li><span class="xp-name">Hyperelastic materials</span><span class="xp-lv" data-l="2" aria-label="Intermediate"><i></i><i></i><i></i><em>Intermediate</em></span></li><li><span class="xp-name">CFD</span><span class="xp-lv" data-l="2" aria-label="Intermediate"><i></i><i></i><i></i><em>Intermediate</em></span></li><li><span class="xp-name">Buckling and beams</span><span class="xp-lv" data-l="2" aria-label="Intermediate"><i></i><i></i><i></i><em>Intermediate</em></span></li><li><span class="xp-name">Research and papers</span><span class="xp-lv" data-l="3" aria-label="Advanced"><i></i><i></i><i></i><em>Advanced</em></span></li><li><span class="xp-name">Science writing</span><span class="xp-lv" data-l="3" aria-label="Advanced"><i></i><i></i><i></i><em>Advanced</em></span></li></ul></div><div class="xp-p" id="xp-p-build" role="region" aria-label="Build"><p class="xp-blurb small muted">Turning a model into something on the bench.</p><ul class="xp-list"><li><span class="xp-name">3D printing</span><span class="xp-lv" data-l="3" aria-label="Advanced"><i></i><i></i><i></i><em>Advanced</em></span></li><li><span class="xp-name">Prototyping and assembly</span><span class="xp-lv" data-l="3" aria-label="Advanced"><i></i><i></i><i></i><em>Advanced</em></span></li><li><span class="xp-name">Moulds and silicone casting</span><span class="xp-lv" data-l="2" aria-label="Intermediate"><i></i><i></i><i></i><em>Intermediate</em></span></li><li><span class="xp-name">Arduino</span><span class="xp-lv" data-l="2" aria-label="Intermediate"><i></i><i></i><i></i><em>Intermediate</em></span></li><li><span class="xp-name">ESP32</span><span class="xp-lv" data-l="2" aria-label="Intermediate"><i></i><i></i><i></i><em>Intermediate</em></span></li><li><span class="xp-name">Servo and PWM control</span><span class="xp-lv" data-l="2" aria-label="Intermediate"><i></i><i></i><i></i><em>Intermediate</em></span></li><li><span class="xp-name">Sensors and wiring</span><span class="xp-lv" data-l="2" aria-label="Intermediate"><i></i><i></i><i></i><em>Intermediate</em></span></li><li><span class="xp-name">EMG muscle sensing</span><span class="xp-lv" data-l="1" aria-label="Basic"><i></i><i></i><i></i><em>Basic</em></span></li></ul></div><div class="xp-p" id="xp-p-code" role="region" aria-label="Code"><p class="xp-blurb small muted">Scripts for analysis, plus the code behind the demos on this site.</p><ul class="xp-list"><li><span class="xp-name">Python</span><span class="xp-lv" data-l="2" aria-label="Intermediate"><i></i><i></i><i></i><em>Intermediate</em></span></li><li><span class="xp-name">MATLAB scripting</span><span class="xp-lv" data-l="2" aria-label="Intermediate"><i></i><i></i><i></i><em>Intermediate</em></span></li><li><span class="xp-name">MediaPipe</span><span class="xp-lv" data-l="2" aria-label="Intermediate"><i></i><i></i><i></i><em>Intermediate</em></span></li><li><span class="xp-name">HTML and CSS</span><span class="xp-lv" data-l="2" aria-label="Intermediate"><i></i><i></i><i></i><em>Intermediate</em></span></li><li><span class="xp-name">JavaScript</span><span class="xp-lv" data-l="1" aria-label="Basic"><i></i><i></i><i></i><em>Basic</em></span></li><li><span class="xp-name">Arduino C++</span><span class="xp-lv" data-l="2" aria-label="Intermediate"><i></i><i></i><i></i><em>Intermediate</em></span></li><li><span class="xp-name">OpenCV</span><span class="xp-lv" data-l="1" aria-label="Basic"><i></i><i></i><i></i><em>Basic</em></span></li><li><span class="xp-name">three.js</span><span class="xp-lv" data-l="1" aria-label="Basic"><i></i><i></i><i></i><em>Basic</em></span></li><li><span class="xp-name">React</span><span class="xp-lv" data-l="1" aria-label="Basic"><i></i><i></i><i></i><em>Basic</em></span></li><li><span class="xp-name">FastAPI</span><span class="xp-lv" data-l="1" aria-label="Basic"><i></i><i></i><i></i><em>Basic</em></span></li></ul></div><div class="xp-p" id="xp-p-tools" role="region" aria-label="Tools"><p class="xp-blurb small muted">The software I open every week.</p><ul class="xp-list"><li><span class="xp-name">SolidWorks</span><span class="xp-lv" data-l="3" aria-label="Advanced"><i></i><i></i><i></i><em>Advanced</em></span></li><li><span class="xp-name">ANSYS Mechanical</span><span class="xp-lv" data-l="3" aria-label="Advanced"><i></i><i></i><i></i><em>Advanced</em></span></li><li><span class="xp-name">ANSYS Fluent</span><span class="xp-lv" data-l="2" aria-label="Intermediate"><i></i><i></i><i></i><em>Intermediate</em></span></li><li><span class="xp-name">Abaqus</span><span class="xp-lv" data-l="2" aria-label="Intermediate"><i></i><i></i><i></i><em>Intermediate</em></span></li><li><span class="xp-name">MATLAB</span><span class="xp-lv" data-l="2" aria-label="Intermediate"><i></i><i></i><i></i><em>Intermediate</em></span></li><li><span class="xp-name">Excel</span><span class="xp-lv" data-l="3" aria-label="Advanced"><i></i><i></i><i></i><em>Advanced</em></span></li><li><span class="xp-name">VSCode</span><span class="xp-lv" data-l="2" aria-label="Intermediate"><i></i><i></i><i></i><em>Intermediate</em></span></li><li><span class="xp-name">Git and GitHub</span><span class="xp-lv" data-l="2" aria-label="Intermediate"><i></i><i></i><i></i><em>Intermediate</em></span></li><li><span class="xp-name">Claude</span><span class="xp-lv" data-l="3" aria-label="Advanced"><i></i><i></i><i></i><em>Advanced</em></span></li></ul></div>
+<p class="xp-key meta muted"><span class="xp-lv" data-l="3"><i></i><i></i><i></i></span> Advanced <span class="xp-lv" data-l="2"><i></i><i></i><i></i></span> Intermediate <span class="xp-lv" data-l="1"><i></i><i></i><i></i></span> Basic · self rated</p>
+</div>
+</div>
+</section><!-- xp:end -->
 <section class="sec white rule-t">
 <div class="wrap">
 <div class="sec-head">
-<p class="kicker">02 — Studies</p>
+<p class="kicker">03 — Studies</p>
 <h2 class="t-h2">Education</h2>
 </div>
 <div class="edu">
@@ -373,7 +427,7 @@ html{scroll-padding-top:60px}
 <div class="wrap">
 <div class="sec-head row">
 <div class="stack g12">
-<p class="kicker">03 — Activities</p>
+<p class="kicker">04 — Activities</p>
 <h2 class="t-h2">Around the studies</h2>
 </div>
 <p class="intro muted" style="max-width:40ch">Lab benches, grip tests, graduations, and the clubs and people in between, at Exeter and UCL.</p>
