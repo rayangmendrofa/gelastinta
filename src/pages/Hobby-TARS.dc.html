@@ -1,0 +1,1076 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>GelasTinta — Building TARS</title>
+<script src="./support.js"></script>
+<script src="/_blob/59800ae8dd311e216394a93b57b5c5e9"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,600;0,700;1,400&amp;family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#EDEFF2;color:#10131C;font-family:'Titillium Web',system-ui,sans-serif;font-size:18px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{max-width:100%;display:block}
+a{color:#2B44C8;text-underline-offset:3px}
+a:hover{color:#1A2C8F}
+h1,h2,h3,p,figure,ul,ol{margin:0}
+.wrap{max-width:1160px;margin:0 auto;padding:0 32px}
+.sec{padding:96px 0}
+.sec.tight{padding:64px 0}
+.dark{background:#10131C;color:#EDEFF2}
+.white{background:#FFFFFF}
+.blue{background:#2B44C8;color:#FFFFFF}
+.rule-t{border-top:1px solid #10131C}
+.rule-b{border-bottom:1px solid #10131C}
+.grid-bg{background-color:#EDEFF2;background-image:linear-gradient(#DCE0E7 1px,transparent 1px),linear-gradient(90deg,#DCE0E7 1px,transparent 1px);background-size:32px 32px}
+.disp{font-family:'Titillium Web',system-ui,sans-serif}
+.mono{font-family:'Ubuntu Mono',ui-monospace,monospace}
+.kicker{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;line-height:1.5;letter-spacing:.14em;text-transform:uppercase;color:#3A4152}
+.dark .kicker{color:#8FA2FF}
+.blue .kicker{color:#DDE3FF}
+.t-hero{font-family:'Titillium Web',system-ui,sans-serif;font-weight:800;font-size:clamp(44px,6.2vw,84px);line-height:.96;letter-spacing:-.035em}
+.t-title{font-family:'Titillium Web',system-ui,sans-serif;font-weight:800;font-size:clamp(34px,4.2vw,56px);line-height:1.04;letter-spacing:-.03em}
+.t-h2{font-family:'Titillium Web',system-ui,sans-serif;font-weight:800;font-size:clamp(30px,3.2vw,42px);line-height:1.06;letter-spacing:-.025em}
+.t-h3{font-family:'Titillium Web',system-ui,sans-serif;font-weight:700;font-size:22px;line-height:1.22;letter-spacing:-.01em}
+.lead{font-size:clamp(20px,1.9vw,23px);line-height:1.5}
+.intro{font-size:19px;line-height:1.65}
+.prose{max-width:66ch}
+.prose p+p{margin-top:1.1em}
+.small{font-size:16px;line-height:1.55}
+.muted{color:#3A4152}
+.dark .muted{color:#C9CED8}
+.meta{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;line-height:1.6;letter-spacing:.03em}
+.stack{display:flex;flex-direction:column}
+.g8{gap:8px}.g12{gap:12px}.g16{gap:16px}.g24{gap:24px}.g32{gap:32px}.g48{gap:48px}
+.sec-head{display:flex;flex-direction:column;gap:12px;margin-bottom:40px}
+.sec-head.row{flex-direction:row;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 32px}
+.cols-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.cols-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.cols-4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.split{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:start}
+.split.rev{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
+.split.mid{align-items:center}
+.card{background:#FFFFFF;border:1px solid #10131C;padding:28px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;line-height:1.4;letter-spacing:.05em;padding:6px 10px;border:1px solid currentColor}
+.chip.fill{background:#2B44C8;border-color:#2B44C8;color:#FFFFFF}
+.chip.warn{background:#C2410C;border-color:#C2410C;color:#FFFFFF}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 22px;background:#2B44C8;color:#FFFFFF;text-decoration:none;border-radius:999px;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:14px;letter-spacing:.03em;border:1px solid #2B44C8}
+.btn:hover{background:#1A2C8F;border-color:#1A2C8F;color:#FFFFFF}
+.btn.ghost{background:transparent;color:inherit;border-color:currentColor}
+.btn.ghost:hover{background:#10131C;color:#EDEFF2;border-color:#10131C}
+.dark .btn.ghost:hover,.blue .btn.ghost:hover{background:#EDEFF2;color:#10131C;border-color:#EDEFF2}
+.back{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:inherit;min-height:44px;display:inline-flex;align-items:center;align-self:flex-start}
+.back:hover{color:inherit;text-decoration:underline}
+figcaption{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;line-height:1.5;letter-spacing:.06em;color:#3A4152;margin-top:10px}
+.dark figcaption{color:#C9CED8}
+.site-head{background:#EDEFF2;border-bottom:1px solid #10131C}
+.site-head .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 24px;min-height:72px}
+.brand{display:flex;align-items:center;gap:10px;color:#10131C;text-decoration:none;font-family:'Titillium Web',system-ui,sans-serif;font-weight:800;font-size:22px;letter-spacing:-.01em}
+.brand:hover{color:#10131C}
+.nav{display:flex;flex-wrap:wrap;gap:0 28px}
+.nav a{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#10131C;text-decoration:none;min-height:44px;display:inline-flex;align-items:center;border-bottom:2px solid transparent}
+.nav a:hover{color:#2B44C8}
+.nav a.on{color:#2B44C8;border-bottom-color:#2B44C8}
+.site-foot .wrap{padding-top:80px;padding-bottom:40px;display:flex;flex-direction:column;gap:56px}
+.foot-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:end}
+.foot-title{font-family:'Titillium Web',system-ui,sans-serif;font-weight:800;font-size:clamp(44px,5vw,64px);line-height:.95;letter-spacing:-.035em}
+.foot-blurb{font-size:19px;line-height:1.55;color:#C9CED8;max-width:30em}
+.foot-mail{font-family:'Titillium Web',system-ui,sans-serif;font-size:clamp(22px,2.4vw,28px);color:#EDEFF2;text-decoration:none;border-bottom:2px solid #8FA2FF;padding-bottom:4px;align-self:flex-start;overflow-wrap:anywhere}
+.foot-mail:hover{color:#FFFFFF}
+.social{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 18px;border:1px solid #8FA2FF;color:#EDEFF2;text-decoration:none;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.05em}
+.social:hover{background:#EDEFF2;color:#10131C}
+.social:hover svg{stroke:#10131C}
+.tblock{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid #3A4152;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.06em}
+.tblock div{padding:14px 16px;display:flex;flex-direction:column;gap:6px;border-right:1px solid #3A4152}
+.tblock div:last-child{border-right:0}
+.tblock span:first-child{color:#8FA2FF}
+.jump a{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:56px;border-bottom:1px solid #10131C;color:#10131C;text-decoration:none;font-family:'Titillium Web',system-ui,sans-serif;font-weight:600;font-size:20px}
+.jump a:first-of-type{border-top:1px solid #10131C}
+.jump a:hover{color:#2B44C8}
+.jump a span{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;font-weight:400;color:#2B44C8}
+.diss{display:flex;flex-direction:column;background:#EDEFF2;color:#10131C;text-decoration:none;border:1px solid #EDEFF2}
+.diss:hover{color:#10131C}
+.diss:hover h3{color:#2B44C8}
+.diss img{width:100%;aspect-ratio:16/10;object-fit:cover;border-bottom:1px solid #10131C}
+.poster-link{display:block;position:relative;border:1px solid #10131C;background:#FFFFFF;cursor:zoom-in;transition:transform .2s ease,box-shadow .2s ease}
+.poster-link:hover,.poster-link:focus-visible{transform:translateY(-4px);box-shadow:0 12px 0 -4px #2B44C8}
+.poster-link img{width:100%;aspect-ratio:707/1000;object-fit:cover}
+.poster-hint{position:absolute;right:10px;bottom:10px;background:#10131C;color:#EDEFF2;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.08em;padding:5px 8px}
+.poster-cap{display:flex;flex-direction:column;gap:6px;margin-top:14px}
+.zoom{position:fixed;inset:0;z-index:60;background:rgba(16,19,28,.88);display:flex;align-items:center;justify-content:center;padding:24px;pointer-events:none}
+.zoom figure{display:flex;flex-direction:column;align-items:center;gap:12px}
+.zoom img{max-height:calc(100vh - 96px);max-width:min(94vw,1200px);width:auto;height:auto;object-fit:contain;background:#FFFFFF;box-shadow:0 24px 64px rgba(0,0,0,.55)}
+.zoom figcaption{color:#EDEFF2;margin:0}
+@media (hover:none){.zoom{display:none}.poster-hint{display:none}}
+.cad{display:grid;grid-template-columns:300px minmax(0,1fr);border:1px solid #10131C;background:#FFFFFF}
+.cad-tabs{border-right:1px solid #10131C;max-height:740px;overflow-y:auto}
+.cad-group{padding:14px 18px 10px;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:11px;line-height:1.5;letter-spacing:.12em;text-transform:uppercase;color:#3A4152;background:#EDEFF2;border-bottom:1px solid #C9CED8}
+.cad-tab{display:flex;gap:12px;align-items:baseline;width:100%;text-align:left;min-height:48px;padding:12px 18px;border:0;border-bottom:1px solid #C9CED8;border-left:4px solid transparent;background:#FFFFFF;color:#10131C;font-family:'Titillium Web',system-ui,sans-serif;font-size:16px;line-height:1.3;font-weight:500;cursor:pointer}
+.cad-tab:hover{background:#EDEFF2}
+.cad-tab.on{background:#10131C;color:#FFFFFF;border-left-color:#2B44C8;font-weight:600}
+.cad-tab .code{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:11px;font-weight:400;color:#2B44C8;flex:none}
+.cad-tab.on .code{color:#8FA2FF}
+.cad-stage{background:#10131C;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center}
+.cad-stage img{width:100%;height:100%;object-fit:contain}
+@media (max-width:960px){
+.split,.split.rev{grid-template-columns:minmax(0,1fr);gap:40px}
+.cols-3{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cols-4{grid-template-columns:repeat(2,minmax(0,1fr))}
+.foot-top{grid-template-columns:minmax(0,1fr)}
+.cad{grid-template-columns:minmax(0,1fr)}
+.cad-tabs{max-height:300px;border-right:0;border-bottom:1px solid #10131C}
+}
+@media (max-width:640px){
+.wrap{padding:0 20px}
+.sec{padding:64px 0}
+.sec.tight{padding:48px 0}
+.cols-2,.cols-3,.cols-4{grid-template-columns:minmax(0,1fr)}
+.tblock{grid-template-columns:repeat(2,minmax(0,1fr))}
+.tblock div:nth-child(2){border-right:0}
+.tblock div:nth-child(-n+2){border-bottom:1px solid #3A4152}
+.nav{gap:0 18px}
+}
+.hb{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:48px;align-items:start}
+.hb-media{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.hb-ph{aspect-ratio:4/5;border:1px dashed #3A4152;background-color:#FFFFFF;background-image:repeating-linear-gradient(45deg,#EDEFF2 0 1px,transparent 1px 12px);display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;color:#3A4152}
+.hb-ph.wide{grid-column:1 / -1;aspect-ratio:16/9}
+.credit{border:1px solid #10131C;background:#FFFFFF;padding:20px 22px;display:flex;flex-direction:column;gap:10px}
+.credit.shout{background:#2B44C8;border-color:#2B44C8;color:#FFFFFF}
+.credit.shout a{color:#FFFFFF}
+@media (max-width:960px){.hb{grid-template-columns:minmax(0,1fr)}}
+.hb-diary{margin-top:72px;padding-top:48px;border-top:2px solid #10131C}
+.hb-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px 20px}
+.hb-step{margin:0;display:flex;flex-direction:column;gap:12px}
+.hb-clip{position:relative;aspect-ratio:9/16;overflow:hidden;border:1px solid #10131C;background:#10131C}
+.hb-clip img,.hb-clip video{width:100%;height:100%;object-fit:cover;display:block}
+.hb-speed{position:absolute;top:10px;right:10px;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.06em;background:rgba(16,19,28,.85);color:#FFFFFF;padding:4px 8px}
+.hb-n{font-family:'Titillium Web',system-ui,sans-serif;font-weight:800;font-size:28px;line-height:1;color:#2B44C8}
+.hb-txt{font-family:'Titillium Web',system-ui,sans-serif;font-size:16px;line-height:1.5;letter-spacing:0;text-transform:none;color:#3A4152}
+@media (max-width:960px){.hb-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:640px){.hb-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 12px}.hb-txt{font-size:15px}}
+.cm-wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:24px}
+.cm-box{border:1px solid #10131C;background:#FFFFFF;padding:24px;display:flex;flex-direction:column;gap:16px}
+.cm-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.cm-field{display:flex;flex-direction:column;gap:6px}
+.cm-field label{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#3A4152}
+.cm-field input,.cm-field textarea{font-family:'Titillium Web',system-ui,sans-serif;font-size:18px;line-height:1.5;color:#10131C;background:#FFFFFF;border:1px solid #10131C;padding:10px 12px;min-height:48px;width:100%;border-radius:0}
+.cm-field textarea{min-height:120px;resize:vertical}
+.cm-field input:focus,.cm-field textarea:focus{outline:3px solid #8FA2FF;outline-offset:1px}
+.cm-err{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;color:#B42318}
+.cm-actions{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center}
+.cm-actions .btn{cursor:pointer;font-size:14px}
+.cm-link{background:none;border:0;padding:0;min-height:44px;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;color:#2B44C8;text-decoration:underline;cursor:pointer}
+.cm-list{list-style:none;margin:0;padding:0;border-top:2px solid #10131C}
+.cm-list li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:16px;padding:20px 0;border-bottom:1px solid #C9CED8}
+.cm-av{width:44px;height:44px;border-radius:999px;background:#2B44C8;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-family:'Titillium Web',system-ui,sans-serif;font-weight:800;font-size:18px}
+.cm-text{font-size:18px;line-height:1.6;white-space:pre-wrap;overflow-wrap:anywhere}
+@media (max-width:640px){.cm-row{grid-template-columns:minmax(0,1fr)}.cm-box{padding:18px}}
+.t-thesis{font-family:'Titillium Web',system-ui,sans-serif;font-weight:800;font-size:clamp(34px,4.2vw,56px);line-height:1.04;letter-spacing:-.03em}
+.hero-clip{position:relative;aspect-ratio:4/5;overflow:hidden;border:1px solid #10131C;background:#10131C}
+.hero-clip img,.hero-clip video{width:100%;height:100%;object-fit:cover;display:block}
+.hb-diary{margin-top:0;padding-top:0;border-top:0}
+.gt-progress{position:fixed;left:0;top:0;width:100%;height:3px;background:#2B44C8;transform:scaleX(0);transform-origin:0 50%;z-index:70;pointer-events:none}
+@media (prefers-reduced-motion:reduce){.gt-progress{display:none}}
+/* wadasite:start */.site-foot{position:relative}
+.site-foot::before{content:"";position:absolute;left:0;right:0;top:-6px;height:6px;background:linear-gradient(90deg,#A36AA5 0.0% 25.0%,#FDC57E 25.0% 50.0%,#10131C 50.0% 75.0%,#2B44C8 75.0% 100.0%)}
+::selection{background:#FDC57E;color:#10131C}
+.wada-credit{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;font-family:"Ubuntu Mono",ui-monospace,monospace;font-size:11px;letter-spacing:.06em;color:#C9CED8}
+.wada-credit .wada-mini{margin-left:0;border-color:#3A4152}
+/* wadasite:end */
+/* logo:start */
+.brand .bk-logo{overflow:visible;flex:0 0 auto}
+.bk-tip{transform-box:view-box;transform-origin:26px 29px;animation:bk-tip 3.6s 1.6s cubic-bezier(.45,.05,.3,1) both}
+.bk-liq{transform-box:fill-box;transform-origin:50% 100%;animation:bk-liq 3.6s 1.6s ease-in-out both}
+.bk-drop{opacity:0;animation:bk-drop 3.6s 1.6s ease-in both}
+.bk-drop.d2{animation-delay:1.85s}.bk-drop.d3{animation-delay:2.1s}
+.bk-pud{transform-box:fill-box;transform-origin:30% 50%;transform:scaleX(0);animation:bk-pud 3.6s 1.6s ease-out both}
+@keyframes bk-tip{0%{transform:rotate(0)}7%{transform:rotate(-7deg)}13%{transform:rotate(6deg)}19%{transform:rotate(-3deg)}31%{transform:rotate(56deg)}60%{transform:rotate(56deg)}74%{transform:rotate(-5deg)}81%{transform:rotate(2deg)}88%,100%{transform:rotate(0)}}
+@keyframes bk-liq{0%,30%{transform:scaleY(1)}58%{transform:scaleY(.14)}80%{transform:scaleY(.14)}100%{transform:scaleY(1)}}
+@keyframes bk-drop{0%,30%{opacity:0;transform:translate(0,0)}31%{opacity:1;transform:translate(0,0)}42%{opacity:1;transform:translate(1px,19px)}44%,100%{opacity:0;transform:translate(1px,19px)}}
+@keyframes bk-pud{0%,33%{transform:scaleX(0);opacity:1}58%{transform:scaleX(1);opacity:1}80%{transform:scaleX(1.05);opacity:1}96%,100%{transform:scaleX(1.12);opacity:0}}
+@media (prefers-reduced-motion:reduce){.bk-tip,.bk-liq,.bk-drop,.bk-pud{animation:none}.bk-pud,.bk-drop{opacity:0}}
+/* logo:end */
+/* dark:start */
+.brand .bk-btn{display:inline-flex;align-items:center;justify-content:center;padding:4px;margin:-4px;border:0;background:transparent;cursor:pointer;border-radius:8px;line-height:0}
+.brand .bk-btn:hover .bk-tip{transform:rotate(-8deg)}
+.brand .bk-btn:focus-visible{outline:3px solid #2B44C8;outline-offset:2px}
+.brand .brand-name{color:inherit;text-decoration:none}
+.brand .brand-name:hover{color:inherit}
+html[data-theme="dark"]{filter:invert(1) hue-rotate(180deg);background:#FFFFFF;color-scheme:dark}
+html[data-theme="dark"] img,html[data-theme="dark"] video,html[data-theme="dark"] canvas,html[data-theme="dark"] iframe,html[data-theme="dark"] picture{filter:invert(1) hue-rotate(180deg)}
+html[data-theme="dark"] :is(.dark,.hero,.cp-hero,.blue,.catch,.book){filter:invert(1) hue-rotate(180deg)}
+html[data-theme="dark"] .book .cover{filter:invert(1) hue-rotate(180deg)}
+html[data-theme="dark"] :is(.dark,.hero,.cp-hero,.blue,.catch) :is(img,video,canvas,iframe,picture){filter:none}
+.gt-flood{position:fixed;inset:0;z-index:9999;background:#10131C;pointer-events:none;clip-path:circle(0 at var(--fx,40px) var(--fy,40px));transition:clip-path .6s cubic-bezier(.55,.05,.4,1),opacity .35s ease}
+.gt-flood.go{clip-path:circle(150vmax at var(--fx,40px) var(--fy,40px))}
+.gt-flood.out{opacity:0}
+@media (prefers-reduced-motion:reduce){.gt-flood{display:none}}
+/* dark:end */
+/* tars:start */
+.hero-clip.sq{aspect-ratio:1/1}
+.tc-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.tc-list li{display:flex;flex-direction:column;gap:2px;font-size:16px;line-height:1.45}
+.tc-list b{font-family:'Titillium Web',system-ui,sans-serif;font-weight:700;color:#FFFFFF}
+.tc-list span{color:#DDE3FF}
+.tm-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px 20px}
+.tm-step{margin:0;display:flex;flex-direction:column;gap:12px}
+.tm-clip{position:relative;aspect-ratio:1/1;overflow:hidden;border:1px solid #10131C;background:#2A2F3E}
+.tm-clip video{width:100%;height:100%;object-fit:cover;display:block}
+.tm-tag{position:absolute;top:10px;left:10px;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.08em;background:rgba(16,19,28,.85);color:#FFFFFF;padding:4px 8px}
+.tm-stat{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.04em;color:#2B44C8}
+.tm-tbl-wrap{overflow-x:auto;border:1px solid #10131C;background:#FFFFFF}
+.tm-tbl{width:100%;border-collapse:collapse;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:14px}
+.tm-tbl caption{text-align:left;padding:12px 14px;caption-side:top;font-size:12px}
+.tm-tbl th,.tm-tbl td{padding:10px 14px;border-top:1px solid #C9CED8;text-align:right;white-space:nowrap}
+.tm-tbl th[scope="row"]{text-align:left;font-family:'Titillium Web',system-ui,sans-serif;font-size:16px;font-weight:600}
+.tm-tbl thead th:first-child{text-align:left}
+.tm-tbl thead th{font-weight:400;color:#3A4152;font-size:12px;letter-spacing:.06em;text-transform:uppercase;border-top:0;background:#EDEFF2}
+@media (max-width:960px){.tm-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:640px){.tm-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 12px}}
+/* tars:end */
+/* nav2:start */
+html{scroll-padding-top:88px}
+.site-head{position:sticky;top:0;z-index:60}
+.skip-link{position:absolute;left:12px;top:-80px;z-index:200;background:#10131C;color:#FFFFFF;padding:12px 18px;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.06em;text-decoration:none;border-radius:0 0 8px 8px}
+.skip-link:focus{top:0;color:#FFFFFF;outline:3px solid #2B44C8;outline-offset:0}
+.nav a:focus-visible,.brand-name:focus-visible,.crumbs a:focus-visible,.foot-nav a:focus-visible{outline:3px solid #2B44C8;outline-offset:3px;border-radius:2px}
+.nav a{transition:color .2s ease,border-color .2s ease}
+.nav a:hover{border-bottom-color:currentColor}
+.crumbs{align-self:flex-start;max-width:100%}
+.crumbs ol{display:flex;flex-wrap:wrap;align-items:center;list-style:none;margin:0;padding:0;gap:0 10px;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+.crumbs li{display:inline-flex;align-items:center;min-height:44px;min-width:0}
+.crumbs li+li::before{content:"/";margin-right:10px;opacity:.55}
+.crumbs a{color:inherit;text-decoration:none;border-bottom:1px solid transparent}
+.crumbs a:hover{color:inherit;border-bottom-color:currentColor}
+.crumbs [aria-current]{opacity:.78;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:26ch}
+.pnav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border:1px solid #10131C}
+.pn{display:flex;flex-direction:column;gap:10px;padding:24px;color:#10131C;text-decoration:none;background:#EDEFF2;min-height:44px}
+.pn+.pn{border-left:1px solid #10131C}
+.pn.next{text-align:right;align-items:flex-end}
+.pn:hover{background:#10131C;color:#EDEFF2}
+.pn:focus-visible{outline:3px solid #2B44C8;outline-offset:2px}
+.pn-k{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#2B44C8}
+.pn:hover .pn-k{color:inherit}
+.pn-t{font-family:'Titillium Web',system-ui,sans-serif;font-weight:700;font-size:19px;line-height:1.25;letter-spacing:-.01em}
+.pn-all{display:inline-flex;align-items:center;min-height:44px;margin-top:16px;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#2B44C8;text-decoration:none}
+.pn-all:hover{text-decoration:underline;color:#2B44C8}
+.foot-nav{display:flex;flex-wrap:wrap;align-items:center;gap:4px 26px;padding-top:22px;border-top:1px solid rgba(237,239,242,.22);font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+.foot-nav a{color:inherit;text-decoration:none;min-height:44px;display:inline-flex;align-items:center;border-bottom:1px solid transparent}
+.foot-nav a:hover{color:inherit;border-bottom-color:currentColor}
+.foot-nav .to-top{margin-left:auto}
+[style*="position:sticky;top:24px"]{top:96px !important}
+@supports (animation-timeline: scroll()){
+.site-head{animation:nav2-shadow linear both;animation-timeline:scroll(root);animation-range:0 160px}
+@keyframes nav2-shadow{from{box-shadow:0 0 0 rgba(16,19,28,0)}to{box-shadow:0 6px 18px -10px rgba(16,19,28,.45)}}
+}
+@media (max-width:640px){
+html{scroll-padding-top:60px}
+.site-head{top:-56px}
+.site-head .wrap{min-height:0;padding-top:0;padding-bottom:0;gap:0;row-gap:0}
+.site-head .brand{min-height:56px}
+.nav{flex-wrap:nowrap;width:calc(100% + 40px);margin:0 -20px;padding:0 20px;gap:0 18px;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent)}
+.nav::-webkit-scrollbar{display:none}
+.nav a{flex:0 0 auto;font-size:12px;letter-spacing:.07em}
+.nav a[href="Main.dc.html"]{display:none}
+.nav a:last-child{margin-right:24px}
+[style*="position:sticky;top:24px"]{top:64px !important}
+.pnav{grid-template-columns:minmax(0,1fr)}
+.pn+.pn{border-left:0;border-top:1px solid #10131C}
+.pn.next{text-align:left;align-items:flex-start}
+.foot-nav{gap:0 20px}
+.foot-nav .to-top{margin-left:0}
+.crumbs [aria-current]{max-width:18ch}
+}
+/* nav2:end */
+</style>
+</helmet>
+<div style="min-height:100vh" data-gt-root="">
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="gt-progress" aria-hidden="true"></div>
+
+<header class="site-head" id="top">
+<div class="wrap">
+<div class="brand"><button type="button" class="bk-btn" data-theme-toggle aria-pressed="false" aria-label="Switch to dark mode (spill the ink)" title="Switch to dark mode (spill the ink)"><svg class="bk-logo" width="44" height="28" viewBox="0 0 50 32" fill="none" aria-hidden="true"><ellipse class="bk-pud" cx="40" cy="30.2" rx="9" ry="1.7" fill="#2B44C8"></ellipse><circle class="bk-drop d1" cx="42" cy="9" r="1.4" fill="#2B44C8"></circle><circle class="bk-drop d2" cx="42" cy="9" r="1.4" fill="#2B44C8"></circle><circle class="bk-drop d3" cx="42" cy="9" r="1.4" fill="#2B44C8"></circle><g class="bk-tip"><g class="bk-liq"><path d="M9.6 20 6.3 26.4A1.7 1.7 0 0 0 7.8 29h16.4a1.7 1.7 0 0 0 1.5-2.6L22.4 20z" fill="#2B44C8"></path></g><path d="M11 3h10M13 3v9L6 26.4A1.7 1.7 0 0 0 7.8 29h16.4a1.7 1.7 0 0 0 1.5-2.6L19 12V3" stroke="#10131C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></g></svg></button><a href="Main.dc.html" class="brand-name">GelasTinta</a></div>
+<nav class="nav" aria-label="Main">
+<a href="Main.dc.html">Home</a>
+<a href="Projects.dc.html" class="on">Projects</a>
+<a href="Talks.dc.html">Talks</a>
+<a href="Products.dc.html">Products</a>
+<a href="/packs/library/">Library</a>
+<a href="Author.dc.html">Author</a>
+</nav>
+</div>
+</header>
+
+<section id="main" class="sec grid-bg rule-b" style="padding-top:48px">
+<div class="wrap split rev mid">
+<div class="stack g24">
+<nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="Main.dc.html">Home</a></li><li><a href="Projects.dc.html">Projects</a></li><li aria-current="page">TARS</li></ol></nav>
+<p class="kicker">Hobby build — 2025</p>
+<h1 class="t-thesis">Building my own TARS</h1>
+<div class="chips"><span class="chip fill">2025</span><span class="chip">Personal project</span><span class="chip">3D printing</span><span class="chip">Fan build</span><span class="chip">Simulation</span></div>
+<p class="lead" style="max-width:30em">TARS, the walking slab of a robot from <i>Interstellar</i>, printed and put together from the TARS-AI community’s open build kit. Then I taught a simulated copy seven new moves.</p>
+<div class="chips" style="gap:12px">
+<a class="btn" href="#moves">See the new moves ↓</a>
+<a class="btn ghost" href="https://github.com/TARS-AI-Community/TARS-AI">TARS-AI on GitHub ↗</a>
+</div>
+</div>
+<figure class="stack g8" style="margin:0">
+<div class="hero-clip sq"><video src="/_blob/fdf6f60363a8ab3fde14db70d50611e0" poster="/_blob/469036e14107d5bbdb2d29a2e68f4e18" autoplay muted loop playsinline preload="auto" aria-label="Looping clip: the simulated TARS sits down, lifts both arms and snaps its claws while bouncing on its legs" data-gt-autoplay=""></video></div>
+<figcaption>FIG. 01 — CELEBRATE, ONE OF THE NEW MOVES, IN SIMULATION</figcaption>
+</figure>
+</div>
+</section>
+
+<section class="sec white rule-b">
+<div class="wrap">
+<div class="hb">
+<div class="stack g24">
+<p class="kicker">01 — The story</p>
+<h2 class="t-h2">Why build a robot from a film?</h2>
+<div class="prose stack g16" style="font-size:18px;line-height:1.65">
+<p>TARS is the robot in Christopher Nolan’s <i>Interstellar</i> (2014): four tall slabs that walk, roll and crack jokes, with a humour setting the crew can turn down. It is one of the few film robots that looks like it could be built, and the TARS-AI community has done exactly that.</p>
+<p>TARS-AI is an open, fan-made recreation: printable parts, a Raspberry Pi as the brain, servos driven by a PCA9685 servo board, a screen for a face, and software that listens for a wake word, answers in a TARS-like voice and plays its moves. Everything is shared on GitHub with a step-by-step build guide.</p>
+<p>In 2025 I printed the parts and followed that build kit, piece by piece. Once it stood, I wanted to give it more personality than the moves it ships with, without risking a fall off the desk while I experimented. So the new moves start life in a simulation.</p>
+</div>
+</div>
+<div class="stack g16">
+<div class="credit">
+<p class="kicker" style="color:#10131C">Credit where it’s due</p>
+<p style="font-size:17px;line-height:1.55">I did not design TARS or this robot. I printed and assembled the TARS-AI community’s open design as a hobby, for non-commercial use under its <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a> licence. This is a fan-made project, not connected to the film or its studios.</p>
+<p style="font-size:15px;line-height:1.55;border-left:3px solid #2B44C8;padding-left:12px">Based on the mechanical puppet designs by Christopher Nolan, Nathan Crowley, and the production team who originally brought TARS to life. Miniaturized CAD by Charlie Diaz, with additional modifications by the TARS-AI Community.</p>
+<p style="font-size:15px;line-height:1.55">TARS-AI includes AI-generated elements inspired by Bill Irwin’s portrayal of TARS in the film <i>Interstellar</i>.</p>
+<p style="font-size:15px;line-height:1.55"><b>What is mine:</b> the printing and assembly, and the seven new moves and their tuning, made in my own simulation. The CAD and the robot’s software are unchanged.</p>
+</div>
+<div class="credit shout">
+<p class="kicker" style="color:#DDE3FF">Shoutout</p>
+<p class="t-h3" style="font-size:20px;color:#FFFFFF">The people behind TARS-AI</p>
+<ul class="tc-list">
+<li><b>Charlie Diaz</b><span>the miniaturized CAD, and the original files and scripts</span></li>
+<li><b>Charles-Olivier Dion (AtomikSpace)</b><span>much of the robot’s software, the movement code included</span></li>
+<li><b>Exploding Cat</b><span>AME, whose module engine and memory functions TARS-AI builds on (MIT licence)</span></li>
+<li><b>The TARS-AI Community</b><span>modifications, testing and the build guide, with thanks in its wiki to @gptars, @poboisvert, @pyrater, @alexW and @latisha</span></li>
+</ul>
+<div class="chips" style="gap:8px 18px">
+<a class="meta" href="https://github.com/TARS-AI-Community/TARS-AI" style="min-height:44px;display:inline-flex;align-items:center">GitHub repo ↗</a>
+<a class="meta" href="https://github.com/TARS-AI-Community/TARS-AI/wiki/Home" style="min-height:44px;display:inline-flex;align-items:center">Build guide (wiki) ↗</a>
+<a class="meta" href="https://github.com/TARS-AI-Community/TARS-AI/blob/V3/ATTRIBUTION.md" style="min-height:44px;display:inline-flex;align-items:center">Attribution ↗</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="moves" class="sec">
+<div class="wrap">
+<div class="sec-head row" style="margin-bottom:28px">
+<div class="stack g12">
+<p class="kicker">02 — New moves</p>
+<h2 class="t-h2">Teaching TARS seven new moves, in simulation first</h2>
+</div>
+<p class="intro muted" style="max-width:44ch">Each clip loops on its own. Every move is written in the same servo steps the real robot uses, so it can be copied across once it has proved itself here.</p>
+</div>
+<div class="tm-grid">
+<figure class="tm-step"><div class="tm-clip"><video src="/_blob/cdeaf2d9dbee3acf59d26d352b8fe9aa" poster="/_blob/c7cd0b116173a650645b6144f52222ca" autoplay muted loop playsinline preload="metadata" aria-label="Looping clip of the simulated TARS: nod. Yes. Two quick dips of the screen." data-gt-autoplay=""></video><span class="tm-tag">SIM</span></div><figcaption class="stack g8" style="margin:0"><span class="hb-n">01</span><span class="t-h3" style="font-size:18px">Nod</span><span class="hb-txt">Yes. Two quick dips of the screen.</span><span class="tm-stat">1.6 s · tilt 5.9°</span></figcaption></figure>
+<figure class="tm-step"><div class="tm-clip"><video src="/_blob/c3ea0eeab7f0bad48c20bbe99021ed92" poster="/_blob/1450eac23098639a380c142fbf00645b" autoplay muted loop playsinline preload="metadata" aria-label="Looping clip of the simulated TARS: shake no. No. The legs swing opposite ways, so the body twists on the spot." data-gt-autoplay=""></video><span class="tm-tag">SIM</span></div><figcaption class="stack g8" style="margin:0"><span class="hb-n">02</span><span class="t-h3" style="font-size:18px">Shake no</span><span class="hb-txt">No. The legs swing opposite ways, so the body twists on the spot.</span><span class="tm-stat">2.4 s · tilt 3.3°</span></figcaption></figure>
+<figure class="tm-step"><div class="tm-clip"><video src="/_blob/2ac5a93dcf7ef5436789468894a2b6ee" poster="/_blob/16f16ed24263a530e2c90e653eaad54e" autoplay muted loop playsinline preload="metadata" aria-label="Looping clip of the simulated TARS: shrug. Sits a little, half lifts both arms and bobs: not my problem." data-gt-autoplay=""></video><span class="tm-tag">SIM</span></div><figcaption class="stack g8" style="margin:0"><span class="hb-n">03</span><span class="t-h3" style="font-size:18px">Shrug</span><span class="hb-txt">Sits a little, half lifts both arms and bobs: not my problem.</span><span class="tm-stat">6.3 s · tilt 8.6°</span></figcaption></figure>
+<figure class="tm-step"><div class="tm-clip"><video src="/_blob/7b43eb4e591a1604218d8bca73cc11b4" poster="/_blob/47b48f8899cd93ed73f959fd563feb3e" autoplay muted loop playsinline preload="metadata" aria-label="Looping clip of the simulated TARS: think. Leans back, raises one arm and taps its claw twice, then a slow nod." data-gt-autoplay=""></video><span class="tm-tag">SIM</span></div><figcaption class="stack g8" style="margin:0"><span class="hb-n">04</span><span class="t-h3" style="font-size:18px">Think</span><span class="hb-txt">Leans back, raises one arm and taps its claw twice, then a slow nod.</span><span class="tm-stat">14.6 s · tilt 11.8°</span></figcaption></figure>
+<figure class="tm-step"><div class="tm-clip"><video src="/_blob/fdf6f60363a8ab3fde14db70d50611e0" poster="/_blob/469036e14107d5bbdb2d29a2e68f4e18" autoplay muted loop playsinline preload="metadata" aria-label="Looping clip of the simulated TARS: celebrate. Both arms up, claws snapping, bouncing on its legs." data-gt-autoplay=""></video><span class="tm-tag">SIM</span></div><figcaption class="stack g8" style="margin:0"><span class="hb-n">05</span><span class="t-h3" style="font-size:18px">Celebrate</span><span class="hb-txt">Both arms up, claws snapping, bouncing on its legs.</span><span class="tm-stat">11.2 s · tilt 3.3°</span></figcaption></figure>
+<figure class="tm-step"><div class="tm-clip"><video src="/_blob/a8bd35608c5cbeabfc3bb34d510e3507" poster="/_blob/b8f7807c8fcaf043adf48b95986fde12" autoplay muted loop playsinline preload="metadata" aria-label="Looping clip of the simulated TARS: breathe. Idle. A slow rise and fall, so it never stands dead still." data-gt-autoplay=""></video><span class="tm-tag">SIM</span></div><figcaption class="stack g8" style="margin:0"><span class="hb-n">06</span><span class="t-h3" style="font-size:18px">Breathe</span><span class="hb-txt">Idle. A slow rise and fall, so it never stands dead still.</span><span class="tm-stat">9.0 s · tilt 0.5°</span></figcaption></figure>
+<figure class="tm-step"><div class="tm-clip"><video src="/_blob/7cb0ddb5f9aa0b5f9fb18f7ba6daf297" poster="/_blob/f69ff1ff509dcfa0ff5c9818adec137d" autoplay muted loop playsinline preload="metadata" aria-label="Looping clip of the simulated TARS: hi, other arm. The robot’s own wave, mirrored onto the starboard arm." data-gt-autoplay=""></video><span class="tm-tag">SIM</span></div><figcaption class="stack g8" style="margin:0"><span class="hb-n">07</span><span class="t-h3" style="font-size:18px">Hi, other arm</span><span class="hb-txt">The robot’s own wave, mirrored onto the starboard arm.</span><span class="tm-stat">13.4 s · tilt 0.8°</span></figcaption></figure>
+</div>
+<div class="hb" style="margin-top:56px">
+<div class="stack g16">
+<h3 class="t-h3">How the simulation works</h3>
+<div class="prose stack g16" style="font-size:17px;line-height:1.65">
+<p>The simulated TARS is built part by part from the community’s CAD in MuJoCo, a physics engine: every printed part has its own shape, the legs ride on the sprung suspension, and the nine servo channels (height, two legs, and main arm, forearm and claw on each side) move at the real servos’ speed.</p>
+<p>It replays the robot’s own moves exactly as its servo code runs them, one PWM tick at a time. The new moves use the same building blocks: set the legs, set the arms, wait.</p>
+<p>Each move has one number to tune: how big it is. A bigger move reads better from across the room, but it can tip TARS over or shuffle it across the desk. So a script tries every size from 0.6 to 2 times the design, and keeps the biggest one that leaves TARS upright (under 15° of tilt), in place (under 15 mm of drift) and facing the same way (under 5° of turn). It stays one notch back from any size that falls over.</p>
+</div>
+</div>
+<div class="stack g16">
+<div class="tm-tbl-wrap">
+<table class="tm-tbl">
+<caption class="meta muted">Chosen size and how steady TARS stayed, per move</caption>
+<thead><tr><th scope="col">Move</th><th scope="col">Size</th><th scope="col">Peak tilt</th><th scope="col">Drift</th></tr></thead>
+<tbody>
+<tr><th scope="row">Nod</th><td>1.0×</td><td>5.9°</td><td>2 mm</td></tr>
+<tr><th scope="row">Shake no</th><td>2.0×</td><td>3.3°</td><td>8 mm</td></tr>
+<tr><th scope="row">Shrug</th><td>1.6×</td><td>8.6°</td><td>3 mm</td></tr>
+<tr><th scope="row">Think</th><td>2.0×</td><td>11.8°</td><td>7 mm</td></tr>
+<tr><th scope="row">Celebrate</th><td>2.0×</td><td>3.3°</td><td>14 mm</td></tr>
+<tr><th scope="row">Breathe</th><td>2.0×</td><td>0.5°</td><td>1 mm</td></tr>
+<tr><th scope="row">Hi, other arm</th><td>2.0×</td><td>0.8°</td><td>1 mm</td></tr>
+</tbody>
+</table>
+</div>
+<p class="meta muted" style="font-size:12px;line-height:1.6">Simulation only so far: the next step is running these on the printed TARS, where real servos, friction and battery weight will differ a little from the model. Renders from my MuJoCo model of TARS, derived from the TARS-AI CAD and shared under CC BY-NC 4.0.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="sec white rule-t" id="comments" aria-labelledby="cm-title-tars">
+<div class="wrap">
+<div class="cm-wrap">
+<div class="stack g12">
+<p class="kicker">Discussion</p>
+<h2 class="t-h2" id="cm-title-tars">Comments</h2>
+<p class="meta muted">{{cm.count}}</p>
+</div>
+<sc-if value="{{cm.notReg}}" hint-placeholder-val="{{true}}">
+<div class="cm-box">
+<p class="t-h3" style="font-size:20px">Register with your email to join the discussion</p>
+<div class="cm-row">
+<div class="cm-field"><label for="cm-name-tars">Name</label><input id="cm-name-tars" type="text" autocomplete="name" value="{{cm.name}}" onChange="{{cm.onName}}"></div>
+<div class="cm-field"><label for="cm-email-tars">Email</label><input id="cm-email-tars" type="email" autocomplete="email" inputmode="email" value="{{cm.email}}" onChange="{{cm.onEmail}}"></div>
+</div>
+<sc-if value="{{cm.hasErr}}"><p class="cm-err" role="alert">{{cm.err}}</p></sc-if>
+<div class="cm-actions">
+<button type="button" class="btn" onClick="{{cm.register}}">Register &amp; comment</button>
+<span class="meta muted" style="font-size:12px">Your email is never shown publicly.</span>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{cm.reg}}">
+<div class="cm-box">
+<div class="cm-actions" style="justify-content:space-between">
+<span class="meta">Commenting as <b>{{cm.who}}</b></span>
+<button type="button" class="cm-link" onClick="{{cm.signout}}">Not you? Sign out</button>
+</div>
+<div class="cm-field"><label for="cm-text-tars">Your comment</label><textarea id="cm-text-tars" value="{{cm.draft}}" onChange="{{cm.onDraft}}"></textarea></div>
+<sc-if value="{{cm.hasErr}}"><p class="cm-err" role="alert">{{cm.err}}</p></sc-if>
+<div class="cm-actions"><button type="button" class="btn" onClick="{{cm.post}}">Post comment</button></div>
+</div>
+</sc-if>
+<sc-if value="{{cm.empty}}"><p class="muted" style="font-size:18px">No comments yet. Be the first to share your thoughts.</p></sc-if>
+<sc-if value="{{cm.some}}">
+<ol class="cm-list">
+<sc-for list="{{cm.items}}" as="c" hint-placeholder-count="0"><li><span class="cm-av" aria-hidden="true">{{c.initial}}</span><div class="stack g8"><p class="meta"><b>{{c.name}}</b> · {{c.when}}</p><p class="cm-text">{{c.text}}</p></div></li></sc-for>
+</ol>
+</sc-if>
+</div>
+</div>
+</section>
+
+<!-- nav2:proj:start -->
+<section class="sec tight" aria-label="More projects"><div class="wrap"><nav class="pnav" aria-label="More projects"><a class="pn prev" href="Hobby-GestureMusic.dc.html"><span class="pn-k">← Previous · Hobby build · H3</span><span class="pn-t">Gesture Music: an instrument you play with hand signs</span></a><a class="pn next" href="Talks.dc.html"><span class="pn-k">Keep reading · Talks →</span><span class="pn-t">Monthly talks on papers, films, food and robots</span></a></nav><a class="pn-all" href="Projects.dc.html">← All projects</a></div></section>
+<!-- nav2:proj:end -->
+<footer class="site-foot dark">
+<div class="wrap">
+<div class="foot-top">
+<div class="stack g16">
+<p class="kicker">Get in touch</p>
+<p class="foot-title">GelasTinta</p>
+<p class="foot-blurb">Open to collaborations, discussions, projects, and work in discussing creative science, design, and engineering work.</p>
+</div>
+<div class="stack g16">
+<a class="foot-mail" href="mailto:mendrofarayang@gmail.com">mendrofarayang@gmail.com</a>
+<p class="meta muted">Jakarta . London . Singapore</p>
+<div class="chips" style="gap:10px">
+<a class="social" href="https://www.linkedin.com/in/raysmendrofa/" aria-label="LinkedIn profile: raysmendrofa"><img src="/_blob/49604cde322d454326d28d8c5cfe5ff8" alt="" style="width:22px;height:22px">LinkedIn</a>
+<a class="social" href="mailto:mendrofarayang@gmail.com" aria-label="Email: mendrofarayang@gmail.com"><img src="/_blob/ee68aabd0584895696ec1ef146936038" alt="" style="width:22px;height:auto">Email</a>
+<a class="social" href="https://wa.me/447376459918" aria-label="WhatsApp: +44 7376459918"><img src="/_blob/d7adca6684b39bdbd090afff2eeb09ea" alt="" style="width:22px;height:22px">WhatsApp +44</a>
+</div>
+</div>
+</div>
+<!-- nav2:foot:start --><nav class="foot-nav" aria-label="Site"><a href="Main.dc.html">Home</a><a href="Projects.dc.html">Projects</a><a href="Talks.dc.html">Talks</a><a href="Products.dc.html">Products</a><a href="/packs/library/">Library</a><a href="Author.dc.html">Author</a><a class="to-top" href="#top">Back to top <span aria-hidden="true">↑</span></a></nav>
+<!-- nav2:foot:end -->
+<div class="tblock">
+<div><span>DRAWN BY</span><span>Rayang T Mendrofa</span></div>
+<div><span>SHEET</span><span>02.H4 — TARS</span></div>
+<div><span>SCALE</span><span>1 : IDEA</span></div>
+<div><span>REV.</span><span>Website 2026 Gelastinta.</span></div>
+</div>
+<!-- wadasite:start --><p class="wada-credit"><span class="wada-mini" aria-hidden="true"><i style="background:#A36AA5"></i><i style="background:#FDC57E"></i><i style="background:#10131C"></i><i style="background:#2B44C8"></i></span><span>SITE PALETTE · Sanzo Wada, <i>A Dictionary of Color Combinations</i>, No. 344 · Aconite Violet, Cinnamon Buff, with the site ink and blue in place of Wada’s Black and Deep Lyons Blue</span></p>
+<!-- wadasite:end -->
+</div>
+</footer>
+
+<sc-if value="{{zoomOpen}}" hint-placeholder-val="{{ false }}">
+<div class="zoom" aria-hidden="true">
+<figure>
+<img src="{{zoomSrc}}" alt="">
+<figcaption>{{zoomTitle}}</figcaption>
+</figure>
+</div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":5600}}'>
+class Component extends DCLogic {
+  // ── GelasTinta motion layer (anime.js v4) ─────────────────────────────
+  componentDidMount() { this.gtStart(0); this.gtMedia(0); this.gtTheme(); this.cmMount(); }
+  componentWillUnmount() {
+    if (this.thOff) this.thOff();
+    clearTimeout(this.gtWait);
+    clearInterval(this.gtSlideT);
+    clearTimeout(this.gtMediaWait);
+    if (this.gtVIO) this.gtVIO.disconnect();
+    if (this.gtIO) this.gtIO.disconnect();
+    if (this.gtScope) this.gtScope.revert();
+  }
+  componentDidUpdate() {
+    const A = window.anime;
+    if (!A || !this.gtReady) return;
+    // "Show the science" panels: grow open inside their own box (height + fade), never overlapping the page
+    if (this.gtRoot && !(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) {
+      Array.from(this.gtRoot.querySelectorAll('.more-body:not([data-gt-in])')).forEach((el) => {
+        el.setAttribute('data-gt-in', '');
+        const h = el.scrollHeight;
+        el.style.overflow = 'hidden';
+        A.animate(el, {
+          height: [0, h], opacity: [0, 1], duration: 480, ease: 'out(3)',
+          onComplete: () => { el.style.height = ''; el.style.overflow = ''; el.style.opacity = ''; }
+        });
+      });
+    }
+    const st = this.state || {};
+    const prev = this.gtPrev || {};
+    const root = this.gtRoot;
+    if (root && st.sel !== prev.sel && prev.seen) {
+      const panel = root.querySelector('[role="tabpanel"]');
+      if (panel) A.animate(panel.children, { opacity: { from: 0 }, x: { from: 18 }, delay: A.stagger(70), duration: 520, ease: 'out(3)' });
+    }
+    if (root && st.slide !== prev.slide && prev.seen) {
+      const img = root.querySelector('.gal-img');
+      if (img) A.waapi.animate(img, { opacity: [0, 1], scale: [1.04, 1], duration: 600, ease: 'out(3)' });
+      const cap = root.querySelectorAll('.gal-cap > *');
+      if (cap.length) A.animate(cap, { opacity: { from: 0 }, y: { from: 10 }, delay: A.stagger(60), duration: 450, ease: 'out(3)' });
+    }
+    if (root && st.zoom && st.zoom !== prev.zoom) {
+      const z = root.querySelector('.zoom img');
+      if (z) A.animate(z, { scale: { from: 0.9 }, opacity: { from: 0 }, ease: A.spring({ bounce: 0.35, duration: 500 }) });
+    }
+    this.gtPrev = { sel: st.sel, slide: st.slide, zoom: st.zoom, seen: true };
+  }
+  // Media loading (independent of anime.js): hero slides load just before their turn; clips play only on screen
+  gtMedia(tries) {
+    const root = document.querySelector('[data-gt-root]') || document.body;
+    if (!root.querySelector('img[data-src], video[data-gt-autoplay]')) {
+      if (tries < 20) this.gtMediaWait = setTimeout(() => this.gtMedia(tries + 1), 150);
+      return;
+    }
+    const still = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+    // 1 · Home hero slideshow: slide k fades in at k×6 s, so fetch it ~5 s ahead
+    const slides = Array.from(root.querySelectorAll('.hero-slides img[data-src]'));
+    if (slides.length && !still) {
+      const t0 = performance.now();
+      const tick = () => {
+        const t = (performance.now() - t0) / 1000;
+        let left = 0;
+        slides.forEach((img, i) => {
+          if (img.getAttribute('src')) return;
+          const k = i + 1;
+          if (t >= k * 6 - 5) { img.decoding = 'async'; img.src = img.getAttribute('data-src'); }
+          else left++;
+        });
+        if (!left) clearInterval(this.gtSlideT);
+      };
+      tick();
+      this.gtSlideT = setInterval(tick, 1000);
+    }
+    // 2 · Looping clips: muted inline video, playing only while visible
+    const vids = Array.from(root.querySelectorAll('video[data-gt-autoplay]'));
+    if (vids.length) {
+      vids.forEach((v) => { v.muted = true; v.defaultMuted = true; v.playsInline = true; v.loop = true; });
+      if (still) {
+        vids.forEach((v) => { v.removeAttribute('autoplay'); v.autoplay = false; v.pause(); v.controls = true; });
+      } else if ('IntersectionObserver' in window) {
+        this.gtVIO = new IntersectionObserver((entries) => {
+          entries.forEach((e) => {
+            const v = e.target;
+            if (e.isIntersecting) { const p = v.play(); if (p && p.catch) p.catch(() => {}); }
+            else v.pause();
+          });
+        }, { rootMargin: '120px 0px' });
+        vids.forEach((v) => this.gtVIO.observe(v));
+      } else {
+        vids.forEach((v) => { const p = v.play(); if (p && p.catch) p.catch(() => {}); });
+      }
+    }
+  }
+  gtStart(tries) {
+    // Inside a frame (the design canvas, an embed), keep the page static: browsers pause or slow
+    // animation in off-screen frames, which can leave reveals stuck half-way and the canvas laggy.
+    // The live site always runs as a normal tab, so the motion layer still plays there.
+    try { if (window.self !== window.top) return; } catch (e) { return; }
+    const A = window.anime;
+    if (!A) {
+      if (tries < 60) this.gtWait = setTimeout(() => this.gtStart(tries + 1), 100);
+      return;
+    }
+    const root = document.querySelector('[data-gt-root]');
+    if (!root || this.gtScope) return;
+    this.gtRoot = root;
+    this.gtLayouts = [];
+    this.gtPrev = { sel: (this.state || {}).sel, slide: (this.state || {}).slide, seen: true };
+    A.engine.pauseOnDocumentHidden = false;
+    const self = this;
+    this.gtScope = A.createScope({
+      root: root,
+      mediaQueries: { still: '(prefers-reduced-motion: reduce)', touch: '(hover: none)', small: '(max-width: 640px)' }
+    }).add((scope) => {
+      if (scope.matches.still) return;
+      const m = scope.matches;
+      const run = (name, fn) => { try { fn(); } catch (e) { console.warn('[gt-motion] ' + name, e); } };
+      run('motion', () => self.gtMotion(A, root, m));
+    });
+    this.gtReady = true;
+  }
+  gtMotion(A, root, m) {
+    const { animate, createTimeline, createTimer, stagger, splitText, scrambleText, onScroll, createDrawable,
+      morphTo, createMotionPath, createAnimatable, createDraggable, createLayout, waapi, spring, cubicBezier,
+      steps, irregular, utils } = A;
+    const $ = (sel, el) => Array.from((el || root).querySelectorAll(sel));
+    const DYN = '.gal, [role="tabpanel"], [role="tablist"], #comments, [id^="comments"], .ratio, .lm-row, .readout, .viz-body, .zoom, .cad, sc-for';
+    const isStatic = (el) => !el.closest(DYN);
+    const plain = (el) => el.children.length === 0 && el.textContent.trim().length > 0 && !/[<>]/.test(el.textContent);
+    const glide = cubicBezier(0.2, 0.75, 0.1, 1);
+    const done = new Set();
+    // Content is never hidden ahead of time: an element only animates once it is actually on screen
+    // (IntersectionObserver also works when the page sits inside a frame scrolled by its parent),
+    // and every reveal has a timer that snaps it to its finished state if the animation stalls.
+    const pending = new Map();
+    const io = window.IntersectionObserver ? new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        const fn = pending.get(e.target);
+        pending.delete(e.target);
+        io.unobserve(e.target);
+        if (fn) { try { fn(); } catch (err) { console.warn('[gt-motion] reveal', err); } }
+      });
+    }, { rootMargin: '0px 0px -4% 0px' }) : null;
+    this.gtIO = io;
+    const when = (el, fn) => { if (!io || !el) return; pending.set(el, fn); io.observe(el); };
+    const guard = (anim, ms) => { setTimeout(() => { try { if (anim && !anim.completed) anim.complete(); } catch (e) {} }, ms); return anim; };
+    const safe = (name, fn) => { try { fn(); } catch (e) { console.warn('[gt-motion] ' + name, e); } };
+    const calm = m.touch || m.small;
+    const head = root.querySelector('.site-head');
+    const hero = head ? head.nextElementSibling : null;
+    const intro = createTimeline({ defaults: { ease: glide, duration: 700 } });
+
+    // 1 ── header: brand flask fills, outline draws, nav staggers in
+    safe('1', () => {
+      if (head) {
+        const flask = head.querySelector('.brand svg');
+        if (flask) {
+          const [liquid, glass] = flask.querySelectorAll('path');
+          if (glass) intro.add(createDrawable(glass), { draw: ['0 0', '0 1'], duration: 900, ease: 'inOut(3)' }, 0);
+          if (liquid) {
+            liquid.style.transformBox = 'fill-box';
+            liquid.style.transformOrigin = '50% 100%';
+            intro.add(liquid, { scaleY: { from: 0 }, ease: spring({ bounce: 0.45, duration: 900 }) }, 350);
+          }
+        }
+        intro.add($('.nav a', head), { opacity: { from: 0 }, y: { from: -10 }, delay: stagger(60), duration: 500 }, 100);
+      }
+    });
+
+    // 2 ── hero: kicker scramble → split title rises → the rest follows
+    safe('2', () => {
+      if (hero) {
+        intro.label('hero', 200);
+        const hk = hero.querySelector('.kicker');
+        if (hk && plain(hk) && isStatic(hk)) {
+          intro.add(hk, { innerHTML: scrambleText({ chars: 'A-Z0-9—·', cursor: '_', revealRate: 70, settleDuration: 260 }) }, 'hero');
+          done.add(hk);
+        }
+        const h1 = hero.querySelector('h1');
+        if (h1 && isStatic(h1)) {
+          const split = splitText(h1, { words: { wrap: 'clip' }, chars: true });
+          this.gtSplits = (this.gtSplits || []).concat([split]);
+          const each = utils.clamp(900 / Math.max(1, split.chars.length), 8, 34);
+          intro.add(split.chars, {
+            y: { from: '110%' }, rotate: { from: () => utils.random(-14, 14) },
+            delay: stagger(each, { ease: 'out(2)' }), ease: spring({ bounce: 0.3, duration: 900 })
+          }, 'hero+=120');
+          done.add(h1);
+        }
+        const BG = /hero-slides|hero-shade|cp-hero-bg|cp-hero-shade/;
+        const restSet = new Set();
+        if (h1) {
+          const P = h1.parentElement;
+          Array.from(P.children).forEach((c) => { if (c !== h1 && c !== hk) restSet.add(c); });
+          const W = P.parentElement;
+          if (W && W !== hero && hero.contains(W)) Array.from(W.children).forEach((c) => { if (c !== P) restSet.add(c); });
+        }
+        $(':scope > .hero-link', hero).forEach((c) => restSet.add(c));
+        const rest = Array.from(restSet).filter((el) => !BG.test(el.className || '') && el.tagName !== 'IMG');
+        if (rest.length) intro.add(rest, { opacity: { from: 0 }, y: { from: 22 }, delay: stagger(80) }, 'hero+=420');
+        rest.forEach((el) => done.add(el));
+
+        // parallax on hero photography / CFD background
+        const bg = hero.querySelector('.cp-hero-bg, .hero-slides');
+        if (bg) animate(bg, { y: [0, 140], scale: [1.06, 1.06], ease: 'linear', autoplay: onScroll({ target: hero, enter: 'top top', leave: 'bottom top', sync: 0.25 }) });
+      }
+    });
+
+    // 3 ── Home hero vessel: ink sloshes (morphTo), outline draws, drop falls, bubbles rise, glass is draggable
+    safe('3', () => {
+      const vessel = root.querySelector('.hero-vessel svg');
+      if (vessel) {
+        const ink = vessel.querySelector('.gt-ink');
+        const inkB = vessel.querySelector('.gt-ink-b');
+        if (ink && inkB) {
+          animate(ink, { d: morphTo(inkB, 0), duration: 2600, ease: 'inOut(2)', loop: true, alternate: true });
+        }
+        const glass = vessel.querySelector('.gt-glass');
+        if (glass) animate(createDrawable(glass), { draw: ['0 0', '0 1'], duration: 1800, delay: 300, ease: 'inOut(3)' });
+        const drop = vessel.querySelector('.gt-drop');
+        if (drop) {
+          animate(drop, {
+            keyframes: [
+              { y: -40, opacity: 0, duration: 0 },
+              { y: 0, opacity: 1, duration: 500, ease: 'out(2)' },
+              { y: 62, scaleY: 1.25, duration: 650, ease: 'in(3)' },
+              { opacity: 0, scaleY: 0.4, duration: 120 }
+            ],
+            loop: true, loopDelay: 1400
+          });
+        }
+        const bubbles = $('.gt-bubble', vessel);
+        if (bubbles.length) {
+          animate(bubbles, {
+            y: { to: () => -utils.random(40, 90) }, opacity: [0.5, 0], scale: [1, 0.4],
+            duration: () => utils.random(2200, 3400), delay: stagger(500, { from: 'random' }),
+            loop: true, ease: 'out(2)'
+          });
+        }
+        if (!m.touch && !m.small) {
+          createDraggable(vessel, {
+            container: vessel.closest('section'),
+            releaseStiffness: 260, releaseDamping: 14, cursor: { onHover: 'grab', onGrab: 'grabbing' },
+            onRelease: (d) => { animate(d, { x: 0, y: 0, ease: spring({ bounce: 0.55, duration: 1100 }) }); }
+          });
+          vessel.style.touchAction = 'none';
+        }
+      }
+    });
+
+    // 4 ── code chips: a timer re-scrambles one chip at a time; <error> glitches on steps
+    safe('4', () => {
+      const chips = $('.code-chip');
+      if (chips.length) {
+        createTimer({
+          duration: 3200, loop: true,
+          onLoop: () => {
+            const c = utils.randomPick(chips);
+            const txt = c.dataset.gtText || (c.dataset.gtText = c.textContent);
+            const pool = 'abcdefghijklmnopqrstuvwxyz01#_'.split('');
+            const o = { p: 0 };
+            animate(o, {
+              p: 1, duration: 650, ease: steps(txt.length),
+              onUpdate: () => {
+                const n = Math.round(o.p * txt.length);
+                c.textContent = txt.slice(0, n) + Array.from(txt.slice(n)).map((ch) => (/[a-z.]/i.test(ch) ? utils.randomPick(pool) : ch)).join('');
+              },
+              onComplete: () => { c.textContent = txt; }
+            });
+          }
+        });
+        const err = chips.find((c) => /error/i.test(c.textContent));
+        if (err) animate(err, { x: [0, -3, 3, -2, 0], ease: steps(5), duration: 360, loop: true, loopDelay: 2600 });
+      }
+    });
+
+    // 5 ── "coming soon" chips flicker like a faulty neon tube
+    safe('5', () => {
+      $('.chip.warn').forEach((c) => {
+        animate(c, { opacity: [1, 0.35, 1], ease: irregular(14, 1.6), duration: 1400, loop: true, loopDelay: 2200 });
+      });
+    });
+
+    // 6 ── kickers scramble in, h2 headings rise word by word
+    safe('6', () => {
+      $('.kicker').filter((k) => !done.has(k) && plain(k) && isStatic(k)).forEach((k) => {
+        when(k, () => guard(animate(k, { innerHTML: scrambleText({ chars: 'A-Z0-9—', revealRate: 80, settleDuration: 220 }) }), 2500));
+      });
+      $('h2.t-h2, .foot-title').filter((h) => isStatic(h) && !done.has(h)).forEach((h) => {
+        when(h, () => {
+          // the split is undone as soon as the animation ends, so the heading's markup goes back to plain text
+          // (otherwise editing it in the canvas would save the animation's word wrappers into the page)
+          const s = splitText(h, { words: { wrap: 'clip' } });
+          guard(animate(s.words, { y: { from: '105%' }, delay: stagger(55), duration: 800, ease: glide, onComplete: () => s.revert() }), 800 + s.words.length * 55 + 800);
+        });
+      });
+    });
+
+    // 7 ── grids reveal with a staggered wave (grid-aware where the layout is a grid)
+    safe('7', () => {
+      const groups = $('.cols-2, .cols-3, .cols-4, .terms, .cost, .quotes, .mp, .art-list, .steps, .tl, .ef, .toy-tab, .spec, .chips')
+        .filter((g) => isStatic(g) && !done.has(g) && !g.closest('.site-head') && !(hero && hero.contains(g)));
+      groups.forEach((g) => {
+        const kids = Array.from(g.children).filter((k) => !done.has(k));
+        if (!kids.length) return;
+        kids.forEach((k) => done.add(k));
+        const cols = (getComputedStyle(g).gridTemplateColumns || 'none').split(' ').filter((x) => x !== 'none').length;
+        const rows = cols > 1 ? Math.ceil(kids.length / cols) : 0;
+        const delay = cols > 1 && rows > 1 ? stagger(70, { grid: [cols, rows], from: 'first' }) : stagger(70);
+        when(g, () => guard(animate(kids, {
+          opacity: { from: 0 }, y: { from: 28 }, scale: { from: 0.97 },
+          delay: delay, duration: 750, ease: glide
+        }), 750 + kids.length * 70 + 900));
+      });
+    });
+
+    // 8 ── single blocks fade up as they enter
+    safe('8', () => {
+      $('.col > p, .col-wide > p, .article figure, .viz, .eq-wrap, .paper-fig, .card, blockquote, .meme, .meme-sm, .take, .side, .stat, .quote, .prose > p')
+        .filter((el) => isStatic(el) && !done.has(el) && !el.closest('.site-head') && !(hero && hero.contains(el)) && !Array.from(done).some((d) => d !== el && d.contains && d.contains(el)))
+        .forEach((el) => {
+          done.add(el);
+          when(el, () => guard(animate(el, { opacity: { from: 0 }, y: { from: 18 }, duration: 700, ease: glide }), 1500));
+        });
+    });
+
+    // 9 ── photos: hardware-accelerated clip reveal (WAAPI) as they enter
+    safe('9', () => {
+      $('figure img, .tile-art img, .art-thumb img, .paper-fig img, .wfig img')
+        .filter((img) => isStatic(img) && !(hero && hero.contains(img)) && !img.closest('.hero-slides'))
+        .forEach((img) => {
+          when(img, () => waapi.animate(img, {
+            clipPath: ['inset(0 0 100% 0)', 'inset(0 0 0% 0)'], scale: [1.08, 1], duration: 1100, ease: 'out(4)'
+          }));
+        });
+    });
+
+    // 10 ── numbers count up (keeps prefix, suffix, commas and decimals)
+    safe('10', () => {
+      $('.stat b, .art-num, .mp b').filter((b) => plain(b) && isStatic(b)).forEach((b) => {
+        const raw = b.textContent;
+        const mm = raw.match(/^([^\d]*?)(\d[\d,]*(?:\.\d+)?)(.*)$/);
+        if (!mm) return;
+        const target = parseFloat(mm[2].replace(/,/g, ''));
+        const decimals = (mm[2].split('.')[1] || '').length;
+        const comma = mm[2].indexOf(',') >= 0;
+        const pad = /^0\d/.test(mm[2]) ? mm[2].length : 0;
+        const isYear = !comma && !decimals && target >= 1800 && target <= 2100;
+        const fmt = (v) => {
+          let s = decimals ? utils.round(v, decimals).toFixed(decimals) : String(Math.round(v));
+          if (comma) s = Number(s).toLocaleString('en-GB', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+          if (pad) s = utils.padStart(s, pad, '0');
+          return mm[1] + s + mm[3];
+        };
+        when(b, () => {
+          const o = { v: isYear ? target - 80 : 0 };
+          guard(animate(o, {
+            v: target, duration: 1600, ease: 'out(4)',
+            onUpdate: () => { b.textContent = fmt(o.v); },
+            onComplete: () => { b.textContent = raw; }
+          }), 2600);
+        });
+      });
+    });
+
+    // 11 ── line drawings: stroked chart lines draw themselves in (createDrawable)
+    safe('11', () => {
+      $('svg[role="img"]').filter((s) => isStatic(s) && !s.closest('.hero-vessel') && !s.closest('.site-head')).forEach((s) => {
+        const strokes = $('path, line, polyline, rect, circle', s).filter((p) => {
+          const cs = getComputedStyle(p);
+          return cs.stroke && cs.stroke !== 'none' && (cs.fill === 'none' || p.getAttribute('fill') === 'none') && !p.classList.contains('gt-rider');
+        });
+        if (!strokes.length) return;
+        when(s, () => guard(animate(createDrawable(strokes), { draw: ['0 0', '0 1'], delay: stagger(40), duration: 1400, ease: 'inOut(3)' }), 1400 + strokes.length * 40 + 900));
+      });
+    });
+
+    // 12 ── Navier–Stokes chart B: a dot rides the y² curve up to the blowup (createMotionPath)
+    safe('12', () => {
+      const curve = root.querySelector('.gt-curve');
+      const rider = root.querySelector('.gt-rider');
+      if (curve && rider) {
+        animate(rider, Object.assign({}, createMotionPath(curve), {
+          ease: 'in(3)', duration: 2600, loop: true, loopDelay: 700,
+          opacity: [{ to: 1, duration: 200 }, { to: 1, duration: 2200 }, { to: 0, duration: 200 }]
+        }));
+      }
+    });
+
+    // 13 ── reading progress bar synced to scroll
+    safe('13', () => {
+      const bar = root.querySelector('.gt-progress');
+      if (bar) animate(bar, { scaleX: [0, 1], ease: 'linear', autoplay: onScroll({ target: root, enter: 'top top', leave: 'bottom bottom', sync: 0.15 }) });
+    });
+
+    // 14 ── "Show the science" panels: mark the ones already open so only new openings animate
+    safe('14', () => { $('.more-body').forEach((el) => el.setAttribute('data-gt-in', '')); });
+
+    // 15 ── magnetic buttons (createAnimatable)
+    safe('15', () => {
+      if (calm) return;
+      $('.btn, .social, .hero-link, .back, .foot-mail, .gal-nav').forEach((el) => {
+        let a = null;
+        el.addEventListener('pointermove', (e) => {
+          if (!a) a = createAnimatable(el, { x: 500, y: 500, ease: 'out(3)' });
+          const r = el.getBoundingClientRect();
+          a.x(utils.clamp((e.clientX - (r.left + r.width / 2)) * 0.25, -10, 10));
+          a.y(utils.clamp((e.clientY - (r.top + r.height / 2)) * 0.35, -8, 8));
+        });
+        el.addEventListener('pointerleave', () => { if (a) { a.x(0); a.y(0); } });
+      });
+    });
+
+    // 16 ── cards tilt toward the pointer and spring back
+    safe('16', () => {
+      if (calm) return;
+      $('.tile, .art-row, .poster-link, .card, .term, .stat').filter(isStatic).forEach((el) => {
+        let a = null;
+        el.addEventListener('pointerenter', () => {
+          if (!a) { utils.set(el, { perspective: '900px' }); a = createAnimatable(el, { rotateX: 400, rotateY: 400, ease: 'out(3)' }); }
+          animate(el, { translateY: -6, ease: spring({ bounce: 0.5, duration: 600 }) });
+        });
+        el.addEventListener('pointermove', (e) => {
+          if (!a) return;
+          const r = el.getBoundingClientRect();
+          a.rotateY(utils.mapRange(e.clientX, r.left, r.right, -4, 4));
+          a.rotateX(utils.mapRange(e.clientY, r.top, r.bottom, 4, -4));
+        });
+        el.addEventListener('pointerleave', () => {
+          if (a) { a.rotateX(0); a.rotateY(0); }
+          animate(el, { translateY: 0, ease: spring({ bounce: 0.5, duration: 700 }) });
+        });
+      });
+    });
+
+    // 17 ── safety net: the opening sequence always ends fully visible, even if the animation clock stalls
+    const unsplit = () => { (this.gtSplits || []).forEach((sp) => { try { sp.revert(); } catch (e) {} }); this.gtSplits = []; };
+    intro.then(unsplit);
+    setTimeout(() => { try { if (!intro.completed) intro.complete(); } catch (e) {} unsplit(); }, 4500);
+  }
+  // ── end motion layer ──────────────────────────────────────────────────
+  cmMount() {
+    // Load saved comments for this page, and remember a returning commenter.
+    const page = (typeof location !== 'undefined' ? location.pathname : '/').replace(/\/+$/, '') || '/';
+    let saved = null;
+    try { saved = JSON.parse(localStorage.getItem('gt-commenter') || 'null'); } catch (e) { saved = null; }
+    const cur = Object.assign({ name: '', email: '', draft: '', user: null, items: [], err: '', busy: false }, (this.state && this.state.cm) || {});
+    if (saved && saved.name && saved.email) cur.user = saved;
+    this.setState({ cm: cur });
+    if (typeof fetch !== 'function') return;
+    fetch('/api/comments?page=' + encodeURIComponent(page))
+      .then((r) => (r.ok ? r.json() : { comments: [] }))
+      .then((d) => {
+        const c = Object.assign({}, (this.state && this.state.cm) || cur);
+        c.items = (d.comments || []).map((x) => ({ name: x.name, initial: (x.name || '?').charAt(0).toUpperCase(), text: x.text, when: x.when }));
+        this.setState({ cm: c });
+      })
+      .catch(() => {});
+  }
+  commentVals() {
+    const blank = { name: '', email: '', draft: '', user: null, items: [], err: '', busy: false };
+    const cur = () => Object.assign({}, blank, (this.state && this.state.cm) || {});
+    const c = cur();
+    const set = (patch) => this.setState({ cm: Object.assign(cur(), patch) });
+    const okEmail = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+    const page = (typeof location !== 'undefined' ? location.pathname : '/').replace(/\/+$/, '') || '/';
+    const n = c.items.length;
+    return {
+      name: c.name, email: c.email, draft: c.draft,
+      notReg: !c.user, reg: !!c.user, who: c.user ? c.user.name : '',
+      hasErr: !!c.err, err: c.err,
+      count: n === 0 ? 'No comments yet' : (n === 1 ? '1 comment' : n + ' comments'),
+      empty: n === 0, some: n > 0,
+      items: c.items,
+      onName: (e) => set({ name: e.target.value, err: '' }),
+      onEmail: (e) => set({ email: e.target.value, err: '' }),
+      onDraft: (e) => set({ draft: e.target.value, err: '' }),
+      register: () => {
+        const s = cur(); const nm = s.name.trim(); const em = s.email.trim();
+        if (!nm) return set({ err: 'Please add your name.' });
+        if (!okEmail(em)) return set({ err: 'Please enter a valid email address.' });
+        const user = { name: nm, email: em };
+        try { localStorage.setItem('gt-commenter', JSON.stringify(user)); } catch (e) {}
+        set({ user: user, err: '' });
+      },
+      post: () => {
+        const s = cur(); const t = s.draft.trim();
+        if (!s.user || s.busy) return;
+        if (!t) return set({ err: 'Write a comment first.' });
+        set({ busy: true, err: '' });
+        fetch('/api/comments', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({ page: page, name: s.user.name, email: s.user.email, text: t })
+        })
+          .then((r) => r.json().then((d) => ({ ok: r.ok, d: d })))
+          .then((res) => {
+            if (!res.ok) return set({ busy: false, err: res.d.error || 'Could not post your comment. Please try again.' });
+            const x = res.d.comment;
+            const now = cur();
+            set({ busy: false, draft: '', err: '', items: now.items.concat([{ name: x.name, initial: x.name.charAt(0).toUpperCase(), text: x.text, when: x.when }]) });
+          })
+          .catch(() => set({ busy: false, err: 'Could not post your comment. Please check your connection and try again.' }));
+      },
+      signout: () => {
+        try { localStorage.removeItem('gt-commenter'); } catch (e) {}
+        set({ user: null, err: '' });
+      }
+    };
+  }
+  gtTheme() {
+    if (this.thOn) return;
+    this.thOn = true;
+    const root = document.documentElement;
+    try { if (localStorage.getItem('gt-theme') === 'dark') root.setAttribute('data-theme', 'dark'); } catch (e) {}
+    this.thLabel();
+    const onClick = (e) => {
+      const b = e.target && e.target.closest ? e.target.closest('[data-theme-toggle]') : null;
+      if (!b) return;
+      e.preventDefault();
+      try { this.thToggle(b); } catch (err) { if (window.console) console.warn('[theme]', err); }
+    };
+    document.addEventListener('click', onClick, true);
+    this.thOff = () => document.removeEventListener('click', onClick, true);
+  }
+  thLabel() {
+    const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    Array.from(document.querySelectorAll('[data-theme-toggle]')).forEach((b) => {
+      const t = dark ? 'Switch to light mode' : 'Switch to dark mode (spill the ink)';
+      b.setAttribute('aria-label', t); b.setAttribute('title', t); b.setAttribute('aria-pressed', dark ? 'true' : 'false');
+    });
+  }
+  thToggle(btn) {
+    const root = document.documentElement;
+    const dark = root.getAttribute('data-theme') !== 'dark';
+    const apply = () => {
+      if (dark) root.setAttribute('data-theme', 'dark'); else root.removeAttribute('data-theme');
+      try { localStorage.setItem('gt-theme', dark ? 'dark' : 'light'); } catch (e) {}
+      this.thLabel();
+    };
+    const still = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+    if (still) { apply(); return; }
+    // replay the spill, faster than the page-load version
+    Array.from(btn.querySelectorAll('.bk-tip, .bk-liq, .bk-drop, .bk-pud')).forEach((el, i) => {
+      el.style.animation = 'none'; void el.getBoundingClientRect();
+      const name = el.classList.contains('bk-tip') ? 'bk-tip' : el.classList.contains('bk-liq') ? 'bk-liq' : el.classList.contains('bk-pud') ? 'bk-pud' : 'bk-drop';
+      const delay = el.classList.contains('d2') ? 0.1 : el.classList.contains('d3') ? 0.2 : 0;
+      el.style.animation = name + ' 1.6s ' + delay + 's cubic-bezier(.45,.05,.3,1) both';
+    });
+    // ink flood from the beaker; the overlay is always ink-coloured (it shows light once the page is inverted)
+    const r = btn.getBoundingClientRect();
+    const f = document.createElement('div');
+    f.className = 'gt-flood';
+    f.style.setProperty('--fx', Math.round(r.left + r.width * 0.8) + 'px');
+    f.style.setProperty('--fy', Math.round(r.top + r.height) + 'px');
+    document.body.appendChild(f);
+    void f.getBoundingClientRect();
+    setTimeout(() => f.classList.add('go'), 380);
+    // after the switch the overlay is drawn inverted (or no longer inverted), so give it the paper colour to keep the screen steady while it fades
+    setTimeout(() => { f.style.background = '#EDEFF2'; apply(); f.classList.add('out'); }, 1000);
+    setTimeout(() => { if (f.parentNode) f.parentNode.removeChild(f); }, 1450);
+  }
+  renderVals() {
+    return { cm: this.commentVals() };
+  }
+}
+</script>
+</body>
+</html>

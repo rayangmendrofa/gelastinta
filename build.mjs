@@ -37,6 +37,7 @@ export const ROUTES = {
   'Hobby-InMoov.dc.html': '/projects/inmoov-hand/',
   'Hobby-FlyBrain.dc.html': '/projects/fly-brain-sugar/',
   'Hobby-GestureMusic.dc.html': '/projects/gesture-music/',
+  'Hobby-TARS.dc.html': '/projects/tars/',
 };
 
 const SITE_URL = 'https://gelastinta.com';
@@ -50,7 +51,7 @@ export const META = {
   'Main.dc.html': { title: 'GelasTinta — Rayang T Mendrofa', img: '54e236f0eae207dc01d1ee7e8e745b14',
     desc: 'The notebook of mechanical engineer Rayang T Mendrofa (BEng Exeter, MSc UCL): robot hands, soft robots, science reviews and the ideas in between.' },
   'Projects.dc.html': { title: 'Projects — GelasTinta', img: 'e6b092fd16f445a4cdd7dec4374667d7', pos: 'centre',
-    desc: 'The workshop: a 3D-printed prosthetic hand, bio-inspired soft actuators for underwater robots, an InMoov robot hand, a fruit-fly brain simulation and a hand-sign music instrument built as hobbies.' },
+    desc: 'The workshop: a 3D-printed prosthetic hand, bio-inspired soft actuators for underwater robots, an InMoov robot hand, a fruit-fly brain simulation, a hand-sign music instrument and a TARS robot built as hobbies.' },
   'Talks.dc.html': { title: 'Talks — GelasTinta', pos: 'centre',
     img: ['ec28ec78594bd9ac3bed820bb5857e7f', '6c50dd80c38fa40df5aac2eea7534976', '4f9fc858b3f233d90a5db49a21bd6b1f', '8640ecc3e79609c3709944fae4972088'],
     desc: 'Part review, part reflection: research papers, films and everyday curiosities, explained by a mechanical engineer.' },
@@ -68,6 +69,8 @@ export const META = {
     desc: 'A hobby simulation: the published whole-brain model of the fruit fly, fed sugar, watched spike by spike, then run again with two neurons silenced.' },
   'Hobby-GestureMusic.dc.html': { title: 'Gesture Music: An Instrument You Play With Hand Signs — GelasTinta', img: '0d09cc6643b788a0dfb024a69f1939cd', fit: 'contain',
     desc: 'A webcam instrument: hand signs play notes, chords and drums, with a looper, live MIDI, a rhythm game and a 61-page handbook. Built with OpenCV and Google MediaPipe.' },
+  'Hobby-TARS.dc.html': { title: 'Building My Own TARS — GelasTinta', img: '469036e14107d5bbdb2d29a2e68f4e18', pos: 'centre',
+    desc: 'A fan build of TARS from Interstellar, printed and assembled from the TARS-AI community’s open kit, then taught seven new moves in a MuJoCo simulation.' },
   'Talk-CacioPepe.dc.html': { title: 'The Art of Combining Cooking and Science — GelasTinta', img: '4f9fc858b3f233d90a5db49a21bd6b1f', date: '2025-12-23',
     desc: 'Why cacio e pepe turns clumpy, and the Ig Nobel-winning physics paper that fixes it with a little starch.' },
   'Talk-Salmon.dc.html': { title: 'How Crack-headed Salmon Influence Human and Environment — GelasTinta', img: 'cda359f19fa6c877bb9c7a27d1d81add', date: '2026-01-23',
