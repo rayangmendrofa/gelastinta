@@ -306,6 +306,41 @@ html[data-theme="dark"] :is(.dark,.hero,.cp-hero,.blue,.catch) :is(img,video,can
 @media (prefers-reduced-motion:reduce){.show-card,.show-media img{transition:none}.show-card:hover{transform:none}}
 .lib p.small{color:#3A4152;margin-top:-30px;min-height:3.1em}
 .lib:hover p.small{color:#C9CED8}
+.pj{position:relative;background:#0B0D14;color:#EDEFF2;border:1px solid #10131C;padding:28px 28px 22px;overflow:hidden}
+.pj::before{content:"";position:absolute;left:50%;bottom:118px;width:150%;height:120%;transform:translateX(-50%);background:conic-gradient(from 160deg at 50% 100%,transparent 0deg,rgba(200,216,234,.09) 14deg,rgba(200,216,234,.16) 20deg,rgba(200,216,234,.09) 26deg,transparent 40deg);pointer-events:none}
+.pj-screen{position:relative;max-width:900px;margin:0 auto;aspect-ratio:16/9;background:#F4F5F8;border:10px solid #EDEFF2;box-shadow:0 0 0 1px #3A4152,0 24px 60px -18px rgba(90,130,179,.55);overflow:hidden}
+.pj-screen::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 70% 70% at 50% 45%,transparent 60%,rgba(11,13,20,.28) 100%);pointer-events:none;z-index:3}
+.pj-slide{position:absolute;inset:0;display:block;color:inherit;text-decoration:none;opacity:0;visibility:hidden;transition:opacity .45s ease,visibility 0s .45s}
+.pj-slide.on{opacity:1;visibility:visible;transition:opacity .45s ease,visibility 0s}
+.pj-slide img{width:100%;height:100%;object-fit:cover;display:block}
+.pj-cap{position:absolute;left:0;bottom:0;z-index:4;display:flex;flex-direction:column;gap:4px;max-width:min(78%,520px);padding:14px 18px 14px;background:var(--sc);color:var(--st)}
+.pj-cap b{font-family:'Ubuntu Mono',ui-monospace,monospace;font-weight:400;font-size:12px;letter-spacing:.12em;text-transform:uppercase;opacity:.9}
+.pj-cap strong{font-family:'Titillium Web',system-ui,sans-serif;font-weight:800;font-size:clamp(18px,2vw,26px);line-height:1.12;letter-spacing:-.01em}
+.pj-cap em{font-style:normal;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.85}
+.pj-slide:hover .pj-cap em{text-decoration:underline}
+.pj-slide:focus-visible{outline:3px solid #5A82B3;outline-offset:-3px}
+.pj-screen.clack .pj-slide.on img{animation:pj-clack .42s steps(1,end)}
+@keyframes pj-clack{0%{filter:brightness(.15)}18%{filter:brightness(1.35)}36%{filter:brightness(.7)}54%,100%{filter:none}}
+.pj-deck{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;gap:14px;margin:18px auto 14px;max-width:900px}
+.pj-body{display:flex;align-items:center;gap:12px;padding:8px 14px;background:#1E2230;border:1px solid #3A4152;border-radius:14px 14px 6px 6px}
+.pj-lens{width:34px;height:34px;border-radius:50%;background:radial-gradient(circle at 40% 38%,#FFFFFF 0 8%,#C8D8EA 16%,#5A82B3 42%,#10131C 70%);box-shadow:0 0 0 3px #3A4152,0 0 18px 2px rgba(200,216,234,.45)}
+.pj-count{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.08em;min-width:62px;text-align:center}
+.pj-btn{min-width:44px;min-height:40px;padding:0 12px;border:1px solid #5A82B3;background:transparent;color:#EDEFF2;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:14px;cursor:pointer;border-radius:999px}
+.pj-btn:hover{background:#EDEFF2;color:#10131C;border-color:#EDEFF2}
+.pj-btn:focus-visible{outline:3px solid #8DB0DA;outline-offset:2px}
+.pj-btn[aria-pressed="false"]{border-style:dashed;color:#C8D8EA}
+.pj-roll{position:relative;z-index:2;display:flex;align-items:flex-start;gap:10px;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:thin;scrollbar-color:#3A4152 transparent;padding:16px 12px;background-color:#050608;background-image:radial-gradient(circle at 50% 50%,#2A2F3D 0 3px,transparent 3.5px),radial-gradient(circle at 50% 50%,#2A2F3D 0 3px,transparent 3.5px);background-size:16px 12px,16px 12px;background-position:0 1px,0 calc(100% - 1px);background-repeat:repeat-x}
+.pj-frame{flex:0 0 132px;width:132px;min-width:0;scroll-snap-align:center;display:flex;flex-direction:column;gap:6px;padding:0;border:2px solid #2A2F3D;background:#10131C;color:#C9CED8;cursor:pointer;text-align:left;font:inherit}
+.pj-frame img{width:100%;height:auto;flex:0 0 auto;aspect-ratio:4/3;object-fit:cover;display:block;filter:sepia(.55) saturate(.7) brightness(.72);transition:filter .3s ease}
+.pj-frame span{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;padding:0 7px 6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pj-frame span i{font-style:normal;color:var(--sc)}
+.pj-frame:hover img{filter:none}
+.pj-frame.on{border-color:var(--sc);color:#FFFFFF;box-shadow:0 0 0 2px var(--sc),0 0 16px rgba(200,216,234,.25)}
+.pj-frame.on img{filter:none}
+.pj-frame:focus-visible{outline:3px solid #8DB0DA;outline-offset:2px}
+.pj-hint{position:relative;z-index:2;margin:10px 0 0;text-align:center;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.08em;color:#8B93A6}
+@media (max-width:640px){.pj{padding:14px 10px 14px}.pj-screen{border-width:5px}.pj-cap{max-width:92%;padding:8px 10px}.pj-cap strong{font-size:16px}.pj-cap em{display:none}.pj-frame{flex-basis:104px;width:104px}.pj::before{bottom:100px}}
+@media (prefers-reduced-motion:reduce){.pj-slide,.pj-slide.on,.pj-frame img{transition:none}.pj-screen.clack .pj-slide.on img{animation:none}}
 /* home2:end */
 /* nav2:start */
 html{scroll-padding-top:88px}
@@ -468,7 +503,7 @@ html{scroll-padding-top:60px}
 <p class="show-label">3D teardowns · free to open</p>
 <div class="show-grid"><a class="show-card" href="Thesis-BEng.dc.html#teardown"><span class="show-media"><video src="/_blob/a7a2ec56d41a4fb6335cccce0e566ec0" poster="/_blob/4fb8d82ceaa66093a2fb4ede16d29685" autoplay muted loop playsinline preload="metadata" aria-label="Looping clip: the BEng prosthetic hand closing its fingers" data-gt-autoplay=""></video><span class="show-tag free">3D · Free</span></span><span class="show-body"><span class="kicker">Project · prosthetic hand</span><span class="show-t">How a prosthetic hand closes</span><span class="show-p">One muscle signal, six servos, five tendons: watch each finger curl shut in 0.4 s.</span><span class="show-go">Open the 3D model →</span></span></a><a class="show-card" href="Thesis-MSc.dc.html#teardown"><span class="show-media"><video src="/_blob/e6fc443c7eecd7281cfd0ea374a86861" poster="/_blob/aa7c142444a3367c0c7f32ec09112840" autoplay muted loop playsinline preload="metadata" aria-label="Looping clip: the MSc soft limb bending as water fills its chambers" data-gt-autoplay=""></video><span class="show-tag free">3D · Free</span></span><span class="show-body"><span class="kicker">Project · soft robot limb</span><span class="show-t">How a soft limb bends</span><span class="show-p">A bellows pumps water into seven silicone chambers, and each one adds a little arc.</span><span class="show-go">Open the 3D model →</span></span></a><a class="show-card" href="Talk-HairClipFish.dc.html#teardown"><span class="show-media"><video src="/_blob/567f81890cb84aa4d0085a802ac1e885" poster="/_blob/e74003e0877eef96a568b09081e0156b" autoplay muted loop playsinline preload="metadata" aria-label="Looping clip: the hair clip fish flicking its tail" data-gt-autoplay=""></video><span class="show-tag free">3D · Free</span></span><span class="show-body"><span class="kicker">Talk 07 · hair clip fish</span><span class="show-t">How a hair clip fish swims</span><span class="show-p">One servo loads a snap hair clip slowly, then it flicks the tail across in 50 ms.</span><span class="show-go">Open the 3D model →</span></span></a></div>
 <p class="show-label">Inside the study packs · 3D teardowns</p>
-<div class="show-grid five"><a class="show-card pk" href="/packs/thermo/" style="--sc:#A5C8D1;--st:#1C1F33"><span class="show-media"><img src="/_blob/2c9784f8721477ed5a9249b61abbcf99" alt="3D teardown still: how a four stroke engine works" loading="lazy"><span class="show-tag">TH · 3D</span></span><span class="show-body"><span class="kicker">Thermodynamics</span><span class="show-t">How a four stroke engine works</span><span class="pk-brand">GelasTinta · Study pack</span></span></a><a class="show-card pk" href="/packs/robotics/" style="--sc:#D96629;--st:#FFFFFF"><span class="show-media"><img src="/_blob/e1030b7e77f50c33010fde3671150d04" alt="3D teardown still: how a six axis arm reaches" loading="lazy"><span class="show-tag">RB · 3D</span></span><span class="show-body"><span class="kicker">Robotics</span><span class="show-t">How a six axis arm reaches</span><span class="pk-brand">GelasTinta · Study pack</span></span></a><a class="show-card pk" href="/packs/mechanics/" style="--sc:#D96629;--st:#FFFFFF"><span class="show-media"><img src="/_blob/eebb4ed6ac444ffb35603bf0ff74d893" alt="3D teardown still: how a bottle jack lifts a car" loading="lazy"><span class="show-tag">T · 3D</span></span><span class="show-body"><span class="kicker">Mechanics</span><span class="show-t">How a bottle jack lifts a car</span><span class="pk-brand">GelasTinta · Study pack</span></span></a><a class="show-card pk" href="/packs/vib/" style="--sc:#40456A;--st:#FFFFFF"><span class="show-media"><img src="/_blob/e42eac5c30d3d883d70301ea43562bec" alt="3D teardown still: how a woofer moves air" loading="lazy"><span class="show-tag">VA · 3D</span></span><span class="show-body"><span class="kicker">Vibration</span><span class="show-t">How a woofer moves air</span><span class="pk-brand">GelasTinta · Study pack</span></span></a><a class="show-card pk" href="/packs/control/" style="--sc:#D8A37B;--st:#1C1F33"><span class="show-media"><img src="/_blob/0a344be3d90e1c61128388f6ff51cd2e" alt="3D teardown still: how a flyball governor holds speed" loading="lazy"><span class="show-tag">CE · 3D</span></span><span class="show-body"><span class="kicker">Control</span><span class="show-t">How a flyball governor holds speed</span><span class="pk-brand">GelasTinta · Study pack</span></span></a><a class="show-card pk" href="/packs/electronics/" style="--sc:#D8A37B;--st:#1C1F33"><span class="show-media"><img src="/_blob/ca361678c4f4f34bb9be864b10e9f4da" alt="3D teardown still: how a linear power supply works" loading="lazy"><span class="show-tag">E · 3D</span></span><span class="show-body"><span class="kicker">Electronics</span><span class="show-t">How a linear power supply works</span><span class="pk-brand">GelasTinta · Study pack</span></span></a><a class="show-card pk" href="/packs/fea/" style="--sc:#40456A;--st:#FFFFFF"><span class="show-media"><img src="/_blob/8e8f76ac6e7212067d3f8f538c873d9a" alt="3D teardown still: how a 3d printer builds a part" loading="lazy"><span class="show-tag">FE · 3D</span></span><span class="show-body"><span class="kicker">Computational</span><span class="show-t">How a 3D printer builds a part</span><span class="pk-brand">GelasTinta · Study pack</span></span></a><a class="show-card pk" href="/packs/materials/" style="--sc:#A5C8D1;--st:#1C1F33"><span class="show-media"><img src="/_blob/a0a81f339a1296e292903f0783b9212f" alt="3D teardown still: how a tensile test pulls a bar apart" loading="lazy"><span class="show-tag">M · 3D</span></span><span class="show-body"><span class="kicker">Materials</span><span class="show-t">How a tensile test pulls a bar apart</span><span class="pk-brand">GelasTinta · Study pack</span></span></a><a class="show-card pk" href="/packs/maths/" style="--sc:#40456A;--st:#FFFFFF"><span class="show-media"><img src="/_blob/ac1eb01d4c672c724b85395b6c012dba" alt="3D teardown still: how a car rides over a hump" loading="lazy"><span class="show-tag">EM · 3D</span></span><span class="show-body"><span class="kicker">Engineering Maths</span><span class="show-t">How a car rides over a hump</span><span class="pk-brand">GelasTinta · Study pack</span></span></a><a class="show-card pk" href="/packs/advmat/" style="--sc:#D96629;--st:#FFFFFF"><span class="show-media"><img src="/_blob/32d924aaf406d1f9c5d7dfc48a1def0d" alt="3D teardown still: how an electron microscope sees" loading="lazy"><span class="show-tag">AM · 3D</span></span><span class="show-body"><span class="kicker">Advanced Materials</span><span class="show-t">How an electron microscope sees</span><span class="pk-brand">GelasTinta · Study pack</span></span></a></div>
+<div class="pj" data-pj role="region" aria-roledescription="slide projector" aria-label="3D teardowns inside the study packs"><div class="pj-screen"><a class="pj-slide on" href="/packs/thermo/" style="--sc:#A5C8D1;--st:#1C1F33" data-pj-slide="0"><img src="/_blob/2d565198a112496eb70dea982dafade6" alt="3D teardown in the Thermodynamics study pack: how a four stroke engine works" loading="lazy"><span class="pj-cap"><b>TH · Thermodynamics</b><strong>How a four stroke engine works</strong><em>Open the pack, first sheet free →</em></span></a><a class="pj-slide" href="/packs/robotics/" style="--sc:#D96629;--st:#FFFFFF" data-pj-slide="1" tabindex="-1" aria-hidden="true"><img src="/_blob/68488c3e434b15aa5fbdda2d241707bc" alt="3D teardown in the Robotics study pack: how a six axis arm reaches" loading="lazy"><span class="pj-cap"><b>RB · Robotics</b><strong>How a six axis arm reaches</strong><em>Open the pack, first sheet free →</em></span></a><a class="pj-slide" href="/packs/mechanics/" style="--sc:#D96629;--st:#FFFFFF" data-pj-slide="2" tabindex="-1" aria-hidden="true"><img src="/_blob/01a730495af4bf947a6c0bca2d34c661" alt="3D teardown in the Mechanics study pack: how a bottle jack lifts a car" loading="lazy"><span class="pj-cap"><b>T · Mechanics</b><strong>How a bottle jack lifts a car</strong><em>Open the pack, first sheet free →</em></span></a><a class="pj-slide" href="/packs/vib/" style="--sc:#40456A;--st:#FFFFFF" data-pj-slide="3" tabindex="-1" aria-hidden="true"><img src="/_blob/8f921a5ed82afae50c70763a7c4847fa" alt="3D teardown in the Vibration study pack: how a woofer moves air" loading="lazy"><span class="pj-cap"><b>VA · Vibration</b><strong>How a woofer moves air</strong><em>Open the pack, first sheet free →</em></span></a><a class="pj-slide" href="/packs/control/" style="--sc:#D8A37B;--st:#1C1F33" data-pj-slide="4" tabindex="-1" aria-hidden="true"><img src="/_blob/3f5668ec7cfb292149b2374cb4090be8" alt="3D teardown in the Control study pack: how a flyball governor holds speed" loading="lazy"><span class="pj-cap"><b>CE · Control</b><strong>How a flyball governor holds speed</strong><em>Open the pack, first sheet free →</em></span></a><a class="pj-slide" href="/packs/electronics/" style="--sc:#D8A37B;--st:#1C1F33" data-pj-slide="5" tabindex="-1" aria-hidden="true"><img src="/_blob/956815b1cf4684189f69f334562597fe" alt="3D teardown in the Electronics study pack: how a linear power supply works" loading="lazy"><span class="pj-cap"><b>E · Electronics</b><strong>How a linear power supply works</strong><em>Open the pack, first sheet free →</em></span></a><a class="pj-slide" href="/packs/fea/" style="--sc:#40456A;--st:#FFFFFF" data-pj-slide="6" tabindex="-1" aria-hidden="true"><img src="/_blob/eb949d7007ccb257fc6c15a2d2b21744" alt="3D teardown in the Computational study pack: how a 3d printer builds a part" loading="lazy"><span class="pj-cap"><b>FE · Computational</b><strong>How a 3D printer builds a part</strong><em>Open the pack, first sheet free →</em></span></a><a class="pj-slide" href="/packs/materials/" style="--sc:#A5C8D1;--st:#1C1F33" data-pj-slide="7" tabindex="-1" aria-hidden="true"><img src="/_blob/f623c259d1881b7e13c97f9cd36badc0" alt="3D teardown in the Materials study pack: how a tensile test pulls a bar apart" loading="lazy"><span class="pj-cap"><b>M · Materials</b><strong>How a tensile test pulls a bar apart</strong><em>Open the pack, first sheet free →</em></span></a><a class="pj-slide" href="/packs/maths/" style="--sc:#40456A;--st:#FFFFFF" data-pj-slide="8" tabindex="-1" aria-hidden="true"><img src="/_blob/1d510099a756540349d58ac6d140d393" alt="3D teardown in the Engineering Maths study pack: how a car rides over a hump" loading="lazy"><span class="pj-cap"><b>EM · Engineering Maths</b><strong>How a car rides over a hump</strong><em>Open the pack, first sheet free →</em></span></a><a class="pj-slide" href="/packs/advmat/" style="--sc:#D96629;--st:#FFFFFF" data-pj-slide="9" tabindex="-1" aria-hidden="true"><img src="/_blob/3a9020ae7664a81cc9043d924177c980" alt="3D teardown in the Advanced Materials study pack: how an electron microscope sees" loading="lazy"><span class="pj-cap"><b>AM · Advanced Materials</b><strong>How an electron microscope sees</strong><em>Open the pack, first sheet free →</em></span></a></div><div class="pj-deck"><button type="button" class="pj-btn" data-pj-step="-1" aria-label="Previous slide">←</button><div class="pj-body"><span class="pj-lens" aria-hidden="true"></span><span class="pj-count" aria-live="polite"><b data-pj-pos>1</b> / 10</span></div><button type="button" class="pj-btn" data-pj-step="1" aria-label="Next slide">→</button><button type="button" class="pj-btn" data-pj-play aria-pressed="true">▶ Auto</button></div><div class="pj-roll" role="group" aria-label="Film roll: pick a slide"><button type="button" class="pj-frame on" style="--sc:#A5C8D1" data-pj-go="0" aria-label="Show slide 1: How a four stroke engine works" aria-current="true"><img src="/_blob/2c9784f8721477ed5a9249b61abbcf99" alt="" loading="lazy"><span><i>TH</i> · Thermodynamics</span></button><button type="button" class="pj-frame" style="--sc:#D96629" data-pj-go="1" aria-label="Show slide 2: How a six axis arm reaches"><img src="/_blob/e1030b7e77f50c33010fde3671150d04" alt="" loading="lazy"><span><i>RB</i> · Robotics</span></button><button type="button" class="pj-frame" style="--sc:#D96629" data-pj-go="2" aria-label="Show slide 3: How a bottle jack lifts a car"><img src="/_blob/eebb4ed6ac444ffb35603bf0ff74d893" alt="" loading="lazy"><span><i>T</i> · Mechanics</span></button><button type="button" class="pj-frame" style="--sc:#40456A" data-pj-go="3" aria-label="Show slide 4: How a woofer moves air"><img src="/_blob/e42eac5c30d3d883d70301ea43562bec" alt="" loading="lazy"><span><i>VA</i> · Vibration</span></button><button type="button" class="pj-frame" style="--sc:#D8A37B" data-pj-go="4" aria-label="Show slide 5: How a flyball governor holds speed"><img src="/_blob/0a344be3d90e1c61128388f6ff51cd2e" alt="" loading="lazy"><span><i>CE</i> · Control</span></button><button type="button" class="pj-frame" style="--sc:#D8A37B" data-pj-go="5" aria-label="Show slide 6: How a linear power supply works"><img src="/_blob/ca361678c4f4f34bb9be864b10e9f4da" alt="" loading="lazy"><span><i>E</i> · Electronics</span></button><button type="button" class="pj-frame" style="--sc:#40456A" data-pj-go="6" aria-label="Show slide 7: How a 3D printer builds a part"><img src="/_blob/8e8f76ac6e7212067d3f8f538c873d9a" alt="" loading="lazy"><span><i>FE</i> · Computational</span></button><button type="button" class="pj-frame" style="--sc:#A5C8D1" data-pj-go="7" aria-label="Show slide 8: How a tensile test pulls a bar apart"><img src="/_blob/a0a81f339a1296e292903f0783b9212f" alt="" loading="lazy"><span><i>M</i> · Materials</span></button><button type="button" class="pj-frame" style="--sc:#40456A" data-pj-go="8" aria-label="Show slide 9: How a car rides over a hump"><img src="/_blob/ac1eb01d4c672c724b85395b6c012dba" alt="" loading="lazy"><span><i>EM</i> · Engineering Maths</span></button><button type="button" class="pj-frame" style="--sc:#D96629" data-pj-go="9" aria-label="Show slide 10: How an electron microscope sees"><img src="/_blob/32d924aaf406d1f9c5d7dfc48a1def0d" alt="" loading="lazy"><span><i>AM</i> · Advanced Materials</span></button></div><p class="pj-hint">Click a frame on the roll · ← → keys · swipe the screen</p></div>
 <div class="show-more"><p class="small muted">Each pack opens with a free first sheet. The teardowns sit inside the full pack.</p><a class="btn ghost" href="Products.dc.html#packs">See the study packs <span aria-hidden="true">→</span></a></div>
 </div>
 </section>
@@ -1015,6 +1050,7 @@ class Component extends DCLogic {
   gtFigs() {
     if (this.shOn) return;
     this.shOn = true;
+    this.pjBind();
     const guard = (fn) => (e) => { try { fn.call(this, e); } catch (err) { if (window.console) console.warn('[shelf]', err); } };
     const L = [['click', guard(this.shClick), true], ['keydown', guard(this.shKey), true], ['wheel', guard(this.shWheel), { passive: false, capture: true }],
                ['touchstart', guard(this.shTouch), { passive: true, capture: true }], ['touchend', guard(this.shTouch), { passive: true, capture: true }]];
@@ -1024,7 +1060,67 @@ class Component extends DCLogic {
     scan();
     this.shInt = setInterval(scan, 600);
   }
-  gtFigStop() { clearInterval(this.shInt); if (this.shOff) this.shOff(); this.shOn = false; }
+  gtFigStop() { clearInterval(this.shInt); if (this.shOff) this.shOff(); this.shOn = false; if (this.pjOff) this.pjOff(); }
+  // home2:pj:start ── study pack projector: the film roll, arrows, keys, swipe and a slow auto advance
+  pjBind() {
+    if (this.pjOn) return;
+    this.pjOn = true;
+    const guard = (fn) => (e) => { try { fn.call(this, e); } catch (err) { if (window.console) console.warn('[projector]', err); } };
+    const click = guard((e) => {
+      const t = e.target && e.target.closest ? e.target.closest('[data-pj-go], [data-pj-step], [data-pj-play]') : null;
+      if (!t) return;
+      const w = t.closest('[data-pj]'); if (!w) return;
+      e.preventDefault();
+      if (t.hasAttribute('data-pj-play')) { const on = t.getAttribute('aria-pressed') !== 'true'; t.setAttribute('aria-pressed', on ? 'true' : 'false'); t.textContent = on ? '▶ Auto' : '❚❚ Paused'; w.__pjT = Date.now(); return; }
+      if (t.hasAttribute('data-pj-go')) this.pjGo(w, +t.getAttribute('data-pj-go'));
+      else this.pjGo(w, this.pjI(w) + +t.getAttribute('data-pj-step'));
+    });
+    const key = guard((e) => {
+      if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+      const w = e.target && e.target.closest ? e.target.closest('[data-pj]') : null; if (!w) return;
+      e.preventDefault(); this.pjGo(w, this.pjI(w) + (e.key === 'ArrowRight' ? 1 : -1));
+    });
+    const touch = guard((e) => {
+      const sc = e.target && e.target.closest ? e.target.closest('.pj-screen') : null; if (!sc) return;
+      const x = (e.changedTouches && e.changedTouches[0] || {}).clientX || 0;
+      if (e.type === 'touchstart') { sc.__x = x; return; }
+      const dx = x - (sc.__x || x); if (Math.abs(dx) < 40) return;
+      const w = sc.closest('[data-pj]'); this.pjGo(w, this.pjI(w) + (dx < 0 ? 1 : -1));
+    });
+    const L = [['click', click, true], ['keydown', key, true], ['touchstart', touch, { passive: true, capture: true }], ['touchend', touch, { passive: true, capture: true }]];
+    L.forEach((l) => document.addEventListener(l[0], l[1], l[2]));
+    const still = () => !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+    const tick = guard(() => {
+      if (still() || document.hidden) return;
+      Array.from(document.querySelectorAll('[data-pj]')).forEach((w) => {
+        const p = w.querySelector('[data-pj-play]');
+        if (p && p.getAttribute('aria-pressed') === 'false') return;
+        let kb = false; try { kb = !!w.querySelector(':focus-visible'); } catch (e) {}
+        if (w.matches(':hover') || kb) { w.__pjT = Date.now(); return; }
+        const r = w.getBoundingClientRect(); if (r.bottom < 0 || r.top > (window.innerHeight || 800)) return;
+        if (Date.now() - (w.__pjT || 0) < 5200) return;
+        this.pjGo(w, this.pjI(w) + 1, true);
+      });
+    });
+    this.pjInt = setInterval(tick, 700);
+    this.pjOff = () => { L.forEach((l) => document.removeEventListener(l[0], l[1], l[2])); clearInterval(this.pjInt); this.pjOn = false; };
+  }
+  pjI(w) { return Math.max(0, Array.from(w.querySelectorAll('.pj-slide')).findIndex((x) => x.classList.contains('on'))); }
+  pjGo(w, i, auto) {
+    const slides = Array.from(w.querySelectorAll('.pj-slide')), frames = Array.from(w.querySelectorAll('.pj-frame'));
+    const n = slides.length; if (!n) return;
+    i = ((i % n) + n) % n;
+    w.__pjT = Date.now();
+    if (i === this.pjI(w)) return;
+    slides.forEach((x, k) => { const on = k === i; x.classList.toggle('on', on); if (on) { x.removeAttribute('tabindex'); x.removeAttribute('aria-hidden'); } else { x.setAttribute('tabindex', '-1'); x.setAttribute('aria-hidden', 'true'); } });
+    frames.forEach((x, k) => { const on = k === i; x.classList.toggle('on', on); if (on) x.setAttribute('aria-current', 'true'); else x.removeAttribute('aria-current'); });
+    const pos = w.querySelector('[data-pj-pos]'); if (pos) pos.textContent = String(i + 1);
+    const sc = w.querySelector('.pj-screen');
+    if (sc) { sc.classList.remove('clack'); void sc.offsetWidth; sc.classList.add('clack'); clearTimeout(sc.__c); sc.__c = setTimeout(() => sc.classList.remove('clack'), 500); }
+    const roll = w.querySelector('.pj-roll'), f = frames[i];
+    if (roll && f) { const left = f.offsetLeft - (roll.clientWidth - f.offsetWidth) / 2; try { roll.scrollTo({ left: Math.max(0, left), behavior: auto ? 'auto' : 'smooth' }); } catch (e) { roll.scrollLeft = left; } }
+  }
+  // home2:pj:end
   shMuted() { try { return localStorage.getItem('gt-shelf-sound') === 'off'; } catch (e) { return !!this.shMute; } }
   shScan() {
     const muted = this.shMuted();
