@@ -100,6 +100,16 @@ figcaption{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;line-
 .step p{font-size:17px;line-height:1.6}
 .design{border:1px solid #10131C;background:#FFFFFF;display:flex;flex-direction:column}
 .design img{width:100%;aspect-ratio:3/1;border-bottom:1px solid #10131C;background:#FFFFFF}
+.td-box{position:relative;aspect-ratio:16/9;border:1px solid #10131C;background:#EEF0F3;overflow:hidden}
+.td-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.td-play{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:24px;border:0;background:rgba(240,242,244,.6);color:#10131C;cursor:pointer;font:inherit;text-align:center;transition:background .2s}
+.td-play:hover{background:rgba(240,242,244,.42)}
+.td-play b{font-family:'Titillium Web',system-ui,sans-serif;font-weight:700;font-size:30px;line-height:1.1}
+.td-pill{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;background:#2B44C8;color:#fff;padding:4px 10px;border-radius:999px}
+.td-sub{max-width:540px;font-size:16px;line-height:1.5}
+.td-box iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#EEF0F3}
+.td-note{margin-top:14px;max-width:880px}
+@media (max-width:640px){.td-sub{display:none}.td-play b{font-size:22px}}
 .findings{list-style:none;padding:0;border-top:1px solid #10131C}
 .findings li{padding:18px 0;border-bottom:1px solid #10131C;font-size:18px;line-height:1.6}
 .findings b{font-family:'Titillium Web',system-ui,sans-serif;font-weight:700}
@@ -316,11 +326,29 @@ html[data-theme="dark"] :is(.dark,.hero,.cp-hero,.blue,.catch) :is(img,video,can
 </div>
 </section>
 
+<section class="sec white rule-t rule-b" id="teardown">
+<div class="wrap">
+<div class="sec-head row">
+<div class="stack g12">
+<p class="kicker">04 — Take it apart</p>
+<h2 class="t-h2">The soft limb in 3D</h2>
+<p class="meta muted">Raise the pressure, watch the chambers swell and the limb bend · runs in your browser</p>
+</div>
+<a class="btn" href="https://gelastinta.com/teardowns/msc-soft-limb.html" target="_blank" rel="noopener">Open full screen ↗</a>
+</div>
+<div class="td-box" data-td>
+<img class="td-poster" src="/_blob/fe2c18495af9a6b0cbb5ba5a04be30bf" alt="The trilobite limb in 3D on its test rig, chambers filled with water and bent 27.9 degrees, with panels for bend against pressure, the bellows pump and constant curvature" loading="lazy">
+<button class="td-play" type="button" data-td-play aria-label="The MSc soft limb in 3D"><span class="td-pill">3D model</span><b>Open the 3D model</b><span class="td-sub">It plays a short tour on its own. Drag the chamber pressure, switch between the trilobite limb and the manta ray wing, compare straight and 30° tilted chambers, or see the water inside.</span></button>
+</div>
+<p class="meta muted td-note">Built from the thesis numbers: Ecoflex 00-30 limbs, the trilobite and manta ray sizes, the 38.5 mL bellows and the FEA tip movements at 15 and 20 kPa. The bend is modelled as one smooth arc per limb, fitted to those FEA results.</p>
+</div>
+</section>
+
 <section class="sec grid-bg rule-t">
 <div class="wrap split rev mid">
 <div class="stack g24">
 <div class="stack g12">
-<p class="kicker">04</p>
+<p class="kicker">05</p>
 <h2 class="t-h2">So what?</h2>
 </div>
 <p class="intro prose">A working prototype was built and tested, showing soft, fluid-powered limbs really can move a robot underwater. There were small manufacturing flaws (sealing, limb consistency), and one limb design can’t do everything — so the next version splits the jobs.</p>
@@ -340,7 +368,7 @@ html[data-theme="dark"] :is(.dark,.hero,.cp-hero,.blue,.catch) :is(img,video,can
 <div class="wrap">
 <div class="sec-head row">
 <div class="stack g12">
-<p class="kicker">05 — The full paper</p>
+<p class="kicker">06 — The full paper</p>
 <h2 class="t-h2">Read it here</h2>
 <p class="meta muted">21 pages · scroll inside the frame</p>
 </div>
@@ -434,8 +462,9 @@ html[data-theme="dark"] :is(.dark,.hero,.cp-hero,.blue,.catch) :is(img,video,can
 <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":7000}}'>
 class Component extends DCLogic {
   // ── GelasTinta motion layer (anime.js v4) ─────────────────────────────
-  componentDidMount() { this.gtStart(0); this.gtMedia(0); this.gtTheme(); this.cmMount(); }
+  componentDidMount() { this.gtStart(0); this.gtMedia(0); this.gtTheme(); this.gtFigs(); this.cmMount(); }
   componentWillUnmount() {
+    if (this.tdOff) this.tdOff();
     if (this.thOff) this.thOff();
     clearTimeout(this.gtWait);
     clearInterval(this.gtSlideT);
@@ -942,6 +971,30 @@ class Component extends DCLogic {
       }
     };
   }
+  gtTd() {
+    const local = /(^|\.)gelastinta\.com$|netlify\.app$|^localhost$|^127\./.test(location.hostname);
+    const src = local ? '/teardowns/msc-soft-limb.html' : 'https://gelastinta.com/teardowns/msc-soft-limb.html';
+    const on = (e) => {
+      const b = e.target && e.target.closest ? e.target.closest('[data-td-play]') : null;
+      if (!b) return;
+      const box = b.closest('[data-td]');
+      if (!box || box.querySelector('iframe')) return;
+      e.preventDefault();
+      // away from the website (the design canvas, a saved copy) the model opens in its own tab
+      if (!local) { window.open(src, '_blank', 'noopener'); return; }
+      const f = document.createElement('iframe');
+      f.src = src;
+      f.title = b.getAttribute('aria-label') || '3D model';
+      f.setAttribute('allow', 'fullscreen');
+      f.setAttribute('allowfullscreen', '');
+      box.appendChild(f);
+      b.remove();
+      try { f.focus({preventScroll: true}); } catch (err) { void err; }
+    };
+    document.addEventListener('click', on, true);
+    this.tdOff = () => document.removeEventListener('click', on, true);
+  }
+  gtFigs() { this.gtTd(); }
   gtTheme() {
     if (this.thOn) return;
     this.thOn = true;

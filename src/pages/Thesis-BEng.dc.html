@@ -98,6 +98,16 @@ figcaption{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;line-
 .stat span{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;line-height:1.5;letter-spacing:.04em}
 .step{border:1px solid #10131C;padding:26px;display:flex;flex-direction:column;gap:10px;background:#FFFFFF}
 .step p{font-size:17px;line-height:1.6}
+.td-box{position:relative;aspect-ratio:16/9;border:1px solid #10131C;background:#EEF0F3;overflow:hidden}
+.td-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.td-play{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:24px;border:0;background:rgba(238,240,243,.62);color:#10131C;cursor:pointer;font:inherit;text-align:center;transition:background .2s}
+.td-play:hover{background:rgba(238,240,243,.45)}
+.td-play b{font-family:'Titillium Web',system-ui,sans-serif;font-weight:700;font-size:30px;line-height:1.1}
+.td-pill{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;background:#2B44C8;color:#fff;padding:4px 10px;border-radius:999px}
+.td-sub{max-width:520px;font-size:16px;line-height:1.5}
+.td-box iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#EEF0F3}
+.td-note{margin-top:14px;max-width:880px}
+@media (max-width:640px){.td-sub{display:none}.td-play b{font-size:22px}}
 .findings{list-style:none;padding:0;border-top:1px solid #10131C}
 .findings li{padding:18px 0;border-bottom:1px solid #10131C;font-size:18px;line-height:1.6}
 .findings b{font-family:'Titillium Web',system-ui,sans-serif;font-weight:700}
@@ -291,10 +301,28 @@ html[data-theme="dark"] :is(.dark,.hero,.cp-hero,.blue,.catch) :is(img,video,can
 </div>
 </section>
 
+<section class="sec white rule-t rule-b" id="teardown">
+<div class="wrap">
+<div class="sec-head row">
+<div class="stack g12">
+<p class="kicker">04 — Take it apart</p>
+<h2 class="t-h2">The hand in 3D</h2>
+<p class="meta muted">Flex the muscle, watch the tendons pull · runs in your browser</p>
+</div>
+<a class="btn" href="https://gelastinta.com/teardowns/beng-hand.html" target="_blank" rel="noopener">Open full screen ↗</a>
+</div>
+<div class="td-box" data-td>
+<img class="td-poster" src="/_blob/8dc45c2293d70c0e70bc1e8189689542" alt="The prosthetic hand in 3D with its palm cover made see through: five servos, their horns and the tendons running up to the fingers, with panels for the muscle signal, the servos and the finger joints" loading="lazy">
+<button class="td-play" type="button" data-td-play><span class="td-pill">3D model</span><b>Open the 3D model</b><span class="td-sub">It plays a short tour on its own. Drag the muscle flex slider, try the pinch grip, look inside the palm, or switch the EMG filter off to see the shake from testing.</span></button>
+</div>
+<p class="meta muted td-note">Built from the report's numbers: a 7 mm servo horn, about 2 cm of tendon, 160° of servo turn at 0.15 s per 60°, and θ1 = θ2 = θ3 from the position analysis. The report does not list phalanx lengths, so the fingers use typical adult hand sizes.</p>
+</div>
+</section>
+
 <section class="sec blue">
 <div class="wrap split">
 <div class="stack g12">
-<p class="kicker">04</p>
+<p class="kicker">05</p>
 <h2 class="t-h2">So what?</h2>
 </div>
 <div class="stack g24">
@@ -317,7 +345,7 @@ html[data-theme="dark"] :is(.dark,.hero,.cp-hero,.blue,.catch) :is(img,video,can
 <div class="wrap">
 <div class="sec-head row">
 <div class="stack g12">
-<p class="kicker">05 — The full paper</p>
+<p class="kicker">06 — The full paper</p>
 <h2 class="t-h2">Read it here</h2>
 <p class="meta muted">35 pages · scroll inside the frame</p>
 </div>
@@ -411,8 +439,9 @@ html[data-theme="dark"] :is(.dark,.hero,.cp-hero,.blue,.catch) :is(img,video,can
 <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":6400}}'>
 class Component extends DCLogic {
   // ── GelasTinta motion layer (anime.js v4) ─────────────────────────────
-  componentDidMount() { this.gtStart(0); this.gtMedia(0); this.gtTheme(); this.cmMount(); }
+  componentDidMount() { this.gtStart(0); this.gtMedia(0); this.gtTheme(); this.gtFigs(); this.cmMount(); }
   componentWillUnmount() {
+    if (this.tdOff) this.tdOff();
     if (this.thOff) this.thOff();
     clearTimeout(this.gtWait);
     clearInterval(this.gtSlideT);
@@ -918,6 +947,29 @@ class Component extends DCLogic {
         set({ user: null, err: '' });
       }
     };
+  }
+  gtFigs() {
+    const local = /(^|\.)gelastinta\.com$|netlify\.app$|^localhost$|^127\./.test(location.hostname);
+    const src = local ? '/teardowns/beng-hand.html' : 'https://gelastinta.com/teardowns/beng-hand.html';
+    const on = (e) => {
+      const b = e.target && e.target.closest ? e.target.closest('[data-td-play]') : null;
+      if (!b) return;
+      const box = b.closest('[data-td]');
+      if (!box || box.querySelector('iframe')) return;
+      e.preventDefault();
+      // away from the website (the design canvas, a saved copy) the model opens in its own tab
+      if (!local) { window.open(src, '_blank', 'noopener'); return; }
+      const f = document.createElement('iframe');
+      f.src = src;
+      f.title = 'The BEng prosthetic hand in 3D';
+      f.setAttribute('allow', 'fullscreen');
+      f.setAttribute('allowfullscreen', '');
+      box.appendChild(f);
+      b.remove();
+      try { f.focus({preventScroll: true}); } catch (err) { void err; }
+    };
+    document.addEventListener('click', on, true);
+    this.tdOff = () => document.removeEventListener('click', on, true);
   }
   gtTheme() {
     if (this.thOn) return;

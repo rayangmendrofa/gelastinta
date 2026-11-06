@@ -216,6 +216,8 @@ fs.mkdirSync(path.join(OUT, 'assets'), { recursive: true });
 }
 fs.writeFileSync(path.join(OUT, 'assets', 'dc-lite.js'), runtime);
 fs.writeFileSync(path.join(OUT, 'favicon.svg'), FAVICON);
+// src/static/ is copied as is (for example the 3D teardown pages in src/static/teardowns/)
+if (fs.existsSync(path.join(SRC, 'static'))) fs.cpSync(path.join(SRC, 'static'), OUT, {recursive: true});
 
 const pages = fs.readdirSync(path.join(SRC, 'pages')).filter((f) => f.endsWith('.dc.html'));
 const sitemap = [];
