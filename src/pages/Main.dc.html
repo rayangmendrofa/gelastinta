@@ -252,18 +252,14 @@ html[data-theme="dark"] :is(.dark,.hero,.cp-hero,.blue,.catch) :is(img,video,can
 /* home2:start */
 .hero{min-height:720px}
 .hero-shade{background:radial-gradient(ellipse 46% 60% at 72% 52%,rgba(90,130,179,.30) 0%,rgba(11,13,20,0) 70%),linear-gradient(90deg,rgba(11,13,20,.93) 0%,rgba(11,13,20,.86) 55%,rgba(11,13,20,.80) 100%)}
-.hero-grid{display:grid;grid-template-columns:minmax(0,4.4fr) minmax(0,7.6fr);gap:24px;align-items:center}
-.hero-h{font-family:'Titillium Web',system-ui,sans-serif;font-weight:800;font-size:clamp(44px,5.1vw,76px);line-height:.95;letter-spacing:-.035em}
+.hero>.wrap.hero-grid{max-width:1380px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,3.6fr) minmax(0,8.4fr);gap:16px;align-items:center}
+.hero-h{font-family:'Titillium Web',system-ui,sans-serif;font-weight:800;font-size:clamp(52px,6vw,92px);line-height:.92;letter-spacing:-.035em}
 .hero-h .ink{color:#8DB0DA}
-.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:4px}
-.hero .btn{background:#5A82B3;border-color:#5A82B3;color:#0B0D14}
-.hero .btn:hover{background:#8DB0DA;border-color:#8DB0DA;color:#0B0D14}
-.hero .btn.ghost{background:transparent;color:#FFFFFF;border-color:rgba(255,255,255,.7)}
-.hero .btn.ghost:hover{background:#EDEFF2;color:#10131C;border-color:#EDEFF2}
-.hero-count{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#C8D8EA;display:flex;flex-wrap:wrap;gap:6px 18px}
-.hero-count b{color:#FFFFFF;font-weight:700}
-.hero-vessel.flask{max-width:720px;justify-self:end;padding:0}
-.hero-vessel.flask svg{max-width:720px}
+.hero-quote{font-family:'Titillium Web',system-ui,sans-serif;font-style:italic;font-size:clamp(19px,1.6vw,23px);line-height:1.5;color:#E3E6EE;max-width:22em;padding-left:18px;border-left:3px solid #5A82B3}
+.hero-quote-by{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#C8D8EA}
+.hero-vessel.flask{max-width:920px;justify-self:end;padding:0}
+.hero-vessel.flask svg{max-width:920px}
 .hero-vessel .gt-call path{fill:none;stroke:#8DB0DA;stroke-width:1.2}
 .hero-vessel .gt-call circle{fill:#8DB0DA;stroke:none}
 .hero-vessel .gt-call text{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12.5px;letter-spacing:.08em;fill:#FFFFFF}
@@ -272,8 +268,8 @@ html[data-theme="dark"] :is(.dark,.hero,.cp-hero,.blue,.catch) :is(img,video,can
 .hero-vessel svg:hover .gt-call{opacity:.45}
 .hero-vessel svg .gt-call:hover{opacity:1}
 .hero-vessel svg .gt-call:hover path{stroke:#FFFFFF}
-.hero-vessel figcaption{display:flex;justify-content:space-between;gap:12px;width:100%;max-width:720px}
-@media (max-width:960px){.hero-grid{grid-template-columns:minmax(0,1fr)}.hero-vessel.flask{justify-self:center;max-width:560px;order:-1}.hero{padding-top:40px}}
+.hero-vessel figcaption{display:flex;justify-content:space-between;gap:12px;width:100%;max-width:920px}
+@media (max-width:960px){.hero-grid{grid-template-columns:minmax(0,1fr)}.hero-vessel.flask{justify-self:center;max-width:680px;order:-1}.hero{padding-top:40px}}
 @media (max-width:640px){.hero-vessel.flask{max-width:100%}.hero-vessel .gt-call text{font-size:19px}.hero-vessel .gt-call text tspan.sub{display:none}.hero-vessel figcaption span+span{display:none}}
 .show{background:#FFFFFF}
 .show-label{display:flex;align-items:center;gap:12px;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#3A4152;margin:0 0 16px}
@@ -299,6 +295,11 @@ html[data-theme="dark"] :is(.dark,.hero,.cp-hero,.blue,.catch) :is(img,video,can
 .show-go{margin-top:auto;padding-top:6px;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#064F6E}
 .show-card:hover .show-go{text-decoration:underline}
 .show-grid.five .show-body{padding:12px 14px 14px}
+.show-card.pk .show-body{background:var(--sc);color:var(--st)}
+.show-card.pk .show-body .kicker{color:inherit;opacity:.85}
+.show-card.pk .show-tag{background:var(--sc);color:var(--st);border:1px solid rgba(16,19,28,.25)}
+.pk-brand{margin-top:auto;padding-top:8px;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;opacity:.8}
+.show-card.pk:hover .show-body{filter:brightness(1.06)}
 .show-more{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-top:-28px}
 @media (max-width:960px){.show-grid,.show-grid.four{grid-template-columns:repeat(2,minmax(0,1fr))}.show-grid.five{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:640px){.show-grid{grid-template-columns:minmax(0,1fr)}.show-grid.four,.show-grid.five{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.show-grid.five .show-t,.show-grid.four .show-t{font-size:15px}.show-grid.four .show-p{display:none}.show-more{margin-top:-36px}}
@@ -405,11 +406,9 @@ html{scroll-padding-top:60px}
 <div class="hero-shade" aria-hidden="true"></div>
 <div class="wrap hero-grid">
 <div class="stack g24">
-<p class="kicker">Interactive teardowns · anatomy figures</p>
-<h1 class="hero-h">Machines, taken apart <span class="ink">in&nbsp;ink.</span></h1>
-<p class="lead" style="max-width:26em">Robot hands, soft limbs, engines and pumps, rebuilt as 3D models and anatomy drawings you can turn, open and run. Every number comes from the real work behind it.</p>
-<div class="hero-cta"><a class="btn" href="#take-apart">Take one apart <span aria-hidden="true">↓</span></a><a class="btn ghost" href="/packs/library/">Open the library</a></div>
-<p class="hero-count"><span><b>3</b> free 3D teardowns</span><span><b>10</b> more in the study packs</span><span><b>4</b> anatomy figures</span></p>
+<h1 class="hero-h">Ideas as in <span class="ink">Ink</span></h1>
+<p class="hero-quote">A metaphorical vessel where ideas flow like ink, shaped by structure yet free in spirit. It symbolizes intelligence as fluid creativity, balancing imagination and order to turn thoughts into meaningful stories and designs.</p>
+<p class="hero-quote-by">Gelas · glass  /  Tinta · ink</p>
 </div>
 <figure class="hero-vessel flask">
 <svg viewBox="0 0 640 470" width="100%" role="img" aria-label="The GelasTinta ink flask, labelled like an anatomy drawing: the glass, its scale, the ink, a new drop falling in and bubbles rising">
@@ -438,35 +437,10 @@ html{scroll-padding-top:60px}
 
 
 
-<!-- home2:show:start -->
-<section class="sec show rule-b" id="take-apart" aria-labelledby="take-apart-h">
-<div class="wrap">
-<div class="sec-head row">
-<div class="stack g12"><p class="kicker">01 — Take it apart</p><h2 class="t-h2" id="take-apart-h">See how it works, from the inside.</h2></div>
-<p class="small muted" style="max-width:34em">Every model runs on the numbers from the work behind it. Press play, turn it round, pull it open, then read why it moves the way it does.</p>
-</div>
-<p class="show-label">3D teardowns · free to open</p>
-<div class="show-grid"><a class="show-card" href="Thesis-BEng.dc.html#teardown"><span class="show-media"><video src="/_blob/a7a2ec56d41a4fb6335cccce0e566ec0" poster="/_blob/4fb8d82ceaa66093a2fb4ede16d29685" autoplay muted loop playsinline preload="metadata" aria-label="Looping clip: the BEng prosthetic hand closing its fingers" data-gt-autoplay=""></video><span class="show-tag free">3D · Free</span></span><span class="show-body"><span class="kicker">Project · prosthetic hand</span><span class="show-t">How a prosthetic hand closes</span><span class="show-p">One muscle signal, six servos, five tendons: watch each finger curl shut in 0.4 s.</span><span class="show-go">Open the 3D model →</span></span></a><a class="show-card" href="Thesis-MSc.dc.html#teardown"><span class="show-media"><video src="/_blob/e6fc443c7eecd7281cfd0ea374a86861" poster="/_blob/aa7c142444a3367c0c7f32ec09112840" autoplay muted loop playsinline preload="metadata" aria-label="Looping clip: the MSc soft limb bending as water fills its chambers" data-gt-autoplay=""></video><span class="show-tag free">3D · Free</span></span><span class="show-body"><span class="kicker">Project · soft robot limb</span><span class="show-t">How a soft limb bends</span><span class="show-p">A bellows pumps water into seven silicone chambers, and each one adds a little arc.</span><span class="show-go">Open the 3D model →</span></span></a><a class="show-card" href="Talk-HairClipFish.dc.html#teardown"><span class="show-media"><video src="/_blob/567f81890cb84aa4d0085a802ac1e885" poster="/_blob/e74003e0877eef96a568b09081e0156b" autoplay muted loop playsinline preload="metadata" aria-label="Looping clip: the hair clip fish flicking its tail" data-gt-autoplay=""></video><span class="show-tag free">3D · Free</span></span><span class="show-body"><span class="kicker">Talk 07 · hair clip fish</span><span class="show-t">How a hair clip fish swims</span><span class="show-p">One servo loads a snap hair clip slowly, then it flicks the tail across in 50 ms.</span><span class="show-go">Open the 3D model →</span></span></a></div>
-<p class="show-label">Anatomy figures · drawn part by part</p>
-<div class="show-grid four"><a class="show-card" href="Talk-ProjectHailMary.dc.html"><span class="show-media"><img src="/_blob/daf744a9ff066f4785294ccf5d96e73e" alt="Anatomy figure: how a spaceship makes its own gravity" loading="lazy"><span class="show-tag free">Free</span></span><span class="show-body"><span class="kicker">Talk · Project Hail Mary</span><span class="show-t">How a spaceship makes its own gravity</span><span class="show-p">Step the Hail Mary through centrifuge mode, stage by stage.</span><span class="show-go">Read the talk →</span></span></a><a class="show-card" href="/packs/library/"><span class="show-media"><img src="/_blob/5285e0d41ecf1c9bd8e994b4e6310291" alt="Anatomy figure: one cabinet, ten courses" loading="lazy"><span class="show-tag free">Free</span></span><span class="show-body"><span class="kicker">Library · every course</span><span class="show-t">One cabinet, ten courses</span><span class="show-p">Pull out a drawer to open a course and its first sheet.</span><span class="show-go">Open the library →</span></span></a><a class="show-card" href="/packs/robotics/"><span class="show-media"><img src="/_blob/f2ac56a1148af2092aaa10d5dd407dbf" alt="Anatomy figure: how a two link arm draws" loading="lazy"><span class="show-tag">Study pack</span></span><span class="show-body"><span class="kicker">Robotics</span><span class="show-t">How a two link arm draws</span><span class="show-p">Steer the pen and watch both joint angles solve live.</span><span class="show-go">See the pack →</span></span></a><a class="show-card" href="/packs/vib/"><span class="show-media"><img src="/_blob/1811b045ff0cd5031086b1c8e52af06d" alt="Anatomy figure: how a spring mount stops the shake" loading="lazy"><span class="show-tag">Study pack</span></span><span class="show-body"><span class="kicker">Vibration and Acoustics</span><span class="show-t">How a spring mount stops the shake</span><span class="show-p">Tune the frequency ratio and read the gauge.</span><span class="show-go">See the pack →</span></span></a></div>
-<p class="show-label">Inside the study packs · 3D teardowns</p>
-<div class="show-grid five"><a class="show-card" href="/packs/thermo/"><span class="show-media"><img src="/_blob/2c9784f8721477ed5a9249b61abbcf99" alt="3D teardown still: how a four stroke engine works" loading="lazy"><span class="show-tag">3D</span></span><span class="show-body"><span class="kicker">Thermodynamics</span><span class="show-t">How a four stroke engine works</span></span></a><a class="show-card" href="/packs/robotics/"><span class="show-media"><img src="/_blob/e1030b7e77f50c33010fde3671150d04" alt="3D teardown still: how a six axis arm reaches" loading="lazy"><span class="show-tag">3D</span></span><span class="show-body"><span class="kicker">Robotics</span><span class="show-t">How a six axis arm reaches</span></span></a><a class="show-card" href="/packs/mechanics/"><span class="show-media"><img src="/_blob/eebb4ed6ac444ffb35603bf0ff74d893" alt="3D teardown still: how a bottle jack lifts a car" loading="lazy"><span class="show-tag">3D</span></span><span class="show-body"><span class="kicker">Mechanics</span><span class="show-t">How a bottle jack lifts a car</span></span></a><a class="show-card" href="/packs/vib/"><span class="show-media"><img src="/_blob/e42eac5c30d3d883d70301ea43562bec" alt="3D teardown still: how a woofer moves air" loading="lazy"><span class="show-tag">3D</span></span><span class="show-body"><span class="kicker">Vibration</span><span class="show-t">How a woofer moves air</span></span></a><a class="show-card" href="/packs/control/"><span class="show-media"><img src="/_blob/0a344be3d90e1c61128388f6ff51cd2e" alt="3D teardown still: how a flyball governor holds speed" loading="lazy"><span class="show-tag">3D</span></span><span class="show-body"><span class="kicker">Control</span><span class="show-t">How a flyball governor holds speed</span></span></a><a class="show-card" href="/packs/electronics/"><span class="show-media"><img src="/_blob/ca361678c4f4f34bb9be864b10e9f4da" alt="3D teardown still: how a linear power supply works" loading="lazy"><span class="show-tag">3D</span></span><span class="show-body"><span class="kicker">Electronics</span><span class="show-t">How a linear power supply works</span></span></a><a class="show-card" href="/packs/fea/"><span class="show-media"><img src="/_blob/8e8f76ac6e7212067d3f8f538c873d9a" alt="3D teardown still: how a 3d printer builds a part" loading="lazy"><span class="show-tag">3D</span></span><span class="show-body"><span class="kicker">Computational</span><span class="show-t">How a 3D printer builds a part</span></span></a><a class="show-card" href="/packs/materials/"><span class="show-media"><img src="/_blob/a0a81f339a1296e292903f0783b9212f" alt="3D teardown still: how a tensile test pulls a bar apart" loading="lazy"><span class="show-tag">3D</span></span><span class="show-body"><span class="kicker">Materials</span><span class="show-t">How a tensile test pulls a bar apart</span></span></a><a class="show-card" href="/packs/maths/"><span class="show-media"><img src="/_blob/ac1eb01d4c672c724b85395b6c012dba" alt="3D teardown still: how a car rides over a hump" loading="lazy"><span class="show-tag">3D</span></span><span class="show-body"><span class="kicker">Engineering Maths</span><span class="show-t">How a car rides over a hump</span></span></a><a class="show-card" href="/packs/advmat/"><span class="show-media"><img src="/_blob/32d924aaf406d1f9c5d7dfc48a1def0d" alt="3D teardown still: how an electron microscope sees" loading="lazy"><span class="show-tag">3D</span></span><span class="show-body"><span class="kicker">Advanced Materials</span><span class="show-t">How an electron microscope sees</span></span></a></div>
-<div class="show-more"><p class="small muted">Each pack opens with a free first sheet. The teardowns sit inside the full pack.</p><a class="btn ghost" href="Products.dc.html#packs">See the study packs <span aria-hidden="true">→</span></a></div>
-</div>
-</section>
-<!-- home2:show:end -->
-
-<section class="sec dark">
-<div class="wrap stack g24">
-<p class="kicker">02 — The name</p>
-<p class="quote">a metaphorical vessel where ideas flow like ink, shaped by structure yet free in spirit. It symbolizes intelligence as fluid creativity, balancing imagination and order to turn thoughts into meaningful stories and designs.</p>
-</div>
-</section>
-
 <section class="sec">
 <div class="wrap">
 <div class="stack g16" style="max-width:820px">
-<p class="kicker">03 — About</p>
+<p class="kicker">01 — About</p>
 <h2 class="t-h2">About</h2>
 <div class="prose intro" style="margin-top:8px">
 <p>This is a visual interpretation of my works and hobbies, some things are essential in my professional persona and some are just fun, quirky drop of thoughts.</p>
@@ -484,11 +458,27 @@ html{scroll-padding-top:60px}
 </div>
 </section>
 
+<!-- home2:show:start -->
+<section class="sec show rule-b" id="take-apart" aria-labelledby="take-apart-h">
+<div class="wrap">
+<div class="sec-head row">
+<div class="stack g12"><p class="kicker">02 — Take it apart</p><h2 class="t-h2" id="take-apart-h">See how it works, from the inside.</h2></div>
+<p class="small muted" style="max-width:34em">Every model runs on the numbers from the work behind it. Press play, turn it round, pull it open, then read why it moves the way it does.</p>
+</div>
+<p class="show-label">3D teardowns · free to open</p>
+<div class="show-grid"><a class="show-card" href="Thesis-BEng.dc.html#teardown"><span class="show-media"><video src="/_blob/a7a2ec56d41a4fb6335cccce0e566ec0" poster="/_blob/4fb8d82ceaa66093a2fb4ede16d29685" autoplay muted loop playsinline preload="metadata" aria-label="Looping clip: the BEng prosthetic hand closing its fingers" data-gt-autoplay=""></video><span class="show-tag free">3D · Free</span></span><span class="show-body"><span class="kicker">Project · prosthetic hand</span><span class="show-t">How a prosthetic hand closes</span><span class="show-p">One muscle signal, six servos, five tendons: watch each finger curl shut in 0.4 s.</span><span class="show-go">Open the 3D model →</span></span></a><a class="show-card" href="Thesis-MSc.dc.html#teardown"><span class="show-media"><video src="/_blob/e6fc443c7eecd7281cfd0ea374a86861" poster="/_blob/aa7c142444a3367c0c7f32ec09112840" autoplay muted loop playsinline preload="metadata" aria-label="Looping clip: the MSc soft limb bending as water fills its chambers" data-gt-autoplay=""></video><span class="show-tag free">3D · Free</span></span><span class="show-body"><span class="kicker">Project · soft robot limb</span><span class="show-t">How a soft limb bends</span><span class="show-p">A bellows pumps water into seven silicone chambers, and each one adds a little arc.</span><span class="show-go">Open the 3D model →</span></span></a><a class="show-card" href="Talk-HairClipFish.dc.html#teardown"><span class="show-media"><video src="/_blob/567f81890cb84aa4d0085a802ac1e885" poster="/_blob/e74003e0877eef96a568b09081e0156b" autoplay muted loop playsinline preload="metadata" aria-label="Looping clip: the hair clip fish flicking its tail" data-gt-autoplay=""></video><span class="show-tag free">3D · Free</span></span><span class="show-body"><span class="kicker">Talk 07 · hair clip fish</span><span class="show-t">How a hair clip fish swims</span><span class="show-p">One servo loads a snap hair clip slowly, then it flicks the tail across in 50 ms.</span><span class="show-go">Open the 3D model →</span></span></a></div>
+<p class="show-label">Inside the study packs · 3D teardowns</p>
+<div class="show-grid five"><a class="show-card pk" href="/packs/thermo/" style="--sc:#A5C8D1;--st:#1C1F33"><span class="show-media"><img src="/_blob/2c9784f8721477ed5a9249b61abbcf99" alt="3D teardown still: how a four stroke engine works" loading="lazy"><span class="show-tag">TH · 3D</span></span><span class="show-body"><span class="kicker">Thermodynamics</span><span class="show-t">How a four stroke engine works</span><span class="pk-brand">GelasTinta · Study pack</span></span></a><a class="show-card pk" href="/packs/robotics/" style="--sc:#D96629;--st:#FFFFFF"><span class="show-media"><img src="/_blob/e1030b7e77f50c33010fde3671150d04" alt="3D teardown still: how a six axis arm reaches" loading="lazy"><span class="show-tag">RB · 3D</span></span><span class="show-body"><span class="kicker">Robotics</span><span class="show-t">How a six axis arm reaches</span><span class="pk-brand">GelasTinta · Study pack</span></span></a><a class="show-card pk" href="/packs/mechanics/" style="--sc:#D96629;--st:#FFFFFF"><span class="show-media"><img src="/_blob/eebb4ed6ac444ffb35603bf0ff74d893" alt="3D teardown still: how a bottle jack lifts a car" loading="lazy"><span class="show-tag">T · 3D</span></span><span class="show-body"><span class="kicker">Mechanics</span><span class="show-t">How a bottle jack lifts a car</span><span class="pk-brand">GelasTinta · Study pack</span></span></a><a class="show-card pk" href="/packs/vib/" style="--sc:#40456A;--st:#FFFFFF"><span class="show-media"><img src="/_blob/e42eac5c30d3d883d70301ea43562bec" alt="3D teardown still: how a woofer moves air" loading="lazy"><span class="show-tag">VA · 3D</span></span><span class="show-body"><span class="kicker">Vibration</span><span class="show-t">How a woofer moves air</span><span class="pk-brand">GelasTinta · Study pack</span></span></a><a class="show-card pk" href="/packs/control/" style="--sc:#D8A37B;--st:#1C1F33"><span class="show-media"><img src="/_blob/0a344be3d90e1c61128388f6ff51cd2e" alt="3D teardown still: how a flyball governor holds speed" loading="lazy"><span class="show-tag">CE · 3D</span></span><span class="show-body"><span class="kicker">Control</span><span class="show-t">How a flyball governor holds speed</span><span class="pk-brand">GelasTinta · Study pack</span></span></a><a class="show-card pk" href="/packs/electronics/" style="--sc:#D8A37B;--st:#1C1F33"><span class="show-media"><img src="/_blob/ca361678c4f4f34bb9be864b10e9f4da" alt="3D teardown still: how a linear power supply works" loading="lazy"><span class="show-tag">E · 3D</span></span><span class="show-body"><span class="kicker">Electronics</span><span class="show-t">How a linear power supply works</span><span class="pk-brand">GelasTinta · Study pack</span></span></a><a class="show-card pk" href="/packs/fea/" style="--sc:#40456A;--st:#FFFFFF"><span class="show-media"><img src="/_blob/8e8f76ac6e7212067d3f8f538c873d9a" alt="3D teardown still: how a 3d printer builds a part" loading="lazy"><span class="show-tag">FE · 3D</span></span><span class="show-body"><span class="kicker">Computational</span><span class="show-t">How a 3D printer builds a part</span><span class="pk-brand">GelasTinta · Study pack</span></span></a><a class="show-card pk" href="/packs/materials/" style="--sc:#A5C8D1;--st:#1C1F33"><span class="show-media"><img src="/_blob/a0a81f339a1296e292903f0783b9212f" alt="3D teardown still: how a tensile test pulls a bar apart" loading="lazy"><span class="show-tag">M · 3D</span></span><span class="show-body"><span class="kicker">Materials</span><span class="show-t">How a tensile test pulls a bar apart</span><span class="pk-brand">GelasTinta · Study pack</span></span></a><a class="show-card pk" href="/packs/maths/" style="--sc:#40456A;--st:#FFFFFF"><span class="show-media"><img src="/_blob/ac1eb01d4c672c724b85395b6c012dba" alt="3D teardown still: how a car rides over a hump" loading="lazy"><span class="show-tag">EM · 3D</span></span><span class="show-body"><span class="kicker">Engineering Maths</span><span class="show-t">How a car rides over a hump</span><span class="pk-brand">GelasTinta · Study pack</span></span></a><a class="show-card pk" href="/packs/advmat/" style="--sc:#D96629;--st:#FFFFFF"><span class="show-media"><img src="/_blob/32d924aaf406d1f9c5d7dfc48a1def0d" alt="3D teardown still: how an electron microscope sees" loading="lazy"><span class="show-tag">AM · 3D</span></span><span class="show-body"><span class="kicker">Advanced Materials</span><span class="show-t">How an electron microscope sees</span><span class="pk-brand">GelasTinta · Study pack</span></span></a></div>
+<div class="show-more"><p class="small muted">Each pack opens with a free first sheet. The teardowns sit inside the full pack.</p><a class="btn ghost" href="Products.dc.html#packs">See the study packs <span aria-hidden="true">→</span></a></div>
+</div>
+</section>
+<!-- home2:show:end -->
+
 <section class="sec white rule-t rule-b">
 <div class="wrap">
 <div class="sec-head row">
 <div class="stack g12">
-<p class="kicker">04 — Dissertations</p>
+<p class="kicker">03 — Dissertations</p>
 <h2 class="t-h2">Featured Works</h2>
 </div>
 <a class="btn" href="Projects.dc.html">All projects <span aria-hidden="true">→</span></a>
@@ -501,7 +491,7 @@ html{scroll-padding-top:60px}
 <div class="wrap">
 <div class="sec-head row">
 <div class="stack g12">
-<p class="kicker">05 — Talks</p>
+<p class="kicker">04 — Talks</p>
 <h2 class="t-h2">What’s New?</h2>
 </div>
 <a class="btn" href="Talks.dc.html">All talks <span aria-hidden="true">→</span></a>
@@ -513,7 +503,7 @@ html{scroll-padding-top:60px}
 <section class="sec white rule-t">
 <div class="wrap">
 <div class="sec-head">
-<p class="kicker">06 — Explore</p>
+<p class="kicker">05 — Explore</p>
 <h2 class="t-h2">Explore</h2>
 </div>
 <div class="cols-3">
