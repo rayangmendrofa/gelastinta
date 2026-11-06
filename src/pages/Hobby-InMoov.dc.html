@@ -211,12 +211,67 @@ html[data-theme="dark"] :is(.dark,.hero,.cp-hero,.blue,.catch) :is(img,video,can
 .gt-flood.out{opacity:0}
 @media (prefers-reduced-motion:reduce){.gt-flood{display:none}}
 /* dark:end */
+/* nav2:start */
+html{scroll-padding-top:88px}
+.site-head{position:sticky;top:0;z-index:60}
+.skip-link{position:absolute;left:12px;top:-80px;z-index:200;background:#10131C;color:#FFFFFF;padding:12px 18px;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.06em;text-decoration:none;border-radius:0 0 8px 8px}
+.skip-link:focus{top:0;color:#FFFFFF;outline:3px solid #2B44C8;outline-offset:0}
+.nav a:focus-visible,.brand-name:focus-visible,.crumbs a:focus-visible,.foot-nav a:focus-visible{outline:3px solid #2B44C8;outline-offset:3px;border-radius:2px}
+.nav a{transition:color .2s ease,border-color .2s ease}
+.nav a:hover{border-bottom-color:currentColor}
+.crumbs{align-self:flex-start;max-width:100%}
+.crumbs ol{display:flex;flex-wrap:wrap;align-items:center;list-style:none;margin:0;padding:0;gap:0 10px;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+.crumbs li{display:inline-flex;align-items:center;min-height:44px;min-width:0}
+.crumbs li+li::before{content:"/";margin-right:10px;opacity:.55}
+.crumbs a{color:inherit;text-decoration:none;border-bottom:1px solid transparent}
+.crumbs a:hover{color:inherit;border-bottom-color:currentColor}
+.crumbs [aria-current]{opacity:.78;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:26ch}
+.pnav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border:1px solid #10131C}
+.pn{display:flex;flex-direction:column;gap:10px;padding:24px;color:#10131C;text-decoration:none;background:#EDEFF2;min-height:44px}
+.pn+.pn{border-left:1px solid #10131C}
+.pn.next{text-align:right;align-items:flex-end}
+.pn:hover{background:#10131C;color:#EDEFF2}
+.pn:focus-visible{outline:3px solid #2B44C8;outline-offset:2px}
+.pn-k{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#2B44C8}
+.pn:hover .pn-k{color:inherit}
+.pn-t{font-family:'Titillium Web',system-ui,sans-serif;font-weight:700;font-size:19px;line-height:1.25;letter-spacing:-.01em}
+.pn-all{display:inline-flex;align-items:center;min-height:44px;margin-top:16px;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#2B44C8;text-decoration:none}
+.pn-all:hover{text-decoration:underline;color:#2B44C8}
+.foot-nav{display:flex;flex-wrap:wrap;align-items:center;gap:4px 26px;padding-top:22px;border-top:1px solid rgba(237,239,242,.22);font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+.foot-nav a{color:inherit;text-decoration:none;min-height:44px;display:inline-flex;align-items:center;border-bottom:1px solid transparent}
+.foot-nav a:hover{color:inherit;border-bottom-color:currentColor}
+.foot-nav .to-top{margin-left:auto}
+[style*="position:sticky;top:24px"]{top:96px !important}
+@supports (animation-timeline: scroll()){
+.site-head{animation:nav2-shadow linear both;animation-timeline:scroll(root);animation-range:0 160px}
+@keyframes nav2-shadow{from{box-shadow:0 0 0 rgba(16,19,28,0)}to{box-shadow:0 6px 18px -10px rgba(16,19,28,.45)}}
+}
+@media (max-width:640px){
+html{scroll-padding-top:60px}
+.site-head{top:-56px}
+.site-head .wrap{min-height:0;padding-top:0;padding-bottom:0;gap:0;row-gap:0}
+.site-head .brand{min-height:56px}
+.nav{flex-wrap:nowrap;width:calc(100% + 40px);margin:0 -20px;padding:0 20px;gap:0 18px;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent)}
+.nav::-webkit-scrollbar{display:none}
+.nav a{flex:0 0 auto;font-size:12px;letter-spacing:.07em}
+.nav a[href="Main.dc.html"]{display:none}
+.nav a:last-child{margin-right:24px}
+[style*="position:sticky;top:24px"]{top:64px !important}
+.pnav{grid-template-columns:minmax(0,1fr)}
+.pn+.pn{border-left:0;border-top:1px solid #10131C}
+.pn.next{text-align:left;align-items:flex-start}
+.foot-nav{gap:0 20px}
+.foot-nav .to-top{margin-left:0}
+.crumbs [aria-current]{max-width:18ch}
+}
+/* nav2:end */
 </style>
 </helmet>
 <div style="min-height:100vh" data-gt-root="">
+<a class="skip-link" href="#main">Skip to content</a>
 <div class="gt-progress" aria-hidden="true"></div>
 
-<header class="site-head">
+<header class="site-head" id="top">
 <div class="wrap">
 <div class="brand"><button type="button" class="bk-btn" data-theme-toggle aria-pressed="false" aria-label="Switch to dark mode (spill the ink)" title="Switch to dark mode (spill the ink)"><svg class="bk-logo" width="44" height="28" viewBox="0 0 50 32" fill="none" aria-hidden="true"><ellipse class="bk-pud" cx="40" cy="30.2" rx="9" ry="1.7" fill="#2B44C8"></ellipse><circle class="bk-drop d1" cx="42" cy="9" r="1.4" fill="#2B44C8"></circle><circle class="bk-drop d2" cx="42" cy="9" r="1.4" fill="#2B44C8"></circle><circle class="bk-drop d3" cx="42" cy="9" r="1.4" fill="#2B44C8"></circle><g class="bk-tip"><g class="bk-liq"><path d="M9.6 20 6.3 26.4A1.7 1.7 0 0 0 7.8 29h16.4a1.7 1.7 0 0 0 1.5-2.6L22.4 20z" fill="#2B44C8"></path></g><path d="M11 3h10M13 3v9L6 26.4A1.7 1.7 0 0 0 7.8 29h16.4a1.7 1.7 0 0 0 1.5-2.6L19 12V3" stroke="#10131C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></g></svg></button><a href="Main.dc.html" class="brand-name">GelasTinta</a></div>
 <nav class="nav" aria-label="Main">
@@ -230,10 +285,10 @@ html[data-theme="dark"] :is(.dark,.hero,.cp-hero,.blue,.catch) :is(img,video,can
 </div>
 </header>
 
-<section class="sec grid-bg rule-b" style="padding-top:48px">
+<section id="main" class="sec grid-bg rule-b" style="padding-top:48px">
 <div class="wrap split rev mid">
 <div class="stack g24">
-<a href="Projects.dc.html#hobby" class="back">← Hobby builds</a>
+<nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="Main.dc.html">Home</a></li><li><a href="Projects.dc.html">Projects</a></li><li aria-current="page">InMoov hand</li></ol></nav>
 <p class="kicker">Hobby build — 2023 – 2024</p>
 <h1 class="t-thesis">Rebuilding the InMoov robot hand</h1>
 <div class="chips"><span class="chip fill">2023 – 2024</span><span class="chip">Personal project</span><span class="chip">3D printing</span><span class="chip">Replication</span></div>
@@ -396,6 +451,9 @@ html[data-theme="dark"] :is(.dark,.hero,.cp-hero,.blue,.catch) :is(img,video,can
 </div>
 </section>
 
+<!-- nav2:proj:start -->
+<section class="sec tight" aria-label="More projects"><div class="wrap"><nav class="pnav" aria-label="More projects"><a class="pn prev" href="Thesis-BEng.dc.html"><span class="pn-k">← Previous · Dissertation · BEng · 2023</span><span class="pn-t">Constructing and Analysing the Performance of a Modified Prosthetic Hand</span></a><a class="pn next" href="Hobby-FlyBrain.dc.html"><span class="pn-k">Next · Hobby build · H2 →</span><span class="pn-t">A fly’s brain when it tastes sugar?</span></a></nav><a class="pn-all" href="Projects.dc.html">← All projects</a></div></section>
+<!-- nav2:proj:end -->
 <footer class="site-foot dark">
 <div class="wrap">
 <div class="foot-top">
@@ -414,6 +472,8 @@ html[data-theme="dark"] :is(.dark,.hero,.cp-hero,.blue,.catch) :is(img,video,can
 </div>
 </div>
 </div>
+<!-- nav2:foot:start --><nav class="foot-nav" aria-label="Site"><a href="Main.dc.html">Home</a><a href="Projects.dc.html">Projects</a><a href="Talks.dc.html">Talks</a><a href="Products.dc.html">Products</a><a href="/packs/library/">Library</a><a href="Author.dc.html">Author</a><a class="to-top" href="#top">Back to top <span aria-hidden="true">↑</span></a></nav>
+<!-- nav2:foot:end -->
 <div class="tblock">
 <div><span>DRAWN BY</span><span>Rayang T Mendrofa</span></div>
 <div><span>SHEET</span><span>02.H — INMOOV HAND</span></div>
