@@ -25,6 +25,7 @@ const PAGES = new Set([
   "/projects/inmoov-hand",
   "/projects/fly-brain-sugar",
   "/projects/gesture-music",
+  "/projects/tars",
 ])
 
 type Stored = { name: string; email: string; text: string; at: number }

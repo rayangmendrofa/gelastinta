@@ -249,11 +249,159 @@ html[data-theme="dark"] :is(.dark,.hero,.cp-hero,.blue,.catch) :is(img,video,can
 .gt-flood.out{opacity:0}
 @media (prefers-reduced-motion:reduce){.gt-flood{display:none}}
 /* dark:end */
+/* home2:start */
+.hero{min-height:720px}
+.hero-shade{background:radial-gradient(ellipse 46% 60% at 72% 52%,rgba(90,130,179,.30) 0%,rgba(11,13,20,0) 70%),linear-gradient(90deg,rgba(11,13,20,.93) 0%,rgba(11,13,20,.86) 55%,rgba(11,13,20,.80) 100%)}
+.hero>.wrap.hero-grid{max-width:1380px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,3.6fr) minmax(0,8.4fr);gap:16px;align-items:center}
+.hero-h{font-family:'Titillium Web',system-ui,sans-serif;font-weight:800;font-size:clamp(52px,6vw,92px);line-height:.92;letter-spacing:-.035em}
+.hero-h .ink{color:#8DB0DA}
+.hero-quote{font-family:'Titillium Web',system-ui,sans-serif;font-style:italic;font-size:clamp(19px,1.6vw,23px);line-height:1.5;color:#E3E6EE;max-width:22em;padding-left:18px;border-left:3px solid #5A82B3}
+.hero-quote-by{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#C8D8EA}
+.hero-vessel.flask{max-width:920px;justify-self:end;padding:0}
+.hero-vessel.flask svg{max-width:920px}
+.hero-vessel .gt-call path{fill:none;stroke:#8DB0DA;stroke-width:1.2}
+.hero-vessel .gt-call circle{fill:#8DB0DA;stroke:none}
+.hero-vessel .gt-call text{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12.5px;letter-spacing:.08em;fill:#FFFFFF}
+.hero-vessel .gt-call text tspan.sub{fill:#AFC3DB;font-size:11px;letter-spacing:.04em}
+.hero-vessel .gt-call{transition:opacity .25s ease}
+.hero-vessel svg:hover .gt-call{opacity:.45}
+.hero-vessel svg .gt-call:hover{opacity:1}
+.hero-vessel svg .gt-call:hover path{stroke:#FFFFFF}
+.hero-vessel figcaption{display:flex;justify-content:space-between;gap:12px;width:100%;max-width:920px}
+@media (max-width:960px){.hero-grid{grid-template-columns:minmax(0,1fr)}.hero-vessel.flask{justify-self:center;max-width:680px;order:-1}.hero{padding-top:40px}}
+@media (max-width:640px){.hero-vessel.flask{max-width:100%}.hero-vessel .gt-call text{font-size:19px}.hero-vessel .gt-call text tspan.sub{display:none}.hero-vessel figcaption span+span{display:none}}
+.show{background:#FFFFFF}
+.show-label{display:flex;align-items:center;gap:12px;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#3A4152;margin:0 0 16px}
+.show-label::after{content:"";flex:1 1 auto;height:1px;background:#C9CED8}
+.show-label+*{margin-bottom:56px}
+.show-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.show-grid.four{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.show-grid.five{grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.show-card{display:flex;flex-direction:column;background:#FFFFFF;border:1px solid #10131C;color:#10131C;text-decoration:none;transition:transform .25s ease,box-shadow .25s ease}
+.show-card:hover{color:#10131C;transform:translateY(-4px);box-shadow:6px 6px 0 #10131C}
+.show-card:focus-visible{outline:3px solid #5A82B3;outline-offset:3px}
+.show-media{position:relative;display:block;aspect-ratio:4/3;overflow:hidden;background:#EEF0F3;border-bottom:1px solid #10131C}
+.show-media video,.show-media img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.show-card:hover .show-media img{transform:scale(1.04)}
+.show-tag{position:absolute;top:10px;left:10px;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;background:#10131C;color:#FFFFFF;padding:5px 8px}
+.show-tag.free{background:#064F6E}
+.show-body{display:flex;flex-direction:column;gap:6px;padding:16px 18px 18px;flex:1 1 auto}
+.show-body .kicker{font-size:11px}
+.show-t{font-family:'Titillium Web',system-ui,sans-serif;font-weight:700;font-size:21px;line-height:1.18;letter-spacing:-.01em}
+.show-grid.four .show-t{font-size:18px}
+.show-grid.five .show-t{font-size:16px}
+.show-p{font-size:15px;line-height:1.5;color:#3A4152}
+.show-go{margin-top:auto;padding-top:6px;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#064F6E}
+.show-card:hover .show-go{text-decoration:underline}
+.show-grid.five .show-body{padding:12px 14px 14px}
+.show-card.pk .show-body{background:var(--sc);color:var(--st)}
+.show-card.pk .show-body .kicker{color:inherit;opacity:.85}
+.show-card.pk .show-tag{background:var(--sc);color:var(--st);border:1px solid rgba(16,19,28,.25)}
+.pk-brand{margin-top:auto;padding-top:8px;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;opacity:.8}
+.show-card.pk:hover .show-body{filter:brightness(1.06)}
+.show-more{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-top:-28px}
+@media (max-width:960px){.show-grid,.show-grid.four{grid-template-columns:repeat(2,minmax(0,1fr))}.show-grid.five{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:640px){.show-grid{grid-template-columns:minmax(0,1fr)}.show-grid.four,.show-grid.five{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.show-grid.five .show-t,.show-grid.four .show-t{font-size:15px}.show-grid.four .show-p{display:none}.show-more{margin-top:-36px}}
+@media (prefers-reduced-motion:reduce){.show-card,.show-media img{transition:none}.show-card:hover{transform:none}}
+.lib p.small{color:#3A4152;margin-top:-30px;min-height:3.1em}
+.lib:hover p.small{color:#C9CED8}
+.pj{position:relative;background:#0B0D14;color:#EDEFF2;border:1px solid #10131C;padding:28px 28px 22px;overflow:hidden}
+.pj::before{content:"";position:absolute;left:50%;bottom:118px;width:150%;height:120%;transform:translateX(-50%);background:conic-gradient(from 160deg at 50% 100%,transparent 0deg,rgba(200,216,234,.09) 14deg,rgba(200,216,234,.16) 20deg,rgba(200,216,234,.09) 26deg,transparent 40deg);pointer-events:none}
+.pj-screen{position:relative;max-width:900px;margin:0 auto;aspect-ratio:16/9;background:#F4F5F8;border:10px solid #EDEFF2;box-shadow:0 0 0 1px #3A4152,0 24px 60px -18px rgba(90,130,179,.55);overflow:hidden}
+.pj-screen::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 70% 70% at 50% 45%,transparent 60%,rgba(11,13,20,.28) 100%);pointer-events:none;z-index:3}
+.pj-slide{position:absolute;inset:0;display:block;color:inherit;text-decoration:none;opacity:0;visibility:hidden;transition:opacity .45s ease,visibility 0s .45s}
+.pj-slide.on{opacity:1;visibility:visible;transition:opacity .45s ease,visibility 0s}
+.pj-slide img{width:100%;height:100%;object-fit:cover;display:block}
+.pj-cap{position:absolute;left:0;bottom:0;z-index:4;display:flex;flex-direction:column;gap:4px;max-width:min(78%,520px);padding:14px 18px 14px;background:var(--sc);color:var(--st)}
+.pj-cap b{font-family:'Ubuntu Mono',ui-monospace,monospace;font-weight:400;font-size:12px;letter-spacing:.12em;text-transform:uppercase;opacity:.9}
+.pj-cap strong{font-family:'Titillium Web',system-ui,sans-serif;font-weight:800;font-size:clamp(18px,2vw,26px);line-height:1.12;letter-spacing:-.01em}
+.pj-cap em{font-style:normal;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.85}
+.pj-slide:hover .pj-cap em{text-decoration:underline}
+.pj-slide:focus-visible{outline:3px solid #5A82B3;outline-offset:-3px}
+.pj-screen.clack .pj-slide.on img{animation:pj-clack .42s steps(1,end)}
+@keyframes pj-clack{0%{filter:brightness(.15)}18%{filter:brightness(1.35)}36%{filter:brightness(.7)}54%,100%{filter:none}}
+.pj-deck{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;gap:14px;margin:18px auto 14px;max-width:900px}
+.pj-body{display:flex;align-items:center;gap:12px;padding:8px 14px;background:#1E2230;border:1px solid #3A4152;border-radius:14px 14px 6px 6px}
+.pj-lens{width:34px;height:34px;border-radius:50%;background:radial-gradient(circle at 40% 38%,#FFFFFF 0 8%,#C8D8EA 16%,#5A82B3 42%,#10131C 70%);box-shadow:0 0 0 3px #3A4152,0 0 18px 2px rgba(200,216,234,.45)}
+.pj-count{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.08em;min-width:62px;text-align:center}
+.pj-btn{min-width:44px;min-height:40px;padding:0 12px;border:1px solid #5A82B3;background:transparent;color:#EDEFF2;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:14px;cursor:pointer;border-radius:999px}
+.pj-btn:hover{background:#EDEFF2;color:#10131C;border-color:#EDEFF2}
+.pj-btn:focus-visible{outline:3px solid #8DB0DA;outline-offset:2px}
+.pj-btn[aria-pressed="false"]{border-style:dashed;color:#C8D8EA}
+.pj-roll{position:relative;z-index:2;display:flex;align-items:flex-start;gap:10px;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:thin;scrollbar-color:#3A4152 transparent;padding:16px 12px;background-color:#050608;background-image:radial-gradient(circle at 50% 50%,#2A2F3D 0 3px,transparent 3.5px),radial-gradient(circle at 50% 50%,#2A2F3D 0 3px,transparent 3.5px);background-size:16px 12px,16px 12px;background-position:0 1px,0 calc(100% - 1px);background-repeat:repeat-x}
+.pj-frame{flex:0 0 132px;width:132px;min-width:0;scroll-snap-align:center;display:flex;flex-direction:column;gap:6px;padding:0;border:2px solid #2A2F3D;background:#10131C;color:#C9CED8;cursor:pointer;text-align:left;font:inherit}
+.pj-frame img{width:100%;height:auto;flex:0 0 auto;aspect-ratio:4/3;object-fit:cover;display:block;filter:sepia(.55) saturate(.7) brightness(.72);transition:filter .3s ease}
+.pj-frame span{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;padding:0 7px 6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pj-frame span i{font-style:normal;color:var(--sc)}
+.pj-frame:hover img{filter:none}
+.pj-frame.on{border-color:var(--sc);color:#FFFFFF;box-shadow:0 0 0 2px var(--sc),0 0 16px rgba(200,216,234,.25)}
+.pj-frame.on img{filter:none}
+.pj-frame:focus-visible{outline:3px solid #8DB0DA;outline-offset:2px}
+.pj-hint{position:relative;z-index:2;margin:10px 0 0;text-align:center;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.08em;color:#8B93A6}
+@media (max-width:640px){.pj{padding:14px 10px 14px}.pj-screen{border-width:5px}.pj-cap{max-width:92%;padding:8px 10px}.pj-cap strong{font-size:16px}.pj-cap em{display:none}.pj-frame{flex-basis:104px;width:104px}.pj::before{bottom:100px}}
+@media (prefers-reduced-motion:reduce){.pj-slide,.pj-slide.on,.pj-frame img{transition:none}.pj-screen.clack .pj-slide.on img{animation:none}}
+/* home2:end */
+/* nav2:start */
+html{scroll-padding-top:88px}
+.site-head{position:sticky;top:0;z-index:60}
+.skip-link{position:absolute;left:12px;top:-80px;z-index:200;background:#10131C;color:#FFFFFF;padding:12px 18px;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.06em;text-decoration:none;border-radius:0 0 8px 8px}
+.skip-link:focus{top:0;color:#FFFFFF;outline:3px solid #064F6E;outline-offset:0}
+.nav a:focus-visible,.brand-name:focus-visible,.crumbs a:focus-visible,.foot-nav a:focus-visible{outline:3px solid #064F6E;outline-offset:3px;border-radius:2px}
+.nav a{transition:color .2s ease,border-color .2s ease}
+.nav a:hover{border-bottom-color:currentColor}
+.crumbs{align-self:flex-start;max-width:100%}
+.crumbs ol{display:flex;flex-wrap:wrap;align-items:center;list-style:none;margin:0;padding:0;gap:0 10px;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+.crumbs li{display:inline-flex;align-items:center;min-height:44px;min-width:0}
+.crumbs li+li::before{content:"/";margin-right:10px;opacity:.55}
+.crumbs a{color:inherit;text-decoration:none;border-bottom:1px solid transparent}
+.crumbs a:hover{color:inherit;border-bottom-color:currentColor}
+.crumbs [aria-current]{opacity:.78;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:26ch}
+.pnav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border:1px solid #10131C}
+.pn{display:flex;flex-direction:column;gap:10px;padding:24px;color:#10131C;text-decoration:none;background:#EDEFF2;min-height:44px}
+.pn+.pn{border-left:1px solid #10131C}
+.pn.next{text-align:right;align-items:flex-end}
+.pn:hover{background:#10131C;color:#EDEFF2}
+.pn:focus-visible{outline:3px solid #064F6E;outline-offset:2px}
+.pn-k{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#064F6E}
+.pn:hover .pn-k{color:inherit}
+.pn-t{font-family:'Titillium Web',system-ui,sans-serif;font-weight:700;font-size:19px;line-height:1.25;letter-spacing:-.01em}
+.pn-all{display:inline-flex;align-items:center;min-height:44px;margin-top:16px;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#064F6E;text-decoration:none}
+.pn-all:hover{text-decoration:underline;color:#064F6E}
+.foot-nav{display:flex;flex-wrap:wrap;align-items:center;gap:4px 26px;padding-top:22px;border-top:1px solid rgba(237,239,242,.22);font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+.foot-nav a{color:inherit;text-decoration:none;min-height:44px;display:inline-flex;align-items:center;border-bottom:1px solid transparent}
+.foot-nav a:hover{color:inherit;border-bottom-color:currentColor}
+.foot-nav .to-top{margin-left:auto}
+[style*="position:sticky;top:24px"]{top:96px !important}
+@supports (animation-timeline: scroll()){
+.site-head{animation:nav2-shadow linear both;animation-timeline:scroll(root);animation-range:0 160px}
+@keyframes nav2-shadow{from{box-shadow:0 0 0 rgba(16,19,28,0)}to{box-shadow:0 6px 18px -10px rgba(16,19,28,.45)}}
+}
+@media (max-width:640px){
+html{scroll-padding-top:60px}
+.site-head{top:-56px}
+.site-head .wrap{min-height:0;padding-top:0;padding-bottom:0;gap:0;row-gap:0}
+.site-head .brand{min-height:56px}
+.nav{flex-wrap:nowrap;width:calc(100% + 40px);margin:0 -20px;padding:0 20px;gap:0 18px;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent)}
+.nav::-webkit-scrollbar{display:none}
+.nav a{flex:0 0 auto;font-size:12px;letter-spacing:.07em}
+.nav a[href="Main.dc.html"]{display:none}
+.nav a:last-child{margin-right:24px}
+[style*="position:sticky;top:24px"]{top:64px !important}
+.pnav{grid-template-columns:minmax(0,1fr)}
+.pn+.pn{border-left:0;border-top:1px solid #10131C}
+.pn.next{text-align:left;align-items:flex-start}
+.foot-nav{gap:0 20px}
+.foot-nav .to-top{margin-left:0}
+.crumbs [aria-current]{max-width:18ch}
+}
+/* nav2:end */
 </style>
 </helmet>
 <div style="min-height:100vh" data-gt-root="">
+<a class="skip-link" href="#main">Skip to content</a>
 
-<header class="site-head">
+<header class="site-head" id="top">
 <div class="wrap">
 <div class="brand"><button type="button" class="bk-btn" data-theme-toggle aria-pressed="false" aria-label="Switch to dark mode (spill the ink)" title="Switch to dark mode (spill the ink)"><svg class="bk-logo" width="44" height="28" viewBox="0 0 50 32" fill="none" aria-hidden="true"><ellipse class="bk-pud" cx="40" cy="30.2" rx="9" ry="1.7" fill="#064F6E"></ellipse><circle class="bk-drop d1" cx="42" cy="9" r="1.4" fill="#064F6E"></circle><circle class="bk-drop d2" cx="42" cy="9" r="1.4" fill="#064F6E"></circle><circle class="bk-drop d3" cx="42" cy="9" r="1.4" fill="#064F6E"></circle><g class="bk-tip"><g class="bk-liq"><path d="M9.6 20 6.3 26.4A1.7 1.7 0 0 0 7.8 29h16.4a1.7 1.7 0 0 0 1.5-2.6L22.4 20z" fill="#064F6E"></path></g><path d="M11 3h10M13 3v9L6 26.4A1.7 1.7 0 0 0 7.8 29h16.4a1.7 1.7 0 0 0 1.5-2.6L19 12V3" stroke="#10131C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></g></svg></button><a href="Main.dc.html" class="brand-name">GelasTinta</a></div>
 <nav class="nav" aria-label="Main">
@@ -267,7 +415,7 @@ html[data-theme="dark"] :is(.dark,.hero,.cp-hero,.blue,.catch) :is(img,video,can
 </div>
 </header>
 
-<section class="sec hero rule-b" aria-label="Introduction">
+<section id="main" class="sec hero rule-b" aria-label="Introduction">
 <div class="hero-slides" aria-hidden="true">
 <img src="/_blob/1cbb25cb1a353957951010a42aa58fc0" alt="" style="object-position:50% 50%;animation-delay:0s" fetchpriority="high">
 <img data-src="/_blob/54e236f0eae207dc01d1ee7e8e745b14" alt="" style="object-position:50% 50%;animation-delay:6s">
@@ -291,47 +439,43 @@ html[data-theme="dark"] :is(.dark,.hero,.cp-hero,.blue,.catch) :is(img,video,can
 <img data-src="/_blob/03497783b08521d4753e9b37d687b41d" alt="" style="object-position:50% 40%;animation-delay:114s">
 </div>
 <div class="hero-shade" aria-hidden="true"></div>
-<div class="wrap split rev mid">
+<div class="wrap hero-grid">
 <div class="stack g24">
-<p class="kicker">Vol. 2026 — Jakarta · London · Singapore</p>
-<h1 class="brand-hero">Gelas<span class="ink">Tinta</span></h1>
-<p class="lead" style="max-width:24em">The website about the author's work and personal interest.</p>
-<div class="chips" style="gap:10px">
-<span class="code-chip">&lt;run&gt;</span>
-<span class="code-chip" style="background:#10131C;color:#EDEFF2">&lt;idea.exe&gt;</span>
-<span class="code-chip" style="border-color:#7A4456;color:#7A4456">&lt;error&gt;</span>
+<h1 class="hero-h">Ideas as in <span class="ink">Ink</span></h1>
+<p class="hero-quote">A metaphorical vessel where ideas flow like ink, shaped by structure yet free in spirit. It symbolizes intelligence as fluid creativity, balancing imagination and order to turn thoughts into meaningful stories and designs.</p>
+<p class="hero-quote-by">Gelas · glass  /  Tinta · ink</p>
 </div>
-</div>
-<figure class="hero-vessel">
-<svg viewBox="0 0 320 400" width="100%" style="max-width:320px" role="img" aria-label="Illustration: a laboratory glass filled with ink, a drop falling in">
+<figure class="hero-vessel flask">
+<svg viewBox="0 0 640 470" width="100%" role="img" aria-label="The GelasTinta ink flask, labelled like an anatomy drawing: the glass, its scale, the ink, a new drop falling in and bubbles rising">
+<g transform="translate(150 40)">
 <path class="gt-ink" d="M75 250 Q118 236 160 250 T245 250 L289 350 Q295 371 274 371 H46 Q25 371 31 350 Z" fill="#064F6E"></path>
 <path class="gt-ink-b" d="M75 254 Q118 266 160 251 T245 246 L289 350 Q295 371 274 371 H46 Q25 371 31 350 Z" fill="none" visibility="hidden"></path>
 <path class="gt-glass" d="M102 40 H218 M122 40 V150 L31 350 Q25 371 46 371 H274 Q295 371 289 350 L198 150 V40" fill="none" stroke="#10131C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
 <path d="M198 70 H186 M198 95 H190 M198 120 H186" stroke="#10131C" stroke-width="2"></path>
-<text x="214" y="74" font-family="Ubuntu Mono, monospace" font-size="11" fill="#3A4152">300</text>
-<text x="214" y="124" font-family="Ubuntu Mono, monospace" font-size="11" fill="#3A4152">200</text>
 <path class="gt-drop" style="transform-box:fill-box;transform-origin:50% 100%" d="M160 168 C160 168 148 186 148 195 a12 12 0 0 0 24 0 C172 186 160 168 160 168Z" fill="#10131C"></path>
 <circle class="gt-bubble" style="transform-box:fill-box;transform-origin:50% 50%" cx="112" cy="300" r="6" fill="#EDEFF2" opacity="0.5"></circle>
 <circle class="gt-bubble" style="transform-box:fill-box;transform-origin:50% 50%" cx="200" cy="320" r="4" fill="#EDEFF2" opacity="0.5"></circle>
 <circle class="gt-bubble" style="transform-box:fill-box;transform-origin:50% 50%" cx="168" cy="286" r="3" fill="#EDEFF2" opacity="0.5"></circle>
+</g>
+<g class="gt-call" data-call="rim"><path d="M252 80 L222 64 L8 64"></path><circle cx="252" cy="80" r="3.2"></circle><text x="8" y="56" text-anchor="start">GELAS · THE GLASS<tspan class="sub" x="8" dy="22">gelas means glass</tspan></text></g>
+<g class="gt-call" data-call="wall"><path d="M231 280 L211 300 L8 300"></path><circle cx="231" cy="280" r="3.2"></circle><text x="8" y="292" text-anchor="start">STRUCTURE<tspan class="sub" x="8" dy="22">the shape that holds an idea</tspan></text></g>
+<g class="gt-call" data-call="bubble"><path d="M262 340 L232 440 L8 440"></path><circle cx="262" cy="340" r="3.2"></circle><text x="8" y="432" text-anchor="start">BUBBLES<tspan class="sub" x="8" dy="22">questions on the way up</tspan></text></g>
+<g class="gt-call" data-call="scale"><path d="M348 110 L420 110 L436 94 L632 94"></path><circle cx="348" cy="110" r="3.2"></circle><text x="632" y="86" text-anchor="end">SCALE · 300 ML<tspan class="sub" x="632" dy="22">measured, never guessed</tspan></text></g>
+<g class="gt-call" data-call="drop"><path d="M310 232 L440 232 L456 216 L632 216"></path><circle cx="310" cy="232" r="3.2"></circle><text x="632" y="208" text-anchor="end">A NEW DROP<tspan class="sub" x="632" dy="22">one more idea falls in</tspan></text></g>
+<g class="gt-call" data-call="ink"><path d="M356 350 L444 350 L460 334 L632 334"></path><circle cx="356" cy="350" r="3.2"></circle><text x="632" y="326" text-anchor="end">TINTA · THE INK<tspan class="sub" x="632" dy="22">tinta means ink</tspan></text></g>
 </svg>
-<figcaption>FIG. 00 — THE VESSEL</figcaption>
+<figcaption><span>FIG. 00 — THE INK FLASK</span><span>Drag it · hover a label</span></figcaption>
 </figure>
 </div>
 <a class="hero-link" href="Author.dc.html#activities">Photos — activities around the studies <span aria-hidden="true">→</span></a>
 </section>
 
-<section class="sec dark">
-<div class="wrap stack g24">
-<p class="kicker">01 — The name</p>
-<p class="quote">a metaphorical vessel where ideas flow like ink, shaped by structure yet free in spirit. It symbolizes intelligence as fluid creativity, balancing imagination and order to turn thoughts into meaningful stories and designs.</p>
-</div>
-</section>
+
 
 <section class="sec">
 <div class="wrap">
 <div class="stack g16" style="max-width:820px">
-<p class="kicker">02 — About</p>
+<p class="kicker">01 — About</p>
 <h2 class="t-h2">About</h2>
 <div class="prose intro" style="margin-top:8px">
 <p>This is a visual interpretation of my works and hobbies, some things are essential in my professional persona and some are just fun, quirky drop of thoughts.</p>
@@ -349,6 +493,22 @@ html[data-theme="dark"] :is(.dark,.hero,.cp-hero,.blue,.catch) :is(img,video,can
 </div>
 </section>
 
+<!-- home2:show:start -->
+<section class="sec show rule-b" id="take-apart" aria-labelledby="take-apart-h">
+<div class="wrap">
+<div class="sec-head row">
+<div class="stack g12"><p class="kicker">02 — Take it apart</p><h2 class="t-h2" id="take-apart-h">See how it works, from the inside.</h2></div>
+<p class="small muted" style="max-width:34em">Every model runs on the numbers from the work behind it. Press play, turn it round, pull it open, then read why it moves the way it does.</p>
+</div>
+<p class="show-label">3D teardowns · free to open</p>
+<div class="show-grid"><a class="show-card" href="Thesis-BEng.dc.html#teardown"><span class="show-media"><video src="/_blob/a7a2ec56d41a4fb6335cccce0e566ec0" poster="/_blob/4fb8d82ceaa66093a2fb4ede16d29685" autoplay muted loop playsinline preload="metadata" aria-label="Looping clip: the BEng prosthetic hand closing its fingers" data-gt-autoplay=""></video><span class="show-tag free">3D · Free</span></span><span class="show-body"><span class="kicker">Project · prosthetic hand</span><span class="show-t">How a prosthetic hand closes</span><span class="show-p">One muscle signal, six servos, five tendons: watch each finger curl shut in 0.4 s.</span><span class="show-go">Open the 3D model →</span></span></a><a class="show-card" href="Thesis-MSc.dc.html#teardown"><span class="show-media"><video src="/_blob/e6fc443c7eecd7281cfd0ea374a86861" poster="/_blob/aa7c142444a3367c0c7f32ec09112840" autoplay muted loop playsinline preload="metadata" aria-label="Looping clip: the MSc soft limb bending as water fills its chambers" data-gt-autoplay=""></video><span class="show-tag free">3D · Free</span></span><span class="show-body"><span class="kicker">Project · soft robot limb</span><span class="show-t">How a soft limb bends</span><span class="show-p">A bellows pumps water into seven silicone chambers, and each one adds a little arc.</span><span class="show-go">Open the 3D model →</span></span></a><a class="show-card" href="Talk-HairClipFish.dc.html#teardown"><span class="show-media"><video src="/_blob/567f81890cb84aa4d0085a802ac1e885" poster="/_blob/e74003e0877eef96a568b09081e0156b" autoplay muted loop playsinline preload="metadata" aria-label="Looping clip: the hair clip fish flicking its tail" data-gt-autoplay=""></video><span class="show-tag free">3D · Free</span></span><span class="show-body"><span class="kicker">Talk 07 · hair clip fish</span><span class="show-t">How a hair clip fish swims</span><span class="show-p">One servo loads a snap hair clip slowly, then it flicks the tail across in 50 ms.</span><span class="show-go">Open the 3D model →</span></span></a></div>
+<p class="show-label">Inside the study packs · 3D teardowns</p>
+<div class="pj" data-pj role="region" aria-roledescription="slide projector" aria-label="3D teardowns inside the study packs"><div class="pj-screen"><a class="pj-slide on" href="/packs/thermo/" style="--sc:#A5C8D1;--st:#1C1F33" data-pj-slide="0"><img src="/_blob/2d565198a112496eb70dea982dafade6" alt="3D teardown in the Thermodynamics study pack: how a four stroke engine works" loading="lazy"><span class="pj-cap"><b>TH · Thermodynamics</b><strong>How a four stroke engine works</strong><em>Open the pack, first sheet free →</em></span></a><a class="pj-slide" href="/packs/robotics/" style="--sc:#D96629;--st:#FFFFFF" data-pj-slide="1" tabindex="-1" aria-hidden="true"><img src="/_blob/68488c3e434b15aa5fbdda2d241707bc" alt="3D teardown in the Robotics study pack: how a six axis arm reaches" loading="lazy"><span class="pj-cap"><b>RB · Robotics</b><strong>How a six axis arm reaches</strong><em>Open the pack, first sheet free →</em></span></a><a class="pj-slide" href="/packs/mechanics/" style="--sc:#D96629;--st:#FFFFFF" data-pj-slide="2" tabindex="-1" aria-hidden="true"><img src="/_blob/01a730495af4bf947a6c0bca2d34c661" alt="3D teardown in the Mechanics study pack: how a bottle jack lifts a car" loading="lazy"><span class="pj-cap"><b>T · Mechanics</b><strong>How a bottle jack lifts a car</strong><em>Open the pack, first sheet free →</em></span></a><a class="pj-slide" href="/packs/vib/" style="--sc:#40456A;--st:#FFFFFF" data-pj-slide="3" tabindex="-1" aria-hidden="true"><img src="/_blob/8f921a5ed82afae50c70763a7c4847fa" alt="3D teardown in the Vibration study pack: how a woofer moves air" loading="lazy"><span class="pj-cap"><b>VA · Vibration</b><strong>How a woofer moves air</strong><em>Open the pack, first sheet free →</em></span></a><a class="pj-slide" href="/packs/control/" style="--sc:#D8A37B;--st:#1C1F33" data-pj-slide="4" tabindex="-1" aria-hidden="true"><img src="/_blob/3f5668ec7cfb292149b2374cb4090be8" alt="3D teardown in the Control study pack: how a flyball governor holds speed" loading="lazy"><span class="pj-cap"><b>CE · Control</b><strong>How a flyball governor holds speed</strong><em>Open the pack, first sheet free →</em></span></a><a class="pj-slide" href="/packs/electronics/" style="--sc:#D8A37B;--st:#1C1F33" data-pj-slide="5" tabindex="-1" aria-hidden="true"><img src="/_blob/956815b1cf4684189f69f334562597fe" alt="3D teardown in the Electronics study pack: how a linear power supply works" loading="lazy"><span class="pj-cap"><b>E · Electronics</b><strong>How a linear power supply works</strong><em>Open the pack, first sheet free →</em></span></a><a class="pj-slide" href="/packs/fea/" style="--sc:#40456A;--st:#FFFFFF" data-pj-slide="6" tabindex="-1" aria-hidden="true"><img src="/_blob/eb949d7007ccb257fc6c15a2d2b21744" alt="3D teardown in the Computational study pack: how a 3d printer builds a part" loading="lazy"><span class="pj-cap"><b>FE · Computational</b><strong>How a 3D printer builds a part</strong><em>Open the pack, first sheet free →</em></span></a><a class="pj-slide" href="/packs/materials/" style="--sc:#A5C8D1;--st:#1C1F33" data-pj-slide="7" tabindex="-1" aria-hidden="true"><img src="/_blob/f623c259d1881b7e13c97f9cd36badc0" alt="3D teardown in the Materials study pack: how a tensile test pulls a bar apart" loading="lazy"><span class="pj-cap"><b>M · Materials</b><strong>How a tensile test pulls a bar apart</strong><em>Open the pack, first sheet free →</em></span></a><a class="pj-slide" href="/packs/maths/" style="--sc:#40456A;--st:#FFFFFF" data-pj-slide="8" tabindex="-1" aria-hidden="true"><img src="/_blob/1d510099a756540349d58ac6d140d393" alt="3D teardown in the Engineering Maths study pack: how a car rides over a hump" loading="lazy"><span class="pj-cap"><b>EM · Engineering Maths</b><strong>How a car rides over a hump</strong><em>Open the pack, first sheet free →</em></span></a><a class="pj-slide" href="/packs/advmat/" style="--sc:#D96629;--st:#FFFFFF" data-pj-slide="9" tabindex="-1" aria-hidden="true"><img src="/_blob/3a9020ae7664a81cc9043d924177c980" alt="3D teardown in the Advanced Materials study pack: how an electron microscope sees" loading="lazy"><span class="pj-cap"><b>AM · Advanced Materials</b><strong>How an electron microscope sees</strong><em>Open the pack, first sheet free →</em></span></a></div><div class="pj-deck"><button type="button" class="pj-btn" data-pj-step="-1" aria-label="Previous slide">←</button><div class="pj-body"><span class="pj-lens" aria-hidden="true"></span><span class="pj-count" aria-live="polite"><b data-pj-pos>1</b> / 10</span></div><button type="button" class="pj-btn" data-pj-step="1" aria-label="Next slide">→</button><button type="button" class="pj-btn" data-pj-play aria-pressed="true">▶ Auto</button></div><div class="pj-roll" role="group" aria-label="Film roll: pick a slide"><button type="button" class="pj-frame on" style="--sc:#A5C8D1" data-pj-go="0" aria-label="Show slide 1: How a four stroke engine works" aria-current="true"><img src="/_blob/2c9784f8721477ed5a9249b61abbcf99" alt="" loading="lazy"><span><i>TH</i> · Thermodynamics</span></button><button type="button" class="pj-frame" style="--sc:#D96629" data-pj-go="1" aria-label="Show slide 2: How a six axis arm reaches"><img src="/_blob/e1030b7e77f50c33010fde3671150d04" alt="" loading="lazy"><span><i>RB</i> · Robotics</span></button><button type="button" class="pj-frame" style="--sc:#D96629" data-pj-go="2" aria-label="Show slide 3: How a bottle jack lifts a car"><img src="/_blob/eebb4ed6ac444ffb35603bf0ff74d893" alt="" loading="lazy"><span><i>T</i> · Mechanics</span></button><button type="button" class="pj-frame" style="--sc:#40456A" data-pj-go="3" aria-label="Show slide 4: How a woofer moves air"><img src="/_blob/e42eac5c30d3d883d70301ea43562bec" alt="" loading="lazy"><span><i>VA</i> · Vibration</span></button><button type="button" class="pj-frame" style="--sc:#D8A37B" data-pj-go="4" aria-label="Show slide 5: How a flyball governor holds speed"><img src="/_blob/0a344be3d90e1c61128388f6ff51cd2e" alt="" loading="lazy"><span><i>CE</i> · Control</span></button><button type="button" class="pj-frame" style="--sc:#D8A37B" data-pj-go="5" aria-label="Show slide 6: How a linear power supply works"><img src="/_blob/ca361678c4f4f34bb9be864b10e9f4da" alt="" loading="lazy"><span><i>E</i> · Electronics</span></button><button type="button" class="pj-frame" style="--sc:#40456A" data-pj-go="6" aria-label="Show slide 7: How a 3D printer builds a part"><img src="/_blob/8e8f76ac6e7212067d3f8f538c873d9a" alt="" loading="lazy"><span><i>FE</i> · Computational</span></button><button type="button" class="pj-frame" style="--sc:#A5C8D1" data-pj-go="7" aria-label="Show slide 8: How a tensile test pulls a bar apart"><img src="/_blob/a0a81f339a1296e292903f0783b9212f" alt="" loading="lazy"><span><i>M</i> · Materials</span></button><button type="button" class="pj-frame" style="--sc:#40456A" data-pj-go="8" aria-label="Show slide 9: How a car rides over a hump"><img src="/_blob/ac1eb01d4c672c724b85395b6c012dba" alt="" loading="lazy"><span><i>EM</i> · Engineering Maths</span></button><button type="button" class="pj-frame" style="--sc:#D96629" data-pj-go="9" aria-label="Show slide 10: How an electron microscope sees"><img src="/_blob/32d924aaf406d1f9c5d7dfc48a1def0d" alt="" loading="lazy"><span><i>AM</i> · Advanced Materials</span></button></div><p class="pj-hint">Click a frame on the roll · ← → keys · swipe the screen</p></div>
+<div class="show-more"><p class="small muted">Each pack opens with a free first sheet. The teardowns sit inside the full pack.</p><a class="btn ghost" href="Products.dc.html#packs">See the study packs <span aria-hidden="true">→</span></a></div>
+</div>
+</section>
+<!-- home2:show:end -->
+
 <section class="sec white rule-t rule-b">
 <div class="wrap">
 <div class="sec-head row">
@@ -358,7 +518,7 @@ html[data-theme="dark"] :is(.dark,.hero,.cp-hero,.blue,.catch) :is(img,video,can
 </div>
 <a class="btn" href="Projects.dc.html">All projects <span aria-hidden="true">→</span></a>
 </div>
-<div class="shelf-wrap" data-shelf><div class="shelf-bar"><button type="button" class="sh-btn" data-shelf-step="-1" aria-label="Previous book">←</button><span class="sh-count" aria-live="polite"><b data-shelf-pos>1</b> / 5</span><button type="button" class="sh-btn" data-shelf-step="1" aria-label="Next book">→</button><span class="sh-hint">Click a spine to pull it out · click the cover to read</span><button type="button" class="sh-btn sh-sound" data-shelf-sound aria-pressed="true">♪ Sound on</button></div><div class="shelf" role="group" aria-label="Featured works"><div class="book open" data-book="0" style="--c:#064F6E;--t:#FFFFFF;--b1:#5A82B3;--b2:#10131C;--h:100%"><button type="button" class="spine" data-pick="0" aria-expanded="true" aria-controls="sh-works-0" aria-label="MSc: Bio-Inspired Pneumatic Soft Actuators for Underwater Robots"><span class="sp-n">MSc</span><span class="sp-t">Soft Actuators, Underwater</span><span class="sp-y">UCL 25</span></button><a class="cover" id="sh-works-0" href="Thesis-MSc.dc.html"><span class="cv-img" style="background:#10131C"><img src="/_blob/e6b092fd16f445a4cdd7dec4374667d7" alt="Rayang holding the finished soft underwater robot prototype at UCL" loading="lazy" style="object-fit:cover;object-position:50% 32%"></span><span class="cv-body"><span class="kicker">Dissertation · MSc · UCL · 2025</span><span class="cv-t">Bio-Inspired Pneumatic Soft Actuators for Underwater Robots</span><span class="cv-p">Soft silicone limbs modelled on manta rays and trilobites, pumped with water so a robot can explore coral reefs without harming them.</span><span class="cv-m">University College London · 2025</span><span class="cv-go">Nutshell + full paper →</span></span></a></div><div class="book" data-book="1" style="--c:#10131C;--t:#FFFFFF;--b1:#4F4086;--b2:#5A82B3;--h:94%"><button type="button" class="spine" data-pick="1" aria-expanded="false" aria-controls="sh-works-1" aria-label="BEng: Constructing and Analysing the Performance of a Modified Prosthetic Hand"><span class="sp-n">BEng</span><span class="sp-t">A Modified Prosthetic Hand</span><span class="sp-y">EXE 23</span></button><a class="cover" id="sh-works-1" href="Thesis-BEng.dc.html"><span class="cv-img" style="background:#10131C"><img src="/_blob/d694dc45d8f43526db8f49c7eb77877a" alt="The finished 3D-printed prosthetic hand, palm side" loading="lazy" style="object-fit:cover;object-position:50% 50%"></span><span class="cv-body"><span class="kicker">Dissertation · BEng · Exeter · 2023</span><span class="cv-t">Constructing and Analysing the Performance of a Modified Prosthetic Hand</span><span class="cv-p">A low-cost, 3D-printed five-finger hand that closes when you flex your forearm muscles.</span><span class="cv-m">University of Exeter · 2023</span><span class="cv-go">Nutshell + full paper →</span></span></a></div><div class="book" data-book="2" style="--c:#4F4086;--t:#10131C;--b1:#10131C;--b2:#5A82B3;--h:97%"><button type="button" class="spine" data-pick="2" aria-expanded="false" aria-controls="sh-works-2" aria-label="H1: Rebuilding the InMoov robot hand"><span class="sp-n">H1</span><span class="sp-t">Rebuilding InMoov</span><span class="sp-y">23–24</span></button><a class="cover" id="sh-works-2" href="Hobby-InMoov.dc.html"><span class="cv-img" style="background:#10131C"><img src="/_blob/8dcea2945392b3e0d9b3bd41927badc4" alt="Freshly printed black InMoov parts laid out on a cutting mat beside a craft knife" loading="lazy" style="object-fit:cover;object-position:50% 50%"></span><span class="cv-body"><span class="kicker">Hobby build · 2023 – 2024</span><span class="cv-t">Rebuilding the InMoov robot hand</span><span class="cv-p">Printing and assembling Gaël Langevin’s open-source InMoov hand, from the first print to the first movement.</span><span class="cv-m">Build diary · 11 clips</span><span class="cv-go">Read the build diary →</span></span></a></div><div class="book" data-book="3" style="--c:#5A82B3;--t:#10131C;--b1:#4F4086;--b2:#064F6E;--h:91%"><button type="button" class="spine" data-pick="3" aria-expanded="false" aria-controls="sh-works-3" aria-label="H2: A fly’s brain when it tastes sugar?"><span class="sp-n">H2</span><span class="sp-t">A Fly’s Brain on Sugar</span><span class="sp-y">2026</span></button><a class="cover" id="sh-works-3" href="Hobby-FlyBrain.dc.html"><span class="cv-img" style="background:#10131C"><img src="/_blob/217a041e95fae2bb0ca236c2a9de533e" alt="Simulation replay: a glowing cloud of fruit-fly neurons inside a see-through fly head" loading="lazy" style="object-fit:cover;object-position:42% 55%"></span><span class="cv-body"><span class="kicker">Hobby build · 2026 · New</span><span class="cv-t">A fly’s brain when it tastes sugar?</span><span class="cv-p">The published whole-brain model of the fruit fly, fed sugar and followed spike by spike, then run again with two neurons silenced.</span><span class="cv-m">127,400 neurons · 5 interactive figures</span><span class="cv-go">Explore the simulation →</span></span></a></div><div class="book" data-book="4" style="--c:#1A1F2E;--t:#FFFFFF;--b1:#064F6E;--b2:#4F4086;--h:98%"><button type="button" class="spine" data-pick="4" aria-expanded="false" aria-controls="sh-works-4" aria-label="H3: Gesture Music: an instrument you play with hand signs"><span class="sp-n">H3</span><span class="sp-t">Gesture Music</span><span class="sp-y">25–26</span></button><a class="cover" id="sh-works-4" href="Hobby-GestureMusic.dc.html"><span class="cv-img" style="background:#FFFFFF"><img src="/_blob/a50cc93e9ed9fa232711a3f74eb2bf40" alt="The Gesture Music hand-sign dictionary: nine hand skeletons" loading="lazy" style="object-fit:contain;object-position:50% 50%;padding:18px"></span><span class="cv-body"><span class="kicker">Hobby build · 2025 – 2026 · New</span><span class="cv-t">Gesture Music: an instrument you play with hand signs</span><span class="cv-p">A webcam watches both hands and each sign plays a note, a chord or a drum, with a looper, live MIDI, a rhythm game and a 61-page handbook.</span><span class="cv-m">Open on GitHub · 61-page handbook</span><span class="cv-go">See it and try it →</span></span></a></div><span class="bookend" aria-hidden="true"></span></div></div>
+<div class="shelf-wrap" data-shelf><div class="shelf-bar"><button type="button" class="sh-btn" data-shelf-step="-1" aria-label="Previous book">←</button><span class="sh-count" aria-live="polite"><b data-shelf-pos>1</b> / 6</span><button type="button" class="sh-btn" data-shelf-step="1" aria-label="Next book">→</button><span class="sh-hint">Click a spine to pull it out · click the cover to read</span><button type="button" class="sh-btn sh-sound" data-shelf-sound aria-pressed="true">♪ Sound on</button></div><div class="shelf" role="group" aria-label="Featured works"><div class="book open" data-book="0" style="--c:#064F6E;--t:#FFFFFF;--b1:#5A82B3;--b2:#10131C;--h:100%"><button type="button" class="spine" data-pick="0" aria-expanded="true" aria-controls="sh-works-0" aria-label="MSc: Bio-Inspired Pneumatic Soft Actuators for Underwater Robots"><span class="sp-n">MSc</span><span class="sp-t">Soft Actuators, Underwater</span><span class="sp-y">UCL 25</span></button><a class="cover" id="sh-works-0" href="Thesis-MSc.dc.html"><span class="cv-img" style="background:#10131C"><img src="/_blob/e6b092fd16f445a4cdd7dec4374667d7" alt="Rayang holding the finished soft underwater robot prototype at UCL" loading="lazy" style="object-fit:cover;object-position:50% 32%"></span><span class="cv-body"><span class="kicker">Dissertation · MSc · UCL · 2025</span><span class="cv-t">Bio-Inspired Pneumatic Soft Actuators for Underwater Robots</span><span class="cv-p">Soft silicone limbs modelled on manta rays and trilobites, pumped with water so a robot can explore coral reefs without harming them.</span><span class="cv-m">University College London · 2025</span><span class="cv-go">Nutshell + full paper →</span></span></a></div><div class="book" data-book="1" style="--c:#10131C;--t:#FFFFFF;--b1:#4F4086;--b2:#5A82B3;--h:94%"><button type="button" class="spine" data-pick="1" aria-expanded="false" aria-controls="sh-works-1" aria-label="BEng: Constructing and Analysing the Performance of a Modified Prosthetic Hand"><span class="sp-n">BEng</span><span class="sp-t">A Modified Prosthetic Hand</span><span class="sp-y">EXE 23</span></button><a class="cover" id="sh-works-1" href="Thesis-BEng.dc.html"><span class="cv-img" style="background:#10131C"><img src="/_blob/d694dc45d8f43526db8f49c7eb77877a" alt="The finished 3D-printed prosthetic hand, palm side" loading="lazy" style="object-fit:cover;object-position:50% 50%"></span><span class="cv-body"><span class="kicker">Dissertation · BEng · Exeter · 2023</span><span class="cv-t">Constructing and Analysing the Performance of a Modified Prosthetic Hand</span><span class="cv-p">A low-cost, 3D-printed five-finger hand that closes when you flex your forearm muscles.</span><span class="cv-m">University of Exeter · 2023</span><span class="cv-go">Nutshell + full paper →</span></span></a></div><div class="book" data-book="2" style="--c:#4F4086;--t:#10131C;--b1:#10131C;--b2:#5A82B3;--h:97%"><button type="button" class="spine" data-pick="2" aria-expanded="false" aria-controls="sh-works-2" aria-label="H1: Rebuilding the InMoov robot hand"><span class="sp-n">H1</span><span class="sp-t">Rebuilding InMoov</span><span class="sp-y">23–24</span></button><a class="cover" id="sh-works-2" href="Hobby-InMoov.dc.html"><span class="cv-img" style="background:#10131C"><img src="/_blob/8dcea2945392b3e0d9b3bd41927badc4" alt="Freshly printed black InMoov parts laid out on a cutting mat beside a craft knife" loading="lazy" style="object-fit:cover;object-position:50% 50%"></span><span class="cv-body"><span class="kicker">Hobby build · 2023 – 2024</span><span class="cv-t">Rebuilding the InMoov robot hand</span><span class="cv-p">Printing and assembling Gaël Langevin’s open-source InMoov hand, from the first print to the first movement.</span><span class="cv-m">Build diary · 11 clips</span><span class="cv-go">Read the build diary →</span></span></a></div><div class="book" data-book="3" style="--c:#5A82B3;--t:#10131C;--b1:#4F4086;--b2:#064F6E;--h:91%"><button type="button" class="spine" data-pick="3" aria-expanded="false" aria-controls="sh-works-3" aria-label="H2: A fly’s brain when it tastes sugar?"><span class="sp-n">H2</span><span class="sp-t">A Fly’s Brain on Sugar</span><span class="sp-y">2026</span></button><a class="cover" id="sh-works-3" href="Hobby-FlyBrain.dc.html"><span class="cv-img" style="background:#10131C"><img src="/_blob/217a041e95fae2bb0ca236c2a9de533e" alt="Simulation replay: a glowing cloud of fruit-fly neurons inside a see-through fly head" loading="lazy" style="object-fit:cover;object-position:42% 55%"></span><span class="cv-body"><span class="kicker">Hobby build · 2026 · New</span><span class="cv-t">A fly’s brain when it tastes sugar?</span><span class="cv-p">The published whole-brain model of the fruit fly, fed sugar and followed spike by spike, then run again with two neurons silenced.</span><span class="cv-m">127,400 neurons · 5 interactive figures</span><span class="cv-go">Explore the simulation →</span></span></a></div><div class="book" data-book="4" style="--c:#1A1F2E;--t:#FFFFFF;--b1:#064F6E;--b2:#4F4086;--h:98%"><button type="button" class="spine" data-pick="4" aria-expanded="false" aria-controls="sh-works-4" aria-label="H3: Gesture Music: an instrument you play with hand signs"><span class="sp-n">H3</span><span class="sp-t">Gesture Music</span><span class="sp-y">25–26</span></button><a class="cover" id="sh-works-4" href="Hobby-GestureMusic.dc.html"><span class="cv-img" style="background:#FFFFFF"><img src="/_blob/a50cc93e9ed9fa232711a3f74eb2bf40" alt="The Gesture Music hand-sign dictionary: nine hand skeletons" loading="lazy" style="object-fit:contain;object-position:50% 50%;padding:18px"></span><span class="cv-body"><span class="kicker">Hobby build · 2025 – 2026 · New</span><span class="cv-t">Gesture Music: an instrument you play with hand signs</span><span class="cv-p">A webcam watches both hands and each sign plays a note, a chord or a drum, with a looper, live MIDI, a rhythm game and a 61-page handbook.</span><span class="cv-m">Open on GitHub · 61-page handbook</span><span class="cv-go">See it and try it →</span></span></a></div><div class="book" data-book="5" style="--c:#10131C;--t:#FFFFFF;--b1:#064F6E;--b2:#5A82B3;--h:93%"><button type="button" class="spine" data-pick="5" aria-expanded="false" aria-controls="sh-works-5" aria-label="H4: Building my own TARS"><span class="sp-n">H4</span><span class="sp-t">Building TARS</span><span class="sp-y">2025</span></button><a class="cover" id="sh-works-5" href="Hobby-TARS.dc.html"><span class="cv-img" style="background:#10131C"><img src="/_blob/72ff13df99d98450330d2613c1e1189a" alt="My printed TARS standing on a desk" loading="lazy" style="object-fit:cover;object-position:50% 60%"></span><span class="cv-body"><span class="kicker">Hobby build · 2025 · New</span><span class="cv-t">Building my own TARS</span><span class="cv-p">The robot from Interstellar, printed and assembled from the TARS-AI community’s open build kit, then taught seven new moves in a physics simulation.</span><span class="cv-m">Fan build · 7 new moves</span><span class="cv-go">Meet TARS →</span></span></a></div><span class="bookend" aria-hidden="true"></span></div></div>
 </div>
 </section>
 
@@ -378,21 +538,24 @@ html[data-theme="dark"] :is(.dark,.hero,.cp-hero,.blue,.catch) :is(img,video,can
 <section class="sec white rule-t">
 <div class="wrap">
 <div class="sec-head">
-<p class="kicker">05 — Library</p>
-<h2 class="t-h2">Library</h2>
+<p class="kicker">05 — Explore</p>
+<h2 class="t-h2">Explore</h2>
 </div>
 <div class="cols-3">
 <a class="lib" href="Projects.dc.html">
-<svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#064F6E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"></path></svg>
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#064F6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 5h14M19.5 5v13L8.6 38.4A3 3 0 0 0 11.2 43h25.6a3 3 0 0 0 2.6-4.6L28.5 18V5"></path><path d="M13.2 30c3.6-1.6 7.2 1.6 10.8 0s7.2-1.6 10.8 0" stroke-width="1.6"></path><circle cx="24" cy="33" r="4.6"></circle><circle cx="24" cy="33" r="1.4"></circle><path d="M28.60 33.00L30.40 33.00 M27.25 36.25L28.53 37.53 M24.00 37.60L24.00 39.40 M20.75 36.25L19.47 37.53 M19.40 33.00L17.60 33.00 M20.75 29.75L19.47 28.47 M24.00 28.40L24.00 26.60 M27.25 29.75L28.53 28.47" stroke-width="2.2"></path><path d="M24 9.5h4.5M24 13.5h4.5" stroke-width="1.4"></path></svg>
 <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px"><h3 class="t-h2" style="font-size:32px">Projects</h3><span class="go">Go →</span></div>
+<p class="small">Dissertations, hobby builds and their 3D teardowns.</p>
 </a>
 <a class="lib" href="Talks.dc.html">
-<svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#064F6E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path><path d="M8 10h.01M12 10h.01M16 10h.01"></path></svg>
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#064F6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 4C24 4 9 19.5 9 29a15 15 0 0 0 23.4 12.4L40 44l-2.6-7.2A15 15 0 0 0 39 29C39 19.5 24 4 24 4Z"></path><path d="M17.5 30h.01M24 30h.01M30.5 30h.01" stroke-width="3.6"></path></svg>
 <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px"><h3 class="t-h2" style="font-size:32px">Talks</h3><span class="go">Go →</span></div>
+<p class="small">Monthly talks on papers, films, food and robots.</p>
 </a>
 <a class="lib" href="Author.dc.html">
-<svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#064F6E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"></path></svg>
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#064F6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 4 34 17.5 30.5 33h-13L14 17.5Z"></path><path d="M24 4v14.5"></path><circle cx="24" cy="21" r="2.6"></circle><path d="M16.5 33h15v5.5h-15Z"></path><path d="M24 41.5c-1.6 2-2.4 3.1-2.4 4a2.4 2.4 0 0 0 4.8 0c0-.9-.8-2-2.4-4Z" fill="#064F6E" stroke-width="1"></path></svg>
 <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px"><h3 class="t-h2" style="font-size:32px">Author</h3><span class="go">Go →</span></div>
+<p class="small">Who draws all of this, and why.</p>
 </a>
 </div>
 </div>
@@ -416,6 +579,8 @@ html[data-theme="dark"] :is(.dark,.hero,.cp-hero,.blue,.catch) :is(img,video,can
 </div>
 </div>
 </div>
+<!-- nav2:foot:start --><nav class="foot-nav" aria-label="Site"><a href="Main.dc.html" aria-current="page">Home</a><a href="Projects.dc.html">Projects</a><a href="Talks.dc.html">Talks</a><a href="Products.dc.html">Products</a><a href="/packs/library/">Library</a><a href="Author.dc.html">Author</a><a class="to-top" href="#top">Back to top <span aria-hidden="true">↑</span></a></nav>
+<!-- nav2:foot:end -->
 <div class="tblock">
 <div><span>DRAWN BY</span><span>Rayang T Mendrofa</span></div>
 <div><span>SHEET</span><span>01 — HOME</span></div>
@@ -650,6 +815,13 @@ class Component extends DCLogic {
         }
         const glass = vessel.querySelector('.gt-glass');
         if (glass) animate(createDrawable(glass), { draw: ['0 0', '0 1'], duration: 1800, delay: 300, ease: 'inOut(3)' });
+        // home2: callout leaders draw out from the glass, then their labels fade in
+        $('.gt-call', vessel).forEach((g, i) => {
+          const ln = g.querySelector('path'); const dot = g.querySelector('circle'); const tx = g.querySelector('text');
+          if (ln) animate(createDrawable(ln), { draw: ['0 0', '0 1'], duration: 700, delay: 1300 + i * 140, ease: 'out(3)' });
+          if (dot) animate(dot, { scale: { from: 0 }, duration: 500, delay: 1200 + i * 140, ease: spring({ bounce: 0.5, duration: 600 }) });
+          if (tx) animate(tx, { opacity: { from: 0 }, x: { from: tx.getAttribute('text-anchor') === 'end' ? 12 : -12 }, duration: 600, delay: 1650 + i * 140 });
+        });
         const drop = vessel.querySelector('.gt-drop');
         if (drop) {
           animate(drop, {
@@ -878,6 +1050,7 @@ class Component extends DCLogic {
   gtFigs() {
     if (this.shOn) return;
     this.shOn = true;
+    this.pjBind();
     const guard = (fn) => (e) => { try { fn.call(this, e); } catch (err) { if (window.console) console.warn('[shelf]', err); } };
     const L = [['click', guard(this.shClick), true], ['keydown', guard(this.shKey), true], ['wheel', guard(this.shWheel), { passive: false, capture: true }],
                ['touchstart', guard(this.shTouch), { passive: true, capture: true }], ['touchend', guard(this.shTouch), { passive: true, capture: true }]];
@@ -887,7 +1060,67 @@ class Component extends DCLogic {
     scan();
     this.shInt = setInterval(scan, 600);
   }
-  gtFigStop() { clearInterval(this.shInt); if (this.shOff) this.shOff(); this.shOn = false; }
+  gtFigStop() { clearInterval(this.shInt); if (this.shOff) this.shOff(); this.shOn = false; if (this.pjOff) this.pjOff(); }
+  // home2:pj:start ── study pack projector: the film roll, arrows, keys, swipe and a slow auto advance
+  pjBind() {
+    if (this.pjOn) return;
+    this.pjOn = true;
+    const guard = (fn) => (e) => { try { fn.call(this, e); } catch (err) { if (window.console) console.warn('[projector]', err); } };
+    const click = guard((e) => {
+      const t = e.target && e.target.closest ? e.target.closest('[data-pj-go], [data-pj-step], [data-pj-play]') : null;
+      if (!t) return;
+      const w = t.closest('[data-pj]'); if (!w) return;
+      e.preventDefault();
+      if (t.hasAttribute('data-pj-play')) { const on = t.getAttribute('aria-pressed') !== 'true'; t.setAttribute('aria-pressed', on ? 'true' : 'false'); t.textContent = on ? '▶ Auto' : '❚❚ Paused'; w.__pjT = Date.now(); return; }
+      if (t.hasAttribute('data-pj-go')) this.pjGo(w, +t.getAttribute('data-pj-go'));
+      else this.pjGo(w, this.pjI(w) + +t.getAttribute('data-pj-step'));
+    });
+    const key = guard((e) => {
+      if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+      const w = e.target && e.target.closest ? e.target.closest('[data-pj]') : null; if (!w) return;
+      e.preventDefault(); this.pjGo(w, this.pjI(w) + (e.key === 'ArrowRight' ? 1 : -1));
+    });
+    const touch = guard((e) => {
+      const sc = e.target && e.target.closest ? e.target.closest('.pj-screen') : null; if (!sc) return;
+      const x = (e.changedTouches && e.changedTouches[0] || {}).clientX || 0;
+      if (e.type === 'touchstart') { sc.__x = x; return; }
+      const dx = x - (sc.__x || x); if (Math.abs(dx) < 40) return;
+      const w = sc.closest('[data-pj]'); this.pjGo(w, this.pjI(w) + (dx < 0 ? 1 : -1));
+    });
+    const L = [['click', click, true], ['keydown', key, true], ['touchstart', touch, { passive: true, capture: true }], ['touchend', touch, { passive: true, capture: true }]];
+    L.forEach((l) => document.addEventListener(l[0], l[1], l[2]));
+    const still = () => !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+    const tick = guard(() => {
+      if (still() || document.hidden) return;
+      Array.from(document.querySelectorAll('[data-pj]')).forEach((w) => {
+        const p = w.querySelector('[data-pj-play]');
+        if (p && p.getAttribute('aria-pressed') === 'false') return;
+        let kb = false; try { kb = !!w.querySelector(':focus-visible'); } catch (e) {}
+        if (w.matches(':hover') || kb) { w.__pjT = Date.now(); return; }
+        const r = w.getBoundingClientRect(); if (r.bottom < 0 || r.top > (window.innerHeight || 800)) return;
+        if (Date.now() - (w.__pjT || 0) < 5200) return;
+        this.pjGo(w, this.pjI(w) + 1, true);
+      });
+    });
+    this.pjInt = setInterval(tick, 700);
+    this.pjOff = () => { L.forEach((l) => document.removeEventListener(l[0], l[1], l[2])); clearInterval(this.pjInt); this.pjOn = false; };
+  }
+  pjI(w) { return Math.max(0, Array.from(w.querySelectorAll('.pj-slide')).findIndex((x) => x.classList.contains('on'))); }
+  pjGo(w, i, auto) {
+    const slides = Array.from(w.querySelectorAll('.pj-slide')), frames = Array.from(w.querySelectorAll('.pj-frame'));
+    const n = slides.length; if (!n) return;
+    i = ((i % n) + n) % n;
+    w.__pjT = Date.now();
+    if (i === this.pjI(w)) return;
+    slides.forEach((x, k) => { const on = k === i; x.classList.toggle('on', on); if (on) { x.removeAttribute('tabindex'); x.removeAttribute('aria-hidden'); } else { x.setAttribute('tabindex', '-1'); x.setAttribute('aria-hidden', 'true'); } });
+    frames.forEach((x, k) => { const on = k === i; x.classList.toggle('on', on); if (on) x.setAttribute('aria-current', 'true'); else x.removeAttribute('aria-current'); });
+    const pos = w.querySelector('[data-pj-pos]'); if (pos) pos.textContent = String(i + 1);
+    const sc = w.querySelector('.pj-screen');
+    if (sc) { sc.classList.remove('clack'); void sc.offsetWidth; sc.classList.add('clack'); clearTimeout(sc.__c); sc.__c = setTimeout(() => sc.classList.remove('clack'), 500); }
+    const roll = w.querySelector('.pj-roll'), f = frames[i];
+    if (roll && f) { const left = f.offsetLeft - (roll.clientWidth - f.offsetWidth) / 2; try { roll.scrollTo({ left: Math.max(0, left), behavior: auto ? 'auto' : 'smooth' }); } catch (e) { roll.scrollLeft = left; } }
+  }
+  // home2:pj:end
   shMuted() { try { return localStorage.getItem('gt-shelf-sound') === 'off'; } catch (e) { return !!this.shMute; } }
   shScan() {
     const muted = this.shMuted();
