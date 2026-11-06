@@ -212,7 +212,12 @@ html[data-theme="dark"] :is(.dark,.hero,.cp-hero,.blue,.catch) :is(img,video,can
 @media (prefers-reduced-motion:reduce){.gt-flood{display:none}}
 /* dark:end */
 /* tars:start */
-.hero-clip.sq{aspect-ratio:1/1}
+.hero-clip.tall{aspect-ratio:4/5}
+.hero-clip.tall img{width:100%;height:100%;object-fit:cover;display:block}
+.td-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 20px}
+.td-clip{position:relative;aspect-ratio:4/5;overflow:hidden;border:1px solid #10131C;background:#10131C}
+.td-clip img,.td-clip video{width:100%;height:100%;object-fit:cover;display:block}
+@media (max-width:640px){.td-grid{grid-template-columns:minmax(0,1fr)}}
 .tc-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
 .tc-list li{display:flex;flex-direction:column;gap:2px;font-size:16px;line-height:1.45}
 .tc-list b{font-family:'Titillium Web',system-ui,sans-serif;font-weight:700;color:#FFFFFF}
@@ -321,8 +326,8 @@ html{scroll-padding-top:60px}
 </div>
 </div>
 <figure class="stack g8" style="margin:0">
-<div class="hero-clip sq"><video src="/_blob/fdf6f60363a8ab3fde14db70d50611e0" poster="/_blob/469036e14107d5bbdb2d29a2e68f4e18" autoplay muted loop playsinline preload="auto" aria-label="Looping clip: the simulated TARS sits down, lifts both arms and snaps its claws while bouncing on its legs" data-gt-autoplay=""></video></div>
-<figcaption>FIG. 01 — CELEBRATE, ONE OF THE NEW MOVES, IN SIMULATION</figcaption>
+<div class="hero-clip tall"><img src="/_blob/72ff13df99d98450330d2613c1e1189a" alt="My printed TARS standing on a desk: four black textured slabs, the middle one holding the screen, the two outer legs angled out slightly" style="object-position:50% 60%"></div>
+<figcaption>FIG. 01 — MY PRINTED TARS, STANDING ON THE DESK</figcaption>
 </figure>
 </div>
 </section>
@@ -363,6 +368,32 @@ html{scroll-padding-top:60px}
 </div>
 </div>
 </div>
+</div>
+</div>
+</section>
+
+<section id="diary" class="sec rule-b">
+<div class="wrap">
+<div class="sec-head row" style="margin-bottom:28px">
+<div class="stack g12">
+<p class="kicker">The build diary</p>
+<h2 class="t-h2" style="font-size:clamp(26px,2.6vw,34px)">From the printer to the desk</h2>
+</div>
+<p class="meta muted">More photos and clips to come</p>
+</div>
+<div class="td-grid">
+<figure class="hb-step">
+<div class="td-clip"><video src="/_blob/94b677b0a82a52f4811c2704432d8206" poster="/_blob/d75a341ec591e2b3f319e7ee1e7cd0f6" autoplay muted loop playsinline preload="metadata" aria-label="Looping clip: the printer laying down black chassis parts for TARS, the print head moving over the bed" data-gt-autoplay=""></video><span class="hb-speed">2×</span></div>
+<figcaption class="stack g8" style="margin:0"><span class="hb-n">01</span><span class="t-h3" style="font-size:18px">Printing the chassis</span><span class="hb-txt">Chassis parts and small mounts printing in black, one plate at a time.</span></figcaption>
+</figure>
+<figure class="hb-step">
+<div class="td-clip"><img src="/_blob/07efeca890533de30b116b75ce5e152e" alt="My workbench seen from above: a laptop showing the TARS CAD and code, servos, the display board, a box of screws, a wrench and printed parts" loading="lazy"></div>
+<figcaption class="stack g8" style="margin:0"><span class="hb-n">02</span><span class="t-h3" style="font-size:18px">The workbench</span><span class="hb-txt">Servos, the display, a box of screws and the CAD open on the laptop, while it all comes together.</span></figcaption>
+</figure>
+<figure class="hb-step">
+<div class="td-clip"><img src="/_blob/72ff13df99d98450330d2613c1e1189a" alt="The finished printed TARS standing on the desk" loading="lazy" style="object-position:50% 60%"></div>
+<figcaption class="stack g8" style="margin:0"><span class="hb-n">03</span><span class="t-h3" style="font-size:18px">Standing on its own</span><span class="hb-txt">Printed and assembled: the screen in the middle slab, a leg on each side, ready for its first moves.</span></figcaption>
+</figure>
 </div>
 </div>
 </section>

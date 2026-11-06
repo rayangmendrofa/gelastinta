@@ -69,7 +69,7 @@ export const META = {
     desc: 'A hobby simulation: the published whole-brain model of the fruit fly, fed sugar, watched spike by spike, then run again with two neurons silenced.' },
   'Hobby-GestureMusic.dc.html': { title: 'Gesture Music: An Instrument You Play With Hand Signs — GelasTinta', img: '0d09cc6643b788a0dfb024a69f1939cd', fit: 'contain',
     desc: 'A webcam instrument: hand signs play notes, chords and drums, with a looper, live MIDI, a rhythm game and a 61-page handbook. Built with OpenCV and Google MediaPipe.' },
-  'Hobby-TARS.dc.html': { title: 'Building My Own TARS — GelasTinta', img: '469036e14107d5bbdb2d29a2e68f4e18', pos: 'centre',
+  'Hobby-TARS.dc.html': { title: 'Building My Own TARS — GelasTinta', img: '72ff13df99d98450330d2613c1e1189a', pos: 'centre',
     desc: 'A fan build of TARS from Interstellar, printed and assembled from the TARS-AI community’s open kit, then taught seven new moves in a MuJoCo simulation.' },
   'Talk-CacioPepe.dc.html': { title: 'The Art of Combining Cooking and Science — GelasTinta', img: '4f9fc858b3f233d90a5db49a21bd6b1f', date: '2025-12-23',
     desc: 'Why cacio e pepe turns clumpy, and the Ig Nobel-winning physics paper that fixes it with a little starch.' },
