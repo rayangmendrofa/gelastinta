@@ -218,6 +218,11 @@ html[data-theme="dark"] :is(.dark,.hero,.cp-hero,.blue,.catch) :is(img,video,can
 .td-clip{position:relative;aspect-ratio:4/5;overflow:hidden;border:1px solid #10131C;background:#10131C}
 .td-clip img,.td-clip video{width:100%;height:100%;object-fit:cover;display:block}
 @media (max-width:640px){.td-grid{grid-template-columns:minmax(0,1fr)}}
+.tc-faces{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.tc-faces figure{margin:0;display:flex;flex-direction:column;gap:8px}
+.tc-faces img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;border:1px solid #FFFFFF}
+.tc-faces figcaption{display:flex;flex-direction:column;gap:2px;margin:0;font-family:'Titillium Web',system-ui,sans-serif;font-size:13px;line-height:1.35;letter-spacing:0;color:#DDE3FF}
+.tc-faces b{color:#FFFFFF;font-size:15px}
 .tc-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
 .tc-list li{display:flex;flex-direction:column;gap:2px;font-size:16px;line-height:1.45}
 .tc-list b{font-family:'Titillium Web',system-ui,sans-serif;font-weight:700;color:#FFFFFF}
@@ -318,7 +323,7 @@ html{scroll-padding-top:60px}
 <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="Main.dc.html">Home</a></li><li><a href="Projects.dc.html">Projects</a></li><li aria-current="page">TARS</li></ol></nav>
 <p class="kicker">Hobby build — 2025</p>
 <h1 class="t-thesis">Building my own TARS</h1>
-<div class="chips"><span class="chip fill">2025</span><span class="chip">Personal project</span><span class="chip">3D printing</span><span class="chip">Fan build</span><span class="chip">Simulation</span></div>
+<div class="chips"><span class="chip fill">2025</span><span class="chip">TARS-AI V2</span><span class="chip">Personal project</span><span class="chip">3D printing</span><span class="chip">Fan build</span><span class="chip">Simulation</span></div>
 <p class="lead" style="max-width:30em">TARS, the walking slab of a robot from <i>Interstellar</i>, printed and put together from the TARS-AI community’s open build kit. Then I taught a simulated copy seven new moves.</p>
 <div class="chips" style="gap:12px">
 <a class="btn" href="#moves">See the new moves ↓</a>
@@ -341,7 +346,7 @@ html{scroll-padding-top:60px}
 <div class="prose stack g16" style="font-size:18px;line-height:1.65">
 <p>TARS is the robot in Christopher Nolan’s <i>Interstellar</i> (2014): four tall slabs that walk, roll and crack jokes, with a humour setting the crew can turn down. It is one of the few film robots that looks like it could be built, and the TARS-AI community has done exactly that.</p>
 <p>TARS-AI is an open, fan-made recreation: printable parts, a Raspberry Pi as the brain, servos driven by a PCA9685 servo board, a screen for a face, and software that listens for a wake word, answers in a TARS-like voice and plays its moves. Everything is shared on GitHub with a step-by-step build guide.</p>
-<p>In 2025 I printed the parts and followed that build kit, piece by piece. Once it stood, I wanted to give it more personality than the moves it ships with, without risking a fall off the desk while I experimented. So the new moves start life in a simulation.</p>
+<p>In 2025 I printed the parts for the V2 version and followed that build kit, piece by piece. Once it stood, I wanted to give it more personality than the moves it ships with, without risking a fall off the desk while I experimented. So the new moves start life in a simulation.</p>
 </div>
 </div>
 <div class="stack g16">
@@ -354,10 +359,15 @@ html{scroll-padding-top:60px}
 </div>
 <div class="credit shout">
 <p class="kicker" style="color:#DDE3FF">Shoutout</p>
-<p class="t-h3" style="font-size:20px;color:#FFFFFF">The people behind TARS-AI</p>
+<p class="t-h3" style="font-size:20px;color:#FFFFFF">The people behind TARS</p>
+<div class="tc-faces">
+<figure><img src="/_blob/930a2485490d5dd3c5ea7ac2a2269037" alt="Black and white portrait of Christopher Nolan" loading="lazy"><figcaption><b>Christopher Nolan</b><span>wrote and directed <i>Interstellar</i>; TARS’s original puppet design</span></figcaption></figure>
+<figure><img src="/_blob/100bae49bbd7ea100efd8bbf018d7cf4" alt="Black and white portrait of Nathan Crowley" loading="lazy"><figcaption><b>Nathan Crowley</b><span>the film’s production designer; TARS’s original puppet design</span></figcaption></figure>
+<figure><img src="/_blob/51bfc17f856f526a4ad524e8953b1114" alt="Black and white portrait of Charlie Diaz" loading="lazy"><figcaption><b>Charlie Diaz</b><span>the miniaturized CAD, and the original files and scripts</span></figcaption></figure>
+</div>
+<p class="meta" style="color:#DDE3FF;font-size:10px;letter-spacing:.06em;margin-top:-4px">CHARLIE DIAZ PHOTO: HACKSTER.IO</p>
 <ul class="tc-list">
-<li><b>Charlie Diaz</b><span>the miniaturized CAD, and the original files and scripts</span></li>
-<li><b>Charles-Olivier Dion (AtomikSpace)</b><span>much of the robot’s software, the movement code included</span></li>
+<li><b>Charles-Olivier Dion (AtomikSpace)</b><span>much of the robot’s software</span></li>
 <li><b>Exploding Cat</b><span>AME, whose module engine and memory functions TARS-AI builds on (MIT licence)</span></li>
 <li><b>The TARS-AI Community</b><span>modifications, testing and the build guide, with thanks in its wiki to @gptars, @poboisvert, @pyrater, @alexW and @latisha</span></li>
 </ul>
@@ -420,7 +430,7 @@ html{scroll-padding-top:60px}
 <div class="stack g16">
 <h3 class="t-h3">How the simulation works</h3>
 <div class="prose stack g16" style="font-size:17px;line-height:1.65">
-<p>The simulated TARS is built part by part from the community’s CAD in MuJoCo, a physics engine: every printed part has its own shape, the legs ride on the sprung suspension, and the nine servo channels (height, two legs, and main arm, forearm and claw on each side) move at the real servos’ speed.</p>
+<p>The simulated TARS is built part by part from the community’s V2 CAD in MuJoCo, the same version as mine, a physics engine: every printed part has its own shape, the legs ride on the sprung suspension, and the nine servo channels (height, two legs, and main arm, forearm and claw on each side) move at the real servos’ speed.</p>
 <p>It replays the robot’s own moves exactly as its servo code runs them, one PWM tick at a time. The new moves use the same building blocks: set the legs, set the arms, wait.</p>
 <p>Each move has one number to tune: how big it is. A bigger move reads better from across the room, but it can tip TARS over or shuffle it across the desk. So a script tries every size from 0.6 to 2 times the design, and keeps the biggest one that leaves TARS upright (under 15° of tilt), in place (under 15 mm of drift) and facing the same way (under 5° of turn). It stays one notch back from any size that falls over.</p>
 </div>
