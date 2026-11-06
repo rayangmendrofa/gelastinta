@@ -11,6 +11,7 @@
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,600;0,700;1,400&amp;family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=STIX+Two+Text:400,400i&amp;display=swap" rel="stylesheet" data-math-font>
 <style>
 *{box-sizing:border-box}
 body{margin:0;background:#E6F3F7;color:#0B232D;font-family:'Titillium Web',system-ui,sans-serif;font-size:18px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
@@ -194,7 +195,7 @@ figcaption{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;line-
 .more-body p{font-size:17px !important;line-height:1.6 !important}
 .viz-more{padding:16px 24px 20px;border-top:1px solid #CDDADF}
 .eq-wrap{background:#F9F7F4;border:1px solid #0B232D;padding:28px 24px;display:flex;flex-direction:column;gap:18px;align-items:center}
-.eq{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 8px;font-family:'Titillium Web',system-ui,sans-serif;font-style:italic;font-size:clamp(22px,2.6vw,32px);line-height:1.2;color:#0B232D}
+.eq{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 8px;font-family:'Cambria Math',Cambria,'STIX Two Text','Times New Roman',serif;font-style:italic;font-size:clamp(22px,2.6vw,32px);line-height:1.2;color:#0B232D}
 .eq .up{font-style:normal}
 .eq .frac{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle}
 .eq .frac>span:first-child{border-bottom:1.5px solid currentColor;padding:0 4px 2px}
@@ -460,6 +461,9 @@ html{scroll-padding-top:60px}
 .crumbs [aria-current]{max-width:18ch}
 }
 /* nav2:end */
+/* math:start */
+.m{font-family:'Cambria Math',Cambria,'STIX Two Text','Times New Roman',serif;font-size:1.08em;white-space:nowrap}
+/* math:end */
 </style>
 </helmet>
 <div style="min-height:100vh" data-gt-root="">
@@ -522,7 +526,7 @@ html{scroll-padding-top:60px}
 <div class="col">
 <p class="kicker">01</p>
 <h2 class="t-h2" style="margin:12px 0 18px">Where does the equation come from?</h2>
-<p>Start with Newton: force equals mass times acceleration. Now imagine chopping a fluid into millions of tiny cubes and writing F = ma for every one of them. That is all Navier–Stokes really is. Claude-Louis Navier wrote the first version in 1822, and George Stokes put it on firmer footing in 1845. Two hundred years later, it is still the equation behind every CFD contour plot I have ever made.</p>
+<p>Start with Newton: force equals mass times acceleration. Now imagine chopping a fluid into millions of tiny cubes and writing <span class="m">F = ma</span> for every one of them. That is all Navier–Stokes really is. Claude-Louis Navier wrote the first version in 1822, and George Stokes put it on firmer footing in 1845. Two hundred years later, it is still the equation behind every CFD contour plot I have ever made.</p>
 </div>
 <figure class="col-wide wfig" style="margin-top:32px">
 <img src="/_blob/0d5d09641aa2bc0a148ce1c479da64a2" alt="Portraits of Isaac Newton (1642–1727), Claude-Louis Navier (1785–1836) and Sir George Stokes (1819–1903)" loading="lazy" style="max-width:760px;margin:0 auto">
@@ -619,11 +623,11 @@ html{scroll-padding-top:60px}
 <p>This is the part that confuses people. If the speed becomes infinite, surely the energy does too? Not if the fast region shrinks quickly enough. Kinetic energy is roughly speed² × the amount of fluid that is moving. In the new proof, the spinning core gets faster, but it also gets thinner so quickly that the energy inside it actually goes down.</p>
 </div>
 <div class="col-wide ef" style="margin-top:24px">
-<div><span class="meta" style="color:#9A7444">Speed</span><b style="color:#9A7444">↑ grows</b><p>Roughly like 1/√(time left). Infinite at the blowup.</p></div>
-<div><span class="meta" style="color:#2B44C8">Size of the core</span><b style="color:#2B44C8">↓ shrinks faster</b><p>Its volume shrinks roughly like (time left)<sup>1.5</sup>.</p></div>
-<div><span class="meta" style="color:#064F6E">Energy ≈ speed² × volume</span><b style="color:#064F6E">↓ shrinks</b><p>Roughly like √(time left). So the total stays bounded.</p></div>
+<div><span class="meta" style="color:#9A7444">Speed</span><b style="color:#9A7444">↑ grows</b><p>Roughly like <span class="m">1/√(time left)</span>. Infinite at the blowup.</p></div>
+<div><span class="meta" style="color:#2B44C8">Size of the core</span><b style="color:#2B44C8">↓ shrinks faster</b><p>Its volume shrinks roughly like <span class="m">(time left)<sup>1.5</sup></span>.</p></div>
+<div><span class="meta" style="color:#064F6E">Energy ≈ speed² × volume</span><b style="color:#064F6E">↓ shrinks</b><p>Roughly like <span class="m">√(time left)</span>. So the total stays bounded.</p></div>
 </div>
-<div class="col" style="margin-top:20px"><button type="button" class="more" aria-expanded="{{ex.b.aria}}" onClick="{{ex.b.toggle}}"><span class="more-ico" aria-hidden="true">{{ex.b.ico}}</span>{{ex.b.text}} the science</button><sc-if value="{{ex.b.open}}"><div class="more-body"><p>With τ = 1 − t, a speed of order τ<sup>−1/2</sup> gives speed² of order τ<sup>−1</sup>. A core of radius τ<sup>1/2</sup> and height τ<sup>1/2</sup> has volume of order τ<sup>3/2</sup>. Multiply them and the core’s energy behaves like τ<sup>1/2</sup>, which goes to zero. The real construction has a small correction exponent h (see Chart A below), but the logic is the same. This is also why the Millennium problem insists on finite energy: blowups that need infinite energy from the start are considered cheating.</p></div></sc-if></div>
+<div class="col" style="margin-top:20px"><button type="button" class="more" aria-expanded="{{ex.b.aria}}" onClick="{{ex.b.toggle}}"><span class="more-ico" aria-hidden="true">{{ex.b.ico}}</span>{{ex.b.text}} the science</button><sc-if value="{{ex.b.open}}"><div class="more-body"><p>With <span class="m">τ = 1 − t</span>, a speed of order <span class="m">τ<sup>−1/2</sup></span> gives speed² of order <span class="m">τ<sup>−1</sup></span>. A core of radius <span class="m">τ<sup>1/2</sup></span> and height <span class="m">τ<sup>1/2</sup></span> has volume of order <span class="m">τ<sup>3/2</sup></span>. Multiply them and the core’s energy behaves like <span class="m">τ<sup>1/2</sup></span>, which goes to zero. The real construction has a small correction exponent h (see Chart A below), but the logic is the same. This is also why the Millennium problem insists on finite energy: blowups that need infinite energy from the start are considered cheating.</p></div></sc-if></div>
 <div class="col-wide meme-sm" style="margin-top:40px">
 <img src="/_blob/0025e893f0b25bac95949ee4edaeb83f" alt="Animated meme: a bearded man gesturing enthusiastically at a whiteboard covered in notes" loading="lazy">
 <div class="stack g8"><p class="kicker" style="font-size:11px">Explaining blowup at a whiteboard, basically</p><p class="small">“The speed goes to infinity, but the energy doesn’t, because the tornado gets skinny faster than it gets fast.”</p></div>
@@ -663,7 +667,7 @@ html{scroll-padding-top:60px}
 </div>
 <p class="small">{{note}}</p>
 </div>
-<div class="viz-more"><button type="button" class="more" aria-expanded="{{ex.a.aria}}" onClick="{{ex.a.toggle}}"><span class="more-ico" aria-hidden="true">{{ex.a.ico}}</span>{{ex.a.text}} the science</button><sc-if value="{{ex.a.open}}"><div class="more-body"><p>Writing τ = 1 − t for the time left, the paper’s core has radius of order τ<sup>1/2</sup> and height of order τ<sup>1/2−h</sup>, with h a small fixed number below 1/100, so it becomes an ever more slender column. Its swirl and axial speeds grow like τ<sup>−1/2−h</sup>, while the energy held in the core shrinks like τ<sup>1/2−3h</sup>. The chart uses h = 0.005 and drops the constants, so it shows the trends, not exact values.</p>
+<div class="viz-more"><button type="button" class="more" aria-expanded="{{ex.a.aria}}" onClick="{{ex.a.toggle}}"><span class="more-ico" aria-hidden="true">{{ex.a.ico}}</span>{{ex.a.text}} the science</button><sc-if value="{{ex.a.open}}"><div class="more-body"><p>Writing <span class="m">τ = 1 − t</span> for the time left, the paper’s core has radius of order <span class="m">τ<sup>1/2</sup></span> and height of order <span class="m">τ<sup>1/2−h</sup></span>, with h a small fixed number below 1/100, so it becomes an ever more slender column. Its swirl and axial speeds grow like <span class="m">τ<sup>−1/2−h</sup></span>, while the energy held in the core shrinks like <span class="m">τ<sup>1/2−3h</sup></span>. The chart uses <span class="m">h = 0.005</span> and drops the constants, so it shows the trends, not exact values.</p>
 <div class="paper-fig"><img src="/_blob/e33dc9ad41c7f26b0639b80928caec9d" alt="Paper Figure 1: a spiralling vortex core at three successive times, shrinking and tightening as the blowup time approaches" loading="lazy"></div>
 <p class="fig-cap"><b>Paper Fig. 1.</b> The collapsing vortex at three moments before the blowup.</p>
 <p>The “ripples” are oscillatory pulses arranged in rings in the annulus around the core. Their nonlinear momentum flux supplies exactly the push the collapsing vortex needs; further corrections clean up the remaining errors, leaving a force that is smooth (and confined to a bounded region) even at the blowup time.</p>
@@ -797,7 +801,7 @@ html{scroll-padding-top:60px}
 <h2 class="t-h2" style="margin:12px 0 12px">TLDR?</h2>
 <p style="font-style:italic;font-size:22px">From plughole to press release, in five steps...</p>
 <ol class="steps" style="margin-top:20px">
-<li><b>1</b>Navier–Stokes is F = ma for fluids. A squared “transport” term fights against viscosity, and nobody knew if it could ever win completely.</li>
+<li><b>1</b>Navier–Stokes is <span class="m">F = ma</span> for fluids. A squared “transport” term fights against viscosity, and nobody knew if it could ever win completely.</li>
 <li><b>2</b>A squared growth rate can hit infinity at a fixed time (y = 1/(1 − t)). That is what “blowup” means.</li>
 <li><b>3</b>An AI system at OpenAI built a smoothly pushed vortex whose speed becomes infinite in finite time while its energy stays bounded: Millennium statements C and D.</li>
 <li><b style="color:#7C6F5E">4</b>Buckmaster and Alpöge questioned whether their unpublished Euler work fed into it. OpenAI denies it. Accounts of the private talks differ.</li>

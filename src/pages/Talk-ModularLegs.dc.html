@@ -11,6 +11,7 @@
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,600;0,700;1,400&amp;family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=STIX+Two+Text:400,400i&amp;display=swap" rel="stylesheet" data-math-font>
 <style>
 *{box-sizing:border-box}
 body{margin:0;background:#FDEFE2;color:#161E22;font-family:'Titillium Web',system-ui,sans-serif;font-size:18px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
@@ -194,7 +195,7 @@ figcaption{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;line-
 .more-body p{font-size:17px !important;line-height:1.6 !important}
 .viz-more{padding:16px 24px 20px;border-top:1px solid #CDDADF}
 .eq-wrap{background:#F7FBFC;border:1px solid #161E22;padding:28px 24px;display:flex;flex-direction:column;gap:18px;align-items:center}
-.eq{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 8px;font-family:'Titillium Web',system-ui,sans-serif;font-style:italic;font-size:clamp(22px,2.6vw,32px);line-height:1.2;color:#161E22}
+.eq{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 8px;font-family:'Cambria Math',Cambria,'STIX Two Text','Times New Roman',serif;font-style:italic;font-size:clamp(22px,2.6vw,32px);line-height:1.2;color:#161E22}
 .eq .up{font-style:normal}
 .eq .frac{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle}
 .eq .frac>span:first-child{border-bottom:1.5px solid currentColor;padding:0 4px 2px}
@@ -426,6 +427,9 @@ html{scroll-padding-top:60px}
 .crumbs [aria-current]{max-width:18ch}
 }
 /* nav2:end */
+/* math:start */
+.m{font-family:'Cambria Math',Cambria,'STIX Two Text','Times New Roman',serif;font-size:1.08em;white-space:nowrap}
+/* math:end */
 </style>
 </helmet>
 <div style="min-height:100vh" data-gt-root="">
@@ -543,7 +547,7 @@ html{scroll-padding-top:60px}
 </div>
 <p class="small" aria-live="polite">{{n.note}}</p>
 </div>
-<div class="viz-foot"><span class="meta muted" style="font-size:12px">Log scale: each step along the bar is ×10. Two modules: counted in the paper. Three to five: the paper’s estimate, 864<sup>N−1</sup>/N.</span></div>
+<div class="viz-foot"><span class="meta muted" style="font-size:12px">Log scale: each step along the bar is ×10. Two modules: counted in the paper. Three to five: the paper’s estimate, <span class="m">864<sup>N−1</sup></span>/N.</span></div>
 </div>
 <div class="col" style="margin-top:40px">
 <p class="pull">You can’t test a hundred billion robots. So the team let a computer choose.</p>

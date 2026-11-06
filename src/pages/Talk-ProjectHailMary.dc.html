@@ -11,6 +11,7 @@
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,600;0,700;1,400&amp;family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=STIX+Two+Text:400,400i&amp;display=swap" rel="stylesheet" data-math-font>
 <style>
 *{box-sizing:border-box}
 body{margin:0;background:#FBEAE7;color:#29120F;font-family:'Titillium Web',system-ui,sans-serif;font-size:18px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
@@ -205,7 +206,7 @@ figcaption{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;line-
 .more-body p{font-size:17px !important;line-height:1.6 !important}
 .viz-more{padding:16px 24px 20px;border-top:1px solid #DFD0CD}
 .eq-wrap{background:#FEF8F3;border:1px solid #29120F;padding:28px 24px;display:flex;flex-direction:column;gap:18px;align-items:center}
-.eq{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 8px;font-family:'Titillium Web',system-ui,sans-serif;font-style:italic;font-size:clamp(22px,2.6vw,32px);line-height:1.2;color:#29120F}
+.eq{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 8px;font-family:'Cambria Math',Cambria,'STIX Two Text','Times New Roman',serif;font-style:italic;font-size:clamp(22px,2.6vw,32px);line-height:1.2;color:#29120F}
 .eq .up{font-style:normal}
 .eq .frac{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle}
 .eq .frac>span:first-child{border-bottom:1.5px solid currentColor;padding:0 4px 2px}
@@ -544,6 +545,9 @@ html{scroll-padding-top:60px}
 .crumbs [aria-current]{max-width:18ch}
 }
 /* nav2:end */
+/* math:start */
+.m{font-family:'Cambria Math',Cambria,'STIX Two Text','Times New Roman',serif;font-size:1.08em;white-space:nowrap}
+/* math:end */
 </style>
 </helmet>
 <div style="min-height:100vh" data-gt-root="">
@@ -669,7 +673,7 @@ html{scroll-padding-top:60px}
 </div>
 <p class="small">{{spin.note}}</p>
 </div>
-<div class="viz-more"><button type="button" class="more" aria-expanded="{{ex.c.aria}}" onClick="{{ex.c.toggle}}"><span class="more-ico" aria-hidden="true">{{ex.c.ico}}</span>{{ex.c.text}} the science</button><sc-if value="{{ex.c.open}}"><div class="more-body"><p>The push needed to keep something moving in a circle gives an acceleration of a = ω²r, where ω is the spin rate in radians per second and r is the distance from the centre. Grace’s screen reads a pitch rate of 20.71° per second, which is 0.361 rad/s, or one turn every 17.4 seconds (3.45 rpm). With a 3 : 1 mass ratio, the centre of mass sits 26 m from the rear half and 78 m from the crew compartment. So a = 0.361² × 78 ≈ 10.2 m/s², about 1.04 g, within a few percent of the 1.00 g the book reports.</p>
+<div class="viz-more"><button type="button" class="more" aria-expanded="{{ex.c.aria}}" onClick="{{ex.c.toggle}}"><span class="more-ico" aria-hidden="true">{{ex.c.ico}}</span>{{ex.c.text}} the science</button><sc-if value="{{ex.c.open}}"><div class="more-body"><p>The push needed to keep something moving in a circle gives an acceleration of <span class="m">a = ω²r</span>, where ω is the spin rate in radians per second and r is the distance from the centre. Grace’s screen reads a pitch rate of 20.71° per second, which is 0.361 rad/s, or one turn every 17.4 seconds (3.45 rpm). With a 3 : 1 mass ratio, the centre of mass sits 26 m from the rear half and 78 m from the crew compartment. So <span class="m">a = 0.361² × 78 ≈ 10.2 m/s²</span>, about 1.04 g, within a few percent of the 1.00 g the book reports.</p>
 <p>Why such a long cable? For the same gravity, a bigger radius means a slower spin. Slow spins keep the Coriolis effect gentle (the odd sideways tug you feel when you move in a rotating room), and the difference between your head and feet is only about 2 %. Research on rotating rooms suggests most people adapt to a few turns per minute, which is exactly where the Hail Mary sits. The book also uses conservation of angular momentum: reel the two halves back together and the ship spins faster, just like a figure skater pulling in their arms.</p>
 <p>For Rocky to feel at home (Erid’s gravity is 20.48 m/s²), the same ship would need to spin at about 4.9 rpm.</p></div></sc-if></div>
 </div>

@@ -38,6 +38,11 @@ ${email ? `<p>Signed in as <b>${esc(email)}</b>.</p>${owned.length ? `<p>Your pa
 <p class="muted">Not bought a pack yet? <a href="/products/#packs">See the study packs</a>.</p>`}`)
 }
 
+// Maths in Cambria Math (Windows and Office); other devices fall back to Cambria, then STIX Two Text.
+// Added when the pack is served, so the packs need no rebuild; the pack source (style.css --f-math) matches.
+const MATH_HEAD = `<link href="https://fonts.googleapis.com/css?family=STIX+Two+Text:400,400i&amp;display=swap" rel="stylesheet"><style data-gt-math>.eq,.m,var{font-family:'Cambria Math',Cambria,'STIX Two Text','Times New Roman',serif}</style>`
+const withMath = (h: string) => (h.includes('data-gt-math') ? h : h.replace('</head>', MATH_HEAD + '</head>'))
+
 export default async (req: Request) => {
   const url = new URL(req.url)
   const parts = url.pathname.split('/').filter(Boolean) // ['packs', ...]
@@ -74,12 +79,12 @@ export default async (req: Request) => {
   const rec = email ? await getBuyer(email) : null
   if (owns(rec, a)) {
     const html = hasKey() ? fullHtml(a) : null
-    if (html) return send(req, html.replace("licensee: '__LICENSEE__'", `licensee: '${jsText(rec.name || rec.email) || 'Buyer'}'`))
+    if (html) return send(req, withMath(html).replace("licensee: '__LICENSEE__'", `licensee: '${jsText(rec.name || rec.email) || 'Buyer'}'`))
     console.error('PACKS_KEY missing or wrong: serving the sample to a buyer')
   }
   const next = encodeURIComponent(`/packs/${a}/`)
   const sample = zlib.gunzipSync(sampleGz(a)).toString('utf8').split('__GT_NEXT__').join(next)
-  return send(req, sample)
+  return send(req, withMath(sample))
 }
 
 export const config: Config = {
