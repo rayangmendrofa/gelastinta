@@ -10,6 +10,7 @@
 <x-dc>
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css?family=Caveat:500,700&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,600;0,700;1,400&amp;family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box}
@@ -171,33 +172,61 @@ html[data-theme="dark"] .xp-t img{filter:url(#xp-duo)}
 .nav{gap:0 18px}
 .portrait{max-width:360px}
 }
-.gal{display:flex;flex-direction:column;gap:16px}
-.gal-stage{position:relative;aspect-ratio:16/10;background:#0B0D14;border:1px solid #10131C;overflow:hidden}
-.gal-bg{position:absolute;inset:-40px;width:calc(100% + 80px);height:calc(100% + 80px);max-width:none;object-fit:cover;filter:blur(28px) brightness(.45);transform:scale(1.05)}
-.gal-img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
-.gal-cap{position:absolute;left:0;right:0;bottom:0;padding:72px 32px 26px;background:linear-gradient(180deg,rgba(11,13,20,0) 0%,rgba(11,13,20,.78) 42%,rgba(11,13,20,.94) 100%);color:#FFFFFF;display:flex;flex-direction:column;gap:6px}
-.gal-cap .kicker{color:#8DB0DA}
-.gal-cap .t-h3{font-size:clamp(20px,2vw,26px);color:#FFFFFF}
-.gal-cap p.c{font-size:18px;line-height:1.5;color:#E3E6EE;max-width:60ch}
-.gal-nav{position:absolute;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:999px;border:1px solid rgba(255,255,255,.55);background:rgba(11,13,20,.55);color:#FFFFFF;display:flex;align-items:center;justify-content:center;cursor:pointer}
-.gal-nav:hover{background:#064F6E;border-color:#064F6E}
-.gal-nav:focus-visible,.gal-thumb:focus-visible{outline:3px solid #8DB0DA;outline-offset:2px}
-.gal-nav.prev{left:16px}.gal-nav.next{right:16px}
-.gal-count{position:absolute;top:16px;right:16px;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.08em;color:#FFFFFF;background:rgba(11,13,20,.7);padding:6px 10px}
-.gal-thumbs{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:8px}
-.gal-thumb{padding:0;border:1px solid #C9CED8;background:#FFFFFF;aspect-ratio:4/3;overflow:hidden;cursor:pointer;opacity:.62;transition:opacity .15s}
-.gal-thumb:hover{opacity:1}
-.gal-thumb.on{opacity:1;border:3px solid #064F6E}
-.gal-thumb img{width:100%;height:100%;object-fit:cover}
-@media (max-width:960px){.gal-thumbs{grid-template-columns:repeat(5,minmax(0,1fr))}}
+/* polaroid:start */
+.pw{position:relative;padding:44px 28px 36px;background:#F6F4EE radial-gradient(rgba(16,19,28,.13) 1px,transparent 1.2px) 0 0/18px 18px;border:1px solid #C9CED8}
+.pw-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:44px 30px;list-style:none;margin:0;padding:0}
+.pol{--r:-2deg;--tr:-4deg;position:relative;display:flex;flex-direction:column;width:100%;margin:0;padding:12px 12px 0;border:0;background:#FFFFFF;color:#10131C;text-align:left;cursor:zoom-in;box-shadow:0 1px 2px rgba(16,19,28,.22),0 12px 24px rgba(16,19,28,.13);transform:rotate(var(--r));transition:transform .28s cubic-bezier(.2,.8,.2,1),box-shadow .28s}
+.pw-grid li:nth-child(7n+2) .pol{--r:1.6deg;--tr:3deg}
+.pw-grid li:nth-child(7n+3) .pol{--r:-1deg;--tr:-2deg}
+.pw-grid li:nth-child(7n+4) .pol{--r:2.6deg;--tr:5deg}
+.pw-grid li:nth-child(7n+5) .pol{--r:-2.8deg;--tr:-1deg}
+.pw-grid li:nth-child(7n+6) .pol{--r:.8deg;--tr:-5deg}
+.pw-grid li:nth-child(7n+7) .pol{--r:-.6deg;--tr:4deg}
+.pol::before{content:"";position:absolute;top:-13px;left:50%;width:84px;height:26px;margin-left:-42px;background:rgba(233,224,196,.82);box-shadow:0 1px 2px rgba(16,19,28,.12);transform:rotate(var(--tr));z-index:1}
+.pol:hover,.pol:focus-visible{transform:rotate(0) translateY(-8px) scale(1.04);box-shadow:0 2px 4px rgba(16,19,28,.2),0 22px 40px rgba(16,19,28,.22);z-index:2}
+.pol:focus-visible{outline:3px solid #064F6E;outline-offset:4px}
+.pol-img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;background:#10131C}
+.pol-cap{display:flex;flex-direction:column;gap:2px;padding:12px 4px 16px;min-height:74px}
+.pol-cap b{font-family:'Caveat','Segoe Print','Bradley Hand',cursive;font-weight:700;font-size:25px;line-height:1.05;color:#10131C}
+.pol-cap span{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#5B6273}
+.pw-foot{display:flex;justify-content:center;margin-top:40px}
+.pw-more{min-height:44px;padding:10px 20px;border:1px solid #10131C;background:#FFFFFF;color:#10131C;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+.pw-more:hover{background:#10131C;color:#FFFFFF}
+.pw-more:focus-visible{outline:3px solid #064F6E;outline-offset:3px}
+.pw-box{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;padding:24px}
+.pw-scrim{position:absolute;inset:0;border:0;padding:0;background:rgba(11,13,20,.9);cursor:zoom-out}
+.pw-frame{position:relative;display:flex;flex-direction:column;max-width:min(1100px,100%);max-height:100%;margin:0;padding:16px 16px 0;background:#FFFFFF;box-shadow:0 30px 80px rgba(0,0,0,.5);transform:rotate(-.6deg)}
+.pw-frame img{display:block;max-width:100%;max-height:calc(100vh - 230px);width:auto;height:auto;margin:0 auto;object-fit:contain;background:#10131C}
+.pw-frame figcaption{display:flex;flex-direction:column;gap:4px;padding:14px 6px 18px;max-width:70ch}
+.pw-frame figcaption b{font-family:'Caveat','Segoe Print','Bradley Hand',cursive;font-weight:700;font-size:32px;line-height:1}
+.pw-frame figcaption span{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#5B6273}
+.pw-frame figcaption p{margin:0;font-family:'Titillium Web',system-ui,sans-serif;font-size:17px;line-height:1.5;color:#3A4152}
+.pw-btn{position:absolute;width:48px;height:48px;border-radius:999px;border:1px solid rgba(255,255,255,.6);background:rgba(11,13,20,.6);color:#FFFFFF;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2}
+.pw-btn:hover{background:#064F6E;border-color:#064F6E}
+.pw-btn:focus-visible{outline:3px solid #8DB0DA;outline-offset:2px}
+.pw-prev{left:20px;top:50%;margin-top:-24px}.pw-next{right:20px;top:50%;margin-top:-24px}.pw-close{right:20px;top:20px}
+.pw-n{position:absolute;left:20px;top:28px;z-index:2;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.08em;color:#FFFFFF}
+html[data-theme="dark"] .pw,html[data-theme="dark"] .pw-box{filter:invert(1) hue-rotate(180deg)}
+html[data-theme="dark"] .pw img,html[data-theme="dark"] .pw-box img{filter:none}
 @media (max-width:640px){
-.gal-stage{aspect-ratio:4/5}
-.gal-cap{padding:56px 18px 18px}
-.gal-cap p.c{font-size:16px}
-.gal-nav{width:44px;height:44px}
-.gal-nav.prev{left:10px}.gal-nav.next{right:10px}
-.gal-thumbs{grid-template-columns:repeat(4,minmax(0,1fr))}
+.pw{padding:32px 14px 26px;margin:0 -4px}
+.pw-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 16px}
+.pol{padding:7px 7px 0}
+.pol::before{width:56px;height:20px;margin-left:-28px;top:-10px}
+.pol-cap{padding:8px 2px 10px;min-height:58px}
+.pol-cap b{font-size:20px}
+.pol-cap span{font-size:9px;letter-spacing:.08em}
+.pw-box{padding:12px}
+.pw-frame{padding:10px 10px 0}
+.pw-frame img{max-height:calc(100vh - 260px)}
+.pw-frame figcaption b{font-size:26px}
+.pw-frame figcaption p{font-size:15px}
+.pw-prev,.pw-next{top:auto;bottom:16px;margin-top:0}
+.pw-prev{left:16px}.pw-next{right:16px}
+.pw-close{right:12px;top:12px}.pw-n{left:14px;top:22px}
 }
+@media (prefers-reduced-motion:reduce){.pol{transition:none}.pol:hover,.pol:focus-visible{transform:rotate(var(--r))}}
+/* polaroid:end */
 /* wadasite:start */.site-foot{position:relative}
 .site-foot::before{content:"";position:absolute;left:0;right:0;top:-6px;height:6px;background:linear-gradient(90deg,#4F4086 0.0% 25.0%,#5A82B3 25.0% 50.0%,#10131C 50.0% 75.0%,#064F6E 75.0% 100.0%)}
 ::selection{background:#5A82B3;color:#10131C}
@@ -431,25 +460,26 @@ html{scroll-padding-top:60px}
 </div>
 <p class="intro muted" style="max-width:40ch">Lab benches, grip tests, graduations, and the clubs and people in between, at Exeter and UCL.</p>
 </div>
-<div class="gal" role="region" aria-roledescription="carousel" aria-label="Activities slideshow">
-<figure class="gal-stage">
-<img class="gal-bg" src="{{cur.src}}" alt="" aria-hidden="true">
-<img class="gal-img" src="{{cur.src}}" alt="{{cur.alt}}">
-<span class="gal-count">{{cur.n}} / {{total}}</span>
-<button type="button" class="gal-nav prev" aria-label="Previous photo" onClick="{{prev}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></button>
-<button type="button" class="gal-nav next" aria-label="Next photo" onClick="{{next}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"></path></svg></button>
-<figcaption class="gal-cap" aria-live="polite">
-<span class="kicker">{{cur.k}}</span>
-<span class="t-h3">{{cur.t}}</span>
-<p class="c">{{cur.c}}</p>
-</figcaption>
-</figure>
-<div class="gal-thumbs" aria-label="Choose a photo">
-<sc-for list="{{shots}}" as="it" hint-placeholder-count="20">
-<button type="button" class="gal-thumb {{it.on}}" aria-label="{{it.label}}" aria-current="{{it.aria}}" onClick="{{it.pick}}"><img src="{{it.src}}" alt="" loading="lazy"></button>
+<!-- polaroid:html:start -->
+<div class="pw" aria-label="Photo wall">
+<ul class="pw-grid">
+<sc-for list="{{wall}}" as="it" hint-placeholder-count="12">
+<li><button type="button" class="pol" data-pol="{{it.i}}" aria-label="{{it.label}}" onClick="{{it.open}}"><img class="pol-img" src="{{it.src}}" alt="{{it.alt}}" loading="lazy"><span class="pol-cap"><b>{{it.t}}</b><span>{{it.k}}</span></span></button></li>
 </sc-for>
+</ul>
+<sc-if value="{{more.show}}"><div class="pw-foot"><button type="button" class="pw-more" aria-expanded="{{more.aria}}" onClick="{{more.toggle}}">{{more.text}}</button></div></sc-if>
 </div>
+<sc-if value="{{box.open}}">
+<div class="pw-box" role="dialog" aria-modal="true" aria-label="{{box.t}}">
+<button type="button" class="pw-scrim" aria-label="Close photo" tabindex="-1" onClick="{{box.close}}"></button>
+<span class="pw-n">{{box.n}} / {{total}}</span>
+<button type="button" class="pw-btn pw-close" aria-label="Close photo" onClick="{{box.close}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+<button type="button" class="pw-btn pw-prev" aria-label="Previous photo" onClick="{{box.prev}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></button>
+<button type="button" class="pw-btn pw-next" aria-label="Next photo" onClick="{{box.next}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"></path></svg></button>
+<figure class="pw-frame"><img src="{{box.src}}" alt="{{box.alt}}"><figcaption><span>{{box.k}}</span><b>{{box.t}}</b><p>{{box.c}}</p></figcaption></figure>
 </div>
+</sc-if>
+<!-- polaroid:html:end -->
 </div>
 </section>
 
@@ -521,17 +551,15 @@ class Component extends DCLogic {
       const panel = root.querySelector('[role="tabpanel"]');
       if (panel) A.animate(panel.children, { opacity: { from: 0 }, x: { from: 18 }, delay: A.stagger(70), duration: 520, ease: 'out(3)' });
     }
-    if (root && st.slide !== prev.slide && prev.seen) {
-      const img = root.querySelector('.gal-img');
-      if (img) A.waapi.animate(img, { opacity: [0, 1], scale: [1.04, 1], duration: 600, ease: 'out(3)' });
-      const cap = root.querySelectorAll('.gal-cap > *');
-      if (cap.length) A.animate(cap, { opacity: { from: 0 }, y: { from: 10 }, delay: A.stagger(60), duration: 450, ease: 'out(3)' });
+    if (root && st.box !== prev.box && typeof st.box === 'number' && st.box >= 0 && prev.seen) {
+      const fr = document.querySelector('.pw-frame');
+      if (fr) A.animate(fr, { opacity: { from: 0 }, y: { from: 24 }, rotate: { from: -3 }, duration: 520, ease: 'out(3)' });
     }
     if (root && st.zoom && st.zoom !== prev.zoom) {
       const z = root.querySelector('.zoom img');
       if (z) A.animate(z, { scale: { from: 0.9 }, opacity: { from: 0 }, ease: A.spring({ bounce: 0.35, duration: 500 }) });
     }
-    this.gtPrev = { sel: st.sel, slide: st.slide, zoom: st.zoom, seen: true };
+    this.gtPrev = { sel: st.sel, box: st.box, zoom: st.zoom, seen: true };
   }
   // Media loading (independent of anime.js): hero slides load just before their turn; clips play only on screen
   gtMedia(tries) {
@@ -888,7 +916,7 @@ class Component extends DCLogic {
     // 15 ── magnetic buttons (createAnimatable)
     safe('15', () => {
       if (calm) return;
-      $('.btn, .social, .hero-link, .back, .foot-mail, .gal-nav').forEach((el) => {
+      $('.btn, .social, .hero-link, .back, .foot-mail, .pw-btn').forEach((el) => {
         let a = null;
         el.addEventListener('pointermove', (e) => {
           if (!a) a = createAnimatable(el, { x: 500, y: 500, ease: 'out(3)' });
@@ -997,6 +1025,17 @@ class Component extends DCLogic {
       ['925865cb85607eb2acd1f76463392e38', 'UCL · Mechanical Engineering', 'Department formal', 'Black tie with the Mech Eng cohort, in front of the department banner.', 'Group in formal wear in front of a UCL Mechanical Engineering banner'],
       ['249cc5a7a8debd1fc9946cfc9cdb6339', 'London · On the river', 'Black tie on the water', 'An evening on a boat with friends, still in black tie.', 'Four friends in black tie on a boat at night'],
       ['56cca24a2040f046eb4863ee0c4e43b3', 'Exeter · Student societies', 'Rooftop, Cathedral view', 'Society life in Exeter, with the Indonesian Society (General Secretary) and PPI Exeter (External Liaison).', 'Large group on a rooftop with Exeter Cathedral behind'],
+      ["9d961ec0edd66a0661e88542022573a5", "Exeter · Campus", "University of Exeter", "By the campus sign on a clear winter day.", "Rayang leaning on the University of Exeter sign stone on a sunny day"],
+      ["f926d23432ef91b524e1ba737f7a3270", "Exeter · Mosque", "Outside Exeter Mosque", "A group selfie with friends outside Exeter Mosque and Cultural Centre.", "Group selfie of friends outside Exeter Mosque and Cultural Centre"],
+      ["b61fd831469d3eacd6b4997875cb1e50", "Indonesian Society · Football", "Team huddle", "One last word before kick off, in the society kit.", "Football team in white Indonesian Society shirts in a huddle"],
+      ["1d43f97c10f9a5d3bbe3a1e652d6afc0", "Indonesian Society · Football", "Squad photo", "The society squad in the green and white kit.", "Football squad in green and white shirts posing on an artificial pitch"],
+      ["197b639842e8f4500ab2af4c6501416d", "Indonesian Society · Gala night", "On the mic", "Friends at the microphone, with guitars, a keyboard and plenty of batik.", "Four friends by a microphone and guitars in an ornate hall with red curtains"],
+      ["924226990026d8f56a4153f2a6cabc68", "Indonesian Society · Gala night", "Our table", "Batik, bow ties and a table scattered with petals.", "Eight friends in batik and suits around a round dinner table"],
+      ["50755d1859bd8101fe701077302d061c", "Exeter · Batik night", "Arms out", "Batik shirts on, and everyone striking a pose.", "Friends in batik shirts posing with arms stretched out in a bedroom"],
+      ["a3fc8029656c17ecaa6bcb5338a26025", "Exeter · Batik night", "Four in batik", "Friends in batik outside halls at night.", "Four friends in batik shirts standing on paving at night"],
+      ["13507aefc20e051ab95f10a9ff5479ad", "Exeter · Halls", "Mirror selfie", "A Christmas tree hat, a clapperboard and everyone squeezed into one mirror.", "Friends crowded into a tilted mirror selfie wearing party hats"],
+      ["07492c6c6c8b2a39efda40bf9147ce50", "Exeter · Halls", "Balloons, a mop and a pillow", "Silver balloons and very odd gifts in the courtyard at night.", "Three friends at night with silver balloons, a mop and a pillow"],
+      ["b02938a2a2abd814bd82290c35e75c55", "Exeter · Halls", "Common room", "Someone fell asleep on the sofa, and nobody let it go.", "Five friends laughing on a common room sofa around a friend who is asleep"],
       ['eb1ac40f26eec653825ed28360ae1ea5', 'Flying · PPL', 'On the apron', 'Flying alongside my studies: I earned a Private Pilot Licence approved by the UK CAA.', 'Two people standing beside a light aircraft'],
       ['74947f581310c4a58b511d52b0cf453a', 'TeamUCL · Baseball', 'Team huddle', 'Pre-game huddle with the UCL baseball team.', 'Baseball team in white uniforms in a huddle'],
       ['1f97d750e619e2798cb7b950bafd4e55', 'London Mets · Baseball', 'Home plate', 'At the London Mets Baseball & Softball Club field.', 'Baseball group posing at home plate under a London Mets banner'],
@@ -1006,24 +1045,53 @@ class Component extends DCLogic {
       ['6dbf7e766dcb2dc97f4c02e2787cb4ca', 'London · Night out', 'Late-night celebration', 'Balloons and ice creams after dark with friends.', 'Group of friends at night holding ice creams'],
       ['03497783b08521d4753e9b37d687b41d', 'London · Tower Bridge', 'Tower Bridge by night', 'A night walk along the river with friends.', 'Group of friends at night with Tower Bridge behind']
     ];
-    const N = shots.length;
-    const i = ((st.slide || 0) % N + N) % N;
-    const list = shots.map((x, k) => ({
-      src: B + x[0],
-      label: 'Photo ' + (k + 1) + ': ' + x[2],
-      on: k === i ? 'on' : '',
-      aria: k === i ? 'true' : 'false',
-      pick: () => this.setState({ slide: k })
+    // polaroid:js:start
+    const N = shots.length, FIRST = 12;
+    this.__pwN = N;
+    const bi = typeof st.box === 'number' && st.box >= 0 ? st.box % N : -1;
+    const all = !!st.wall;
+    const wall = shots.slice(0, all ? N : FIRST).map((x, k) => ({
+      i: k, src: B + x[0], k: x[1], t: x[2], alt: x[4],
+      label: 'Open photo ' + (k + 1) + ': ' + x[2],
+      open: () => this.pwOpen(k)
     }));
-    const c = shots[i];
+    const c = bi >= 0 ? shots[bi] : shots[0];
     return {
-      shots: list,
+      wall: wall,
       total: N,
-      cur: { src: B + c[0], k: c[1], t: c[2], c: c[3], alt: c[4], n: i + 1 },
-      prev: () => this.setState({ slide: (i - 1 + N) % N }),
-      next: () => this.setState({ slide: (i + 1) % N })
+      more: { show: N > FIRST, aria: all ? 'true' : 'false', text: all ? 'Show fewer photos' : 'Show all ' + N + ' photos', toggle: () => this.setState({ wall: !all }) },
+      box: {
+        open: bi >= 0, n: bi + 1, src: B + c[0], k: c[1], t: c[2], c: c[3], alt: c[4],
+        close: () => this.pwClose(),
+        prev: () => this.pwOpen((bi - 1 + N) % N),
+        next: () => this.pwOpen((bi + 1) % N)
+      }
     };
   }
+  pwOpen(k) {
+    if (!this.__pwKeys) {
+      this.__pwKeys = true;
+      document.addEventListener('keydown', (e) => {
+        const b = (this.state || {}).box;
+        if (typeof b !== 'number' || b < 0) return;
+        const N = this.__pwN || 1;
+        if (e.key === 'Escape') { e.preventDefault(); this.pwClose(); }
+        else if (e.key === 'ArrowRight') { e.preventDefault(); this.pwOpen((b + 1) % N); }
+        else if (e.key === 'ArrowLeft') { e.preventDefault(); this.pwOpen((b - 1 + N) % N); }
+      }, true);
+    }
+    const first = typeof (this.state || {}).box !== 'number' || this.state.box < 0;
+    if (first) this.__pwFrom = k;
+    const more = k >= 12 ? { wall: true } : {};
+    this.setState(Object.assign({ box: k }, more));
+    if (first) setTimeout(() => { const c = document.querySelector('.pw-close'); if (c) c.focus(); }, 60);
+  }
+  pwClose() {
+    const k = (this.state || {}).box;
+    this.setState({ box: -1 });
+    setTimeout(() => { const p = document.querySelector('[data-pol="' + k + '"]'); if (p) p.focus(); }, 60);
+  }
+    // polaroid:js:end
 }
 </script>
 </body>
