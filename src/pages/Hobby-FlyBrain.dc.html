@@ -450,6 +450,13 @@ html{scroll-padding-top:60px}
 /* math:start */
 .m{font-family:'Cambria Math',Cambria,'STIX Two Text','Times New Roman',serif;font-size:1.08em;white-space:nowrap}
 /* math:end */
+/* pxs:start */
+.pxs{--s:2;position:relative;display:block;flex:none;width:calc(128px*var(--s));max-width:100%;aspect-ratio:128/80;overflow:hidden;border-radius:6px;margin:6px 0 4px;box-shadow:0 1px 2px rgba(16,19,28,.12),0 10px 26px rgba(16,19,28,.12)}
+.pxs img{display:block;height:100%;width:auto;max-width:none;image-rendering:crisp-edges;image-rendering:pixelated;animation:pxs-run var(--t) steps(var(--n)) infinite;pointer-events:none;user-select:none;-webkit-user-drag:none}
+@keyframes pxs-run{to{transform:translateX(-100%)}}
+@media (min-width:1100px){.pxs{--s:3}}
+@media (prefers-reduced-motion:reduce){.pxs img{animation:none}}
+/* pxs:end */
 </style>
 </helmet>
 <div style="min-height:100vh" data-gt-root="">
@@ -505,6 +512,7 @@ html{scroll-padding-top:60px}
 <div class="stack g24">
 <p class="kicker">01 — The story</p>
 <h2 class="t-h2">A brain you can switch on</h2>
+<div class="pxs" role="img" aria-label="Pixel scene: the GelasTinta character in a lab coat looking into a microscope as magnified cells appear" style="--n:14;--t:2380ms"><img src="/_blob/7daa6b6a390e9020a0f87db77e7dade6" alt="" draggable="false"></div>
 <div class="prose stack g16" style="font-size:18px;line-height:1.65">
 <p>In my talk <a href="Talk-FlyConnectome.dc.html">The Whole Fly, Wired</a> I reviewed three papers on the fruit-fly connectome. One of them, by Philip Shiu and colleagues (<i>Nature</i>, 2024), turns the wiring map of a whole fly brain into a computer model that can be switched on. This hobby project runs that published model on a laptop and asks it one question: what happens inside the brain when the fly tastes sugar?</p>
 <p>The page follows the experiment in four steps. First the map, then the simple rule every neuron follows. Then the main test: switch on the 21 sugar-taste neurons the paper used and follow the spikes to <b>MN9</b>, a motor neuron that lifts the proboscis, the fly’s feeding tube. Then silence two neurons out of 127,400, run the exact same experiment again, and plug the brain into a simple walking fly to see what that difference could look like.</p>
