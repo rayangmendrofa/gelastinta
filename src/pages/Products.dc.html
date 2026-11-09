@@ -428,31 +428,36 @@ html{scroll-padding-top:60px}
 }
 /* nav2:end */
 /* px:start */
-.px-card{--s:3;display:inline-flex;align-self:flex-start;flex-direction:column;align-items:center;gap:10px;margin:0;padding:14px 18px 12px;background:#F4F2EE;border:1px solid #10131C;box-shadow:4px 4px 0 #10131C;color:#10131C;cursor:pointer;-webkit-tap-highlight-color:transparent}
-.px-card:focus-visible{outline:3px solid #5A82B3;outline-offset:4px}
-.px{position:relative;display:block;width:calc(76px*var(--s));height:calc(58px*var(--s))}
-.px-v{position:absolute;inset:0;overflow:hidden}
-.px-v img{display:block;width:calc(var(--n)*100%);max-width:none;height:100%;image-rendering:crisp-edges;image-rendering:pixelated;animation:px-run var(--t) steps(var(--n)) infinite;pointer-events:none;user-select:none;-webkit-user-drag:none}
+.px{--s:3;--w:76;position:relative;display:inline-block;flex:none;width:calc(var(--w)*1px*var(--s));height:calc(58px*var(--s));cursor:pointer;-webkit-tap-highlight-color:transparent}
+.px::after{content:"";position:absolute;left:calc(4px*var(--s));width:calc(30px*var(--s));bottom:calc(-1.5px*var(--s));height:calc(4px*var(--s));background:radial-gradient(closest-side,rgba(16,19,28,.2),rgba(16,19,28,0));pointer-events:none}
+.px-v{position:absolute;inset:0;overflow:hidden;z-index:1}
+.px-v img{display:block;width:calc(var(--n)*76px*var(--s));max-width:none;height:100%;image-rendering:crisp-edges;image-rendering:pixelated;animation:px-run var(--t) steps(var(--n)) infinite;pointer-events:none;user-select:none;-webkit-user-drag:none}
 @keyframes px-run{to{transform:translateX(-100%)}}
-.px-move{display:none}
-.px-card:hover .px-move,.px-card:focus-visible .px-move{display:block}
-.px-card:hover .px-idle,.px-card:focus-visible .px-idle{display:none}
-.px-cap{display:flex;flex-direction:column;align-items:center;gap:3px;text-align:center}
-.px-k{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#10131C}
-.px-h{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.04em;color:#5B6273}
-.px-tap{display:none}
-@media (hover:none){.px-hov{display:none}.px-tap{display:inline}}
-.px-row{display:grid;grid-template-columns:minmax(0,820px) auto;gap:56px;align-items:start}
-.px-row>.px-card{margin-top:44px;transform:rotate(1.5deg)}
-.px-trio{display:flex;flex-wrap:wrap;gap:20px;margin-top:4px}
-.px-trio .px-card{--s:2;padding:10px 12px 10px}
-.px-side{display:flex;flex-direction:column;align-items:flex-start;gap:28px}
-.menu-head .px-card{margin-top:10px}
-html[data-theme="dark"] .px-card:not(.dark .px-card){filter:invert(1) hue-rotate(180deg)}
-html[data-theme="dark"] .px-card:not(.dark .px-card) img{filter:none}
-@media (max-width:960px){.px-row{grid-template-columns:minmax(0,1fr);gap:28px}.px-row>.px-card{margin-top:0;justify-self:start}}
-@media (max-width:640px){.px-card{--s:2}.px-trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.px-trio .px-card{--s:1.2;align-self:stretch;padding:8px 4px;box-shadow:3px 3px 0 #10131C}.px-trio .px-h{font-size:10px;letter-spacing:0}}
-@media (prefers-reduced-motion:reduce){.px-v img{animation:none}}
+.px-am{visibility:hidden}
+.px-hm{display:none}
+.px:hover .px-ai,.px:hover .px-am{display:none}
+.px:hover .px-hm{display:block}
+.dark .px{filter:drop-shadow(0 0 1px rgba(244,242,238,.85)) drop-shadow(0 0 4px rgba(244,242,238,.25))}
+.dark .px::after{background:radial-gradient(closest-side,rgba(244,242,238,.16),rgba(244,242,238,0))}
+html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19,28,.95)) drop-shadow(0 0 4px rgba(16,19,28,.35))}
+.px-row{display:grid;grid-template-columns:minmax(0,820px) auto;gap:56px;align-items:end}
+.px-row>.px{margin-bottom:6px}
+.px-side{display:flex;flex-direction:column;align-items:stretch}
+.px-side>.px{align-self:flex-end;margin:0 28px calc(-1.5px*var(--s)) 0;z-index:2}
+.px-lineup{display:flex;align-items:flex-end;gap:28px;width:max-content;max-width:100%;padding:0 10px;border-bottom:1px solid currentColor;margin-top:4px}
+.px-lineup .px{--s:2;margin-bottom:calc(-1.5px*var(--s))}
+.px-lineup .px::after{display:none}
+.menu-head .px{margin-top:8px}
+.px-beat{float:right;--s:2;margin:6px 0 14px 28px}
+@media (max-width:960px){.px-row{grid-template-columns:minmax(0,1fr);gap:20px}.px-row>.px{justify-self:start}}
+@media (max-width:640px){.px{--s:2}.px-lineup .px{--s:1.6}.px-lineup{gap:18px}.px-beat{--s:1.6;margin:4px 0 8px 16px}}
+@media (prefers-reduced-motion:reduce){.px-v img,.px-ai,.px-am{animation:none}}
+.pxc-present .px-ai{animation:pxvi-present 7520ms step-end infinite}
+.pxc-present .px-am{animation:pxvm-present 7520ms step-end infinite}
+.pxc-present .px-am img{animation:pxr-present 7520ms infinite}
+@keyframes pxvi-present{0%{visibility:visible}68.085%,100%{visibility:hidden}}
+@keyframes pxvm-present{0%{visibility:hidden}68.085%,100%{visibility:visible}}
+@keyframes pxr-present{0%{transform:translateX(0);animation-timing-function:step-end}68.085%{transform:translateX(0);animation-timing-function:steps(12,end)}100%{transform:translateX(-100%)}}
 /* px:end */
 </style>
 </helmet>
@@ -540,7 +545,7 @@ html[data-theme="dark"] .px-card:not(.dark .px-card) img{filter:none}
 <h2 class="menu-title">Services</h2>
 <p class="menu-sub">Fixed packages, clear scope, no hourly surprises</p>
 <p class="menu-legend">Prices from · USD, then Rupiah · time to deliver</p>
-<figure class="px-card" tabindex="0" data-px="products"><span class="px" role="img" aria-label="The GelasTinta pixel character in a suit, presenting a growing bar chart"><span class="px-v px-idle" style="--n:8;--t:1280ms"><img src="/_blob/36e3f4b4d1181d7f9e6ca9560d607250" alt="" draggable="false"></span><span class="px-v px-move" style="--n:12;--t:2400ms"><img src="/_blob/d307f3fd9e458bd63d3e69b9eaa671d5" alt="" draggable="false"></span></span><figcaption class="px-cap"><span class="px-k">Fig. 03 — The pitch</span><span class="px-h"><span class="px-hov">Hover</span><span class="px-tap">Tap</span> for the pitch</span></figcaption></figure>
+<span class="px pxc-present" style="--w:74" role="img" aria-label="The GelasTinta pixel character in a suit, presenting a growing bar chart"><span class="px-v px-ai" style="--n:8;--t:1280ms"><img src="/_blob/36e3f4b4d1181d7f9e6ca9560d607250" alt="" draggable="false"></span><span class="px-v px-am" style="--n:12;--t:2400ms"><img src="/_blob/d307f3fd9e458bd63d3e69b9eaa671d5" alt="" draggable="false"></span><span class="px-v px-hm" style="--n:12;--t:2400ms"><img src="/_blob/d307f3fd9e458bd63d3e69b9eaa671d5" alt="" draggable="false"></span></span>
 </header>
 <div class="menu-cols">
 <div class="menu-course"><h3 class="menu-cat">Explainers</h3><article class="mi" style="--pc:#5A82B3"><div class="mi-row"><span class="mi-n">01</span><h4 class="mi-name">Visual Abstract</h4><span class="mi-dots" aria-hidden="true"></span><span class="mi-price"><small>from</small>$15</span></div><p class="mi-who">One picture that explains a paper or project at a glance.</p><p class="mi-inc">One designed figure summarising your paper or project · A square version sized for social media · Your logo and brand colours if you have them · PNG, PDF and SVG files</p><p class="mi-meta"><span>Rp 190rb</span><span>3 to 5 days</span><a href="Projects.dc.html#infographics">Example: my infographics →</a><a class="ask" href="mailto:mendrofarayang@gmail.com?subject=Visual%20Abstract%20enquiry">Ask about this →</a></p></article><article class="mi" style="--pc:#4F4086"><div class="mi-row"><span class="mi-n">02</span><h4 class="mi-name">Paper Explainer</h4><span class="mi-dots" aria-hidden="true"></span><span class="mi-price"><small>from</small>$62</span></div><p class="mi-who">Your research, written so anyone can follow it.</p><p class="mi-inc">A 1,200 to 2,000 word article in plain language · 2 to 3 figures, redrawn from scratch · A share image for link previews · Ready to publish on your site, blog or newsletter</p><p class="mi-meta"><span>Rp 775rb</span><span>1 to 2 weeks</span><a href="Talk-FlyConnectome.dc.html">Example: The Whole Fly, Wired →</a><a class="ask" href="mailto:mendrofarayang@gmail.com?subject=Paper%20Explainer%20enquiry">Ask about this →</a></p></article><article class="mi" style="--pc:#064F6E"><div class="mi-row"><span class="mi-n">03</span><h4 class="mi-name">Interactive Explainer</h4><span class="mi-dots" aria-hidden="true"></span><span class="mi-price"><small>from</small>$150</span></div><p class="mi-who">The full experience: a web page people can read and play with.</p><p class="mi-inc">Everything in the Paper Explainer · Built as a web page, like the talks on this site · One animated or interactive figure · HTML files you can host, or a page on your site</p><p class="mi-meta"><span>Rp 1,9 jt</span><span>2 to 4 weeks</span><a href="Talk-Cyberpunk.dc.html">Example: Chrome and Consequences →</a><a class="ask" href="mailto:mendrofarayang@gmail.com?subject=Interactive%20Explainer%20enquiry">Ask about this →</a></p></article></div>

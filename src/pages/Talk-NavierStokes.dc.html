@@ -464,6 +464,44 @@ html{scroll-padding-top:60px}
 /* math:start */
 .m{font-family:'Cambria Math',Cambria,'STIX Two Text','Times New Roman',serif;font-size:1.08em;white-space:nowrap}
 /* math:end */
+/* px:start */
+.px{--s:3;--w:76;position:relative;display:inline-block;flex:none;width:calc(var(--w)*1px*var(--s));height:calc(58px*var(--s));cursor:pointer;-webkit-tap-highlight-color:transparent}
+.px::after{content:"";position:absolute;left:calc(4px*var(--s));width:calc(30px*var(--s));bottom:calc(-1.5px*var(--s));height:calc(4px*var(--s));background:radial-gradient(closest-side,rgba(16,19,28,.2),rgba(16,19,28,0));pointer-events:none}
+.px-v{position:absolute;inset:0;overflow:hidden;z-index:1}
+.px-v img{display:block;width:calc(var(--n)*76px*var(--s));max-width:none;height:100%;image-rendering:crisp-edges;image-rendering:pixelated;animation:px-run var(--t) steps(var(--n)) infinite;pointer-events:none;user-select:none;-webkit-user-drag:none}
+@keyframes px-run{to{transform:translateX(-100%)}}
+.px-am{visibility:hidden}
+.px-hm{display:none}
+.px:hover .px-ai,.px:hover .px-am{display:none}
+.px:hover .px-hm{display:block}
+.dark .px{filter:drop-shadow(0 0 1px rgba(244,242,238,.85)) drop-shadow(0 0 4px rgba(244,242,238,.25))}
+.dark .px::after{background:radial-gradient(closest-side,rgba(244,242,238,.16),rgba(244,242,238,0))}
+html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19,28,.95)) drop-shadow(0 0 4px rgba(16,19,28,.35))}
+.px-row{display:grid;grid-template-columns:minmax(0,820px) auto;gap:56px;align-items:end}
+.px-row>.px{margin-bottom:6px}
+.px-side{display:flex;flex-direction:column;align-items:stretch}
+.px-side>.px{align-self:flex-end;margin:0 28px calc(-1.5px*var(--s)) 0;z-index:2}
+.px-lineup{display:flex;align-items:flex-end;gap:28px;width:max-content;max-width:100%;padding:0 10px;border-bottom:1px solid currentColor;margin-top:4px}
+.px-lineup .px{--s:2;margin-bottom:calc(-1.5px*var(--s))}
+.px-lineup .px::after{display:none}
+.menu-head .px{margin-top:8px}
+.px-beat{float:right;--s:2;margin:6px 0 14px 28px}
+@media (max-width:960px){.px-row{grid-template-columns:minmax(0,1fr);gap:20px}.px-row>.px{justify-self:start}}
+@media (max-width:640px){.px{--s:2}.px-lineup .px{--s:1.6}.px-lineup{gap:18px}.px-beat{--s:1.6;margin:4px 0 8px 16px}}
+@media (prefers-reduced-motion:reduce){.px-v img,.px-ai,.px-am{animation:none}}
+.pxc-teach .px-ai{animation:pxvi-teach 7760ms step-end infinite}
+.pxc-teach .px-am{animation:pxvm-teach 7760ms step-end infinite}
+.pxc-teach .px-am img{animation:pxr-teach 7760ms infinite}
+@keyframes pxvi-teach{0%{visibility:visible}65.979%,100%{visibility:hidden}}
+@keyframes pxvm-teach{0%{visibility:hidden}65.979%,100%{visibility:visible}}
+@keyframes pxr-teach{0%{transform:translateX(0);animation-timing-function:step-end}65.979%{transform:translateX(0);animation-timing-function:steps(12,end)}100%{transform:translateX(-100%)}}
+.pxc-tie .px-ai{animation:pxvi-tie 6480ms step-end infinite}
+.pxc-tie .px-am{animation:pxvm-tie 6480ms step-end infinite}
+.pxc-tie .px-am img{animation:pxr-tie 6480ms infinite}
+@keyframes pxvi-tie{0%{visibility:visible}79.012%,100%{visibility:hidden}}
+@keyframes pxvm-tie{0%{visibility:hidden}79.012%,100%{visibility:visible}}
+@keyframes pxr-tie{0%{transform:translateX(0);animation-timing-function:step-end}79.012%{transform:translateX(0);animation-timing-function:steps(8,end)}100%{transform:translateX(-100%)}}
+/* px:end */
 </style>
 </helmet>
 <div style="min-height:100vh" data-gt-root="">
@@ -533,7 +571,7 @@ html{scroll-padding-top:60px}
 <figcaption style="text-align:center">THE THREE NAMES BEHIND “F = MA FOR FLUIDS”: NEWTON, NAVIER, STOKES</figcaption>
 </figure>
 <div class="col" style="margin-top:48px">
-<h3 class="t-h3" style="font-size:26px;margin-bottom:14px">The equation, term by term</h3>
+<h3 class="t-h3" style="font-size:26px;margin-bottom:14px">The equation, term by term</h3><span class="px pxc-teach px-beat" style="--w:74" role="img" aria-label="The GelasTinta pixel character in a lab coat, writing F = ma on a board"><span class="px-v px-ai" style="--n:8;--t:1280ms"><img src="/_blob/0adff87b8a0ce54aa1d503767bf28772" alt="" draggable="false"></span><span class="px-v px-am" style="--n:12;--t:2640ms"><img src="/_blob/5693ad8832d1d2ead719089b76f76150" alt="" draggable="false"></span><span class="px-v px-hm" style="--n:12;--t:2640ms"><img src="/_blob/5693ad8832d1d2ead719089b76f76150" alt="" draggable="false"></span></span>
 <p>The left side is the “ma” part: how a parcel of fluid accelerates. The right side lists the forces acting on it. Each coloured term below has a simple job.</p>
 </div>
 <div class="col-wide" style="margin-top:28px">
@@ -700,7 +738,7 @@ html{scroll-padding-top:60px}
 <div class="wrap article">
 <div class="col">
 <p class="kicker">05</p>
-<h2 class="t-h2" style="margin:12px 0 18px">The awkward part: plagiarism and data-leak allegations</h2>
+<h2 class="t-h2" style="margin:12px 0 18px">The awkward part: plagiarism and data-leak allegations</h2><span class="px pxc-tie px-beat" style="--w:35" role="img" aria-label="The GelasTinta pixel character in a suit, nervously adjusting his tie"><span class="px-v px-ai" style="--n:8;--t:1280ms"><img src="/_blob/36e3f4b4d1181d7f9e6ca9560d607250" alt="" draggable="false"></span><span class="px-v px-am" style="--n:8;--t:1360ms"><img src="/_blob/e150c57115cd2ff61d3381f954a77a39" alt="" draggable="false"></span><span class="px-v px-hm" style="--n:8;--t:1360ms"><img src="/_blob/e150c57115cd2ff61d3381f954a77a39" alt="" draggable="false"></span></span>
 <p>Mathematicians Tristan Buckmaster (NYU) and Levent Alpöge (who works at Anthropic, as Axios reports) had been working on closely related blowup results for the Euler equations, the viscosity-free cousin of Navier–Stokes. Their work was unpublished, and they had used AI coding tools, including OpenAI’s Codex, along the way. When OpenAI’s announcement landed, Buckmaster publicly asked whether OpenAI’s system had been trained on, or had access to, their Codex sessions. Here is what happened, as reported. Nothing in this section has been proven either way, and the private conversations have not been independently verified.</p>
 </div>
 <figure class="col-wide wfig" style="margin-top:32px">

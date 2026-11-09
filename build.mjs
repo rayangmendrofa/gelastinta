@@ -368,7 +368,7 @@ ${helmet}
 .nf .btn.ghost:hover{background:#EDEFF2;color:#10131C}
 .nf-art{width:100%;max-width:360px;justify-self:center}
 .nf-side{display:flex;flex-direction:column;align-items:center;gap:8px;justify-self:center}
-.nf-side .px-card{--s:2;cursor:default;margin-top:-28px;transform:rotate(-2deg)}
+.nf-side .px{--s:2;cursor:default;margin-top:-30px;align-self:flex-start}
 .nf-art .ink{animation:nfDrip 2.8s cubic-bezier(.5,0,.75,0) infinite}
 .nf-art .pool{transform-origin:262px 292px;animation:nfPool 2.8s ease-out infinite}
 @keyframes nfDrip{0%,30%{transform:translateY(0);opacity:0}35%{opacity:1}80%{transform:translateY(82px);opacity:1}82%,100%{transform:translateY(82px);opacity:0}}
@@ -399,7 +399,7 @@ ${header}
 <circle class="ink" cx="262" cy="206" r="6" fill="#064F6E"/>
 <ellipse class="pool" cx="262" cy="292" rx="54" ry="8" fill="#064F6E"/>
 </svg>
-${rewrite('<figure class="px-card"><span class="px" role="img" aria-label="The GelasTinta pixel character in a hoodie, frowning with a single tear"><span class="px-v px-idle" style="--n:10;--t:2000ms"><img src="/_blob/aac8e546325c530b66d6b529ada318e5" alt="" draggable="false"></span></span><figcaption class="px-cap"><span class="px-k">Fig. 404 — Oh no</span></figcaption></figure>', 'Talks.dc.html')}
+${rewrite('<span class="px" style="--w:36" role="img" aria-label="The GelasTinta pixel character in a hoodie, frowning with a single tear"><span class="px-v px-ai" style="--n:10;--t:2000ms"><img src="/_blob/aac8e546325c530b66d6b529ada318e5" alt="" draggable="false"></span></span>', 'Talks.dc.html')}
 </div>
 </div>
 </main>

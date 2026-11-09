@@ -317,31 +317,49 @@ html{scroll-padding-top:60px}
 }
 /* nav2:end */
 /* px:start */
-.px-card{--s:3;display:inline-flex;align-self:flex-start;flex-direction:column;align-items:center;gap:10px;margin:0;padding:14px 18px 12px;background:#F4F2EE;border:1px solid #10131C;box-shadow:4px 4px 0 #10131C;color:#10131C;cursor:pointer;-webkit-tap-highlight-color:transparent}
-.px-card:focus-visible{outline:3px solid #5A82B3;outline-offset:4px}
-.px{position:relative;display:block;width:calc(76px*var(--s));height:calc(58px*var(--s))}
-.px-v{position:absolute;inset:0;overflow:hidden}
-.px-v img{display:block;width:calc(var(--n)*100%);max-width:none;height:100%;image-rendering:crisp-edges;image-rendering:pixelated;animation:px-run var(--t) steps(var(--n)) infinite;pointer-events:none;user-select:none;-webkit-user-drag:none}
+.px{--s:3;--w:76;position:relative;display:inline-block;flex:none;width:calc(var(--w)*1px*var(--s));height:calc(58px*var(--s));cursor:pointer;-webkit-tap-highlight-color:transparent}
+.px::after{content:"";position:absolute;left:calc(4px*var(--s));width:calc(30px*var(--s));bottom:calc(-1.5px*var(--s));height:calc(4px*var(--s));background:radial-gradient(closest-side,rgba(16,19,28,.2),rgba(16,19,28,0));pointer-events:none}
+.px-v{position:absolute;inset:0;overflow:hidden;z-index:1}
+.px-v img{display:block;width:calc(var(--n)*76px*var(--s));max-width:none;height:100%;image-rendering:crisp-edges;image-rendering:pixelated;animation:px-run var(--t) steps(var(--n)) infinite;pointer-events:none;user-select:none;-webkit-user-drag:none}
 @keyframes px-run{to{transform:translateX(-100%)}}
-.px-move{display:none}
-.px-card:hover .px-move,.px-card:focus-visible .px-move{display:block}
-.px-card:hover .px-idle,.px-card:focus-visible .px-idle{display:none}
-.px-cap{display:flex;flex-direction:column;align-items:center;gap:3px;text-align:center}
-.px-k{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#10131C}
-.px-h{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.04em;color:#5B6273}
-.px-tap{display:none}
-@media (hover:none){.px-hov{display:none}.px-tap{display:inline}}
-.px-row{display:grid;grid-template-columns:minmax(0,820px) auto;gap:56px;align-items:start}
-.px-row>.px-card{margin-top:44px;transform:rotate(1.5deg)}
-.px-trio{display:flex;flex-wrap:wrap;gap:20px;margin-top:4px}
-.px-trio .px-card{--s:2;padding:10px 12px 10px}
-.px-side{display:flex;flex-direction:column;align-items:flex-start;gap:28px}
-.menu-head .px-card{margin-top:10px}
-html[data-theme="dark"] .px-card:not(.dark .px-card){filter:invert(1) hue-rotate(180deg)}
-html[data-theme="dark"] .px-card:not(.dark .px-card) img{filter:none}
-@media (max-width:960px){.px-row{grid-template-columns:minmax(0,1fr);gap:28px}.px-row>.px-card{margin-top:0;justify-self:start}}
-@media (max-width:640px){.px-card{--s:2}.px-trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.px-trio .px-card{--s:1.2;align-self:stretch;padding:8px 4px;box-shadow:3px 3px 0 #10131C}.px-trio .px-h{font-size:10px;letter-spacing:0}}
-@media (prefers-reduced-motion:reduce){.px-v img{animation:none}}
+.px-am{visibility:hidden}
+.px-hm{display:none}
+.px:hover .px-ai,.px:hover .px-am{display:none}
+.px:hover .px-hm{display:block}
+.dark .px{filter:drop-shadow(0 0 1px rgba(244,242,238,.85)) drop-shadow(0 0 4px rgba(244,242,238,.25))}
+.dark .px::after{background:radial-gradient(closest-side,rgba(244,242,238,.16),rgba(244,242,238,0))}
+html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19,28,.95)) drop-shadow(0 0 4px rgba(16,19,28,.35))}
+.px-row{display:grid;grid-template-columns:minmax(0,820px) auto;gap:56px;align-items:end}
+.px-row>.px{margin-bottom:6px}
+.px-side{display:flex;flex-direction:column;align-items:stretch}
+.px-side>.px{align-self:flex-end;margin:0 28px calc(-1.5px*var(--s)) 0;z-index:2}
+.px-lineup{display:flex;align-items:flex-end;gap:28px;width:max-content;max-width:100%;padding:0 10px;border-bottom:1px solid currentColor;margin-top:4px}
+.px-lineup .px{--s:2;margin-bottom:calc(-1.5px*var(--s))}
+.px-lineup .px::after{display:none}
+.menu-head .px{margin-top:8px}
+.px-beat{float:right;--s:2;margin:6px 0 14px 28px}
+@media (max-width:960px){.px-row{grid-template-columns:minmax(0,1fr);gap:20px}.px-row>.px{justify-self:start}}
+@media (max-width:640px){.px{--s:2}.px-lineup .px{--s:1.6}.px-lineup{gap:18px}.px-beat{--s:1.6;margin:4px 0 8px 16px}}
+@media (prefers-reduced-motion:reduce){.px-v img,.px-ai,.px-am{animation:none}}
+.pxc-eureka .px-ai{animation:pxvi-eureka 6820ms step-end infinite}
+.pxc-eureka .px-am{animation:pxvm-eureka 6820ms step-end infinite}
+.pxc-eureka .px-am img{animation:pxr-eureka 6820ms infinite}
+@keyframes pxvi-eureka{0%{visibility:visible}75.073%,100%{visibility:hidden}}
+@keyframes pxvm-eureka{0%{visibility:hidden}75.073%,100%{visibility:visible}}
+@keyframes pxr-eureka{0%{transform:translateX(0);animation-timing-function:step-end}75.073%{transform:translateX(0);animation-timing-function:steps(10,end)}100%{transform:translateX(-100%)}}
+.pxc-tie .px-ai{animation:pxvi-tie 6480ms step-end infinite}
+.pxc-tie .px-am{animation:pxvm-tie 6480ms step-end infinite}
+.pxc-tie .px-am img{animation:pxr-tie 6480ms infinite}
+@keyframes pxvi-tie{0%{visibility:visible}79.012%,100%{visibility:hidden}}
+@keyframes pxvm-tie{0%{visibility:hidden}79.012%,100%{visibility:visible}}
+@keyframes pxr-tie{0%{transform:translateX(0);animation-timing-function:step-end}79.012%{transform:translateX(0);animation-timing-function:steps(8,end)}100%{transform:translateX(-100%)}}
+.pxc-wave .px-ai{animation:pxvi-wave 6170ms step-end infinite}
+.pxc-wave .px-am{animation:pxvm-wave 6170ms step-end infinite}
+.pxc-wave .px-am img{animation:pxr-wave 6170ms infinite}
+@keyframes pxvi-wave{0%{visibility:visible}82.982%,100%{visibility:hidden}}
+@keyframes pxvm-wave{0%{visibility:hidden}82.982%,100%{visibility:visible}}
+@keyframes pxr-wave{0%{transform:translateX(0);animation-timing-function:step-end}82.982%{transform:translateX(0);animation-timing-function:steps(7,end)}100%{transform:translateX(-100%)}}
+#expertise{overflow-x:clip}
 /* px:end */
 </style>
 </helmet>
@@ -375,7 +393,7 @@ html[data-theme="dark"] .px-card:not(.dark .px-card) img{filter:none}
 <p>My name is Rayang Termedate Mendrofa, a mechanical engineer with a passion for turning ideas into reality. While the main concept of engineering is closely related to systems, machines, and building technology, my work isn’t just about technical rigour — it’s about creativity. Whether I’m designing a robotic contraption, a sequence of experiments, or composing playful narratives and music, I thrive at the intersection of engineering precision and imaginative storytelling.</p>
 <p>I believe science and music share a rhythm: both are languages of discovery, emotion, and connection. This site is my canvas to share projects, reviews, papers, and presentations — each reflecting my curiosity and drive to make technology more accessible, sustainable, and inspiring. It’s not just a portfolio; it’s a space where ideas meet humour, and where engineering becomes a story worth telling.</p>
 </div>
-<div class="px-trio" data-px-trio="1" aria-label="The GelasTinta pixel character in three outfits"><figure class="px-card" tabindex="0"><span class="px" role="img" aria-label="The GelasTinta pixel character in a hoodie, waving hello"><span class="px-v px-idle" style="--n:8;--t:1280ms"><img src="/_blob/4c1e039267cfd582c0ee4d5930f6998b" alt="" draggable="false"></span><span class="px-v px-move" style="--n:7;--t:1050ms"><img src="/_blob/723c80f6c3239c1eb034218c7a3249a4" alt="" draggable="false"></span></span><figcaption class="px-cap"><span class="px-k">Builds</span><span class="px-h"><span class="px-hov">Hover</span><span class="px-tap">Tap</span> to say hi</span></figcaption></figure><figure class="px-card" tabindex="0"><span class="px" role="img" aria-label="The GelasTinta pixel character in a lab coat, thinking and then jumping with a lightbulb"><span class="px-v px-idle" style="--n:8;--t:1280ms"><img src="/_blob/0adff87b8a0ce54aa1d503767bf28772" alt="" draggable="false"></span><span class="px-v px-move" style="--n:10;--t:1700ms"><img src="/_blob/cecfa839f65d924244169b8f91ad87c7" alt="" draggable="false"></span></span><figcaption class="px-cap"><span class="px-k">Research</span><span class="px-h"><span class="px-hov">Hover</span><span class="px-tap">Tap</span> for a eureka</span></figcaption></figure><figure class="px-card" tabindex="0"><span class="px" role="img" aria-label="The GelasTinta pixel character in a suit, adjusting his tie"><span class="px-v px-idle" style="--n:8;--t:1280ms"><img src="/_blob/36e3f4b4d1181d7f9e6ca9560d607250" alt="" draggable="false"></span><span class="px-v px-move" style="--n:8;--t:1360ms"><img src="/_blob/e150c57115cd2ff61d3381f954a77a39" alt="" draggable="false"></span></span><figcaption class="px-cap"><span class="px-k">Work</span><span class="px-h"><span class="px-hov">Hover</span><span class="px-tap">Tap</span> to fix the tie</span></figcaption></figure></div>
+<div class="px-lineup"><span class="px pxc-wave" style="--w:36" role="img" aria-label="The GelasTinta pixel character in a hoodie, waving hello"><span class="px-v px-ai" style="--n:8;--t:1280ms"><img src="/_blob/4c1e039267cfd582c0ee4d5930f6998b" alt="" draggable="false"></span><span class="px-v px-am" style="--n:7;--t:1050ms"><img src="/_blob/723c80f6c3239c1eb034218c7a3249a4" alt="" draggable="false"></span><span class="px-v px-hm" style="--n:7;--t:1050ms"><img src="/_blob/723c80f6c3239c1eb034218c7a3249a4" alt="" draggable="false"></span></span><span class="px pxc-eureka" style="--w:38" role="img" aria-label="The GelasTinta pixel character in a lab coat, thinking and then jumping with a lightbulb"><span class="px-v px-ai" style="--n:8;--t:1280ms"><img src="/_blob/0adff87b8a0ce54aa1d503767bf28772" alt="" draggable="false"></span><span class="px-v px-am" style="--n:10;--t:1700ms"><img src="/_blob/cecfa839f65d924244169b8f91ad87c7" alt="" draggable="false"></span><span class="px-v px-hm" style="--n:10;--t:1700ms"><img src="/_blob/cecfa839f65d924244169b8f91ad87c7" alt="" draggable="false"></span></span><span class="px pxc-tie" style="--w:35" role="img" aria-label="The GelasTinta pixel character in a suit, adjusting his tie"><span class="px-v px-ai" style="--n:8;--t:1280ms"><img src="/_blob/36e3f4b4d1181d7f9e6ca9560d607250" alt="" draggable="false"></span><span class="px-v px-am" style="--n:8;--t:1360ms"><img src="/_blob/e150c57115cd2ff61d3381f954a77a39" alt="" draggable="false"></span><span class="px-v px-hm" style="--n:8;--t:1360ms"><img src="/_blob/e150c57115cd2ff61d3381f954a77a39" alt="" draggable="false"></span></span></div>
 </div>
 </div>
 </section>

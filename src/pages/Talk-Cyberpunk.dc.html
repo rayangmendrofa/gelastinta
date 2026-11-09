@@ -515,6 +515,38 @@ html{scroll-padding-top:60px}
 .crumbs [aria-current]{max-width:18ch}
 }
 /* nav2:end */
+/* px:start */
+.px{--s:3;--w:76;position:relative;display:inline-block;flex:none;width:calc(var(--w)*1px*var(--s));height:calc(58px*var(--s));cursor:pointer;-webkit-tap-highlight-color:transparent}
+.px::after{content:"";position:absolute;left:calc(4px*var(--s));width:calc(30px*var(--s));bottom:calc(-1.5px*var(--s));height:calc(4px*var(--s));background:radial-gradient(closest-side,rgba(16,19,28,.2),rgba(16,19,28,0));pointer-events:none}
+.px-v{position:absolute;inset:0;overflow:hidden;z-index:1}
+.px-v img{display:block;width:calc(var(--n)*76px*var(--s));max-width:none;height:100%;image-rendering:crisp-edges;image-rendering:pixelated;animation:px-run var(--t) steps(var(--n)) infinite;pointer-events:none;user-select:none;-webkit-user-drag:none}
+@keyframes px-run{to{transform:translateX(-100%)}}
+.px-am{visibility:hidden}
+.px-hm{display:none}
+.px:hover .px-ai,.px:hover .px-am{display:none}
+.px:hover .px-hm{display:block}
+.dark .px{filter:drop-shadow(0 0 1px rgba(244,242,238,.85)) drop-shadow(0 0 4px rgba(244,242,238,.25))}
+.dark .px::after{background:radial-gradient(closest-side,rgba(244,242,238,.16),rgba(244,242,238,0))}
+html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19,28,.95)) drop-shadow(0 0 4px rgba(16,19,28,.35))}
+.px-row{display:grid;grid-template-columns:minmax(0,820px) auto;gap:56px;align-items:end}
+.px-row>.px{margin-bottom:6px}
+.px-side{display:flex;flex-direction:column;align-items:stretch}
+.px-side>.px{align-self:flex-end;margin:0 28px calc(-1.5px*var(--s)) 0;z-index:2}
+.px-lineup{display:flex;align-items:flex-end;gap:28px;width:max-content;max-width:100%;padding:0 10px;border-bottom:1px solid currentColor;margin-top:4px}
+.px-lineup .px{--s:2;margin-bottom:calc(-1.5px*var(--s))}
+.px-lineup .px::after{display:none}
+.menu-head .px{margin-top:8px}
+.px-beat{float:right;--s:2;margin:6px 0 14px 28px}
+@media (max-width:960px){.px-row{grid-template-columns:minmax(0,1fr);gap:20px}.px-row>.px{justify-self:start}}
+@media (max-width:640px){.px{--s:2}.px-lineup .px{--s:1.6}.px-lineup{gap:18px}.px-beat{--s:1.6;margin:4px 0 8px 16px}}
+@media (prefers-reduced-motion:reduce){.px-v img,.px-ai,.px-am{animation:none}}
+.pxc-sad .px-ai{animation:pxvi-sad 7120ms step-end infinite}
+.pxc-sad .px-am{animation:pxvm-sad 7120ms step-end infinite}
+.pxc-sad .px-am img{animation:pxr-sad 7120ms infinite}
+@keyframes pxvi-sad{0%{visibility:visible}71.91%,100%{visibility:hidden}}
+@keyframes pxvm-sad{0%{visibility:hidden}71.91%,100%{visibility:visible}}
+@keyframes pxr-sad{0%{transform:translateX(0);animation-timing-function:step-end}71.91%{transform:translateX(0);animation-timing-function:steps(10,end)}100%{transform:translateX(-100%)}}
+/* px:end */
 </style>
 </helmet>
 <div style="min-height:100vh" data-gt-root="">
@@ -703,7 +735,7 @@ html{scroll-padding-top:60px}
 <div class="wrap article">
 <div class="col">
 <p class="kicker">04</p>
-<h2 class="t-h2" style="margin:12px 0 18px">Cyberpsychosis: the price of chrome</h2>
+<h2 class="t-h2" style="margin:12px 0 18px">Cyberpsychosis: the price of chrome</h2><span class="px pxc-sad px-beat" style="--w:36" role="img" aria-label="The GelasTinta pixel character in a hoodie, frowning with a single tear"><span class="px-v px-ai" style="--n:8;--t:1280ms"><img src="/_blob/4c1e039267cfd582c0ee4d5930f6998b" alt="" draggable="false"></span><span class="px-v px-am" style="--n:10;--t:2000ms"><img src="/_blob/aac8e546325c530b66d6b529ada318e5" alt="" draggable="false"></span><span class="px-v px-hm" style="--n:10;--t:2000ms"><img src="/_blob/aac8e546325c530b66d6b529ada318e5" alt="" draggable="false"></span></span>
 <p>Every cyberpunk story needs a cost, and this one is cyberpsychosis. Load too much chrome into one body and the mind starts to slip: the person feels detached from their own flesh, then from other people, and finally becomes violent. Night City even has a police unit, MaxTac, for putting cyberpsychos down. In <i>Edgerunners</i>, David survives on pills that stop his body rejecting the implants, and keeps adding more anyway. It doesn’t end well.</p>
 </div>
 <div class="col" style="margin-top:28px">
