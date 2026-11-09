@@ -243,10 +243,14 @@ html{scroll-padding-top:60px}
 }
 /* nav2:end */
 /* pxs:start */
-.pxs{--s:2;position:relative;display:block;flex:none;width:calc(128px*var(--s));max-width:100%;aspect-ratio:128/80;overflow:hidden;border-radius:6px;margin:6px 0 4px;box-shadow:0 1px 2px rgba(16,19,28,.12),0 10px 26px rgba(16,19,28,.12)}
-.pxs img{display:block;height:100%;width:auto;max-width:none;image-rendering:crisp-edges;image-rendering:pixelated;animation:pxs-run var(--t) steps(var(--n)) infinite;pointer-events:none;user-select:none;-webkit-user-drag:none}
+.pxs{position:relative;display:block;width:100%;aspect-ratio:128/80;overflow:hidden;background:#10131C;margin:0}
+.pxs::after{content:"";position:absolute;inset:0;border:1px solid #10131C;pointer-events:none}
+.pxs img{display:block;width:calc(100% * var(--n));height:100%;max-width:none;image-rendering:crisp-edges;image-rendering:pixelated;animation:pxs-run var(--t) steps(var(--n)) infinite;pointer-events:none;user-select:none;-webkit-user-drag:none}
 @keyframes pxs-run{to{transform:translateX(-100%)}}
-@media (min-width:1100px){.pxs{--s:3}}
+.sec-head.pxs-head{flex-direction:row;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:24px 48px}
+.pxs-head > .stack{flex:1 1 320px;min-width:0}
+.pxs-head > .pxs{flex:0 0 auto;width:384px;max-width:100%}
+@media (max-width:760px){.pxs-head > .pxs{width:100%}}
 @media (prefers-reduced-motion:reduce){.pxs img{animation:none}}
 /* pxs:end */
 </style>
