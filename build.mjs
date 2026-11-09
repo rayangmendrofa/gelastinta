@@ -360,13 +360,15 @@ ${helmet}
 .nf .split{align-items:center}
 @media (min-width:961px){.nf .split{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}}
 .nf-links .btn{white-space:nowrap}
-@media (max-width:960px){.nf-art{max-width:220px;justify-self:start}.nf{min-height:0}}
+@media (max-width:960px){.nf-art{max-width:220px;justify-self:start}.nf-side{justify-self:start;align-items:flex-start}.nf{min-height:0}}
 .nf-code{font-family:'Titillium Web',system-ui,sans-serif;font-weight:800;font-size:clamp(96px,16vw,200px);line-height:.85;letter-spacing:-.05em;color:#064F6E;margin:0}
 .nf h1{margin:0}
 .nf-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
 .nf .btn.ghost{color:#EDEFF2;border:1px solid #EDEFF2}
 .nf .btn.ghost:hover{background:#EDEFF2;color:#10131C}
 .nf-art{width:100%;max-width:360px;justify-self:center}
+.nf-side{display:flex;flex-direction:column;align-items:center;gap:8px;justify-self:center}
+.nf-side .px-card{--s:2;cursor:default;margin-top:-28px;transform:rotate(-2deg)}
 .nf-art .ink{animation:nfDrip 2.8s cubic-bezier(.5,0,.75,0) infinite}
 .nf-art .pool{transform-origin:262px 292px;animation:nfPool 2.8s ease-out infinite}
 @keyframes nfDrip{0%,30%{transform:translateY(0);opacity:0}35%{opacity:1}80%{transform:translateY(82px);opacity:1}82%,100%{transform:translateY(82px);opacity:0}}
@@ -389,6 +391,7 @@ ${header}
 <a class="btn ghost" href="/projects/">See the projects</a>
 </div>
 </div>
+<div class="nf-side">
 <svg class="nf-art" viewBox="0 0 320 320" role="img" aria-label="An ink flask tipped on its side, ink dripping from its mouth into a puddle">
 <defs><clipPath id="nf-body"><path transform="translate(20 10) rotate(100 140 150)" d="M118 40v70L70 232a10 10 0 0 0 9 14h122a10 10 0 0 0 9-14L162 110V40z"/></clipPath></defs>
 <rect x="0" y="182" width="320" height="120" fill="#064F6E" clip-path="url(#nf-body)"/>
@@ -396,6 +399,8 @@ ${header}
 <circle class="ink" cx="262" cy="206" r="6" fill="#064F6E"/>
 <ellipse class="pool" cx="262" cy="292" rx="54" ry="8" fill="#064F6E"/>
 </svg>
+${rewrite('<figure class="px-card"><span class="px" role="img" aria-label="The GelasTinta pixel character in a hoodie, frowning with a single tear"><span class="px-v px-idle" style="--n:10;--t:2000ms"><img src="/_blob/aac8e546325c530b66d6b529ada318e5" alt="" draggable="false"></span></span><figcaption class="px-cap"><span class="px-k">Fig. 404 — Oh no</span></figcaption></figure>', 'Talks.dc.html')}
+</div>
 </div>
 </main>
 ${footer}
