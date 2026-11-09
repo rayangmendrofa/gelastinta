@@ -424,6 +424,38 @@ html{scroll-padding-top:60px}
 .crumbs [aria-current]{max-width:18ch}
 }
 /* nav2:end */
+/* px:start */
+.px{--s:3;--w:76;position:relative;display:inline-block;flex:none;width:calc(var(--w)*1px*var(--s));height:calc(58px*var(--s));cursor:pointer;-webkit-tap-highlight-color:transparent}
+.px::after{content:"";position:absolute;left:calc(4px*var(--s));width:calc(30px*var(--s));bottom:calc(-1.5px*var(--s));height:calc(4px*var(--s));background:radial-gradient(closest-side,rgba(16,19,28,.2),rgba(16,19,28,0));pointer-events:none}
+.px-v{position:absolute;inset:0;overflow:hidden;z-index:1}
+.px-v img{display:block;width:calc(var(--n)*76px*var(--s));max-width:none;height:100%;image-rendering:crisp-edges;image-rendering:pixelated;animation:px-run var(--t) steps(var(--n)) infinite;pointer-events:none;user-select:none;-webkit-user-drag:none}
+@keyframes px-run{to{transform:translateX(-100%)}}
+.px-am{visibility:hidden}
+.px-hm{display:none}
+.px:hover .px-ai,.px:hover .px-am{display:none}
+.px:hover .px-hm{display:block}
+.dark .px{filter:drop-shadow(0 0 1px rgba(244,242,238,.85)) drop-shadow(0 0 4px rgba(244,242,238,.25))}
+.dark .px::after{background:radial-gradient(closest-side,rgba(244,242,238,.16),rgba(244,242,238,0))}
+html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19,28,.95)) drop-shadow(0 0 4px rgba(16,19,28,.35))}
+.px-row{display:grid;grid-template-columns:minmax(0,820px) auto;gap:56px;align-items:end}
+.px-row>.px{margin-bottom:6px}
+.px-side{display:flex;flex-direction:column;align-items:stretch}
+.px-side>.px{align-self:flex-end;margin:0 28px calc(-1.5px*var(--s)) 0;z-index:2}
+.px-lineup{display:flex;align-items:flex-end;gap:28px;width:max-content;max-width:100%;padding:0 10px;border-bottom:1px solid currentColor;margin-top:4px}
+.px-lineup .px{--s:2;margin-bottom:calc(-1.5px*var(--s))}
+.px-lineup .px::after{display:none}
+.menu-head .px{margin-top:8px}
+.px-beat{float:right;--s:2;margin:6px 0 14px 28px}
+@media (max-width:960px){.px-row{grid-template-columns:minmax(0,1fr);gap:20px}.px-row>.px{justify-self:start}}
+@media (max-width:640px){.px{--s:2}.px-lineup .px{--s:1.6}.px-lineup{gap:18px}.px-beat{--s:1.6;margin:4px 0 8px 16px}}
+@media (prefers-reduced-motion:reduce){.px-v img,.px-ai,.px-am{animation:none}}
+.pxc-inspect .px-ai{animation:pxvi-inspect 6920ms step-end infinite}
+.pxc-inspect .px-am{animation:pxvm-inspect 6920ms step-end infinite}
+.pxc-inspect .px-am img{animation:pxr-inspect 6920ms infinite}
+@keyframes pxvi-inspect{0%{visibility:visible}73.988%,100%{visibility:hidden}}
+@keyframes pxvm-inspect{0%{visibility:hidden}73.988%,100%{visibility:visible}}
+@keyframes pxr-inspect{0%{transform:translateX(0);animation-timing-function:step-end}73.988%{transform:translateX(0);animation-timing-function:steps(10,end)}100%{transform:translateX(-100%)}}
+/* px:end */
 </style>
 </helmet>
 <div style="min-height:100vh" data-gt-root="">
@@ -505,7 +537,7 @@ html{scroll-padding-top:60px}
 <div class="wrap article">
 <div class="col">
 <p class="kicker">01 · Paper A</p>
-<h2 class="t-h2" style="margin:12px 0 18px">Mapping every neuron in a fly brain</h2>
+<h2 class="t-h2" style="margin:12px 0 18px">Mapping every neuron in a fly brain</h2><span class="px pxc-inspect px-beat" style="--w:43" role="img" aria-label="The GelasTinta pixel character in a lab coat, holding a beaker up to the light"><span class="px-v px-ai" style="--n:8;--t:1280ms"><img src="/_blob/0adff87b8a0ce54aa1d503767bf28772" alt="" draggable="false"></span><span class="px-v px-am" style="--n:10;--t:1800ms"><img src="/_blob/abb3bf9b38e58b145b90221cfdc2e9b2" alt="" draggable="false"></span><span class="px-v px-hm" style="--n:10;--t:1800ms"><img src="/_blob/abb3bf9b38e58b145b90221cfdc2e9b2" alt="" draggable="false"></span></span>
 <p>The raw material was already public: a female fly brain cut into thousands of slices about 40 nanometres thick, each photographed with an electron microscope. The FlyWire team aligned the images, let neural networks trace every neuron automatically, and then had people fix the mistakes. That proofreading took an estimated 33 person-years, shared between research labs, central teams at Princeton and Cambridge, and citizen scientists around the world. Synapses and the likely chemical messenger (neurotransmitter) of each neuron were predicted by separate machine-learning tools.</p>
 <p>The result: 139,255 neurons and 54.5 million synapses between them, plus annotations for more than 8,400 cell types in a companion paper. It is the first wiring diagram of an entire adult brain, and it was open to the community while it was still being built.</p>
 </div>
@@ -727,7 +759,7 @@ html{scroll-padding-top:60px}
 <p>The result I find most surprising is Paper B. A model that ignores neuron shape, chemistry beyond “excite or inhibit”, and everything the fly has learned, with one tuned number, still worked out what a poorly understood taste neuron type does to feeding, and predicted how the grooming circuit responds to different touch neurons. That says a lot about how much of the brain’s logic is written into its wiring. But I also think the 91% headline flatters it a little: in a screen where most answers are “no”, a lazy guess scores almost as well. I would lead with “10 of 11 positive predictions were right”, which is the genuinely impressive part.</p>
 <p>Paper C is the one I keep thinking about. The idea that the sexes share the same senses and muscles, and differ mainly in the middle where decisions are made, is elegant and makes evolutionary sense. The authors are careful to say it rests on one animal of each sex. The obvious next steps are more brains, and then running Paper B-style simulations on both sexes to see whether those wiring differences really produce different behaviour.</p>
 <p><b>Update, November 2026:</b> I have since run Paper B’s model myself, as a hobby project: <a href="Hobby-FlyBrain.dc.html">A fly’s brain when it tastes sugar?</a> It repeats the paper’s sugar-to-MN9 test, silences Roundup (the pre-motor cell type the paper predicts matters most) and replays every simulated spike in 3D.</p>
-<nav class="talk-nav" aria-label="More talks"><a class="tn prev" href="Talk-HairClipFish.dc.html"><span class="tn-k">← Previous talk · 07</span><span class="tn-t">Snap Out of It: A Fish Robot That Swims on a Hair Clip</span><span class="tn-m">23rd June 2026 · 12 min read</span></a><a class="tn next" href="Talk-NavierStokes.dc.html"><span class="tn-k">Next talk · 09 →</span><span class="tn-t">Mathematician vs Clanker: Navier–Stokes, the Millennium Prize Question Answered?</span><span class="tn-m">23rd September 2026 · 16 min read</span></a></nav>
+<nav class="talk-nav" aria-label="More talks"><a class="tn prev" href="Talk-HairClipFish.dc.html"><span class="tn-k">← Previous talk · 07</span><span class="tn-t">Snap Out of It: A Fish Robot That Swims on a Hair Clip</span><span class="tn-m">23rd June 2026 · 12 min read</span></a><a class="tn next" href="Talk-NavierStokes.dc.html"><span class="tn-k">Next talk · 09 →</span><span class="tn-t">Mathematician vs Clanker: Navier–Stokes, a Millennium Prize Claim Still Under Review</span><span class="tn-m">23rd September 2026 · 16 min read</span></a></nav>
 <a href="Talks.dc.html" class="back" style="margin-top:24px;color:#2B44C8">← Back to all talks</a>
 </div>
 <div class="stack g24">

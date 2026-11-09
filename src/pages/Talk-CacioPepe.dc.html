@@ -376,6 +376,38 @@ html{scroll-padding-top:60px}
 /* math:start */
 .m{font-family:'Cambria Math',Cambria,'STIX Two Text','Times New Roman',serif;font-size:1.08em;white-space:nowrap}
 /* math:end */
+/* px:start */
+.px{--s:3;--w:76;position:relative;display:inline-block;flex:none;width:calc(var(--w)*1px*var(--s));height:calc(58px*var(--s));cursor:pointer;-webkit-tap-highlight-color:transparent}
+.px::after{content:"";position:absolute;left:calc(4px*var(--s));width:calc(30px*var(--s));bottom:calc(-1.5px*var(--s));height:calc(4px*var(--s));background:radial-gradient(closest-side,rgba(16,19,28,.2),rgba(16,19,28,0));pointer-events:none}
+.px-v{position:absolute;inset:0;overflow:hidden;z-index:1}
+.px-v img{display:block;width:calc(var(--n)*76px*var(--s));max-width:none;height:100%;image-rendering:crisp-edges;image-rendering:pixelated;animation:px-run var(--t) steps(var(--n)) infinite;pointer-events:none;user-select:none;-webkit-user-drag:none}
+@keyframes px-run{to{transform:translateX(-100%)}}
+.px-am{visibility:hidden}
+.px-hm{display:none}
+.px:hover .px-ai,.px:hover .px-am{display:none}
+.px:hover .px-hm{display:block}
+.dark .px{filter:drop-shadow(0 0 1px rgba(244,242,238,.85)) drop-shadow(0 0 4px rgba(244,242,238,.25))}
+.dark .px::after{background:radial-gradient(closest-side,rgba(244,242,238,.16),rgba(244,242,238,0))}
+html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19,28,.95)) drop-shadow(0 0 4px rgba(16,19,28,.35))}
+.px-row{display:grid;grid-template-columns:minmax(0,820px) auto;gap:56px;align-items:end}
+.px-row>.px{margin-bottom:6px}
+.px-side{display:flex;flex-direction:column;align-items:stretch}
+.px-side>.px{align-self:flex-end;margin:0 28px calc(-1.5px*var(--s)) 0;z-index:2}
+.px-lineup{display:flex;align-items:flex-end;gap:28px;width:max-content;max-width:100%;padding:0 10px;border-bottom:1px solid currentColor;margin-top:4px}
+.px-lineup .px{--s:2;margin-bottom:calc(-1.5px*var(--s))}
+.px-lineup .px::after{display:none}
+.menu-head .px{margin-top:8px}
+.px-beat{float:right;--s:2;margin:6px 0 14px 28px}
+@media (max-width:960px){.px-row{grid-template-columns:minmax(0,1fr);gap:20px}.px-row>.px{justify-self:start}}
+@media (max-width:640px){.px{--s:2}.px-lineup .px{--s:1.6}.px-lineup{gap:18px}.px-beat{--s:1.6;margin:4px 0 8px 16px}}
+@media (prefers-reduced-motion:reduce){.px-v img,.px-ai,.px-am{animation:none}}
+.pxc-thinking .px-ai{animation:pxvi-thinking 7320ms step-end infinite}
+.pxc-thinking .px-am{animation:pxvm-thinking 7320ms step-end infinite}
+.pxc-thinking .px-am img{animation:pxr-thinking 7320ms infinite}
+@keyframes pxvi-thinking{0%{visibility:visible}69.945%,100%{visibility:hidden}}
+@keyframes pxvm-thinking{0%{visibility:hidden}69.945%,100%{visibility:visible}}
+@keyframes pxr-thinking{0%{transform:translateX(0);animation-timing-function:step-end}69.945%{transform:translateX(0);animation-timing-function:steps(10,end)}100%{transform:translateX(-100%)}}
+/* px:end */
 </style>
 </helmet>
 <div style="min-height:100vh" data-gt-root="">
@@ -479,7 +511,7 @@ html{scroll-padding-top:60px}
 <div class="wrap article">
 <div class="col">
 <p class="kicker">02</p>
-<h2 class="t-h2" style="margin:12px 0 18px">So, How did they actually prove it?</h2>
+<h2 class="t-h2" style="margin:12px 0 18px">So, how did they actually prove it?</h2><span class="px pxc-thinking px-beat" style="--w:41" role="img" aria-label="The GelasTinta pixel character in a lab coat, hand on chin, thinking"><span class="px-v px-ai" style="--n:8;--t:1280ms"><img src="/_blob/0adff87b8a0ce54aa1d503767bf28772" alt="" draggable="false"></span><span class="px-v px-am" style="--n:10;--t:2200ms"><img src="/_blob/1777a946f341b1e9e5f78755bd62c712" alt="" draggable="false"></span><span class="px-v px-hm" style="--n:10;--t:2200ms"><img src="/_blob/1777a946f341b1e9e5f78755bd62c712" alt="" draggable="false"></span></span>
 <p>They described the sauce with one equation from physics, the <b>binary mixture free-energy model</b>. It treats the sauce as just two ingredients, cheese proteins and “everything else” (water, starch, salt and fat), and scores whether that mix would rather stay blended or separate. Three things pull against each other:</p>
 </div>
 <div class="col-wide" style="margin-top:36px">
@@ -604,7 +636,7 @@ html{scroll-padding-top:60px}
 <div class="dose-axis"><span style="left:0;transform:none">0</span><span style="left:20%">1</span><span style="left:40%">2</span><span style="left:60%">3</span><span style="left:80%">4</span><span style="left:100%;transform:translateX(-100%)">5 %</span></div>
 </div>
 </div>
-<div class="viz-more"><button type="button" class="more" aria-expanded="{{ex.c.aria}}" onClick="{{ex.c.toggle}}"><span class="more-ico" aria-hidden="true">{{ex.c.ico}}</span>{{ex.c.text}} the science</button><sc-if value="{{ex.c.open}}"><div class="more-body"><p>Starch and citrate stop lumps in different ways. Gelatinised starch gets in between the cheese proteins, so lumps shrink gradually as you add more. Trisodium citrate grabs the calcium ions that hold casein proteins together; below 2 % there isn’t enough of it and the sauce still collapses (just later), from 2 % it stays completely smooth. The paper tested citrate at 1 %, 2 % and 3 % with cheese and water mixed 1 : 1.</p>
+<div class="viz-more"><button type="button" class="more" aria-expanded="{{ex.c.aria}}" onClick="{{ex.c.toggle}}"><span class="more-ico" aria-hidden="true">{{ex.c.ico}}</span>{{ex.c.text}} the science</button><sc-if value="{{ex.c.open}}"><div class="more-body"><p>Starch and citrate stop lumps in different ways. Gelatinised starch gets in between the cheese proteins, so lumps shrink gradually as you add more. Trisodium citrate grabs the calcium ions that hold casein proteins together; below 2 % there isn’t enough of it and the sauce still collapses (just later); from 2 % it stays completely smooth. The paper tested citrate at 1 %, 2 % and 3 % with cheese and water mixed 1 : 1.</p>
 <div class="paper-fig"><img src="/_blob/ad9aba47dbacad10558815b6e1eb197e" alt="Paper Figure 5: sauce photos at 0 to 3 percent trisodium citrate from 50 to 95 degrees; 0 and 1 percent end in the Mozzarella Phase, 2 and 3 percent stay smooth" loading="lazy"></div>
 <p class="fig-cap"><b>Paper Fig. 5.</b> The sauce with 0–3 % trisodium citrate (relative to cheese weight), heated from 50 to 95 °C.</p>
 <span class="meta muted" style="font-size:11px">Source: Bartolucci et al., Phys. Fluids 37, 044122 (2025), CC BY 4.0</span></div></sc-if></div>
@@ -646,7 +678,7 @@ html{scroll-padding-top:60px}
 <div class="col">
 <p class="kicker">04</p>
 <h2 class="t-h2" style="margin:12px 0 18px">It matters? How?</h2>
-<p>While the idea of exploring particular dish might seem kind of excessive, but from it comes a serious exploration of phase separation, emulsions, and protein aggregation; concepts that apply not only to food but also to materials science, biochemistry, and even engineering. Understanding how mixtures behave under heat and concentration changes helps. Plus, it’s a reminder that cooking is chemistry in action.</p>
+<p>While the idea of exploring a particular dish might seem kind of excessive, from it comes a serious exploration of phase separation, emulsions, and protein aggregation; concepts that apply not only to food but also to materials science, biochemistry, and even engineering. Understanding how mixtures behave under heat and concentration changes helps. Plus, it’s a reminder that cooking is chemistry in action.</p>
 </div>
 </div>
 </section>
@@ -663,9 +695,9 @@ html{scroll-padding-top:60px}
 </div>
 <ol class="steps">
 <li><b>1</b>Protein dances in the midst of Water as music and Starch as their environment</li>
-<li><b>2</b>Entropy as the instructor suggest that they dance freely and spread out</li>
+<li><b>2</b>Entropy as the instructor suggests that they dance freely and spread out</li>
 <li><b>3</b>But some Protein wanna dance closer due to interaction between them</li>
-<li><b style="color:#907018">4</b>Temperature set the “music” (water) and made the Protein even closer</li>
+<li><b style="color:#907018">4</b>Temperature sets the “music” (water) and makes the Protein even closer</li>
 </ol>
 </div>
 </div>
@@ -677,8 +709,8 @@ html{scroll-padding-top:60px}
 <div>
 <p class="kicker">06</p>
 <h2 class="t-h2" style="margin:12px 0 18px">Personal Take</h2>
-<p>I love how this paper turns a kitchen challenge into a physics experiment. As a former international student, there were times when I spent an evening trying to experiment different ways to cook pasta. It’s a perfect example of how engineering curiosity meets everyday life. The “Mozzarella Phase” is not just a funny name — it’s a vivid reminder that even simple recipes hide complex thermodynamics. It confirmed something I'd felt intuitively — that a little starch changes the whole texture of a sauce. While the flavour of the food itself is more of personal taste, this paper gives an idea of what a true preparation to which we could do for our creation. While the application of this particular equation and model is designed for Cacio e Pepe, I believe some dish in Asia and Africa could also benefit in this, such as Tsukemen of which it uses thick broth as dipping sauce to enrich its flavour. For me, this resonates with the idea that science and music share a rhythm: both are about finding harmony in systems, whether it’s molecules in sauce or notes in a melody.</p>
-<nav class="talk-nav" aria-label="More talks"><div class="tn none"><span class="tn-k">This is where it started</span><span class="tn-m">Talk 01, the first entry</span></div><a class="tn next" href="Talk-Salmon.dc.html"><span class="tn-k">Next talk · 02 →</span><span class="tn-t">How Crack-headed Salmon Influence the Dynamics between Human and the Environment</span><span class="tn-m">23rd January 2026 · 8 min read</span></a></nav>
+<p>I love how this paper turns a kitchen challenge into a physics experiment. As a former international student, there were times when I spent an evening trying to experiment with different ways to cook pasta. It’s a perfect example of how engineering curiosity meets everyday life. The “Mozzarella Phase” is not just a funny name — it’s a vivid reminder that even simple recipes hide complex thermodynamics. It confirmed something I'd felt intuitively — that a little starch changes the whole texture of a sauce. While the flavour of the food itself is more of a personal taste, this paper gives an idea of what a true preparation we could do for our creation. While the application of this particular equation and model is designed for Cacio e Pepe, I believe some dishes in Asia and Africa could also benefit from this, such as Tsukemen, which uses thick broth as dipping sauce to enrich its flavour. For me, this resonates with the idea that science and music share a rhythm: both are about finding harmony in systems, whether it’s molecules in sauce or notes in a melody.</p>
+<nav class="talk-nav" aria-label="More talks"><div class="tn none"><span class="tn-k">This is where it started</span><span class="tn-m">Talk 01, the first entry</span></div><a class="tn next" href="Talk-Salmon.dc.html"><span class="tn-k">Next talk · 02 →</span><span class="tn-t">How Crack-headed Salmon Influence the Dynamics between Humans and the Environment</span><span class="tn-m">23rd January 2026 · 8 min read</span></a></nav>
 <a href="Talks.dc.html" class="back" style="margin-top:24px;color:#2B44C8">← Back to all talks</a>
 </div>
 <figure class="stack g12" style="position:sticky;top:24px">

@@ -430,6 +430,38 @@ html{scroll-padding-top:60px}
 /* math:start */
 .m{font-family:'Cambria Math',Cambria,'STIX Two Text','Times New Roman',serif;font-size:1.08em;white-space:nowrap}
 /* math:end */
+/* px:start */
+.px{--s:3;--w:76;position:relative;display:inline-block;flex:none;width:calc(var(--w)*1px*var(--s));height:calc(58px*var(--s));cursor:pointer;-webkit-tap-highlight-color:transparent}
+.px::after{content:"";position:absolute;left:calc(4px*var(--s));width:calc(30px*var(--s));bottom:calc(-1.5px*var(--s));height:calc(4px*var(--s));background:radial-gradient(closest-side,rgba(16,19,28,.2),rgba(16,19,28,0));pointer-events:none}
+.px-v{position:absolute;inset:0;overflow:hidden;z-index:1}
+.px-v img{display:block;width:calc(var(--n)*76px*var(--s));max-width:none;height:100%;image-rendering:crisp-edges;image-rendering:pixelated;animation:px-run var(--t) steps(var(--n)) infinite;pointer-events:none;user-select:none;-webkit-user-drag:none}
+@keyframes px-run{to{transform:translateX(-100%)}}
+.px-am{visibility:hidden}
+.px-hm{display:none}
+.px:hover .px-ai,.px:hover .px-am{display:none}
+.px:hover .px-hm{display:block}
+.dark .px{filter:drop-shadow(0 0 1px rgba(244,242,238,.85)) drop-shadow(0 0 4px rgba(244,242,238,.25))}
+.dark .px::after{background:radial-gradient(closest-side,rgba(244,242,238,.16),rgba(244,242,238,0))}
+html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19,28,.95)) drop-shadow(0 0 4px rgba(16,19,28,.35))}
+.px-row{display:grid;grid-template-columns:minmax(0,820px) auto;gap:56px;align-items:end}
+.px-row>.px{margin-bottom:6px}
+.px-side{display:flex;flex-direction:column;align-items:stretch}
+.px-side>.px{align-self:flex-end;margin:0 28px calc(-1.5px*var(--s)) 0;z-index:2}
+.px-lineup{display:flex;align-items:flex-end;gap:28px;width:max-content;max-width:100%;padding:0 10px;border-bottom:1px solid currentColor;margin-top:4px}
+.px-lineup .px{--s:2;margin-bottom:calc(-1.5px*var(--s))}
+.px-lineup .px::after{display:none}
+.menu-head .px{margin-top:8px}
+.px-beat{float:right;--s:2;margin:6px 0 14px 28px}
+@media (max-width:960px){.px-row{grid-template-columns:minmax(0,1fr);gap:20px}.px-row>.px{justify-self:start}}
+@media (max-width:640px){.px{--s:2}.px-lineup .px{--s:1.6}.px-lineup{gap:18px}.px-beat{--s:1.6;margin:4px 0 8px 16px}}
+@media (prefers-reduced-motion:reduce){.px-v img,.px-ai,.px-am{animation:none}}
+.pxc-walk .px-ai{animation:pxvi-walk 5680ms step-end infinite}
+.pxc-walk .px-am{animation:pxvm-walk 5680ms step-end infinite}
+.pxc-walk .px-am img{animation:pxr-walk 5680ms infinite}
+@keyframes pxvi-walk{0%{visibility:visible}90.141%,100%{visibility:hidden}}
+@keyframes pxvm-walk{0%{visibility:hidden}90.141%,100%{visibility:visible}}
+@keyframes pxr-walk{0%{transform:translateX(0);animation-timing-function:step-end}90.141%{transform:translateX(0);animation-timing-function:steps(4,end)}100%{transform:translateX(-100%)}}
+/* px:end */
 </style>
 </helmet>
 <div style="min-height:100vh" data-gt-root="">
@@ -617,7 +649,7 @@ html{scroll-padding-top:60px}
 <div class="wrap article">
 <div class="col">
 <p class="kicker">05</p>
-<h2 class="t-h2" style="margin:12px 0 18px">Break it, and it keeps walking</h2>
+<h2 class="t-h2" style="margin:12px 0 18px">Break it, and it keeps walking</h2><span class="px pxc-walk px-beat" style="--w:35" role="img" aria-label="The GelasTinta pixel character in a lab coat, walking"><span class="px-v px-ai" style="--n:8;--t:1280ms"><img src="/_blob/0adff87b8a0ce54aa1d503767bf28772" alt="" draggable="false"></span><span class="px-v px-am" style="--n:4;--t:560ms"><img src="/_blob/2ac8f04301980f265efc51c1c861396a" alt="" draggable="false"></span><span class="px-v px-hm" style="--n:4;--t:560ms"><img src="/_blob/2ac8f04301980f265efc51c1c861396a" alt="" draggable="false"></span></span>
 <p>Most robots have a single point of failure. Take out the part with the battery and the brain, and they are done. Here, every module carries its own, so the body can lose pieces and what remains is still a working machine. The question is whether the controller can cope.</p>
 <p>To find out, the team trained “expert” controllers for the quadruped with one, two or four legs removed, and recorded what each one sensed and did. Then they trained a single transformer, the same kind of model behind language AIs, to predict the next action from recent sensor readings. It is never told which modules are missing. It has to work it out from how its body is responding.</p>
 </div>

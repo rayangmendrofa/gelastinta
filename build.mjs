@@ -73,14 +73,14 @@ export const META = {
     desc: 'A fan build of TARS from Interstellar, printed and assembled from the TARS-AI community’s open kit, then taught seven new moves in a MuJoCo simulation.' },
   'Talk-CacioPepe.dc.html': { title: 'The Art of Combining Cooking and Science — GelasTinta', img: '4f9fc858b3f233d90a5db49a21bd6b1f', date: '2025-12-23',
     desc: 'Why cacio e pepe turns clumpy, and the Ig Nobel-winning physics paper that fixes it with a little starch.' },
-  'Talk-Salmon.dc.html': { title: 'How Crack-headed Salmon Influence Human and Environment — GelasTinta', img: 'cda359f19fa6c877bb9c7a27d1d81add', date: '2026-01-23',
+  'Talk-Salmon.dc.html': { title: 'How Crack-headed Salmon Influence Humans and the Environment — GelasTinta', img: 'cda359f19fa6c877bb9c7a27d1d81add', date: '2026-01-23',
     desc: 'Cocaine in rivers changes how salmon swim. What a fish study says about drugs, wastewater and us.' },
   'Talk-Necro.dc.html': { title: 'Necromancy, Unlocked: Meet Necrobotics — GelasTinta', img: '6c50dd80c38fa40df5aac2eea7534976', date: '2026-02-23',
     desc: 'A dead spider, a needle and a drop of superglue: how engineers turned spider legs into a gripper.' },
   'Talk-ProjectHailMary.dc.html': { title: 'Amaze, Amaze, Amaze: The Science of Project Hail Mary — GelasTinta', img: 'ec28ec78594bd9ac3bed820bb5857e7f', date: '2026-03-23',
     desc: 'A spinning spaceship that makes its own gravity, a language made of chords and the friendliest alien in fiction.' },
-  'Talk-NavierStokes.dc.html': { title: 'Mathematician vs Clanker: Navier–Stokes Answered? — GelasTinta', img: '8640ecc3e79609c3709944fae4972088', fit: 'contain', date: '2026-09-23',
-    desc: 'The equation every engineer meets, the AI-made proof that it can break, and the fight over who gets the credit.' },
+  'Talk-NavierStokes.dc.html': { title: 'Mathematician vs Clanker: Navier–Stokes, a Claim Still Under Review — GelasTinta', img: '8640ecc3e79609c3709944fae4972088', fit: 'contain', date: '2026-09-23',
+    desc: 'The equation every engineer meets, an AI made proof that its forced version can break (not yet peer reviewed), and the fight over who gets the credit.' },
   'Talk-Cyberpunk.dc.html': { title: 'Chrome and Consequences: The Science and Fiction of Cyberpunk’s Implants — GelasTinta', img: '654691c00363657dd58c94a152c33ac5', pos: 'centre', date: '2026-10-23',
     desc: 'Sandevistans, Kiroshi eyes, biochips and engrams from Cyberpunk 2077 and Edgerunners, set against the real implants of 2026, plus rogue AI and cyberpsychosis.' },
   'Talk-FlyConnectome.dc.html': { title: 'The Whole Fly, Wired: Mapping, Running and Comparing a Brain — GelasTinta', img: '1463589e642fabbb0136f68a398bab10', pos: 'centre', date: '2026-07-23',
@@ -360,13 +360,15 @@ ${helmet}
 .nf .split{align-items:center}
 @media (min-width:961px){.nf .split{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}}
 .nf-links .btn{white-space:nowrap}
-@media (max-width:960px){.nf-art{max-width:220px;justify-self:start}.nf{min-height:0}}
+@media (max-width:960px){.nf-art{max-width:220px;justify-self:start}.nf-side{justify-self:start;align-items:flex-start}.nf{min-height:0}}
 .nf-code{font-family:'Titillium Web',system-ui,sans-serif;font-weight:800;font-size:clamp(96px,16vw,200px);line-height:.85;letter-spacing:-.05em;color:#064F6E;margin:0}
 .nf h1{margin:0}
 .nf-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
 .nf .btn.ghost{color:#EDEFF2;border:1px solid #EDEFF2}
 .nf .btn.ghost:hover{background:#EDEFF2;color:#10131C}
 .nf-art{width:100%;max-width:360px;justify-self:center}
+.nf-side{display:flex;flex-direction:column;align-items:center;gap:8px;justify-self:center}
+.nf-side .px{--s:2;cursor:default;margin-top:-30px;align-self:flex-start}
 .nf-art .ink{animation:nfDrip 2.8s cubic-bezier(.5,0,.75,0) infinite}
 .nf-art .pool{transform-origin:262px 292px;animation:nfPool 2.8s ease-out infinite}
 @keyframes nfDrip{0%,30%{transform:translateY(0);opacity:0}35%{opacity:1}80%{transform:translateY(82px);opacity:1}82%,100%{transform:translateY(82px);opacity:0}}
@@ -389,6 +391,7 @@ ${header}
 <a class="btn ghost" href="/projects/">See the projects</a>
 </div>
 </div>
+<div class="nf-side">
 <svg class="nf-art" viewBox="0 0 320 320" role="img" aria-label="An ink flask tipped on its side, ink dripping from its mouth into a puddle">
 <defs><clipPath id="nf-body"><path transform="translate(20 10) rotate(100 140 150)" d="M118 40v70L70 232a10 10 0 0 0 9 14h122a10 10 0 0 0 9-14L162 110V40z"/></clipPath></defs>
 <rect x="0" y="182" width="320" height="120" fill="#064F6E" clip-path="url(#nf-body)"/>
@@ -396,6 +399,8 @@ ${header}
 <circle class="ink" cx="262" cy="206" r="6" fill="#064F6E"/>
 <ellipse class="pool" cx="262" cy="292" rx="54" ry="8" fill="#064F6E"/>
 </svg>
+${rewrite('<span class="px" style="--w:36" role="img" aria-label="The GelasTinta pixel character in a hoodie, frowning with a single tear"><span class="px-v px-ai" style="--n:10;--t:2000ms"><img src="/_blob/aac8e546325c530b66d6b529ada318e5" alt="" draggable="false"></span></span>', 'Talks.dc.html')}
+</div>
 </div>
 </main>
 ${footer}
