@@ -459,6 +459,17 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 @keyframes pxvm-present{0%{visibility:hidden}68.085%,100%{visibility:visible}}
 @keyframes pxr-present{0%{transform:translateX(0);animation-timing-function:step-end}68.085%{transform:translateX(0);animation-timing-function:steps(12,end)}100%{transform:translateX(-100%)}}
 /* px:end */
+/* pxs:start */
+.pxs{position:relative;display:block;width:100%;aspect-ratio:128/80;overflow:hidden;background:#10131C;margin:0}
+.pxs::after{content:"";position:absolute;inset:0;border:1px solid #10131C;pointer-events:none}
+.pxs img{display:block;width:calc(100% * var(--n));height:100%;max-width:none;image-rendering:crisp-edges;image-rendering:pixelated;animation:pxs-run var(--t) steps(var(--n)) infinite;pointer-events:none;user-select:none;-webkit-user-drag:none}
+@keyframes pxs-run{to{transform:translateX(-100%)}}
+.sec-head.pxs-head{flex-direction:row;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:24px 48px}
+.pxs-head > .stack{flex:1 1 320px;min-width:0}
+.pxs-head > .pxs{flex:0 0 auto;width:384px;max-width:100%}
+@media (max-width:760px){.pxs-head > .pxs{width:100%}}
+@media (prefers-reduced-motion:reduce){.pxs img{animation:none}}
+/* pxs:end */
 </style>
 </helmet>
 <div style="min-height:100vh" data-gt-root="">
@@ -504,12 +515,13 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 
 <section id="packs" class="sec white rule-b">
 <div class="wrap">
-<div class="sec-head row">
+<div class="sec-head row pxs-head">
 <div class="stack g12">
 <p class="kicker">01 — New · Study packs</p>
 <h2 class="t-h2">GelasTinta study packs</h2>
-</div>
 <p class="meta muted">10 courses · 175 sheets · first sheet free</p>
+</div>
+<div class="pxs" role="img" aria-label="Pixel scene: the GelasTinta character in a hoodie studying at his desk with a laptop and a mug while rain falls outside" style="--n:12;--t:2040ms"><img src="/_blob/9a5be7997e4e55b0796ce117cc1ae15a" alt="" draggable="false"></div>
 </div>
 <div class="sp-intro">
 <p class="lead prose">Engineering courses I wrote from scratch and built like the talks on this site: slide lessons that draw themselves, labs you can play with, and practice problems that never run out.</p>

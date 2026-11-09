@@ -24,8 +24,14 @@ import { PACKS } from '../lib/packs-config.mjs';
 const ROOT = path.dirname(path.dirname(new URL(import.meta.url).pathname));
 const from = process.argv[2];
 if (!from) { console.error('usage: PACKS_KEY=... node scripts/build-packs.mjs <folder with the pack files>'); process.exit(1); }
+// PACKS_STAGE=<folder> instead of PACKS_KEY: do everything except the encryption. The samples and
+// teardowns.json go to packs-data as usual; every file that would be encrypted is written plain to
+// <folder>/<name>.plain (keep that folder private), for tools/seal-packs.html to encrypt in the
+// owner's own browser with PACKS_KEY. That way the key never leaves the owner's machine.
+const STAGE = process.env.PACKS_STAGE || '';
 const key = Buffer.from(process.env.PACKS_KEY || '', 'base64');
-if (key.length !== 32) { console.error('PACKS_KEY must be 32 bytes, base64 encoded'); process.exit(1); }
+if (!STAGE && key.length !== 32) { console.error('PACKS_KEY must be 32 bytes, base64 encoded (or set PACKS_STAGE)'); process.exit(1); }
+if (STAGE) fs.mkdirSync(STAGE, { recursive: true });
 const OUT = path.join(ROOT, 'packs-data');
 fs.mkdirSync(OUT, { recursive: true });
 
@@ -206,6 +212,7 @@ function build(keyName, html) {
 // fetches the page from /packs/td/<key> when a buyer presses "Open the 3D model". Each page is
 // encrypted on its own in packs-data/td-<key>.bin; packs-data/teardowns.json maps key -> pack.
 const TD = {};
+const seal = (name, buf) => { if (STAGE) fs.writeFileSync(path.join(STAGE, name + '.plain'), buf); else fs.writeFileSync(path.join(OUT, name), encrypt(buf)); };
 const encrypt = (buf) => { const iv = crypto.randomBytes(12); const c = crypto.createCipheriv('aes-256-gcm', key, iv); const e = Buffer.concat([c.update(buf), c.final()]); return Buffer.concat([iv, c.getAuthTag(), e]); };
 function splitTeardowns(packKey, html) {
   const a = html.indexOf('<script>'), b = html.indexOf('</script>', a);
@@ -225,7 +232,7 @@ function splitTeardowns(packKey, html) {
       for (const k in n) { const v = n[k]; if (Array.isArray(v)) v.forEach(walk); else if (v && typeof v === 'object' && v.type) walk(v); }
     })(st);
     if (!gz) throw new Error(`${packKey}: teardown ${m[1]} has no gz page`);
-    if (!TD[m[1]]) { fs.writeFileSync(path.join(OUT, `td-${m[1]}.bin`), encrypt(Buffer.from(gz.value.value))); TD[m[1]] = pack || m[1]; }
+    if (!TD[m[1]]) { seal(`td-${m[1]}.bin`, Buffer.from(gz.value.value)); TD[m[1]] = pack || m[1]; }
     edits.push([gz.start, gz.end, `gz: "", src: "/packs/td/${m[1]}"`]);
   }
   for (const [s, e, r] of edits.sort((x, y) => y[0] - x[0])) js = js.slice(0, s) + r + js.slice(e);
@@ -243,10 +250,7 @@ for (const k of Object.keys(PACKS)) {
   const { sample, open, locked, teardowns } = build(k, html);
   const full = splitTeardowns(k, html);
   fs.writeFileSync(path.join(OUT, `${k}.sample.gz`), zlib.gzipSync(sample, { level: 9 }));
-  const iv = crypto.randomBytes(12);
-  const c = crypto.createCipheriv('aes-256-gcm', key, iv);
-  const enc = Buffer.concat([c.update(zlib.gzipSync(full, { level: 9 })), c.final()]);
-  fs.writeFileSync(path.join(OUT, `${k}.full.bin`), Buffer.concat([iv, c.getAuthTag(), enc]));
+  seal(`${k}.full.bin`, zlib.gzipSync(full, { level: 9 }));
   console.log(`${k.padEnd(12)} open ${open}, locked ${locked}, 3D ${teardowns}, sample ${(sample.length / 1e6).toFixed(2)} MB, full ${(full.length / 1e6).toFixed(2)} MB`);
   n++;
 }
