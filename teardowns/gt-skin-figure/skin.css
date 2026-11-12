@@ -1,0 +1,36 @@
+.iso-page{width:min(1180px,100% - 16px);margin:8px auto 24px}
+.iso-figure{margin:0}
+.iso-plate{padding:44px 18px 46px}
+.sk-stage{outline:none}
+.sk-stage:focus-visible{box-shadow:0 0 0 2px #0093A5}
+.sk-stage svg{width:100%;height:auto;display:block}
+.sk-beam{fill:none;stroke:#0093A5;stroke-width:1.1;stroke-linecap:round}
+.sk-fan{fill:none;stroke:#0093A5;stroke-width:.7;stroke-linecap:round}
+.sk-spot{fill:#0093A5;opacity:.85}
+.sk-photon{fill:#0093A5;stroke:var(--anatomy-card);stroke-width:.7}
+.sk-hit .iso-top{fill:#9FD8DF}
+[data-dump] .iso-top{fill:color-mix(in srgb,#0093A5 calc(var(--flash,0)*70%),var(--anatomy-top))}
+.sk-ctl{display:grid;gap:8px;margin-top:10px;font:12px/1.35 var(--anatomy-mono);color:var(--anatomy-text)}
+.sk-row{display:grid;grid-template-columns:110px minmax(0,1fr) 46px;gap:10px;align-items:center}
+.sk-row b{font-weight:600;color:var(--anatomy-strong);text-align:right;font-variant-numeric:tabular-nums}
+.sk-row input{width:100%;accent-color:#40456A;min-height:28px}
+.sk-btns{grid-template-columns:110px minmax(0,1fr);}
+.sk-btns span{grid-row:span 2}
+.sk-btns{display:flex;flex-wrap:wrap;gap:6px}
+.sk-btns span{flex-basis:100%}
+.sk-btns button{font:11.5px var(--anatomy-mono);padding:6px 9px;min-height:32px;border:1px solid var(--anatomy-mid);background:var(--anatomy-card);color:var(--anatomy-strong);cursor:pointer;border-radius:0}
+.sk-btns button[aria-pressed="true"]{background:#40456A;border-color:#40456A;color:#fff}
+.sk-btns button:focus-visible,.sk-row input:focus-visible{outline:2px solid #0093A5;outline-offset:2px}
+.sk-nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:12px;border:1px solid var(--anatomy-mid)}
+.sk-nums div{padding:8px 10px;display:flex;flex-direction:column;gap:2px;border-right:1px solid var(--anatomy-faint)}
+.sk-nums div:last-child{border-right:0}
+.sk-nums span{font:10px/1.3 var(--anatomy-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--anatomy-muted)}
+.sk-nums b{font:600 20px/1.1 var(--anatomy-mono);color:var(--anatomy-strong);font-variant-numeric:tabular-nums}
+@media (min-width:820px){
+.iso-plate{display:grid;grid-template-columns:minmax(0,1fr) 270px;gap:0 22px;align-items:center}
+.sk-stage{grid-row:1 / span 2}
+.sk-ctl{margin-top:0}
+.sk-nums{grid-template-columns:minmax(0,1fr)}
+.sk-nums div{border-right:0;border-bottom:1px solid var(--anatomy-faint)}
+.sk-nums div:last-child{border-bottom:0}
+}

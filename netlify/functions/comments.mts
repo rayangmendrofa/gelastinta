@@ -20,6 +20,8 @@ const PAGES = new Set([
   "/talks/hair-clip-fish",
   "/talks/fly-connectome",
   "/talks/cyberpunk-implants",
+  "/talks/origami-robot",
+  "/talks/learning-brain",
   "/projects/beng-dissertation",
   "/projects/msc-dissertation",
   "/projects/inmoov-hand",
