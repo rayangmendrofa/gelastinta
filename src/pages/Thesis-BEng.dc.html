@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>GelasTinta — BEng: Modified Prosthetic Hand</title>
+<title>GelasTinta · BEng: Modified Prosthetic Hand</title>
 <script src="./support.js"></script>
 <script src="/_blob/59800ae8dd311e216394a93b57b5c5e9"></script>
 </head>
@@ -277,7 +277,7 @@ html{scroll-padding-top:60px}
 <div class="wrap split rev mid">
 <div class="stack g24">
 <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="Main.dc.html">Home</a></li><li><a href="Projects.dc.html">Projects</a></li><li aria-current="page">BEng dissertation</li></ol></nav>
-<p class="kicker">Dissertation 01 — BEng Mechanical Engineering</p>
+<p class="kicker">Dissertation 01 · BEng Mechanical Engineering</p>
 <h1 class="t-thesis">Constructing and Analysing the Performance of a Modified Prosthetic Hand</h1>
 <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
 <img src="/_blob/79500ccb27583c18578c5847af825c81" alt="University of Exeter crest" style="height:64px;width:64px;object-fit:contain">
@@ -290,7 +290,7 @@ html{scroll-padding-top:60px}
 </div>
 <figure>
 <img class="shot" src="/_blob/d694dc45d8f43526db8f49c7eb77877a" alt="The finished 3D-printed prosthetic hand, palm side" style="aspect-ratio:3/4">
-<figcaption>FIG. 01 — THE FINISHED HAND</figcaption>
+<figcaption>FIG. 01 · THE FINISHED HAND</figcaption>
 </figure>
 </div>
 </section>
@@ -298,7 +298,7 @@ html{scroll-padding-top:60px}
 <section class="sec tight dark">
 <div class="wrap stack g16">
 <p class="kicker">In a nutshell</p>
-<p class="quote">I built a low-cost, 3D-printed robotic hand whose fingers close when you flex the muscles in your forearm — a cheap test bed for future prosthetics research.</p>
+<p class="quote">I built a low-cost, 3D-printed robotic hand whose fingers close when you flex the muscles in your forearm, a cheap test bed for future prosthetics research.</p>
 </div>
 </section>
 
@@ -322,7 +322,7 @@ html{scroll-padding-top:60px}
 </div>
 <div class="prose intro">
 <p>More and more people live without a hand or arm. Prosthetic arms help, but many users stop wearing them: they hurt, they’re heavy, they’re fiddly to take off, and they can’t handle everyday jobs like buttoning a shirt or tying a knot.</p>
-<p>The project starts from what users actually need — the report frames this with a survey of upper-limb prosthesis users — and argues that a hand able to do several different things would make a real difference to their quality of life. Its answer is a prototype: an affordable, 3D-printed hand you control with your own muscle signals.</p>
+<p>The project starts from what users actually need, and the report frames this with a survey of upper-limb prosthesis users. It argues that a hand able to do several different things would make a real difference to their quality of life. Its answer is a prototype: an affordable, 3D-printed hand you control with your own muscle signals.</p>
 </div>
 </div>
 </section>
@@ -334,18 +334,18 @@ html{scroll-padding-top:60px}
 <h2 class="t-h2">How it was done</h2>
 </div>
 <ol class="cols-2" style="list-style:none;padding:0">
-<li class="step"><span class="kicker" style="color:#2B44C8">Step 1 — Study the hand</span><h3 class="t-h3">Learn what a real hand can do</h3><p>A human hand has 27 bones; each finger has 4 ways to move (degrees of freedom) and the thumb has 5. Most commercial prosthetic fingers have only 1 or 2. I compared existing designs — iLimb, the Vanderbilt and Bologna research hands, the Shadow Hand and the open-source InMoov.</p></li>
-<li class="step"><span class="kicker" style="color:#2B44C8">Step 2 — Do the maths</span><h3 class="t-h3">Model the forces and motion</h3><p>Tendons were treated as springs that only pull when tight, and the finger’s shape was found by letting the system settle into its lowest-energy state. A kinematic model tracked where each finger joint and the fingertip would be, and how fast they move.</p></li>
-<li class="step"><span class="kicker" style="color:#2B44C8">Step 3 — Design it</span><h3 class="t-h3">CAD, then a change of plan</h3><p>The first idea used fishing line as artificial tendons. It was dropped for a stiffer joint-linkage finger, each one driven by its own small servo motor tucked inside the palm. Modelled in SolidWorks and Shapr3D, then 3D printed.</p></li>
-<li class="step"><span class="kicker" style="color:#2B44C8">Step 4 — Wire it to muscles</span><h3 class="t-h3">Muscle signal → fingers</h3><p>Skin electrodes pick up the tiny electrical signal (EMG) your muscles make when you flex. A sensor board cleans it up, an Arduino Mega turns it into motor commands, and the servos curl the fingers.</p></li>
+<li class="step"><span class="kicker" style="color:#2B44C8">Step 1</span><h3 class="t-h3">Learn what a real hand can do</h3><p>A human hand has 27 bones. Each finger has 4 ways to move (degrees of freedom) and the thumb has 5. Most commercial prosthetic fingers have only 1 or 2. I compared existing designs, including iLimb, the Vanderbilt and Bologna research hands, the Shadow Hand and the open-source InMoov.</p></li>
+<li class="step"><span class="kicker" style="color:#2B44C8">Step 2</span><h3 class="t-h3">Model the forces and motion</h3><p>Tendons were treated as springs that only pull when tight, and the finger’s shape was found by letting the system settle into its lowest-energy state. A kinematic model tracked where each finger joint and the fingertip would be, and how fast they move.</p></li>
+<li class="step"><span class="kicker" style="color:#2B44C8">Step 3</span><h3 class="t-h3">CAD, then a change of plan</h3><p>The first idea used fishing line as artificial tendons. It was dropped for a stiffer joint-linkage finger, each one driven by its own small servo motor tucked inside the palm. Modelled in SolidWorks and Shapr3D, then 3D printed.</p></li>
+<li class="step"><span class="kicker" style="color:#2B44C8">Step 4</span><h3 class="t-h3">Muscle signal → fingers</h3><p>Skin electrodes pick up the tiny electrical signal (EMG) your muscles make when you flex. A sensor board cleans it up, an Arduino Mega turns it into motor commands, and the servos curl the fingers.</p></li>
 </ol>
 <figure style="margin-top:48px">
 <img class="shot" src="/_blob/f6b277a920bd6ff3f24d57dd8f076b46" alt="SolidWorks CAD assembly of the hand: five joint-linkage fingers on a red palm plate" style="aspect-ratio:16/9;background:#FFFFFF">
-<figcaption>FIG. 02 — THE FULL CAD ASSEMBLY (SOLIDWORKS)</figcaption>
+<figcaption>FIG. 02 · THE FULL CAD ASSEMBLY (SOLIDWORKS)</figcaption>
 </figure>
 <div class="cols-2" style="margin-top:32px">
-<figure><img class="shot" src="/_blob/8259d9c66b62a0fc346b26d127877105" alt="A single 3D-printed joint-linkage finger" style="aspect-ratio:4/3"><figcaption>FIG. 03 — ONE PRINTED JOINT-LINKAGE FINGER</figcaption></figure>
-<figure><img class="shot" src="/_blob/10391d2a1318ce408cf69b423ab6e018" alt="Kinematic diagrams of the finger in natural and grasping motion" style="aspect-ratio:4/3;object-fit:contain;background:#FFFFFF"><figcaption>FIG. 04 — FINGER KINEMATICS, NATURAL VS GRASPING</figcaption></figure>
+<figure><img class="shot" src="/_blob/8259d9c66b62a0fc346b26d127877105" alt="A single 3D-printed joint-linkage finger" style="aspect-ratio:4/3"><figcaption>FIG. 03 · ONE PRINTED JOINT-LINKAGE FINGER</figcaption></figure>
+<figure><img class="shot" src="/_blob/10391d2a1318ce408cf69b423ab6e018" alt="Kinematic diagrams of the finger in natural and grasping motion" style="aspect-ratio:4/3;object-fit:contain;background:#FFFFFF"><figcaption>FIG. 04 · FINGER KINEMATICS, NATURAL VS GRASPING</figcaption></figure>
 </div>
 </div>
 </section>
@@ -357,12 +357,12 @@ html{scroll-padding-top:60px}
 <h2 class="t-h2">What happened</h2>
 </div>
 <div class="split">
-<figure><img class="shot" src="/_blob/8e932d982eca909e0fe96403e2526daf" alt="A user opening and closing the hand by flexing forearm muscles with electrodes attached" style="aspect-ratio:3/2"><figcaption>FIG. 05 — CONTROLLING THE HAND BY FLEXING</figcaption></figure>
+<figure><img class="shot" src="/_blob/8e932d982eca909e0fe96403e2526daf" alt="A user opening and closing the hand by flexing forearm muscles with electrodes attached" style="aspect-ratio:3/2"><figcaption>FIG. 05 · CONTROLLING THE HAND BY FLEXING</figcaption></figure>
 <ul class="findings">
-<li><b>It works.</b> A five-finger hand, every finger moving on its own, opened and closed by flexing the forearm or bicep.</li>
-<li><b>It grips.</b> Power grip, handle grip and pinch grip were all achieved, with at least 500 g of force per finger.</li>
-<li><b>Flex harder, close tighter.</b> Proportional control worked — but the raw muscle signal is noisy, so the fingers shook as they closed.</li>
-<li><b>The weak link is the plastic.</b> The printed acrylic parts, not the motors, set the strength limit — push harder and a finger would crack.</li>
+<li>The five-finger hand works, with every finger moving on its own and opening and closing when the forearm or bicep is flexed.</li>
+<li>Power grip, handle grip and pinch grip were all achieved, with at least 500 g of force per finger.</li>
+<li>Flex harder and the fingers close tighter. Proportional control worked, but the raw muscle signal is noisy, so the fingers shook as they closed.</li>
+<li>The plastic is the weak link. The printed acrylic parts, not the motors, set the strength limit, and pushing harder would crack a finger.</li>
 </ul>
 </div>
 </div>
@@ -372,7 +372,7 @@ html{scroll-padding-top:60px}
 <div class="wrap">
 <div class="sec-head row">
 <div class="stack g12">
-<p class="kicker">04 — Take it apart</p>
+<p class="kicker">04 · Take it apart</p>
 <h2 class="t-h2">The hand in 3D</h2>
 <p class="meta muted">Flex the muscle, watch the tendons pull · runs in your browser</p>
 </div>
@@ -393,7 +393,7 @@ html{scroll-padding-top:60px}
 <h2 class="t-h2">So what?</h2>
 </div>
 <div class="stack g24">
-<p class="intro prose">For a 3D-printed prototype, the hand is fast, responsive and reliable — it needed almost no maintenance through testing. It isn’t ready for an amputee yet: a real prosthetic must survive knocks and heavy loads. What it does offer is a cheap, working platform for the next round of research.</p>
+<p class="intro prose">For a 3D-printed prototype, the hand is fast, responsive and reliable, and it needed almost no maintenance through testing. It isn’t ready for an amputee yet, because a real prosthetic must survive knocks and heavy loads. What it does offer is a cheap, working platform for the next round of research.</p>
 <div class="stack g12">
 <p class="kicker">Next steps</p>
 <div class="chips">
@@ -412,7 +412,7 @@ html{scroll-padding-top:60px}
 <div class="wrap">
 <div class="sec-head row">
 <div class="stack g12">
-<p class="kicker">06 — The full paper</p>
+<p class="kicker">06 · The full paper</p>
 <h2 class="t-h2">Read it here</h2>
 <p class="meta muted">35 pages · scroll inside the frame</p>
 </div>
@@ -497,7 +497,7 @@ html{scroll-padding-top:60px}
 <!-- nav2:foot:end -->
 <div class="tblock">
 <div><span>DRAWN BY</span><span>Rayang T Mendrofa</span></div>
-<div><span>SHEET</span><span>02.1 — BENG DISSERTATION</span></div>
+<div><span>SHEET</span><span>02.1 · BENG DISSERTATION</span></div>
 <div><span>SCALE</span><span>1 : IDEA</span></div>
 <div><span>REV.</span><span>Website 2026 Gelastinta.</span></div>
 </div>

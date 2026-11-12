@@ -184,11 +184,11 @@ BEATS = [
     ('Talk-DreamPuzzles.dc.html', H2.format('How do you talk to someone who is dreaming?'), 'hoodie', 'thinking', 'The GelasTinta pixel character in a hoodie, hand on chin, thinking'),
     ('Talk-DreamPuzzles.dc.html', H2.format('But did it help them solve?'), 'labcoat', 'eureka', 'The GelasTinta pixel character in a lab coat, thinking and then jumping with a lightbulb'),
     ('Talk-ModularLegs.dc.html', H2.format('Break it, and it keeps walking'), 'labcoat', 'walk', 'The GelasTinta pixel character in a lab coat, walking'),
-    ('Talk-HairClipFish.dc.html', H2.format('Fish one: snapping versus bending'), 'hoodie', 'happy', 'The GelasTinta pixel character in a hoodie, jumping for joy'),
+    ('Talk-HairClipFish.dc.html', H2.format('Fish one, snapping versus bending'), 'hoodie', 'happy', 'The GelasTinta pixel character in a hoodie, jumping for joy'),
     ('Talk-FlyConnectome.dc.html', H2.format('Mapping every neuron in a fly brain'), 'labcoat', 'inspect', 'The GelasTinta pixel character in a lab coat, holding a beaker up to the light'),
     ('Talk-NavierStokes.dc.html', '<h3 class="t-h3" style="font-size:26px;margin-bottom:14px">The equation, term by term</h3>', 'labcoat', 'teach', 'The GelasTinta pixel character in a lab coat, writing F = ma on a board'),
-    ('Talk-NavierStokes.dc.html', H2.format('The awkward part: plagiarism and data-leak allegations'), 'suit', 'tie', 'The GelasTinta pixel character in a suit, nervously adjusting his tie'),
-    ('Talk-Cyberpunk.dc.html', H2.format('Cyberpsychosis: the price of chrome'), 'hoodie', 'sad', 'The GelasTinta pixel character in a hoodie, frowning with a single tear'),
+    ('Talk-NavierStokes.dc.html', H2.format('Plagiarism and data leak allegations'), 'suit', 'tie', 'The GelasTinta pixel character in a suit, nervously adjusting his tie'),
+    ('Talk-Cyberpunk.dc.html', H2.format('Cyberpsychosis is the price of chrome'), 'hoodie', 'sad', 'The GelasTinta pixel character in a hoodie, frowning with a single tear'),
 ]
 
 
