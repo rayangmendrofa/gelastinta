@@ -1,0 +1,1546 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>GelasTinta — Origami Robot</title>
+<script src="./support.js"></script>
+<script src="/_blob/59800ae8dd311e216394a93b57b5c5e9"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,600;0,700;1,400&amp;family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#FAEFEB;color:#171C2C;font-family:'Titillium Web',system-ui,sans-serif;font-size:18px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{max-width:100%;display:block}
+a{color:#2B44C8;text-underline-offset:3px}
+a:hover{color:#1A2C8F}
+h1,h2,h3,p,figure,ul,ol{margin:0}
+.wrap{max-width:1160px;margin:0 auto;padding:0 32px}
+.sec{padding:96px 0}
+.sec.tight{padding:64px 0}
+.dark{background:#171C2C;color:#FAEFEB}
+.white{background:#FFFAF8}
+.blue{background:#2B44C8;color:#FFFAF8}
+.rule-t{border-top:1px solid #171C2C}
+.rule-b{border-bottom:1px solid #171C2C}
+.grid-bg{background-color:#FAEFEB;background-image:linear-gradient(#F1DDD6 1px,transparent 1px),linear-gradient(90deg,#F1DDD6 1px,transparent 1px);background-size:32px 32px}
+.disp{font-family:'Titillium Web',system-ui,sans-serif}
+.mono{font-family:'Ubuntu Mono',ui-monospace,monospace}
+.kicker{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;line-height:1.5;letter-spacing:.14em;text-transform:uppercase;color:#4A5168}
+.dark .kicker{color:#F2D3CB}
+.blue .kicker{color:#F7E4DE}
+.t-hero{font-family:'Titillium Web',system-ui,sans-serif;font-weight:800;font-size:clamp(44px,6.2vw,84px);line-height:.96;letter-spacing:-.035em}
+.t-title{font-family:'Titillium Web',system-ui,sans-serif;font-weight:800;font-size:clamp(34px,4.2vw,56px);line-height:1.04;letter-spacing:-.03em}
+.t-h2{font-family:'Titillium Web',system-ui,sans-serif;font-weight:800;font-size:clamp(30px,3.2vw,42px);line-height:1.06;letter-spacing:-.025em}
+.t-h3{font-family:'Titillium Web',system-ui,sans-serif;font-weight:700;font-size:22px;line-height:1.22;letter-spacing:-.01em}
+.lead{font-size:clamp(20px,1.9vw,23px);line-height:1.5}
+.intro{font-size:19px;line-height:1.65}
+.prose{max-width:66ch}
+.prose p+p{margin-top:1.1em}
+.small{font-size:16px;line-height:1.55}
+.muted{color:#4A5168}
+.dark .muted{color:#E2D9D6}
+.meta{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;line-height:1.6;letter-spacing:.03em}
+.stack{display:flex;flex-direction:column}
+.g8{gap:8px}.g12{gap:12px}.g16{gap:16px}.g24{gap:24px}.g32{gap:32px}.g48{gap:48px}
+.sec-head{display:flex;flex-direction:column;gap:12px;margin-bottom:40px}
+.sec-head.row{flex-direction:row;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 32px}
+.cols-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.cols-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.cols-4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.split{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:start}
+.split.rev{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
+.split.mid{align-items:center}
+.card{background:#FFFAF8;border:1px solid #171C2C;padding:28px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;line-height:1.4;letter-spacing:.05em;padding:6px 10px;border:1px solid currentColor}
+.chip.fill{background:#2B44C8;border-color:#2B44C8;color:#FFFAF8}
+.chip.warn{background:#C0391C;border-color:#C0391C;color:#FFFAF8}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 22px;background:#2B44C8;color:#FFFAF8;text-decoration:none;border-radius:999px;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:14px;letter-spacing:.03em;border:1px solid #2B44C8}
+.btn:hover{background:#1A2C8F;border-color:#1A2C8F;color:#FFFAF8}
+.btn.ghost{background:transparent;color:inherit;border-color:currentColor}
+.btn.ghost:hover{background:#171C2C;color:#FAEFEB;border-color:#171C2C}
+.dark .btn.ghost:hover,.blue .btn.ghost:hover{background:#FAEFEB;color:#171C2C;border-color:#FAEFEB}
+.back{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:inherit;min-height:44px;display:inline-flex;align-items:center;align-self:flex-start}
+.back:hover{color:inherit;text-decoration:underline}
+figcaption{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;line-height:1.5;letter-spacing:.06em;color:#4A5168;margin-top:10px}
+.dark figcaption{color:#E2D9D6}
+.site-head{background:#FAEFEB;border-bottom:1px solid #171C2C}
+.site-head .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 24px;min-height:72px}
+.brand{display:flex;align-items:center;gap:10px;color:#171C2C;text-decoration:none;font-family:'Titillium Web',system-ui,sans-serif;font-weight:800;font-size:22px;letter-spacing:-.01em}
+.brand:hover{color:#171C2C}
+.nav{display:flex;flex-wrap:wrap;gap:0 28px}
+.nav a{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#171C2C;text-decoration:none;min-height:44px;display:inline-flex;align-items:center;border-bottom:2px solid transparent}
+.nav a:hover{color:#2B44C8}
+.nav a.on{color:#2B44C8;border-bottom-color:#2B44C8}
+.site-foot .wrap{padding-top:80px;padding-bottom:40px;display:flex;flex-direction:column;gap:56px}
+.foot-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:end}
+.foot-title{font-family:'Titillium Web',system-ui,sans-serif;font-weight:800;font-size:clamp(44px,5vw,64px);line-height:.95;letter-spacing:-.035em}
+.foot-blurb{font-size:19px;line-height:1.55;color:#E2D9D6;max-width:30em}
+.foot-mail{font-family:'Titillium Web',system-ui,sans-serif;font-size:clamp(22px,2.4vw,28px);color:#FAEFEB;text-decoration:none;border-bottom:2px solid #F2D3CB;padding-bottom:4px;align-self:flex-start;overflow-wrap:anywhere}
+.foot-mail:hover{color:#FFFAF8}
+.social{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 18px;border:1px solid #F2D3CB;color:#FAEFEB;text-decoration:none;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.05em}
+.social:hover{background:#FAEFEB;color:#171C2C}
+.social:hover svg{stroke:#171C2C}
+.tblock{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid #4A5168;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.06em}
+.tblock div{padding:14px 16px;display:flex;flex-direction:column;gap:6px;border-right:1px solid #4A5168}
+.tblock div:last-child{border-right:0}
+.tblock span:first-child{color:#F2D3CB}
+.col{max-width:720px;margin:0 auto}
+.col-wide{max-width:1000px;margin:0 auto}
+.td-box{position:relative;aspect-ratio:16/9;border:1px solid #171C2C;background:#F3EAE6;overflow:hidden}
+.td-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.td-play{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:24px;border:0;background:rgba(240,242,244,.6);color:#171C2C;cursor:pointer;font:inherit;text-align:center;transition:background .2s}
+.td-play:hover{background:rgba(240,242,244,.42)}
+.td-play b{font-family:'Titillium Web',system-ui,sans-serif;font-weight:700;font-size:30px;line-height:1.1}
+.td-pill{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;background:#3D639A;color:#fff;padding:4px 10px;border-radius:999px}
+.td-sub{max-width:540px;font-size:16px;line-height:1.5}
+.td-box iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#F3EAE6}
+.td-note{margin-top:14px;max-width:880px}
+@media (max-width:640px){.td-sub{display:none}.td-play b{font-size:22px}}
+
+.article p{font-size:19px;line-height:1.7}
+.article p+p{margin-top:1.1em}
+.dropcap::first-letter{float:left;font-family:'Titillium Web',system-ui,sans-serif;font-weight:800;font-size:4.4em;line-height:.8;color:#2B44C8;padding:8px 12px 0 0}
+.hatch{background-color:#FFFAF8;background-image:repeating-linear-gradient(45deg,#F7EEEA 0 1px,transparent 1px 12px)}
+.find{border:1px solid #171C2C;padding:22px;display:flex;flex-direction:column;gap:10px;background:#FFFAF8}
+.find p{font-size:16px !important;line-height:1.55 !important}
+.fig-cap{font-size:15px !important;line-height:1.6 !important;color:#4A5168}
+.steps{list-style:none;padding:0;border-top:1px solid #171C2C}
+.steps li{display:grid;grid-template-columns:48px minmax(0,1fr);gap:12px;padding:18px 0;border-bottom:1px solid #171C2C;font-size:19px;line-height:1.55}
+.steps li b{font-family:'Titillium Web',system-ui,sans-serif;font-weight:800;font-size:24px;color:#2B44C8;line-height:1.2}
+@media (max-width:960px){
+.split,.split.rev{grid-template-columns:minmax(0,1fr);gap:40px}
+.cols-3{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cols-4{grid-template-columns:repeat(2,minmax(0,1fr))}
+.foot-top{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:640px){
+.wrap{padding:0 20px}
+.sec{padding:64px 0}
+.sec.tight{padding:48px 0}
+.cols-2,.cols-3,.cols-4{grid-template-columns:minmax(0,1fr)}
+.tblock{grid-template-columns:repeat(2,minmax(0,1fr))}
+.tblock div:nth-child(2){border-right:0}
+.tblock div:nth-child(-n+2){border-bottom:1px solid #4A5168}
+.nav{gap:0 18px}
+.article p{font-size:18px}
+}
+.paper-fig{background:#FFFAF8;border:1px solid #171C2C;padding:16px}
+.paper-fig img{width:100%;height:auto}
+.viz{border:1px solid #171C2C;background:#FFFAF8}
+.viz-head{padding:22px 24px;border-bottom:1px solid #171C2C;display:flex;flex-direction:column;gap:8px}
+.viz-body{padding:24px}
+.viz-foot{padding:14px 24px;border-top:1px solid #E2D9D6;display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center}
+.lg{display:inline-flex;align-items:center;gap:8px;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.03em}
+.lg i{width:16px;height:16px;border:1px solid #171C2C;display:inline-block}
+.wgrid{display:grid;grid-template-columns:200px repeat(10,minmax(0,1fr));gap:4px;align-items:stretch}
+.wgrid .lab{font-family:'Titillium Web',system-ui,sans-serif;font-weight:600;font-size:15px;line-height:1.25;display:flex;flex-direction:column;justify-content:center;padding-right:10px}
+.wgrid .lab small{font-family:'Ubuntu Mono',ui-monospace,monospace;font-weight:400;font-size:11px;color:#4A5168;letter-spacing:.03em}
+.wgrid .grp{grid-column:1 / -1;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#2B44C8;padding:14px 0 2px;border-bottom:1px solid #E2D9D6;margin-bottom:2px}
+.wgrid .tc{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;text-align:center;color:#4A5168;padding-top:6px}
+.cell{height:40px;border:1px solid #C9BDB8;background:#F7E4DE}
+.cell.m{background:#4A5168;border-color:#4A5168}
+.ratio{display:flex;flex-wrap:wrap;gap:8px}
+.ratio button{min-height:44px;min-width:58px;padding:0 12px;border:1px solid #171C2C;background:#FFFAF8;color:#171C2C;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;cursor:pointer}
+.ratio button:hover{background:#FAEFEB}
+.ratio button.on{background:#2B44C8;border-color:#2B44C8;color:#FFFAF8}
+.ratio button:focus-visible{outline:3px solid #F2D3CB;outline-offset:2px}
+.readout{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border:1px solid #171C2C}
+.readout div{padding:14px 16px;border-right:1px solid #171C2C;display:flex;flex-direction:column;gap:4px}
+.readout div:last-child{border-right:0}
+.readout.v{grid-template-columns:minmax(0,1fr)}
+.readout.v div{border-right:0;border-bottom:1px solid #171C2C}
+.readout.v div:last-child{border-bottom:0}
+.article p.kicker{font-size:12px;line-height:1.5}
+.article p.small{font-size:16px;line-height:1.55}
+.readout b{font-family:'Titillium Web',system-ui,sans-serif;font-weight:800;font-size:30px;line-height:1.05;letter-spacing:-.02em}
+.readout span{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#4A5168}
+.bin-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:32px;align-items:start}
+.stat{border:1px solid #171C2C;background:#FFFAF8;padding:22px;display:flex;flex-direction:column;gap:6px}
+.stat b{font-family:'Titillium Web',system-ui,sans-serif;font-weight:800;font-size:clamp(30px,3vw,40px);line-height:1;letter-spacing:-.03em;color:#2B44C8}
+.stat p{font-size:16px !important;line-height:1.5 !important}
+.dose{display:flex;flex-direction:column;gap:10px}
+.dose-bar{position:relative;display:flex;height:56px;border:1px solid #171C2C;margin-top:30px}
+.dose-bar div{display:flex;align-items:center;justify-content:center;text-align:center;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;line-height:1.25;padding:0 6px;border-right:1px solid #171C2C}
+.dose-bar div:last-child{border-right:0}
+.dose-axis{position:relative;height:22px;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:11px;color:#4A5168}
+.dose-axis span{position:absolute;top:0;transform:translateX(-50%);white-space:nowrap}
+.dose-pin{position:absolute;top:-34px;bottom:-8px;width:0;border-left:3px solid #171C2C}
+.dose-pin em{position:absolute;top:0;left:0;transform:translateX(-50%);white-space:nowrap;font-style:normal;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.04em;background:#171C2C;color:#FFFAF8;padding:3px 7px}
+.mix{display:flex;height:52px;border:1px solid #171C2C}
+.mix div{display:flex;align-items:center;padding:0 12px;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;white-space:nowrap;overflow:hidden}
+@media (max-width:960px){
+.bin-grid{grid-template-columns:minmax(0,1fr)}
+.wgrid{grid-template-columns:repeat(10,minmax(0,1fr))}
+.wgrid .lab{grid-column:1 / -1;padding:8px 0 2px}
+.wgrid .sp{display:none}
+}
+@media (max-width:640px){
+.readout{grid-template-columns:minmax(0,1fr)}
+.readout div{border-right:0;border-bottom:1px solid #171C2C}
+.readout div:last-child{border-bottom:0}
+.cell{height:30px}
+.wgrid .tc{font-size:10px}
+.dose-bar div{font-size:10px;padding:0 3px}
+.viz-body{padding:16px}
+.mix div{font-size:10px;padding:0 6px}
+}
+.cp-hero{position:relative;overflow:hidden;background:#171C2C;color:#FFFAF8}
+.cp-hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:70% 50%}
+.cp-hero-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(23,28,44,.92) 0%,rgba(23,28,44,.78) 45%,rgba(23,28,44,.35) 100%)}
+.cp-hero .kicker{color:#F2D3CB}
+.cp-hero .back{color:#FFFAF8}
+.cp-hero .t-title{color:#FFFAF8}
+.cp-hero > .wrap > .col > .meta{color:#F7EEEA}
+.cp-hero aside{color:#171C2C}
+.more{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 16px;border:1px solid #171C2C;background:#FFFAF8;color:#171C2C;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.04em;cursor:pointer}
+.more:hover{background:#171C2C;color:#FFFAF8}
+.more:focus-visible{outline:3px solid #F2D3CB;outline-offset:2px}
+.more-ico{display:inline-flex;width:18px;height:18px;align-items:center;justify-content:center;border:1px solid currentColor;font-size:13px;line-height:1}
+.more-body{margin-top:16px;border-left:3px solid #2B44C8;padding:4px 0 4px 20px;display:flex;flex-direction:column;gap:16px}
+.more-body p{font-size:17px !important;line-height:1.6 !important}
+.viz-more{padding:16px 24px 20px;border-top:1px solid #E2D9D6}
+.eq-wrap{background:#FFFAF8;border:1px solid #171C2C;padding:28px 24px;display:flex;flex-direction:column;gap:18px;align-items:center}
+.eq{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 8px;font-family:'Cambria Math',Cambria,'STIX Two Text','Times New Roman',serif;font-style:italic;font-size:clamp(22px,2.6vw,32px);line-height:1.2;color:#171C2C}
+.eq .up{font-style:normal}
+.eq .frac{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle}
+.eq .frac>span:first-child{border-bottom:1.5px solid currentColor;padding:0 4px 2px}
+.eq .frac>span:last-child{padding:2px 4px 0}
+.eq .br{font-style:normal;font-size:1.9em;line-height:1;font-weight:300}
+.hl{display:inline-flex;align-items:center;gap:6px;border:2.5px solid;border-radius:999px;padding:4px 14px}
+.hl.t{border-color:#C62828;padding:0 8px}
+.hl.e{border-color:#1F5FA8}
+.hl.i{border-color:#2E8B57}
+.eq-legend{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:center}
+.eq-legend span{display:inline-flex;align-items:center;gap:8px;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.05em}
+.eq-legend i{width:14px;height:14px;border-radius:999px;border:2.5px solid;display:inline-block}
+.gloss{display:grid;grid-template-columns:72px minmax(0,1fr);border-top:1px solid #171C2C}
+.gloss dt,.gloss dd{margin:0;padding:10px 0;border-bottom:1px solid #E2D9D6;font-size:17px;line-height:1.45}
+.gloss dt{font-family:'Titillium Web',system-ui,sans-serif;font-style:italic;font-size:21px}
+.meme{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:28px;align-items:center;border:1px solid #171C2C;background:#FFFAF8;padding:20px}
+.meme img{width:100%;height:auto;border:1px solid #171C2C}
+.take{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
+@media (max-width:960px){.take{grid-template-columns:minmax(0,1fr)}.take figure{max-width:280px}}
+@media (max-width:640px){.meme{grid-template-columns:minmax(0,1fr)}.eq{font-size:19px}.hl{padding:2px 8px}.eq-wrap{padding:20px 12px}.viz-more{padding:14px 16px 18px}}
+.pull{font-size:clamp(21px,2.2vw,25px) !important;line-height:1.45 !important;font-style:italic;border-top:2px solid #171C2C;border-bottom:2px solid #171C2C;padding:22px 0}
+.logbar{display:grid;grid-template-columns:220px minmax(0,1fr);gap:6px 16px;align-items:center}
+.logbar .lab{font-family:'Titillium Web',system-ui,sans-serif;font-weight:600;font-size:15px;line-height:1.25}
+.logbar .lab small{display:block;font-family:'Ubuntu Mono',ui-monospace,monospace;font-weight:400;font-size:11px;color:#4A5168;letter-spacing:.03em}
+.logbar .track{position:relative;display:flex;flex-direction:column;gap:4px;padding:8px 0;background-image:linear-gradient(90deg,rgba(23,28,44,.12) 1px,transparent 1px);background-size:16.6667% 100%}
+.logbar .bar{height:20px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:11px;color:#FFFAF8;min-width:56px;white-space:nowrap}
+.logaxis{position:relative;height:20px;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:11px;color:#4A5168}
+.logaxis span{position:absolute;top:0;transform:translateX(-50%);white-space:nowrap}
+.gbars{display:flex;flex-direction:column;gap:14px}
+.gbar{display:grid;grid-template-columns:110px minmax(0,1fr) 80px;gap:12px;align-items:center}
+.gbar .nm{font-family:'Titillium Web',system-ui,sans-serif;font-weight:700;font-size:16px}
+.gbar .tr{height:34px;background:#FAEFEB;border:1px solid #E2D9D6;position:relative}
+.gbar .fl{height:100%}
+.gbar .vl{font-family:'Titillium Web',system-ui,sans-serif;font-weight:800;font-size:20px;text-align:right}
+.ci{position:relative;height:44px;border-bottom:1px solid #E2D9D6}
+.ci .ln{position:absolute;top:21px;height:3px}
+.ci .dt{position:absolute;top:13px;width:18px;height:18px;border-radius:999px;border:3px solid #FFFAF8;transform:translateX(-50%);box-shadow:0 0 0 1px #171C2C}
+.ci-row{display:grid;grid-template-columns:110px minmax(0,1fr);gap:12px;align-items:center}
+.ci-axis{position:relative;height:22px;margin-left:122px;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:11px;color:#4A5168}
+.ci-axis span{position:absolute;transform:translateX(-50%);white-space:nowrap}
+.zero{position:absolute;top:0;bottom:0;width:0;border-left:2px dashed #171C2C;opacity:.5}
+.mol{display:grid;grid-template-columns:minmax(0,1fr) 64px minmax(0,1fr);gap:12px;align-items:center;padding:20px 24px 0}
+.mol figure{display:flex;flex-direction:column;gap:6px;align-items:center}
+.mol img{width:100%;height:auto;max-height:150px;object-fit:contain}
+.mol .arr{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:11px;text-align:center;color:#4A5168;line-height:1.3}
+@media (max-width:640px){.logbar{grid-template-columns:minmax(0,1fr)}.logbar .lab{padding-top:6px}.gbar{grid-template-columns:84px minmax(0,1fr) 64px}.ci-row{grid-template-columns:84px minmax(0,1fr)}.ci-axis{margin-left:96px}.mol{grid-template-columns:minmax(0,1fr)}.mol .arr{transform:none}}
+.cm-wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:24px}
+.cm-box{border:1px solid #171C2C;background:#FFFAF8;padding:24px;display:flex;flex-direction:column;gap:16px}
+.cm-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.cm-field{display:flex;flex-direction:column;gap:6px}
+.cm-field label{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#4A5168}
+.cm-field input,.cm-field textarea{font-family:'Titillium Web',system-ui,sans-serif;font-size:18px;line-height:1.5;color:#171C2C;background:#FFFAF8;border:1px solid #171C2C;padding:10px 12px;min-height:48px;width:100%;border-radius:0}
+.cm-field textarea{min-height:120px;resize:vertical}
+.cm-field input:focus,.cm-field textarea:focus{outline:3px solid #F2D3CB;outline-offset:1px}
+.cm-err{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;color:#B42318}
+.cm-actions{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center}
+.cm-actions .btn{cursor:pointer;font-size:14px}
+.cm-link{background:none;border:0;padding:0;min-height:44px;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;color:#2B44C8;text-decoration:underline;cursor:pointer}
+.cm-list{list-style:none;margin:0;padding:0;border-top:2px solid #171C2C}
+.cm-list li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:16px;padding:20px 0;border-bottom:1px solid #E2D9D6}
+.cm-av{width:44px;height:44px;border-radius:999px;background:#2B44C8;color:#FFFAF8;display:flex;align-items:center;justify-content:center;font-family:'Titillium Web',system-ui,sans-serif;font-weight:800;font-size:18px}
+.cm-text{font-size:18px;line-height:1.6;white-space:pre-wrap;overflow-wrap:anywhere}
+@media (max-width:640px){.cm-row{grid-template-columns:minmax(0,1fr)}.cm-box{padding:18px}}
+.leg-svg{width:100%;height:auto;background:#F7EEEA;border:1px solid #E2D9D6}
+.meme-sm{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:24px;align-items:center;border:1px solid #171C2C;background:#FFFAF8;padding:18px}
+.meme-sm img{width:100%;height:auto;border:1px solid #171C2C}
+@media (max-width:640px){.meme-sm{grid-template-columns:minmax(0,1fr)}}
+.gt-progress{position:fixed;left:0;top:0;width:100%;height:3px;background:#2B44C8;transform:scaleX(0);transform-origin:0 50%;z-index:70;pointer-events:none}
+@media (prefers-reduced-motion:reduce){.gt-progress{display:none}}
+.talk-nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border:1px solid #171C2C;margin-top:48px}
+.tn{display:flex;flex-direction:column;gap:10px;padding:24px;color:#171C2C;text-decoration:none;background:#FFFAF8;min-height:44px}
+.tn + .tn{border-left:1px solid #171C2C}
+.tn.next{text-align:right;align-items:flex-end}
+.tn:hover{background:#171C2C;color:#FFFAF8}
+.tn:hover .tn-k{color:#F2D3CB}
+.tn:focus-visible{outline:3px solid #2B44C8;outline-offset:2px}
+.tn-k{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#2B44C8}
+.tn-t{font-family:'Titillium Web',system-ui,sans-serif;font-weight:700;font-size:19px;line-height:1.25;letter-spacing:-.01em}
+.tn-t em{font-style:italic}
+.tn-m{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.03em;opacity:.75}
+.tn.none{background:transparent;justify-content:center;color:#4A5168}
+@media (max-width:640px){.talk-nav{grid-template-columns:minmax(0,1fr)}.tn + .tn{border-left:0;border-top:1px solid #171C2C}.tn.next{text-align:left;align-items:flex-start}}
+.hc-box{border:1px solid #171C2C;background:#FFFAF8;overflow-x:auto}
+.hc-svg{display:block;width:100%;height:auto;min-width:520px;animation:modIn .4s cubic-bezier(.2,.75,.1,1)}
+@keyframes modIn{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){.hc-svg{animation:none}}
+.readout.r3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.readout.r3 div{border-right:1px solid #171C2C;border-bottom:0}
+.readout.r3 div:last-child{border-right:0}
+.readout.r3 b{font-size:24px}
+.gbar.wide{grid-template-columns:230px minmax(0,1fr) 130px}
+.gbar.wide .vl{white-space:nowrap}
+.catch{border:1px solid #4A5168;background:#222941;padding:22px;display:flex;flex-direction:column;gap:10px}
+@media (max-width:640px){.readout.r3{grid-template-columns:minmax(0,1fr)}.readout.r3 div{border-right:0;border-bottom:1px solid #171C2C}.readout.r3 div:last-child{border-bottom:0}.gbar.wide{grid-template-columns:minmax(0,1fr) auto;gap:6px 12px}.gbar.wide .vl{font-size:17px}.gbar.wide .nm{grid-column:1 / -1}}
+/* ori:start */
+.rig-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:24px;align-items:start}
+.rig-svg{display:block;width:100%;height:auto;min-width:420px}
+.dark a{color:#F2D3CB}
+html[data-theme="dark"] .dark .catch,html[data-theme="dark"] .cp-hero .dark{filter:none}
+.dark a:hover{color:#FFFAF8}
+.rg-hit{cursor:pointer;outline:none}
+.rg-hit:hover{opacity:.82}
+.rg-hit:focus-visible rect,.rg-hit:focus-visible circle{stroke:#2B44C8;stroke-width:3}
+.rg-hit.on text{fill:#C0391C;font-weight:700}
+.rg-tabs button{min-width:0}
+.mgrid{display:grid;grid-template-columns:72px repeat(4,minmax(0,1fr));gap:6px;align-items:stretch}
+.mgrid .mh{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:11px;line-height:1.3;letter-spacing:.04em;text-transform:uppercase;color:#4A5168;display:flex;align-items:flex-end;justify-content:center;text-align:center;padding-bottom:4px}
+.mgrid .mr{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;display:flex;align-items:center}
+.mgrid button{min-height:48px;border:1px solid #171C2C;background:#FFFAF8;color:#171C2C;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;cursor:pointer;padding:4px 6px}
+.mgrid button:hover{background:#FAEFEB}
+.mgrid button.on{background:#E34A2B;border-color:#E34A2B;color:#FFFAF8}
+.mgrid button:focus-visible{outline:3px solid #2B44C8;outline-offset:2px}
+@media (max-width:960px){.rig-grid{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:640px){.mgrid{grid-template-columns:52px repeat(4,minmax(0,1fr));gap:4px}.mgrid button{font-size:11px;padding:2px}.mgrid .mh{font-size:9px}.mgrid .mr{font-size:10px}}
+/* ori:end */
+/* wada:start */:root{--wada-ink:#E34A2B;--wada-fill:#5A82B3}
+.cp-hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:8px;z-index:3;background:linear-gradient(90deg,#E34A2B 0.0% 33.33%,#5A82B3 33.33% 66.67%,#F2D3CB 66.67% 100.0%)}
+.gt-progress{background:linear-gradient(90deg,#E34A2B 0.0% 33.33%,#5A82B3 33.33% 66.67%,#F2D3CB 66.67% 100.0%)}
+.dropcap::first-letter{color:var(--wada-ink)}
+.stat{box-shadow:inset 0 4px 0 var(--wada-fill)}
+.pull{border-top-color:var(--wada-ink) !important;border-bottom-color:var(--wada-ink) !important}
+.wada-note{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px}
+.wada-sw{display:flex;border:1px solid #171C2C}
+.wada-sw i{display:block;width:28px;height:28px}
+/* wada:end */
+/* wadasite:start */.site-foot{position:relative}
+.site-foot::before{content:"";position:absolute;left:0;right:0;top:-6px;height:6px;background:linear-gradient(90deg,#A36AA5 0.0% 25.0%,#FDC57E 25.0% 50.0%,#171C2C 50.0% 75.0%,#2B44C8 75.0% 100.0%)}
+::selection{background:#FDC57E;color:#171C2C}
+.wada-credit{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;font-family:"Ubuntu Mono",ui-monospace,monospace;font-size:11px;letter-spacing:.06em;color:#E2D9D6}
+.wada-credit .wada-mini{margin-left:0;border-color:#4A5168}
+/* wadasite:end */
+.meme-sm.wide{grid-template-columns:minmax(0,340px) minmax(0,1fr)}
+@media (max-width:640px){.meme-sm.wide{grid-template-columns:minmax(0,1fr)}}
+/* theme:start */
+.kicker{color:#3D639A}
+.dropcap::first-letter{color:#E34A2B !important}
+.steps li b{color:#E34A2B}
+h2.t-h2::after,.sec-head .t-h2::after{content:"";display:block;width:56px;height:6px;margin-top:16px;background:#E34A2B}
+.dark h2.t-h2::after,.dark .sec-head .t-h2::after{background:#F2D3CB}
+.paper-fig,.paper-fig img{background:#FFFFFF}
+.find{border-top:5px solid #E34A2B}
+::selection{background:#F2D3CB;color:#171C2C}
+/* theme:end */
+@media (max-width:640px){.cp-hero-shade{background:rgba(23,28,44,.88) !important}}
+/* fig:start */
+.fig-ch{align-items:center}
+.ratio button.fig-play{margin-left:auto;min-width:92px}
+.fig-track{height:3px;background:#E6D6D0;margin-top:-14px;overflow:hidden}
+.fig-track i{display:block;height:100%;background:#5A82B3;transform-origin:0 50%;transform:scaleX(0)}
+@media (max-width:640px){.ratio button.fig-play{margin-left:0}}
+/* fig:end */
+/* logo:start */
+.brand .bk-logo{overflow:visible;flex:0 0 auto}
+.bk-tip{transform-box:view-box;transform-origin:26px 29px;animation:bk-tip 3.6s 1.6s cubic-bezier(.45,.05,.3,1) both}
+.bk-liq{transform-box:fill-box;transform-origin:50% 100%;animation:bk-liq 3.6s 1.6s ease-in-out both}
+.bk-drop{opacity:0;animation:bk-drop 3.6s 1.6s ease-in both}
+.bk-drop.d2{animation-delay:1.85s}.bk-drop.d3{animation-delay:2.1s}
+.bk-pud{transform-box:fill-box;transform-origin:30% 50%;transform:scaleX(0);animation:bk-pud 3.6s 1.6s ease-out both}
+@keyframes bk-tip{0%{transform:rotate(0)}7%{transform:rotate(-7deg)}13%{transform:rotate(6deg)}19%{transform:rotate(-3deg)}31%{transform:rotate(56deg)}60%{transform:rotate(56deg)}74%{transform:rotate(-5deg)}81%{transform:rotate(2deg)}88%,100%{transform:rotate(0)}}
+@keyframes bk-liq{0%,30%{transform:scaleY(1)}58%{transform:scaleY(.14)}80%{transform:scaleY(.14)}100%{transform:scaleY(1)}}
+@keyframes bk-drop{0%,30%{opacity:0;transform:translate(0,0)}31%{opacity:1;transform:translate(0,0)}42%{opacity:1;transform:translate(1px,19px)}44%,100%{opacity:0;transform:translate(1px,19px)}}
+@keyframes bk-pud{0%,33%{transform:scaleX(0);opacity:1}58%{transform:scaleX(1);opacity:1}80%{transform:scaleX(1.05);opacity:1}96%,100%{transform:scaleX(1.12);opacity:0}}
+@media (prefers-reduced-motion:reduce){.bk-tip,.bk-liq,.bk-drop,.bk-pud{animation:none}.bk-pud,.bk-drop{opacity:0}}
+/* logo:end */
+/* nl:start */
+.nl-box{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:20px 40px;align-items:center}
+.nl-form{display:flex;gap:10px;flex-wrap:wrap}
+.nl-form input[type=email]{flex:1 1 220px;min-height:48px;padding:0 16px;border:1px solid currentColor;border-radius:999px;background:transparent;color:inherit;font:inherit;font-size:16px}
+.nl-form input[type=email]:focus-visible{outline:3px solid #2B44C8;outline-offset:2px}
+.nl-form .btn{border:0;cursor:pointer}
+.nl-hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.nl-msg{display:none;grid-column:1 / -1;margin:0;padding:12px 16px;border:1px solid currentColor;font-size:16px}
+.nl-msg:target{display:block}
+.nl-support{grid-column:1 / -1;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.nl-support[hidden]{display:none}
+.nl-support .meta{flex-basis:100%}
+.nl-support .sp-ico{width:22px;height:22px;border-radius:6px;display:block;flex:0 0 auto}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:760px){.nl-box{grid-template-columns:minmax(0,1fr)}}
+/* nl:end */
+/* dark:start */
+.brand .bk-btn{display:inline-flex;align-items:center;justify-content:center;padding:4px;margin:-4px;border:0;background:transparent;cursor:pointer;border-radius:8px;line-height:0}
+.brand .bk-btn:hover .bk-tip{transform:rotate(-8deg)}
+.brand .bk-btn:focus-visible{outline:3px solid #2B44C8;outline-offset:2px}
+.brand .brand-name{color:inherit;text-decoration:none}
+.brand .brand-name:hover{color:inherit}
+html[data-theme="dark"]{filter:invert(1) hue-rotate(180deg);background:#FFFFFF;color-scheme:dark}
+html[data-theme="dark"] img,html[data-theme="dark"] video,html[data-theme="dark"] canvas,html[data-theme="dark"] iframe,html[data-theme="dark"] picture{filter:invert(1) hue-rotate(180deg)}
+html[data-theme="dark"] :is(.dark,.hero,.cp-hero,.blue,.catch,.book){filter:invert(1) hue-rotate(180deg)}
+html[data-theme="dark"] .book .cover{filter:invert(1) hue-rotate(180deg)}
+html[data-theme="dark"] :is(.dark,.hero,.cp-hero,.blue,.catch) :is(img,video,canvas,iframe,picture){filter:none}
+.gt-flood{position:fixed;inset:0;z-index:9999;background:#10131C;pointer-events:none;clip-path:circle(0 at var(--fx,40px) var(--fy,40px));transition:clip-path .6s cubic-bezier(.55,.05,.4,1),opacity .35s ease}
+.gt-flood.go{clip-path:circle(150vmax at var(--fx,40px) var(--fy,40px))}
+.gt-flood.out{opacity:0}
+@media (prefers-reduced-motion:reduce){.gt-flood{display:none}}
+/* dark:end */
+/* nav2:start */
+html{scroll-padding-top:88px}
+.site-head{position:sticky;top:0;z-index:60}
+.skip-link{position:absolute;left:12px;top:-80px;z-index:200;background:#10131C;color:#FFFFFF;padding:12px 18px;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.06em;text-decoration:none;border-radius:0 0 8px 8px}
+.skip-link:focus{top:0;color:#FFFFFF;outline:3px solid #2B44C8;outline-offset:0}
+.nav a:focus-visible,.brand-name:focus-visible,.crumbs a:focus-visible,.foot-nav a:focus-visible{outline:3px solid #2B44C8;outline-offset:3px;border-radius:2px}
+.nav a{transition:color .2s ease,border-color .2s ease}
+.nav a:hover{border-bottom-color:currentColor}
+.crumbs{align-self:flex-start;max-width:100%}
+.crumbs ol{display:flex;flex-wrap:wrap;align-items:center;list-style:none;margin:0;padding:0;gap:0 10px;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+.crumbs li{display:inline-flex;align-items:center;min-height:44px;min-width:0}
+.crumbs li+li::before{content:"/";margin-right:10px;opacity:.55}
+.crumbs a{color:inherit;text-decoration:none;border-bottom:1px solid transparent}
+.crumbs a:hover{color:inherit;border-bottom-color:currentColor}
+.crumbs [aria-current]{opacity:.78;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:26ch}
+.pnav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border:1px solid #171C2C}
+.pn{display:flex;flex-direction:column;gap:10px;padding:24px;color:#171C2C;text-decoration:none;background:#FAEFEB;min-height:44px}
+.pn+.pn{border-left:1px solid #171C2C}
+.pn.next{text-align:right;align-items:flex-end}
+.pn:hover{background:#171C2C;color:#FAEFEB}
+.pn:focus-visible{outline:3px solid #2B44C8;outline-offset:2px}
+.pn-k{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#2B44C8}
+.pn:hover .pn-k{color:inherit}
+.pn-t{font-family:'Titillium Web',system-ui,sans-serif;font-weight:700;font-size:19px;line-height:1.25;letter-spacing:-.01em}
+.pn-all{display:inline-flex;align-items:center;min-height:44px;margin-top:16px;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#2B44C8;text-decoration:none}
+.pn-all:hover{text-decoration:underline;color:#2B44C8}
+.foot-nav{display:flex;flex-wrap:wrap;align-items:center;gap:4px 26px;padding-top:22px;border-top:1px solid rgba(237,239,242,.22);font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+.foot-nav a{color:inherit;text-decoration:none;min-height:44px;display:inline-flex;align-items:center;border-bottom:1px solid transparent}
+.foot-nav a:hover{color:inherit;border-bottom-color:currentColor}
+.foot-nav .to-top{margin-left:auto}
+[style*="position:sticky;top:24px"]{top:96px !important}
+@supports (animation-timeline: scroll()){
+.site-head{animation:nav2-shadow linear both;animation-timeline:scroll(root);animation-range:0 160px}
+@keyframes nav2-shadow{from{box-shadow:0 0 0 rgba(16,19,28,0)}to{box-shadow:0 6px 18px -10px rgba(16,19,28,.45)}}
+}
+@media (max-width:640px){
+html{scroll-padding-top:60px}
+.site-head{top:-56px}
+.site-head .wrap{min-height:0;padding-top:0;padding-bottom:0;gap:0;row-gap:0}
+.site-head .brand{min-height:56px}
+.nav{flex-wrap:nowrap;width:calc(100% + 40px);margin:0 -20px;padding:0 20px;gap:0 18px;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent)}
+.nav::-webkit-scrollbar{display:none}
+.nav a{flex:0 0 auto;font-size:12px;letter-spacing:.07em}
+.nav a[href="Main.dc.html"]{display:none}
+.nav a:last-child{margin-right:24px}
+[style*="position:sticky;top:24px"]{top:64px !important}
+.pnav{grid-template-columns:minmax(0,1fr)}
+.pn+.pn{border-left:0;border-top:1px solid #171C2C}
+.pn.next{text-align:left;align-items:flex-start}
+.foot-nav{gap:0 20px}
+.foot-nav .to-top{margin-left:0}
+.crumbs [aria-current]{max-width:18ch}
+}
+/* nav2:end */
+/* px:start */
+.px{--s:3;--w:76;position:relative;display:inline-block;flex:none;width:calc(var(--w)*1px*var(--s));height:calc(58px*var(--s));cursor:pointer;-webkit-tap-highlight-color:transparent}
+.px::after{content:"";position:absolute;left:calc(4px*var(--s));width:calc(30px*var(--s));bottom:calc(-1.5px*var(--s));height:calc(4px*var(--s));background:radial-gradient(closest-side,rgba(16,19,28,.2),rgba(16,19,28,0));pointer-events:none}
+.px-v{position:absolute;inset:0;overflow:hidden;z-index:1}
+.px-v img{display:block;width:calc(var(--n)*76px*var(--s));max-width:none;height:100%;image-rendering:crisp-edges;image-rendering:pixelated;animation:px-run var(--t) steps(var(--n)) infinite;pointer-events:none;user-select:none;-webkit-user-drag:none}
+@keyframes px-run{to{transform:translateX(-100%)}}
+.px-am{visibility:hidden}
+.px-hm{display:none}
+.px:hover .px-ai,.px:hover .px-am{display:none}
+.px:hover .px-hm{display:block}
+.dark .px{filter:drop-shadow(0 0 1px rgba(244,242,238,.85)) drop-shadow(0 0 4px rgba(244,242,238,.25))}
+.dark .px::after{background:radial-gradient(closest-side,rgba(244,242,238,.16),rgba(244,242,238,0))}
+html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19,28,.95)) drop-shadow(0 0 4px rgba(16,19,28,.35))}
+.px-row{display:grid;grid-template-columns:minmax(0,820px) auto;gap:56px;align-items:end}
+.px-row>.px{margin-bottom:6px}
+.px-side{display:flex;flex-direction:column;align-items:stretch}
+.px-side>.px{align-self:flex-end;margin:0 28px calc(-1.5px*var(--s)) 0;z-index:2}
+.px-lineup{display:flex;align-items:flex-end;gap:28px;width:max-content;max-width:100%;padding:0 10px;border-bottom:1px solid currentColor;margin-top:4px}
+.px-lineup .px{--s:2;margin-bottom:calc(-1.5px*var(--s))}
+.px-lineup .px::after{display:none}
+.menu-head .px{margin-top:8px}
+.px-beat{float:right;--s:2;margin:6px 0 14px 28px}
+@media (max-width:960px){.px-row{grid-template-columns:minmax(0,1fr);gap:20px}.px-row>.px{justify-self:start}}
+@media (max-width:640px){.px{--s:2}.px-lineup .px{--s:1.6}.px-lineup{gap:18px}.px-beat{--s:1.6;margin:4px 0 8px 16px}}
+@media (prefers-reduced-motion:reduce){.px-v img,.px-ai,.px-am{animation:none}}
+.pxc-inspect .px-ai{animation:pxvi-inspect 6920ms step-end infinite}
+.pxc-inspect .px-am{animation:pxvm-inspect 6920ms step-end infinite}
+.pxc-inspect .px-am img{animation:pxr-inspect 6920ms infinite}
+@keyframes pxvi-inspect{0%{visibility:visible}73.988%,100%{visibility:hidden}}
+@keyframes pxvm-inspect{0%{visibility:hidden}73.988%,100%{visibility:visible}}
+@keyframes pxr-inspect{0%{transform:translateX(0);animation-timing-function:step-end}73.988%{transform:translateX(0);animation-timing-function:steps(10,end)}100%{transform:translateX(-100%)}}
+/* px:end */
+</style>
+</helmet>
+<div style="min-height:100vh" data-gt-root="">
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="gt-progress" aria-hidden="true"></div>
+
+<header class="site-head" id="top">
+<div class="wrap">
+<div class="brand"><button type="button" class="bk-btn" data-theme-toggle aria-pressed="false" aria-label="Switch to dark mode (spill the ink)" title="Switch to dark mode (spill the ink)"><svg class="bk-logo" width="44" height="28" viewBox="0 0 50 32" fill="none" aria-hidden="true"><ellipse class="bk-pud" cx="40" cy="30.2" rx="9" ry="1.7" fill="#2B44C8"></ellipse><circle class="bk-drop d1" cx="42" cy="9" r="1.4" fill="#2B44C8"></circle><circle class="bk-drop d2" cx="42" cy="9" r="1.4" fill="#2B44C8"></circle><circle class="bk-drop d3" cx="42" cy="9" r="1.4" fill="#2B44C8"></circle><g class="bk-tip"><g class="bk-liq"><path d="M9.6 20 6.3 26.4A1.7 1.7 0 0 0 7.8 29h16.4a1.7 1.7 0 0 0 1.5-2.6L22.4 20z" fill="#2B44C8"></path></g><path d="M11 3h10M13 3v9L6 26.4A1.7 1.7 0 0 0 7.8 29h16.4a1.7 1.7 0 0 0 1.5-2.6L19 12V3" stroke="#171C2C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></g></svg></button><a href="Main.dc.html" class="brand-name">GelasTinta</a></div>
+<nav class="nav" aria-label="Main">
+<a href="Main.dc.html">Home</a>
+<a href="Projects.dc.html">Projects</a>
+<a href="Talks.dc.html" class="on" aria-current="page">Talks</a>
+<a href="Products.dc.html">Products</a>
+<a href="/packs/library/">Library</a>
+<a href="Author.dc.html">Author</a>
+</nav>
+</div>
+</header>
+
+<section id="main" class="sec cp-hero rule-b" style="padding-top:48px">
+<img class="cp-hero-bg" src="/_blob/563680234c75f720c635590d88b54b06" alt="" aria-hidden="true" style="object-position:70% 50%;filter:blur(2px) saturate(.9)">
+<div class="cp-hero-shade" aria-hidden="true" style="background:linear-gradient(90deg,rgba(23,28,44,.93) 0%,rgba(23,28,44,.82) 50%,rgba(23,28,44,.62) 100%)"></div>
+<div class="wrap" style="position:relative;z-index:2">
+<div class="col stack g16">
+<nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="Main.dc.html">Home</a></li><li><a href="Talks.dc.html">Talks</a></li><li aria-current="page">Talk 11</li></ol></nav>
+<p class="kicker">Talk 11 — Review</p>
+<h1 class="t-title">Folded Twice, Moves Eight Ways: A Bistable Origami Robot</h1>
+<p class="meta">Rayang T Mendrofa · 30th October 2026 · 12 min read</p>
+<aside style="margin-top:24px;border:1px solid #171C2C;background:#FFFAF8">
+<div class="dark" style="padding:12px 20px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px"><span class="kicker" style="font-size:11px">Paper under review</span><span class="meta" style="font-size:11px;color:#F2D3CB">NATURE COMMUNICATIONS · ARTICLE IN PRESS · OPEN ACCESS</span></div>
+<div class="stack g12" style="padding:22px 20px">
+<h2 class="t-h3" style="font-size:24px">Bistable origami robot for adaptive multimodal motion actuated by nonuniform magnetic fields</h2>
+<p class="small muted">Chong Huang, Zhuangzhi Miao, Sida Ma, Zheguo Tang, Heming Wang, Zhanpeng Cui, Yihao Fu and Yang Li · Wuhan University, with the Chinese Academy of Sciences’ State Key Laboratory of Transducer Technology</p>
+<p class="meta" style="font-size:12px">Nature Communications (2026), article in press: volume and pages not yet assigned<br>Received 21 January 2026 · Accepted 5 October 2026 · CC BY 4.0, code under the MIT License</p>
+<a class="meta" href="https://doi.org/10.1038/s41467-026-79010-w" style="min-height:44px;display:inline-flex;align-items:center;align-self:flex-start">doi:10.1038/s41467-026-79010-w ↗</a>
+</div>
+</aside>
+<p class="meta" style="font-size:11px;margin-top:8px;opacity:.85">Background: the robot working through the paper’s second obstacle track, crawling, rolling, tumbling, jumping and scampering. Image: adapted (cropped) from Huang et al., Nature Communications (2026), CC BY 4.0.</p>
+</div>
+</div>
+</section>
+
+<section class="sec">
+<div class="wrap article">
+<div class="col">
+<p class="dropcap">Most robots I know have one personality. This one has two, and it swaps between them when you slap it with a magnet. Open, it is a flat little sheet of origami that shuffles along the floor like a nervous inchworm. Closed, it is a capsule that rolls, jumps and hugs whatever it caught, without spending a single drop of power to keep hold. The whole thing weighs 0.81 g, less than a gram of plastic, film and four tiny magnets.</p>
+<p>The clever part is not the magnets, it is the folding. Magnetic mini robots usually need a very precise, very even magnetic field, which means sitting inside a cage of coils where only a small middle region works well. This team from Wuhan University moves the smartness into the robot’s shape instead, so the coils can be simple, sit underneath an open platform, and produce a field that is deliberately uneven. If you read <a href="Talk-HairClipFish.dc.html">Talk 07</a> about the hair clip fish, you already know the trick at its heart: a structure with two comfortable resting shapes and an energy hill in between.</p>
+</div>
+<div class="col-wide cols-4" style="margin-top:48px">
+<div class="stat"><b>0.81 g</b><p>The whole robot: printed panels, silicone hinges and four magnets.</p></div>
+<div class="stat"><b>8 modes</b><p>Four motions in each of its two stable shapes.</p></div>
+<div class="stat"><b>0.06 s</b><p>Roughly how long it takes to snap shut, from the paper’s photos.</p></div>
+<div class="stat"><b>5.45 BL/s</b><p>Rolling speed in body lengths per second, at 2 Hz.</p></div>
+</div>
+</div>
+</section>
+
+<section class="sec white rule-t rule-b">
+<div class="wrap article">
+<div class="col">
+<p class="kicker">01</p>
+<h2 class="t-h2" style="margin:12px 0 18px">What’s in the paper?</h2>
+<p>The question is simple to say and hard to do: can a tiny untethered robot both change shape and move as a whole, in lots of different ways, without needing an expensive, perfectly even magnetic field? The authors’ answer is a folded robot whose geometry is “pre programmed”, so the field only has to give it a push in roughly the right direction.</p>
+<p>The robot starts from an origami gripper pattern: two mirror image Miura vertices (the classic folding pattern used for maps and solar panels) on either side of a central fold. Paper thin origami like this has a weakness, though. At certain points the fold can go two ways, and a robot with no motor on every hinge can wander down the wrong path. So the team switched to thick panels, which physically block the wrong path, and then did something sneaky with the hinges.</p>
+</div>
+<div class="col-wide cols-2" style="margin-top:40px">
+<article class="stack" style="border:1px solid #171C2C;background:#FFFAF8">
+<div class="dark" style="padding:18px 24px;display:flex;justify-content:space-between;align-items:center;gap:12px">
+<h3 class="t-h3">The robot</h3>
+<span class="meta" style="color:#F2D3CB;font-size:12px">sub centimetre</span>
+</div>
+<p class="small" style="padding:24px;font-size:17px;line-height:1.65">Rigid panels of PLA plastic, 3D printed on a Bambu Lab H2D, joined by 0.1 mm silicone film (Young’s modulus 1.26 MPa) that acts as the hinges. Four N35 neodymium magnets, each 1.5 mm across and 3 mm long with a remanence of 1.2 T, are glued into the panels. Closed, it is about the size and shape of a capsule.</p>
+</article>
+<article class="stack" style="border:1px solid #171C2C;background:#FFFAF8">
+<div style="padding:18px 24px;display:flex;justify-content:space-between;align-items:center;gap:12px;background:#E34A2B;color:#FFFAF8">
+<h3 class="t-h3">The sneaky hinges</h3>
+<span class="meta" style="font-size:12px">hinge offsets</span>
+</div>
+<p class="small" style="padding:24px;font-size:17px;line-height:1.65">The hinges are deliberately shifted off the panel faces by small offsets. With the right offsets, the panels only fit together perfectly when fully open or fully closed. Anywhere in between they clash, so the silicone hinges have to stretch and bend, storing energy. That stored energy is the hill between two valleys: the robot is bistable.</p>
+</article>
+</div>
+<div class="col-wide viz" style="margin-top:48px" role="group" aria-label="Chart A: three hinge offset designs and how hard each is to snap">
+<div class="viz-head">
+<span class="kicker">Chart A · Try it: pick a hinge design</span>
+<h3 class="t-h3">{{d.title}}</h3>
+</div>
+<div class="viz-body stack g24">
+<div class="ratio" aria-label="Choose a design"><sc-for list="{{dTabs}}" as="t" hint-placeholder-count="3"><button type="button" class="{{t.on}}" aria-pressed="{{t.aria}}" onClick="{{t.pick}}">{{t.label}}</button></sc-for></div>
+<div class="gbars"><sc-for list="{{d.rows}}" as="r" hint-placeholder-count="4"><div class="gbar wide"><span class="nm">{{r.n}}</span><div class="tr"><div class="fl" style="width:{{r.w}};background:{{r.c}}"></div></div><span class="vl">{{r.v}}</span></div></sc-for></div>
+<p class="small" aria-live="polite">{{d.note}}</p>
+</div>
+<div class="viz-foot"><span class="meta muted" style="font-size:12px">Ratio a₂/a₁ of the two hinge offsets, in mm. Values read by eye from the paper’s Fig. 1C, 1D and 1F, so treat them as approximate. Forces are means of 5 pushes on each prototype.</span></div>
+<div class="viz-more"><button type="button" class="more" aria-expanded="{{ex.a.aria}}" onClick="{{ex.a.toggle}}"><span class="more-ico" aria-hidden="true">{{ex.a.ico}}</span>{{ex.a.text}} the science</button><sc-if value="{{ex.a.open}}"><div class="more-body"><p>The team modelled the stored energy as two parts. The stretching energy of the silicone hinges rises and then falls as the clashing panels pass each other, while the bending energy keeps rising with the fold angle. Add them and you get a curve with a hump: open at an angle θ of 0, a peak near 0.6 rad, and a second valley near 1.45 rad. A finite element model in COMSOL backed up the hand calculation.</p>
+<p>Smaller offset ratios give a taller hill and a stronger snap, but also need a bigger magnetic kick. The team settled on offsets of 3.3 and 1.8 mm to balance the grip, the crawling stride, what they could build by hand and the most torque the magnets can give. Hand building has limits: each crease was off by about 0.15 mm, enough to spoil the bistability, so they compensated by adjusting panel thickness. After 205 close and open cycles, the measured peak force showed the snap still worked.</p>
+<div class="paper-fig"><img src="/_blob/d52e2aed96652e3c985f5cbcf09b797e" alt="Paper Figure 1: the origami pattern, the thick panel geometry, energy and torque curves for three designs, a photo of the robot, peak forces, the coil rig on sliders, the control workflow, a table of eight motion modes and a comparison chart" loading="lazy"></div>
+<p class="fig-cap"><b>Paper Fig. 1.</b> (A, B) The folding pattern and the thick panel version. (C, D) Energy and torque against fold angle for three designs. (E) The robot. (F) Peak force to close and open. (G) The coil rig. (H) How they pick the coil signals. (I) The eight modes. (J) Comparison with earlier robots.</p>
+<span class="meta muted" style="font-size:11px">Source: Huang et al., Nature Communications (2026), doi:10.1038/s41467-026-79010-w, CC BY 4.0. Figure reproduced unaltered.</span></div></sc-if></div>
+</div>
+</div>
+</section>
+
+<section class="sec">
+<div class="wrap article">
+<div class="col">
+<p class="kicker">02</p>
+<h2 class="t-h2" style="margin:12px 0 18px">So, how did they do it?</h2><span class="px pxc-inspect px-beat" style="--w:43" role="img" aria-label="The GelasTinta pixel character in a lab coat, holding a beaker up to the light"><span class="px-v px-ai" style="--n:8;--t:1280ms"><img src="/_blob/0adff87b8a0ce54aa1d503767bf28772" alt="" draggable="false"></span><span class="px-v px-am" style="--n:10;--t:1800ms"><img src="/_blob/abb3bf9b38e58b145b90221cfdc2e9b2" alt="" draggable="false"></span><span class="px-v px-hm" style="--n:10;--t:1800ms"><img src="/_blob/abb3bf9b38e58b145b90221cfdc2e9b2" alt="" draggable="false"></span></span>
+<p>Instead of chasing a uniform field, the team built a rig that is happy with an uneven one. Three coils and a small electromagnet sit under the robot’s platform on a carriage that slides on two perpendicular rails, so the coils can follow the robot around a large open area. The magnets in the robot feel two things from this uneven field: a twisting torque that folds the hinge, and a pulling force from the field’s gradient that moves the whole body.</p>
+<p>How hard and how fast the field pushes decides what happens. A small oscillating field nudges the robot without tipping it over the energy hill, so it wiggles and moves in whatever way its current shape allows. One large, short pulse throws it over the hill and it snaps into its other shape. Same robot, same coils, very different results.</p>
+</div>
+<div class="col-wide viz" style="margin-top:48px" role="group" aria-label="Chart B: a clickable drawing of the coil rig" data-ori-rig>
+<div class="viz-head">
+<span class="kicker">Chart B · Click it: the coil rig</span>
+<h3 class="t-h3" data-r="rgtitle">The robot on its platform</h3>
+</div>
+<div class="viz-body">
+<div class="rig-grid">
+<div class="hc-box"><svg class="rig-svg" viewBox="0 0 640 340" role="img" aria-label="Drawing of the rig: a clear platform with the robot on top, three tilted coils and a small electromagnet below it on a carriage, two perpendicular rails, and the power electronics to one side">
+<rect width="640" height="340" fill="#FFFAF8"></rect>
+<line x1="40" y1="300" x2="520" y2="300" stroke="#C9BDB8" stroke-width="6" stroke-linecap="round"></line>
+<line x1="90" y1="318" x2="470" y2="282" stroke="#C9BDB8" stroke-width="6" stroke-linecap="round"></line>
+<rect x="150" y="248" width="240" height="18" rx="3" fill="#2C3247"></rect>
+<g data-rg="2" class="rg-hit" tabindex="0" role="button" aria-label="Sliders"><rect x="34" y="286" width="500" height="44" fill="transparent"></rect><text x="470" y="326" font-family="Ubuntu Mono, monospace" font-size="12" fill="#4A5168">SLIDERS X AND Y</text></g>
+<g data-rg="1" class="rg-hit" tabindex="0" role="button" aria-label="Coils 1 to 3"><rect x="160" y="170" width="70" height="70" rx="12" transform="rotate(-24 195 205)" fill="#C98552" stroke="#171C2C" stroke-width="1.5"></rect><circle cx="195" cy="205" r="12" fill="#41454E" transform="rotate(-24 195 205)"></circle><rect x="310" y="170" width="70" height="70" rx="12" transform="rotate(24 345 205)" fill="#C98552" stroke="#171C2C" stroke-width="1.5"></rect><circle cx="345" cy="205" r="12" fill="#41454E"></circle><rect x="240" y="196" width="60" height="50" rx="10" fill="#B8733F" stroke="#171C2C" stroke-width="1.5" opacity=".75"></rect><text x="96" y="168" font-family="Ubuntu Mono, monospace" font-size="12" fill="#4A5168">COILS 1 TO 3</text></g>
+<g data-rg="0" class="rg-hit" tabindex="0" role="button" aria-label="Electromagnet 4"><rect x="254" y="132" width="32" height="58" rx="6" fill="#B8733F" stroke="#171C2C" stroke-width="1.5"></rect><rect x="264" y="126" width="12" height="10" fill="#41454E"></rect><text x="300" y="156" font-family="Ubuntu Mono, monospace" font-size="12" fill="#4A5168">ELECTROMAGNET 4</text></g>
+<line x1="60" y1="116" x2="480" y2="116" stroke="#9AA6BD" stroke-width="2"></line>
+<rect x="60" y="112" width="420" height="8" fill="#E9EEF6" opacity=".7"></rect>
+<g data-rg="3" class="rg-hit" tabindex="0" role="button" aria-label="The robot"><path d="M246 112 L256 98 L270 104 L284 98 L294 112 Z" fill="#5A82B3" stroke="#171C2C" stroke-width="1.5"></path><circle cx="258" cy="100" r="3" fill="#E34A2B"></circle><circle cx="282" cy="100" r="3" fill="#E34A2B"></circle><text x="170" y="86" font-family="Ubuntu Mono, monospace" font-size="12" fill="#4A5168">THE ROBOT, 0.81 G</text><text x="374" y="108" font-family="Ubuntu Mono, monospace" font-size="12" fill="#4A5168">PLATFORM</text></g>
+<g data-rg="4" class="rg-hit" tabindex="0" role="button" aria-label="Power and signals"><rect x="548" y="150" width="70" height="120" rx="6" fill="#171C2C"></rect><rect x="558" y="164" width="50" height="12" fill="#5A82B3"></rect><rect x="558" y="184" width="50" height="12" fill="#5A82B3"></rect><rect x="558" y="204" width="50" height="12" fill="#E34A2B"></rect><rect x="558" y="224" width="50" height="12" fill="#E34A2B"></rect><path d="M548 240 C 500 250, 470 250, 420 252" fill="none" stroke="#171C2C" stroke-width="2"></path><text x="583" y="140" text-anchor="middle" font-family="Ubuntu Mono, monospace" font-size="12" fill="#4A5168">POWER</text></g>
+<g data-rg="5" class="rg-hit" tabindex="0" role="button" aria-label="The control loop"><circle cx="583" cy="56" r="30" fill="none" stroke="#E34A2B" stroke-width="2.5" stroke-dasharray="6 5"></circle><path d="M607 40 l6 -10 l4 12 z" fill="#E34A2B"></path><text x="583" y="60" text-anchor="middle" font-family="Ubuntu Mono, monospace" font-size="11" fill="#171C2C">LOOP</text></g>
+</svg></div>
+<div class="stack g12">
+<div class="ratio rg-tabs" role="group" aria-label="Choose a part"><button type="button" data-rg="3" class="on" aria-pressed="true">Robot</button><button type="button" data-rg="0" aria-pressed="false">Electromagnet</button><button type="button" data-rg="1" aria-pressed="false">Coils</button><button type="button" data-rg="2" aria-pressed="false">Sliders</button><button type="button" data-rg="4" aria-pressed="false">Power</button><button type="button" data-rg="5" aria-pressed="false">Loop</button></div>
+<p class="small" data-r="rgnote" aria-live="polite">Weighing 0.81 g, the robot sits on a clear platform with the coils underneath. Its four magnets are what the field grabs: pushed one way they fold the hinge, pulled by the field’s gradient they move the whole body.</p>
+<div class="readout v"><div><span data-r="rgk">Key number</span><b data-r="rgv" style="font-size:24px">0.81 g</b></div></div>
+</div>
+</div>
+</div>
+<div class="viz-foot"><span class="meta muted" style="font-size:12px">My own drawing, not to scale, after the paper’s Fig. 1G and Methods. Click a part, or use the buttons.</span></div>
+<div class="viz-more"><button type="button" class="more" aria-expanded="{{ex.b.aria}}" onClick="{{ex.b.toggle}}"><span class="more-ico" aria-hidden="true">{{ex.b.ico}}</span>{{ex.b.text}} the field maths</button><sc-if value="{{ex.b.open}}"><div class="more-body"><p>The field from the coils is calculated with the Biot and Savart law, treating each coil as a continuous block of current plus the extra field from its iron core. For real time control that integral is chopped into a finite set of current filaments, which is much cheaper to compute. Field values from this model agreed with simulation along a test line.</p>
+<p>For the forces on the robot, each little magnet is treated as a pair of “magnetic charges” at its north and south ends. The force on the robot is the sum of charge times field at each end, and the folding torque is the sum of each force times its lever arm about the central hinge. Against finite element simulation and measurements, this charge model followed the trends with errors below 20% at distances beyond 2 mm. Magnets more than 5 mm apart barely affect each other, so the team ignored those internal forces.</p></div></sc-if></div>
+</div>
+</div>
+</section>
+
+<section class="sec white rule-t rule-b">
+<div class="wrap article">
+<div class="col-wide">
+<div class="sec-head">
+<p class="kicker">03</p>
+<h2 class="t-h2">What did they find?</h2>
+</div>
+<div class="cols-4">
+<div class="find" style="background:#E34A2B;color:#FFFAF8;border-color:#E34A2B"><span class="meta" style="font-size:12px">01</span><h3 class="t-h3" style="font-size:21px">Same nudge, different dance</h3><p>A small oscillating field makes the open robot crawl and the closed robot roll or scamper.</p></div>
+<div class="find"><span class="meta" style="font-size:12px;color:#2B44C8">02</span><h3 class="t-h3" style="font-size:21px">One pulse, a closed fist</h3><p>A big pulse snaps it shut around an object, and it stays shut with the power off.</p></div>
+<div class="find"><span class="meta" style="font-size:12px;color:#2B44C8">03</span><h3 class="t-h3" style="font-size:21px">Eight modes in all</h3><p>Four motions in each shape, from crawling and turning to jumping and rolling.</p></div>
+<div class="find" style="background:#5A82B3;color:#FFFAF8;border-color:#5A82B3"><span class="meta" style="font-size:12px">04</span><h3 class="t-h3" style="font-size:21px">Courses, slowly</h3><p>It finished two obstacle courses, but rarely in one clean run.</p></div>
+</div>
+</div>
+<div class="col-wide" id="teardown" style="margin-top:56px">
+<div class="stack g8" style="margin-bottom:14px"><p class="kicker">Take it apart · 3D model</p><h3 class="t-h3">Two valleys, one coil rig</h3><p class="small">My own model, built from the paper’s energy and torque curves: nudge the robot and watch it crawl when open and roll when closed, then fire a pulse, slow time down ten times, and watch the fold climb the hill and drop into the other valley. <a href="https://gelastinta.com/teardowns/origami-robot.html" target="_blank" rel="noopener">Open full screen ↗</a></p></div>
+<div class="td-box" data-td>
+<img class="td-poster" src="/_blob/3aa76ef4c11f906b84696c1d1475866a" alt="The origami robot in 3D, seen end on in the middle of snapping shut around a cargo ball, with panels for the energy curve, the torque balance and the eight motion modes" loading="lazy">
+<button class="td-play" type="button" data-td-play aria-label="The bistable origami robot in 3D"><span class="td-pill">3D model</span><b>Open the 3D model</b><span class="td-sub">It plays a short tour on its own. Switch the nudge on and off, change its frequency, fire a pulse, add a cargo ball, and pull back to see the coils under the platform.</span></button>
+</div>
+<p class="meta muted td-note" style="font-size:12px">Energy and torque read from Huang et al.’s Fig. 1C and 1D (hill 0.21 mJ, closed valley 0.12 mJ); crawl speeds from Fig. 2F; rolling 5.45 BL/s at 2 Hz. The fold dynamics, the torque from each nudge and pulse, and the robot’s drawing are my own simplified model, not the exact crease pattern. Field strengths are read from the colour scales of the paper’s field maps.</p>
+</div>
+<div class="col" style="margin-top:56px">
+<h3 class="t-h3" style="margin-bottom:12px">Same nudge, different dance</h3>
+<p>Open, the robot is stiff but can still flex a little. The field pulls its rear magnets harder than its front ones, and the team gave the front and rear feet different friction, so each small fold and unfold turns into a shuffle forward. Turn the field at an angle to the hinge and the same trick makes it turn. Closed, the same kind of small oscillating field makes the side panels flutter so it scampers, or, with all three coils driven together, makes the whole capsule roll. Rolling was its fastest move: 5.45 body lengths per second at 2 Hz, with half a cycle of the field rolling it half way round.</p>
+</div>
+<div class="col-wide viz" style="margin-top:40px" role="group" aria-label="Chart C: the eight motion modes, click one to see how it works" data-ori-modes>
+<div class="viz-head">
+<span class="kicker">Chart C · Click it: eight modes</span>
+<h3 class="t-h3" data-r="mtitle">② Crawling</h3>
+</div>
+<div class="viz-body stack g24">
+<div class="mgrid" role="group" aria-label="Choose a mode">
+<span></span><span class="mh">Big pulse<br>changes shape</span><span class="mh">Small wave<br>changes shape</span><span class="mh">Small wave<br>moves it</span><span class="mh">Big pulse<br>moves it</span>
+<span class="mr">Open</span><button type="button" data-mm="0" aria-pressed="false">① Grip</button><button type="button" data-mm="1" class="on" aria-pressed="true">② Crawl</button><button type="button" data-mm="2" aria-pressed="false">③ Turn</button><button type="button" data-mm="3" aria-pressed="false">④ Tumble</button>
+<span class="mr">Closed</span><button type="button" data-mm="4" aria-pressed="false">⑤ Expand</button><button type="button" data-mm="5" aria-pressed="false">⑥ Scamper</button><button type="button" data-mm="6" aria-pressed="false">⑦ Roll</button><button type="button" data-mm="7" aria-pressed="false">⑧ Jump</button>
+</div>
+<div class="readout r3">
+<div><span>Shape</span><b data-r="m1">Open</b></div>
+<div><span>Field</span><b data-r="m2">Small, oscillating</b></div>
+<div><span>Best measured</span><b data-r="m3">≈ 2.7 mm/s</b></div>
+</div>
+<p class="small" data-r="mnote" aria-live="polite">The field pulls the rear magnets harder than the front ones, and the front and rear feet have different friction, so each small fold and unfold becomes a step forward. Faster and stronger driving helps: about 2.7 mm/s at 6 A and 4 Hz.</p>
+</div>
+<div class="viz-foot"><span class="meta muted" style="font-size:12px">Layout after the paper’s Fig. 1I. Numbers marked ≈ are read by eye from Figs. 2 to 4 (means of 5 runs on one prototype); 5.45 BL/s and 26.5 mN are from the text.</span></div>
+</div>
+<div class="col" style="margin-top:56px">
+<h3 class="t-h3" style="margin-bottom:12px">One pulse, a closed fist</h3>
+<p>Fire one pulse from the small electromagnet and the robot snaps shut. The paper’s photos show it going from open to closed in about 0.06 s, with the tips of its panels reaching several hundred millimetres per second. Fire a pulse the other way and it pops open again. In between, the energy hill does the holding: once closed, it stays closed with the coils switched off, which the authors call self locking.</p>
+<p>That grip is surprisingly firm for something under a gram. Holding a small sphere, it resisted a drag of 26.5 mN before the sphere slipped. It kept hold of spheres, cubes and tetrahedrons when dropped from a high platform onto the floor. The heaviest load it could hold depended on the object’s size, peaking with a 6 mm sphere at roughly 2.7 g, more than three times its own weight, because at that size its fold sits closest to the point of peak force.</p>
+<p>The demo everyone will remember is a live silkworm, caught as it crawled, carried and released unharmed. The number nobody should forget is next to it: out of 100 tries, the capture worked 4 times. The authors are honest that this is a proof of concept, not a reliable trap.</p>
+</div>
+<div class="col-wide viz" style="margin-top:32px">
+<div class="viz-more"><button type="button" class="more" aria-expanded="{{ex.c.aria}}" onClick="{{ex.c.toggle}}"><span class="more-ico" aria-hidden="true">{{ex.c.ico}}</span>{{ex.c.text}} the grip tests</button><sc-if value="{{ex.c.open}}"><div class="more-body"><p>To work out when a pulse is enough, the team treated the snap as slow and steady (quasi static) and compared the magnetic torque on the central hinge with the elastic torque resisting it along the whole fold. If the magnetic curve stays above the elastic one, the robot goes all the way over. This ignores the bang of the panels hitting the object, so it predicts when it will close, not how hard.</p>
+<div class="paper-fig"><img src="/_blob/4dff1be03545ee45148493d87a5e460a" alt="Paper Figure 3: the closing and opening mechanism, photos of closing and opening in 0.06 s, pulse currents and field maps, torque curves, the paths of four points on the robot, capture of a silkworm and a sphere, dropping objects, fall heights and maximum payload against sphere size" loading="lazy"></div>
+<p class="fig-cap"><b>Paper Fig. 3.</b> (A, B) Closing and opening, about 0.06 s each. (C) The current pulses and fields. (D) Magnetic against elastic torque. (E, G) Paths and speeds of four points while closing. (F) Catching a silkworm, holding a sphere. (H, I) Holding on through a fall. (J) Heaviest sphere it can hold, by size.</p>
+<span class="meta muted" style="font-size:11px">Source: Huang et al., Nature Communications (2026), doi:10.1038/s41467-026-79010-w, CC BY 4.0. Figure reproduced unaltered.</span></div></sc-if></div>
+</div>
+<div class="col" style="margin-top:56px">
+<h3 class="t-h3" style="margin-bottom:12px">Obstacle courses, slowly</h3>
+<p>The finale puts it all together on two tracks. In the first, the robot crawls to a channel too narrow for it, closes and rolls through, meets a beam too low to roll under, opens and crawls beneath it, tumbles over a low wall, then grips a cargo, carries it and lets it go. In the second, it pulls a cargo stuck to the floor free with a sideways shove, jumps a high wall while still holding it, and switches to scampering to get through a low tunnel in a tank of water.</p>
+<p>It is a great demo, and the numbers underneath it deserve a look. Single modes mostly worked more than 90% of the time. Switching between modes was shakier, with some switches succeeding less than 35% of the time. A full course in one uninterrupted run succeeded only about 7.1% of the time. Much of the time went on a person watching and nudging the coil carriage into position by eye. From the time stamps in the paper’s figure, the first course took about 12 minutes and the second about 15.</p>
+</div>
+<!-- OWNER: meme idea for here: two plain panels, top "a perfectly even magnetic field inside a coil cage" (crossed out), bottom "a lumpy field and a robot that folds itself the right way" (approved). Caption: "Single mode, 90%. Full course, 7.1%." -->
+</div>
+</section>
+
+<section class="sec dark">
+<div class="wrap article">
+<div class="col">
+<p class="kicker">04</p>
+<h2 class="t-h2" style="margin:12px 0 18px">It matters? How?</h2>
+<p>Most magnetic mini robots are built around the field: a cage of coils, carefully tuned, with a small sweet spot in the middle. That is fine in a lab and a problem in a hospital, where the patient has to fit inside the cage. This paper flips the burden. The robot’s folds decide how it responds, so the field can be uneven, the coils can sit underneath an open platform, and the hardware stays fairly cheap: off the shelf power supplies, amplifiers and signal generators.</p>
+<p>The authors point at capsule endoscopy. Closed, the robot is about capsule shaped, and its 26.5 mN grip is more than their estimate of the drag from gut contractions on something this small, and comparable with the low end of reported capsule resistance in the intestine. They call that “preliminary potential”, and so should we. For small grippers, it joins a strange family: in <a href="Talk-Necro.dc.html">Talk 03</a> the gripper was a dead spider, here it is a folded sheet that holds on with no power at all. And like the walking modules in <a href="Talk-ModularLegs.dc.html">Talk 06</a>, it gets many kinds of movement out of very simple parts.</p>
+</div>
+<div class="col" style="margin-top:40px">
+<div class="catch">
+<p class="kicker">The catches</p>
+<p class="small" style="color:#F7EEEA"><b>Reliability:</b> capture of a moving target worked 4 times in 100. Mode switches sometimes dropped below 35% success, and a full course in one run managed about 7.1%. The mechanical tests use 5 repeats, mostly on a single prototype, and the robots were assembled by hand.</p>
+<p class="small" style="color:#F7EEEA"><b>Control:</b> a person watched the robot and moved the coil carriage by eye. There is no closed loop control or imaging yet, and the gantry itself is only accurate to about ±2 mm sideways and ±1.5 mm vertically. “Low uniformity” fields still need a moving rig and an operator.</p>
+<p class="small" style="color:#F7EEEA"><b>Comparisons and scope:</b> the radar chart comparing it with earlier robots plots unreported values at a baseline and some values are estimated, so it is a sketch, not a ranking. Tests were on dry surfaces and simple water, not slippery, curved gut. PLA and silicone are not clinical materials. It is an article in press: peer reviewed and accepted, but the final edited version is not out yet.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="sec grid-bg rule-b">
+<div class="wrap article">
+<div class="col">
+<p class="kicker">05</p>
+<h2 class="t-h2" style="margin:12px 0 12px">TLDR?</h2>
+<p style="font-style:italic;font-size:22px">How to get eight moves out of one fold...</p>
+<ol class="steps" style="margin-top:20px">
+<li><b>1</b>Offset the hinges of a thick panel origami robot so its panels only fit when fully open or fully closed: it now has two stable shapes.</li>
+<li><b>2</b>Small oscillating magnetic fields wiggle it without flipping it, so it crawls or turns when open and scampers or rolls when closed.</li>
+<li><b>3</b>One big pulse snaps it over the energy hill in about 0.06 s to grab something, and it stays shut with the power off.</li>
+<li><b>4</b>Because the shape does the clever part, simple coils under an open platform can drive it, though full obstacle runs still succeed only rarely.</li>
+</ol>
+</div>
+</div>
+</section>
+
+<section class="sec">
+<div class="wrap article">
+<div class="col-wide take">
+<div>
+<p class="kicker">06</p>
+<h2 class="t-h2" style="margin:12px 0 18px">Personal Take</h2>
+<!-- OWNER TO CHECK: replace with your own story -->
+<p>What I like most here is the phrase “structural intelligence”. As a mechanical engineer, I find it satisfying when the cleverness lives in the geometry rather than in a pile of electronics. A few millimetres of hinge offset turn a floppy sheet into something with two opinions about how it should sit, and that one design decision is what lets the coils be simple. It is the same lesson as the hair clip fish: get the shape right, and the actuator can be lazy.</p>
+<p>I also appreciate that the paper prints its awkward numbers. A 4% capture rate and a 7.1% clean run rate are not the kind of figures most teams put next to their best video. They make the result more believable, not less. My bigger doubt is with the word “large workspace”: the field can be uneven, but the coils still have to be driven around underneath by a gantry and a human with good eyesight. Take away the operator and add real feedback, and then I will call it simple.</p>
+<p>If I had a desk and a weekend, I would want to see how far the trick scales. Could the same offset rule be printed in one go, without hand assembly and its 0.15 mm errors? Could the energy hill be tuned so the closed state grips harder without needing a bigger pulse? And could the camera that the operator replaced be put back in the loop? Fold that into the next paper and this little robot stops being a demo and starts being a tool.</p>
+<nav class="talk-nav" aria-label="More talks"><a class="tn prev" href="Talk-Cyberpunk.dc.html"><span class="tn-k">← Previous talk · 10</span><span class="tn-t">Chrome and Consequences</span><span class="tn-m">23rd October 2026 · 16 min read</span></a><a class="tn next" href="Talk-LearningBrain.dc.html"><span class="tn-k">Next talk · 12 →</span><span class="tn-t">Practice Makes Plastic: Watching Brain Cells Change After a Typing Lesson</span><span class="tn-m">6th November 2026 · 14 min read</span></a></nav>
+<a href="Talks.dc.html" class="back" style="margin-top:24px;color:#2B44C8">← Back to all talks</a>
+</div>
+<div class="stack g24">
+<figure class="stack g12">
+<svg viewBox="0 0 280 330" role="img" aria-label="Sketch: an open origami robot like a flat tray on top, and below it the same robot closed into a capsule around a ball" style="display:block;width:100%;height:auto;border:1px solid #171C2C;background:#FFFAF8"><text x="20" y="28" font-family="Ubuntu Mono, monospace" font-size="11" fill="#6B7088">OPEN: CRAWL, TURN…</text><path d="M40 110 L80 80 L140 96 L200 80 L240 110 L200 104 L140 118 L80 104 Z" fill="#5A82B3" stroke="#171C2C" stroke-width="1.5"></path><line x1="140" y1="96" x2="140" y2="118" stroke="#F2D3CB" stroke-width="2"></line><circle cx="88" cy="88" r="5" fill="#E34A2B"></circle><circle cx="192" cy="88" r="5" fill="#E34A2B"></circle><text x="20" y="168" font-family="Ubuntu Mono, monospace" font-size="11" fill="#6B7088">…ONE PULSE LATER: ROLL, GRIP</text><path d="M140 300 L96 262 L108 210 L140 196 L172 210 L184 262 Z" fill="#5A82B3" stroke="#171C2C" stroke-width="1.5"></path><circle cx="140" cy="246" r="20" fill="#F3E3C2" stroke="#171C2C" stroke-width="1"></circle><circle cx="100" cy="236" r="5" fill="#E34A2B"></circle><circle cx="180" cy="236" r="5" fill="#E34A2B"></circle><path d="M60 140 q80 30 160 0" fill="none" stroke="#E34A2B" stroke-width="2" stroke-dasharray="5 4"></path><path d="M212 136 l10 4 -7 8" fill="none" stroke="#E34A2B" stroke-width="2"></path></svg>
+<figcaption>TWO SHAPES, ONE SNAP BETWEEN THEM.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+
+<!-- nl:start --><section class="sec rule-t" id="newsletter" aria-labelledby="nl-title">
+<div class="wrap article"><div class="col nl-box"><div class="stack g8"><p class="kicker">Enjoyed this talk?</p><h2 class="t-h3" id="nl-title">Get the next talk by email</h2><p class="muted small">One email when a new talk goes up, about once a month. Your address is only used for that, and you can unsubscribe any time.</p></div><form class="nl-form" action="/api/newsletter" method="post"><label class="sr" for="nl-email">Email address</label><input id="nl-email" name="email" type="email" required autocomplete="email" placeholder="you@example.com"><input class="nl-hp" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true"><button class="btn" type="submit">Subscribe</button></form><p class="nl-msg" id="subscribed" role="status">Thanks! You’re on the list for the next talk.</p><p class="nl-msg" id="subscribe-error" role="alert">That didn’t work. Please check the email address and try again.</p><div class="nl-support"><span class="meta">Like the talks? Support them:</span><a class="btn ghost" href="https://trakteer.id/rayang_mendrofa" target="_blank" rel="noopener"><img class="sp-ico" src="/_blob/44290a29dc16af32e676d4457d9e8df3" alt="" width="22" height="22">Trakteer · Rupiah <span aria-hidden="true">↗</span></a><a class="btn ghost" href="https://ko-fi.com/rayanmendrofa" target="_blank" rel="noopener"><img class="sp-ico" src="/_blob/7efb8554392a4b29c2b2e6ff43bbfd24" alt="" width="22" height="22">Ko-fi · International <span aria-hidden="true">↗</span></a></div></div></div></section>
+<!-- nl:end -->
+<!-- wada:start --><section class="sec rule-t" aria-label="Colour palette" style="padding-top:28px;padding-bottom:28px">
+<div class="wrap article"><div class="col wada-note"><span class="wada-sw" aria-hidden="true"><i style="background:#E34A2B"></i><i style="background:#5A82B3"></i><i style="background:#F2D3CB"></i></span><p class="meta" style="font-size:12px;margin:0">Palette: Sanzo Wada, <i>A Dictionary of Color Combinations</i>, No. 194 · Jasper Red, Olympic Blue, Seashell Pink</p></div></div></section>
+<!-- wada:end -->
+<section class="sec white rule-t" id="comments" aria-labelledby="cm-title-ori">
+<div class="wrap">
+<div class="cm-wrap">
+<div class="stack g12">
+<p class="kicker">Discussion</p>
+<h2 class="t-h2" id="cm-title-ori">Comments</h2>
+<p class="meta muted">{{cm.count}}</p>
+</div>
+<sc-if value="{{cm.notReg}}" hint-placeholder-val="{{true}}">
+<div class="cm-box">
+<p class="t-h3" style="font-size:20px">Register with your email to join the discussion</p>
+<div class="cm-row">
+<div class="cm-field"><label for="cm-name-ori">Name</label><input id="cm-name-ori" type="text" autocomplete="name" value="{{cm.name}}" onChange="{{cm.onName}}"></div>
+<div class="cm-field"><label for="cm-email-ori">Email</label><input id="cm-email-ori" type="email" autocomplete="email" inputmode="email" value="{{cm.email}}" onChange="{{cm.onEmail}}"></div>
+</div>
+<sc-if value="{{cm.hasErr}}"><p class="cm-err" role="alert">{{cm.err}}</p></sc-if>
+<div class="cm-actions">
+<button type="button" class="btn" onClick="{{cm.register}}">Register &amp; comment</button>
+<span class="meta muted" style="font-size:12px">Your email is never shown publicly.</span>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{cm.reg}}">
+<div class="cm-box">
+<div class="cm-actions" style="justify-content:space-between">
+<span class="meta">Commenting as <b>{{cm.who}}</b></span>
+<button type="button" class="cm-link" onClick="{{cm.signout}}">Not you? Sign out</button>
+</div>
+<div class="cm-field"><label for="cm-text-ori">Your comment</label><textarea id="cm-text-ori" value="{{cm.draft}}" onChange="{{cm.onDraft}}"></textarea></div>
+<sc-if value="{{cm.hasErr}}"><p class="cm-err" role="alert">{{cm.err}}</p></sc-if>
+<div class="cm-actions"><button type="button" class="btn" onClick="{{cm.post}}">Post comment</button></div>
+</div>
+</sc-if>
+<sc-if value="{{cm.empty}}"><p class="muted" style="font-size:18px">No comments yet. Be the first to share your thoughts.</p></sc-if>
+<sc-if value="{{cm.some}}">
+<ol class="cm-list">
+<sc-for list="{{cm.items}}" as="c" hint-placeholder-count="0"><li><span class="cm-av" aria-hidden="true">{{c.initial}}</span><div class="stack g8"><p class="meta"><b>{{c.name}}</b> · {{c.when}}</p><p class="cm-text">{{c.text}}</p></div></li></sc-for>
+</ol>
+</sc-if>
+</div>
+</div>
+</section>
+
+<footer class="site-foot dark">
+<div class="wrap">
+<div class="foot-top">
+<div class="stack g16">
+<p class="kicker">Get in touch</p>
+<p class="foot-title">GelasTinta</p>
+<p class="foot-blurb">Open to collaborations, discussions, projects, and work in discussing creative science, design, and engineering work.</p>
+</div>
+<div class="stack g16">
+<a class="foot-mail" href="mailto:mendrofarayang@gmail.com">mendrofarayang@gmail.com</a>
+<p class="meta muted">Jakarta . London . Singapore</p>
+<div class="chips" style="gap:10px">
+<a class="social" href="https://www.linkedin.com/in/raysmendrofa/" aria-label="LinkedIn profile: raysmendrofa"><img src="/_blob/49604cde322d454326d28d8c5cfe5ff8" alt="" style="width:22px;height:22px">LinkedIn</a>
+<a class="social" href="mailto:mendrofarayang@gmail.com" aria-label="Email: mendrofarayang@gmail.com"><img src="/_blob/ee68aabd0584895696ec1ef146936038" alt="" style="width:22px;height:auto">Email</a>
+<a class="social" href="https://wa.me/447376459918" aria-label="WhatsApp: +44 7376459918"><img src="/_blob/d7adca6684b39bdbd090afff2eeb09ea" alt="" style="width:22px;height:22px">WhatsApp +44</a>
+</div>
+</div>
+</div>
+<!-- nav2:foot:start --><nav class="foot-nav" aria-label="Site"><a href="Main.dc.html">Home</a><a href="Projects.dc.html">Projects</a><a href="Talks.dc.html">Talks</a><a href="Products.dc.html">Products</a><a href="/packs/library/">Library</a><a href="Author.dc.html">Author</a><a class="to-top" href="#top">Back to top <span aria-hidden="true">↑</span></a></nav>
+<!-- nav2:foot:end -->
+<div class="tblock">
+<div><span>DRAWN BY</span><span>Rayang T Mendrofa</span></div>
+<div><span>SHEET</span><span>05.11 — ORIGAMI ROBOT</span></div>
+<div><span>SCALE</span><span>1 : IDEA</span></div>
+<div><span>REV.</span><span>Website 2026 Gelastinta.</span></div>
+</div>
+<!-- wadasite:start --><p class="wada-credit"><span class="wada-mini" aria-hidden="true"><i style="background:#A36AA5"></i><i style="background:#FDC57E"></i><i style="background:#171C2C"></i><i style="background:#2B44C8"></i></span><span>SITE PALETTE · Sanzo Wada, <i>A Dictionary of Color Combinations</i>, No. 344 · Aconite Violet, Cinnamon Buff, with the site ink and blue in place of Wada’s Black and Deep Lyons Blue</span></p>
+<!-- wadasite:end -->
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":10400}}'>
+class Component extends DCLogic {
+  // ── GelasTinta motion layer (anime.js v4) ─────────────────────────────
+  componentDidMount() { this.gtStart(0); this.gtMedia(0); this.gtTheme(); this.gtFigs(); this.cmMount(); }
+  componentWillUnmount() {
+    if (this.tdOff) this.tdOff();
+    if (this.thOff) this.thOff();
+    this.gtFigStop();
+    clearTimeout(this.gtWait);
+    clearInterval(this.gtSlideT);
+    clearTimeout(this.gtMediaWait);
+    if (this.gtVIO) this.gtVIO.disconnect();
+    if (this.gtIO) this.gtIO.disconnect();
+    if (this.gtScope) this.gtScope.revert();
+  }
+  componentDidUpdate() {
+    const A = window.anime;
+    if (!A || !this.gtReady) return;
+    // "Show the science" panels: grow open inside their own box (height + fade), never overlapping the page
+    if (this.gtRoot && !(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) {
+      Array.from(this.gtRoot.querySelectorAll('.more-body:not([data-gt-in])')).forEach((el) => {
+        el.setAttribute('data-gt-in', '');
+        const h = el.scrollHeight;
+        el.style.overflow = 'hidden';
+        A.animate(el, {
+          height: [0, h], opacity: [0, 1], duration: 480, ease: 'out(3)',
+          onComplete: () => { el.style.height = ''; el.style.overflow = ''; el.style.opacity = ''; }
+        });
+      });
+    }
+    const st = this.state || {};
+    const prev = this.gtPrev || {};
+    const root = this.gtRoot;
+    if (root && st.sel !== prev.sel && prev.seen) {
+      const panel = root.querySelector('[role="tabpanel"]');
+      if (panel) A.animate(panel.children, { opacity: { from: 0 }, x: { from: 18 }, delay: A.stagger(70), duration: 520, ease: 'out(3)' });
+    }
+    if (root && st.slide !== prev.slide && prev.seen) {
+      const img = root.querySelector('.gal-img');
+      if (img) A.waapi.animate(img, { opacity: [0, 1], scale: [1.04, 1], duration: 600, ease: 'out(3)' });
+      const cap = root.querySelectorAll('.gal-cap > *');
+      if (cap.length) A.animate(cap, { opacity: { from: 0 }, y: { from: 10 }, delay: A.stagger(60), duration: 450, ease: 'out(3)' });
+    }
+    if (root && st.zoom && st.zoom !== prev.zoom) {
+      const z = root.querySelector('.zoom img');
+      if (z) A.animate(z, { scale: { from: 0.9 }, opacity: { from: 0 }, ease: A.spring({ bounce: 0.35, duration: 500 }) });
+    }
+    this.gtPrev = { sel: st.sel, slide: st.slide, zoom: st.zoom, seen: true };
+  }
+  // Media loading (independent of anime.js): hero slides load just before their turn; clips play only on screen
+  gtMedia(tries) {
+    const root = document.querySelector('[data-gt-root]') || document.body;
+    if (!root.querySelector('img[data-src], video[data-gt-autoplay]')) {
+      if (tries < 20) this.gtMediaWait = setTimeout(() => this.gtMedia(tries + 1), 150);
+      return;
+    }
+    const still = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+    // 1 · Home hero slideshow: slide k fades in at k×6 s, so fetch it ~5 s ahead
+    const slides = Array.from(root.querySelectorAll('.hero-slides img[data-src]'));
+    if (slides.length && !still) {
+      const t0 = performance.now();
+      const tick = () => {
+        const t = (performance.now() - t0) / 1000;
+        let left = 0;
+        slides.forEach((img, i) => {
+          if (img.getAttribute('src')) return;
+          const k = i + 1;
+          if (t >= k * 6 - 5) { img.decoding = 'async'; img.src = img.getAttribute('data-src'); }
+          else left++;
+        });
+        if (!left) clearInterval(this.gtSlideT);
+      };
+      tick();
+      this.gtSlideT = setInterval(tick, 1000);
+    }
+    // 2 · Looping clips: muted inline video, playing only while visible
+    const vids = Array.from(root.querySelectorAll('video[data-gt-autoplay]'));
+    if (vids.length) {
+      vids.forEach((v) => { v.muted = true; v.defaultMuted = true; v.playsInline = true; v.loop = true; });
+      if (still) {
+        vids.forEach((v) => { v.removeAttribute('autoplay'); v.autoplay = false; v.pause(); v.controls = true; });
+      } else if ('IntersectionObserver' in window) {
+        this.gtVIO = new IntersectionObserver((entries) => {
+          entries.forEach((e) => {
+            const v = e.target;
+            if (e.isIntersecting) { const p = v.play(); if (p && p.catch) p.catch(() => {}); }
+            else v.pause();
+          });
+        }, { rootMargin: '120px 0px' });
+        vids.forEach((v) => this.gtVIO.observe(v));
+      } else {
+        vids.forEach((v) => { const p = v.play(); if (p && p.catch) p.catch(() => {}); });
+      }
+    }
+  }
+  gtStart(tries) {
+    // Inside a frame (the design canvas, an embed), keep the page static: browsers pause or slow
+    // animation in off-screen frames, which can leave reveals stuck half-way and the canvas laggy.
+    // The live site always runs as a normal tab, so the motion layer still plays there.
+    try { if (window.self !== window.top) return; } catch (e) { return; }
+    const A = window.anime;
+    if (!A) {
+      if (tries < 60) this.gtWait = setTimeout(() => this.gtStart(tries + 1), 100);
+      return;
+    }
+    const root = document.querySelector('[data-gt-root]');
+    if (!root || this.gtScope) return;
+    this.gtRoot = root;
+    this.gtLayouts = [];
+    this.gtPrev = { sel: (this.state || {}).sel, slide: (this.state || {}).slide, seen: true };
+    A.engine.pauseOnDocumentHidden = false;
+    const self = this;
+    this.gtScope = A.createScope({
+      root: root,
+      mediaQueries: { still: '(prefers-reduced-motion: reduce)', touch: '(hover: none)', small: '(max-width: 640px)' }
+    }).add((scope) => {
+      if (scope.matches.still) return;
+      const m = scope.matches;
+      const run = (name, fn) => { try { fn(); } catch (e) { console.warn('[gt-motion] ' + name, e); } };
+      run('motion', () => self.gtMotion(A, root, m));
+    });
+    this.gtReady = true;
+  }
+  gtMotion(A, root, m) {
+    const { animate, createTimeline, createTimer, stagger, splitText, scrambleText, onScroll, createDrawable,
+      morphTo, createMotionPath, createAnimatable, createDraggable, createLayout, waapi, spring, cubicBezier,
+      steps, irregular, utils } = A;
+    const $ = (sel, el) => Array.from((el || root).querySelectorAll(sel));
+    const DYN = '.gal, [role="tabpanel"], [role="tablist"], #comments, [id^="comments"], .ratio, .lm-row, .readout, .viz-body, .zoom, .cad, sc-for';
+    const isStatic = (el) => !el.closest(DYN);
+    const plain = (el) => el.children.length === 0 && el.textContent.trim().length > 0 && !/[<>]/.test(el.textContent);
+    const glide = cubicBezier(0.2, 0.75, 0.1, 1);
+    const done = new Set();
+    // Content is never hidden ahead of time: an element only animates once it is actually on screen
+    // (IntersectionObserver also works when the page sits inside a frame scrolled by its parent),
+    // and every reveal has a timer that snaps it to its finished state if the animation stalls.
+    const pending = new Map();
+    const io = window.IntersectionObserver ? new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        const fn = pending.get(e.target);
+        pending.delete(e.target);
+        io.unobserve(e.target);
+        if (fn) { try { fn(); } catch (err) { console.warn('[gt-motion] reveal', err); } }
+      });
+    }, { rootMargin: '0px 0px -4% 0px' }) : null;
+    this.gtIO = io;
+    const when = (el, fn) => { if (!io || !el) return; pending.set(el, fn); io.observe(el); };
+    const guard = (anim, ms) => { setTimeout(() => { try { if (anim && !anim.completed) anim.complete(); } catch (e) {} }, ms); return anim; };
+    const safe = (name, fn) => { try { fn(); } catch (e) { console.warn('[gt-motion] ' + name, e); } };
+    const calm = m.touch || m.small;
+    const head = root.querySelector('.site-head');
+    const hero = head ? head.nextElementSibling : null;
+    const intro = createTimeline({ defaults: { ease: glide, duration: 700 } });
+
+    // 1 ── header: brand flask fills, outline draws, nav staggers in
+    safe('1', () => {
+      if (head) {
+        const flask = head.querySelector('.brand svg');
+        if (flask) {
+          const [liquid, glass] = flask.querySelectorAll('path');
+          if (glass) intro.add(createDrawable(glass), { draw: ['0 0', '0 1'], duration: 900, ease: 'inOut(3)' }, 0);
+          if (liquid) {
+            liquid.style.transformBox = 'fill-box';
+            liquid.style.transformOrigin = '50% 100%';
+            intro.add(liquid, { scaleY: { from: 0 }, ease: spring({ bounce: 0.45, duration: 900 }) }, 350);
+          }
+        }
+        intro.add($('.nav a', head), { opacity: { from: 0 }, y: { from: -10 }, delay: stagger(60), duration: 500 }, 100);
+      }
+    });
+
+    // 2 ── hero: kicker scramble → split title rises → the rest follows
+    safe('2', () => {
+      if (hero) {
+        intro.label('hero', 200);
+        const hk = hero.querySelector('.kicker');
+        if (hk && plain(hk) && isStatic(hk)) {
+          intro.add(hk, { innerHTML: scrambleText({ chars: 'A-Z0-9—·', cursor: '_', revealRate: 70, settleDuration: 260 }) }, 'hero');
+          done.add(hk);
+        }
+        const h1 = hero.querySelector('h1');
+        if (h1 && isStatic(h1)) {
+          const split = splitText(h1, { words: { wrap: 'clip' }, chars: true });
+          this.gtSplits = (this.gtSplits || []).concat([split]);
+          const each = utils.clamp(900 / Math.max(1, split.chars.length), 8, 34);
+          intro.add(split.chars, {
+            y: { from: '110%' }, rotate: { from: () => utils.random(-14, 14) },
+            delay: stagger(each, { ease: 'out(2)' }), ease: spring({ bounce: 0.3, duration: 900 })
+          }, 'hero+=120');
+          done.add(h1);
+        }
+        const BG = /hero-slides|hero-shade|cp-hero-bg|cp-hero-shade/;
+        const restSet = new Set();
+        if (h1) {
+          const P = h1.parentElement;
+          Array.from(P.children).forEach((c) => { if (c !== h1 && c !== hk) restSet.add(c); });
+          const W = P.parentElement;
+          if (W && W !== hero && hero.contains(W)) Array.from(W.children).forEach((c) => { if (c !== P) restSet.add(c); });
+        }
+        $(':scope > .hero-link', hero).forEach((c) => restSet.add(c));
+        const rest = Array.from(restSet).filter((el) => !BG.test(el.className || '') && el.tagName !== 'IMG');
+        if (rest.length) intro.add(rest, { opacity: { from: 0 }, y: { from: 22 }, delay: stagger(80) }, 'hero+=420');
+        rest.forEach((el) => done.add(el));
+
+        // parallax on hero photography / CFD background
+        const bg = hero.querySelector('.cp-hero-bg, .hero-slides');
+        if (bg) animate(bg, { y: [0, 140], scale: [1.06, 1.06], ease: 'linear', autoplay: onScroll({ target: hero, enter: 'top top', leave: 'bottom top', sync: 0.25 }) });
+      }
+    });
+
+    // 3 ── Home hero vessel: ink sloshes (morphTo), outline draws, drop falls, bubbles rise, glass is draggable
+    safe('3', () => {
+      const vessel = root.querySelector('.hero-vessel svg');
+      if (vessel) {
+        const ink = vessel.querySelector('.gt-ink');
+        const inkB = vessel.querySelector('.gt-ink-b');
+        if (ink && inkB) {
+          animate(ink, { d: morphTo(inkB, 0), duration: 2600, ease: 'inOut(2)', loop: true, alternate: true });
+        }
+        const glass = vessel.querySelector('.gt-glass');
+        if (glass) animate(createDrawable(glass), { draw: ['0 0', '0 1'], duration: 1800, delay: 300, ease: 'inOut(3)' });
+        const drop = vessel.querySelector('.gt-drop');
+        if (drop) {
+          animate(drop, {
+            keyframes: [
+              { y: -40, opacity: 0, duration: 0 },
+              { y: 0, opacity: 1, duration: 500, ease: 'out(2)' },
+              { y: 62, scaleY: 1.25, duration: 650, ease: 'in(3)' },
+              { opacity: 0, scaleY: 0.4, duration: 120 }
+            ],
+            loop: true, loopDelay: 1400
+          });
+        }
+        const bubbles = $('.gt-bubble', vessel);
+        if (bubbles.length) {
+          animate(bubbles, {
+            y: { to: () => -utils.random(40, 90) }, opacity: [0.5, 0], scale: [1, 0.4],
+            duration: () => utils.random(2200, 3400), delay: stagger(500, { from: 'random' }),
+            loop: true, ease: 'out(2)'
+          });
+        }
+        if (!m.touch && !m.small) {
+          createDraggable(vessel, {
+            container: vessel.closest('section'),
+            releaseStiffness: 260, releaseDamping: 14, cursor: { onHover: 'grab', onGrab: 'grabbing' },
+            onRelease: (d) => { animate(d, { x: 0, y: 0, ease: spring({ bounce: 0.55, duration: 1100 }) }); }
+          });
+          vessel.style.touchAction = 'none';
+        }
+      }
+    });
+
+    // 4 ── code chips: a timer re-scrambles one chip at a time; <error> glitches on steps
+    safe('4', () => {
+      const chips = $('.code-chip');
+      if (chips.length) {
+        createTimer({
+          duration: 3200, loop: true,
+          onLoop: () => {
+            const c = utils.randomPick(chips);
+            const txt = c.dataset.gtText || (c.dataset.gtText = c.textContent);
+            const pool = 'abcdefghijklmnopqrstuvwxyz01#_'.split('');
+            const o = { p: 0 };
+            animate(o, {
+              p: 1, duration: 650, ease: steps(txt.length),
+              onUpdate: () => {
+                const n = Math.round(o.p * txt.length);
+                c.textContent = txt.slice(0, n) + Array.from(txt.slice(n)).map((ch) => (/[a-z.]/i.test(ch) ? utils.randomPick(pool) : ch)).join('');
+              },
+              onComplete: () => { c.textContent = txt; }
+            });
+          }
+        });
+        const err = chips.find((c) => /error/i.test(c.textContent));
+        if (err) animate(err, { x: [0, -3, 3, -2, 0], ease: steps(5), duration: 360, loop: true, loopDelay: 2600 });
+      }
+    });
+
+    // 5 ── "coming soon" chips flicker like a faulty neon tube
+    safe('5', () => {
+      $('.chip.warn').forEach((c) => {
+        animate(c, { opacity: [1, 0.35, 1], ease: irregular(14, 1.6), duration: 1400, loop: true, loopDelay: 2200 });
+      });
+    });
+
+    // 6 ── kickers scramble in, h2 headings rise word by word
+    safe('6', () => {
+      $('.kicker').filter((k) => !done.has(k) && plain(k) && isStatic(k)).forEach((k) => {
+        when(k, () => guard(animate(k, { innerHTML: scrambleText({ chars: 'A-Z0-9—', revealRate: 80, settleDuration: 220 }) }), 2500));
+      });
+      $('h2.t-h2, .foot-title').filter((h) => isStatic(h) && !done.has(h)).forEach((h) => {
+        when(h, () => {
+          // the split is undone as soon as the animation ends, so the heading's markup goes back to plain text
+          // (otherwise editing it in the canvas would save the animation's word wrappers into the page)
+          const s = splitText(h, { words: { wrap: 'clip' } });
+          guard(animate(s.words, { y: { from: '105%' }, delay: stagger(55), duration: 800, ease: glide, onComplete: () => s.revert() }), 800 + s.words.length * 55 + 800);
+        });
+      });
+    });
+
+    // 7 ── grids reveal with a staggered wave (grid-aware where the layout is a grid)
+    safe('7', () => {
+      const groups = $('.cols-2, .cols-3, .cols-4, .terms, .cost, .quotes, .mp, .art-list, .steps, .tl, .ef, .toy-tab, .spec, .chips')
+        .filter((g) => isStatic(g) && !done.has(g) && !g.closest('.site-head') && !(hero && hero.contains(g)));
+      groups.forEach((g) => {
+        const kids = Array.from(g.children).filter((k) => !done.has(k));
+        if (!kids.length) return;
+        kids.forEach((k) => done.add(k));
+        const cols = (getComputedStyle(g).gridTemplateColumns || 'none').split(' ').filter((x) => x !== 'none').length;
+        const rows = cols > 1 ? Math.ceil(kids.length / cols) : 0;
+        const delay = cols > 1 && rows > 1 ? stagger(70, { grid: [cols, rows], from: 'first' }) : stagger(70);
+        when(g, () => guard(animate(kids, {
+          opacity: { from: 0 }, y: { from: 28 }, scale: { from: 0.97 },
+          delay: delay, duration: 750, ease: glide
+        }), 750 + kids.length * 70 + 900));
+      });
+    });
+
+    // 8 ── single blocks fade up as they enter
+    safe('8', () => {
+      $('.col > p, .col-wide > p, .article figure, .viz, .eq-wrap, .paper-fig, .card, blockquote, .meme, .meme-sm, .take, .side, .stat, .quote, .prose > p')
+        .filter((el) => isStatic(el) && !done.has(el) && !el.closest('.site-head') && !(hero && hero.contains(el)) && !Array.from(done).some((d) => d !== el && d.contains && d.contains(el)))
+        .forEach((el) => {
+          done.add(el);
+          when(el, () => guard(animate(el, { opacity: { from: 0 }, y: { from: 18 }, duration: 700, ease: glide }), 1500));
+        });
+    });
+
+    // 9 ── photos: hardware-accelerated clip reveal (WAAPI) as they enter
+    safe('9', () => {
+      $('figure img, .tile-art img, .art-thumb img, .paper-fig img, .wfig img')
+        .filter((img) => isStatic(img) && !(hero && hero.contains(img)) && !img.closest('.hero-slides'))
+        .forEach((img) => {
+          when(img, () => waapi.animate(img, {
+            clipPath: ['inset(0 0 100% 0)', 'inset(0 0 0% 0)'], scale: [1.08, 1], duration: 1100, ease: 'out(4)'
+          }));
+        });
+    });
+
+    // 10 ── numbers count up (keeps prefix, suffix, commas and decimals)
+    safe('10', () => {
+      $('.stat b, .art-num, .mp b').filter((b) => plain(b) && isStatic(b)).forEach((b) => {
+        const raw = b.textContent;
+        const mm = raw.match(/^([^\d]*?)(\d[\d,]*(?:\.\d+)?)(.*)$/);
+        if (!mm) return;
+        const target = parseFloat(mm[2].replace(/,/g, ''));
+        const decimals = (mm[2].split('.')[1] || '').length;
+        const comma = mm[2].indexOf(',') >= 0;
+        const pad = /^0\d/.test(mm[2]) ? mm[2].length : 0;
+        const isYear = !comma && !decimals && target >= 1800 && target <= 2100;
+        const fmt = (v) => {
+          let s = decimals ? utils.round(v, decimals).toFixed(decimals) : String(Math.round(v));
+          if (comma) s = Number(s).toLocaleString('en-GB', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+          if (pad) s = utils.padStart(s, pad, '0');
+          return mm[1] + s + mm[3];
+        };
+        when(b, () => {
+          const o = { v: isYear ? target - 80 : 0 };
+          guard(animate(o, {
+            v: target, duration: 1600, ease: 'out(4)',
+            onUpdate: () => { b.textContent = fmt(o.v); },
+            onComplete: () => { b.textContent = raw; }
+          }), 2600);
+        });
+      });
+    });
+
+    // 11 ── line drawings: stroked chart lines draw themselves in (createDrawable)
+    safe('11', () => {
+      $('svg[role="img"]').filter((s) => isStatic(s) && !s.closest('.hero-vessel') && !s.closest('.site-head')).forEach((s) => {
+        const strokes = $('path, line, polyline, rect, circle', s).filter((p) => {
+          const cs = getComputedStyle(p);
+          return cs.stroke && cs.stroke !== 'none' && (cs.fill === 'none' || p.getAttribute('fill') === 'none') && !p.classList.contains('gt-rider');
+        });
+        if (!strokes.length) return;
+        when(s, () => guard(animate(createDrawable(strokes), { draw: ['0 0', '0 1'], delay: stagger(40), duration: 1400, ease: 'inOut(3)' }), 1400 + strokes.length * 40 + 900));
+      });
+    });
+
+    // 12 ── Navier–Stokes chart B: a dot rides the y² curve up to the blowup (createMotionPath)
+    safe('12', () => {
+      const curve = root.querySelector('.gt-curve');
+      const rider = root.querySelector('.gt-rider');
+      if (curve && rider) {
+        animate(rider, Object.assign({}, createMotionPath(curve), {
+          ease: 'in(3)', duration: 2600, loop: true, loopDelay: 700,
+          opacity: [{ to: 1, duration: 200 }, { to: 1, duration: 2200 }, { to: 0, duration: 200 }]
+        }));
+      }
+    });
+
+    // 13 ── reading progress bar synced to scroll
+    safe('13', () => {
+      const bar = root.querySelector('.gt-progress');
+      if (bar) animate(bar, { scaleX: [0, 1], ease: 'linear', autoplay: onScroll({ target: root, enter: 'top top', leave: 'bottom bottom', sync: 0.15 }) });
+    });
+
+    // 14 ── "Show the science" panels: mark the ones already open so only new openings animate
+    safe('14', () => { $('.more-body').forEach((el) => el.setAttribute('data-gt-in', '')); });
+
+    // 15 ── magnetic buttons (createAnimatable)
+    safe('15', () => {
+      if (calm) return;
+      $('.btn, .social, .hero-link, .back, .foot-mail, .gal-nav').forEach((el) => {
+        let a = null;
+        el.addEventListener('pointermove', (e) => {
+          if (!a) a = createAnimatable(el, { x: 500, y: 500, ease: 'out(3)' });
+          const r = el.getBoundingClientRect();
+          a.x(utils.clamp((e.clientX - (r.left + r.width / 2)) * 0.25, -10, 10));
+          a.y(utils.clamp((e.clientY - (r.top + r.height / 2)) * 0.35, -8, 8));
+        });
+        el.addEventListener('pointerleave', () => { if (a) { a.x(0); a.y(0); } });
+      });
+    });
+
+    // 16 ── cards tilt toward the pointer and spring back
+    safe('16', () => {
+      if (calm) return;
+      $('.tile, .art-row, .poster-link, .card, .term, .stat').filter(isStatic).forEach((el) => {
+        let a = null;
+        el.addEventListener('pointerenter', () => {
+          if (!a) { utils.set(el, { perspective: '900px' }); a = createAnimatable(el, { rotateX: 400, rotateY: 400, ease: 'out(3)' }); }
+          animate(el, { translateY: -6, ease: spring({ bounce: 0.5, duration: 600 }) });
+        });
+        el.addEventListener('pointermove', (e) => {
+          if (!a) return;
+          const r = el.getBoundingClientRect();
+          a.rotateY(utils.mapRange(e.clientX, r.left, r.right, -4, 4));
+          a.rotateX(utils.mapRange(e.clientY, r.top, r.bottom, 4, -4));
+        });
+        el.addEventListener('pointerleave', () => {
+          if (a) { a.rotateX(0); a.rotateY(0); }
+          animate(el, { translateY: 0, ease: spring({ bounce: 0.5, duration: 700 }) });
+        });
+      });
+    });
+
+    // 17 ── safety net: the opening sequence always ends fully visible, even if the animation clock stalls
+    const unsplit = () => { (this.gtSplits || []).forEach((sp) => { try { sp.revert(); } catch (e) {} }); this.gtSplits = []; };
+    intro.then(unsplit);
+    setTimeout(() => { try { if (!intro.completed) intro.complete(); } catch (e) {} unsplit(); }, 4500);
+  }
+  // ── end motion layer ──────────────────────────────────────────────────
+  cmMount() {
+    // Load saved comments for this page, and remember a returning commenter.
+    const page = (typeof location !== 'undefined' ? location.pathname : '/').replace(/\/+$/, '') || '/';
+    let saved = null;
+    try { saved = JSON.parse(localStorage.getItem('gt-commenter') || 'null'); } catch (e) { saved = null; }
+    const cur = Object.assign({ name: '', email: '', draft: '', user: null, items: [], err: '', busy: false }, (this.state && this.state.cm) || {});
+    if (saved && saved.name && saved.email) cur.user = saved;
+    this.setState({ cm: cur });
+    if (typeof fetch !== 'function') return;
+    fetch('/api/comments?page=' + encodeURIComponent(page))
+      .then((r) => (r.ok ? r.json() : { comments: [] }))
+      .then((d) => {
+        const c = Object.assign({}, (this.state && this.state.cm) || cur);
+        c.items = (d.comments || []).map((x) => ({ name: x.name, initial: (x.name || '?').charAt(0).toUpperCase(), text: x.text, when: x.when }));
+        this.setState({ cm: c });
+      })
+      .catch(() => {});
+  }
+  commentVals() {
+    const blank = { name: '', email: '', draft: '', user: null, items: [], err: '', busy: false };
+    const cur = () => Object.assign({}, blank, (this.state && this.state.cm) || {});
+    const c = cur();
+    const set = (patch) => this.setState({ cm: Object.assign(cur(), patch) });
+    const okEmail = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+    const page = (typeof location !== 'undefined' ? location.pathname : '/').replace(/\/+$/, '') || '/';
+    const n = c.items.length;
+    return {
+      name: c.name, email: c.email, draft: c.draft,
+      notReg: !c.user, reg: !!c.user, who: c.user ? c.user.name : '',
+      hasErr: !!c.err, err: c.err,
+      count: n === 0 ? 'No comments yet' : (n === 1 ? '1 comment' : n + ' comments'),
+      empty: n === 0, some: n > 0,
+      items: c.items,
+      onName: (e) => set({ name: e.target.value, err: '' }),
+      onEmail: (e) => set({ email: e.target.value, err: '' }),
+      onDraft: (e) => set({ draft: e.target.value, err: '' }),
+      register: () => {
+        const s = cur(); const nm = s.name.trim(); const em = s.email.trim();
+        if (!nm) return set({ err: 'Please add your name.' });
+        if (!okEmail(em)) return set({ err: 'Please enter a valid email address.' });
+        const user = { name: nm, email: em };
+        try { localStorage.setItem('gt-commenter', JSON.stringify(user)); } catch (e) {}
+        set({ user: user, err: '' });
+      },
+      post: () => {
+        const s = cur(); const t = s.draft.trim();
+        if (!s.user || s.busy) return;
+        if (!t) return set({ err: 'Write a comment first.' });
+        set({ busy: true, err: '' });
+        fetch('/api/comments', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({ page: page, name: s.user.name, email: s.user.email, text: t })
+        })
+          .then((r) => r.json().then((d) => ({ ok: r.ok, d: d })))
+          .then((res) => {
+            if (!res.ok) return set({ busy: false, err: res.d.error || 'Could not post your comment. Please try again.' });
+            const x = res.d.comment;
+            const now = cur();
+            set({ busy: false, draft: '', err: '', items: now.items.concat([{ name: x.name, initial: x.name.charAt(0).toUpperCase(), text: x.text, when: x.when }]) });
+          })
+          .catch(() => set({ busy: false, err: 'Could not post your comment. Please check your connection and try again.' }));
+      },
+      signout: () => {
+        try { localStorage.removeItem('gt-commenter'); } catch (e) {}
+        set({ user: null, err: '' });
+      }
+    };
+  }
+  gtFigs() {
+    if (!this.tdOff) this.gtTd();
+    if (this.oriOn) return;
+    this.oriOn = true;
+    const guard = (fn) => (e) => { try { fn.call(this, e); } catch (err) { if (window.console) console.warn('[ori-charts]', err); } };
+    const onClick = guard(this.oriClick), onKey = guard(this.oriKey);
+    document.addEventListener('click', onClick, true);
+    document.addEventListener('keydown', onKey, true);
+    this.oriOff = () => { document.removeEventListener('click', onClick, true); document.removeEventListener('keydown', onKey, true); };
+    const scan = guard(this.oriScan);
+    scan();
+    this.oriInt = setInterval(scan, 600);
+  }
+  gtFigStop() {
+    clearInterval(this.oriInt);
+    if (this.oriOff) this.oriOff();
+    this.oriOn = false;
+  }
+  // Chart B (the coil rig) and Chart C (the eight modes): content lives here, drawn into the page by data-r fields
+  oriData() {
+    return {
+      rig: [
+        { t: 'Electromagnet 4: the big kicks', k: 'Pulse field, read from the maps', v: '≈ ±150 mT', n: 'A small electromagnet sits right under the robot. Short pulses of current through it close or open the robot, make it jump, and half sine waves through it make the closed robot scamper.' },
+        { t: 'Coils 1 to 3: the steady wiggle', k: 'Crawling field, read from the maps', v: '≈ ±25 mT', n: 'Three tilted coils around the electromagnet are driven with smooth oscillating currents. Mixing the three currents points the field’s pull in any direction, which steers crawling and turning; driving all three the same way rolls the closed robot.' },
+        { t: 'Sliders: the coils follow the robot', k: 'Gantry accuracy', v: '±2 mm', n: 'The coils ride on a carriage moved by two perpendicular sliders, so the strong part of the field can be kept under the robot anywhere on a large open platform. The gantry is accurate to about ±2 mm sideways and ±1.5 mm vertically, which the authors say still leaves enough working range.' },
+        { t: 'The robot on its platform', k: 'Whole robot', v: '0.81 g', n: 'Weighing 0.81 g, the robot sits on a clear platform with the coils underneath. Its four magnets are what the field grabs: pushed one way they fold the hinge, pulled by the field’s gradient they move the whole body.' },
+        { t: 'Power and signals', k: 'Supplies', v: '4 × 24 V', n: 'Four 24 V DC power supplies feed four OPA549 power amplifiers, and two signal generators tell the amplifiers what current to send to each coil. All of it is ordinary bench equipment, not a custom medical system.' },
+        { t: 'The loop: try, look, adjust', k: 'Who closes the loop', v: 'A person', n: 'They estimate the field the target motion needs, map it to coil currents and carriage positions, run it, and compare what the robot did with what they wanted. If it does not match, the signals are refined and tried again. For now that comparison is made by a person watching.' }
+      ],
+      modes: [
+        { t: '① Gripping', s: 'Open → closed', f: 'Big pulse', v: '≈ 0.06 s', n: 'A pulse from the electromagnet pushes the fold over the energy hill and the panels snap shut around whatever sits on them, in about 0.06 s. The closed robot then holds on with no power: it resisted 26.5 mN of drag before a held sphere slipped.' },
+        { t: '② Crawling', s: 'Open', f: 'Small, oscillating', v: '≈ 2.7 mm/s', n: 'The field pulls the rear magnets harder than the front ones, and the front and rear feet have different friction, so each small fold and unfold becomes a step forward. Faster and stronger driving helps: about 2.7 mm/s at 6 A and 4 Hz.' },
+        { t: '③ Turning', s: 'Open', f: 'Small, oscillating', v: '≈ 28°/s', n: 'Aim the field’s pull at an angle to the hinge and it twists the body about its middle; when that twist beats the friction, the robot turns. Left and right turns both work, and it can follow a zigzag. Fastest turning was about 28° per second at 6 A and 4 Hz.' },
+        { t: '④ Tumbling', s: 'Open', f: 'Big pulse', v: 'Flips', n: 'A pulse pulls on the magnets so hard that the robot pivots over one edge and flips. Gravity first fights the flip, then helps it. A positive pulse flips it from face down, a negative one from face up, so it can keep tumbling and climb low walls.' },
+        { t: '⑤ Expanding', s: 'Closed → open', f: 'Big pulse', v: '≈ 0.06 s', n: 'A pulse the other way pulls the closed panels back over the hill and the robot springs open, dropping its cargo. Opening needed more force in the push test than closing: about 78 mN against 33 mN for the chosen design.' },
+        { t: '⑥ Scampering', s: 'Closed', f: 'Small, oscillating', v: '≈ 9.5 mm/s', n: 'An upward slanted field makes the side panels flutter, which lightens the friction for a moment each cycle and lets the field shove the robot forward. Its fastest walking mode: about 9.5 mm/s at 4 Hz with the strongest current tested.' },
+        { t: '⑦ Rolling', s: 'Closed', f: 'Small, oscillating', v: '5.45 BL/s', n: 'All three coils get the same oscillating current, and the field keeps tipping the capsule over its edge. Half a cycle rolls it half way round. At 2 Hz it rolled at 5.45 body lengths per second, its fastest mode, helped by the speed it picks up while rolling.' },
+        { t: '⑧ Jumping', s: 'Closed', f: 'Big pulse', v: '≈ 68 mm high', n: 'A sharp pulse yanks the magnets upward and the robot leaves the floor. Too close to the coil’s axis and it jumps high but not far; too far and the field is too weak. The best runs reached about 68 mm high or about 96 mm along the floor.' }
+      ]
+    };
+  }
+  oriScan() {
+    Array.from(document.querySelectorAll('[data-ori-rig]')).forEach((el) => { if (!el.__ori) { el.__ori = { i: 3 }; this.oriShowRig(el, 3); } });
+    Array.from(document.querySelectorAll('[data-ori-modes]')).forEach((el) => { if (!el.__ori) { el.__ori = { i: 1 }; this.oriShowMode(el, 1); } });
+  }
+  oriClick(e) {
+    const t = e.target && e.target.closest ? e.target.closest('[data-rg], [data-mm]') : null;
+    if (!t) return;
+    if (t.hasAttribute('data-rg')) {
+      const el = t.closest('[data-ori-rig]');
+      if (el) { el.__ori = el.__ori || {}; this.oriShowRig(el, +t.getAttribute('data-rg')); }
+    } else {
+      const el = t.closest('[data-ori-modes]');
+      if (el) { el.__ori = el.__ori || {}; this.oriShowMode(el, +t.getAttribute('data-mm')); }
+    }
+  }
+  oriKey(e) {
+    const t = e.target && e.target.closest ? e.target.closest('[data-rg], [data-mm]') : null;
+    if (!t) return;
+    if ((e.key === 'Enter' || e.key === ' ') && t.tagName !== 'BUTTON') { e.preventDefault(); this.oriClick(e); }
+  }
+  oriText(el, k, v) { const n = el.querySelector('[data-r="' + k + '"]'); if (n && n.textContent !== v) n.textContent = v; }
+  oriShowRig(el, i) {
+    const R = this.oriData().rig;
+    if (!(i >= 0 && i < R.length)) i = 3;
+    el.__ori.i = i;
+    const r = R[i];
+    this.oriText(el, 'rgtitle', r.t); this.oriText(el, 'rgnote', r.n); this.oriText(el, 'rgk', r.k); this.oriText(el, 'rgv', r.v);
+    Array.from(el.querySelectorAll('button[data-rg]')).forEach((b) => { const on = +b.getAttribute('data-rg') === i; b.className = on ? 'on' : ''; b.setAttribute('aria-pressed', on ? 'true' : 'false'); });
+    Array.from(el.querySelectorAll('g[data-rg]')).forEach((g) => { g.setAttribute('class', +g.getAttribute('data-rg') === i ? 'rg-hit on' : 'rg-hit'); });
+  }
+  oriShowMode(el, i) {
+    const M = this.oriData().modes;
+    if (!(i >= 0 && i < M.length)) i = 1;
+    el.__ori.i = i;
+    const m = M[i];
+    this.oriText(el, 'mtitle', m.t); this.oriText(el, 'm1', m.s); this.oriText(el, 'm2', m.f); this.oriText(el, 'm3', m.v); this.oriText(el, 'mnote', m.n);
+    Array.from(el.querySelectorAll('button[data-mm]')).forEach((b) => { const on = +b.getAttribute('data-mm') === i; b.className = on ? 'on' : ''; b.setAttribute('aria-pressed', on ? 'true' : 'false'); });
+  }
+  // ── Light/dark switch: the header beaker spills its ink and floods the page dark (or back to light).
+  // the 3D teardown: one capture listener, the frame is made only when someone asks for it
+  gtTd() {
+    const local = /(^|\.)gelastinta\.com$|netlify\.app$|^localhost$|^127\./.test(location.hostname);
+    const src = local ? '/teardowns/origami-robot.html' : 'https://gelastinta.com/teardowns/origami-robot.html';
+    const on = (e) => {
+      const b = e.target && e.target.closest ? e.target.closest('[data-td-play]') : null;
+      if (!b) return;
+      const box = b.closest('[data-td]');
+      if (!box || box.querySelector('iframe')) return;
+      e.preventDefault();
+      // away from the website (the design canvas, a saved copy) the model opens in its own tab
+      if (!local) { window.open(src, '_blank', 'noopener'); return; }
+      const f = document.createElement('iframe');
+      f.src = src;
+      f.title = b.getAttribute('aria-label') || '3D model';
+      f.setAttribute('allow', 'fullscreen');
+      f.setAttribute('allowfullscreen', '');
+      box.appendChild(f);
+      b.remove();
+      try { f.focus({preventScroll: true}); } catch (err) { void err; }
+    };
+    document.addEventListener('click', on, true);
+    this.tdOff = () => document.removeEventListener('click', on, true);
+  }
+  gtTheme() {
+    if (this.thOn) return;
+    this.thOn = true;
+    const root = document.documentElement;
+    try { if (localStorage.getItem('gt-theme') === 'dark') root.setAttribute('data-theme', 'dark'); } catch (e) {}
+    this.thLabel();
+    const onClick = (e) => {
+      const b = e.target && e.target.closest ? e.target.closest('[data-theme-toggle]') : null;
+      if (!b) return;
+      e.preventDefault();
+      try { this.thToggle(b); } catch (err) { if (window.console) console.warn('[theme]', err); }
+    };
+    document.addEventListener('click', onClick, true);
+    this.thOff = () => document.removeEventListener('click', onClick, true);
+  }
+  thLabel() {
+    const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    Array.from(document.querySelectorAll('[data-theme-toggle]')).forEach((b) => {
+      const t = dark ? 'Switch to light mode' : 'Switch to dark mode (spill the ink)';
+      b.setAttribute('aria-label', t); b.setAttribute('title', t); b.setAttribute('aria-pressed', dark ? 'true' : 'false');
+    });
+  }
+  thToggle(btn) {
+    const root = document.documentElement;
+    const dark = root.getAttribute('data-theme') !== 'dark';
+    const apply = () => {
+      if (dark) root.setAttribute('data-theme', 'dark'); else root.removeAttribute('data-theme');
+      try { localStorage.setItem('gt-theme', dark ? 'dark' : 'light'); } catch (e) {}
+      this.thLabel();
+    };
+    const still = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+    if (still) { apply(); return; }
+    // replay the spill, faster than the page-load version
+    Array.from(btn.querySelectorAll('.bk-tip, .bk-liq, .bk-drop, .bk-pud')).forEach((el, i) => {
+      el.style.animation = 'none'; void el.getBoundingClientRect();
+      const name = el.classList.contains('bk-tip') ? 'bk-tip' : el.classList.contains('bk-liq') ? 'bk-liq' : el.classList.contains('bk-pud') ? 'bk-pud' : 'bk-drop';
+      const delay = el.classList.contains('d2') ? 0.1 : el.classList.contains('d3') ? 0.2 : 0;
+      el.style.animation = name + ' 1.6s ' + delay + 's cubic-bezier(.45,.05,.3,1) both';
+    });
+    // ink flood from the beaker; the overlay is always ink-coloured (it shows light once the page is inverted)
+    const r = btn.getBoundingClientRect();
+    const f = document.createElement('div');
+    f.className = 'gt-flood';
+    f.style.setProperty('--fx', Math.round(r.left + r.width * 0.8) + 'px');
+    f.style.setProperty('--fy', Math.round(r.top + r.height) + 'px');
+    document.body.appendChild(f);
+    void f.getBoundingClientRect();
+    setTimeout(() => f.classList.add('go'), 380);
+    // after the switch the overlay is drawn inverted (or no longer inverted), so give it the paper colour to keep the screen steady while it fades
+    setTimeout(() => { f.style.background = '#EDEFF2'; apply(); f.classList.add('out'); }, 1000);
+    setTimeout(() => { if (f.parentNode) f.parentNode.removeChild(f); }, 1450);
+  }
+  renderVals() {
+    const st = this.state || {};
+    const tabs = (arr, cur, key) => arr.map((x, k) => ({ label: x.label, on: k === cur ? 'on' : '', aria: k === cur ? 'true' : 'false', pick: () => this.setState({ [key]: k }) }));
+    // Chart A: the three hinge designs, values read by eye from Fig. 1C (energy), 1D (torque) and 1F (peak force)
+    const D = [
+      { label: '1.80 / 3.30 (chosen)', hill: 0.21, tq: 0.26, fc: 33, fo: 78, title: 'The chosen design: the lowest hill', note: 'The design the team built. Its hill is the lowest of the three, so the coils’ pulse can push it over, while it still holds shut on its own. It closes with about 33 mN and needs about 78 mN to open.' },
+      { label: '1.55 / 3.30', hill: 0.27, tq: 0.34, fc: 42, fo: 86, title: 'In between: a taller hill', note: 'Shrink the smaller offset and the panels clash harder on the way through, so the hill grows and the snap needs more push in both directions.' },
+      { label: '1.30 / 3.30', hill: 0.34, tq: 0.44, fc: 63, fo: 110, title: 'The stiffest: hardest to snap', note: 'The tallest hill and the strongest snap, but it needs nearly twice the force of the chosen design to close. Weighing grip, crawling stride, hand building and the limited torque of the small magnets, the team went with the lowest hill.' }
+    ];
+    const di = st.di >= 0 && st.di < D.length ? st.di : 0;
+    const dd = D[di];
+    const pc = (v, m) => Math.round(v / m * 1000) / 10 + '%';
+    const open = st.open || {};
+    const ex = {};
+    ['a', 'b', 'c'].forEach((k) => {
+      const o = !!open[k];
+      ex[k] = { open: o, aria: o ? 'true' : 'false', ico: o ? '−' : '+', text: o ? 'Hide' : 'Show',
+        toggle: () => this.setState({ open: Object.assign({}, open, { [k]: !o }) }) };
+    });
+    return {
+      cm: this.commentVals(),
+      ex: ex,
+      dTabs: tabs(D, di, 'di'),
+      d: { title: dd.title, note: dd.note, rows: [
+        { n: 'Energy hill', v: '≈ ' + dd.hill.toFixed(2) + ' mJ', w: pc(dd.hill, 0.4), c: '#E34A2B' },
+        { n: 'Peak hinge torque', v: '≈ ' + dd.tq.toFixed(2) + ' N·mm', w: pc(dd.tq, 0.5), c: '#E34A2B' },
+        { n: 'Push to close', v: '≈ ' + dd.fc + ' mN', w: pc(dd.fc, 120), c: '#5A82B3' },
+        { n: 'Push to open', v: '≈ ' + dd.fo + ' mN', w: pc(dd.fo, 120), c: '#3D639A' }
+      ] }
+    };
+  }
+}
+</script>
+</body>
+</html>

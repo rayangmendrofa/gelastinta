@@ -244,6 +244,17 @@ html{scroll-padding-top:60px}
 .crumbs [aria-current]{max-width:18ch}
 }
 /* nav2:end */
+/* pxs:start */
+.pxs{position:relative;display:block;width:100%;aspect-ratio:128/80;overflow:hidden;background:#10131C;margin:0}
+.pxs::after{content:"";position:absolute;inset:0;border:1px solid #10131C;pointer-events:none}
+.pxs img{display:block;width:calc(100% * var(--n));height:100%;max-width:none;image-rendering:crisp-edges;image-rendering:pixelated;animation:pxs-run var(--t) steps(var(--n)) infinite;pointer-events:none;user-select:none;-webkit-user-drag:none}
+@keyframes pxs-run{to{transform:translateX(-100%)}}
+.sec-head.pxs-head{flex-direction:row;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:24px 48px}
+.pxs-head > .stack{flex:1 1 320px;min-width:0}
+.pxs-head > .pxs{flex:0 0 auto;width:384px;max-width:100%}
+@media (max-width:760px){.pxs-head > .pxs{width:100%}}
+@media (prefers-reduced-motion:reduce){.pxs img{animation:none}}
+/* pxs:end */
 </style>
 </helmet>
 <div style="min-height:100vh" data-gt-root="">
@@ -332,9 +343,12 @@ html{scroll-padding-top:60px}
 
 <section class="sec white rule-t rule-b">
 <div class="wrap">
-<div class="sec-head">
+<div class="sec-head pxs-head">
+<div class="stack g12">
 <p class="kicker">02</p>
 <h2 class="t-h2">How it was done</h2>
+</div>
+<div class="pxs" role="img" aria-label="Pixel scene: the GelasTinta character in a lab coat mixing two flasks, which bubble and puff smoke" style="--n:16;--t:2240ms"><img src="/_blob/3742938e71d0a117b44d58aea65a3d5b" alt="" draggable="false"></div>
 </div>
 <div class="cols-2">
 <figure class="design">

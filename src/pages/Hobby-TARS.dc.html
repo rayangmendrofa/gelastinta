@@ -297,6 +297,17 @@ html{scroll-padding-top:60px}
 .crumbs [aria-current]{max-width:18ch}
 }
 /* nav2:end */
+/* pxs:start */
+.pxs{position:relative;display:block;width:100%;aspect-ratio:128/80;overflow:hidden;background:#10131C;margin:0}
+.pxs::after{content:"";position:absolute;inset:0;border:1px solid #10131C;pointer-events:none}
+.pxs img{display:block;width:calc(100% * var(--n));height:100%;max-width:none;image-rendering:crisp-edges;image-rendering:pixelated;animation:pxs-run var(--t) steps(var(--n)) infinite;pointer-events:none;user-select:none;-webkit-user-drag:none}
+@keyframes pxs-run{to{transform:translateX(-100%)}}
+.sec-head.pxs-head{flex-direction:row;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:24px 48px}
+.pxs-head > .stack{flex:1 1 320px;min-width:0}
+.pxs-head > .pxs{flex:0 0 auto;width:384px;max-width:100%}
+@media (max-width:760px){.pxs-head > .pxs{width:100%}}
+@media (prefers-reduced-motion:reduce){.pxs img{animation:none}}
+/* pxs:end */
 </style>
 </helmet>
 <div style="min-height:100vh" data-gt-root="">
@@ -343,6 +354,7 @@ html{scroll-padding-top:60px}
 <div class="stack g24">
 <p class="kicker">01 — The story</p>
 <h2 class="t-h2">Why build a robot from a film?</h2>
+<div class="pxs" role="img" aria-label="Pixel scene: the GelasTinta character in a lab coat waiting while a 3D printer builds a gear layer by layer, then holding it up" style="--n:14;--t:2240ms"><img src="/_blob/6e9ac7a9302e60e3e9b1d9e4603c5a7b" alt="" draggable="false"></div>
 <div class="prose stack g16" style="font-size:18px;line-height:1.65">
 <p>TARS is the robot in Christopher Nolan’s <i>Interstellar</i> (2014), and what first pulled me in was the design. It is just four plain slabs, nothing added for show, yet those same blocks walk, roll, carry people and fold out into arms. Simple, and every part earns its place.</p>
 <p>It also comes from before the AI boom. In 2014 a machine that talks back, cracks jokes and lets you turn its honesty and humour up or down was pure science fiction, and that speech and those small functions are what interest me most. Today they are within reach of a hobby build.</p>

@@ -361,6 +361,17 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 @keyframes pxr-wave{0%{transform:translateX(0);animation-timing-function:step-end}82.982%{transform:translateX(0);animation-timing-function:steps(7,end)}100%{transform:translateX(-100%)}}
 #expertise{overflow-x:clip}
 /* px:end */
+/* pxs:start */
+.pxs{position:relative;display:block;width:100%;aspect-ratio:128/80;overflow:hidden;background:#10131C;margin:0}
+.pxs::after{content:"";position:absolute;inset:0;border:1px solid #10131C;pointer-events:none}
+.pxs img{display:block;width:calc(100% * var(--n));height:100%;max-width:none;image-rendering:crisp-edges;image-rendering:pixelated;animation:pxs-run var(--t) steps(var(--n)) infinite;pointer-events:none;user-select:none;-webkit-user-drag:none}
+@keyframes pxs-run{to{transform:translateX(-100%)}}
+.sec-head.pxs-head{flex-direction:row;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:24px 48px}
+.pxs-head > .stack{flex:1 1 320px;min-width:0}
+.pxs-head > .pxs{flex:0 0 auto;width:384px;max-width:100%}
+@media (max-width:760px){.pxs-head > .pxs{width:100%}}
+@media (prefers-reduced-motion:reduce){.pxs img{animation:none}}
+/* pxs:end */
 </style>
 </helmet>
 <div style="min-height:100vh" data-gt-root="">
@@ -499,12 +510,13 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 
 <section class="sec rule-t" id="activities">
 <div class="wrap">
-<div class="sec-head row">
+<div class="sec-head row pxs-head">
 <div class="stack g12">
 <p class="kicker">04 — Activities</p>
 <h2 class="t-h2">Around the studies</h2>
-</div>
 <p class="intro muted" style="max-width:40ch">Lab benches, grip tests, graduations, and the clubs and people in between, at Exeter and UCL.</p>
+</div>
+<div class="pxs" role="img" aria-label="Pixel scene: the GelasTinta character in a suit presenting on stage as a chart grows on the screen and the audience cheers" style="--n:14;--t:2380ms"><img src="/_blob/5d09be64373c825146583644681ecd34" alt="" draggable="false"></div>
 </div>
 <!-- polaroid:html:start -->
 <div class="pw" aria-label="Photo wall">

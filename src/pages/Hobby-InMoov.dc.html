@@ -265,6 +265,17 @@ html{scroll-padding-top:60px}
 .crumbs [aria-current]{max-width:18ch}
 }
 /* nav2:end */
+/* pxs:start */
+.pxs{position:relative;display:block;width:100%;aspect-ratio:128/80;overflow:hidden;background:#10131C;margin:0}
+.pxs::after{content:"";position:absolute;inset:0;border:1px solid #10131C;pointer-events:none}
+.pxs img{display:block;width:calc(100% * var(--n));height:100%;max-width:none;image-rendering:crisp-edges;image-rendering:pixelated;animation:pxs-run var(--t) steps(var(--n)) infinite;pointer-events:none;user-select:none;-webkit-user-drag:none}
+@keyframes pxs-run{to{transform:translateX(-100%)}}
+.sec-head.pxs-head{flex-direction:row;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:24px 48px}
+.pxs-head > .stack{flex:1 1 320px;min-width:0}
+.pxs-head > .pxs{flex:0 0 auto;width:384px;max-width:100%}
+@media (max-width:760px){.pxs-head > .pxs{width:100%}}
+@media (prefers-reduced-motion:reduce){.pxs img{animation:none}}
+/* pxs:end */
 </style>
 </helmet>
 <div style="min-height:100vh" data-gt-root="">
@@ -311,6 +322,7 @@ html{scroll-padding-top:60px}
 <div class="stack g24">
 <p class="kicker">01 — The story</p>
 <h2 class="t-h2">Why rebuild someone else’s hand?</h2>
+<div class="pxs" role="img" aria-label="Pixel scene: the GelasTinta character in a lab coat starting a robot arm that picks up a cube and hands it over" style="--n:14;--t:2380ms"><img src="/_blob/8cd63303a2e7db011a8eb2974f6694b4" alt="" draggable="false"></div>
 <div class="prose stack g16" style="font-size:18px;line-height:1.65">
 <p>Finishing my BEng dissertation on a modified prosthetic hand didn’t end my interest in hands. Between 2023 and 2024, with a 3D printer newly on my desk, I kept researching hand prosthetics by rebuilding one of the best-known open-source robot hands: the hand of the InMoov robot.</p>
 <p>InMoov is an open-source, life-size, 3D-printable humanoid robot, started in January 2012 by French sculptor and designer Gaël Langevin, who shares the parts so anyone can print and build one. Its hand works much like ours: servo motors in the forearm pull on braided fishing-line “tendons” that curl each finger, while springs keep the tendons under tension.</p>
