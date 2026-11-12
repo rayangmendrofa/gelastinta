@@ -316,6 +316,7 @@ figcaption{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;line-
 .wada-credit{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;font-family:"Ubuntu Mono",ui-monospace,monospace;font-size:11px;letter-spacing:.06em;color:#DCDDE3}
 .wada-credit .wada-mini{margin-left:0;border-color:#55536B}
 /* wadasite:end */
+.mm{position:relative}.mm img{display:block}.mm .mm-l{position:absolute;transform:translate(-50%,-50%);background:#fff;color:#111;border:1.5px solid #111;font-family:'Titillium Web',system-ui,sans-serif;font-weight:700;font-size:12px;line-height:1.15;padding:3px 6px;text-align:center;max-width:44%}html[data-theme="dark"] .mm .mm-l{filter:invert(1) hue-rotate(180deg)}
 .meme-sm.wide{grid-template-columns:minmax(0,340px) minmax(0,1fr)}
 @media (max-width:640px){.meme-sm.wide{grid-template-columns:minmax(0,1fr)}}
 /* theme:start */
@@ -462,6 +463,20 @@ html{scroll-padding-top:60px}
 @media (max-width:640px){.dv-row{grid-template-columns:minmax(0,1fr) auto;gap:6px 10px}.dv-row .nm{grid-column:1 / -1}.dv-axis{margin:0 90px 0 0}.kp button{min-height:64px}.kp-seq i{width:34px;height:34px}}
 .dark a{color:#F7A6B4}
 .dark a:hover{color:#FCFBFD}
+.gd{display:flex;flex-direction:column;gap:10px;border-left:3px solid #F37F94;padding:4px 0 4px 16px}
+.gd-cap{font-size:17px !important;line-height:1.55 !important;min-height:3.2em;margin:0}
+.gd-all{display:none;margin:0;padding-left:20px;font-size:16px;line-height:1.55}
+.gd.still .gd-cap{display:none}.gd.still .gd-all{display:block}.gd.still .gd-bar{display:none}
+.gd-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px}
+.gd-dots{display:inline-flex;gap:6px;margin-right:auto}
+.gd-dots i{width:22px;height:4px;background:#DCDDE3;display:block}
+.gd-dots i.on{background:#66629C}
+.gd-btn{min-height:40px;padding:0 14px;border:1px solid #1D1B2E;background:#FCFBFD;color:#1D1B2E;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;cursor:pointer}
+.gd-btn:hover{background:#1D1B2E;color:#FCFBFD}
+.gd-btn:focus-visible{outline:3px solid #66629C;outline-offset:2px}
+.dv-row.dv-hl .nm{color:#C2566B}
+.dv-row.dv-hl .dv-tr{border-color:#1D1B2E;box-shadow:0 0 0 2px #F37F94}
+.kp button.demo{transform:translateY(3px);border-bottom-width:2px;background:#F37F94}
 /* lb:end */
 /* px:start */
 .px{--s:3;--w:76;position:relative;display:inline-block;flex:none;width:calc(var(--w)*1px*var(--s));height:calc(58px*var(--s));cursor:pointer;-webkit-tap-highlight-color:transparent}
@@ -523,7 +538,7 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <div class="col stack g16">
 <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="Main.dc.html">Home</a></li><li><a href="Talks.dc.html">Talks</a></li><li aria-current="page">Talk 12</li></ol></nav>
 <p class="kicker">Talk 12 — Review</p>
-<h1 class="t-title">Practice Makes Plastic: Watching Brain Cells Change After a Typing Lesson</h1>
+<h1 class="t-title">Practice Makes Plastic. Brain Cells After One Typing Lesson</h1>
 <p class="meta">Rayang T Mendrofa · 6th November 2026 · 14 min read</p>
 <aside style="margin-top:24px;border:1px solid #1D1B2E;background:#FCFBFD">
 <div class="dark" style="padding:12px 20px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px"><span class="kicker" style="font-size:11px">Paper under review</span><span class="meta" style="font-size:11px;color:#F37F94">PLOS BIOLOGY · SHORT REPORT · OPEN ACCESS</span></div>
@@ -570,6 +585,7 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 </div>
 <div class="viz-body stack g24">
 <p class="small" style="max-width:62ch">The volunteers used the four fingers of their left hand: 1 is the little finger, 4 is the index finger. Click the keys below, or focus a key and press 1 to 4 on your keyboard. Each correct run of five taps counts as one sequence.</p>
+<div class="gd" data-gd="kp"><p class="gd-cap" data-r="guide" aria-live="polite"></p><ol class="gd-all" data-r="gall"></ol><div class="gd-bar"><span class="gd-dots" data-r="gdots" aria-hidden="true"></span><button type="button" class="gd-btn" data-g="pause">‖ Pause</button><button type="button" class="gd-btn" data-g="replay">↺ Replay</button></div></div>
 <div class="kp" aria-label="Four keys, numbered 1 to 4 from little finger to index finger">
 <button type="button" data-kk="1"><span>1</span><small>little</small></button><button type="button" data-kk="2"><span>2</span><small>ring</small></button><button type="button" data-kk="3"><span>3</span><small>middle</small></button><button type="button" data-kk="4"><span>4</span><small>index</small></button>
 </div>
@@ -600,13 +616,14 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <p>How hard the scanner “leans” on that motion is called the b value. A low b value only notices large, easy movements; a high b value is sensitive to the tiny, restricted ones trapped inside small cells. Strong gradients are what let you reach high b values while keeping the timing short, and the original 3T Connectome scanner used here was built for exactly that, with gradients of up to 300 mT/m. The team collected seven b values from 200 to 8,000 s/mm², with 32 or 64 gradient directions each, plus 22 reference images with no gradient at all.</p>
 <p>Then comes the trick. Every 2 mm voxel holds a huge number of cells, so no single cell is ever seen. But the way the signal fades as the b value rises has a different shape for water in spheres, water in sticks and free water. Fit the measured curve with a mix of those three shapes and you get three fractions that add up to one: <b>soma</b> (cell bodies), <b>neurite</b> (cell branches, including the branches of support cells) and <b>extracellular</b> (the space between). That is what the paper means by sub voxel sensitivity: a 2 mm sensor reporting on structures far smaller than itself, through physics rather than resolution.</p>
 </div>
+<div class="col-wide" style="margin-top:8px"><figure class="meme-sm wide" style="margin:0"><div class="mm"><img src="/_blob/2c296f89093a4f5257b0997f401db751" alt="A hand choosing between a red and a blue button, then slamming the blue one" loading="lazy"><span class="mm-l" style="left:35%;top:29%">MD</span><span class="mm-l" style="left:67%;top:24%">SANDI</span></div><p style="margin:0;font-size:17px;line-height:1.6">Why the team skipped the usual single number. MD tells you something changed. SANDI tells you which part of the cell changed.</p></figure></div>
 <div class="col-wide" id="teardown" style="margin-top:40px">
-<div class="stack g8" style="margin-bottom:14px"><p class="kicker">Take it apart · interactive figure</p><h3 class="t-h3">One voxel on the bench</h3><p class="small">My own drawing of an imaginary bench instrument whose working is the paper’s idea: two gradient coils around one 2 mm cube of brain, a key pad that plays the finger task, a carriage that sets the scan time, a knob that picks the region, and four dial gauges. The first dial is the single number older methods give (MD); the other three are SANDI’s three fractions. <a href="https://gelastinta.com/teardowns/learning-brain.html" target="_blank" rel="noopener">Open full screen ↗</a></p></div>
+<div class="stack g8" style="margin-bottom:14px"><p class="kicker">Take it apart · interactive figure</p><h3 class="t-h3">One voxel on the bench</h3><p class="small">My own drawing of an imaginary bench instrument whose working is the paper’s idea. In the middle sits one 2 mm voxel, cut open: cell bodies as pink spheres, cell branches as violet rods, and the space between, with water molecules wandering through all three. Two flat gradient coils, fed by a cable harness from an amplifier, pulse twice; each molecule carries a little arrow that the pulses twist, and only the molecules that stayed put line up again. Around it, a key pad plays the finger task, a carriage on a ruled rail sets the scan time, a knob picks the region, and four dial gauges read MD and SANDI’s three fractions. <a href="https://gelastinta.com/teardowns/learning-brain.html" target="_blank" rel="noopener">Open full screen ↗</a></p></div>
 <div class="td-box" data-td>
-<img class="td-poster" src="/_blob/000465974d93358a7ce0e72cf177cdf4" alt="An isometric drawing of a bench rig: two flat gradient coils either side of a small cube, a four key pad, a carriage on a rail with three stops, a region knob and four dial gauges, set to the posterior parietal cortex at 24 hours" loading="lazy">
-<button class="td-play" type="button" data-td-play aria-label="One voxel on the bench, interactive figure"><span class="td-pill">Interactive figure</span><b>Open the bench rig</b><span class="td-sub">It plays a tour on its own. Pick a region, press Train, then scan at 30 min and 24 h, and watch which dials move and which come back.</span></button>
+<img class="td-poster" src="/_blob/f4813bea4b15fef0fbfb2ce185d537e6" alt="An isometric drawing of a dark bench rig: a gradient amplifier with a cable harness running over a bridge to two flat gradient coils, a cut away cube between them holding pink cell bodies, violet branches and wandering water molecules, a four key pad, a carriage on a ruled rail, a region knob and four dial gauges, set to the precuneus at 24 hours" loading="lazy">
+<button class="td-play" type="button" data-td-play aria-label="One voxel on the bench, interactive figure"><span class="td-pill">Interactive figure</span><b>Open the bench rig</b><span class="td-sub">It plays a tour on its own: watch the gradient pulses twist the water’s arrows, then pick a region, press Train and scan at 30 min and 24 h to see which dials move and which come back.</span></button>
 </div>
-<p class="meta muted td-note" style="font-size:12px">Values are group means read off the paper’s Fig 3, so the third decimal is approximate. Dial scales and the cartoon of cells on the cube (changes magnified ten times) are my choices. The real scan covers the whole head, not one cube.</p>
+<p class="meta muted td-note" style="font-size:12px">Values are group means read off the paper’s Fig 3, so the third decimal is approximate. The water walk is a toy simulation, slowed down, and the cells are a cartoon whose changes are magnified ten times; dial scales are my choices. The real scan covers the whole head, not one cube.</p>
 </div>
 <div class="col" style="margin-top:40px">
 <p>The analysis went in two steps. First, the standard method (a diffusion tensor fit, giving MD) found the brain regions where MD changed after learning, using a statistics test across the whole brain. Then the team read SANDI’s three fractions inside exactly those regions and followed them over the three scans. Because picking regions with one method and testing them with a related one can flatter the result, they also ran a second check that does not depend on the first: they divided each person’s hippocampus into head, body and tail from an ordinary anatomical scan, and fitted both models there independently.</p>
@@ -649,6 +666,7 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <div class="viz-body stack g24">
 <div class="ratio" aria-label="Choose a region"><button type="button" data-mr="0" class="on" aria-pressed="true">Hippocampus</button><button type="button" data-mr="1" aria-pressed="false">Motor cortex (M1)</button><button type="button" data-mr="2" aria-pressed="false">Precuneus</button><button type="button" data-mr="3" aria-pressed="false">Parietal (PPC)</button></div>
 <div class="ratio" aria-label="Choose a scan"><button type="button" data-mt-t="1" class="on" aria-pressed="true">30 min after</button><button type="button" data-mt-t="2" aria-pressed="false">24 h after</button></div>
+<div class="gd" data-gd="mt"><p class="gd-cap" data-r="guide" aria-live="polite"></p><ol class="gd-all" data-r="gall"></ol><div class="gd-bar"><span class="gd-dots" data-r="gdots" aria-hidden="true"></span><button type="button" class="gd-btn" data-g="pause">‖ Pause</button><button type="button" class="gd-btn" data-g="replay">↺ Replay</button></div></div>
 <div class="dv">
 <div class="dv-row md"><span class="nm">MD<small>% change</small></span><div class="dv-tr"><i class="dv-z"></i><i class="dv-b" data-r="b0"></i></div><span class="vl" data-r="v0">…</span></div>
 <div class="dv-row"><span class="nm">Soma<small>cell bodies</small></span><div class="dv-tr"><i class="dv-z"></i><i class="dv-b" data-r="b1"></i></div><span class="vl" data-r="v1">…</span></div>
@@ -665,6 +683,7 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <span class="meta muted" style="font-size:11px">Source: Griffa et al., PLOS Biology 24(6): e3003861 (2026), CC BY 4.0. Figure reproduced unaltered.</span></div></sc-if></div>
 </div>
 
+<div class="col-wide" style="margin-top:8px"><figure class="meme-sm wide" style="margin:0"><div class="mm"><img src="/_blob/f53d1ce3d7e05e12387e74ebcb2b4df9" alt="Two Buttons meme: a hand hovering between two red buttons, then a man wiping sweat from his face" loading="lazy"><span class="mm-l" style="left:33%;top:33%">Quick swelling</span><span class="mm-l" style="left:65%;top:28%">Slow rebuild</span></div><p style="margin:0;font-size:17px;line-height:1.6">Neuroscience for years. Is learning a quick tweak or a slow rebuild? This paper says your brain presses both buttons, one after the other.</p></figure></div>
 <div class="col" style="margin:56px 0 0;max-width:720px">
 <h3 class="t-h3" style="margin-bottom:12px">A swelling that fades</h3>
 <p>The soma fraction went up at 30 minutes in all four regions, then returned to baseline at 24 hours. Half an hour is far too short to grow new cells, so the authors read this as cell bodies briefly swelling. Their proposed mechanism is ordinary physiology: busy neurons shift ions into the space around them, neighbouring cells mop those ions up, and water follows by osmosis. The fact that it happened the same way in four very different regions, all of which were active during the task, fits a general housekeeping response rather than anything specific to learning. The soma changes also had no link to how well anyone learned.</p>
@@ -722,7 +741,7 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <p>What hooked me is that this is really an instrumentation paper wearing a neuroscience coat. A sensor with 2 mm pixels is used to say something about structures a few micrometres across, not by zooming in but by modelling how a tracer (water) moves through the material. Mechanical engineers do the same kind of thing all the time, inferring cracks from vibration or porosity from flow, and it always comes with the same warning label: your answer is only as good as your model.</p>
 <p>That is also why I would hold the conclusions a little loosely. The spheres, sticks and free water picture is a useful simplification, the three fractions are forced to add to one, and the effects are small: a shift of about 0.01 in a fraction near 0.2 to 0.4. I like that the authors list these limits clearly, and that they checked the hippocampus a second way. What I would really want is a control group in the same scanner, and the same experiment run in an animal where you can scan first and then look under a microscope.</p>
 <p>Still, the headline idea sticks with me. Fifteen to twenty minutes of practice, and part of the brain is measurably different the next day, while another part just needed a short cool down. It makes a decent argument for taking the breaks between practice seriously, since that is where these volunteers actually got faster.</p>
-<nav class="talk-nav" aria-label="More talks"><a class="tn prev" href="Talk-OrigamiRobot.dc.html"><span class="tn-k">← Previous talk · 11</span><span class="tn-t">Folded Twice, Moves Eight Ways: A Bistable Origami Robot</span><span class="tn-m">30th October 2026 · 12 min read</span></a><div class="tn next none"><span class="tn-k">You’re all caught up</span><span class="tn-m">This is the newest talk</span></div></nav>
+<nav class="talk-nav" aria-label="More talks"><a class="tn prev" href="Talk-OrigamiRobot.dc.html"><span class="tn-k">← Previous talk · 11</span><span class="tn-t">Folded Twice, Moves Eight Ways. A Bistable Origami Robot</span><span class="tn-m">30th October 2026 · 12 min read</span></a><div class="tn next none"><span class="tn-k">You’re all caught up</span><span class="tn-m">This is the newest talk</span></div></nav>
 <a href="Talks.dc.html" class="back" style="margin-top:24px;color:#2B44C8">← Back to all talks</a>
 </div>
 <div class="stack g24">
@@ -1336,33 +1355,131 @@ class Component extends DCLogic {
     if (this.lbOn) return;
     this.lbOn = true;
     const guard = (fn) => (e) => { try { fn.call(this, e); } catch (err) { if (window.console) console.warn('[lb-charts]', err); } };
-    const onClick = guard(this.lbClick), onKey = guard(this.lbKey);
+    const onClick = guard(this.lbClick), onKey = guard(this.lbKey), scan = guard(this.lbScan);
     document.addEventListener('click', onClick, true);
     document.addEventListener('keydown', onKey, true);
-    this.lbOff = () => { document.removeEventListener('click', onClick, true); document.removeEventListener('keydown', onKey, true); };
-    const scan = guard(this.lbScan);
+    window.addEventListener('scroll', scan, { passive: true, capture: true });
+    window.addEventListener('resize', scan, { passive: true });
+    this.lbOff = () => { document.removeEventListener('click', onClick, true); document.removeEventListener('keydown', onKey, true); window.removeEventListener('scroll', scan, { capture: true }); window.removeEventListener('resize', scan); };
     scan();
     this.lbInt = setInterval(scan, 600);
   }
   gtFigStop() {
     clearInterval(this.lbInt);
     if (this.lbOff) this.lbOff();
+    Array.from(document.querySelectorAll('[data-gd]')).forEach((g) => { if (g.__g) this.gdHalt(g.__g); });
     this.lbOn = false;
   }
   lbScan() {
-    Array.from(document.querySelectorAll('[data-mt]')).forEach((el) => { if (!el.__mt) { el.__mt = { r: 0, t: 1 }; this.mtShow(el); } });
+    Array.from(document.querySelectorAll('[data-mt]')).forEach((el) => { if (!el.__mt) { el.__mt = { r: 0, t: 1, hl: -1 }; this.mtShow(el); } });
     Array.from(document.querySelectorAll('[data-kp]')).forEach((el) => { if (!el.__kp) { el.__kp = { step: 0, times: [], n: 0, best: 0, last: 0 }; this.kpDraw(el); } });
+    const h = window.innerHeight || 800;
+    Array.from(document.querySelectorAll('[data-gd]')).forEach((g) => {
+      const G = g.__g || this.gdInit(g);
+      if (G.started) return;
+      const r = g.closest('.viz').getBoundingClientRect();
+      if (r.height && r.top < h * 0.72 && r.bottom > h * 0.28) this.gdStart(G);
+    });
   }
   lbClick(e) {
+    const g = e.target && e.target.closest ? e.target.closest('[data-g]') : null;
+    if (g) {
+      const box = g.closest('[data-gd]'); const G = box && (box.__g || this.gdInit(box));
+      if (!G) return;
+      if (g.getAttribute('data-g') === 'replay') this.gdStart(G);
+      else if (G.playing) this.gdHalt(G); else if (G.i >= G.steps.length - 1) this.gdStart(G); else this.gdGo(G, G.i);
+      return;
+    }
     const t = e.target && e.target.closest ? e.target.closest('[data-mr], [data-mt-t], [data-kk]') : null;
     if (!t) return;
-    if (t.hasAttribute('data-kk')) { const el = t.closest('[data-kp]'); if (el) this.kpTap(el, +t.getAttribute('data-kk')); return; }
+    const viz = t.closest('.viz'); const gd = viz && viz.querySelector('[data-gd]');
+    if (gd && gd.__g) { this.gdHalt(gd.__g); gd.__g.started = true; }
+    if (t.hasAttribute('data-kk')) { const el = t.closest('[data-kp]'); if (el) { if (gd && gd.__g && gd.__g.demo) { gd.__g.demo = false; el.__kp = { step: 0, times: [], n: 0, best: 0, last: 0 }; } this.kpTap(el, +t.getAttribute('data-kk')); } return; }
     const el = t.closest('[data-mt]');
     if (!el) return;
     el.__mt = el.__mt || { r: 0, t: 1 };
+    el.__mt.hl = -1;
     if (t.hasAttribute('data-mr')) el.__mt.r = +t.getAttribute('data-mr');
     else el.__mt.t = +t.getAttribute('data-mt-t');
     this.mtShow(el);
+  }
+  // ── guided sequences: each step changes the chart and says why, then the next one follows ──
+  gdSteps(key) {
+    const mt = (r, t, hl) => (box) => { const el = box.closest('[data-mt]'); el.__mt = { r: r, t: t, hl: hl }; this.mtShow(el); };
+    const kp = (iti, n, note) => (box, G) => this.kpDemo(box.closest('[data-kp]'), G, iti, n, note);
+    if (key === 'mt') return [
+      { d: 4200, go: mt(0, 1, 0), text: 'Start with the one number older methods give. In the hippocampus, 30 minutes after learning, MD dips by only about 1.8 %. On its own it cannot say why.' },
+      { d: 4200, go: mt(0, 1, 1), text: 'Split the same voxels into compartments: the soma fraction rises. Cell bodies have swollen slightly, squeezing the space between them.' },
+      { d: 4200, go: mt(0, 2, 1), text: 'Twenty four hours later the soma fraction is back to baseline. A short lived, housekeeping response, not a lasting change.' },
+      { d: 4400, go: mt(2, 1, 2), text: 'Now the precuneus at 30 minutes: cell bodies swell here too, but the neurite fraction also rises. Cell branches have become denser.' },
+      { d: 4400, go: mt(2, 2, 2), text: 'At 24 hours the swelling has gone, yet the neurite fraction is still up. That lasting change is the one that looks like rebuilding.' },
+      { d: 5200, go: mt(3, 2, 2), text: 'Takeaway: MD barely moves; the soma fraction rises at 30 minutes and falls back; the neurite fraction rises and stays at 24 hours, in the precuneus and here in the PPC.' }
+    ];
+    return [
+      { d: 4200, go: kp(0, 0, 'The sequence lights up one key at a time.'), text: 'The task: type 4 1 3 2 4 with the left hand, 1 being the little finger and 4 the index finger. Watch the keys.' },
+      { d: 4200, go: kp(0.5, 1, 'Block 1 pace: about 0.5 s per tap.'), text: 'In block 1 the group typed it at roughly half a second between taps.' },
+      { d: 4200, go: kp(0.3, 2, 'Block 15 pace: about 0.3 s per tap.'), text: 'By block 15 they were near 0.3 s per tap. That speed up over 15 blocks is the learning.' },
+      { d: 4800, go: kp(-1, 2, 'Gains in the rests (p = 0.034); none while typing (p = 0.59).'), text: 'Most of the gain came in the 25 second rests between blocks, not while typing (p = 0.034 against p = 0.59). The brain was busy in the breaks.' },
+      { d: 4000, go: kp(-2, 0, 'Your turn: tap 4 1 3 2 4.'), text: 'Your turn. Tap the keys, or click one and press 1 to 4 on your keyboard, and see how your time per tap compares.' }
+    ];
+  }
+  gdInit(box) {
+    const G = { box: box, steps: this.gdSteps(box.getAttribute('data-gd')), i: 0, playing: false, started: false, timer: 0, subs: [] };
+    box.__g = G;
+    const dots = box.querySelector('[data-r="gdots"]');
+    if (dots && !dots.children.length) dots.innerHTML = G.steps.map(() => '<i></i>').join('');
+    const all = box.querySelector('[data-r="gall"]');
+    if (all && !all.children.length) all.innerHTML = G.steps.map((s) => '<li></li>').join('');
+    if (all) Array.from(all.children).forEach((li, k) => { li.textContent = G.steps[k].text; });
+    if (this.gdStill()) { box.classList.add('still'); G.started = true; G.i = G.steps.length - 1; this.gdApply(G, true); }
+    else this.gdApply(G, false, true);
+    return G;
+  }
+  gdStill() { return !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches); }
+  gdApply(G, run, quiet) {
+    const s = G.steps[G.i];
+    if (run) { try { s.go(G.box, G); } catch (e) { if (window.console) console.warn('[gd]', e); } }
+    const cap = G.box.querySelector('[data-r="guide"]');
+    const txt = quiet ? 'This chart explains itself when it scrolls into view. Press Replay to watch it, or use the controls.' : s.text;
+    if (cap && cap.textContent !== txt) cap.textContent = txt;
+    Array.from(G.box.querySelectorAll('[data-r="gdots"] i')).forEach((d, k) => { d.className = !quiet && k <= G.i ? 'on' : ''; });
+    const p = G.box.querySelector('[data-g="pause"]');
+    if (p) { const lab = G.playing ? '‖ Pause' : '▶ Play'; if (p.textContent !== lab) p.textContent = lab; p.setAttribute('aria-pressed', G.playing ? 'false' : 'true'); }
+  }
+  gdClear(G) { clearTimeout(G.timer); G.timer = 0; G.subs.forEach((t) => clearTimeout(t)); G.subs = []; }
+  gdHalt(G) { this.gdClear(G); G.playing = false; this.gdApply(G, false); }
+  gdStart(G) { G.started = true; if (this.gdStill()) { G.i = G.steps.length - 1; this.gdApply(G, true); return; } this.gdGo(G, 0); }
+  gdGo(G, i) {
+    this.gdClear(G);
+    G.i = i; G.playing = true;
+    this.gdApply(G, true);
+    if (i < G.steps.length - 1) G.timer = setTimeout(() => this.gdGo(G, i + 1), G.steps[i].d);
+    else G.timer = setTimeout(() => { G.playing = false; this.gdApply(G, false); }, 200);
+  }
+  // Chart A demo: light the sequence at a given pace (iti s), or show the rest, or hand over (-2)
+  kpDemo(el, G, iti, n, note) {
+    if (!el) return;
+    G.demo = true;
+    const keys = (k) => el.querySelector('[data-kk="' + k + '"]');
+    const SEQ = [4, 1, 3, 2, 4];
+    const R = (k) => el.querySelector('[data-r="' + k + '"]');
+    const txt = (k, v) => { const e = R(k); if (e) e.textContent = v; };
+    const cells = Array.from(el.querySelectorAll('[data-ks]'));
+    const mark = (j) => cells.forEach((c, m) => { c.className = m < j ? 'done' : (m === j ? 'next' : ''); });
+    txt('kpnote', note);
+    if (iti === -2) { G.demo = false; el.__kp = { step: 0, times: [], n: 0, best: 0, last: 0 }; this.kpDraw(el); txt('kpnote', note); return; }
+    if (iti === -1) { mark(0); txt('kpn', '12 per block'); txt('kplast', '25 s rest'); txt('kpbest', '0.30 s'); return; }
+    const pace = iti || 0.6;
+    const still = this.gdStill();
+    if (n) txt('kpn', n === 1 ? 'block 1' : 'block 15');
+    SEQ.forEach((k, j) => {
+      G.subs.push(setTimeout(() => {
+        mark(j + 1);
+        const b = keys(k); if (b && !still) { b.classList.add('demo'); G.subs.push(setTimeout(() => b.classList.remove('demo'), Math.min(220, pace * 600))); }
+        if (j === SEQ.length - 1 && iti) { txt('kplast', iti.toFixed(2) + ' s'); txt('kpbest', iti.toFixed(2) + ' s'); }
+      }, 300 + j * pace * 1000));
+    });
+    mark(0);
   }
   lbKey(e) {
     const el = e.target && e.target.closest ? e.target.closest('[data-kp]') : null;
@@ -1428,6 +1545,7 @@ class Component extends DCLogic {
     [0, 1, 2].forEach((i) => { const d = r.f[i][t] - r.f[i][0]; bar('b' + (i + 1), d, 0.02); txt('v' + (i + 1), sg(d, 3) + (r.sig[i] === 'ns' ? ' ns' : '')); });
     txt('mttitle', r.n + ', ' + (t === 1 ? '30 minutes' : '24 hours') + ' after learning');
     txt('mtnote', r.say[t - 1]);
+    Array.from(el.querySelectorAll('.dv-row')).forEach((row, j) => { row.classList.toggle('dv-hl', s.hl === j); });
     Array.from(el.querySelectorAll('[data-mr]')).forEach((b) => { const on = +b.getAttribute('data-mr') === s.r; b.className = on ? 'on' : ''; b.setAttribute('aria-pressed', on ? 'true' : 'false'); });
     Array.from(el.querySelectorAll('[data-mt-t]')).forEach((b) => { const on = +b.getAttribute('data-mt-t') === t; b.className = on ? 'on' : ''; b.setAttribute('aria-pressed', on ? 'true' : 'false'); });
   }

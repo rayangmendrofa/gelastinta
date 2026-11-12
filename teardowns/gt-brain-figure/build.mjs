@@ -1,568 +1,363 @@
-// Fig: a bench diffusion rig for one 2 mm voxel of brain (Talk 12, Learning brain).
-// Built with the anatomy kit (MIT): set ANATOMY to the kit folder (default /home/claude/anatomy-ref).
+// Fig 1 (Talk 12, Learning brain): a bench diffusion rig built round one 2 mm voxel of brain, cut away.
+// Anatomy kit (MIT): set ANATOMY to the kit folder (default /home/claude/anatomy-ref).
 //   node teardowns/gt-brain-figure/build.mjs            -> src/static/teardowns/learning-brain.html
-//   node teardowns/gt-brain-figure/build.mjs --out x.html
+//   node teardowns/gt-brain-figure/build.mjs --audit    -> also runs the kit's geometry audit
+//   node teardowns/gt-brain-figure/build.mjs --out x.html [--light]
 import { writeFileSync, readFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
-import { REGIONS, TIMES, SCAN, TASK, DIAL_TURN, MAGNIFY } from "./model.mjs";
+import { REGIONS, TIMES, TASK, DIAL_TURN, MAGNIFY } from "./model.mjs";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const SITE = resolve(HERE, "..", "..");
 const KITDIR = process.env.ANATOMY || "/home/claude/anatomy-ref";
-const k = await import(pathToFileURL(join(KITDIR, "kit", "iso-kit.mjs")).href);
-const { kitScript } = await import(pathToFileURL(join(KITDIR, "scripts", "inline-kit.mjs")).href);
+const imp = (p) => import(pathToFileURL(join(KITDIR, p)).href);
+const k = await imp("kit/iso-kit.mjs");
+const G = await imp("kit/lathe.mjs");
+const A = await imp("kit/audit.mjs");
+const { tubePieces, tubeSvg } = await imp("kit/tube.mjs");
+const { kitScript } = await imp("scripts/inline-kit.mjs");
 const outArg = process.argv.indexOf("--out");
 const OUT = outArg > 0 ? resolve(process.argv[outArg + 1]) : join(SITE, "src", "static", "teardowns", "learning-brain.html");
+const THEME = process.argv.includes("--light") ? "light" : "dark";
 
-const WIDTH = 640;
-const HEIGHT = 320;
-const AZ = 52;
+const WIDTH = 680, HEIGHT = 390, AZ = 52;
 
 // ── world plan (units ~ 1 px) ─────────────────────────────────────────────
-const PLATE = { x: -196, y: -84, w: 392, d: 176, r: 9 };
+const PLATE = { x: -222, y: -96, w: 444, d: 192, r: 9 };
 const PLATE_H = 12, FOOT_H = 5;
+const AMP = { x: -206, y: -88, w: 64, d: 46, r: 2.4 }, AMP_H = 46;
+const AMP_XF = AMP.x + AMP.w, AMP_YF = AMP.y + AMP.d;            // faces toward the viewer
+const PLINTH = { x: -102, y: -48, w: 204, d: 92, r: 4 }, PLINTH_H = 8;
+const COIL_X = 80, COIL_T = 9, COIL_Y0 = -38, COIL_D = 74, COIL_Z0 = PLINTH_H, COIL_H = 74;
+const COIL_TOP = COIL_Z0 + COIL_H;
+const BRIDGE = { x: -COIL_X - 10, y: COIL_Y0, w: COIL_X * 2 + 20, d: 9, r: 1.4 }, BRIDGE_H = 6;
+const BRIDGE_TOP = COIL_TOP + BRIDGE_H;
+const CONN_Y = -9;                                             // coil top connectors
+const STAGE = [0, 0];
+const CUBE = 50, CUBE_Z = 24, WALL = 1.8;                        // the voxel cage
+const CZ0 = CUBE_Z + WALL, CZ1 = CUBE_Z + CUBE;                  // inside, floor top to rim
+const H = CUBE / 2;
 
-const PLINTH = { x: -78, y: -40, w: 156, d: 76, r: 4 };
-const PLINTH_H = 8;
-const COIL_X = 60, COIL_T = 9, COIL_Y0 = -32, COIL_D = 62, COIL_Z0 = PLINTH_H, COIL_H = 62;
-const STAGE = [0, -2];
-const CUBE = 30, CUBE_Z = PLINTH_H + 14, CUBE_TOP = CUBE_Z + CUBE;
-const BRIDGE = { x: -COIL_X - COIL_T / 2, y: COIL_Y0, w: COIL_X * 2 + COIL_T, d: 7, r: 1.2 };
-const BRIDGE_Z = COIL_Z0 + COIL_H;
-
-const KEYPAD = { x: -184, y: 24, w: 66, d: 40, r: 3 };
-const KEYPAD_H = 7;
-const KEY_W = 11, KEY_D = 20, KEY_GAP = 3.6, KEY_H = 4.2;
-const KEY_X0 = KEYPAD.x + 7;
-const KEY_Y = KEYPAD.y + 12;
-
-const RAIL_Y = [56, 68], RAIL_FROM = -30, RAIL_TO = 150;
+const KEYPAD = { x: -208, y: 26, w: 70, d: 44, r: 3 }, KEYPAD_H = 7;
+const KEY_W = 12, KEY_D = 22, KEY_GAP = 3.4, KEY_H = 4.2;
+const KEY_X0 = KEYPAD.x + 7, KEY_Y = KEYPAD.y + 13;
+const RAIL_Y = [66, 78], RAIL_FROM = -36, RAIL_TO = 150;
 const STOPS = [0, 60, 120];
-const CAR = { x: -13, y: 51, w: 26, d: 22, r: 2.5 };
-const CAR_Z = 3, CAR_TOP = 9;
-const STRIP = { x: -22, y: 77, w: 164, d: 7, r: 1 };
-
-const BAR = { x: 92, y: -70, w: 98, d: 10, r: 2 };   // the SANDI dial bar
-const BAR_Z = 30, BAR_H = 6;
-const DIALS = [
-  { at: [66, -63], r: 13 },                           // MD, on its own post
-  { at: [104, -65], r: 11.5 }, { at: [141, -65], r: 11.5 }, { at: [178, -65], r: 11.5 },
-];
-const DIAL_Z = 40, DIAL_H = 7;
-const MD_POST_Z = 24;
-
-const KNOB = [168, 34];
+const CAR = { x: -14, y: 61, w: 28, d: 22, r: 2.5 }, CAR_Z = 3, CAR_TOP = 9;
+const STRIP = { x: -28, y: 86, w: 172, d: 7, r: 1 };
+const BAR = { x: 114, y: -80, w: 100, d: 10, r: 2 }, BAR_Z = 30, BAR_H = 6;
+const DIALS = [{ at: [104, -60], r: 13 }, { at: [130, -75], r: 11.5 }, { at: [164, -75], r: 11.5 }, { at: [198, -75], r: 11.5 }];
+const DIAL_Z = 40, DIAL_H = 7, DIAL_TOP = DIAL_Z + DIAL_H;
+const KNOB = [190, 40];
 const KNOB_ANG = [-66, -22, 22, 66].map((d) => (d * Math.PI) / 180);
-const LABEL = { x: -176, y: 70, w: 54, d: 20, r: 1.6 };
+const KNOB_TOP = 2.6 + 7;
+const LABEL = { x: -126, y: 80, w: 56, d: 14, r: 1.6 };
 
-const fitPoints = [...k.boxCorners(PLATE, -PLATE_H - FOOT_H, 0), [0, 0, BRIDGE_Z + 6], [-COIL_X, COIL_Y0, BRIDGE_Z + 6], [COIL_X, COIL_Y0 + COIL_D, BRIDGE_Z], ...DIALS.map((d) => [d.at[0], d.at[1], DIAL_Z + DIAL_H + 2])];
-const P = k.fitProjection(fitPoints, WIDTH, HEIGHT, { pad: 16, azimuth: AZ });
-
+const fitPoints = [...k.boxCorners(PLATE, -PLATE_H - FOOT_H, 0), [0, COIL_Y0, BRIDGE_TOP + 8], [-COIL_X, COIL_Y0, BRIDGE_TOP + 8], [AMP.x, AMP.y, AMP_H + 26]];
+const P = k.fitProjection(fitPoints, WIDTH, HEIGHT, { pad: 14, azimuth: AZ });
+const V = G.viewOf(P), KS = G.scaleOf(P);
 const at = (p) => k.iso(p, P);
 const S = (paths, style) => k.solidSvg(paths, style);
 const L = (d, style) => k.lineSvg(d, style);
 const D = (pts, style) => k.dotsSvg(pts, style);
+const path3 = (pts, closed = false) => k.pathOf(pts.map(at), closed);
+
+const R = A.recorder(P);
+const record = R.solid;
+const put = (name, ref, svg, shapes = [], { bias = 0, ...rest } = {}) => R.put({ name, at: ref, bias, svg, shapes, piece: "rig", ...rest });
+function box(name, plan, z, h, style = {}, { steps = 3, bevel = 0.5, extra = "", inner = "", bias = 0, owner } = {}) {
+  const shape = record(A.slab(plan, z, h, { name, owner }, steps));
+  put(name, [plan.x + plan.w / 2, plan.y + plan.d / 2, z + h / 2], S(k.slabOf(plan, z, h, P, steps, bevel), { tone: "mid", ...style, inner }) + extra, [shape], { bias });
+  return shape;
+}
+function cyl(name, cx, cy, r, z, h, style = {}, { steps = 32, bevel = 0, extra = "", inner = "", bias = 0, owner } = {}) {
+  const shape = record(A.cylinder(cx, cy, r, z, h, { name, owner }));
+  put(name, [cx, cy, z + h / 2], S(k.cylinder(cx, cy, r, z, h, P, steps, bevel), { tone: "mid", ...style, inner }) + extra, [shape], { bias });
+  return shape;
+}
+// a rounded rectangle on a vertical face: x = const (in y, z) or y = const (in x, z)
+function faceRect(axis, c, u0, u1, z0, z1, r, steps = 4) {
+  const pts = [];
+  const pt = (u, z) => (axis === "x" ? [c, u, z] : [u, c, z]);
+  const corner = (cu, cz, a0) => { for (let i = 0; i <= steps; i++) { const a = a0 + (i / steps) * (Math.PI / 2); pts.push(pt(cu + Math.cos(a) * r, cz + Math.sin(a) * r)); } };
+  corner(u1 - r, z1 - r, 0); corner(u0 + r, z1 - r, Math.PI / 2); corner(u0 + r, z0 + r, Math.PI); corner(u1 - r, z0 + r, Math.PI * 1.5);
+  return path3(pts, true);
+}
+
+// ── back layer: the plate (recorded as ground) ───────────────────────────
+const back = [];
+back.push(`<path class="iso-halo" d="${k.haloOf(PLATE, -PLATE_H - FOOT_H, PLATE_H, P)}"/>`);
 const byDepth = (pts) => [...pts].sort((a, b) => k.depthOf([a[0], a[1], 0], P) - k.depthOf([b[0], b[1], 0], P));
-const flat = (pts) => k.pathOf(pts.map(at));
-const closed = (pts) => k.pathOf(pts.map(at), true);
-
-// a rounded rectangle drawn on a vertical face x = const, in (y, z)
-function faceRect(x, y0, y1, z0, z1, r, steps = 4) {
-  const pts = [];
-  const corner = (cy, cz, a0) => { for (let i = 0; i <= steps; i++) { const a = a0 + (i / steps) * (Math.PI / 2); pts.push([x, cy + Math.cos(a) * r, cz + Math.sin(a) * r]); } };
-  corner(y1 - r, z1 - r, 0); corner(y0 + r, z1 - r, Math.PI / 2); corner(y0 + r, z0 + r, Math.PI); corner(y1 - r, z0 + r, Math.PI * 1.5);
-  return closed(pts);
+for (const [x, y] of byDepth(k.corners(PLATE, 24))) {
+  back.push(S(k.cylinder(x, y, 7.5, -PLATE_H - FOOT_H, 1.6, P, 28), { tone: "lo" }));
+  back.push(S(k.cylinder(x, y, 5.8, -PLATE_H - FOOT_H + 1.6, FOOT_H - 1.6, P, 28), { tone: "mid" }));
 }
-// a rounded rectangle on a vertical face y = const, in (x, z)
-function faceRectY(y, x0, x1, z0, z1, r, steps = 4) {
-  const pts = [];
-  const corner = (cx, cz, a0) => { for (let i = 0; i <= steps; i++) { const a = a0 + (i / steps) * (Math.PI / 2); pts.push([cx + Math.cos(a) * r, y, cz + Math.sin(a) * r]); } };
-  corner(x1 - r, z1 - r, 0); corner(x0 + r, z1 - r, Math.PI / 2); corner(x0 + r, z0 + r, Math.PI); corner(x1 - r, z0 + r, Math.PI * 1.5);
-  return closed(pts);
+back.push(S(k.slabOf(PLATE, -PLATE_H, PLATE_H, P, 8, 1.6), { tone: "mid", inner: L(k.sideSeam(PLATE, -PLATE_H + 4, P, 8), { tone: "faint" }) }));
+back.push(L(k.planOutline(k.insetPlan(PLATE, 5), 0, P), { tone: "lo" }));
+const screws = k.corners(PLATE, 11);
+back.push(L(screws.map(([x, y]) => k.ring(x, y, 2.3, 0, P, 16)).join(""), { tone: "lo" }));
+back.push(D(screws.map(([x, y]) => at([x, y, 0])), { size: 0.55 }));
+record(A.slab(PLATE, -PLATE_H, PLATE_H, { name: "stand.plate", ground: true }, 8));
+// rail ruler and the label plate lie flat on the plate
+back.push(S(k.slabOf(STRIP, 0, 0.6, P, 3), { tone: "lo", crease: "none" }));
+{
+  const t = k.topTicks(STRIP.x + 4, STRIP.x + STRIP.w - 4, 3, 20, STRIP.y + 0.6, 0.6, [1.6, 4.6], P);
+  const m = k.topTicks(STRIP.x + 4, STRIP.x + STRIP.w - 4, 15, 4, STRIP.y + 0.6, 0.6, [2.8, 4.6], P);
+  back.push(L(t.minor, { tone: "lo" }), L(m.minor, { tone: "mid" }), L(t.major, { tone: "hi" }));
+  for (const x of STOPS) back.push(L(k.ring(x, STRIP.y + 5.6, 0.9, 0.6, P, 10), { tone: "hi" }));
+  back.push(D([at([STRIP.x + 2, STRIP.y + 3.5, 0.6]), at([STRIP.x + STRIP.w - 2, STRIP.y + 3.5, 0.6])], { size: 0.45 }));
 }
+back.push(S(k.slabOf(LABEL, 0, 0.8, P, 4), { tone: "lo", crease: "none" }));
+back.push(L(k.planOutline(k.insetPlan(LABEL, 1.6), 0.8, P, 4), { tone: "faint" }));
+back.push(k.faceTextSvg(k.topMatrix([LABEL.x + 5, LABEL.y + 6.6], 0.8, P, "x"), "SANDI · 300 mT/m", { size: 3.6, tone: "mid" }));
+[[LABEL.x + 5, LABEL.x + 44], [LABEL.x + 5, LABEL.x + 32]].forEach(([a, b], i) => back.push(L(k.lineOnTop([a, LABEL.y + 9.2 + i * 2.6], [b, LABEL.y + 9.2 + i * 2.6], 0.8, P), { tone: "lo", free: true })));
+back.push(D([at([LABEL.x + LABEL.w - 3.4, LABEL.y + 3.4, 0.8]), at([LABEL.x + LABEL.w - 3.4, LABEL.y + LABEL.d - 3.4, 0.8])], { size: 0.45 }));
 
-// ── base ──────────────────────────────────────────────────────────────────
-function plate() {
-  const out = [`<path class="iso-halo" d="${k.haloOf(PLATE, -PLATE_H - FOOT_H, PLATE_H, P)}"/>`];
-  for (const [x, y] of byDepth(k.corners(PLATE, 24))) {
-    out.push(S(k.cylinder(x, y, 7.5, -PLATE_H - FOOT_H, 1.6, P, 28), { tone: "lo" }));
-    out.push(S(k.cylinder(x, y, 5.8, -PLATE_H - FOOT_H + 1.6, FOOT_H - 1.6, P, 28), { tone: "mid" }));
+// ── gradient amplifier: a cabinet with vents, a label plate, handles and two output connectors ──
+{
+  const vents = [];
+  for (let row = 0; row < 3; row++) for (let i = 0; i < 6; i++) vents.push(faceRect("y", AMP_YF, AMP.x + 8 + i * 8.4, AMP.x + 13 + i * 8.4, 8 + row * 6, 12 + row * 6, 1.2, 2));
+  const xvents = [];
+  for (let i = 0; i < 5; i++) xvents.push(faceRect("x", AMP_XF, AMP.y + 6 + i * 7, AMP.y + 11 + i * 7, 26, 40, 1.2, 2));
+  const seam = k.sideSeam(AMP, 4, P, 3) + k.sideSeam(AMP, AMP_H - 4, P, 3);
+  box("amp", AMP, 0, AMP_H, { tone: "mid" }, { bevel: 0.8, inner: L(seam, { tone: "faint" }), extra: L(vents.join(""), { tone: "lo" }) + L(xvents.join(""), { tone: "lo" }) });
+  // front label plate: a thin plate on the +y face with rule lines and four screws
+  const lp = { x: AMP.x + 8, y: AMP_YF, w: 34, d: 0.8, r: 0.3 };
+  box("amp.label", lp, 28, 13, { tone: "lo" }, { steps: 2, bevel: 0, bias: 0.05, extra:
+    L(path3([[lp.x + 3, AMP_YF + 0.8, 37.5], [lp.x + 28, AMP_YF + 0.8, 37.5]]) + path3([[lp.x + 3, AMP_YF + 0.8, 34.5], [lp.x + 22, AMP_YF + 0.8, 34.5]]) + path3([[lp.x + 3, AMP_YF + 0.8, 31.5], [lp.x + 25, AMP_YF + 0.8, 31.5]]), { tone: "mid", free: true }) +
+    D([[lp.x + 1.4, 39.6], [lp.x + 32.6, 39.6], [lp.x + 1.4, 29.4], [lp.x + 32.6, 29.4]].map(([x, z]) => at([x, AMP_YF + 0.8, z])), { size: 0.45 }) });
+  // status lamp housing on the front
+  box("amp.lamp", { x: AMP.x + 49, y: AMP_YF, w: 6, d: 1.2, r: 0.4 }, 30, 6, { tone: "lo" }, { steps: 2, bevel: 0 });
+  // carry handles on top: two posts and a bar each
+  for (const hx of [AMP.x + 8, AMP.x + AMP.w - 12]) {
+    box(`amp.handle${hx}.a`, { x: hx, y: AMP.y + 6, w: 4, d: 3, r: 0.6 }, AMP_H, 5, {}, { steps: 2 });
+    box(`amp.handle${hx}.b`, { x: hx, y: AMP.y + AMP.d - 9, w: 4, d: 3, r: 0.6 }, AMP_H, 5, {}, { steps: 2 });
+    box(`amp.handle${hx}.bar`, { x: hx, y: AMP.y + 6, w: 4, d: AMP.d - 12, r: 0.8 }, AMP_H + 5, 2.4, { tone: "hi" }, { steps: 2 });
   }
-  const groove = k.sideSeam(PLATE, -PLATE_H + 4, P, 8);
-  out.push(S(k.slabOf(PLATE, -PLATE_H, PLATE_H, P, 8, 1.6), { tone: "mid", inner: L(groove, { tone: "faint" }) }));
-  out.push(L(k.planOutline(k.insetPlan(PLATE, 5), 0, P), { tone: "lo" }));
-  const screws = k.corners(PLATE, 11);
-  out.push(L(screws.map(([x, y]) => k.ring(x, y, 2.3, 0, P, 16)).join(""), { tone: "lo" }));
-  out.push(D(screws.map(([x, y]) => at([x, y, 0])), { size: 0.55 }));
-  return out.join("");
+  D(k.corners(AMP, 3).map(([x, y]) => at([x, y, AMP_H])), { size: 0.5 });
+}
+const AMP_OUT = [[AMP.x + 26, AMP.y + 18], [AMP.x + 38, AMP.y + 18]];
+for (const [i, [x, y]] of AMP_OUT.entries()) {
+  cyl(`amp.port${i}`, x, y, 4.2, AMP_H, 2, {}, { steps: 24, bevel: 0.3, extra: L(k.ring(x, y, 3, AMP_H + 2, P, 18), { tone: "lo" }) });
+  cyl(`amp.shell${i}`, x, y, 2.8, AMP_H + 2, 6, { tone: "hi" }, { steps: 20, extra: L(k.knurl(x, y, 2.8, AMP_H + 3, AMP_H + 7.4, 16, P), { tone: "lo" }) });
 }
 
-function labelPlate() {
-  const out = [];
-  out.push(S(k.slabOf(LABEL, 0, 0.8, P, 4), { tone: "lo", crease: "none" }));
-  out.push(L(k.planOutline(k.insetPlan(LABEL, 1.6), 0.8, P, 4), { tone: "faint" }));
-  out.push(k.faceTextSvg(k.topMatrix([LABEL.x + 5, LABEL.y + 7.5], 0.8, P, "x"), "300 mT/m", { size: 4.2, tone: "mid" }));
-  const rules = [[LABEL.x + 5, LABEL.x + 44], [LABEL.x + 5, LABEL.x + 34]];
-  rules.forEach(([a, b], i) => out.push(L(k.lineOnTop([a, LABEL.y + 12 + i * 3.6], [b, LABEL.y + 12 + i * 3.6], 0.8, P), { tone: "lo", free: true })));
-  out.push(D([at([LABEL.x + LABEL.w - 3.4, LABEL.y + 3.4, 0.8]), at([LABEL.x + LABEL.w - 3.4, LABEL.y + LABEL.d - 3.4, 0.8])], { size: 0.45 }));
-  return out.join("");
-}
+// ── plinth, coils, bridge ────────────────────────────────────────────────
+const LAMP_X = (i) => -44 + i * 12.5, LAMP_Y = PLINTH.y + PLINTH.d;
+box("plinth", PLINTH, 0, PLINTH_H, {}, { steps: 4, bevel: 0.8, extra: L(k.planOutline(k.insetPlan(PLINTH, 4), PLINTH_H, P, 4), { tone: "faint" }) + D(k.corners(PLINTH, 5).map(([x, y]) => at([x, y, PLINTH_H])), { size: 0.45 }) + L(Array.from({ length: 8 }, (_, i) => k.sideRing([LAMP_X(i), LAMP_Y, PLINTH_H / 2], 1.7, "y", P, 14)).join(""), { tone: "lo" }) });
 
-// ── the gradient set: plinth, two planar coils, bridge, stage and the voxel ──
-function plinth() {
-  const out = [`<path class="iso-halo" d="${k.haloOf(k.insetPlan(PLINTH, 4), 0, 0.1, P)}" style="filter:blur(5px)"/>`];
-  out.push(S(k.slabOf(PLINTH, 0, PLINTH_H, P, 4, 0.8), { tone: "mid" }));
-  out.push(L(k.planOutline(k.insetPlan(PLINTH, 4), PLINTH_H, P, 4), { tone: "faint" }));
-  out.push(D(k.corners(PLINTH, 5).map(([x, y]) => at([x, y, PLINTH_H])), { size: 0.45 }));
-  return out.join("");
-}
-
-// the scan lamps: eight shells (seven b values plus the b = 0 images) on the plinth front
-const LAMP_X = (i) => -42 + i * 12;
-const LAMP_Y = PLINTH.y + PLINTH.d;
-function lamps() {
-  const out = [];
-  for (let i = 0; i < 8; i++) out.push(L(k.sideRing([LAMP_X(i), LAMP_Y, PLINTH_H / 2], 1.6, "y", P, 14), { tone: "lo" }));
-  return out.join("");
-}
-
-function coil(x0, inner) {
-  // one planar gradient coil: a former standing on two feet, windings on its faces, a terminal block
-  const out = [];
-  const plan = { x: x0, y: COIL_Y0, w: COIL_T, d: COIL_D, r: 1.2 };
-  for (const fy of [COIL_Y0 + 6, COIL_Y0 + COIL_D - 16]) {
-    const foot = { x: x0 - 5, y: fy, w: COIL_T + 10, d: 10, r: 1 };
-    out.push(S(k.slabOf(foot, COIL_Z0, 4, P, 3, 0.5), { tone: "mid" }));
-    out.push(D([at([foot.x + 2.4, foot.y + 5, COIL_Z0 + 4]), at([foot.x + foot.w - 2.4, foot.y + 5, COIL_Z0 + 4])], { size: 0.45 }));
-  }
-  const xf = x0 + COIL_T;     // the +x face is the one facing the viewer
+function coil(side) {
+  const x0 = side * COIL_X - COIL_T / 2, xf = x0 + COIL_T;
+  const plan = { x: x0, y: COIL_Y0, w: COIL_T, d: COIL_D, r: 1.4 };
   const wind = [];
-  for (let i = 0; i < 5; i++) wind.push(faceRect(xf, COIL_Y0 + 5 + i * 3.4, COIL_Y0 + COIL_D - 5 - i * 3.4, COIL_Z0 + 6 + i * 3.4, COIL_Z0 + COIL_H - 5 - i * 3.4, 6 - i * 0.8));
-  const seam = k.sideSeam(plan, COIL_Z0 + COIL_H - 2.4, P, 3);
-  out.push(S(k.slabOf(plan, COIL_Z0 + 2, COIL_H - 2, P, 3, 0.6), { tone: inner ? "mid" : "mid", inner: L(seam, { tone: "faint" }) }));
-  out.push(`<g data-part="wind-${inner ? "a" : "b"}">${L(wind.join(""), { tone: "lo" })}</g>`);
-  // front edge windings (the +y face shows the coil's turns as a stack of lines ending on the face edges)
+  for (let i = 0; i < 7; i++) wind.push(faceRect("x", xf, COIL_Y0 + 5 + i * 2.8, COIL_Y0 + COIL_D - 5 - i * 2.8, COIL_Z0 + 6 + i * 2.8, COIL_TOP - 6 - i * 2.8, 6 - i * 0.7));
   const yf = COIL_Y0 + COIL_D;
   const turns = [];
-  for (let i = 0; i < 5; i++) turns.push(faceRectY(yf, x0 + 1.6, xf - 1.6, COIL_Z0 + 6 + i * 3.4, COIL_Z0 + COIL_H - 5 - i * 3.4, 0.8, 2));
-  out.push(L(turns.join(""), { tone: "faint" }));
-  // terminal block on the outer face
-  if (!inner) {
-    const tb = { x: xf, y: COIL_Y0 + 8, w: 5, d: 12, r: 1 };
-    out.push(S(k.slabOf(tb, COIL_Z0 + 8, 8, P, 3, 0.4), { tone: "mid" }));
-    out.push(D([at([tb.x + 2.5, tb.y + 3.5, COIL_Z0 + 16]), at([tb.x + 2.5, tb.y + 8.5, COIL_Z0 + 16])], { size: 0.5 }));
+  for (let i = 0; i < 7; i++) turns.push(faceRect("y", yf, x0 + 1.4, xf - 1.4, COIL_Z0 + 6 + i * 2.8, COIL_TOP - 6 - i * 2.8, 0.6, 2));
+  const seam = k.sideSeam(plan, COIL_TOP - 2.4, P, 3) + k.sideSeam(plan, COIL_Z0 + 2.4, P, 3);
+  box(`coil${side}`, plan, COIL_Z0, COIL_H, {}, { bevel: 0.6, inner: L(seam, { tone: "faint" }),
+    extra: `<g class="bl-wind" data-part="wind${side}">${L(wind.join(""), { tone: "lo" })}</g><g class="bl-glow" data-glow>${L(wind.join(""), { tone: "lit" })}</g>` + L(turns.join(""), { tone: "faint" }) });
+  // clamps at the foot on both sides of the former, bolted to the plinth
+  for (const fy of [COIL_Y0 + 6, COIL_Y0 + COIL_D - 16]) for (const [cx, w] of [[x0 - 6, 6], [xf, 6]]) {
+    box(`coil${side}.clamp${fy}${cx}`, { x: cx, y: fy, w, d: 10, r: 0.8 }, PLINTH_H, 4, {}, { steps: 2, bevel: 0.3, extra: D([at([cx + w / 2, fy + 2.5, PLINTH_H + 4]), at([cx + w / 2, fy + 7.5, PLINTH_H + 4])], { size: 0.45 }) });
   }
-  return out.join("");
+  // a label plate on the outer face of the right coil, its top connector
+  cyl(`coil${side}.port`, side * COIL_X, CONN_Y, 3.6, COIL_TOP, 1.6, {}, { steps: 22, bevel: 0.3 });
+  cyl(`coil${side}.shell`, side * COIL_X, CONN_Y, 2.6, COIL_TOP + 1.6, 4.4, { tone: "hi" }, { steps: 20, extra: L(k.knurl(side * COIL_X, CONN_Y, 2.6, COIL_TOP + 2.4, COIL_TOP + 5.6, 14, P), { tone: "lo" }) });
+}
+coil(-1);
+coil(1);
+box("bridge", BRIDGE, COIL_TOP, BRIDGE_H, {}, { bevel: 0.6, extra: D([-COIL_X - 6, -36, 36, COIL_X + 6].map((x) => at([x, BRIDGE.y + 4.5, BRIDGE_TOP])), { size: 0.45 }) });
+
+// ── the harness: two gradient cables from the amplifier, across the bridge, into the coils ──
+const CABLE_R = 1.35;
+function cable(name, points, r, { tone = "mid", bias = 0.05, touch = [], bundle, rings, bend = BEND } = {}) {
+  const route = G.fillet(points, Math.max(bend, r * 2.8), 12, { P, tube: r });
+  R.route(name, route, r, { limp: true, touch, bundle, piece: "rig" });
+  tubePieces(route, r, P, { maxLength: 14, spacing: Math.max(0.6, Math.min(1.6, r)), ...(rings ? { rings } : {}) }).forEach((piece, i) =>
+    put(`${name}:${i}`, piece.mid, tubeSvg(piece, { tone }), [A.tube(piece.points, piece.radii)], { bias, route: name, chunk: i }));
+  return route;
+}
+const shellTop = AMP_H + 8;
+const CY = [BRIDGE.y + 2.8, BRIDGE.y + 6.2];
+const lift = BRIDGE_TOP + CABLE_R;
+const harnessTouch = ["bridge", "clamp*", "amp.shell*", "coil*.shell"];
+const RISE = +(process.env.RISE || 26), APEX = +(process.env.APEX || 30), BEND = +(process.env.BEND || 12), AX = +(process.env.AX || -COIL_X - 36);
+const routeTo = (port, side, lane) => [[port[0], port[1], shellTop], [port[0], port[1], shellTop + RISE], [port[0] + 14, port[1] + 3, shellTop + RISE + 14], [AX, lane, lift + APEX], [+(process.env.LAND || -COIL_X - 26), lane, lift], [side * COIL_X - 14, lane, lift], [side * COIL_X, CONN_Y, lift + 4], [side * COIL_X, CONN_Y, COIL_TOP + 6]];
+cable("cable.left", routeTo(AMP_OUT[0], -1, CY[1]), CABLE_R, { touch: harnessTouch, bundle: "harness", rings: { every: 1.6, tone: "lo" } });
+cable("cable.right", routeTo(AMP_OUT[1], 1, CY[0]), CABLE_R, { touch: harnessTouch, bundle: "harness", rings: { every: 1.6, tone: "lo" } });
+for (const cx of [-40, 0, 40]) {
+  box(`clamp${cx}`, { x: cx - 2.4, y: BRIDGE.y + 0.6, w: 4.8, d: BRIDGE.d - 1.2, r: 0.8 }, BRIDGE_TOP + 2 * CABLE_R + 0.3, 1.6, {}, { steps: 2, bias: 0.3, extra: D([at([cx, BRIDGE.y + 1.6, BRIDGE_TOP + 2 * CABLE_R + 1.9]), at([cx, BRIDGE.y + BRIDGE.d - 1.6, BRIDGE_TOP + 2 * CABLE_R + 1.9])], { size: 0.45 }) });
+  for (const yy of [BRIDGE.y + 0.6, BRIDGE.y + BRIDGE.d - 1.6]) box(`clamp${cx}.leg${yy}`, { x: cx - 2.4, y: yy, w: 4.8, d: 1, r: 0.3 }, BRIDGE_TOP, 2 * CABLE_R + 0.3, {}, { steps: 2, bevel: 0 });
 }
 
-function bridge() {
-  const out = [];
-  out.push(S(k.slabOf(BRIDGE, BRIDGE_Z, 6, P, 3, 0.6), { tone: "mid" }));
-  out.push(D([-COIL_X + 4, -20, 20, COIL_X + 1].map((x) => at([x, BRIDGE.y + 3.5, BRIDGE_Z + 6])), { size: 0.45 }));
-  // a cable clamp on the bridge
-  const clamp = { x: -8, y: BRIDGE.y - 1, w: 16, d: 9, r: 1.2 };
-  out.push(S(k.slabOf(clamp, BRIDGE_Z + 6, 3, P, 3, 0.4), { tone: "mid" }));
-  out.push(D([at([clamp.x + 3, clamp.y + 4.5, BRIDGE_Z + 9]), at([clamp.x + clamp.w - 3, clamp.y + 4.5, BRIDGE_Z + 9])], { size: 0.45 }));
-  return out.join("");
+// ── the stage and the voxel, cut away ────────────────────────────────────
+cyl("stage.plate", STAGE[0], STAGE[1], 16, PLINTH_H, 2.2, {}, { steps: 56, bevel: 0.5, extra: (() => { const t = k.radialTicks(0, 0, 15.4, 36, 9, PLINTH_H + 2.2, [1, 2.2], P); return L(t.minor, { tone: "lo" }) + L(t.major, { tone: "mid" }); })() });
+cyl("stage.post", 0, 0, 6.5, PLINTH_H + 2.2, CUBE_Z - PLINTH_H - 2.2 - 2.4, {}, { steps: 28, extra: L(k.sideArc(0, 0, 6.5, PLINTH_H + 7, P, 16), { tone: "faint" }) });
+cyl("stage.head", 0, 0, 10, CUBE_Z - 2.4, 2.4, {}, { steps: 36, bevel: 0.4 });
+const CAGE = { x: -H, y: -H, w: CUBE, d: CUBE, r: 0.8 };
+box("cage.floor", CAGE, CUBE_Z, WALL, { tone: "hi", lit: true }, { steps: 2, bevel: 0.3, extra: `<path class="bl-ecs" d="${k.slabOf(k.insetPlan(CAGE, WALL), CUBE_Z, WALL, P, 2).top}"/>` });
+box("cage.wallx", { x: -H, y: -H + WALL, w: WALL, d: CUBE - WALL, r: 0.3 }, CZ0, CUBE - WALL, { tone: "hi", lit: true }, { steps: 2, bevel: 0.3, extra: `<path class="bl-ecs" d="${path3([[-H + WALL, -H + WALL, CZ0], [-H + WALL, H, CZ0], [-H + WALL, H, CZ1], [-H + WALL, -H + WALL, CZ1]], true)}"/>` });
+box("cage.wally", { x: -H, y: -H, w: CUBE, d: WALL, r: 0.3 }, CZ0, CUBE - WALL, { tone: "hi", lit: true }, { steps: 2, bevel: 0.3, extra: `<path class="bl-ecs" d="${path3([[-H + WALL, -H + WALL, CZ0], [H, -H + WALL, CZ0], [H, -H + WALL, CZ1], [-H + WALL, -H + WALL, CZ1]], true)}"/>` });
+// cells: soma spheres and neurite cylinders, all owned by "cell" (they meet by design)
+const SC = CUBE / 36, ZC = (z) => CZ0 + (z - 25.6) * SC;
+const SOMA = [{ c: [-6 * SC, -6 * SC, ZC(33.5)], r: 5.8 * SC }, { c: [7 * SC, 4 * SC, ZC(45)], r: 5 * SC }, { c: [-7 * SC, 8 * SC, ZC(47)], r: 4.4 * SC }, { c: [8 * SC, -8 * SC, ZC(31)], r: 4.2 * SC }];
+const somaSurf = (i, toward) => { const s = SOMA[i]; const d = G.unit3(G.sub3(toward, s.c)); return G.add3(s.c, G.mul3(d, s.r - 0.6)); };
+const NEURITES = [
+  { a: [0, 1], r: 1.3 }, { a: [0, "x"], r: 1.2 }, { a: [1, "y"], r: 1.1 }, { a: [2, 0], r: 1.1 },
+  { a: [3, "y"], r: 1.0 }, { a: [2, "z"], r: 1.0 }, { a: [3, 1], r: 0.9, extra: true }, { a: [2, 1], r: 0.9, extra: true }, { a: [3, "z"], r: 0.9, extra: true },
+];
+const wallPoint = (i, wall) => { const c = SOMA[i].c; return wall === "x" ? [-H + WALL, c[1] + 2 * SC, c[2] + SC] : wall === "y" ? [c[0] - SC, -H + WALL, c[2] + 2 * SC] : [c[0] + 1.5 * SC, c[1] + 1.5 * SC, CZ0]; };
+const NSEG = NEURITES.map((n0) => {
+  const n = { ...n0, r: n0.r * SC };
+  const i = n.a[0], j = n.a[1];
+  let p0, p1;
+  if (typeof j === "number") { p0 = somaSurf(i, SOMA[j].c); p1 = somaSurf(j, SOMA[i].c); }
+  else { p1 = wallPoint(i, j); p0 = somaSurf(i, p1); }
+  return { ...n, p0, p1 };
+});
+NSEG.forEach((n, idx) => {
+  const len = G.len3(G.sub3(n.p1, n.p0));
+  const F = G.frameAlong(n.p0, G.unit3(G.sub3(n.p1, n.p0)));
+  const shape = record(A.disc(F, 0, len, n.r, { name: `neurite${idx}`, owner: "cell" }));
+  put(`neurite${idx}`, G.lerp3(n.p0, n.p1, 0.5), `<g class="bl-neurite${n.extra ? " bl-new" : ""}" data-neurite="${idx}">${S(G.disc(0, len, n.r, F, P, { steps: 18 }), { tone: "mid" })}</g>`, [shape], { bias: 0.02 });
+});
+SOMA.forEach((s, i) => {
+  const shape = record(A.ball(s.c, s.r, { name: `soma${i}`, owner: "cell" }));
+  const [sx, sy] = at(s.c);
+  put(`soma${i}`, s.c, `<g class="bl-soma" data-soma="${i}" data-cx="${sx.toFixed(2)}" data-cy="${sy.toFixed(2)}">${S(G.sphereOf(s.c, s.r, P, { steps: 40 }), { tone: "hi" })}${L(k.ring(s.c[0], s.c[1], s.r * 0.32, s.c[2] + s.r * 0.05, P, 16), { tone: "mid" })}</g>`, [shape], { bias: 0.05 });
+});
+// front cage: three corner posts and two rim bars (the near octant is open)
+box("cage.post", { x: H - WALL, y: H - WALL, w: WALL, d: WALL, r: 0.2 }, CZ0, CZ1 - WALL - CZ0, { tone: "hi", lit: true }, { steps: 1, bevel: 0 });
+box("cage.rimx", { x: -H + WALL, y: H - WALL, w: CUBE - WALL, d: WALL, r: 0.2 }, CZ1 - WALL, WALL, { tone: "hi", lit: true }, { steps: 1, bevel: 0 });
+box("cage.rimy", { x: H - WALL, y: -H + WALL, w: WALL, d: CUBE - 2 * WALL, r: 0.2 }, CZ1 - WALL, WALL, { tone: "hi", lit: true }, { steps: 1, bevel: 0 });
+// the scale bar engraved on the floor's front edge: the voxel is 2 mm
+box("cage.ruler", { x: -H + 3, y: H + 0.01, w: CUBE - 6, d: 0.01, r: 0 }, CUBE_Z + 0.3, 1, { tone: "lo" }, { steps: 1, bevel: 0, extra: L(Array.from({ length: 11 }, (_, i) => path3([[-H + 3 + i * (CUBE - 6) / 10, H + 0.02, CUBE_Z + 0.3], [-H + 3 + i * (CUBE - 6) / 10, H + 0.02, CUBE_Z + (i % 5 ? 0.8 : 1.3)]])).join(""), { tone: "hi" }) });
+
+// ── keypad with legends (1 little finger … 4 index) ───────────────────────
+box("keypad", KEYPAD, 0, KEYPAD_H, {}, { steps: 4, bevel: 0.8, extra:
+  L(k.planOutline({ x: KEY_X0 - 2.4, y: KEY_Y - 2.4, w: 4 * KEY_W + 3 * KEY_GAP + 4.8, d: KEY_D + 4.8, r: 2 }, KEYPAD_H, P, 4), { tone: "lo" }) +
+  D([at([KEYPAD.x + 4, KEYPAD.y + 4, KEYPAD_H]), at([KEYPAD.x + KEYPAD.w - 4, KEYPAD.y + 4, KEYPAD_H]), at([KEYPAD.x + 4, KEYPAD.y + KEYPAD.d - 4, KEYPAD_H]), at([KEYPAD.x + KEYPAD.w - 4, KEYPAD.y + KEYPAD.d - 4, KEYPAD_H])], { size: 0.45 }) +
+  L(k.ring(KEYPAD.x + KEYPAD.w - 9, KEYPAD.y + 6, 2.4, KEYPAD_H, P, 16), { tone: "lo" }) });
+const keyPlan = (i) => ({ x: KEY_X0 + i * (KEY_W + KEY_GAP), y: KEY_Y, w: KEY_W, d: KEY_D, r: 1.4 });
+for (let i = 0; i < 4; i++) {
+  const plan = keyPlan(i), top = KEYPAD_H + KEY_H;
+  const shape = record(A.slab(plan, KEYPAD_H, KEY_H, { name: `key${i}` }, 3));
+  put(`key${i}`, [plan.x + plan.w / 2, plan.y + plan.d / 2, KEYPAD_H + 2], `<g data-part="key-${i}">${S(k.slabOf(plan, KEYPAD_H, KEY_H, P, 3, 0.6), { tone: "hi", crease: "lo" })}${L(k.planOutline(k.insetPlan(plan, 2), top, P, 3), { tone: "faint" })}${k.faceTextSvg(k.topMatrix([plan.x + plan.w / 2 - 2.2, plan.y + 9], top, P, "x"), String(i + 1), { size: 7, tone: "hi" })}</g>`, [shape]);
 }
 
-function stage() {
-  const [x, y] = STAGE;
-  const out = [];
-  out.push(S(k.cylinder(x, y, 15, PLINTH_H, 2.2, P, 48, 0.5), { tone: "mid" }));
-  const t = k.radialTicks(x, y, 14.4, 36, 9, PLINTH_H + 2.2, [1, 2.2], P);
-  out.push(L(t.minor, { tone: "lo" }), L(t.major, { tone: "mid" }));
-  out.push(S(k.cylinder(x, y, 6, PLINTH_H + 2.2, CUBE_Z - PLINTH_H - 4.6, P, 28), { tone: "mid", crease: "none" }));
-  out.push(L(k.sideArc(x, y, 6, PLINTH_H + 6, P, 16), { tone: "faint" }));
-  out.push(S(k.cylinder(x, y, 9, CUBE_Z - 2.4, 2.4, P, 36, 0.4), { tone: "mid" }));
-  return out.join("");
-}
-
-const CUBE_PLAN = { x: STAGE[0] - CUBE / 2, y: STAGE[1] - CUBE / 2, w: CUBE, d: CUBE, r: 1 };
-function voxel() {
-  const out = [`<path class="iso-halo" d="${k.haloOf(k.insetPlan(CUBE_PLAN, 2), CUBE_Z, 0.1, P)}" style="filter:blur(3px);opacity:.25"/>`];
-  const seam = k.sideSeam(CUBE_PLAN, CUBE_Z + CUBE * 0.5, P, 3);
-  out.push(S(k.slabOf(CUBE_PLAN, CUBE_Z, CUBE, P, 3, 0.8), { tone: "hi", lit: true, crease: "lo", inner: L(seam, { tone: "faint" }) }));
-  out.push(L(k.planOutline(k.insetPlan(CUBE_PLAN, 2.4), CUBE_TOP, P, 3), { tone: "faint" }));
-  return out.join("");
-}
-// the cartoon on the voxel's top face: 3 x 3 cell bodies, 12 possible links between them
-const CELL = 8.6;
-const CELLS = [];
-for (let j = -1; j <= 1; j++) for (let i = -1; i <= 1; i++) CELLS.push([STAGE[0] + i * CELL, STAGE[1] + j * CELL]);
-const LINKS = [[0, 1], [4, 5], [6, 7], [1, 4], [3, 4], [7, 8], [2, 5], [0, 3], [5, 8], [3, 6], [4, 7], [1, 2]];
-
-// ── keypad: four keys for the four fingers of the left hand (1 = little finger, 4 = index) ──
-const keyPlan = (i) => ({ x: KEY_X0 + i * (KEY_W + KEY_GAP), y: KEY_Y, w: KEY_W, d: KEY_D, r: 1.2 });
-function keypad() {
-  const out = [`<path class="iso-halo" d="${k.haloOf(k.insetPlan(KEYPAD, 3), 0, 0.1, P)}" style="filter:blur(4px)"/>`];
-  out.push(S(k.slabOf(KEYPAD, 0, KEYPAD_H, P, 4, 0.8), { tone: "mid" }));
-  const well = { x: KEY_X0 - 2.4, y: KEY_Y - 2.4, w: 4 * KEY_W + 3 * KEY_GAP + 4.8, d: KEY_D + 4.8, r: 2 };
-  out.push(L(k.planOutline(well, KEYPAD_H, P, 4), { tone: "lo" }));
-  out.push(D([at([KEYPAD.x + 4, KEYPAD.y + 4, KEYPAD_H]), at([KEYPAD.x + KEYPAD.w - 4, KEYPAD.y + 4, KEYPAD_H])], { size: 0.45 }));
-  // status lamp seat
-  out.push(L(k.ring(KEYPAD.x + KEYPAD.w - 8, KEYPAD.y + 5.5, 2.4, KEYPAD_H, P, 16), { tone: "lo" }));
-  return out.join("");
-}
-function key(i) {
-  const plan = keyPlan(i);
-  const out = [];
-  out.push(S(k.slabOf(plan, KEYPAD_H, KEY_H, P, 3, 0.6), { tone: "hi", crease: "lo" }));
-  out.push(L(k.planOutline(k.insetPlan(plan, 2), KEYPAD_H + KEY_H, P, 3), { tone: "faint" }));
-  // one to four dots: the finger number, as on a tactile key
-  const n = i + 1;
-  const dots = [];
-  for (let d = 0; d < n; d++) dots.push(at([plan.x + plan.w / 2, plan.y + 5 + d * 3.2, KEYPAD_H + KEY_H]));
-  out.push(D(dots, { size: 0.55, tone: "hi" }));
-  return out.join("");
-}
-
-// ── timeline: a carriage on rails that stops at baseline, 30 min and 24 h ──
-function rails() {
-  const out = [];
-  for (const y of RAIL_Y) {
-    out.push(S(k.slabOf({ x: RAIL_FROM, y: y - 2.5, w: RAIL_TO - RAIL_FROM, d: 5, r: 1 }, 0, 3, P, 3, 0.4), { tone: "mid" }));
-    out.push(D([RAIL_FROM + 5, RAIL_TO - 5].map((x) => at([x, y, 3])), { size: 0.4 }));
-  }
-  for (const x of [RAIL_FROM - 5, RAIL_TO]) {
-    out.push(S(k.slabOf({ x, y: RAIL_Y[0] - 6, w: 5, d: RAIL_Y[1] - RAIL_Y[0] + 12, r: 1.2 }, 0, 7, P, 3, 0.5), { tone: "mid" }));
-    out.push(D([at([x + 2.5, RAIL_Y[0] - 2, 7]), at([x + 2.5, RAIL_Y[1] + 2, 7])], { size: 0.45 }));
-  }
-  out.push(S(k.slabOf(STRIP, 0, 0.6, P, 3), { tone: "lo", crease: "none" }));
-  const ticks = k.topTicks(STRIP.x + 4, STRIP.x + STRIP.w - 4, 6, 10, STRIP.y + 0.6, 0.6, [2, 4.4], P);
-  out.push(L(ticks.minor, { tone: "lo" }), L(ticks.major, { tone: "mid" }));
-  // detent notches: a small seat at each stop on the strip's far edge
-  for (const x of STOPS) out.push(L(k.ring(x, STRIP.y + 5.4, 0.9, 0.6, P, 10), { tone: "mid" }));
-  return out.join("");
-}
-function carriage() {
+// ── timeline rail and carriage ───────────────────────────────────────────
+for (const y of RAIL_Y) box(`rail${y}`, { x: RAIL_FROM, y: y - 2.5, w: RAIL_TO - RAIL_FROM, d: 5, r: 1 }, 0, 3, {}, { bevel: 0.4, extra: D([RAIL_FROM + 5, RAIL_TO - 5].map((x) => at([x, y, 3])), { size: 0.4 }) });
+for (const x of [RAIL_FROM - 5, RAIL_TO]) box(`stop${x}`, { x, y: RAIL_Y[0] - 6, w: 5, d: RAIL_Y[1] - RAIL_Y[0] + 12, r: 1.2 }, 0, 7, {}, { bevel: 0.5, extra: D([at([x + 2.5, RAIL_Y[0] - 2, 7]), at([x + 2.5, RAIL_Y[1] + 2, 7])], { size: 0.45 }) });
+{
   const out = [`<path class="iso-halo" d="${k.haloOf(k.insetPlan(CAR, 3), CAR_Z, 0.1, P)}" style="filter:blur(3px)"/>`];
-  for (const [bx, by] of [[CAR.x + 1, RAIL_Y[0] - 3.5], [CAR.x + CAR.w - 7, RAIL_Y[0] - 3.5], [CAR.x + 1, RAIL_Y[1] - 3.5], [CAR.x + CAR.w - 7, RAIL_Y[1] - 3.5]]) {
-    out.push(S(k.slabOf({ x: bx, y: by, w: 6, d: 7, r: 1 }, 1.5, 3, P, 2), { tone: "lo" }));
-  }
   out.push(S(k.slabOf(CAR, CAR_Z, CAR_TOP - CAR_Z, P, 4, 0.6), { tone: "mid" }));
-  out.push(D([-8, 0, 8].map((x) => at([x, CAR.y + CAR.d - 2.4, CAR_TOP])), { size: 0.4, tone: "lo" }));
-  // pointer nose over the strip
-  out.push(S(k.slabOf({ x: -2.2, y: CAR.y + CAR.d - 1, w: 4.4, d: 6.2, r: 0.8 }, CAR_Z + 2, 2.4, P, 2), { tone: "hi", crease: "lo" }));
-  out.push(L(k.lineOnTop([0, CAR.y + CAR.d - 1], [0, CAR.y + CAR.d + 5.2], CAR_Z + 4.4, P), { tone: "hi" }));
-  // knurled thumb wheel on top
-  out.push(S(k.cylinder(-6, CAR.y + 9, 3.4, CAR_TOP, 4, P, 22), { tone: "mid" }));
-  out.push(L(k.knurl(-6, CAR.y + 9, 3.4, CAR_TOP, CAR_TOP + 4, 20, P), { tone: "lo" }));
-  return out.join("");
+  out.push(D([-9, 0, 9].map((x) => at([x, CAR.y + CAR.d - 2.4, CAR_TOP])), { size: 0.4, tone: "lo" }));
+  out.push(L(k.planOutline(k.insetPlan(CAR, 2.6), CAR_TOP, P, 3), { tone: "faint" }));
+  out.push(S(k.slabOf({ x: -2.2, y: CAR.y + CAR.d, w: 4.4, d: 6.2, r: 0.8 }, CAR_Z + 2, 2.4, P, 2), { tone: "hi", crease: "lo" }));
+  out.push(L(k.lineOnTop([0, CAR.y + CAR.d], [0, CAR.y + CAR.d + 6.2], CAR_Z + 4.4, P), { tone: "lit" }));
+  out.push(S(k.cylinder(-6, CAR.y + 9, 3.6, CAR_TOP, 4, P, 22), { tone: "mid" }));
+  out.push(L(k.knurl(-6, CAR.y + 9, 3.6, CAR_TOP, CAR_TOP + 4, 22, P), { tone: "lo" }));
+  out.push(L(k.ring(-6, CAR.y + 9, 1, CAR_TOP + 4, P, 12), { tone: "mid" }));
+  const shapes = [record(A.slab(CAR, CAR_Z, CAR_TOP - CAR_Z, { name: "carriage" }, 4)), record(A.cylinder(-6, CAR.y + 9, 3.6, CAR_TOP, 4, { name: "carriage.wheel" })), record(A.slab({ x: -2.2, y: CAR.y + CAR.d, w: 4.4, d: 6.2, r: 0.8 }, CAR_Z + 2, 2.4, { name: "carriage.nose" }, 2))];
+  put("carriage", [0, CAR.y + CAR.d / 2, CAR_Z + 3], `<g data-part="carriage">${out.join("")}</g>`, shapes, { bias: 0.5 });
 }
 
-// ── dials: MD on its own post (the single number DTI gives), three SANDI dials on one bar ──
-function dialBody({ at: [x, y], r }) {
-  const out = [];
-  const top = DIAL_Z + DIAL_H;
+// ── dials: MD alone on its post, the three SANDI fractions on one bar ────
+function dialFace(d) {
+  const [x, y] = d.at, r = d.r, out = [];
   out.push(S(k.cylinder(x, y, r, DIAL_Z, DIAL_H, P, 64, 0.8), { tone: "hi", crease: "lo" }));
-  out.push(L(k.knurl(x, y, r, top - 2.6, top, 72, P, 0.3), { tone: "lo" }));
-  out.push(L(k.sideArc(x, y, r, top - 2.6, P, 40), { tone: "faint" }));
-  out.push(L(k.ring(x, y, r - 2, top, P, 64), { tone: "lo" }));
-  const t = k.radialTicks(x, y, r - 2.6, 40, 5, top, [1.1, 2.4], P);
+  out.push(L(k.knurl(x, y, r, DIAL_TOP - 2.6, DIAL_TOP, 72, P, 0.3), { tone: "lo" }));
+  out.push(L(k.sideArc(x, y, r, DIAL_TOP - 2.6, P, 40), { tone: "faint" }));
+  out.push(L(k.ring(x, y, r - 2, DIAL_TOP, P, 64), { tone: "lo" }));
+  const t = k.radialTicks(x, y, r - 2.6, 40, 5, DIAL_TOP, [1.1, 2.4], P);
   out.push(L(t.minor, { tone: "lo" }), L(t.major, { tone: "mid" }));
-  out.push(L(k.lineOnTop([x, y - (r - 2.6)], [x, y - (r - 6.4)], top, P), { tone: "hi" }));
-  out.push(L(k.ring(x, y, 1.4, top, P, 16), { tone: "mid" }));
+  out.push(L(k.lineOnTop([x, y - (r - 2.6)], [x, y - (r - 6.2)], DIAL_TOP, P), { tone: "hi" }));
+  out.push(L(k.ring(x, y, 1.4, DIAL_TOP, P, 16), { tone: "mid" }));
   return out.join("");
 }
-function dialBar() {
-  const out = [];
-  for (const px of [BAR.x + 10, BAR.x + BAR.w - 10]) {
-    out.push(S(k.cylinder(px, BAR.y + 5, 6, 0, 2.2, P, 24), { tone: "lo" }));
-    out.push(S(k.cylinder(px, BAR.y + 5, 2.6, 2.2, BAR_Z - 2.2, P, 20), { tone: "mid", crease: "none" }));
-    out.push(L(k.sideArc(px, BAR.y + 5, 2.6, 12, P, 14), { tone: "faint" }));
-  }
-  out.push(S(k.slabOf(BAR, BAR_Z, BAR_H, P, 3, 0.6), { tone: "mid" }));
-  for (const d of DIALS.slice(1)) {
-    out.push(S(k.cylinder(d.at[0], d.at[1], 3.2, BAR_Z + BAR_H, DIAL_Z - BAR_Z - BAR_H, P, 20), { tone: "mid", crease: "none" }));
-  }
-  out.push(D([BAR.x + 3, BAR.x + BAR.w - 3].map((x) => at([x, BAR.y + 5, BAR_Z + BAR_H])), { size: 0.45 }));
-  return out.join("");
+for (const px of [BAR.x + 8, BAR.x + BAR.w - 8]) {
+  cyl(`bar.foot${px}`, px, BAR.y + 5, 6, 0, 2.2, { tone: "lo" }, { steps: 24 });
+  cyl(`bar.post${px}`, px, BAR.y + 5, 2.6, 2.2, BAR_Z - 2.2, {}, { steps: 20, extra: L(k.sideArc(px, BAR.y + 5, 2.6, 12, P, 14), { tone: "faint" }) });
 }
-function mdPost() {
-  const [x, y] = DIALS[0].at;
-  const out = [];
-  out.push(S(k.cylinder(x, y, 8, 0, 2.4, P, 28), { tone: "lo" }));
-  out.push(S(k.cylinder(x, y, 3, 2.4, DIAL_Z - 2.4, P, 20), { tone: "mid", crease: "none" }));
-  out.push(L(k.sideArc(x, y, 3, MD_POST_Z, P, 14), { tone: "faint" }));
-  out.push(S(k.cylinder(x, y, 4.2, MD_POST_Z - 2, 4, P, 20), { tone: "mid" }));
-  return out.join("");
-}
+box("bar", BAR, BAR_Z, BAR_H, {}, { bevel: 0.6, extra: D([BAR.x + 3, BAR.x + BAR.w - 3].map((x) => at([x, BAR.y + 5, BAR_Z + BAR_H])), { size: 0.45 }) });
+DIALS.forEach((d, i) => {
+  const [x, y] = d.at;
+  if (i === 0) {
+    cyl("md.foot", x, y, 8, 0, 2.4, { tone: "lo" }, { steps: 28 });
+    cyl("md.post", x, y, 3, 2.4, DIAL_Z - 2.4, {}, { steps: 20, extra: L(k.sideArc(x, y, 3, 14, P, 14), { tone: "faint" }) });
+  } else cyl(`dial${i}.stem`, x, y, 3.2, BAR_Z + BAR_H, DIAL_Z - BAR_Z - BAR_H, {}, { steps: 20 });
+  const shape = record(A.cylinder(x, y, d.r, DIAL_Z, DIAL_H, { name: `dial${i}` }));
+  put(`dial${i}`, [x, y, DIAL_Z + 3], dialFace(d), [shape], { bias: 0.1 });
+});
 
-// ── region selector: a knob with four detents ──
-function knobBase() {
+// ── region knob ──────────────────────────────────────────────────────────
+{
   const [x, y] = KNOB;
-  const out = [];
-  out.push(S(k.cylinder(x, y, 14, 0, 2.6, P, 48, 0.6), { tone: "mid" }));
-  const z = 2.6;
-  const ticks = KNOB_ANG.map((a) => k.lineOnTop([x + Math.sin(a) * 9.2, y - Math.cos(a) * 9.2], [x + Math.sin(a) * 13.2, y - Math.cos(a) * 13.2], z, P)).join("");
-  out.push(L(k.ring(x, y, 9.2, z, P, 40), { tone: "lo" }), L(ticks, { tone: "mid" }));
-  out.push(S(k.cylinder(x, y, 7, z, 6.5, P, 32), { tone: "mid" }));
-  out.push(L(k.knurl(x, y, 7, z + 1.5, z + 6.5, 40, P), { tone: "lo" }));
-  out.push(L(k.sideArc(x, y, 7, z + 1.5, P, 24), { tone: "faint" }));
-  out.push(L(k.ring(x, y, 1.3, z + 6.5, P, 14), { tone: "mid" }));
-  return out.join("");
-}
-const KNOB_TOP = 9.1;
-const knobPointer = (angle) => k.lineOnTop([KNOB[0] + Math.sin(angle) * 1.3, KNOB[1] - Math.cos(angle) * 1.3], [KNOB[0] + Math.sin(angle) * 6.2, KNOB[1] - Math.cos(angle) * 6.2], KNOB_TOP, P);
-
-// ── wires (connectors with terminal dots that land on parts) ──
-function wires() {
-  const out = [];
-  // coil terminal block -> dial bar post foot, along the plate
-  const tb = [COIL_X + COIL_T + 5, COIL_Y0 + 14, COIL_Z0 + 12];
-  out.push(k.wireSvg(at(tb), at([BAR.x + 10 - 6, BAR.y + 5, 1.1]), { via: [at([COIL_X + COIL_T + 12, COIL_Y0 + 14, COIL_Z0 + 12]), at([COIL_X + COIL_T + 12, COIL_Y0 + 14, 0.3]), at([BAR.x + 2, COIL_Y0 + 14, 0.3]), at([BAR.x + 2, BAR.y + 5, 0.3])], tone: "lo", size: 1 }));
-  // keypad -> plinth: the training trigger
-  out.push(k.wireSvg(at([KEYPAD.x + KEYPAD.w, KEYPAD.y + 30, 3.5]), at([PLINTH.x, PLINTH.y + 60, 4]), { via: [at([KEYPAD.x + KEYPAD.w + 10, KEYPAD.y + 30, 0.3]), at([PLINTH.x - 10, PLINTH.y + 60, 0.3])], tone: "lo", size: 1 }));
-  return out.join("");
+  const ticks = KNOB_ANG.map((a) => k.lineOnTop([x + Math.sin(a) * 9.6, y - Math.cos(a) * 9.6], [x + Math.sin(a) * 13.6, y - Math.cos(a) * 13.6], 2.6, P)).join("");
+  cyl("knob.base", x, y, 14.4, 0, 2.6, {}, { steps: 52, bevel: 0.6, extra: L(k.ring(x, y, 9.6, 2.6, P, 40), { tone: "lo" }) + L(ticks, { tone: "hi" }) });
+  cyl("knob", x, y, 7, 2.6, 7, {}, { steps: 36, bevel: 0.4, extra: L(k.knurl(x, y, 7, 4, 9.6, 44, P), { tone: "lo" }) + L(k.sideArc(x, y, 7, 4, P, 24), { tone: "faint" }) + L(k.ring(x, y, 1.3, KNOB_TOP, P, 14), { tone: "mid" }) });
 }
 
-// ── assemble ─────────────────────────────────────────────────────────────
-const START = 0;
-const needle = (d, turn) => {
-  const a = turn * Math.PI * 2, [x, y] = d.at, top = DIAL_Z + DIAL_H + 0.2;
+// ── settle the painter's order, then place the live layers in their slots ──
+A.settle(R, P);
+R.items.sort((a, b) => a.key - b.key);
+const idx = (name) => R.items.findIndex((it) => it.name === name);
+const lastCell = Math.max(...R.items.map((it, i) => (/^(soma|neurite)\d/.test(it.name) ? i : -1)));
+const needleAt = (d, turn) => {
+  const a = turn * Math.PI * 2, [x, y] = d.at, top = DIAL_TOP + 0.2;
   return k.lineOnTop([x - Math.sin(a) * 3, y + Math.cos(a) * 3], [x + Math.sin(a) * (d.r - 3.6), y - Math.cos(a) * (d.r - 3.6)], top, P);
 };
+const knobPointer = (a) => k.lineOnTop([KNOB[0] + Math.sin(a) * 1.3, KNOB[1] - Math.cos(a) * 1.3], [KNOB[0] + Math.sin(a) * 6.4, KNOB[1] - Math.cos(a) * 6.4], KNOB_TOP, P);
+const slots = new Map();
+const add = (i, s) => slots.set(i, (slots.get(i) || "") + s);
+add(lastCell, `<g data-part="water"></g>`);
+DIALS.forEach((d, i) => add(idx(`dial${i}`), `<path data-part="needle-${i}" class="iso-line" data-tone="lit" data-free="start" d="${needleAt(d, 0)}" style="stroke-width:1.1"/>`));
+add(idx("knob"), `<path data-part="knob" class="iso-line" data-tone="hi" data-free="end" d="${knobPointer(KNOB_ANG[0])}" style="stroke-width:1"/>`);
+add(idx("keypad"), (() => { const [cx, cy] = at([KEYPAD.x + KEYPAD.w - 9, KEYPAD.y + 6, KEYPAD_H]); return `<circle data-part="lamp" class="bl-lamp" cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="1.5"/>`; })());
+add(idx("amp.lamp"), (() => { const [cx, cy] = at([AMP.x + 52, AMP_YF + 1.22, 33]); return `<circle data-part="amplamp" class="bl-lamp" cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="1.3"/>`; })());
+add(idx("plinth"), `<g data-part="shells">${Array.from({ length: 8 }, (_, i) => { const [cx, cy] = at([LAMP_X(i), LAMP_Y, PLINTH_H / 2]); return `<circle cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="1.25" class="bl-shell" opacity="0"/>`; }).join("")}</g>`);
+const items = R.items.map((it, i) => `<g data-it="${it.name}">${it.svg}</g>${slots.get(i) || ""}`);
+const solids = R.items.length;
+
 const svg = k.figureSvg({
   width: WIDTH,
   height: HEIGHT,
-  label: "A bench diffusion rig built around one 2 millimetre cube of brain. Two flat gradient coils stand either side of the cube, a four key pad on the left plays the finger sequence, a carriage on rails sets the scan time (before learning, 30 minutes after, 24 hours after), a knob picks the brain region, and four dial gauges read the change from baseline: mean diffusivity on its own post, and the soma, neurite and extracellular fractions on a shared bar.",
-  body: [
-    plate(),
-    labelPlate(),
-    wires(),
-    dialBar(),
-    mdPost(),
-    `<g data-part="dials">${DIALS.map(dialBody).join("")}</g>`,
-    DIALS.map((d, i) => `<path data-part="needle-${i}" class="iso-line" data-tone="lit" data-free="start" d="${needle(d, 0)}" style="stroke-width:1.1"/>`).join(""),
-    keypad(),
-    [0, 1, 2, 3].map((i) => `<g data-part="key-${i}">${key(i)}</g>`).join(""),
-    `<circle data-part="lamp" cx="${at([KEYPAD.x + KEYPAD.w - 8, KEYPAD.y + 5.5, KEYPAD_H])[0].toFixed(1)}" cy="${at([KEYPAD.x + KEYPAD.w - 8, KEYPAD.y + 5.5, KEYPAD_H])[1].toFixed(1)}" r="1.5" class="bl-lamp"/>`,
-    plinth(),
-    lamps(),
-    `<g data-part="shells">${Array.from({ length: 8 }, (_, i) => { const [cx, cy] = at([LAMP_X(i), LAMP_Y, PLINTH_H / 2]); return `<circle cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="1.2" class="bl-shell"/>`; }).join("")}</g>`,
-    coil(-COIL_X - COIL_T / 2, true),
-    stage(),
-    voxel(),
-    `<g data-part="cells"></g>`,
-    coil(COIL_X - COIL_T / 2, false),
-    bridge(),
-    rails(),
-    `<g data-part="carriage" transform="${k.translateAlong(P, [STOPS[START], 0, 0])}">${carriage()}</g>`,
-    knobBase(),
-    `<path data-part="knob" class="iso-line" data-tone="hi" data-free="end" d="${knobPointer(KNOB_ANG[0])}" style="stroke-width:1"/>`,
-  ],
+  label: "A bench diffusion rig built round one 2 millimetre cube of brain, shown cut away. Inside the open cube are cell bodies drawn as spheres, cell branches as rods, and the space between, with water molecules wandering through them. Two flat gradient coils stand either side, fed by a cable harness from a gradient amplifier at the back. A four key pad plays the finger task, a carriage on a ruled rail sets the scan time (before learning, 30 minutes after, 24 hours after), a knurled knob picks the brain region, and four dial gauges read the change from baseline: mean diffusivity on its own post, then the soma, neurite and extracellular fractions on a shared bar.",
+  body: [...back, items.join("")],
 });
 
 // ── live ─────────────────────────────────────────────────────────────────
+const CELL = { soma: SOMA, neurites: NSEG.map((n) => ({ p0: n.p0, p1: n.p1, r: n.r, extra: !!n.extra })), box: [-H + WALL, H, -H + WALL, H, CZ0, CZ1] };
 const live = `
 const P = ${JSON.stringify(P)};
 const REGIONS = ${JSON.stringify(REGIONS)};
 const TIMES = ${JSON.stringify(TIMES)};
 const TASK = ${JSON.stringify(TASK)};
 const DIALS = ${JSON.stringify(DIALS)};
-const DIAL_TOP = ${DIAL_Z + DIAL_H + 0.2};
+const DIAL_TOP = ${DIAL_TOP + 0.2};
 const TURN = ${JSON.stringify(DIAL_TURN)};
 const MAG = ${MAGNIFY};
 const STOPS = ${JSON.stringify(STOPS)};
 const KNOB = ${JSON.stringify(KNOB)}, KNOB_ANG = ${JSON.stringify(KNOB_ANG)}, KNOB_TOP = ${KNOB_TOP};
-const CELLS = ${JSON.stringify(CELLS)}, LINKS = ${JSON.stringify(LINKS)}, CUBE_TOP = ${CUBE_TOP + 0.05};
-const root = document.querySelector(".bl-root");
-const stage = root.querySelector(".iso-stage");
-const svg = stage.querySelector("svg");
-const $p = (n) => svg.querySelector('[data-part="' + n + '"]');
-const needles = DIALS.map((_, i) => $p("needle-" + i));
-const keys = [0, 1, 2, 3].map((i) => $p("key-" + i));
-const carriageEl = $p("carriage"), knobEl = $p("knob"), cellsEl = $p("cells"), lamp = $p("lamp");
-const shells = Array.from($p("shells").querySelectorAll("circle"));
-const readout = root.querySelector("[data-readout]");
-const still = matchMedia("(prefers-reduced-motion: reduce)");
-const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
-const needleAt = (d, turn) => { const a = turn * Math.PI * 2, x = d.at[0], y = d.at[1]; return lineOnTop([x - Math.sin(a) * 3, y + Math.cos(a) * 3], [x + Math.sin(a) * (d.r - 3.6), y - Math.cos(a) * (d.r - 3.6)], DIAL_TOP, P); };
-const pointerAt = (a) => lineOnTop([KNOB[0] + Math.sin(a) * 1.3, KNOB[1] - Math.cos(a) * 1.3], [KNOB[0] + Math.sin(a) * 6.2, KNOB[1] - Math.cos(a) * 6.2], KNOB_TOP, P);
-const f3 = (v) => v.toFixed(3), sgn = (v, n) => (v >= 0 ? "+" : "\\u2212") + Math.abs(v).toFixed(n);
-
-// the cartoon on the voxel's top: cell bodies (rings) and the links between them (lines that end on the rings)
-const NS = "http://www.w3.org/2000/svg";
-const rings = CELLS.map(() => { const p = document.createElementNS(NS, "path"); p.setAttribute("class", "iso-line"); p.setAttribute("data-tone", "hi"); cellsEl.appendChild(p); return p; });
-const links = LINKS.map(() => { const p = document.createElementNS(NS, "path"); p.setAttribute("class", "iso-line"); p.setAttribute("data-tone", "mid"); cellsEl.appendChild(p); return p; });
-
-// state
-const S = {
-  region: 0, knob: KNOB_ANG[0],
-  stop: 0, x: STOPS[0], target: STOPS[0],
-  scanned: 0,           // the time point whose scan the dials show
-  scan: -1, scanT: 0,   // a scan in progress: which stop, how far (s)
-  train: -1,            // seconds into a training session, or -1
-  dial: [0, 0, 0, 0], rate: [0, 0, 0, 0],
-};
-const SCAN_S = 1.6, BLOCK_S = 0.42, TRAIN_S = TASK.blocks * BLOCK_S;
-const valuesOf = (r, t) => {
-  const R = REGIONS[r];
-  return [100 * (R.md[t] - R.md[0]) / R.md[0], R.soma[t] - R.soma[0], R.neurite[t] - R.neurite[0], R.extra[t] - R.extra[0]];
-};
-const turnsOf = (v) => [v[0] / TURN.mdPercent, v[1] / TURN.fraction, v[2] / TURN.fraction, v[3] / TURN.fraction];
-
-let frame = 0, last = 0, visible = false, touring = !still.matches, clock = 0, idle = 0;
-
-function drawCells() {
-  const R = REGIONS[S.region];
-  const t = turnsOf([0, 0, 0, 0]);
-  // dial values back to fractions
-  const dS = S.dial[1] * TURN.fraction, dN = S.dial[2] * TURN.fraction;
-  const rS = 1.7 * clamp(1 + MAG * dS / R.soma[0], 0.5, 1.9);
-  const count = 6 * (1 + MAG * dN / R.neurite[0]);
-  CELLS.forEach((c, i) => rings[i].setAttribute("d", ring(c[0], c[1], rS, CUBE_TOP, P, 18)));
-  LINKS.forEach((l, i) => {
-    const a = CELLS[l[0]], b = CELLS[l[1]];
-    const dx = b[0] - a[0], dy = b[1] - a[1], len = Math.hypot(dx, dy), ux = dx / len, uy = dy / len;
-    links[i].setAttribute("d", lineOnTop([a[0] + ux * rS, a[1] + uy * rS], [b[0] - ux * rS, b[1] - uy * rS], CUBE_TOP, P));
-    links[i].setAttribute("opacity", clamp(count - i, 0, 1).toFixed(2));
-  });
-}
-
-function phaseText() {
-  const R = REGIONS[S.region];
-  if (S.train >= 0) { const b = Math.min(TASK.blocks, Math.floor(S.train / BLOCK_S) + 1); return "training \\u00b7 block " + b + " of " + TASK.blocks; }
-  if (S.scan >= 0) return "scanning \\u00b7 " + TIMES[S.scan];
-  const v = valuesOf(S.region, S.scanned);
-  if (S.scanned === 0) return R.short + " \\u00b7 baseline";
-  return R.short + " \\u00b7 " + TIMES[S.scanned] + " \\u00b7 soma " + sgn(v[1], 3) + " \\u00b7 neurite " + sgn(v[2], 3);
-}
-
-function panel() {
-  const R = REGIONS[S.region], t = S.scanned, v = valuesOf(S.region, t);
-  const set = (k, txt) => { const el = root.querySelector('[data-v="' + k + '"]'); if (el && el.textContent !== txt) el.textContent = txt; };
-  set("region", R.name); set("time", t === 0 ? "Before learning" : TIMES[t] + " after learning");
-  set("md", R.md[t].toFixed(2)); set("mdd", t ? sgn(v[0], 1) + " %" : "0");
-  set("soma", f3(R.soma[t])); set("somad", t ? sgn(v[1], 3) : "0");
-  set("neurite", f3(R.neurite[t])); set("neurited", t ? sgn(v[2], 3) : "0");
-  set("extra", f3(R.extra[t])); set("extrad", t ? sgn(v[3], 3) : "0");
-  ["md", "soma", "neurite", "extra"].forEach((k) => set(k + "s", R.sig[k]));
-  set("story", R.story);
-  root.querySelectorAll("[data-region]").forEach((b) => { const on = +b.dataset.region === S.region; b.setAttribute("aria-pressed", on ? "true" : "false"); });
-  root.querySelectorAll("[data-time]").forEach((b) => { const on = +b.dataset.time === S.stop; b.setAttribute("aria-pressed", on ? "true" : "false"); });
-  const tb = root.querySelector("[data-train]"); if (tb) tb.setAttribute("aria-pressed", S.train >= 0 ? "true" : "false");
-  stage.setAttribute("aria-valuetext", R.name + ", " + (t === 0 ? "before learning" : TIMES[t] + " after learning"));
-}
-
-function draw() {
-  carriageEl.setAttribute("transform", translateAlong(P, [S.x, 0, 0]));
-  knobEl.setAttribute("d", pointerAt(S.knob));
-  needles.forEach((n, i) => n.setAttribute("d", needleAt(DIALS[i], S.dial[i])));
-  // keys: during training, the sequence 4 1 3 2 4 plays once per block
-  let down = -1;
-  if (S.train >= 0) {
-    const inBlock = S.train % BLOCK_S, step = Math.floor(inBlock / (BLOCK_S * 0.66 / 5));
-    if (step < 5) down = TASK.sequence[step] - 1;
-  }
-  keys.forEach((el, i) => el.setAttribute("transform", i === down ? translateAlong(P, [0, 0, -1.6]) : ""));
-  lamp.setAttribute("data-on", S.train >= 0 ? "1" : "0");
-  shells.forEach((c, i) => {
-    let o = 0;
-    if (S.scan >= 0) { const head = S.scanT / SCAN_S * 9; o = clamp(1 - Math.abs(head - i - 0.5) / 1.6, 0, 1); }
-    c.setAttribute("opacity", o.toFixed(2));
-  });
-  drawCells();
-  const text = phaseText();
-  if (readout.textContent !== text) readout.textContent = text;
-}
-
-function startScan(stop) { S.scan = stop; S.scanT = 0; if (still.matches) finishScan(); }
-function finishScan() { S.scanned = S.scan; S.scan = -1; panel(); }
-
-function tick(now) {
-  const dt = last ? Math.min((now - last) / 1000, 1 / 30) : 1 / 60;
-  last = now;
-  const calm = still.matches;
-  if (touring) { clock += dt; tour(); } else { idle += dt; if (idle > 6 && !calm) { touring = true; clock = 0; tourIndex = -1; } }
-  // knob and carriage ease to their targets
-  const kt = KNOB_ANG[S.region];
-  S.knob = calm ? kt : S.knob + (kt - S.knob) * (1 - Math.exp(-dt / 0.18));
-  if (Math.abs(kt - S.knob) < 1e-3) S.knob = kt;
-  const before = S.x;
-  S.x = calm ? S.target : S.x + (S.target - S.x) * (1 - Math.exp(-dt / 0.3));
-  if (Math.abs(S.target - S.x) < 0.05) S.x = S.target;
-  if (before !== S.target && S.x === S.target) startScan(S.stop);
-  if (S.train >= 0) { S.train += dt; if (S.train >= TRAIN_S) { S.train = -1; panel(); } }
-  if (S.scan >= 0) { S.scanT += dt; if (S.scanT >= SCAN_S) finishScan(); }
-  // dials: a damped spring toward the scanned values
-  const goal = turnsOf(valuesOf(S.region, S.scanned));
-  let moving = false;
-  for (let i = 0; i < 4; i++) {
-    if (calm) { S.dial[i] = goal[i]; S.rate[i] = 0; continue; }
-    for (let s = 0; s < 4; s++) { S.rate[i] += ((goal[i] - S.dial[i]) * 90 - S.rate[i] * 15) * dt / 4; S.dial[i] += S.rate[i] * dt / 4; }
-    if (Math.abs(goal[i] - S.dial[i]) < 5e-5 && Math.abs(S.rate[i]) < 5e-4) { S.dial[i] = goal[i]; S.rate[i] = 0; } else moving = true;
-  }
-  draw();
-  const busy = touring || moving || S.train >= 0 || S.scan >= 0 || S.x !== S.target || S.knob !== KNOB_ANG[S.region];
-  frame = visible && (busy || !calm) ? requestAnimationFrame(tick) : 0;
-}
-const run = () => { if (!frame && visible) { last = 0; frame = requestAnimationFrame(tick); } };
-
-// controls
-function setRegion(r) { S.region = (r + 4) % 4; S.scanned = S.stop; S.scan = -1; panel(); run(); }
-function setTime(t) { t = clamp(t, 0, 2); if (t === S.stop && S.x === S.target) { startScan(t); run(); return; } S.stop = t; S.target = STOPS[t]; S.scan = -1; panel(); run(); }
-function train() { S.stop = 0; S.target = STOPS[0]; S.scanned = 0; S.scan = -1; S.train = still.matches ? -1 : 0; panel(); run(); }
-function hand() { touring = false; idle = 0; }
-
-// the idle tour: for each region, baseline, a training session, then the 30 min and 24 h scans
-let tourIndex = -1, tourAt = 0;
-const STEPS = [];
-for (let r = 0; r < 4; r++) {
-  const order = [3, 2, 1, 0][r];
-  STEPS.push({ r: order, t: 0, hold: 2.2 }, { r: order, train: true, hold: TRAIN_S + 0.6 }, { r: order, t: 1, hold: 3.6 }, { r: order, t: 2, hold: 3.8 });
-}
-function tour() {
-  if (tourIndex < 0 || clock - tourAt >= STEPS[tourIndex].hold) {
-    tourIndex = (tourIndex + 1) % STEPS.length; tourAt = clock;
-    const s = STEPS[tourIndex];
-    if (s.r !== S.region) { S.region = s.r; S.scanned = S.stop; }
-    if (s.train) train(); else setTime(s.t);
-    panel();
-  }
-}
-
-root.addEventListener("click", (e) => {
-  const b = e.target.closest("button"); if (!b) return;
-  hand();
-  if (b.dataset.region != null) setRegion(+b.dataset.region);
-  else if (b.dataset.time != null) setTime(+b.dataset.time);
-  else if (b.hasAttribute("data-train")) train();
-});
-stage.addEventListener("pointermove", (e) => {
-  if (e.pointerType !== "mouse") return;
-  const box = svg.getBoundingClientRect();
-  const fx = (e.clientX - box.left) / box.width, fy = (e.clientY - box.top) / box.height;
-  if (fy > 0.68 && fx > 0.42 && fx < 0.82) { hand(); const t = clamp(Math.round((fx - 0.47) / 0.3 * 2), 0, 2); if (t !== S.stop) setTime(t); }
-});
-stage.addEventListener("keydown", (e) => {
-  let used = true;
-  if (e.key === "ArrowRight") setTime(S.stop + 1);
-  else if (e.key === "ArrowLeft") setTime(S.stop - 1);
-  else if (e.key === "ArrowUp") setRegion(S.region + 1);
-  else if (e.key === "ArrowDown") setRegion(S.region - 1);
-  else if (e.key === "Home") setTime(0);
-  else if (e.key === "End") setTime(2);
-  else if (e.key === "Enter" || e.key === " ") train();
-  else if (e.key >= "1" && e.key <= "4") setRegion(+e.key - 1);
-  else used = false;
-  if (used) { e.preventDefault(); hand(); }
-});
-new IntersectionObserver((entries) => { visible = entries[entries.length - 1].isIntersecting; if (visible) run(); }, { rootMargin: "120px 0px" }).observe(stage);
-if (still.matches) touring = false;
-// a fixed pose for stills: ?pose=region,time  (for the poster)
-const q = new URLSearchParams(location.search).get("pose");
-if (q) { const [r, t] = q.split(",").map(Number); touring = false; S.region = r; S.stop = t; S.x = S.target = STOPS[t]; S.scanned = t; S.knob = KNOB_ANG[r]; S.dial = turnsOf(valuesOf(r, t)); idle = -1e9; }
-panel(); draw();
+const CELL = ${JSON.stringify(CELL)};
+${readFileSync(join(HERE, "live.js"), "utf8")}
 `;
 
+const plate1 = k.plateHtml({
+  fig: "Fig 1",
+  title: "One voxel, three compartments",
+  hint: "Pick a region, train, scan",
+  readout: "hippocampus · baseline",
+  body: `<div class="iso-stage" tabindex="0" role="slider" aria-label="Diffusion rig. Left and right arrows change the scan time, up and down change the brain region, Enter runs a training session." aria-valuemin="0" aria-valuemax="2" aria-valuenow="0">${svg}</div>`,
+});
 const btn = (attr, label) => `<button type="button" ${attr} aria-pressed="false">${label}</button>`;
 const side = `
 <div class="bl-side">
   <div class="bl-group"><span class="bl-k">Brain region</span><div class="bl-btns">${REGIONS.map((r, i) => btn(`data-region="${i}"`, r.short === "M1" ? "Motor cortex (M1)" : r.short === "PPC" ? "Parietal (PPC)" : r.name)).join("")}</div></div>
   <div class="bl-group"><span class="bl-k">Scan</span><div class="bl-btns bl-row">${TIMES.map((t, i) => btn(`data-time="${i}"`, i === 0 ? "Before" : t)).join("")}</div><button type="button" class="bl-train" data-train aria-pressed="false">▶ Train: 15 blocks</button></div>
+  <div class="bl-enc"><span class="bl-k">In the cube</span><p data-v="enc">Water wanders: trapped in cell bodies, guided along branches, hindered in between.</p><div class="bl-key"><span><i class="s"></i>soma</span><span><i class="n"></i>neurite</span><span><i class="e"></i>extracellular</span></div></div>
   <table class="bl-tab" aria-live="polite">
     <caption><span data-v="region">Hippocampus</span> · <span data-v="time">Before learning</span></caption>
     <thead><tr><th scope="col">Dial</th><th scope="col">Value</th><th scope="col">Change</th><th scope="col">Paper</th></tr></thead>
@@ -575,36 +370,62 @@ const side = `
   </table>
   <p class="bl-story" data-v="story"></p>
 </div>`;
-
-const plate1 = k.plateHtml({
-  fig: "Fig 1",
-  title: "One voxel, three compartments",
-  hint: "Pick a region, train, scan",
-  readout: "hippocampus · baseline",
-  body: `<div class="iso-stage" tabindex="0" role="slider" aria-label="Diffusion rig. Left and right arrows change the scan time, up and down change the brain region, Enter runs a training session." aria-valuemin="0" aria-valuemax="2" aria-valuenow="0">${svg}</div>`,
-});
-const caption = `<p class="bl-cap">My own drawing of an imaginary bench instrument, built on the paper’s numbers. The real scan is a whole head in the 3T Connectome scanner (300 mT/m gradients, 2 mm voxels, 7 b values from 200 to 8,000 s/mm² plus b = 0 images). Dials, left to right at the back: MD on its own post (one full turn = 10 % change), then soma, neurite and extracellular fractions (one full turn = 0.04 of the signal). Values are group means read off Fig 3 of Griffa et al., PLOS Biology 24(6): e3003861 (2026), CC BY 4.0, so the third decimal is approximate. The cells drawn on the cube are a cartoon, with their changes magnified ten times. The real training took about 15 to 20 minutes; here a block lasts under half a second.</p>`;
+const caption = `<p class="bl-cap">My own drawing of an imaginary bench instrument, built on the paper’s numbers. The real scan is a whole head in the 3T Connectome scanner (300 mT/m gradients, 2 mm voxels, 7 b values from 200 to 8,000 s/mm² plus b = 0 images, 8 ms pulses 24 ms apart). In the cube, each water molecule carries a little arrow: the first gradient pulse turns it by an amount set by where the molecule is along the coils, the second turns it back by where it is now. Molecules that stayed put end up pointing the same way (signal kept); molecules that wandered do not (signal lost). The walk is a toy simulation, slowed right down, and the cells are a cartoon whose changes are magnified ten times. Dials: MD on its own post (one full turn = 10 % change), then soma, neurite and extracellular fractions (one full turn = 0.04 of the signal). Values are group means read off Fig 3 of Griffa et al., PLOS Biology 24(6): e3003861 (2026), CC BY 4.0, so the third decimal is approximate. The real training took about 15 to 20 minutes; here a block lasts under half a second.</p>`;
 
 const CSS = `
+.iso[data-theme="dark"]{
+  --anatomy-page:#15131F;--anatomy-card:#1D1B2E;--anatomy-text:#B6BFC1;--anatomy-strong:#F1F0F6;--anatomy-muted:#8C89A6;
+  --anatomy-paper:#1D1B2E;--anatomy-face:#2A2840;--anatomy-top:#2C2A41;
+  --anatomy-shade-0:#191726;--anatomy-shade-1:#1E1C2E;--anatomy-shade-2:#232135;--anatomy-shade-3:#28263B;
+  --anatomy-lit-top:#3A3552;--anatomy-lit-shade:#302C46;
+  --anatomy-hi:#E4E2EE;--anatomy-mid:#8F8BAA;--anatomy-lo:#57536F;--anatomy-faint:#3B3853;--anatomy-lit:#F7A6B4;
+  --anatomy-halo:#06050B;--anatomy-halo-opacity:.85;--anatomy-dot:#E4E2EE;
+  --soma:#F37F94;--neurite:#9C97DC;--ecs:#B6BFC1;--pulse:#F37F94;
+}
+.iso[data-theme="light"]{--soma:#E25C77;--neurite:#66629C;--ecs:#8A9497;--pulse:#D9436A}
 html,body{height:100%}
 body{margin:0;background:var(--anatomy-page);color:var(--anatomy-text);font:13px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
-.bl-root{box-sizing:border-box;min-height:100%;padding:14px;display:grid;grid-template-columns:minmax(0,1fr) 268px;gap:14px;align-items:start;align-content:start;max-width:1180px;margin:0 auto}
+.bl-root{box-sizing:border-box;min-height:100%;padding:14px;display:grid;grid-template-columns:minmax(0,1fr) 268px;gap:14px;align-items:start;align-content:start;max-width:1220px;margin:0 auto}
 .bl-root *{box-sizing:border-box}
 .bl-root .iso-figure{margin:0}
-.bl-root .iso-plate{padding:40px 14px 38px}
+.bl-root .iso-plate{padding:40px 10px 38px}
 .bl-root .iso-plate-corners{inset:14px 16px}
 .iso-stage{outline:none;touch-action:pan-y}
 .iso-stage:focus-visible{outline:1px solid var(--anatomy-muted);outline-offset:6px}
+.bl-soma .iso-fill{fill:var(--soma);fill-opacity:.16}
+.bl-soma .iso-shade,.bl-soma .iso-top{fill:var(--soma)!important;stroke:none!important;fill-opacity:.12}
+.bl-soma .iso-shade[data-shade="0"]{fill-opacity:.26}.bl-soma .iso-shade[data-shade="1"]{fill-opacity:.2}
+.bl-soma .iso-edge,.bl-soma .iso-crease{stroke:var(--soma)}
+.bl-soma .iso-line{stroke:var(--soma);opacity:.6}
+.bl-neurite .iso-fill{fill:var(--neurite);fill-opacity:.2}
+.bl-neurite .iso-shade,.bl-neurite .iso-top{fill:var(--neurite);fill-opacity:.18}
+.bl-neurite .iso-edge,.bl-neurite .iso-crease{stroke:var(--neurite)}
+.bl-new{opacity:0;transition:opacity .6s}
+.bl-ecs{fill:var(--ecs);fill-opacity:.07;stroke:none}
+.bl-glow{opacity:0}
+.bl-glow .iso-line{stroke:var(--pulse);stroke-width:1.1}
+.bl-root .iso-svg .bl-mol{stroke:none}
+.bl-mol.s{fill:var(--soma)}.bl-mol.n{fill:var(--neurite)}.bl-mol.e{fill:var(--ecs)}
+.bl-spin{fill:none;stroke-width:.7;stroke-linecap:round}
+.bl-spin.s{stroke:var(--soma)}.bl-spin.n{stroke:var(--neurite)}.bl-spin.e{stroke:var(--ecs)}
+.bl-lamp{fill:var(--anatomy-paper);stroke:var(--anatomy-lo);stroke-width:.6;transition:fill .2s}
+.bl-lamp[data-on="1"]{fill:var(--pulse)}
+.bl-shell{fill:var(--pulse);stroke:none}
 .bl-side{display:flex;flex-direction:column;gap:12px}
 .bl-group{display:flex;flex-direction:column;gap:6px}
 .bl-k{font-family:var(--anatomy-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--anatomy-muted)}
 .bl-btns{display:grid;grid-template-columns:1fr 1fr;gap:5px}
 .bl-btns.bl-row{grid-template-columns:repeat(3,1fr)}
-.bl-root button{min-height:34px;padding:4px 8px;border:1px solid var(--anatomy-mid);background:var(--anatomy-card);color:var(--anatomy-strong);font:12px/1.2 var(--anatomy-mono);cursor:pointer;border-radius:0;text-align:center}
+.bl-root button{min-height:34px;padding:4px 8px;border:1px solid var(--anatomy-lo);background:var(--anatomy-card);color:var(--anatomy-strong);font:12px/1.2 var(--anatomy-mono);cursor:pointer;border-radius:0;text-align:center}
 .bl-root button:hover{border-color:var(--anatomy-strong)}
-.bl-root button[aria-pressed="true"]{background:var(--anatomy-strong);border-color:var(--anatomy-strong);color:var(--anatomy-card)}
+.bl-root button[aria-pressed="true"]{background:var(--soma);border-color:var(--soma);color:#1D1B2E}
 .bl-root button:focus-visible{outline:2px solid var(--anatomy-strong);outline-offset:2px}
 .bl-train{width:100%}
+.bl-enc{border-left:2px solid var(--soma);padding:2px 0 2px 10px;display:flex;flex-direction:column;gap:4px}
+.bl-enc p{margin:0;font-size:12.5px;line-height:1.45;color:var(--anatomy-strong);min-height:3.6em}
+.bl-key{display:flex;gap:12px;font:11px var(--anatomy-mono);color:var(--anatomy-muted)}
+.bl-key i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:4px;vertical-align:0}
+.bl-key i.s{background:var(--soma)}.bl-key i.n{background:var(--neurite)}.bl-key i.e{background:var(--ecs)}
 .bl-tab{width:100%;border-collapse:collapse;font:12px/1.35 var(--anatomy-mono);color:var(--anatomy-strong);font-variant-numeric:tabular-nums}
 .bl-tab caption{text-align:left;font-family:var(--anatomy-mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--anatomy-muted);padding-bottom:4px}
 .bl-tab th,.bl-tab td{padding:4px 4px;border-top:1px solid var(--anatomy-faint);text-align:right;font-weight:400}
@@ -612,12 +433,9 @@ body{margin:0;background:var(--anatomy-page);color:var(--anatomy-text);font:13px
 .bl-tab thead th{color:var(--anatomy-muted);font-size:10px;letter-spacing:.06em;text-transform:uppercase;border-top:0}
 .bl-tab td:last-child{color:var(--anatomy-muted);font-size:10.5px;white-space:nowrap}
 .bl-story{margin:0;font-size:13px;line-height:1.5;color:var(--anatomy-strong)}
-.bl-cap{grid-column:1 / -1;margin:0;font-size:12px;line-height:1.55;color:var(--anatomy-muted);max-width:110ch}
-.bl-lamp{fill:var(--anatomy-paper);stroke:var(--anatomy-lo);stroke-width:.6;transition:fill .2s}
-.bl-lamp[data-on="1"]{fill:var(--anatomy-lit)}
-.bl-shell{fill:var(--anatomy-lit);stroke:none}
-@media (max-width:760px){.bl-root{grid-template-columns:minmax(0,1fr);padding:10px}.bl-btns{grid-template-columns:1fr 1fr}.bl-root .iso-plate{padding:34px 4px 40px}}
-@media (max-height:600px) and (min-width:761px){.bl-root{padding:8px;gap:10px}.bl-cap{display:none}.bl-story{font-size:12px}.bl-root .iso-plate{padding:30px 10px 30px}.bl-root .iso-plate-corners{inset:10px 12px}}
+.bl-cap{grid-column:1 / -1;margin:0;font-size:12px;line-height:1.55;color:var(--anatomy-muted);max-width:120ch}
+@media (max-width:760px){.bl-root{grid-template-columns:minmax(0,1fr);padding:10px}.bl-root .iso-plate{padding:34px 2px 40px}}
+@media (max-height:600px) and (min-width:761px){.bl-root{padding:8px;gap:10px}.bl-cap{display:none}.bl-story{display:none}.bl-root .iso-plate{padding:30px 6px 30px}.bl-root .iso-plate-corners{inset:10px 12px}}
 `;
 
 const page = `<!doctype html>
@@ -626,8 +444,9 @@ const page = `<!doctype html>
 <meta name="robots" content="noindex">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <style>${k.ISO_CSS}${CSS}</style></head>
-<body class="iso" data-theme="light"><main class="bl-root">${plate1}${side}${caption}</main>
+<body class="iso" data-theme="${THEME}"><main class="bl-root">${plate1}${side}${caption}</main>
 <script type="module">${(kitScript() + live).replace(/<\/(script)/gi, "<\\/$1")}</script></body></html>`;
 
 writeFileSync(OUT, page);
-console.log("wrote", OUT, (page.length / 1024).toFixed(0) + " KB");
+console.log("wrote", OUT, (page.length / 1024).toFixed(0) + " KB", solids + " items", R.routes.length + " cables", "scale " + KS.toFixed(3));
+A.auditOrExit(R, P, { crowd: [["cable.right", "bridge"], ["cable.left", "bridge"]] });

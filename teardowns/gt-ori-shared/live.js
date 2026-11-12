@@ -325,7 +325,7 @@ export function runLive() {
     cam.d = Math.exp(Math.log(cam.d) + (Math.log(tgt.d) - Math.log(cam.d)) * k);
     for (let i = 0; i < 3; i++) cam.at[i] += (tgt.at[i] - cam.at[i]) * k;
     const xray = xrayOf(cam.d);
-    st.frame({...a, xray}, toCam(cam));
+    st.frame({...a, xray, time: T}, toCam(cam));
     if (n % TIERS[tier].every === 0) {
       const display = Object.fromEntries(DISPLAY.map((x) => [x, disp[x].on]));
       ui.update({

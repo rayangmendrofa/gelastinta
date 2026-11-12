@@ -253,7 +253,7 @@ export function makeFilm() {
         const cam = camAt(t, disp.orbit);
         const xray = xrayOf(cam.d);
         const a = robotState(simAt(t), {f: fAt(t), nudge: nudgeAt(t), slow: slowAt(t), cargo: easedDisplay('cargo', t, 0.5)});
-        st.frame({...a, xray}, toCam(cam));
+        st.frame({...a, xray, time: t}, toCam(cam));
         ui.update({
           ...a,
           paused: false,

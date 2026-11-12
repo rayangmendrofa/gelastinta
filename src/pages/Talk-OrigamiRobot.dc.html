@@ -320,6 +320,20 @@ html[data-theme="dark"] .dark .catch,html[data-theme="dark"] .cp-hero .dark{filt
 .mgrid button:focus-visible{outline:3px solid #2B44C8;outline-offset:2px}
 @media (max-width:960px){.rig-grid{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:640px){.mgrid{grid-template-columns:52px repeat(4,minmax(0,1fr));gap:4px}.mgrid button{font-size:11px;padding:2px}.mgrid .mh{font-size:9px}.mgrid .mr{font-size:10px}}
+.guide{border-top:1px dashed #E2D9D6;padding-top:14px;display:flex;flex-direction:column;gap:10px}
+.guide-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}
+.guide-step{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#3D639A;min-width:9.5em}
+.guide-track{flex:1 1 120px;height:3px;background:#EFE4E0;overflow:hidden;border-radius:2px}
+.guide-track i{display:block;height:100%;width:0;background:#E34A2B}
+.guide-btn{min-height:44px;padding:0 14px;border:1px solid #171C2C;background:#FFFAF8;color:#171C2C;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.guide-btn:hover{background:#FAEFEB}
+.guide-btn.on{background:#171C2C;color:#FFFAF8}
+.guide-btn:disabled{opacity:.4;cursor:default}
+.guide-btn:focus-visible{outline:3px solid #2B44C8;outline-offset:2px}
+.guide-cap{font-size:17px !important;line-height:1.55 !important;font-weight:600;min-height:3.2em;margin:0}
+.guide-all{margin:0;padding-left:1.3em;display:flex;flex-direction:column;gap:6px;font-size:16px;line-height:1.5}
+.guide-all:empty,.guide-cap[hidden],.guide-bar[hidden]{display:none}
+@media (max-width:640px){.guide-cap{font-size:16px !important}.guide-step{min-width:0}.rig-svg{min-width:0}}
 /* ori:end */
 /* wada:start */:root{--wada-ink:#E34A2B;--wada-fill:#5A82B3}
 .cp-hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:8px;z-index:3;background:linear-gradient(90deg,#E34A2B 0.0% 33.33%,#5A82B3 33.33% 66.67%,#F2D3CB 66.67% 100.0%)}
@@ -337,6 +351,7 @@ html[data-theme="dark"] .dark .catch,html[data-theme="dark"] .cp-hero .dark{filt
 .wada-credit{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;font-family:"Ubuntu Mono",ui-monospace,monospace;font-size:11px;letter-spacing:.06em;color:#E2D9D6}
 .wada-credit .wada-mini{margin-left:0;border-color:#4A5168}
 /* wadasite:end */
+.mm{position:relative}.mm img{display:block}.mm .mm-l{position:absolute;transform:translate(-50%,-50%);background:#fff;color:#111;border:1.5px solid #111;font-family:'Titillium Web',system-ui,sans-serif;font-weight:700;font-size:12px;line-height:1.15;padding:3px 6px;text-align:center;max-width:44%}html[data-theme="dark"] .mm .mm-l{filter:invert(1) hue-rotate(180deg)}
 .meme-sm.wide{grid-template-columns:minmax(0,340px) minmax(0,1fr)}
 @media (max-width:640px){.meme-sm.wide{grid-template-columns:minmax(0,1fr)}}
 /* theme:start */
@@ -515,7 +530,7 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <div class="col stack g16">
 <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="Main.dc.html">Home</a></li><li><a href="Talks.dc.html">Talks</a></li><li aria-current="page">Talk 11</li></ol></nav>
 <p class="kicker">Talk 11 — Review</p>
-<h1 class="t-title">Folded Twice, Moves Eight Ways: A Bistable Origami Robot</h1>
+<h1 class="t-title">Folded Twice, Moves Eight Ways. A Bistable Origami Robot</h1>
 <p class="meta">Rayang T Mendrofa · 30th October 2026 · 12 min read</p>
 <aside style="margin-top:24px;border:1px solid #171C2C;background:#FFFAF8">
 <div class="dark" style="padding:12px 20px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px"><span class="kicker" style="font-size:11px">Paper under review</span><span class="meta" style="font-size:11px;color:#F2D3CB">NATURE COMMUNICATIONS · ARTICLE IN PRESS · OPEN ACCESS</span></div>
@@ -570,15 +585,17 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <p class="small" style="padding:24px;font-size:17px;line-height:1.65">The hinges are deliberately shifted off the panel faces by small offsets. With the right offsets, the panels only fit together perfectly when fully open or fully closed. Anywhere in between they clash, so the silicone hinges have to stretch and bend, storing energy. That stored energy is the hill between two valleys: the robot is bistable.</p>
 </article>
 </div>
-<div class="col-wide viz" style="margin-top:48px" role="group" aria-label="Chart A: three hinge offset designs and how hard each is to snap">
+<div class="col-wide" style="margin-top:48px"><figure class="meme-sm" style="margin:0"><img src="/_blob/b1d4710a3b063894ac3266c1c4fd578b" alt="A paper fortune teller opening and closing between two hands" loading="lazy"><p style="margin:0;font-size:17px;line-height:1.6">You have built one of these already. A paper fortune teller flips between two shapes with one pinch, and it stays put in each. That is bistable origami. Huang’s team swapped the fingers for magnets.</p></figure></div>
+<div class="col-wide viz" style="margin-top:48px" role="group" aria-label="Chart A: three hinge offset designs and how hard each is to snap" data-ori-design>
 <div class="viz-head">
-<span class="kicker">Chart A · Try it: pick a hinge design</span>
-<h3 class="t-h3">{{d.title}}</h3>
+<span class="kicker">Chart A · Watch it: three hinge designs</span>
+<h3 class="t-h3" data-r="dtitle">The chosen design: the lowest hill</h3>
 </div>
 <div class="viz-body stack g24">
-<div class="ratio" aria-label="Choose a design"><sc-for list="{{dTabs}}" as="t" hint-placeholder-count="3"><button type="button" class="{{t.on}}" aria-pressed="{{t.aria}}" onClick="{{t.pick}}">{{t.label}}</button></sc-for></div>
-<div class="gbars"><sc-for list="{{d.rows}}" as="r" hint-placeholder-count="4"><div class="gbar wide"><span class="nm">{{r.n}}</span><div class="tr"><div class="fl" style="width:{{r.w}};background:{{r.c}}"></div></div><span class="vl">{{r.v}}</span></div></sc-for></div>
-<p class="small" aria-live="polite">{{d.note}}</p>
+<div class="ratio" role="group" aria-label="Choose a design"><button type="button" data-dz="0" class="on" aria-pressed="true">1.80 / 3.30 (chosen)</button><button type="button" data-dz="1" aria-pressed="false">1.55 / 3.30</button><button type="button" data-dz="2" aria-pressed="false">1.30 / 3.30</button></div>
+<div class="gbars"><div class="gbar wide"><span class="nm">Energy hill</span><div class="tr"><div class="fl" data-dbar="0" style="width:52.5%;background:#E34A2B;transition:width .7s cubic-bezier(.2,.75,.1,1)"></div></div><span class="vl" data-dval="0">≈ 0.21 mJ</span></div><div class="gbar wide"><span class="nm">Peak hinge torque</span><div class="tr"><div class="fl" data-dbar="1" style="width:52%;background:#E34A2B;transition:width .7s cubic-bezier(.2,.75,.1,1)"></div></div><span class="vl" data-dval="1">≈ 0.26 N·mm</span></div><div class="gbar wide"><span class="nm">Push to close</span><div class="tr"><div class="fl" data-dbar="2" style="width:27.5%;background:#5A82B3;transition:width .7s cubic-bezier(.2,.75,.1,1)"></div></div><span class="vl" data-dval="2">≈ 33 mN</span></div><div class="gbar wide"><span class="nm">Push to open</span><div class="tr"><div class="fl" data-dbar="3" style="width:65%;background:#3D639A;transition:width .7s cubic-bezier(.2,.75,.1,1)"></div></div><span class="vl" data-dval="3">≈ 78 mN</span></div></div>
+<p class="small" data-r="dnote">The design the team built. Its hill is the lowest of the three, so the coils’ pulse can push it over, while it still holds shut on its own. It closes with about 33 mN and needs about 78 mN to open.</p>
+<div class="guide" data-guide="design"><div class="guide-bar"><span class="guide-step" data-g="step">Guided tour</span><div class="guide-track" aria-hidden="true"><i data-g="bar"></i></div><button type="button" class="guide-btn" data-g-pause aria-label="Pause the guided tour"><span aria-hidden="true">‖</span> Pause</button><button type="button" class="guide-btn" data-g-replay aria-label="Replay the guided tour"><span aria-hidden="true">↺</span> Replay</button></div><p class="guide-cap" data-g="cap" aria-live="polite">Scroll this chart into view and it explains itself, step by step.</p><ol class="guide-all" data-g="all"></ol></div>
 </div>
 <div class="viz-foot"><span class="meta muted" style="font-size:12px">Ratio a₂/a₁ of the two hinge offsets, in mm. Values read by eye from the paper’s Fig. 1C, 1D and 1F, so treat them as approximate. Forces are means of 5 pushes on each prototype.</span></div>
 <div class="viz-more"><button type="button" class="more" aria-expanded="{{ex.a.aria}}" onClick="{{ex.a.toggle}}"><span class="more-ico" aria-hidden="true">{{ex.a.ico}}</span>{{ex.a.text}} the science</button><sc-if value="{{ex.a.open}}"><div class="more-body"><p>The team modelled the stored energy as two parts. The stretching energy of the silicone hinges rises and then falls as the clashing panels pass each other, while the bending energy keeps rising with the fold angle. Add them and you get a curve with a hump: open at an angle θ of 0, a peak near 0.6 rad, and a second valley near 1.45 rad. A finite element model in COMSOL backed up the hand calculation.</p>
@@ -598,9 +615,10 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <p>Instead of chasing a uniform field, the team built a rig that is happy with an uneven one. Three coils and a small electromagnet sit under the robot’s platform on a carriage that slides on two perpendicular rails, so the coils can follow the robot around a large open area. The magnets in the robot feel two things from this uneven field: a twisting torque that folds the hinge, and a pulling force from the field’s gradient that moves the whole body.</p>
 <p>How hard and how fast the field pushes decides what happens. A small oscillating field nudges the robot without tipping it over the energy hill, so it wiggles and moves in whatever way its current shape allows. One large, short pulse throws it over the hill and it snaps into its other shape. Same robot, same coils, very different results.</p>
 </div>
+<div class="col-wide" style="margin-top:8px"><figure class="meme-sm" style="margin:0"><img src="/_blob/f0520879f754d43440f3bf33c27f7f8a" alt="A cartoon coyote on a skateboard holding a giant horseshoe magnet" loading="lazy"><p style="margin:0;font-size:17px;line-height:1.6">The classic plan is one giant magnet and a lot of hope. It rarely ends well. This team went the other way. Their field is lumpy on purpose, and the robot’s own folds decide what each push does.</p></figure></div>
 <div class="col-wide viz" style="margin-top:48px" role="group" aria-label="Chart B: a clickable drawing of the coil rig" data-ori-rig>
 <div class="viz-head">
-<span class="kicker">Chart B · Click it: the coil rig</span>
+<span class="kicker">Chart B · Watch it: the coil rig</span>
 <h3 class="t-h3" data-r="rgtitle">The robot on its platform</h3>
 </div>
 <div class="viz-body">
@@ -623,10 +641,11 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <div class="ratio rg-tabs" role="group" aria-label="Choose a part"><button type="button" data-rg="3" class="on" aria-pressed="true">Robot</button><button type="button" data-rg="0" aria-pressed="false">Electromagnet</button><button type="button" data-rg="1" aria-pressed="false">Coils</button><button type="button" data-rg="2" aria-pressed="false">Sliders</button><button type="button" data-rg="4" aria-pressed="false">Power</button><button type="button" data-rg="5" aria-pressed="false">Loop</button></div>
 <p class="small" data-r="rgnote" aria-live="polite">Weighing 0.81 g, the robot sits on a clear platform with the coils underneath. Its four magnets are what the field grabs: pushed one way they fold the hinge, pulled by the field’s gradient they move the whole body.</p>
 <div class="readout v"><div><span data-r="rgk">Key number</span><b data-r="rgv" style="font-size:24px">0.81 g</b></div></div>
+<div class="guide" data-guide="rig"><div class="guide-bar"><span class="guide-step" data-g="step">Guided tour</span><div class="guide-track" aria-hidden="true"><i data-g="bar"></i></div><button type="button" class="guide-btn" data-g-pause aria-label="Pause the guided tour"><span aria-hidden="true">‖</span> Pause</button><button type="button" class="guide-btn" data-g-replay aria-label="Replay the guided tour"><span aria-hidden="true">↺</span> Replay</button></div><p class="guide-cap" data-g="cap" aria-live="polite">Scroll this chart into view and it explains itself, step by step.</p><ol class="guide-all" data-g="all"></ol></div>
 </div>
 </div>
 </div>
-<div class="viz-foot"><span class="meta muted" style="font-size:12px">My own drawing, not to scale, after the paper’s Fig. 1G and Methods. Click a part, or use the buttons.</span></div>
+<div class="viz-foot"><span class="meta muted" style="font-size:12px">My own drawing, not to scale, after the paper’s Fig. 1G and Methods. It plays a short guided tour when it scrolls into view; click any part to take over.</span></div>
 <div class="viz-more"><button type="button" class="more" aria-expanded="{{ex.b.aria}}" onClick="{{ex.b.toggle}}"><span class="more-ico" aria-hidden="true">{{ex.b.ico}}</span>{{ex.b.text}} the field maths</button><sc-if value="{{ex.b.open}}"><div class="more-body"><p>The field from the coils is calculated with the Biot and Savart law, treating each coil as a continuous block of current plus the extra field from its iron core. For real time control that integral is chopped into a finite set of current filaments, which is much cheaper to compute. Field values from this model agreed with simulation along a test line.</p>
 <p>For the forces on the robot, each little magnet is treated as a pair of “magnetic charges” at its north and south ends. The force on the robot is the sum of charge times field at each end, and the folding torque is the sum of each force times its lever arm about the central hinge. Against finite element simulation and measurements, this charge model followed the trends with errors below 20% at distances beyond 2 mm. Magnets more than 5 mm apart barely affect each other, so the team ignored those internal forces.</p></div></sc-if></div>
 </div>
@@ -650,8 +669,8 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <div class="col-wide" id="teardown" style="margin-top:56px">
 <div class="stack g8" style="margin-bottom:14px"><p class="kicker">Take it apart · 3D model</p><h3 class="t-h3">Two valleys, one coil rig</h3><p class="small">My own model, built from the paper’s energy and torque curves: nudge the robot and watch it crawl when open and roll when closed, then fire a pulse, slow time down ten times, and watch the fold climb the hill and drop into the other valley. <a href="https://gelastinta.com/teardowns/origami-robot.html" target="_blank" rel="noopener">Open full screen ↗</a></p></div>
 <div class="td-box" data-td>
-<img class="td-poster" src="/_blob/3aa76ef4c11f906b84696c1d1475866a" alt="The origami robot in 3D, seen end on in the middle of snapping shut around a cargo ball, with panels for the energy curve, the torque balance and the eight motion modes" loading="lazy">
-<button class="td-play" type="button" data-td-play aria-label="The bistable origami robot in 3D"><span class="td-pill">3D model</span><b>Open the 3D model</b><span class="td-sub">It plays a short tour on its own. Switch the nudge on and off, change its frequency, fire a pulse, add a cargo ball, and pull back to see the coils under the platform.</span></button>
+<img class="td-poster" src="/_blob/02e0aa62de6fe8dc7ab486ed4da97976" alt="The origami robot in 3D, seen end on in the middle of snapping shut around a cargo ball, with panels for the energy curve, the torque balance and the eight motion modes" loading="lazy">
+<button class="td-play" type="button" data-td-play aria-label="The bistable origami robot in 3D"><span class="td-pill">3D model</span><b>Open the 3D model</b><span class="td-sub">It plays a short tour on its own. Switch the nudge on and off, change its frequency, fire a pulse and watch the field lines rise from the coils, add a cargo ball, and pull back to see the coil rig under the platform.</span></button>
 </div>
 <p class="meta muted td-note" style="font-size:12px">Energy and torque read from Huang et al.’s Fig. 1C and 1D (hill 0.21 mJ, closed valley 0.12 mJ); crawl speeds from Fig. 2F; rolling 5.45 BL/s at 2 Hz. The fold dynamics, the torque from each nudge and pulse, and the robot’s drawing are my own simplified model, not the exact crease pattern. Field strengths are read from the colour scales of the paper’s field maps.</p>
 </div>
@@ -661,7 +680,7 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 </div>
 <div class="col-wide viz" style="margin-top:40px" role="group" aria-label="Chart C: the eight motion modes, click one to see how it works" data-ori-modes>
 <div class="viz-head">
-<span class="kicker">Chart C · Click it: eight modes</span>
+<span class="kicker">Chart C · Watch it: eight modes</span>
 <h3 class="t-h3" data-r="mtitle">② Crawling</h3>
 </div>
 <div class="viz-body stack g24">
@@ -676,6 +695,7 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <div><span>Best measured</span><b data-r="m3">≈ 2.7 mm/s</b></div>
 </div>
 <p class="small" data-r="mnote" aria-live="polite">The field pulls the rear magnets harder than the front ones, and the front and rear feet have different friction, so each small fold and unfold becomes a step forward. Faster and stronger driving helps: about 2.7 mm/s at 6 A and 4 Hz.</p>
+<div class="guide" data-guide="modes"><div class="guide-bar"><span class="guide-step" data-g="step">Guided tour</span><div class="guide-track" aria-hidden="true"><i data-g="bar"></i></div><button type="button" class="guide-btn" data-g-pause aria-label="Pause the guided tour"><span aria-hidden="true">‖</span> Pause</button><button type="button" class="guide-btn" data-g-replay aria-label="Replay the guided tour"><span aria-hidden="true">↺</span> Replay</button></div><p class="guide-cap" data-g="cap" aria-live="polite">Scroll this chart into view and it explains itself, step by step.</p><ol class="guide-all" data-g="all"></ol></div>
 </div>
 <div class="viz-foot"><span class="meta muted" style="font-size:12px">Layout after the paper’s Fig. 1I. Numbers marked ≈ are read by eye from Figs. 2 to 4 (means of 5 runs on one prototype); 5.45 BL/s and 26.5 mN are from the text.</span></div>
 </div>
@@ -696,7 +716,8 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <p>The finale puts it all together on two tracks. In the first, the robot crawls to a channel too narrow for it, closes and rolls through, meets a beam too low to roll under, opens and crawls beneath it, tumbles over a low wall, then grips a cargo, carries it and lets it go. In the second, it pulls a cargo stuck to the floor free with a sideways shove, jumps a high wall while still holding it, and switches to scampering to get through a low tunnel in a tank of water.</p>
 <p>It is a great demo, and the numbers underneath it deserve a look. Single modes mostly worked more than 90% of the time. Switching between modes was shakier, with some switches succeeding less than 35% of the time. A full course in one uninterrupted run succeeded only about 7.1% of the time. Much of the time went on a person watching and nudging the coil carriage into position by eye. From the time stamps in the paper’s figure, the first course took about 12 minutes and the second about 15.</p>
 </div>
-<!-- OWNER: meme idea for here: two plain panels, top "a perfectly even magnetic field inside a coil cage" (crossed out), bottom "a lumpy field and a robot that folds itself the right way" (approved). Caption: "Single mode, 90%. Full course, 7.1%." -->
+<div class="col-wide" style="margin-top:32px"><figure class="meme-sm" style="margin:0"><img src="/_blob/338cd4aaadbdf8941775a6fa8e2bd4a5" alt="A man in a dojo raising a sheet of paper with calm focus" loading="lazy"><p style="margin:0;font-size:17px;line-height:1.6">Me, watching a 0.81 g robot dodge a beam, tumble over a wall and jump while holding its cargo. Then I read the success rate. One clean full run in about fourteen tries.</p></figure></div>
+
 </div>
 </section>
 
@@ -745,7 +766,7 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <p>What I like most here is the phrase “structural intelligence”. As a mechanical engineer, I find it satisfying when the cleverness lives in the geometry rather than in a pile of electronics. A few millimetres of hinge offset turn a floppy sheet into something with two opinions about how it should sit, and that one design decision is what lets the coils be simple. It is the same lesson as the hair clip fish: get the shape right, and the actuator can be lazy.</p>
 <p>I also appreciate that the paper prints its awkward numbers. A 4% capture rate and a 7.1% clean run rate are not the kind of figures most teams put next to their best video. They make the result more believable, not less. My bigger doubt is with the word “large workspace”: the field can be uneven, but the coils still have to be driven around underneath by a gantry and a human with good eyesight. Take away the operator and add real feedback, and then I will call it simple.</p>
 <p>If I had a desk and a weekend, I would want to see how far the trick scales. Could the same offset rule be printed in one go, without hand assembly and its 0.15 mm errors? Could the energy hill be tuned so the closed state grips harder without needing a bigger pulse? And could the camera that the operator replaced be put back in the loop? Fold that into the next paper and this little robot stops being a demo and starts being a tool.</p>
-<nav class="talk-nav" aria-label="More talks"><a class="tn prev" href="Talk-Cyberpunk.dc.html"><span class="tn-k">← Previous talk · 10</span><span class="tn-t">Chrome and Consequences</span><span class="tn-m">23rd October 2026 · 16 min read</span></a><a class="tn next" href="Talk-LearningBrain.dc.html"><span class="tn-k">Next talk · 12 →</span><span class="tn-t">Practice Makes Plastic: Watching Brain Cells Change After a Typing Lesson</span><span class="tn-m">6th November 2026 · 14 min read</span></a></nav>
+<nav class="talk-nav" aria-label="More talks"><a class="tn prev" href="Talk-Cyberpunk.dc.html"><span class="tn-k">← Previous talk · 10</span><span class="tn-t">Chrome and Consequences</span><span class="tn-m">23rd October 2026 · 16 min read</span></a><a class="tn next" href="Talk-LearningBrain.dc.html"><span class="tn-k">Next talk · 12 →</span><span class="tn-t">Practice Makes Plastic. Brain Cells After One Typing Lesson</span><span class="tn-m">6th November 2026 · 14 min read</span></a></nav>
 <a href="Talks.dc.html" class="back" style="margin-top:24px;color:#2B44C8">← Back to all talks</a>
 </div>
 <div class="stack g24">
@@ -1359,15 +1380,19 @@ class Component extends DCLogic {
     this.oriOn = true;
     const guard = (fn) => (e) => { try { fn.call(this, e); } catch (err) { if (window.console) console.warn('[ori-charts]', err); } };
     const onClick = guard(this.oriClick), onKey = guard(this.oriKey);
+    const onScroll = guard(this.oriView);
     document.addEventListener('click', onClick, true);
     document.addEventListener('keydown', onKey, true);
-    this.oriOff = () => { document.removeEventListener('click', onClick, true); document.removeEventListener('keydown', onKey, true); };
+    document.addEventListener('scroll', onScroll, { capture: true, passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    this.oriOff = () => { document.removeEventListener('click', onClick, true); document.removeEventListener('keydown', onKey, true); document.removeEventListener('scroll', onScroll, { capture: true }); window.removeEventListener('resize', onScroll); };
     const scan = guard(this.oriScan);
     scan();
     this.oriInt = setInterval(scan, 600);
   }
   gtFigStop() {
     clearInterval(this.oriInt);
+    Array.from(document.querySelectorAll('[data-guide]')).forEach((g) => { if (g.__g) clearTimeout(g.__g.timer); });
     if (this.oriOff) this.oriOff();
     this.oriOn = false;
   }
@@ -1397,11 +1422,26 @@ class Component extends DCLogic {
   oriScan() {
     Array.from(document.querySelectorAll('[data-ori-rig]')).forEach((el) => { if (!el.__ori) { el.__ori = { i: 3 }; this.oriShowRig(el, 3); } });
     Array.from(document.querySelectorAll('[data-ori-modes]')).forEach((el) => { if (!el.__ori) { el.__ori = { i: 1 }; this.oriShowMode(el, 1); } });
+    Array.from(document.querySelectorAll('[data-ori-design]')).forEach((el) => { if (!el.__ori) { el.__ori = { i: 0 }; this.oriShowDesign(el, 0); } });
+    Array.from(document.querySelectorAll('[data-guide]')).forEach((g) => { if (!g.__g) this.oriGuideInit(g); });
+    this.oriView();
   }
   oriClick(e) {
-    const t = e.target && e.target.closest ? e.target.closest('[data-rg], [data-mm]') : null;
+    const gb = e.target && e.target.closest ? e.target.closest('[data-g-pause], [data-g-replay]') : null;
+    if (gb) {
+      const g = gb.closest('[data-guide]');
+      if (g && g.__g) { if (gb.hasAttribute('data-g-replay')) this.oriGuideStart(g); else this.oriGuidePause(g); }
+      return;
+    }
+    const t = e.target && e.target.closest ? e.target.closest('[data-rg], [data-mm], [data-dz]') : null;
     if (!t) return;
-    if (t.hasAttribute('data-rg')) {
+    const chart = t.closest('[data-ori-rig], [data-ori-modes], [data-ori-design]');
+    const g = chart ? chart.querySelector('[data-guide]') : null;
+    if (g && g.__g && !e.__oriGuide) this.oriGuideTakeOver(g);
+    if (t.hasAttribute('data-dz')) {
+      const el = t.closest('[data-ori-design]');
+      if (el) { el.__ori = el.__ori || {}; this.oriShowDesign(el, +t.getAttribute('data-dz')); }
+    } else if (t.hasAttribute('data-rg')) {
       const el = t.closest('[data-ori-rig]');
       if (el) { el.__ori = el.__ori || {}; this.oriShowRig(el, +t.getAttribute('data-rg')); }
     } else {
@@ -1410,7 +1450,7 @@ class Component extends DCLogic {
     }
   }
   oriKey(e) {
-    const t = e.target && e.target.closest ? e.target.closest('[data-rg], [data-mm]') : null;
+    const t = e.target && e.target.closest ? e.target.closest('[data-rg], [data-mm], [data-dz]') : null;
     if (!t) return;
     if ((e.key === 'Enter' || e.key === ' ') && t.tagName !== 'BUTTON') { e.preventDefault(); this.oriClick(e); }
   }
@@ -1431,6 +1471,153 @@ class Component extends DCLogic {
     const m = M[i];
     this.oriText(el, 'mtitle', m.t); this.oriText(el, 'm1', m.s); this.oriText(el, 'm2', m.f); this.oriText(el, 'm3', m.v); this.oriText(el, 'mnote', m.n);
     Array.from(el.querySelectorAll('button[data-mm]')).forEach((b) => { const on = +b.getAttribute('data-mm') === i; b.className = on ? 'on' : ''; b.setAttribute('aria-pressed', on ? 'true' : 'false'); });
+  }
+  // Chart A: the three hinge designs, values read by eye from Fig. 1C (energy), 1D (torque) and 1F (peak force)
+  oriShowDesign(el, i) {
+    const D = [
+      { hill: 0.21, tq: 0.26, fc: 33, fo: 78, title: 'The chosen design: the lowest hill', note: 'The design the team built. Its hill is the lowest of the three, so the coils’ pulse can push it over, while it still holds shut on its own. It closes with about 33 mN and needs about 78 mN to open.' },
+      { hill: 0.27, tq: 0.34, fc: 42, fo: 86, title: 'In between: a taller hill', note: 'Shrink the smaller offset and the panels clash harder on the way through, so the hill grows and the snap needs more push in both directions.' },
+      { hill: 0.34, tq: 0.44, fc: 63, fo: 110, title: 'The stiffest: hardest to snap', note: 'The tallest hill and the strongest snap, but it needs nearly twice the force of the chosen design to close. Weighing grip, crawling stride, hand building and the limited torque of the small magnets, the team went with the lowest hill.' }
+    ];
+    if (!(i >= 0 && i < D.length)) i = 0;
+    el.__ori.i = i;
+    const d = D[i];
+    const pc = (v, m) => (Math.round(v / m * 1000) / 10) + '%';
+    const vals = [[d.hill, 0.4, '≈ ' + d.hill.toFixed(2) + ' mJ'], [d.tq, 0.5, '≈ ' + d.tq.toFixed(2) + ' N·mm'], [d.fc, 120, '≈ ' + d.fc + ' mN'], [d.fo, 120, '≈ ' + d.fo + ' mN']];
+    vals.forEach((v, k) => {
+      const b = el.querySelector('[data-dbar="' + k + '"]'), t = el.querySelector('[data-dval="' + k + '"]');
+      if (b) b.style.width = pc(v[0], v[1]);
+      if (t && t.textContent !== v[2]) t.textContent = v[2];
+    });
+    this.oriText(el, 'dtitle', d.title); this.oriText(el, 'dnote', d.note);
+    Array.from(el.querySelectorAll('button[data-dz]')).forEach((b) => { const on = +b.getAttribute('data-dz') === i; b.className = on ? 'on' : ''; b.setAttribute('aria-pressed', on ? 'true' : 'false'); });
+  }
+  // ── Guided tours: each chart explains itself when it scrolls into view (3 to 6 steps), with Pause and Replay.
+  // Clicking any of the chart's own controls takes over. Under reduced motion: the last step, with every caption listed.
+  oriGuides() {
+    return {
+      design: { show: 'oriShowDesign', sel: '[data-ori-design]', steps: [
+        [2, 'Start with the stiffest design. The smaller hinge offset is only 1.30 mm, so the panels clash hardest on the way through and the energy hill is tallest, about 0.34 mJ.'],
+        [1, 'Give that offset a little more room, 1.55 mm, and the clash eases: the hill drops to about 0.27 mJ and the push needed to close falls to about 42 mN.'],
+        [0, 'At 1.80 mm the hill is about 0.21 mJ and a push of about 33 mN closes it, the gentlest of the three. Opening still takes about 78 mN.'],
+        [0, 'Takeaway: the hinge offsets set the height of the hill. The team chose the lowest hill that still holds shut on its own, so four tiny magnets can snap it.']
+      ] },
+      rig: { show: 'oriShowRig', sel: '[data-ori-rig]', steps: [
+        [3, 'Meet the robot: 0.81 g on a clear platform. Its four magnets are what the field grabs.'],
+        [1, 'Underneath, three tilted coils make a gentle, uneven field, about ±25 mT on the paper’s maps, that wiggles the robot to crawl, turn or roll.'],
+        [0, 'The small electromagnet in the middle gives the big kicks, about ±150 mT, that snap it open or shut or make it jump.'],
+        [2, 'The coils ride on two perpendicular sliders, so the strong part of the field follows the robot across a large open platform.'],
+        [4, 'Ordinary bench gear drives it all: four 24 V supplies, four power amplifiers and two signal generators.'],
+        [5, 'Takeaway: the field does not need to be even, because the robot’s shape decides how it reacts. For now, a person watching still closes the loop.']
+      ] },
+      modes: { show: 'oriShowMode', sel: '[data-ori-modes]', steps: [
+        [1, 'Open, a small oscillating field makes the robot flex and shuffle forward. That is crawling, about 2.7 mm/s at best.'],
+        [2, 'The same kind of wiggle, aimed at an angle to the hinge, twists it round instead: turning, up to about 28° per second.'],
+        [0, 'Swap the wiggle for one big pulse and it is thrown over the energy hill: it snaps shut around its cargo in about 0.06 s.'],
+        [6, 'Now closed, the same small oscillating field no longer makes it crawl. It rolls, at 5.45 body lengths per second at 2 Hz.'],
+        [7, 'A big pulse while closed launches it instead: jumps reached about 68 mm high.'],
+        [4, 'A pulse the other way pops it open again. Takeaway: two shapes times two kinds of field give eight modes, and the shape decides which one you get.']
+      ] }
+    };
+  }
+  oriStill() { return !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches); }
+  oriGuideInit(g) {
+    const G = this.oriGuides()[g.getAttribute('data-guide')];
+    if (!G) return;
+    g.__g = { G: G, i: -1, playing: false, started: false, done: false, timer: 0, t0: 0, ms: 0, left: 0 };
+    if (this.oriStill()) {
+      const chart = g.closest(G.sel);
+      const last = G.steps[G.steps.length - 1];
+      if (chart) { chart.__ori = chart.__ori || {}; this[G.show](chart, last[0]); }
+      const all = g.querySelector('[data-g="all"]');
+      if (all) { all.innerHTML = ''; G.steps.forEach((st) => { const li = document.createElement('li'); li.textContent = st[1]; all.appendChild(li); }); }
+      const cap = g.querySelector('[data-g="cap"]'); if (cap) cap.hidden = true;
+      const bar = g.querySelector('.guide-bar'); if (bar) bar.hidden = true;
+      g.__g.started = true; g.__g.done = true;
+    }
+  }
+  oriView() {
+    const h = window.innerHeight || 800;
+    Array.from(document.querySelectorAll('[data-guide]')).forEach((g) => {
+      const s = g.__g;
+      if (!s || s.started) return;
+      const chart = g.closest(s.G.sel) || g;
+      const r = chart.getBoundingClientRect();
+      if (r.height > 0 && r.top < h * 0.72 && r.bottom > h * 0.28) this.oriGuideStart(g);
+    });
+  }
+  oriGuideLabel(g) {
+    const s = g.__g;
+    const p = g.querySelector('[data-g-pause]');
+    if (p) {
+      p.disabled = s.done;
+      p.innerHTML = s.playing ? '<span aria-hidden="true">‖</span> Pause' : '<span aria-hidden="true">▶</span> Play';
+      p.setAttribute('aria-label', s.playing ? 'Pause the guided tour' : 'Play the guided tour');
+    }
+    const r = g.querySelector('[data-g-replay]'); if (r) r.className = s.done ? 'guide-btn on' : 'guide-btn';
+    const n = s.G.steps.length;
+    const st = g.querySelector('[data-g="step"]');
+    const txt = s.user ? 'Your pick' : (s.i < 0 ? 'Guided tour' : 'Step ' + (s.i + 1) + ' of ' + n + (s.playing || s.done ? '' : ' · paused'));
+    if (st && st.textContent !== txt) st.textContent = txt;
+  }
+  oriGuideBar(g, from, ms) {
+    const bar = g.querySelector('[data-g="bar"]');
+    if (!bar) return;
+    bar.style.transition = 'none';
+    bar.style.width = (from * 100).toFixed(1) + '%';
+    void bar.offsetWidth;
+    if (ms > 0) { bar.style.transition = 'width ' + ms + 'ms linear'; bar.style.width = '100%'; }
+  }
+  oriGuideStep(g, i, left) {
+    const s = g.__g;
+    clearTimeout(s.timer);
+    const step = s.G.steps[i];
+    s.i = i; s.user = false;
+    const chart = g.closest(s.G.sel);
+    if (chart && left == null) { chart.__ori = chart.__ori || {}; this[s.G.show](chart, step[0]); }
+    const cap = g.querySelector('[data-g="cap"]');
+    if (cap && cap.textContent !== step[1]) cap.textContent = step[1];
+    const words = step[1].split(/\s+/).length;
+    s.ms = Math.max(3500, Math.min(5200, 1600 + 110 * words));
+    const ms = left != null ? left : s.ms;
+    s.t0 = Date.now(); s.left = ms;
+    this.oriGuideBar(g, 1 - ms / s.ms, ms);
+    s.timer = setTimeout(() => {
+      if (i + 1 < s.G.steps.length) this.oriGuideStep(g, i + 1);
+      else { s.playing = false; s.done = true; this.oriGuideLabel(g); }
+    }, ms);
+    this.oriGuideLabel(g);
+  }
+  oriGuideStart(g) {
+    const s = g.__g;
+    if (!s) return;
+    if (this.oriStill()) return;
+    s.started = true; s.done = false; s.playing = true;
+    this.oriGuideStep(g, 0);
+  }
+  oriGuidePause(g) {
+    const s = g.__g;
+    if (s.done || s.i < 0) { this.oriGuideStart(g); return; }
+    if (s.playing) {
+      clearTimeout(s.timer);
+      s.left = Math.max(300, s.left - (Date.now() - s.t0));
+      s.playing = false;
+      const bar = g.querySelector('[data-g="bar"]');
+      if (bar) { const w = bar.getBoundingClientRect().width, tw = bar.parentNode.getBoundingClientRect().width; bar.style.transition = 'none'; bar.style.width = tw ? (100 * w / tw).toFixed(1) + '%' : bar.style.width; }
+      this.oriGuideLabel(g);
+    } else {
+      s.playing = true;
+      this.oriGuideStep(g, s.i, s.left);
+    }
+  }
+  oriGuideTakeOver(g) {
+    const s = g.__g;
+    clearTimeout(s.timer);
+    s.started = true; s.playing = false; s.done = true; s.user = true;
+    this.oriGuideBar(g, 0, 0);
+    const cap = g.querySelector('[data-g="cap"]');
+    if (cap && !this.oriStill()) cap.textContent = 'You are in control now. Press Replay for the guided tour.';
+    this.oriGuideLabel(g);
   }
   // ── Light/dark switch: the header beaker spills its ink and floods the page dark (or back to light).
   // the 3D teardown: one capture listener, the frame is made only when someone asks for it
@@ -1511,16 +1698,6 @@ class Component extends DCLogic {
   }
   renderVals() {
     const st = this.state || {};
-    const tabs = (arr, cur, key) => arr.map((x, k) => ({ label: x.label, on: k === cur ? 'on' : '', aria: k === cur ? 'true' : 'false', pick: () => this.setState({ [key]: k }) }));
-    // Chart A: the three hinge designs, values read by eye from Fig. 1C (energy), 1D (torque) and 1F (peak force)
-    const D = [
-      { label: '1.80 / 3.30 (chosen)', hill: 0.21, tq: 0.26, fc: 33, fo: 78, title: 'The chosen design: the lowest hill', note: 'The design the team built. Its hill is the lowest of the three, so the coils’ pulse can push it over, while it still holds shut on its own. It closes with about 33 mN and needs about 78 mN to open.' },
-      { label: '1.55 / 3.30', hill: 0.27, tq: 0.34, fc: 42, fo: 86, title: 'In between: a taller hill', note: 'Shrink the smaller offset and the panels clash harder on the way through, so the hill grows and the snap needs more push in both directions.' },
-      { label: '1.30 / 3.30', hill: 0.34, tq: 0.44, fc: 63, fo: 110, title: 'The stiffest: hardest to snap', note: 'The tallest hill and the strongest snap, but it needs nearly twice the force of the chosen design to close. Weighing grip, crawling stride, hand building and the limited torque of the small magnets, the team went with the lowest hill.' }
-    ];
-    const di = st.di >= 0 && st.di < D.length ? st.di : 0;
-    const dd = D[di];
-    const pc = (v, m) => Math.round(v / m * 1000) / 10 + '%';
     const open = st.open || {};
     const ex = {};
     ['a', 'b', 'c'].forEach((k) => {
@@ -1530,14 +1707,7 @@ class Component extends DCLogic {
     });
     return {
       cm: this.commentVals(),
-      ex: ex,
-      dTabs: tabs(D, di, 'di'),
-      d: { title: dd.title, note: dd.note, rows: [
-        { n: 'Energy hill', v: '≈ ' + dd.hill.toFixed(2) + ' mJ', w: pc(dd.hill, 0.4), c: '#E34A2B' },
-        { n: 'Peak hinge torque', v: '≈ ' + dd.tq.toFixed(2) + ' N·mm', w: pc(dd.tq, 0.5), c: '#E34A2B' },
-        { n: 'Push to close', v: '≈ ' + dd.fc + ' mN', w: pc(dd.fc, 120), c: '#5A82B3' },
-        { n: 'Push to open', v: '≈ ' + dd.fo + ' mN', w: pc(dd.fo, 120), c: '#3D639A' }
-      ] }
+      ex: ex
     };
   }
 }
