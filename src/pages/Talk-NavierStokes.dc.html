@@ -11,6 +11,7 @@
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,600;0,700;1,400&amp;family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Caveat:500,700&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=STIX+Two+Text:400,400i&amp;display=swap" rel="stylesheet" data-math-font>
 <style>
 *{box-sizing:border-box}
@@ -214,6 +215,7 @@ figcaption{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;line-
 .meme{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:28px;align-items:center;border:1px solid #0B232D;background:#F9F7F4;padding:20px}
 .meme img{width:100%;height:auto;border:1px solid #0B232D}
 .take{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
+.me-pol{margin:16px 0 0}.me-pol-c{position:relative;padding:10px 10px 0;background:#FFFFFF;color:#10131C;box-shadow:0 1px 2px rgba(16,19,28,.22),0 12px 24px rgba(16,19,28,.13);transform:rotate(var(--r,-2deg));transition:transform .28s cubic-bezier(.2,.8,.2,1)}.me-pol-c::before{content:"";position:absolute;top:-12px;left:50%;width:76px;height:24px;margin-left:-38px;background:rgba(233,224,196,.85);box-shadow:0 1px 2px rgba(16,19,28,.12);transform:rotate(var(--tr,-4deg));z-index:1}.me-pol-c:hover{transform:rotate(0) translateY(-4px)}.me-pol img,.me-pol video{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;background:#10131C;border:0}.me-pol-cap{display:flex;flex-direction:column;gap:3px;padding:10px 4px 14px}.me-pol-cap b{font-family:'Caveat','Segoe Print','Bradley Hand',cursive;font-weight:700;font-size:24px;line-height:1.05;color:#10131C}.me-pol-cap span{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#5B6273}@media (prefers-reduced-motion:reduce){.me-pol-c{transition:none}.me-pol-c:hover{transform:rotate(var(--r,-2deg))}}
 @media (max-width:960px){.take{grid-template-columns:minmax(0,1fr)}.take figure{max-width:280px}}
 @media (max-width:640px){.meme{grid-template-columns:minmax(0,1fr)}.eq{font-size:19px}.hl{padding:2px 8px}.eq-wrap{padding:20px 12px}.viz-more{padding:14px 16px 18px}}
 .pull{font-size:clamp(21px,2.2vw,25px) !important;line-height:1.45 !important;font-style:italic;border-top:2px solid #0B232D;border-bottom:2px solid #0B232D;padding:22px 0}
@@ -864,10 +866,10 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <p>The AI didn’t start from a blank page. It stood on Leray’s 1934 work, on decades of blowup research by mathematicians like Diego Córdoba, Tristan Buckmaster and Levent Alpöge, and on every paper, lecture note and late-night proof it learned from. Whatever happened in those private calls, I’m fairly sure the company couldn’t have got there by itself without that body of human work. Mathematicians around the world have spent their careers on this question, and their contribution shouldn’t shrink just because a machine wrote the final 166 pages.</p>
 <p>So, Mathematician vs Clanker? I don’t think it was ever really “versus”. The best version of this future is one where both get the credit they’re due, and where the people who did the groundwork aren’t left out of the photo. For now, the water in my pipes is still behaving. The mathematics underneath, and the ethics around it, just got a lot more interesting.</p>
 </div>
-<figure class="wfig" style="position:sticky;top:24px">
+<div class="stack g24"><figure class="wfig">
 <img src="/_blob/590a1e303c08e787e1ce0a7d5361ef06" alt="Rayang smiling at the camera in front of a monitor showing a red-and-blue velocity contour plot of a flow manifold in Ansys Fluent" loading="lazy">
 <figcaption>ME AND AN ANSYS FLUENT VELOCITY CONTOUR, WHERE NAVIER–STOKES WENT FROM KRYPTONITE TO TOOL</figcaption>
-</figure>
+</figure><figure class="me-pol"><div class="me-pol-c" style="--r:1.6deg;--tr:3deg"><img src="/_blob/4c74d141730494fb6a8513665efe9f09" alt="A lecturer pointing at slides of simulated droplets spreading through a room with two seated people, seen from the student rows" loading="lazy"><div class="me-pol-cap"><b>Where CFD got real</b><span>My lecturer on secondary phase modelling</span></div></div></figure></div>
 </div>
 <div class="col-wide">
 <nav class="talk-nav" aria-label="More talks"><a class="tn prev" href="Talk-FlyConnectome.dc.html"><span class="tn-k">← Previous talk · 08</span><span class="tn-t">The Whole Fly, Wired. Mapping, Running and Comparing a Brain</span><span class="tn-m">23rd July 2026 · 14 min read</span></a><a class="tn next" href="Talk-Cyberpunk.dc.html"><span class="tn-k">Next talk · 10 →</span><span class="tn-t">Chrome and Consequences. The Real Science Behind Cyberpunk’s Implants</span><span class="tn-m">23rd October 2026 · 16 min read</span></a></nav>

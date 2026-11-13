@@ -11,6 +11,7 @@
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,600;0,700;1,400&amp;family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Caveat:500,700&amp;display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box}
 body{margin:0;background:#FFFEE6;color:#281014;font-family:'Titillium Web',system-ui,sans-serif;font-size:18px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
@@ -213,6 +214,7 @@ figcaption{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;line-
 .meme{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:28px;align-items:center;border:1px solid #281014;background:#FFFFF7;padding:20px}
 .meme img{width:100%;height:auto;border:1px solid #281014}
 .take{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
+.me-pol{margin:16px 0 0}.me-pol-c{position:relative;padding:10px 10px 0;background:#FFFFFF;color:#10131C;box-shadow:0 1px 2px rgba(16,19,28,.22),0 12px 24px rgba(16,19,28,.13);transform:rotate(var(--r,-2deg));transition:transform .28s cubic-bezier(.2,.8,.2,1)}.me-pol-c::before{content:"";position:absolute;top:-12px;left:50%;width:76px;height:24px;margin-left:-38px;background:rgba(233,224,196,.85);box-shadow:0 1px 2px rgba(16,19,28,.12);transform:rotate(var(--tr,-4deg));z-index:1}.me-pol-c:hover{transform:rotate(0) translateY(-4px)}.me-pol img,.me-pol video{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;background:#10131C;border:0}.me-pol-cap{display:flex;flex-direction:column;gap:3px;padding:10px 4px 14px}.me-pol-cap b{font-family:'Caveat','Segoe Print','Bradley Hand',cursive;font-weight:700;font-size:24px;line-height:1.05;color:#10131C}.me-pol-cap span{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#5B6273}@media (prefers-reduced-motion:reduce){.me-pol-c{transition:none}.me-pol-c:hover{transform:rotate(var(--r,-2deg))}}
 @media (max-width:960px){.take{grid-template-columns:minmax(0,1fr)}.take figure{max-width:280px}}
 @media (max-width:640px){.meme{grid-template-columns:minmax(0,1fr)}.eq{font-size:19px}.hl{padding:2px 8px}.eq-wrap{padding:20px 12px}.viz-more{padding:14px 16px 18px}}
 .pull{font-size:clamp(21px,2.2vw,25px) !important;line-height:1.45 !important;font-style:italic;border-top:2px solid #281014;border-bottom:2px solid #281014;padding:22px 0}
@@ -808,7 +810,7 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 
 <section class="sec">
 <div class="wrap article">
-<div class="col">
+<div class="col-wide take">
 <div>
 <p class="kicker">06</p>
 <h2 class="t-h2" style="margin:12px 0 18px">Personal Take</h2>
@@ -819,6 +821,9 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <p>So I am hyped and wary at the same time. I want this technology to keep arriving, but I would like the rules on ownership, access and consent to arrive with it, not after the first people are left with chrome that nobody will support.</p>
 <nav class="talk-nav" aria-label="More talks"><a class="tn prev" href="Talk-NavierStokes.dc.html"><span class="tn-k">← Previous talk · 09</span><span class="tn-t">Mathematician vs Clanker. Navier–Stokes and a Prize Claim Still Under Review</span><span class="tn-m">23rd September 2026 · 16 min read</span></a><a class="tn next" href="Talk-OrigamiRobot.dc.html"><span class="tn-k">Next talk · 11 →</span><span class="tn-t">Folded Twice, Moves Eight Ways. A Bistable Origami Robot</span><span class="tn-m">30th October 2026 · 12 min read</span></a></nav>
 <a href="Talks.dc.html" class="back" style="margin-top:24px;color:#2B44C8">← Back to all talks</a>
+</div>
+<div class="stack g24">
+<figure class="me-pol"><div class="me-pol-c" style="--r:-2deg;--tr:-4deg"><img src="/_blob/413931cb1cd857b01370d39acca89c76" alt="Rayang at his desk with electrode pads on his forearm wired to a small robotic hand, with a story caption reading About to electrify 15v into myself" loading="lazy"><div class="me-pol-cap"><b>15 volts, on purpose</b><span>Testing my BEng prosthetic hand</span></div></div></figure>
 </div>
 </div>
 </div>
