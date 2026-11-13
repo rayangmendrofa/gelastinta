@@ -55,8 +55,11 @@ const prop = (obj, name) => obj.properties.find((p) => p.key && (p.key.name === 
 const len = (obj, name, src, code) => {
   const p = prop(obj, name);
   if (!p) return 0;
-  if (p.value.type !== 'ArrayExpression') throw new Error(`${code}: "${name}" is not a plain array, cannot count it`);
-  return p.value.elements.length;
+  // a helper wrapped round a plain array, like tidyP([...]), counts as that array
+  let v = p.value;
+  if (v.type === 'CallExpression' && v.arguments.length === 1 && v.arguments[0].type === 'ArrayExpression') v = v.arguments[0];
+  if (v.type !== 'ArrayExpression') throw new Error(`${code}: "${name}" is not a plain array, cannot count it`);
+  return v.elements.length;
 };
 
 // Find GT.add({...}) inside a sheet's IIFE.
