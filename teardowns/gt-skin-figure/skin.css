@@ -34,3 +34,15 @@
 .sk-nums div{border-right:0;border-bottom:1px solid var(--anatomy-faint)}
 .sk-nums div:last-child{border-bottom:0}
 }
+@media (max-width:819px){
+.iso-plate{padding:44px 12px 64px}
+}
+@media (max-width:560px){
+.iso-plate-corner[data-corner="hint"]{display:none}
+.iso-plate-corner[data-corner="readout"]{bottom:4px}
+.sk-row{grid-template-columns:92px minmax(0,1fr) 42px;gap:8px}
+.sk-nums{grid-template-columns:minmax(0,1fr)}
+.sk-nums div{flex-direction:row;justify-content:space-between;align-items:baseline;gap:10px;border-right:0;border-bottom:1px solid var(--anatomy-faint)}
+.sk-nums div:last-child{border-bottom:0}
+.sk-nums b{font-size:18px}
+}

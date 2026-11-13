@@ -343,7 +343,7 @@ const svg = k.figureSvg({
   width: W,
   height: H,
   label:
-    "An optical bench for a photonic quantum walk. From left: a photon source, a crystal and filter, a polarising cube and two wave plates that set the starting polarisation; then, on a raised plate, one step of the walk: a flip mount that swings a wave plate in and out of the beam to scramble the phase, two beam displacers with a plate in the upper path that throws away part of one polarisation (the loss), a dump for the lost light, two wave plates for the coin and a q plate between quarter wave plates for the step; then polarisation analysis, a spatial light modulator, a mode sorter and a bank of 17 detectors whose count columns pile up toward one end.",
+    "An optical bench for a photonic quantum walk. From left: a photon source, a crystal and filter, a polarising cube and two wave plates that set the starting polarisation. Then, on a raised plate, one step of the walk: a flip mount that swings a wave plate in and out of the beam to scramble the phase, two beam displacers with a plate in the upper path that throws away part of one polarisation (the loss), a dump for the lost light, two wave plates for the coin and a q plate between quarter wave plates for the step. Then polarisation analysis, a spatial light modulator, a mode sorter and a bank of 17 detectors whose count columns pile up toward one end.",
   body: [...back, `<g class="sk-bench">${groups.join("")}</g>`],
 });
 
@@ -385,12 +385,12 @@ const body =
     hint: "Move the sliders, or let it tour the paper's settings",
     readout: "γ 0.40 · η 0.00 · drift 0.71",
     keys: [
-      { mark: "lit", label: "Count columns: share of surviving photons at each walk position" },
+      { mark: "lit", label: "Count columns show the share of surviving photons at each position" },
       { mark: "blue", label: "Beam and photons in flight" },
-      { mark: "raised", label: "One step of the walk; the experiment repeats it 8 times" },
+      { mark: "raised", label: "One step of the walk, which the experiment repeats 8 times" },
     ],
     caption:
-      "My drawing of the kind of bench the paper describes, not its setup to scale. Photons start at position 0 with polarisation (H + iV)/√2. Each step, a beam displacer pair and the plate HM throw away a share γ of the vertical light (the loss), two half wave plates turn the polarisation by θ = π/4 (the coin), and a q plate moves the photon one place left or right depending on its polarisation (the shift). The flip mount applies dephasing η by sometimes adding a half wave plate at 0°; for amplitude damping μ the same plates alternate between two settings. The columns show the share of surviving photons at each position after t steps, from my own density matrix model of the paper's equations; drift values match the paper's Eq. 1 to 3 and its fits (0.71 and 0.25 at γ = 0.4, both about 0.75 at γ = 0.854, 0.78 and 0.87 at γ = 0.93). The real experiment reads one position at a time with the modulator and a single detector; the bank of 17 is drawn for clarity.",
+      "My drawing of the kind of bench the paper describes, not its setup to scale. Photons start at position 0 with polarisation (H + iV)/√2. Each step, a beam displacer pair and the plate HM throw away a share γ of the vertical light (the loss), two half wave plates turn the polarisation by θ = π/4 (the coin), and a q plate moves the photon one place left or right depending on its polarisation (the shift). The flip mount applies dephasing η by sometimes adding a half wave plate at 0°. For amplitude damping μ the same plates alternate between two settings. The columns show the share of surviving photons at each position after t steps, from my own density matrix model of the paper's equations. Drift values match the paper's Eq. 1 to 3 and its fits (0.71 and 0.25 at γ = 0.4, both about 0.75 at γ = 0.854, 0.78 and 0.87 at γ = 0.93). The real experiment reads one position at a time with the modulator and a single detector. The bank of 17 is drawn for clarity.",
     body: `<div class="iso-stage sk-stage" tabindex="0" role="group" aria-label="Optical bench for the quantum walk. Use the sliders under the drawing to change the loss, the dephasing, the damping and the number of steps.">${svg}</div>${controls}`,
   });
 

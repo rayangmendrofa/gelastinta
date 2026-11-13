@@ -21,6 +21,7 @@ and *Talks* — reviews of scientific papers told with a personal take, somewher
 | ↳ [Fly brain on sugar](https://gelastinta.com/projects/fly-brain-sugar/) | Hobby simulation: the published whole-brain model of the fruit fly (Shiu et al. 2024), fed sugar and replayed spike by spike |
 | ↳ [Gesture Music](https://gelastinta.com/projects/gesture-music/) | Hobby build: a webcam instrument played with hand signs ([code](https://github.com/rayangmendrofa/OpenCV-handsign-midi)), with its handbook |
 | [Talks](https://gelastinta.com/talks/) | Paper reviews with interactive figures and a personal take |
+| ↳ [Skin effect](https://gelastinta.com/talks/skin-effect/) | *Skin in the Game* — light piling up at one edge of a lossy photonic walk, and how noise speeds the drift |
 | ↳ [Learning brain](https://gelastinta.com/talks/learning-brain/) | *Practice Makes Plastic* — brain cells changing after a finger tapping lesson, seen with ultra high gradient MRI |
 | ↳ [Origami robot](https://gelastinta.com/talks/origami-robot/) | *Folded Twice, Moves Eight Ways* — a bistable origami robot driven by uneven magnetic fields |
 | ↳ [Cyberpunk implants](https://gelastinta.com/talks/cyberpunk-implants/) | *Chrome and Consequences* — the science and fiction of Cyberpunk 2077 and Edgerunners’ implants |

@@ -189,6 +189,7 @@ BEATS = [
     ('Talk-NavierStokes.dc.html', '<h3 class="t-h3" style="font-size:26px;margin-bottom:14px">The equation, term by term</h3>', 'labcoat', 'teach', 'The GelasTinta pixel character in a lab coat, writing F = ma on a board'),
     ('Talk-NavierStokes.dc.html', H2.format('Plagiarism and data leak allegations'), 'suit', 'tie', 'The GelasTinta pixel character in a suit, nervously adjusting his tie'),
     ('Talk-Cyberpunk.dc.html', H2.format('Cyberpsychosis is the price of chrome'), 'hoodie', 'sad', 'The GelasTinta pixel character in a hoodie, frowning with a single tear'),
+    ('Talk-SkinEffect.dc.html', '<h2 class="t-h2">What did they find?</h2>', 'labcoat', 'eureka', 'The GelasTinta pixel character in a lab coat, thinking and then jumping with a lightbulb'),
 ]
 
 
