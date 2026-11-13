@@ -1,12 +1,19 @@
 {
   "maths": "maths",
+  "maths2": "maths",
   "mechanics": "mechanics",
+  "mechanics2": "mechanics",
   "materials": "materials",
+  "materials2": "materials",
   "electronics": "electronics",
+  "electronics2": "electronics",
   "fea": "fea",
+  "fea2": "fea",
   "advmat": "advmat",
+  "advmat2": "advmat",
   "thermo": "thermo",
   "control": "control",
+  "control2": "control",
   "vib": "vib",
   "robotics": "robotics"
 }
