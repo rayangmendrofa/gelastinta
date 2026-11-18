@@ -32,7 +32,7 @@ and *Talks* — reviews of scientific papers told with a personal take, somewher
 | ↳ [Project Hail Mary](https://gelastinta.com/talks/project-hail-mary/) | *Amaze, Amaze, Amaze* — the science (and the heart) of the story |
 | ↳ [Navier–Stokes](https://gelastinta.com/talks/navier-stokes/) | *Mathematician vs Clanker* — the Millennium Prize question |
 | ↳ [Necrobotics](https://gelastinta.com/talks/necrobotics/) | When necromancy leaves the game and enters the skill tree |
-| ↳ [Crack-headed salmon](https://gelastinta.com/talks/crack-headed-salmon/) | Pharmaceutical pollution and fish behaviour |
+| ↳ [Coke-headed salmon](https://gelastinta.com/talks/crack-headed-salmon/) | Pharmaceutical pollution and fish behaviour |
 | ↳ [Cooking and science](https://gelastinta.com/talks/cooking-and-science/) | The physics of a perfect cacio e pepe |
 | [Products](https://gelastinta.com/products/) | Products & Services: explainer packages, things from the workshop, and work in progress with [rtechm.com](https://rtechm.com) |
 | [Author](https://gelastinta.com/author/) | Background, education, skills and life around the studies |
