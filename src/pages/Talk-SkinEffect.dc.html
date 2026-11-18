@@ -319,6 +319,8 @@ figcaption{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;line-
 .wada-credit .wada-mini{margin-left:0;border-color:#4C4F66}
 /* wadasite:end */
 .mm{position:relative}.mm img{display:block}.mm .mm-l{position:absolute;transform:translate(-50%,-50%);background:#fff;color:#111;border:1.5px solid #111;font-family:'Titillium Web',system-ui,sans-serif;font-weight:700;font-size:12px;line-height:1.15;padding:3px 6px;text-align:center;max-width:44%}html[data-theme="dark"] .mm .mm-l{filter:invert(1) hue-rotate(180deg)}
+.dark .meme-sm{background:#252A40;border-color:#4C4F66;color:#FDFAF9}
+.dark .meme-sm img{border-color:#4C4F66}
 .meme-sm.wide{grid-template-columns:minmax(0,340px) minmax(0,1fr)}
 @media (max-width:640px){.meme-sm.wide{grid-template-columns:minmax(0,1fr)}}
 /* theme:start */
@@ -628,6 +630,7 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <p class="meta muted td-note" style="font-size:12px">The columns come from my own density matrix model of the paper’s equations, and its drift values match the paper’s Eq. 1 to 3 and fitted slopes. The bench is a cartoon, not to scale, and the real experiment reads one position at a time with a single detector.</p>
 <div class="stack g8" style="margin:28px 0 8px"><div class="paper-fig"><img src="/_blob/5db61be6ba586d9f845359d568914e93" alt="Paper Figure 1: the optical bench, with the photon source crystal, wave plates, a row of eight walk steps, and single photon detectors at both ends, plus a close up of one step" loading="lazy"></div><p class="fig-cap"><b>Paper Fig. 1.</b> The real bench. A crystal makes photon pairs, wave plates set the starting polarisation, and each of the eight steps is a coin of two half wave plates followed by a q plate shift. Extra optics in each step add the loss and the noise, and single photon detectors count where the light lands.</p><span class="meta muted" style="font-size:11px">Source: Wang, Xiao, Longhi and Xue, Nature Communications (2026), doi:10.1038/s41467-026-78483-z, CC BY-NC-ND 4.0. Figure reproduced unaltered.</span></div>
 </div>
+<div class="col-wide" style="margin:0 0 32px"><figure class="meme-sm" style="margin:0"><img src="/_blob/751af0beee6f9abf0cf03eeda5614bc7" alt="Cartoon dog in a hat sitting at a table in a room on fire, saying this is fine" loading="lazy"><p style="margin:0;font-size:17px;line-height:1.6">The photon walk at loss 0.93 with its phase fully scrambled. More than 99 % of the photons are gone by step 8, and the survivors still drift happily towards the edge.</p></figure></div>
 <div class="col-wide viz" style="margin-top:32px">
 <div class="viz-more"><button type="button" class="more" aria-expanded="{{ex.b.aria}}" onClick="{{ex.b.toggle}}"><span class="more-ico" aria-hidden="true">{{ex.b.ico}}</span>{{ex.b.text}} the optics in numbers</button><sc-if value="{{ex.b.open}}"><div class="more-body"><p>The loss plate sits in the vertical path and is turned to half of arcsin √(1 − γ). That works out to about 25.4° for γ = 0.4, 11.2° for γ = 0.854 and 7.7° for γ = 0.93. The q plate has a charge of q = 1/2, so it shifts the twist of the light by 2q = 1 unit, which is one position. Wave plates around it at 135°, 135° and 0° make the shift follow H and V rather than circular polarisation.</p>
 <p>In the maths each kind of noise is a pair of Kraus operators, two ways a step can go, applied to the density matrix that holds both the amounts of H and V and the phase between them. For dephasing the two ways are leave it alone and flip the sign of V. For damping they are shrink V by √(1 − μ) and turn V into H with weight √μ. In the experiment each way becomes its own plate setting, and the photon collection time stands in for its probability.</p>
@@ -736,6 +739,7 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <p>A flow that heads one way no matter where it starts is useful. Think of the skin effect as a one way street for waves, a bit like a diode or a ratchet built into a material. The paper lists where people hope to use it, moving quantum states in one direction, sensing, a form of machine learning called quantum reservoir computing, and programmable flow.</p>
 <p>Every real device is noisy, so the practical question is whether the one way street survives the real world. This paper’s answer is mostly yes, and sometimes the noise even helps. The bigger lesson for me is that the type of noise and where it enters matter as much as how much there is. That is a design rule you can use, since you often get some say over where losses and noise sit. The authors frame the work as a bridge between quantum and classical skin effects, since one dial takes the same walk smoothly from one to the other.</p>
 </div>
+<div class="col" style="margin-top:40px"><figure class="meme-sm" style="margin:0"><img src="/_blob/18063bd51a19fe39b38e56b181c26931" alt="Two astronauts looking at Earth. One says wait, it is all, and the other, holding a gun behind him, says always has been" loading="lazy"><p style="margin:0;font-size:17px;line-height:1.6">Wait, every real device is noisy? Always has been. The useful question was never how to remove all of it. It is which noise, and where it enters.</p></figure></div>
 <div class="col" style="margin-top:40px">
 <div class="catch">
 <p class="kicker">The catches</p>
@@ -766,7 +770,8 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 
 <section class="sec">
 <div class="wrap article">
-<div class="col">
+<div class="col-wide take">
+<div>
 <p class="kicker">06</p>
 <h2 class="t-h2" style="margin:12px 0 18px">Personal Take</h2>
 <!-- OWNER TO CHECK: replace with your own story -->
@@ -775,6 +780,10 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <p>The picture I keep coming back to is the Brownian ratchet, the textbook toy where random kicks, a lopsided shape and a push away from equilibrium give steady motion in one direction. This walk feels like a cousin of it, made of light. A one way flow that does not mind being shaken, and sometimes runs faster when it is, is a nice idea to keep in mind.</p>
 <nav class="talk-nav" aria-label="More talks"><a class="tn prev" href="Talk-LearningBrain.dc.html"><span class="tn-k">← Previous talk · 12</span><span class="tn-t">Practice Makes Plastic. Brain Cells After One Typing Lesson</span><span class="tn-m">6th November 2026 · 14 min read</span></a><a class="tn next" href="Talk-Voyager.dc.html"><span class="tn-k">Next talk · 14 →</span><span class="tn-t">A Day Away. Voyager 1 Is Now One Light Day from Home</span><span class="tn-m">20th November 2026 · 15 min read</span></a></nav>
 <a href="Talks.dc.html" class="back" style="margin-top:24px;color:#2B44C8">← Back to all talks</a>
+</div>
+<div class="stack g24">
+<figure class="me-pol"><div class="me-pol-c" style="--r:-2deg;--tr:-4deg"><img src="/_blob/2eb99d74260932bb8039f0b6ee3f9afa" alt="Stickman drawing of Rayang scratching his head at a screen showing a jagged noisy wave above a smooth one, with a die on the floor" loading="lazy"><div class="me-pol-cap"><b>Filter it, or keep it?</b><span>Me versus noise, as a stickman</span></div></div></figure><figure class="me-pol"><div class="me-pol-c" style="--r:1.6deg;--tr:3deg"><video src="/_blob/e0a9cd132783656034ad0c7015e8db9e" poster="/_blob/9578f42d66893a939ee6415820eac3c0" autoplay muted loop playsinline preload="metadata" aria-label="Looping clip: Rayang playing Gesture Music, the app tracking both of his hands and turning finger counts into notes" data-gt-autoplay="" style="aspect-ratio:7/4"></video><div class="me-pol-cap"><b>Hand tracking, live</b><span>My Gesture Music app reading both hands</span></div></div></figure>
+</div>
 </div>
 </div>
 </section>
