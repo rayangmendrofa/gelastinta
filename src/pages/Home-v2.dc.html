@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>GelasTinta · Home v2 (prototype)</title>
+<script src="./support.js"></script>
+<script src="/_blob/59800ae8dd311e216394a93b57b5c5e9"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Instrument+Serif:ital@0;1&amp;family=Titillium+Web:ital,wght@0,400;0,600;0,700;1,400&amp;family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
+<meta name="robots" content="noindex">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:auto}
+body{margin:0;background:#10131C;color:#EDEFF2;font-family:'Titillium Web',system-ui,sans-serif;font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.v2{position:relative;overflow-x:clip}
+.v2.live{background:var(--bg);transition:background-color .9s cubic-bezier(.65,0,.35,1)}
+.v2::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:40;opacity:.16;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.skip{position:absolute;left:12px;top:-80px;z-index:90;background:#EDEFF2;color:#10131C;padding:10px 16px;font-family:'Ubuntu Mono',monospace}
+.skip:focus{top:8px}
+.top{position:fixed;left:0;right:0;top:0;z-index:50;display:flex;align-items:center;gap:18px;padding:18px clamp(18px,3vw,40px);pointer-events:none}
+.top > *{pointer-events:auto}
+.brand{font-family:'Anton',Impact,sans-serif;font-size:22px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border:1px solid rgba(237,239,242,.5);border-radius:999px;font-family:'Ubuntu Mono',monospace;font-size:12px;letter-spacing:.04em;background:rgba(16,19,28,.18)}
+.badge i{width:8px;height:8px;border-radius:50%;background:#7BD88F;box-shadow:0 0 0 3px rgba(123,216,143,.25)}
+.nav{margin-left:auto;display:flex;gap:22px;font-family:'Anton',Impact,sans-serif;font-size:15px;letter-spacing:.08em;text-transform:uppercase}
+.nav a{text-decoration:none;opacity:.9}
+.nav a:hover{opacity:1;text-decoration:underline;text-underline-offset:6px}
+.scene{position:relative;min-height:860px;display:flex;align-items:center;justify-content:center;padding:100px clamp(20px,6vw,96px) 110px;background:var(--sb)}
+.v2.live .scene{min-height:100vh;background:transparent}
+.star{position:absolute;color:#EDEFF2;pointer-events:none}
+.stack-c{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;text-align:center;gap:clamp(12px,2.2vh,22px);max-width:1100px}
+.stack-l{position:relative;z-index:2;display:flex;flex-direction:column;gap:20px;max-width:760px}
+.stack-l.wide{max-width:1240px;width:100%}
+.row{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:clamp(24px,5vw,80px);width:100%;max-width:1240px}
+.head-row{display:flex;align-items:flex-end;justify-content:space-between;gap:24px}
+.over{margin:0;font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:clamp(20px,2vw,28px);opacity:.9}
+.big{margin:0;font-family:'Anton',Impact,sans-serif;font-weight:400;text-transform:uppercase;font-size:clamp(56px,min(11vw,17vh),190px);line-height:.9;letter-spacing:.005em;color:#EDEFF2}
+.big.huge{font-size:clamp(60px,min(12vw,19vh),210px)}
+.big .w{display:inline-block;white-space:nowrap}
+.big .l{display:inline-block;transform:translateY(calc(var(--y) * var(--k,1))) rotate(calc(var(--r) * var(--k,1)));transition:transform .2s linear}
+.serif{margin:0;font-family:'Instrument Serif',Georgia,serif;font-size:clamp(24px,min(2.6vw,4.4vh),40px);line-height:1.12;max-width:26ch}
+.stack-c .serif{max-width:40ch}
+.lede{margin:0;font-size:clamp(18px,1.6vw,21px);max-width:56ch;opacity:.92}
+.mono-l{margin:0;font-family:'Ubuntu Mono',monospace;font-size:13px;letter-spacing:.08em;text-transform:uppercase;opacity:.85}
+.cue{margin:0;font-family:'Ubuntu Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;opacity:.8}
+.squiggle{width:min(300px,60%);height:24px;color:#8DB0DA}
+.quote{margin:0;max-width:30ch}
+.quote p{margin:0;font-family:'Instrument Serif',Georgia,serif;font-size:clamp(34px,min(4.6vw,7.4vh),76px);line-height:1.04}
+.quote footer{margin-top:18px;font-family:'Ubuntu Mono',monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;opacity:.85}
+.pix{--s:5;position:relative;width:calc(var(--fw) * 1px * var(--s));height:calc(var(--fh) * 1px * var(--s));overflow:hidden;flex:none;border-radius:6px;box-shadow:0 0 0 3px rgba(237,239,242,.85),0 18px 40px rgba(16,19,28,.35)}
+.pix img{display:block;height:100%;width:calc(var(--n) * 100%);max-width:none;image-rendering:pixelated;image-rendering:crisp-edges;animation:pix var(--t) steps(var(--n)) infinite}
+@keyframes pix{to{transform:translateX(-100%)}}
+.pix.xl{--s:4}
+.pix.lg{--s:3}
+.pix.md{--s:2.5}
+.pix.face{--s:4;border-radius:50%;box-shadow:0 0 0 3px rgba(237,239,242,.85);background:rgba(237,239,242,.12)}
+.pix.face.sm{--s:3}
+.minis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;width:100%;margin-top:10px;text-align:left}
+.mini{display:flex;flex-direction:column;gap:6px;padding:18px;border:1px solid rgba(237,239,242,.55);border-radius:14px;text-decoration:none;background:rgba(16,19,28,.12);transition:background .2s,transform .2s}
+.mini:hover{background:rgba(16,19,28,.28);transform:translateY(-3px)}
+.mini-k,.card-k{font-family:'Ubuntu Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.8}
+.mini-t{font-family:'Instrument Serif',Georgia,serif;font-size:26px;line-height:1.1}
+.mini-p{font-size:15px;line-height:1.5;opacity:.9}
+.mini-go{font-family:'Ubuntu Mono',monospace;font-size:12px;letter-spacing:.08em;margin-top:auto}
+.cards{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(280px,340px);gap:20px;overflow-x:auto;padding:8px 2px 18px;scroll-snap-type:x mandatory;scrollbar-width:thin;cursor:grab}
+.cards.drag{cursor:grabbing;scroll-snap-type:none}
+.cards:focus-visible{outline:3px solid #8DB0DA;outline-offset:4px}
+.card{scroll-snap-align:start;display:flex;flex-direction:column;gap:8px;text-decoration:none;user-select:none}
+.card-img{display:block;aspect-ratio:4/3;border-radius:14px;overflow:hidden;border:2px solid rgba(237,239,242,.85)}
+.card-img img{display:block;width:100%;height:100%;object-position:50% 50%;transition:transform .5s cubic-bezier(.16,1,.3,1)}
+.card:hover .card-img img{transform:scale(1.05)}
+.card-t{font-family:'Instrument Serif',Georgia,serif;font-size:26px;line-height:1.08}
+.card-p{font-size:15px;line-height:1.5;opacity:.88;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.card-m{font-family:'Ubuntu Mono',monospace;font-size:12px;opacity:.75}
+.more{align-self:flex-start;font-family:'Anton',Impact,sans-serif;font-size:20px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border-bottom:3px solid #8DB0DA;padding-bottom:2px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:6px 12px;border:1px solid rgba(237,239,242,.55);border-radius:999px;font-family:'Ubuntu Mono',monospace;font-size:12px}
+.mail{display:inline-flex;align-items:center;gap:14px;padding:0;border:0;background:none;color:inherit;cursor:pointer;font-family:'Instrument Serif',Georgia,serif;font-size:clamp(28px,3.4vw,52px);border-bottom:3px solid #8DB0DA}
+.mail-ok{font-family:'Ubuntu Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background:#EDEFF2;color:#10131C;opacity:0;transition:opacity .25s}
+.mail.ok .mail-ok{opacity:1}
+.socials{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.socials a{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border:1px solid rgba(237,239,242,.6);border-radius:999px;text-decoration:none;font-family:'Ubuntu Mono',monospace;font-size:13px;letter-spacing:.05em}
+.socials a:hover{background:#EDEFF2;color:#10131C}
+.fine{margin:6px 0 0;font-family:'Ubuntu Mono',monospace;font-size:12px;opacity:.7}
+.ruler{position:fixed;left:0;right:0;bottom:0;z-index:45;display:flex;justify-content:space-between;align-items:flex-end;padding:0 clamp(18px,4vw,60px) 26px;height:72px;pointer-events:none;background:linear-gradient(to top,var(--bg) 55%,transparent)}
+.v2:not(.live) .ruler{display:none}
+.ruler-ticks{position:absolute;left:clamp(18px,4vw,60px);right:clamp(18px,4vw,60px);bottom:10px;height:10px;background:repeating-linear-gradient(90deg,rgba(237,239,242,.55) 0 1px,transparent 1px 9px)}
+.ruler-now{position:absolute;bottom:8px;left:calc(clamp(18px,4vw,60px) + (100% - 2 * clamp(18px,4vw,60px)) * var(--prog,0));width:2px;height:20px;background:#EDEFF2;transition:left .15s linear}
+.ruler button{pointer-events:auto;position:relative;border:0;background:none;color:inherit;padding:4px 2px 10px;font-family:'Anton',Impact,sans-serif;font-size:12px;letter-spacing:.12em;text-transform:uppercase;opacity:.55;cursor:pointer}
+.ruler button.on{opacity:1}
+.ruler button:focus-visible{outline:2px solid #EDEFF2;outline-offset:2px}
+@media (max-height:860px) and (min-width:641px){.pix.xl{--s:3}.pix.lg{--s:2.5}.pix.md{--s:2}.pix.face{--s:3}.pix.face.sm{--s:2.5}}
+@media (max-width:960px){
+.row{flex-direction:column;align-items:flex-start}
+.minis{grid-template-columns:minmax(0,1fr)}
+.head-row{flex-direction:column;align-items:flex-start}
+.pix.xl,.pix.lg{--s:3}
+}
+@media (max-width:640px){
+.badge{display:none}
+.nav{gap:12px;font-size:12px}
+.top{flex-wrap:wrap;gap:8px 14px}
+.scene{padding:130px 20px 130px}
+.pix.xl,.pix.lg{--s:2.5}
+.pix.md,.pix.face{--s:2}
+.ruler button{display:none}
+.ruler button.on{display:block;position:absolute;left:50%;transform:translateX(-50%)}
+.cards{grid-auto-columns:minmax(240px,78vw)}
+}
+@media (prefers-reduced-motion:reduce){.pix img{animation:none}.big .l{transition:none}.v2.live{transition:none}}
+</style>
+</helmet>
+<div class="v2" data-v2 style="--bg:#4F4086">
+<a class="skip" href="#hello">Skip to content</a>
+<header class="top">
+<a class="brand" href="Main.dc.html">GelasTinta</a>
+<nav class="nav" aria-label="Main"><a href="Projects.dc.html">Projects</a><a href="Talks.dc.html">Talks</a><a href="Products.dc.html">Products</a><a href="/packs/library/">Library</a><a href="Author.dc.html">Author</a></nav>
+</header>
+
+<section class="scene" id="hello" data-scene data-bg="#4F4086" style="--sb:#4F4086">
+<svg class="star" style="left:3.4780066852364135%;top:27.425798162111423%;width:24px;height:24px;opacity:0.7" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:7.194697679337283%;top:13.88420528903573%;width:10px;height:10px;opacity:0.7" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:6.760437746955587%;top:64.44996080854925%;width:18px;height:18px;opacity:0.9" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:10.82009003696132%;top:81.71990643936462%;width:10px;height:10px;opacity:0.5" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:92.41412472793496%;top:63.664643751042696%;width:24px;height:24px;opacity:0.9" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:89.21691666273036%;top:84.89002959168127%;width:14px;height:14px;opacity:0.7" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:89.18781037337689%;top:85.98853424446027%;width:10px;height:10px;opacity:0.7" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg>
+<div class="stack-c">
+<p class="over">Gelas · glass &nbsp;/&nbsp; Tinta · ink</p>
+<h1 class="big"><span class="w"><span class="l" style="--r:-0.4deg;--y:0.006em">I</span><span class="l" style="--r:3.4deg;--y:-0.003em">d</span><span class="l" style="--r:0.1deg;--y:0.009em">e</span><span class="l" style="--r:-2.5deg;--y:0.001em">a</span><span class="l" style="--r:1.0deg;--y:0.029em">s</span></span> <span class="w"><span class="l" style="--r:-3.2deg;--y:-0.020em">a</span><span class="l" style="--r:-3.3deg;--y:0.031em">s</span></span> <span class="w"><span class="l" style="--r:1.5deg;--y:-0.046em">i</span><span class="l" style="--r:3.9deg;--y:0.046em">n</span></span> <span class="w"><span class="l" style="--r:1.2deg;--y:0.012em">i</span><span class="l" style="--r:-2.7deg;--y:-0.048em">n</span><span class="l" style="--r:0.2deg;--y:-0.044em">k</span></span></h1>
+<p class="serif">A metaphorical vessel where ideas flow like ink, shaped by structure yet free in spirit.</p>
+<div class="pix xl" role="img" aria-label="Pixel scene: the GelasTinta character studying late at night in his room, dozing off and waking up to keep working" style="--fw:128;--fh:80;--n:18;--t:2700ms"><img src="/_blob/cd7ae1fe0e2bd96a0c04404ee468052e" alt="" draggable="false"></div>
+<p class="cue">Scroll to step inside ↓</p>
+</div>
+</section>
+
+<section class="scene" id="hi" data-scene data-bg="#7A4456" style="--sb:#7A4456">
+<svg class="star" style="left:12.516376990781744%;top:13.693122142026182%;width:18px;height:18px;opacity:0.5" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:93.6973040144022%;top:27.132996997977116%;width:14px;height:14px;opacity:0.9" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:93.81246184992662%;top:59.63159240079427%;width:18px;height:18px;opacity:0.9" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:12.292828536729486%;top:79.16676934290952%;width:18px;height:18px;opacity:0.7" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:96.07750110179298%;top:80.91031445757615%;width:14px;height:14px;opacity:0.9" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg>
+<div class="row">
+<div class="stack-l">
+<h2 class="big huge"><span class="w"><span class="l" style="--r:5.5deg;--y:-0.036em">H</span><span class="l" style="--r:-5.7deg;--y:0.050em">i</span><span class="l" style="--r:-3.8deg;--y:-0.038em">,</span></span> <span class="w"><span class="l" style="--r:1.8deg;--y:-0.015em">I</span><span class="l" style="--r:4.7deg;--y:-0.027em">&#x27;</span><span class="l" style="--r:5.5deg;--y:-0.018em">m</span></span> <span class="w"><span class="l" style="--r:1.2deg;--y:0.043em">R</span><span class="l" style="--r:2.2deg;--y:0.042em">a</span><span class="l" style="--r:2.5deg;--y:-0.045em">y</span><span class="l" style="--r:4.6deg;--y:0.009em">a</span><span class="l" style="--r:-2.3deg;--y:-0.031em">n</span><span class="l" style="--r:4.2deg;--y:0.008em">g</span><span class="l" style="--r:5.3deg;--y:0.027em">.</span></span></h2>
+<svg class="squiggle" viewBox="0 0 300 24" aria-hidden="true"><path d="M2 12 C 27 0, 52 24, 77 12 S 127 0, 152 12 S 202 24, 227 12 S 277 0, 298 12" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></svg>
+<p class="serif">A mechanical engineer with a passion for turning ideas into reality.</p>
+<p class="mono-l">BEng · University of Exeter · 2023 &nbsp;/&nbsp; MSc · University College London · 2025</p>
+</div>
+<div class="pix face" role="img" aria-label="Pixel portrait: the GelasTinta character in his hoodie, smiling" style="--fw:76;--fh:58;--n:8;--t:1200ms"><img src="/_blob/830a7c1fe3e504f0c08301fe92d425c3" alt="" draggable="false"></div>
+</div>
+</section>
+
+<section class="scene" id="apart" data-scene data-bg="#5A82B3" style="--sb:#5A82B3">
+<svg class="star" style="left:92.44229225295952%;top:82.93936418540241%;width:24px;height:24px;opacity:0.9" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:93.05599530139327%;top:27.785737203552642%;width:14px;height:14px;opacity:0.5" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:91.70263507522448%;top:39.35930447043272%;width:14px;height:14px;opacity:0.5" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:95.68045307143296%;top:68.26515592092518%;width:10px;height:10px;opacity:0.5" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:92.91099582931318%;top:71.52642508301874%;width:18px;height:18px;opacity:0.7" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg>
+<div class="stack-c">
+<p class="over">Take it apart</p>
+<h2 class="big"><span class="w"><span class="l" style="--r:0.6deg;--y:0.013em">S</span><span class="l" style="--r:2.5deg;--y:-0.022em">e</span><span class="l" style="--r:1.2deg;--y:0.039em">e</span></span> <span class="w"><span class="l" style="--r:3.3deg;--y:-0.031em">h</span><span class="l" style="--r:1.2deg;--y:0.012em">o</span><span class="l" style="--r:0.0deg;--y:0.047em">w</span></span> <span class="w"><span class="l" style="--r:0.2deg;--y:-0.005em">i</span><span class="l" style="--r:3.5deg;--y:0.014em">t</span></span> <span class="w"><span class="l" style="--r:-1.6deg;--y:-0.019em">w</span><span class="l" style="--r:-0.0deg;--y:-0.045em">o</span><span class="l" style="--r:0.9deg;--y:0.024em">r</span><span class="l" style="--r:-0.6deg;--y:0.035em">k</span><span class="l" style="--r:3.4deg;--y:0.006em">s</span><span class="l" style="--r:1.5deg;--y:-0.038em">.</span></span></h2>
+<p class="serif"><i>From the inside.</i> Every model runs on the numbers from the work behind it.</p>
+<div class="pix lg" role="img" aria-label="Pixel scene: the GelasTinta character typing fast against a deadline, a progress bar filling, then leaning back relieved" style="--fw:128;--fh:80;--n:16;--t:2240ms"><img src="/_blob/0bdd3b0cc4df29182214044820c55db5" alt="" draggable="false"></div>
+<div class="minis"><a class="mini" href="Thesis-BEng.dc.html"><span class="mini-k">Project · prosthetic hand</span><span class="mini-t">How a prosthetic hand closes</span><span class="mini-p">One muscle signal drives six servos and five tendons, and each finger curls shut in 0.4 s.</span><span class="mini-go">Open it →</span></a><a class="mini" href="Thesis-MSc.dc.html"><span class="mini-k">Project · soft robot limb</span><span class="mini-t">How a soft limb bends</span><span class="mini-p">A bellows pumps water into seven silicone chambers, and each one adds a little arc.</span><span class="mini-go">Open it →</span></a><a class="mini" href="Talk-HairClipFish.dc.html"><span class="mini-k">Talk 07 · hair clip fish</span><span class="mini-t">How a hair clip fish swims</span><span class="mini-p">One servo loads a snap hair clip slowly, then it flicks the tail across in 50 ms.</span><span class="mini-go">Open it →</span></a></div>
+</div>
+</section>
+
+<section class="scene" id="builds" data-scene data-bg="#064F6E" style="--sb:#064F6E">
+<svg class="star" style="left:88.03166034230716%;top:46.2257851736074%;width:10px;height:10px;opacity:0.5" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:92.49401848897003%;top:73.23799752564791%;width:10px;height:10px;opacity:0.5" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:7.723731964107453%;top:75.457221038039%;width:18px;height:18px;opacity:0.5" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:87.25639681733549%;top:73.23761843760916%;width:14px;height:14px;opacity:0.5" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:93.2697560241313%;top:13.284333221333434%;width:18px;height:18px;opacity:0.9" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:6.267250348370459%;top:45.78138255715219%;width:10px;height:10px;opacity:0.9" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg>
+<div class="stack-l wide">
+<div class="head-row"><div><p class="over">Dissertations and hobby builds</p><h2 class="big"><span class="w"><span class="l" style="--r:-0.7deg;--y:0.004em">F</span><span class="l" style="--r:2.9deg;--y:-0.032em">e</span><span class="l" style="--r:-2.2deg;--y:-0.047em">a</span><span class="l" style="--r:-3.1deg;--y:-0.049em">t</span><span class="l" style="--r:-2.7deg;--y:0.001em">u</span><span class="l" style="--r:3.9deg;--y:0.019em">r</span><span class="l" style="--r:-1.0deg;--y:-0.009em">e</span><span class="l" style="--r:1.5deg;--y:-0.017em">d</span></span> <span class="w"><span class="l" style="--r:-3.4deg;--y:0.034em">w</span><span class="l" style="--r:0.9deg;--y:-0.039em">o</span><span class="l" style="--r:-3.4deg;--y:-0.041em">r</span><span class="l" style="--r:3.7deg;--y:-0.039em">k</span><span class="l" style="--r:1.0deg;--y:0.047em">s</span><span class="l" style="--r:-3.7deg;--y:-0.011em">.</span></span></h2></div><div class="pix face sm" role="img" aria-label="Pixel portrait: the GelasTinta character in his lab coat, looking determined" style="--fw:76;--fh:58;--n:8;--t:1200ms"><img src="/_blob/11e2aed629c96b98dcbbc577c17261a4" alt="" draggable="false"></div></div>
+<div class="cards" data-drag tabindex="0" aria-label="Featured works, scroll sideways"><a class="card" href="Thesis-MSc.dc.html" draggable="false"><span class="card-img" style="background:#10131C"><img src="/_blob/e6b092fd16f445a4cdd7dec4374667d7" alt="Rayang holding the finished soft underwater robot prototype at UCL" loading="lazy" draggable="false" style="object-fit:cover"></span><span class="card-k">Dissertation · MSc · UCL · 2025</span><span class="card-t">Bio-Inspired Pneumatic Soft Actuators for Underwater Robots</span><span class="card-p">Soft silicone limbs modelled on manta rays and trilobites, pumped with water so a robot can explore coral reefs without harming them.</span><span class="card-m">University College London · 2025</span></a><a class="card" href="Thesis-BEng.dc.html" draggable="false"><span class="card-img" style="background:#10131C"><img src="/_blob/d694dc45d8f43526db8f49c7eb77877a" alt="The finished 3D-printed prosthetic hand, palm side" loading="lazy" draggable="false" style="object-fit:cover"></span><span class="card-k">Dissertation · BEng · Exeter · 2023</span><span class="card-t">Constructing and Analysing the Performance of a Modified Prosthetic Hand</span><span class="card-p">A low-cost, 3D-printed five-finger hand that closes when you flex your forearm muscles.</span><span class="card-m">University of Exeter · 2023</span></a><a class="card" href="Hobby-InMoov.dc.html" draggable="false"><span class="card-img" style="background:#10131C"><img src="/_blob/8dcea2945392b3e0d9b3bd41927badc4" alt="Freshly printed black InMoov parts laid out on a cutting mat beside a craft knife" loading="lazy" draggable="false" style="object-fit:cover"></span><span class="card-k">Hobby build · 2023 – 2024</span><span class="card-t">Rebuilding the InMoov robot hand</span><span class="card-p">Printing and assembling Gaël Langevin’s open-source InMoov hand, from the first print to the first movement.</span><span class="card-m">Build diary · 11 clips</span></a><a class="card" href="Hobby-FlyBrain.dc.html" draggable="false"><span class="card-img" style="background:#10131C"><img src="/_blob/217a041e95fae2bb0ca236c2a9de533e" alt="Simulation replay: a glowing cloud of fruit-fly neurons inside a see-through fly head" loading="lazy" draggable="false" style="object-fit:cover"></span><span class="card-k">Hobby build · 2026 · New</span><span class="card-t">A fly’s brain when it tastes sugar?</span><span class="card-p">The published whole-brain model of the fruit fly, fed sugar and followed spike by spike, then run again with two neurons silenced.</span><span class="card-m">127,400 neurons · 5 interactive figures</span></a><a class="card" href="Hobby-GestureMusic.dc.html" draggable="false"><span class="card-img" style="background:#FFFFFF"><img src="/_blob/a50cc93e9ed9fa232711a3f74eb2bf40" alt="The Gesture Music hand-sign dictionary: nine hand skeletons" loading="lazy" draggable="false" style="object-fit:contain"></span><span class="card-k">Hobby build · 2025 – 2026 · New</span><span class="card-t">Gesture Music, an instrument you play with hand signs</span><span class="card-p">A webcam watches both hands and each sign plays a note, a chord or a drum, with a looper, live MIDI, a rhythm game and a 61-page handbook.</span><span class="card-m">Open on GitHub · 61-page handbook</span></a><a class="card" href="Hobby-TARS.dc.html" draggable="false"><span class="card-img" style="background:#10131C"><img src="/_blob/72ff13df99d98450330d2613c1e1189a" alt="My printed TARS standing on a desk" loading="lazy" draggable="false" style="object-fit:cover"></span><span class="card-k">Hobby build · 2025 · New</span><span class="card-t">Building my own TARS</span><span class="card-p">The robot from Interstellar, printed and assembled from the TARS-AI community’s open build kit, then taught seven new moves in a physics simulation.</span><span class="card-m">Fan build · 7 new moves</span></a></div>
+<a class="more" href="Projects.dc.html">All projects →</a>
+</div>
+</section>
+
+<section class="scene" id="talks" data-scene data-bg="#10131C" style="--sb:#10131C">
+<svg class="star" style="left:8.851918643786721%;top:76.5892421239041%;width:14px;height:14px;opacity:0.9" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:88.56851322302266%;top:45.40180001370175%;width:14px;height:14px;opacity:0.7" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:7.981369451595235%;top:67.41943220947164%;width:24px;height:24px;opacity:0.7" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:95.67459094269019%;top:19.40675383807521%;width:10px;height:10px;opacity:0.5" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:8.797188034593892%;top:6.14908842501291%;width:10px;height:10px;opacity:0.5" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:10.509530733304416%;top:79.28225229669135%;width:18px;height:18px;opacity:0.7" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:12.57625787845092%;top:21.260168157830712%;width:14px;height:14px;opacity:0.7" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:5.286677876392545%;top:84.60658309041679%;width:18px;height:18px;opacity:0.5" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:5.65039935942702%;top:56.06223184575496%;width:18px;height:18px;opacity:0.5" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:95.1851807464707%;top:64.49926384185716%;width:14px;height:14px;opacity:0.7" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:88.76120080478496%;top:87.90836330411577%;width:10px;height:10px;opacity:0.9" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:91.0429408116689%;top:36.75949597071629%;width:10px;height:10px;opacity:0.7" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg>
+<div class="stack-l wide">
+<div class="head-row"><div><p class="over">Talks · science and engineering, reviewed</p><h2 class="big"><span class="w"><span class="l" style="--r:-3.3deg;--y:0.045em">1</span><span class="l" style="--r:-2.8deg;--y:0.024em">4</span></span> <span class="w"><span class="l" style="--r:2.7deg;--y:0.025em">t</span><span class="l" style="--r:-1.6deg;--y:-0.015em">a</span><span class="l" style="--r:1.8deg;--y:0.047em">l</span><span class="l" style="--r:1.3deg;--y:0.004em">k</span><span class="l" style="--r:-0.9deg;--y:-0.009em">s</span><span class="l" style="--r:1.8deg;--y:-0.007em">.</span></span></h2><p class="serif">What’s new?</p></div><div class="pix md" role="img" aria-label="Pixel scene: the GelasTinta character reading at his desk, turning pages until an idea lights up" style="--fw:128;--fh:80;--n:16;--t:2560ms"><img src="/_blob/5e57846f1023308734ee379e7a9f60c8" alt="" draggable="false"></div></div>
+<div class="cards" data-drag tabindex="0" aria-label="Latest talks, scroll sideways"><a class="card" href="Talk-Voyager.dc.html" draggable="false"><span class="card-img" style="background:#111314"><img src="/_blob/9c8c4ece7789f21bf4a15d98dbfbc209" alt="The gold plated cover of the Voyager Golden Record against black" loading="lazy" draggable="false" style="object-fit:contain"></span><span class="card-k">Talk 14 · New</span><span class="card-t">A Day Away. Voyager 1 Is Now One Light Day from Home</span><span class="card-p">Voyager 1 is the first spacecraft a full light day from Earth, so a radio hello now takes a day each way. How it got there, what it found and what it still carries.</span><span class="card-m">20th November 2026 · 16 min read</span></a><a class="card" href="Talk-SkinEffect.dc.html" draggable="false"><span class="card-img" style="background:#40456A"><img src="/_blob/ce2c9f2fca64d8e2148366c7bc188439" alt="A man in a blue polo shirt making the time out sign with his hands" loading="lazy" draggable="false" style="object-fit:cover"></span><span class="card-k">Talk 13</span><span class="card-t">Skin in the Game. Why Noise Can Help Light Pile Up at One Edge</span><span class="card-p">Lossy steps push light towards one edge. Scrambling its phase can speed that drift up, and damping kills or boosts it depending on when it acts.</span><span class="card-m">13th November 2026 · 16 min read</span></a><a class="card" href="Talk-LearningBrain.dc.html" draggable="false"><span class="card-img" style="background:#10131C"><img src="/_blob/e630aa6d0d98a9a270f6319834ff68ff" alt="A man typing furiously at a keyboard with a big grin" loading="lazy" draggable="false" style="object-fit:cover"></span><span class="card-k">Talk 12</span><span class="card-t">Practice Makes Plastic. Brain Cells After One Typing Lesson</span><span class="card-p">A finger tapping lesson made brain cell bodies swell for a while and cell branches grow denser by the next day, seen in living people with an ultra strong MRI.</span><span class="card-m">6th November 2026 · 14 min read</span></a><a class="card" href="Talk-OrigamiRobot.dc.html" draggable="false"><span class="card-img" style="background:#10131C"><img src="/_blob/be14f7e1f50ae5d83ba42aa03955b24d" alt="Three papercraft cats, folded from flat sheets, sitting on a tiled floor" loading="lazy" draggable="false" style="object-fit:cover"></span><span class="card-k">Talk 11</span><span class="card-t">Folded Twice, Moves Eight Ways. A Bistable Origami Robot</span><span class="card-p">A 0.81 g origami robot with two stable shapes: small magnetic nudges make it crawl or roll, one big pulse snaps it shut.</span><span class="card-m">30th October 2026 · 13 min read</span></a><a class="card" href="Talk-Cyberpunk.dc.html" draggable="false"><span class="card-img" style="background:#10131C"><img src="/_blob/654691c00363657dd58c94a152c33ac5" alt="Close-up of a human eye with a Kiroshi implant: a glowing purple display in the iris and the brand name printed around it" loading="lazy" draggable="false" style="object-fit:cover"></span><span class="card-k">Talk 10</span><span class="card-t">Chrome and Consequences. The Real Science Behind Cyberpunk’s Implants</span><span class="card-p">Sandevistans, Kiroshi eyes, biochips and engrams from Cyberpunk 2077 and Edgerunners, set against the real implants of 2026, plus rogue AI and cyberpsychosis.</span><span class="card-m">23rd October 2026 · 17 min read</span></a></div>
+<a class="more" href="Talks.dc.html">All talks →</a>
+</div>
+</section>
+
+<section class="scene" id="beliefs" data-scene data-bg="#4F4086" style="--sb:#4F4086">
+<svg class="star" style="left:95.21954042319727%;top:70.02621377986821%;width:10px;height:10px;opacity:0.5" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:92.86484420822966%;top:32.82839614668299%;width:10px;height:10px;opacity:0.7" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:88.98106920196301%;top:82.48810652805595%;width:10px;height:10px;opacity:0.5" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:93.99523715713055%;top:61.68360620351647%;width:10px;height:10px;opacity:0.7" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:87.93134592191433%;top:73.6016471165484%;width:24px;height:24px;opacity:0.9" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:88.97162044798934%;top:14.194277971352127%;width:10px;height:10px;opacity:0.9" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg>
+<div class="stack-c">
+<blockquote class="quote"><p>“The highest forms of understanding we can achieve are laughter and human compassion.”</p><footer>Richard P. Feynman</footer></blockquote>
+<p class="lede">Much of how I think was shaped by Richard Feynman. It reminds me that science doesn’t have to be cold: the best ideas make people smile and bring them closer.</p>
+<div class="pix lg" role="img" aria-label="Pixel scene: the GelasTinta character with headphones on, eyes closed, nodding along to music" style="--fw:128;--fh:80;--n:12;--t:1680ms"><img src="/_blob/d2e84f22d868d8739a5351cc3aa8e9e5" alt="" draggable="false"></div>
+</div>
+</section>
+
+<section class="scene" id="packs" data-scene data-bg="#7A4456" style="--sb:#7A4456">
+<svg class="star" style="left:5.562160413164786%;top:12.084648080073592%;width:10px;height:10px;opacity:0.7" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:8.410668064936907%;top:9.14963530912673%;width:24px;height:24px;opacity:0.7" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:87.90713013343866%;top:10.965282510635088%;width:10px;height:10px;opacity:0.5" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:8.936885073049108%;top:54.476647683869885%;width:24px;height:24px;opacity:0.5" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:12.73880616152212%;top:30.327180051860807%;width:14px;height:14px;opacity:0.9" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg>
+<div class="row">
+<div class="stack-l">
+<p class="over">Products</p>
+<h2 class="big"><span class="w"><span class="l" style="--r:2.4deg;--y:-0.017em">S</span><span class="l" style="--r:-2.1deg;--y:0.032em">t</span><span class="l" style="--r:-3.1deg;--y:-0.002em">u</span><span class="l" style="--r:0.5deg;--y:0.011em">d</span><span class="l" style="--r:-2.8deg;--y:0.013em">y</span></span> <span class="w"><span class="l" style="--r:0.0deg;--y:0.035em">p</span><span class="l" style="--r:-3.8deg;--y:0.046em">a</span><span class="l" style="--r:-2.6deg;--y:0.031em">c</span><span class="l" style="--r:0.1deg;--y:0.034em">k</span><span class="l" style="--r:-2.5deg;--y:-0.018em">s</span><span class="l" style="--r:-3.3deg;--y:0.028em">.</span></span></h2>
+<p class="serif">Each pack opens with a free first sheet. The teardowns sit inside the full pack.</p>
+<div class="chips"><span class="chip">TH · Thermodynamics</span><span class="chip">RB · Robotics</span><span class="chip">T · Mechanics</span><span class="chip">VA · Vibration</span><span class="chip">CE · Control</span><span class="chip">E · Electronics</span><span class="chip">FE · Computational</span><span class="chip">M · Materials</span><span class="chip">EM · Engineering Maths</span><span class="chip">AM · Advanced Materials</span></div>
+<a class="more" href="Products.dc.html">See the study packs →</a>
+</div>
+<div class="pix lg" role="img" aria-label="Pixel scene: the GelasTinta character writing an exam nervously, getting stuck, pushing through and showing off an A plus" style="--fw:128;--fh:80;--n:16;--t:2400ms"><img src="/_blob/214357d23e3f1d75a0d60cf034b2161a" alt="" draggable="false"></div>
+</div>
+</section>
+
+<section class="scene" id="contact" data-scene data-bg="#064F6E" style="--sb:#064F6E">
+<svg class="star" style="left:4.493764453191536%;top:22.22179841402636%;width:10px;height:10px;opacity:0.5" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:3.505273138894519%;top:39.65965993640533%;width:10px;height:10px;opacity:0.7" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:7.361422851565902%;top:81.37649603012045%;width:24px;height:24px;opacity:0.5" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:94.59024299830133%;top:49.69493703725758%;width:24px;height:24px;opacity:0.7" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:9.98602127470851%;top:89.29460135396971%;width:10px;height:10px;opacity:0.7" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:8.821847581303526%;top:34.428841320359794%;width:10px;height:10px;opacity:0.7" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:11.937311747274808%;top:54.84906977344295%;width:14px;height:14px;opacity:0.9" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:96.46051433961577%;top:64.95285955282849%;width:14px;height:14px;opacity:0.9" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg>
+<div class="stack-c">
+<p class="over">Jakarta · London · Singapore</p>
+<h2 class="big"><span class="w"><span class="l" style="--r:-0.8deg;--y:-0.031em">G</span><span class="l" style="--r:3.2deg;--y:0.013em">e</span><span class="l" style="--r:0.2deg;--y:0.020em">t</span></span> <span class="w"><span class="l" style="--r:2.8deg;--y:0.019em">i</span><span class="l" style="--r:-2.9deg;--y:0.049em">n</span></span> <span class="w"><span class="l" style="--r:-3.0deg;--y:-0.036em">t</span><span class="l" style="--r:-2.6deg;--y:-0.009em">o</span><span class="l" style="--r:1.4deg;--y:-0.036em">u</span><span class="l" style="--r:-2.7deg;--y:-0.004em">c</span><span class="l" style="--r:2.9deg;--y:-0.044em">h</span><span class="l" style="--r:3.2deg;--y:-0.025em">.</span></span></h2>
+<p class="serif">Open to collaborations, discussions, projects, and work in discussing creative science, design, and engineering work.</p>
+<button type="button" class="mail" data-copy="mendrofarayang@gmail.com"><span class="mail-a">mendrofarayang@gmail.com</span><span class="mail-ok" aria-live="polite">Copied</span></button>
+<div class="socials">
+<a href="https://www.linkedin.com/in/raysmendrofa/">LinkedIn</a>
+<a href="https://wa.me/447376459918">WhatsApp</a>
+<a href="https://www.youtube.com/@gelastinta"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 9l5 3-5 3z" fill="currentColor"/></svg>YouTube</a>
+<a href="https://www.instagram.com/gelastinta/"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/></svg>Instagram</a>
+<a href="https://www.tiktok.com/@gelastinta.com"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M14 3c.5 2.6 2.4 4.4 5 4.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>TikTok</a>
+</div>
+<div class="pix lg" role="img" aria-label="Pixel scene: the GelasTinta character drinking warm tea on the sofa while it rains outside" style="--fw:128;--fh:80;--n:16;--t:2880ms"><img src="/_blob/5f546531126ecca601b1bd5ebcad7ece" alt="" draggable="false"></div>
+<p class="fine">Drawn by Rayang T Mendrofa · GelasTinta</p>
+</div>
+</section>
+
+<nav class="ruler" data-ruler aria-label="Chapters">
+<span class="ruler-ticks" aria-hidden="true"></span><span class="ruler-now" aria-hidden="true"></span>
+<button type="button" data-go="hello">Hello</button><button type="button" data-go="hi">Hi</button><button type="button" data-go="apart">Take apart</button><button type="button" data-go="builds">Builds</button><button type="button" data-go="talks">Talks</button><button type="button" data-go="beliefs">Beliefs</button><button type="button" data-go="packs">Packs</button><button type="button" data-go="contact">Contact</button>
+</nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":8200}}'>
+class Component extends DCLogic {
+  componentDidMount() { this.v2Start(0); }
+  componentWillUnmount() { clearTimeout(this.v2T); if (this.v2Off) this.v2Off(); }
+  // The scroll story: background colour per chapter, a chapter ruler, letters that settle as a scene
+  // reaches the middle of the screen, drag to scroll card rows, click to copy the email.
+  // Inside a frame (the design canvas) the page stays static: each scene keeps its own colour.
+  v2Start(tries) {
+    const root = document.querySelector('[data-v2]');
+    if (!root) { if (tries < 40) this.v2T = setTimeout(() => this.v2Start(tries + 1), 100); return; }
+    if (this.v2On) return;
+    this.v2On = true;
+    let framed = false;
+    try { framed = window.self !== window.top; } catch (e) { framed = true; }
+    const still = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+    const offs = [];
+    const on = (el, ev, fn, opt) => { el.addEventListener(ev, fn, opt); offs.push(() => el.removeEventListener(ev, fn, opt)); };
+    on(document, 'click', (e) => {
+      const t = e.target && e.target.closest ? e.target : null;
+      if (!t) return;
+      const go = t.closest('[data-go]');
+      if (go) {
+        const s = document.getElementById(go.getAttribute('data-go'));
+        if (s) { e.preventDefault(); s.scrollIntoView({ behavior: still ? 'auto' : 'smooth', block: 'start' }); }
+        return;
+      }
+      const cp = t.closest('[data-copy]');
+      if (cp) {
+        const v = cp.getAttribute('data-copy');
+        const done = () => { cp.classList.add('ok'); clearTimeout(cp.__t); cp.__t = setTimeout(() => cp.classList.remove('ok'), 1600); };
+        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(v).then(done, () => { location.href = 'mailto:' + v; });
+        else location.href = 'mailto:' + v;
+        return;
+      }
+      if (this.v2Dragged && t.closest('[data-drag]')) { e.preventDefault(); this.v2Dragged = false; }
+    }, true);
+    // drag to scroll the card rows with a mouse
+    let drag = null;
+    on(document, 'pointerdown', (e) => {
+      const row = e.target.closest && e.target.closest('[data-drag]');
+      if (!row || e.pointerType !== 'mouse' || e.button !== 0) return;
+      drag = { row: row, x: e.clientX, left: row.scrollLeft, moved: 0 };
+    }, true);
+    on(window, 'pointermove', (e) => {
+      if (!drag) return;
+      const dx = e.clientX - drag.x;
+      drag.moved = Math.max(drag.moved, Math.abs(dx));
+      if (drag.moved > 4) { drag.row.classList.add('drag'); drag.row.scrollLeft = drag.left - dx; }
+    }, true);
+    on(window, 'pointerup', () => {
+      if (!drag) return;
+      this.v2Dragged = drag.moved > 4;
+      drag.row.classList.remove('drag');
+      drag = null;
+    }, true);
+    this.v2Off = () => offs.forEach((f) => f());
+    if (framed) return;
+    root.classList.add('live');
+    const scenes = Array.from(root.querySelectorAll('[data-scene]'));
+    const btns = Array.from(root.querySelectorAll('.ruler [data-go]'));
+    let cur = -1, raf = 0;
+    const tick = () => {
+      raf = 0;
+      const h = window.innerHeight || 800;
+      let c = 0;
+      scenes.forEach((s, i) => {
+        const r = s.getBoundingClientRect();
+        if (r.top < h * 0.55) c = i;
+        if (!still) {
+          const p = Math.max(-1, Math.min(1, (r.top + r.height / 2 - h / 2) / h));
+          s.style.setProperty('--k', (0.35 + Math.abs(p) * 1.9).toFixed(3));
+        }
+      });
+      if (c !== cur) {
+        cur = c;
+        root.style.setProperty('--bg', scenes[c].getAttribute('data-bg'));
+        btns.forEach((b, i) => { b.classList.toggle('on', i === c); if (i === c) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current'); });
+      }
+      const max = Math.max(1, document.documentElement.scrollHeight - h);
+      root.style.setProperty('--prog', Math.min(1, Math.max(0, window.scrollY / max)).toFixed(4));
+    };
+    const ask = () => { if (!raf) raf = requestAnimationFrame(tick); };
+    on(window, 'scroll', ask, { passive: true });
+    on(window, 'resize', ask, { passive: true });
+    tick();
+  }
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

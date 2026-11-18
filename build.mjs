@@ -42,7 +42,10 @@ export const ROUTES = {
   'Hobby-FlyBrain.dc.html': '/projects/fly-brain-sugar/',
   'Hobby-GestureMusic.dc.html': '/projects/gesture-music/',
   'Hobby-TARS.dc.html': '/projects/tars/',
+  // prototype of the scroll story Home, kept out of the sitemap until the owner picks it
+  'Home-v2.dc.html': '/v2/',
 };
+const PREVIEW_ONLY = new Set(['Home-v2.dc.html']);
 
 const SITE_URL = 'https://gelastinta.com';
 
@@ -305,7 +308,7 @@ for (const file of pages) {
       }).replace(/</g, '\\u003c')}</script>`,
     ].filter(Boolean).join('\n');
   } else console.warn(`  ! ${file}: no META entry (no description or preview card)`);
-  sitemap.push({ url, file });
+  if (!PREVIEW_ONLY.has(file)) sitemap.push({ url, file });
 
   const html = `<!doctype html>
 <html lang="${lang}">
