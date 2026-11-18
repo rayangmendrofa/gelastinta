@@ -429,8 +429,157 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 @keyframes pxr-pour{0%{transform:translateX(0);animation-timing-function:step-end}75.628%{transform:translateX(0);animation-timing-function:steps(11,end)}100%{transform:translateX(-100%)}}
 /* px:end */
 </style>
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet">
+<style>
+.v2{--vh:9px}
+html.st-live .v2{--vh:1vh}
+.v2::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:40;opacity:.14;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.v2 .scene{position:relative;min-height:820px;display:flex;align-items:center;justify-content:center;padding:96px clamp(20px,5vw,80px) 110px;color:#EDEFF2}
+html.st-live .v2 .scene{min-height:calc(100vh - var(--st-top))}
+.v2 .scene.xs{align-items:flex-start}
+.v2 .scene :is(p,h1,h2,blockquote,footer){color:inherit}
+.v2 .star{position:absolute;color:#EDEFF2;pointer-events:none}
+.v2 .hello{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,4.6fr) minmax(0,7.4fr);gap:clamp(16px,3vw,48px);align-items:center;width:100%;max-width:1320px}
+.v2 .hello-text{display:flex;flex-direction:column;gap:clamp(12px,2.2vh,22px)}
+.v2 .hello-me{display:flex;align-items:flex-end;gap:18px}
+.v2 .hello .hero-vessel.flask{max-width:none;justify-self:center;width:100%}
+.v2 .hello .hero-vessel.flask svg{max-width:760px;max-height:calc(var(--vh) * 66);margin:0 auto;display:block}
+.v2 .hello .hero-vessel figcaption{max-width:760px;margin:0 auto;font-family:'Ubuntu Mono',monospace;font-size:11px;letter-spacing:.1em;opacity:.8}
+.v2 .stack-c{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;text-align:center;gap:clamp(12px,2.2vh,22px);max-width:1100px;width:100%}
+.v2 .stack-c.wide{max-width:1240px}
+.v2 .stack-l{position:relative;z-index:2;display:flex;flex-direction:column;gap:18px;max-width:760px}
+.v2 .stack-l.wide{max-width:1240px;width:100%}
+.v2 .row{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:clamp(24px,5vw,80px);width:100%;max-width:1240px}
+.v2 .head-row{display:flex;align-items:flex-end;justify-content:space-between;gap:24px}
+.v2 .over{margin:0;font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:clamp(20px,2vw,28px);opacity:.92}
+.v2 .big{margin:0;font-family:'Anton',Impact,sans-serif;font-weight:400;text-transform:uppercase;font-size:clamp(54px,min(10.5vw,calc(var(--vh) * 16)),180px);line-height:.9;letter-spacing:.005em;color:#EDEFF2}
+.v2 .hello .big{font-size:clamp(54px,min(8.4vw,calc(var(--vh) * 16)),150px)}
+.v2 .big.huge{font-size:clamp(58px,min(11.5vw,calc(var(--vh) * 18)),200px)}
+.v2 .big .w{display:inline-block;white-space:nowrap}
+.v2 .big .l{display:inline-block;transform:translateY(calc(var(--y) * var(--k,1))) rotate(calc(var(--r) * var(--k,1)));transition:transform .2s linear}
+.v2 .serif{margin:0;font-family:'Instrument Serif',Georgia,serif;font-size:clamp(24px,min(2.6vw,calc(var(--vh) * 4.4)),40px);line-height:1.12;max-width:26ch}
+.v2 .stack-c .serif{max-width:40ch}
+.v2 .lede{margin:0;font-size:clamp(18px,1.6vw,21px);max-width:56ch;opacity:.94}
+.v2 .mono-l,.v2 .cue{margin:0;font-family:'Ubuntu Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;opacity:.85}
+.v2 .squiggle{width:min(300px,60%);height:24px;color:#8DB0DA}
+.v2 .quote{margin:0;max-width:min(1000px,100%)}
+.v2 .quote p{margin:0;font-family:'Instrument Serif',Georgia,serif;font-size:clamp(34px,min(4.6vw,calc(var(--vh) * 7.4)),76px);line-height:1.04}
+.v2 .quote footer{margin-top:18px;font-family:'Ubuntu Mono',monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;opacity:.85}
+.v2 .pix{--s:3;position:relative;width:calc(var(--fw) * 1px * var(--s));height:calc(var(--fh) * 1px * var(--s));overflow:hidden;flex:none;border-radius:6px;box-shadow:0 0 0 3px rgba(237,239,242,.85),0 18px 40px rgba(16,19,28,.35)}
+.v2 .pix img{display:block;height:100%;width:calc(var(--n) * 100%);max-width:none;image-rendering:pixelated;image-rendering:crisp-edges;animation:hm-px var(--t) steps(var(--n)) infinite}
+@keyframes hm-px{to{transform:translateX(-100%)}}
+.v2 .pix.md{--s:3}
+.v2 .pix.sm{--s:2}
+.v2 .pix.face{--s:3;border-radius:50%;box-shadow:0 0 0 3px rgba(237,239,242,.85);background:rgba(237,239,242,.12)}
+.v2 .pix.face.sm{--s:2}
+.v2 .pix.pour{border-radius:12px}
+.v2 .show-grid{width:100%;text-align:left;margin-top:6px}
+.v2 .show-card{border-color:rgba(237,239,242,.85)}
+.v2 .cards{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(280px,340px);gap:22px;overflow-x:auto;padding:8px 2px 18px;scroll-snap-type:x mandatory;scrollbar-width:thin}
+.v2 .cards:focus-visible{outline:3px solid #8DB0DA;outline-offset:4px}
+.v2 .hcard{scroll-snap-align:start;display:flex;flex-direction:column;gap:8px;text-decoration:none;color:#EDEFF2}
+.v2 .hcard-img{display:block;aspect-ratio:4/3;border-radius:14px;overflow:hidden;border:2px solid rgba(237,239,242,.85)}
+.v2 .hcard-img img{display:block;width:100%;height:100%;object-position:50% 50%;transition:transform .5s cubic-bezier(.16,1,.3,1)}
+.v2 .hcard:hover .hcard-img img{transform:scale(1.05)}
+.v2 .hcard-k{font-family:'Ubuntu Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.8}
+.v2 .hcard-t{font-family:'Instrument Serif',Georgia,serif;font-size:26px;line-height:1.08}
+.v2 .hcard-p{font-size:15px;line-height:1.5;opacity:.88;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.v2 .hcard-m{font-family:'Ubuntu Mono',monospace;font-size:12px;opacity:.75}
+.v2 .more{align-self:flex-start;font-family:'Anton',Impact,sans-serif;font-size:20px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:#EDEFF2;border-bottom:3px solid #8DB0DA;padding-bottom:2px}
+.v2 .chips{display:flex;flex-wrap:wrap;gap:8px}
+.v2 .chip{padding:6px 12px;border:1px solid rgba(237,239,242,.55);border-radius:999px;font-family:'Ubuntu Mono',monospace;font-size:12px;color:#EDEFF2;background:none}
+.v2 .mail{display:inline-flex;align-items:center;gap:14px;padding:0;border:0;background:none;color:inherit;cursor:pointer;font-family:'Instrument Serif',Georgia,serif;font-size:clamp(28px,3.4vw,52px);border-bottom:3px solid #8DB0DA}
+.v2 .mail-ok{font-family:'Ubuntu Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background:#EDEFF2;color:#10131C;opacity:0;transition:opacity .25s}
+.v2 .mail.ok .mail-ok{opacity:1}
+.v2 .socials{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.v2 .socials a{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border:1px solid rgba(237,239,242,.6);border-radius:999px;text-decoration:none;color:#EDEFF2;font-family:'Ubuntu Mono',monospace;font-size:13px;letter-spacing:.05em}
+.v2 .socials a:hover{background:#EDEFF2;color:#10131C}
+@media (max-width:960px){
+.v2 .hello{grid-template-columns:minmax(0,1fr)}
+.v2 .hello .hero-vessel.flask{order:-1}
+.v2 .row{flex-direction:column;align-items:flex-start}
+.v2 .head-row{flex-direction:column;align-items:flex-start}
+.v2 .show-grid{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:640px){
+.v2 .scene{padding:72px 18px 96px}
+.v2 .pix.md{--s:2.4}
+.v2 .pix.face{--s:2}
+.v2 .cards{grid-auto-columns:minmax(240px,78vw)}
+.v2 .hello .gt-call text{font-size:15px}
+}
+@media (prefers-reduced-motion:reduce){.v2 .pix img{animation:none}.v2 .big .l{transition:none}}
+</style>
+<link data-story href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet">
+<style data-story>:root{--st-pal:#4F4086,#7A4456,#5A82B3,#064F6E;--st-outfit:hoodie}
+html.st-on{--rail:0px;--st-gap:8px;--st-r:20px;--st-top:76px}
+@media (min-width:760px){html.st-on{--st-gap:14px;--st-r:28px}}
+@media (min-width:1180px){html.st-on{--rail:176px}}
+html.st-on body{background:var(--st-bg,#10131C);transition:background-color .9s cubic-bezier(.65,0,.35,1)}
+html.st-on .gt-progress{display:none}
+html.st-on .site-head{background:var(--st-bg,#10131C);border-bottom:0;color:var(--st-fg);transition:background-color .9s cubic-bezier(.65,0,.35,1),color .9s}
+html.st-on .site-head .brand-name{font-family:'Anton',Impact,sans-serif;font-weight:400;font-size:24px;letter-spacing:.05em;text-transform:uppercase;color:var(--st-fg);text-decoration:none}
+html.st-on .site-head .nav a{font-family:'Anton',Impact,sans-serif;font-weight:400;font-size:14px;letter-spacing:.09em;text-transform:uppercase;color:var(--st-fg);background:none;border-color:transparent;opacity:.82}
+html.st-on .site-head .nav a.on,html.st-on .site-head .nav a:hover{opacity:1;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:6px;background:none}
+html.st-on .site-head .bk-logo path[stroke]{stroke:var(--st-fg)}
+html.st-on .st-card{position:relative;margin-left:calc(var(--rail) + var(--st-gap));margin-right:var(--st-gap);border-radius:var(--st-r) var(--st-r) 0 0;border-top:0;border-bottom:0;box-shadow:0 -16px 40px rgba(16,19,28,.22);overflow-x:clip}
+:where(html.st-on .st-card){background-color:var(--st-paper,#F3EFE6)}
+html.st-on .st-card + .st-card,html.st-on .st-card + .site-foot{margin-top:calc(var(--st-r) * -1)}
+html.st-on .site-foot{position:relative;z-index:1;margin-left:calc(var(--rail) + var(--st-gap));margin-right:var(--st-gap);border-radius:var(--st-r) var(--st-r) 0 0;box-shadow:0 -16px 40px rgba(16,19,28,.22)}
+html.st-live .st-card{position:sticky}
+html.st-on .st-scene{background:transparent!important;color:var(--st-fg);box-shadow:none}
+html.st-on .st-scene::before,html.st-on .st-scene::after{display:none}
+html.st-on h1{font-family:'Anton',Impact,sans-serif;font-weight:400;font-style:normal;text-transform:uppercase;letter-spacing:.006em;line-height:.94;font-size:clamp(50px,6.4vw,118px)}
+html.st-on h1.t-title{font-size:clamp(40px,4.8vw,84px);line-height:.96}
+html.st-on h1 *{font-family:inherit;font-weight:inherit}
+html.st-on .st-h{font-family:'Anton',Impact,sans-serif;font-weight:400;font-style:normal;text-transform:uppercase;letter-spacing:.01em;line-height:.96;font-size:clamp(34px,4.2vw,64px)}
+html.st-on .st-scene h1,html.st-on .st-scene .st-h{color:var(--st-fg)}
+html.st-on .st-scene :is(.kicker,.meta,.lead,.prose,.prose p,.prose b,figcaption,.muted):not(.card *){color:var(--st-fg)}
+html.st-live .st-hpin{position:sticky;top:calc(var(--st-top) + 24px)}
+.st-xon{overflow:visible!important;scroll-snap-type:none!important;will-change:transform}
+html.st-on [data-st-w] .w{display:inline-block;white-space:nowrap}
+html.st-on [data-st-w] .l{display:inline-block;transform:translateY(calc(var(--y) * var(--k,0))) rotate(calc(var(--r) * var(--k,0)));transition:transform .25s linear}
+.st-serif{font-family:'Instrument Serif',Georgia,serif;font-weight:400}
+.st-stage{--s:3;position:relative;width:calc(128px * var(--s));max-width:100%;aspect-ratio:128/80;flex:none;border-radius:10px;overflow:hidden;background:#10131C;box-shadow:0 0 0 3px rgba(237,239,242,.9),0 18px 40px rgba(16,19,28,.35)}
+.st-scene .st-stage{margin:8px 0 18px}
+.st-stage > img{position:absolute;inset:0;width:100%;height:100%;image-rendering:pixelated;image-rendering:crisp-edges}
+.st-actor{position:absolute;left:20.3%;top:25%;width:59.375%;height:72.5%;overflow:hidden}
+.st-actor img{display:block;height:100%;width:calc(var(--n) * 100%);max-width:none;image-rendering:pixelated;image-rendering:crisp-edges;animation:st-px var(--t) steps(var(--n)) infinite}
+.st-actor.walk{animation:st-walkin 7s linear infinite}
+.st-actor.act{animation:st-act 7s steps(1,end) infinite}
+@keyframes st-px{to{transform:translateX(-100%)}}
+@keyframes st-walkin{0%{transform:translateX(-140%);opacity:1}40%{transform:translateX(0);opacity:1}40.01%,100%{transform:translateX(0);opacity:0}}
+@keyframes st-act{0%,40%{opacity:0}40.01%,100%{opacity:1}}
+.st-rail{position:fixed;left:0;top:calc(var(--st-top) + 18px);bottom:28px;width:var(--rail);z-index:55;color:var(--st-fg);display:none;font-family:'Anton',Impact,sans-serif;transition:color .9s}
+@media (min-width:1180px){html.st-on .st-rail{display:block}}
+html.st-framed .st-rail{position:absolute;bottom:auto;height:720px}
+.st-track{position:absolute;left:26px;top:4px;bottom:4px;width:10px;background:repeating-linear-gradient(180deg,currentColor 0 1px,transparent 1px 9px);opacity:.5}
+.st-now{position:absolute;left:18px;width:26px;height:3px;border-radius:2px;background:currentColor;top:calc(4px + (100% - 8px) * var(--st-prog,0));transition:top .12s linear}
+.st-walker{position:absolute;left:14px;width:34px;height:58px;overflow:hidden;top:max(0px,calc(4px + (100% - 8px) * var(--st-prog,0) - 60px));transition:top .12s linear;pointer-events:none}
+.st-walker img{display:block;height:58px;width:calc(var(--n) * 76px);max-width:none;image-rendering:pixelated;animation:st-px var(--t) steps(var(--n)) infinite}
+.st-rail ol{list-style:none;margin:0;padding:0 14px 0 54px;height:100%;display:flex;flex-direction:column;justify-content:space-between}
+.st-rail button{display:flex;gap:8px;align-items:baseline;width:100%;border:0;background:none;color:inherit;font:inherit;font-size:12.5px;letter-spacing:.09em;line-height:1.15;text-transform:uppercase;text-align:left;opacity:.5;cursor:pointer;padding:3px 0;transition:opacity .3s}
+.st-rail button .n{font-family:'Ubuntu Mono',monospace;font-size:11px;letter-spacing:.04em;flex:none}
+.st-rail button .t{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.st-rail button:hover{opacity:.85}
+.st-rail button.on{opacity:1}
+.st-rail button:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+.st-chip{position:fixed;left:10px;bottom:12px;z-index:56;display:none;align-items:center;gap:8px;max-width:calc(100vw - 20px);padding:9px 16px;border-radius:999px;border:0;background:var(--st-bg,#10131C);color:var(--st-fg);box-shadow:0 0 0 2px var(--st-fg),0 8px 24px rgba(16,19,28,.3);font-family:'Anton',Impact,sans-serif;font-size:13px;letter-spacing:.09em;text-transform:uppercase;cursor:pointer;transition:background-color .9s,color .9s}
+.st-chip .n{font-family:'Ubuntu Mono',monospace;font-size:11px}
+.st-chip .t{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:1179px){html.st-live .st-chip{display:inline-flex}
+html.st-railopen .st-rail{display:block;left:10px;top:auto;bottom:62px;width:min(340px,calc(100vw - 20px));max-height:70vh;overflow:auto;padding:16px 0;border-radius:18px;background:var(--st-bg,#10131C);box-shadow:0 0 0 2px var(--st-fg),0 18px 40px rgba(16,19,28,.35)}
+html.st-railopen .st-rail ol{height:auto;gap:12px;padding:0 18px}
+html.st-railopen .st-rail button{font-size:15px}
+html.st-railopen .st-track,html.st-railopen .st-now,html.st-railopen .st-walker{display:none}}
+.st-wipe{position:fixed;inset:0;z-index:2147483000;pointer-events:none;background:var(--c);clip-path:circle(0 at var(--x) var(--y));transition:clip-path .55s cubic-bezier(.65,0,.35,1)}
+.st-wipe.go{clip-path:circle(150% at var(--x) var(--y))}
+html.st-in::after{content:"";position:fixed;inset:0;z-index:2147483000;pointer-events:none;background:var(--st-wipe,#10131C);clip-path:inset(0 0 0 0)}
+html.st-in.st-go::after{clip-path:inset(0 0 100% 0);transition:clip-path .7s cubic-bezier(.65,0,.35,1)}
+@media (prefers-reduced-motion:reduce){html.st-on [data-st-w] .l{transition:none}.st-actor.walk{display:none}.st-actor.act{animation:none;opacity:1}.st-actor img,.st-walker img{animation:none}}
+</style>
 </helmet>
-<div style="min-height:100vh" data-gt-root="">
+<div style="min-height:100vh" data-gt-root="" class="v2">
 <a class="skip-link" href="#main">Skip to content</a>
 
 <header class="site-head" id="top">
@@ -447,35 +596,14 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 </div>
 </header>
 
-<section id="main" class="sec hero rule-b" aria-label="Introduction">
-<div class="hero-slides" aria-hidden="true">
-<img src="/_blob/1cbb25cb1a353957951010a42aa58fc0" alt="" style="object-position:50% 50%;animation-delay:0s" fetchpriority="high">
-<img data-src="/_blob/54e236f0eae207dc01d1ee7e8e745b14" alt="" style="object-position:50% 50%;animation-delay:6s">
-<img data-src="/_blob/23e08ad3db1cd3399987c346362c040e" alt="" style="object-position:50% 35%;animation-delay:12s">
-<img data-src="/_blob/925865cb85607eb2acd1f76463392e38" alt="" style="object-position:50% 40%;animation-delay:18s">
-<img data-src="/_blob/74947f581310c4a58b511d52b0cf453a" alt="" style="object-position:50% 50%;animation-delay:24s">
-<img data-src="/_blob/56cca24a2040f046eb4863ee0c4e43b3" alt="" style="object-position:50% 45%;animation-delay:30s">
-<img data-src="/_blob/d0b69a4315655f68a6b39c11a4d7cd41" alt="" style="object-position:50% 40%;animation-delay:36s">
-<img data-src="/_blob/ac313a03702e49c46817e6592cccc59a" alt="" style="object-position:50% 45%;animation-delay:42s">
-<img data-src="/_blob/c29e846553651da3a89b2de97a131f51" alt="" style="object-position:50% 30%;animation-delay:48s">
-<img data-src="/_blob/249cc5a7a8debd1fc9946cfc9cdb6339" alt="" style="object-position:50% 40%;animation-delay:54s">
-<img data-src="/_blob/1f97d750e619e2798cb7b950bafd4e55" alt="" style="object-position:50% 55%;animation-delay:60s">
-<img data-src="/_blob/eb1ac40f26eec653825ed28360ae1ea5" alt="" style="object-position:50% 50%;animation-delay:66s">
-<img data-src="/_blob/574bcab85e93313f5104960f53d17495" alt="" style="object-position:50% 45%;animation-delay:72s">
-<img data-src="/_blob/2f91849e973c1cb47463883f45873c92" alt="" style="object-position:50% 30%;animation-delay:78s">
-<img data-src="/_blob/33efd841aaa3072adf596960a61e97cb" alt="" style="object-position:50% 45%;animation-delay:84s">
-<img data-src="/_blob/892c6d09ed4da6ce4df609c079b7b366" alt="" style="object-position:50% 55%;animation-delay:90s">
-<img data-src="/_blob/ba4b06e7983f90f6ed932b3e45b9f3c4" alt="" style="object-position:50% 60%;animation-delay:96s">
-<img data-src="/_blob/02a467c9baf6582f2ca67ac1c3522b32" alt="" style="object-position:50% 50%;animation-delay:102s">
-<img data-src="/_blob/6dbf7e766dcb2dc97f4c02e2787cb4ca" alt="" style="object-position:50% 45%;animation-delay:108s">
-<img data-src="/_blob/03497783b08521d4753e9b37d687b41d" alt="" style="object-position:50% 40%;animation-delay:114s">
-</div>
-<div class="hero-shade" aria-hidden="true"></div>
-<div class="wrap hero-grid">
-<div class="stack g24">
-<h1 class="hero-h">Ideas as in <span class="ink">Ink</span></h1>
-<p class="hero-quote">A metaphorical vessel where ideas flow like ink, shaped by structure yet free in spirit. It symbolizes intelligence as fluid creativity, balancing imagination and order to turn thoughts into meaningful stories and designs.</p>
-<p class="hero-quote-by">Gelas · glass  /  Tinta · ink</p>
+<section id="main" class="sec scene " data-st-ch="Hello" data-st-bg="#4F4086" style="--sb:#4F4086;background:#4F4086">
+<svg class="star" style="left:94.3%;top:69.4%;width:10px;height:10px;opacity:0.9" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:91.1%;top:36.7%;width:14px;height:14px;opacity:0.9" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:95.7%;top:76.3%;width:18px;height:18px;opacity:0.9" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:6.9%;top:51.3%;width:18px;height:18px;opacity:0.9" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:94.9%;top:88.6%;width:10px;height:10px;opacity:0.5" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:7.6%;top:26.3%;width:10px;height:10px;opacity:0.9" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:91.8%;top:41.2%;width:24px;height:24px;opacity:0.9" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg>
+<div class="hello">
+<div class="hello-text">
+<p class="over">Gelas · glass &nbsp;/&nbsp; Tinta · ink</p>
+<h1 class="big " data-st-w="" aria-label="Ideas as in ink"><span aria-hidden="true"><span class="w"><span class="l" style="--r:-0.4deg;--y:0.006em">I</span><span class="l" style="--r:3.4deg;--y:-0.003em">d</span><span class="l" style="--r:0.1deg;--y:0.009em">e</span><span class="l" style="--r:-2.5deg;--y:0.001em">a</span><span class="l" style="--r:1.0deg;--y:0.029em">s</span></span> <span class="w"><span class="l" style="--r:-3.2deg;--y:-0.020em">a</span><span class="l" style="--r:-3.3deg;--y:0.031em">s</span></span> <span class="w"><span class="l" style="--r:1.5deg;--y:-0.046em">i</span><span class="l" style="--r:3.9deg;--y:0.046em">n</span></span> <span class="w"><span class="l" style="--r:1.2deg;--y:0.012em">i</span><span class="l" style="--r:-2.7deg;--y:-0.048em">n</span><span class="l" style="--r:0.2deg;--y:-0.044em">k</span></span></span></h1>
+<p class="serif">A metaphorical vessel where ideas flow like ink, shaped by structure yet free in spirit.</p>
+<div class="hello-me"><div class="pix face pour" role="img" aria-label="Pixel character: the GelasTinta character in his hoodie lifts a beaker and pours ink into a puddle" style="--fw:76;--fh:58;--n:11;--t:1650ms"><img src="/_blob/cf0cbbc176dcedea4a1c0d45350432cf" alt="" draggable="false"></div><p class="cue">Scroll to step inside ↓</p></div>
 </div>
 <figure class="hero-vessel flask">
 <svg viewBox="0 0 640 470" width="100%" role="img" aria-label="The GelasTinta ink flask, labelled like an anatomy drawing: the glass, its scale, the ink, a new drop falling in and bubbles rising">
@@ -499,100 +627,89 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <figcaption><span>FIG. 00 · THE INK FLASK</span><span>Drag it · hover a label</span></figcaption>
 </figure>
 </div>
-<a class="hero-link" href="Author.dc.html#activities">Photos of activities around the studies <span aria-hidden="true">→</span></a>
 </section>
 
-
-
-<section class="sec">
-<div class="wrap">
-<div class="px-row">
-<div class="stack g16" style="max-width:820px">
-<p class="kicker">01 · About</p>
-<h2 class="t-h2">About</h2>
-<div class="prose intro" style="margin-top:8px">
-<p>This is a visual interpretation of my works and hobbies. Some things are essential in my professional persona and some are just fun, quirky drops of thought.</p>
-<p>While it’s important to highlight skills and journey of my life, I find comfort in sharing bits of my interest, from short thoughts to full-length rants.</p>
-<p>Much of how I think was shaped by Richard Feynman, and one line of his stays with me more than any equation:</p>
+<section id="hi" class="sec scene " data-st-ch="Hi" data-st-bg="#7A4456" style="--sb:#7A4456;background:#7A4456">
+<svg class="star" style="left:9.1%;top:65.6%;width:18px;height:18px;opacity:0.5" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:96.0%;top:49.6%;width:18px;height:18px;opacity:0.9" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:10.0%;top:82.9%;width:14px;height:14px;opacity:0.7" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:4.8%;top:53.6%;width:18px;height:18px;opacity:0.7" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:9.6%;top:44.9%;width:18px;height:18px;opacity:0.9" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:96.8%;top:14.5%;width:10px;height:10px;opacity:0.5" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:96.2%;top:40.5%;width:14px;height:14px;opacity:0.5" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg>
+<div class="row">
+<div class="stack-l">
+<h2 class="big huge" data-st-w="" aria-label="Hi, I&#x27;m Rayang."><span aria-hidden="true"><span class="w"><span class="l" style="--r:5.5deg;--y:-0.036em">H</span><span class="l" style="--r:-5.7deg;--y:0.050em">i</span><span class="l" style="--r:-3.8deg;--y:-0.038em">,</span></span> <span class="w"><span class="l" style="--r:1.8deg;--y:-0.015em">I</span><span class="l" style="--r:4.7deg;--y:-0.027em">&#x27;</span><span class="l" style="--r:5.5deg;--y:-0.018em">m</span></span> <span class="w"><span class="l" style="--r:1.2deg;--y:0.043em">R</span><span class="l" style="--r:2.2deg;--y:0.042em">a</span><span class="l" style="--r:2.5deg;--y:-0.045em">y</span><span class="l" style="--r:4.6deg;--y:0.009em">a</span><span class="l" style="--r:-2.3deg;--y:-0.031em">n</span><span class="l" style="--r:4.2deg;--y:0.008em">g</span><span class="l" style="--r:5.3deg;--y:0.027em">.</span></span></span></h2>
+<svg class="squiggle" viewBox="0 0 300 24" aria-hidden="true"><path d="M2 12 C 27 0, 52 24, 77 12 S 127 0, 152 12 S 202 24, 227 12 S 277 0, 298 12" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></svg>
+<p class="serif">A mechanical engineer with a passion for turning ideas into reality.</p>
+<p class="mono-l">BEng · University of Exeter · 2023 &nbsp;/&nbsp; MSc · University College London · 2025</p>
+<a class="more" href="Author.dc.html">More about me →</a>
 </div>
-<blockquote class="fq">
-<p>“The highest forms of understanding we can achieve are laughter and human compassion.”</p>
-<cite>— Richard P. Feynman</cite>
-</blockquote>
-<div class="prose intro">
-<p>It reminds me that science doesn’t have to be cold: the best ideas make people smile and bring them closer. And over the years, the most valuable thing I have learned is not to answer every question, but to ask better questions.</p>
-</div>
-</div>
-<span class="px pxc-pour" style="--w:46" role="img" aria-label="The GelasTinta pixel character in a hoodie, pouring ink from a beaker"><span class="px-v px-ai" style="--n:8;--t:1280ms"><img src="/_blob/4c1e039267cfd582c0ee4d5930f6998b" alt="" draggable="false"></span><span class="px-v px-am" style="--n:11;--t:1650ms"><img src="/_blob/cf0cbbc176dcedea4a1c0d45350432cf" alt="" draggable="false"></span><span class="px-v px-hm" style="--n:11;--t:1650ms"><img src="/_blob/cf0cbbc176dcedea4a1c0d45350432cf" alt="" draggable="false"></span></span>
-</div>
+<div class="pix face" role="img" aria-label="Pixel portrait: the GelasTinta character in his hoodie, smiling" style="--fw:76;--fh:58;--n:8;--t:1200ms"><img src="/_blob/830a7c1fe3e504f0c08301fe92d425c3" alt="" draggable="false"></div>
 </div>
 </section>
 
-<!-- home2:show:start -->
-<section class="sec show rule-b" id="take-apart" aria-labelledby="take-apart-h">
-<div class="wrap">
-<div class="sec-head row">
-<div class="stack g12"><p class="kicker">02 · Take it apart</p><h2 class="t-h2" id="take-apart-h">See how it works, from the inside.</h2></div>
-<p class="small muted" style="max-width:34em">Every model runs on the numbers from the work behind it. Press play, turn it round, pull it open, then read why it moves the way it does.</p>
-</div>
-<p class="show-label">3D teardowns · free to open</p>
+<section id="apart" class="sec scene " data-st-ch="Take apart" data-st-bg="#5A82B3" style="--sb:#5A82B3;background:#5A82B3">
+<svg class="star" style="left:6.1%;top:81.6%;width:18px;height:18px;opacity:0.5" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:10.5%;top:28.3%;width:24px;height:24px;opacity:0.7" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:92.1%;top:28.3%;width:24px;height:24px;opacity:0.9" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:95.9%;top:39.3%;width:18px;height:18px;opacity:0.5" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:8.9%;top:57.5%;width:18px;height:18px;opacity:0.9" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:7.3%;top:37.4%;width:18px;height:18px;opacity:0.7" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:5.6%;top:69.0%;width:14px;height:14px;opacity:0.5" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg>
+<div class="stack-c wide">
+<p class="over">Take it apart</p>
+<h2 class="big " data-st-w="" aria-label="See how it works."><span aria-hidden="true"><span class="w"><span class="l" style="--r:0.6deg;--y:0.013em">S</span><span class="l" style="--r:2.5deg;--y:-0.022em">e</span><span class="l" style="--r:1.2deg;--y:0.039em">e</span></span> <span class="w"><span class="l" style="--r:3.3deg;--y:-0.031em">h</span><span class="l" style="--r:1.2deg;--y:0.012em">o</span><span class="l" style="--r:0.0deg;--y:0.047em">w</span></span> <span class="w"><span class="l" style="--r:0.2deg;--y:-0.005em">i</span><span class="l" style="--r:3.5deg;--y:0.014em">t</span></span> <span class="w"><span class="l" style="--r:-1.6deg;--y:-0.019em">w</span><span class="l" style="--r:-0.0deg;--y:-0.045em">o</span><span class="l" style="--r:0.9deg;--y:0.024em">r</span><span class="l" style="--r:-0.6deg;--y:0.035em">k</span><span class="l" style="--r:3.4deg;--y:0.006em">s</span><span class="l" style="--r:1.5deg;--y:-0.038em">.</span></span></span></h2>
+<p class="serif"><i>From the inside.</i> Every model runs on the numbers from the work behind it.</p>
+<div class="pix md" role="img" aria-label="Pixel scene: the GelasTinta character typing fast against a deadline, a progress bar filling, then leaning back relieved" style="--fw:128;--fh:80;--n:16;--t:2240ms"><img src="/_blob/0bdd3b0cc4df29182214044820c55db5" alt="" draggable="false"></div>
 <div class="show-grid"><a class="show-card" href="Thesis-BEng.dc.html#teardown"><span class="show-media"><video src="/_blob/a7a2ec56d41a4fb6335cccce0e566ec0" poster="/_blob/4fb8d82ceaa66093a2fb4ede16d29685" autoplay muted loop playsinline preload="metadata" aria-label="Looping clip: the BEng prosthetic hand closing its fingers" data-gt-autoplay=""></video><span class="show-tag free">3D · Free</span></span><span class="show-body"><span class="kicker">Project · prosthetic hand</span><span class="show-t">How a prosthetic hand closes</span><span class="show-p">One muscle signal drives six servos and five tendons, and each finger curls shut in 0.4 s.</span><span class="show-go">Open the 3D model →</span></span></a><a class="show-card" href="Thesis-MSc.dc.html#teardown"><span class="show-media"><video src="/_blob/e6fc443c7eecd7281cfd0ea374a86861" poster="/_blob/aa7c142444a3367c0c7f32ec09112840" autoplay muted loop playsinline preload="metadata" aria-label="Looping clip: the MSc soft limb bending as water fills its chambers" data-gt-autoplay=""></video><span class="show-tag free">3D · Free</span></span><span class="show-body"><span class="kicker">Project · soft robot limb</span><span class="show-t">How a soft limb bends</span><span class="show-p">A bellows pumps water into seven silicone chambers, and each one adds a little arc.</span><span class="show-go">Open the 3D model →</span></span></a><a class="show-card" href="Talk-HairClipFish.dc.html#teardown"><span class="show-media"><video src="/_blob/567f81890cb84aa4d0085a802ac1e885" poster="/_blob/e74003e0877eef96a568b09081e0156b" autoplay muted loop playsinline preload="metadata" aria-label="Looping clip: the hair clip fish flicking its tail" data-gt-autoplay=""></video><span class="show-tag free">3D · Free</span></span><span class="show-body"><span class="kicker">Talk 07 · hair clip fish</span><span class="show-t">How a hair clip fish swims</span><span class="show-p">One servo loads a snap hair clip slowly, then it flicks the tail across in 50 ms.</span><span class="show-go">Open the 3D model →</span></span></a></div>
-<p class="show-label">Inside the study packs · 3D teardowns</p>
-<div class="pj" data-pj role="region" aria-roledescription="slide projector" aria-label="3D teardowns inside the study packs"><div class="pj-screen"><a class="pj-slide on" href="/packs/thermo/" style="--sc:#A5C8D1;--st:#1C1F33" data-pj-slide="0"><img src="/_blob/2d565198a112496eb70dea982dafade6" alt="3D teardown in the Thermodynamics study pack: how a four stroke engine works" loading="lazy"><span class="pj-cap"><b>TH · Thermodynamics</b><strong>How a four stroke engine works</strong><em>Open the pack, first sheet free →</em></span></a><a class="pj-slide" href="/packs/robotics/" style="--sc:#D96629;--st:#FFFFFF" data-pj-slide="1" tabindex="-1" aria-hidden="true"><img src="/_blob/68488c3e434b15aa5fbdda2d241707bc" alt="3D teardown in the Robotics study pack: how a six axis arm reaches" loading="lazy"><span class="pj-cap"><b>RB · Robotics</b><strong>How a six axis arm reaches</strong><em>Open the pack, first sheet free →</em></span></a><a class="pj-slide" href="/packs/mechanics/" style="--sc:#D96629;--st:#FFFFFF" data-pj-slide="2" tabindex="-1" aria-hidden="true"><img src="/_blob/01a730495af4bf947a6c0bca2d34c661" alt="3D teardown in the Mechanics study pack: how a bottle jack lifts a car" loading="lazy"><span class="pj-cap"><b>T · Mechanics</b><strong>How a bottle jack lifts a car</strong><em>Open the pack, first sheet free →</em></span></a><a class="pj-slide" href="/packs/vib/" style="--sc:#40456A;--st:#FFFFFF" data-pj-slide="3" tabindex="-1" aria-hidden="true"><img src="/_blob/8f921a5ed82afae50c70763a7c4847fa" alt="3D teardown in the Vibration study pack: how a woofer moves air" loading="lazy"><span class="pj-cap"><b>VA · Vibration</b><strong>How a woofer moves air</strong><em>Open the pack, first sheet free →</em></span></a><a class="pj-slide" href="/packs/control/" style="--sc:#D8A37B;--st:#1C1F33" data-pj-slide="4" tabindex="-1" aria-hidden="true"><img src="/_blob/3f5668ec7cfb292149b2374cb4090be8" alt="3D teardown in the Control study pack: how a flyball governor holds speed" loading="lazy"><span class="pj-cap"><b>CE · Control</b><strong>How a flyball governor holds speed</strong><em>Open the pack, first sheet free →</em></span></a><a class="pj-slide" href="/packs/electronics/" style="--sc:#D8A37B;--st:#1C1F33" data-pj-slide="5" tabindex="-1" aria-hidden="true"><img src="/_blob/956815b1cf4684189f69f334562597fe" alt="3D teardown in the Electronics study pack: how a linear power supply works" loading="lazy"><span class="pj-cap"><b>E · Electronics</b><strong>How a linear power supply works</strong><em>Open the pack, first sheet free →</em></span></a><a class="pj-slide" href="/packs/fea/" style="--sc:#40456A;--st:#FFFFFF" data-pj-slide="6" tabindex="-1" aria-hidden="true"><img src="/_blob/eb949d7007ccb257fc6c15a2d2b21744" alt="3D teardown in the Computational study pack: how a 3d printer builds a part" loading="lazy"><span class="pj-cap"><b>FE · Computational</b><strong>How a 3D printer builds a part</strong><em>Open the pack, first sheet free →</em></span></a><a class="pj-slide" href="/packs/materials/" style="--sc:#A5C8D1;--st:#1C1F33" data-pj-slide="7" tabindex="-1" aria-hidden="true"><img src="/_blob/f623c259d1881b7e13c97f9cd36badc0" alt="3D teardown in the Materials study pack: how a tensile test pulls a bar apart" loading="lazy"><span class="pj-cap"><b>M · Materials</b><strong>How a tensile test pulls a bar apart</strong><em>Open the pack, first sheet free →</em></span></a><a class="pj-slide" href="/packs/maths/" style="--sc:#40456A;--st:#FFFFFF" data-pj-slide="8" tabindex="-1" aria-hidden="true"><img src="/_blob/1d510099a756540349d58ac6d140d393" alt="3D teardown in the Engineering Maths study pack: how a car rides over a hump" loading="lazy"><span class="pj-cap"><b>EM · Engineering Maths</b><strong>How a car rides over a hump</strong><em>Open the pack, first sheet free →</em></span></a><a class="pj-slide" href="/packs/advmat/" style="--sc:#D96629;--st:#FFFFFF" data-pj-slide="9" tabindex="-1" aria-hidden="true"><img src="/_blob/3a9020ae7664a81cc9043d924177c980" alt="3D teardown in the Advanced Materials study pack: how an electron microscope sees" loading="lazy"><span class="pj-cap"><b>AM · Advanced Materials</b><strong>How an electron microscope sees</strong><em>Open the pack, first sheet free →</em></span></a></div><div class="pj-deck"><button type="button" class="pj-btn" data-pj-step="-1" aria-label="Previous slide">←</button><div class="pj-body"><span class="pj-lens" aria-hidden="true"></span><span class="pj-count" aria-live="polite"><b data-pj-pos>1</b> / 10</span></div><button type="button" class="pj-btn" data-pj-step="1" aria-label="Next slide">→</button><button type="button" class="pj-btn" data-pj-play aria-pressed="true">▶ Auto</button></div><div class="pj-roll" role="group" aria-label="Film roll: pick a slide"><button type="button" class="pj-frame on" style="--sc:#A5C8D1" data-pj-go="0" aria-label="Show slide 1: How a four stroke engine works" aria-current="true"><img src="/_blob/2c9784f8721477ed5a9249b61abbcf99" alt="" loading="lazy"><span><i>TH</i> · Thermodynamics</span></button><button type="button" class="pj-frame" style="--sc:#D96629" data-pj-go="1" aria-label="Show slide 2: How a six axis arm reaches"><img src="/_blob/e1030b7e77f50c33010fde3671150d04" alt="" loading="lazy"><span><i>RB</i> · Robotics</span></button><button type="button" class="pj-frame" style="--sc:#D96629" data-pj-go="2" aria-label="Show slide 3: How a bottle jack lifts a car"><img src="/_blob/eebb4ed6ac444ffb35603bf0ff74d893" alt="" loading="lazy"><span><i>T</i> · Mechanics</span></button><button type="button" class="pj-frame" style="--sc:#40456A" data-pj-go="3" aria-label="Show slide 4: How a woofer moves air"><img src="/_blob/e42eac5c30d3d883d70301ea43562bec" alt="" loading="lazy"><span><i>VA</i> · Vibration</span></button><button type="button" class="pj-frame" style="--sc:#D8A37B" data-pj-go="4" aria-label="Show slide 5: How a flyball governor holds speed"><img src="/_blob/0a344be3d90e1c61128388f6ff51cd2e" alt="" loading="lazy"><span><i>CE</i> · Control</span></button><button type="button" class="pj-frame" style="--sc:#D8A37B" data-pj-go="5" aria-label="Show slide 6: How a linear power supply works"><img src="/_blob/ca361678c4f4f34bb9be864b10e9f4da" alt="" loading="lazy"><span><i>E</i> · Electronics</span></button><button type="button" class="pj-frame" style="--sc:#40456A" data-pj-go="6" aria-label="Show slide 7: How a 3D printer builds a part"><img src="/_blob/8e8f76ac6e7212067d3f8f538c873d9a" alt="" loading="lazy"><span><i>FE</i> · Computational</span></button><button type="button" class="pj-frame" style="--sc:#A5C8D1" data-pj-go="7" aria-label="Show slide 8: How a tensile test pulls a bar apart"><img src="/_blob/a0a81f339a1296e292903f0783b9212f" alt="" loading="lazy"><span><i>M</i> · Materials</span></button><button type="button" class="pj-frame" style="--sc:#40456A" data-pj-go="8" aria-label="Show slide 9: How a car rides over a hump"><img src="/_blob/ac1eb01d4c672c724b85395b6c012dba" alt="" loading="lazy"><span><i>EM</i> · Engineering Maths</span></button><button type="button" class="pj-frame" style="--sc:#D96629" data-pj-go="9" aria-label="Show slide 10: How an electron microscope sees"><img src="/_blob/32d924aaf406d1f9c5d7dfc48a1def0d" alt="" loading="lazy"><span><i>AM</i> · Advanced Materials</span></button></div><p class="pj-hint">Click a frame on the roll · ← → keys · swipe the screen</p></div>
-<div class="show-more"><p class="small muted">Each pack opens with a free first sheet. The teardowns sit inside the full pack.</p><a class="btn ghost" href="Products.dc.html#packs">See the study packs <span aria-hidden="true">→</span></a></div>
-</div>
-</section>
-<!-- home2:show:end -->
-
-<section class="sec white rule-t rule-b">
-<div class="wrap">
-<div class="sec-head row">
-<div class="stack g12">
-<p class="kicker">03 · Dissertations</p>
-<h2 class="t-h2">Featured works</h2>
-</div>
-<a class="btn" href="Projects.dc.html">All projects <span aria-hidden="true">→</span></a>
-</div>
-<div class="shelf-wrap" data-shelf><div class="shelf-bar"><button type="button" class="sh-btn" data-shelf-step="-1" aria-label="Previous book">←</button><span class="sh-count" aria-live="polite"><b data-shelf-pos>1</b> / 6</span><button type="button" class="sh-btn" data-shelf-step="1" aria-label="Next book">→</button><span class="sh-hint">Click a spine to pull it out · click the cover to read</span><button type="button" class="sh-btn sh-sound" data-shelf-sound aria-pressed="true">♪ Sound on</button></div><div class="shelf" role="group" aria-label="Featured works"><div class="book open" data-book="0" style="--c:#064F6E;--t:#FFFFFF;--b1:#5A82B3;--b2:#10131C;--h:100%"><button type="button" class="spine" data-pick="0" aria-expanded="true" aria-controls="sh-works-0" aria-label="MSc: Bio-Inspired Pneumatic Soft Actuators for Underwater Robots"><span class="sp-n">MSc</span><span class="sp-t">Soft Actuators, Underwater</span><span class="sp-y">UCL 25</span></button><a class="cover" id="sh-works-0" href="Thesis-MSc.dc.html"><span class="cv-img" style="background:#10131C"><img src="/_blob/e6b092fd16f445a4cdd7dec4374667d7" alt="Rayang holding the finished soft underwater robot prototype at UCL" loading="lazy" style="object-fit:cover;object-position:50% 32%"></span><span class="cv-body"><span class="kicker">Dissertation · MSc · UCL · 2025</span><span class="cv-t">Bio-Inspired Pneumatic Soft Actuators for Underwater Robots</span><span class="cv-p">Soft silicone limbs modelled on manta rays and trilobites, pumped with water so a robot can explore coral reefs without harming them.</span><span class="cv-m">University College London · 2025</span><span class="cv-go">Nutshell + full paper →</span></span></a></div><div class="book" data-book="1" style="--c:#10131C;--t:#FFFFFF;--b1:#4F4086;--b2:#5A82B3;--h:94%"><button type="button" class="spine" data-pick="1" aria-expanded="false" aria-controls="sh-works-1" aria-label="BEng: Constructing and Analysing the Performance of a Modified Prosthetic Hand"><span class="sp-n">BEng</span><span class="sp-t">A Modified Prosthetic Hand</span><span class="sp-y">EXE 23</span></button><a class="cover" id="sh-works-1" href="Thesis-BEng.dc.html"><span class="cv-img" style="background:#10131C"><img src="/_blob/d694dc45d8f43526db8f49c7eb77877a" alt="The finished 3D-printed prosthetic hand, palm side" loading="lazy" style="object-fit:cover;object-position:50% 50%"></span><span class="cv-body"><span class="kicker">Dissertation · BEng · Exeter · 2023</span><span class="cv-t">Constructing and Analysing the Performance of a Modified Prosthetic Hand</span><span class="cv-p">A low-cost, 3D-printed five-finger hand that closes when you flex your forearm muscles.</span><span class="cv-m">University of Exeter · 2023</span><span class="cv-go">Nutshell + full paper →</span></span></a></div><div class="book" data-book="2" style="--c:#4F4086;--t:#10131C;--b1:#10131C;--b2:#5A82B3;--h:97%"><button type="button" class="spine" data-pick="2" aria-expanded="false" aria-controls="sh-works-2" aria-label="H1: Rebuilding the InMoov robot hand"><span class="sp-n">H1</span><span class="sp-t">Rebuilding InMoov</span><span class="sp-y">23–24</span></button><a class="cover" id="sh-works-2" href="Hobby-InMoov.dc.html"><span class="cv-img" style="background:#10131C"><img src="/_blob/8dcea2945392b3e0d9b3bd41927badc4" alt="Freshly printed black InMoov parts laid out on a cutting mat beside a craft knife" loading="lazy" style="object-fit:cover;object-position:50% 50%"></span><span class="cv-body"><span class="kicker">Hobby build · 2023 – 2024</span><span class="cv-t">Rebuilding the InMoov robot hand</span><span class="cv-p">Printing and assembling Gaël Langevin’s open-source InMoov hand, from the first print to the first movement.</span><span class="cv-m">Build diary · 11 clips</span><span class="cv-go">Read the build diary →</span></span></a></div><div class="book" data-book="3" style="--c:#5A82B3;--t:#10131C;--b1:#4F4086;--b2:#064F6E;--h:91%"><button type="button" class="spine" data-pick="3" aria-expanded="false" aria-controls="sh-works-3" aria-label="H2: A fly’s brain when it tastes sugar?"><span class="sp-n">H2</span><span class="sp-t">A Fly’s Brain on Sugar</span><span class="sp-y">2026</span></button><a class="cover" id="sh-works-3" href="Hobby-FlyBrain.dc.html"><span class="cv-img" style="background:#10131C"><img src="/_blob/217a041e95fae2bb0ca236c2a9de533e" alt="Simulation replay: a glowing cloud of fruit-fly neurons inside a see-through fly head" loading="lazy" style="object-fit:cover;object-position:42% 55%"></span><span class="cv-body"><span class="kicker">Hobby build · 2026 · New</span><span class="cv-t">A fly’s brain when it tastes sugar?</span><span class="cv-p">The published whole-brain model of the fruit fly, fed sugar and followed spike by spike, then run again with two neurons silenced.</span><span class="cv-m">127,400 neurons · 5 interactive figures</span><span class="cv-go">Explore the simulation →</span></span></a></div><div class="book" data-book="4" style="--c:#1A1F2E;--t:#FFFFFF;--b1:#064F6E;--b2:#4F4086;--h:98%"><button type="button" class="spine" data-pick="4" aria-expanded="false" aria-controls="sh-works-4" aria-label="H3: Gesture Music, an instrument you play with hand signs"><span class="sp-n">H3</span><span class="sp-t">Gesture Music</span><span class="sp-y">25–26</span></button><a class="cover" id="sh-works-4" href="Hobby-GestureMusic.dc.html"><span class="cv-img" style="background:#FFFFFF"><img src="/_blob/a50cc93e9ed9fa232711a3f74eb2bf40" alt="The Gesture Music hand-sign dictionary: nine hand skeletons" loading="lazy" style="object-fit:contain;object-position:50% 50%;padding:18px"></span><span class="cv-body"><span class="kicker">Hobby build · 2025 – 2026 · New</span><span class="cv-t">Gesture Music, an instrument you play with hand signs</span><span class="cv-p">A webcam watches both hands and each sign plays a note, a chord or a drum, with a looper, live MIDI, a rhythm game and a 61-page handbook.</span><span class="cv-m">Open on GitHub · 61-page handbook</span><span class="cv-go">See it and try it →</span></span></a></div><div class="book" data-book="5" style="--c:#10131C;--t:#FFFFFF;--b1:#064F6E;--b2:#5A82B3;--h:93%"><button type="button" class="spine" data-pick="5" aria-expanded="false" aria-controls="sh-works-5" aria-label="H4: Building my own TARS"><span class="sp-n">H4</span><span class="sp-t">Building TARS</span><span class="sp-y">2025</span></button><a class="cover" id="sh-works-5" href="Hobby-TARS.dc.html"><span class="cv-img" style="background:#10131C"><img src="/_blob/72ff13df99d98450330d2613c1e1189a" alt="My printed TARS standing on a desk" loading="lazy" style="object-fit:cover;object-position:50% 60%"></span><span class="cv-body"><span class="kicker">Hobby build · 2025 · New</span><span class="cv-t">Building my own TARS</span><span class="cv-p">The robot from Interstellar, printed and assembled from the TARS-AI community’s open build kit, then taught seven new moves in a physics simulation.</span><span class="cv-m">Fan build · 7 new moves</span><span class="cv-go">Meet TARS →</span></span></a></div><span class="bookend" aria-hidden="true"></span></div></div>
 </div>
 </section>
 
-<section class="sec">
-<div class="wrap">
-<div class="sec-head row">
-<div class="stack g12">
-<p class="kicker">04 · Talks</p>
-<h2 class="t-h2">What’s new?</h2>
-</div>
-<a class="btn" href="Talks.dc.html">All talks <span aria-hidden="true">→</span></a>
-</div>
-<div class="shelf-wrap" data-shelf><div class="shelf-bar"><button type="button" class="sh-btn" data-shelf-step="-1" aria-label="Previous book">←</button><span class="sh-count" aria-live="polite"><b data-shelf-pos>1</b> / 5</span><button type="button" class="sh-btn" data-shelf-step="1" aria-label="Next book">→</button><span class="sh-hint">Click a spine to pull it out · click the cover to read</span><button type="button" class="sh-btn sh-sound" data-shelf-sound aria-pressed="true">♪ Sound on</button></div><div class="shelf" role="group" aria-label="Latest talks"><div class="book open" data-book="0" style="--c:#CAB356;--t:#111314;--b1:#111314;--b2:#BB7125;--h:96%"><button type="button" class="spine" data-pick="0" aria-expanded="true" aria-controls="sh-latest-0" aria-label="14: A Day Away. Voyager 1 Is Now One Light Day from Home"><span class="sp-n">14</span><span class="sp-t">A Day Away</span><span class="sp-y">Nov 26</span></button><a class="cover" id="sh-latest-0" href="Talk-Voyager.dc.html"><span class="cv-img" style="background:#111314"><img src="/_blob/9c8c4ece7789f21bf4a15d98dbfbc209" alt="The gold plated cover of the Voyager Golden Record against black" loading="lazy" style="object-fit:contain;object-position:50% 50%"></span><span class="cv-body"><span class="kicker">Talk 14 · New</span><span class="cv-t">A Day Away. Voyager 1 Is Now One Light Day from Home</span><span class="cv-p">Voyager 1 is the first spacecraft a full light day from Earth, so a radio hello now takes a day each way. How it got there, what it found and what it still carries.</span><span class="cv-m">20th November 2026 · 16 min read</span><span class="cv-go">Read the talk →</span></span></a></div><div class="book" data-book="1" style="--c:#0093A5;--t:#FFFFFF;--b1:#40456A;--b2:#D1B0A7;--h:93%"><button type="button" class="spine" data-pick="1" aria-expanded="false" aria-controls="sh-latest-1" aria-label="13: Skin in the Game. Why Noise Can Help Light Pile Up at One Edge"><span class="sp-n">13</span><span class="sp-t">Skin in the Game</span><span class="sp-y">Nov 26</span></button><a class="cover" id="sh-latest-1" href="Talk-SkinEffect.dc.html"><span class="cv-img" style="background:#40456A"><img src="/_blob/ce2c9f2fca64d8e2148366c7bc188439" alt="A man in a blue polo shirt making the time out sign with his hands" loading="lazy" style="object-fit:cover;object-position:50% 30%"></span><span class="cv-body"><span class="kicker">Talk 13</span><span class="cv-t">Skin in the Game. Why Noise Can Help Light Pile Up at One Edge</span><span class="cv-p">Lossy steps push light towards one edge. Scrambling its phase can speed that drift up, and damping kills or boosts it depending on when it acts.</span><span class="cv-m">13th November 2026 · 16 min read</span><span class="cv-go">Read the talk →</span></span></a></div><div class="book" data-book="2" style="--c:#F37F94;--t:#10131C;--b1:#66629C;--b2:#B6BFC1;--h:95%"><button type="button" class="spine" data-pick="2" aria-expanded="false" aria-controls="sh-latest-2" aria-label="12: Practice Makes Plastic. Brain Cells After One Typing Lesson"><span class="sp-n">12</span><span class="sp-t">Practice Makes Plastic</span><span class="sp-y">Nov 26</span></button><a class="cover" id="sh-latest-2" href="Talk-LearningBrain.dc.html"><span class="cv-img" style="background:#10131C"><img src="/_blob/e630aa6d0d98a9a270f6319834ff68ff" alt="A man typing furiously at a keyboard with a big grin" loading="lazy" style="object-fit:cover;object-position:50% 50%"></span><span class="cv-body"><span class="kicker">Talk 12</span><span class="cv-t">Practice Makes Plastic. Brain Cells After One Typing Lesson</span><span class="cv-p">A finger tapping lesson made brain cell bodies swell for a while and cell branches grow denser by the next day, seen in living people with an ultra strong MRI.</span><span class="cv-m">6th November 2026 · 14 min read</span><span class="cv-go">Read the talk →</span></span></a></div><div class="book" data-book="3" style="--c:#E34A2B;--t:#FFFFFF;--b1:#5A82B3;--b2:#F2D3CB;--h:92%"><button type="button" class="spine" data-pick="3" aria-expanded="false" aria-controls="sh-latest-3" aria-label="11: Folded Twice, Moves Eight Ways. A Bistable Origami Robot"><span class="sp-n">11</span><span class="sp-t">Folded Twice, Moves Eight Ways</span><span class="sp-y">Oct 26</span></button><a class="cover" id="sh-latest-3" href="Talk-OrigamiRobot.dc.html"><span class="cv-img" style="background:#10131C"><img src="/_blob/be14f7e1f50ae5d83ba42aa03955b24d" alt="Three papercraft cats, folded from flat sheets, sitting on a tiled floor" loading="lazy" style="object-fit:cover;object-position:50% 50%"></span><span class="cv-body"><span class="kicker">Talk 11</span><span class="cv-t">Folded Twice, Moves Eight Ways. A Bistable Origami Robot</span><span class="cv-p">A 0.81 g origami robot with two stable shapes: small magnetic nudges make it crawl or roll, one big pulse snaps it shut.</span><span class="cv-m">30th October 2026 · 13 min read</span><span class="cv-go">Read the talk →</span></span></a></div><div class="book" data-book="4" style="--c:#FFF200;--t:#10131C;--b1:#CC1236;--b2:#2B44C8;--h:100%"><button type="button" class="spine" data-pick="4" aria-expanded="false" aria-controls="sh-latest-4" aria-label="10: Chrome and Consequences. The Real Science Behind Cyberpunk’s Implants"><span class="sp-n">10</span><span class="sp-t">Chrome and Consequences</span><span class="sp-y">Oct 26</span></button><a class="cover" id="sh-latest-4" href="Talk-Cyberpunk.dc.html"><span class="cv-img" style="background:#10131C"><img src="/_blob/654691c00363657dd58c94a152c33ac5" alt="Close-up of a human eye with a Kiroshi implant: a glowing purple display in the iris and the brand name printed around it" loading="lazy" style="object-fit:cover;object-position:55% 45%"></span><span class="cv-body"><span class="kicker">Talk 10</span><span class="cv-t">Chrome and Consequences. The Real Science Behind Cyberpunk’s Implants</span><span class="cv-p">Sandevistans, Kiroshi eyes, biochips and engrams from Cyberpunk 2077 and Edgerunners, set against the real implants of 2026, plus rogue AI and cyberpsychosis.</span><span class="cv-m">23rd October 2026 · 17 min read</span><span class="cv-go">Read the talk →</span></span></a></div><span class="bookend" aria-hidden="true"></span></div></div>
+<section id="builds" class="sec scene xs" data-st-ch="Builds" data-st-bg="#064F6E" style="--sb:#064F6E;background:#064F6E">
+<svg class="star" style="left:88.9%;top:9.5%;width:10px;height:10px;opacity:0.9" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:9.2%;top:89.9%;width:24px;height:24px;opacity:0.9" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:5.9%;top:26.9%;width:14px;height:14px;opacity:0.9" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:94.3%;top:12.6%;width:24px;height:24px;opacity:0.7" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:88.5%;top:61.8%;width:14px;height:14px;opacity:0.5" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:10.7%;top:62.3%;width:24px;height:24px;opacity:0.9" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:4.1%;top:64.7%;width:24px;height:24px;opacity:0.5" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg>
+<div class="st-hpin stack-l wide">
+<div class="head-row"><div><p class="over">Dissertations and hobby builds</p><h2 class="big " data-st-w="" aria-label="Featured works."><span aria-hidden="true"><span class="w"><span class="l" style="--r:-0.7deg;--y:0.004em">F</span><span class="l" style="--r:2.9deg;--y:-0.032em">e</span><span class="l" style="--r:-2.2deg;--y:-0.047em">a</span><span class="l" style="--r:-3.1deg;--y:-0.049em">t</span><span class="l" style="--r:-2.7deg;--y:0.001em">u</span><span class="l" style="--r:3.9deg;--y:0.019em">r</span><span class="l" style="--r:-1.0deg;--y:-0.009em">e</span><span class="l" style="--r:1.5deg;--y:-0.017em">d</span></span> <span class="w"><span class="l" style="--r:-3.4deg;--y:0.034em">w</span><span class="l" style="--r:0.9deg;--y:-0.039em">o</span><span class="l" style="--r:-3.4deg;--y:-0.041em">r</span><span class="l" style="--r:3.7deg;--y:-0.039em">k</span><span class="l" style="--r:1.0deg;--y:0.047em">s</span><span class="l" style="--r:-3.7deg;--y:-0.011em">.</span></span></span></h2></div><div class="pix face sm" role="img" aria-label="Pixel portrait: the GelasTinta character in his lab coat, looking determined" style="--fw:76;--fh:58;--n:8;--t:1200ms"><img src="/_blob/11e2aed629c96b98dcbbc577c17261a4" alt="" draggable="false"></div></div>
+<div class="cards" data-st-x="" tabindex="0" aria-label="Featured works"><a class="hcard" href="Thesis-MSc.dc.html"><span class="hcard-img" style="background:#10131C"><img src="/_blob/e6b092fd16f445a4cdd7dec4374667d7" alt="Rayang holding the finished soft underwater robot prototype at UCL" loading="lazy" style="object-fit:cover"></span><span class="hcard-k">Dissertation · MSc · UCL · 2025</span><span class="hcard-t">Bio-Inspired Pneumatic Soft Actuators for Underwater Robots</span><span class="hcard-p">Soft silicone limbs modelled on manta rays and trilobites, pumped with water so a robot can explore coral reefs without harming them.</span><span class="hcard-m">University College London · 2025</span></a><a class="hcard" href="Thesis-BEng.dc.html"><span class="hcard-img" style="background:#10131C"><img src="/_blob/d694dc45d8f43526db8f49c7eb77877a" alt="The finished 3D-printed prosthetic hand, palm side" loading="lazy" style="object-fit:cover"></span><span class="hcard-k">Dissertation · BEng · Exeter · 2023</span><span class="hcard-t">Constructing and Analysing the Performance of a Modified Prosthetic Hand</span><span class="hcard-p">A low-cost, 3D-printed five-finger hand that closes when you flex your forearm muscles.</span><span class="hcard-m">University of Exeter · 2023</span></a><a class="hcard" href="Hobby-InMoov.dc.html"><span class="hcard-img" style="background:#10131C"><img src="/_blob/8dcea2945392b3e0d9b3bd41927badc4" alt="Freshly printed black InMoov parts laid out on a cutting mat beside a craft knife" loading="lazy" style="object-fit:cover"></span><span class="hcard-k">Hobby build · 2023 – 2024</span><span class="hcard-t">Rebuilding the InMoov robot hand</span><span class="hcard-p">Printing and assembling Gaël Langevin’s open-source InMoov hand, from the first print to the first movement.</span><span class="hcard-m">Build diary · 11 clips</span></a><a class="hcard" href="Hobby-FlyBrain.dc.html"><span class="hcard-img" style="background:#10131C"><img src="/_blob/217a041e95fae2bb0ca236c2a9de533e" alt="Simulation replay: a glowing cloud of fruit-fly neurons inside a see-through fly head" loading="lazy" style="object-fit:cover"></span><span class="hcard-k">Hobby build · 2026 · New</span><span class="hcard-t">A fly’s brain when it tastes sugar?</span><span class="hcard-p">The published whole-brain model of the fruit fly, fed sugar and followed spike by spike, then run again with two neurons silenced.</span><span class="hcard-m">127,400 neurons · 5 interactive figures</span></a><a class="hcard" href="Hobby-GestureMusic.dc.html"><span class="hcard-img" style="background:#FFFFFF"><img src="/_blob/a50cc93e9ed9fa232711a3f74eb2bf40" alt="The Gesture Music hand-sign dictionary: nine hand skeletons" loading="lazy" style="object-fit:contain"></span><span class="hcard-k">Hobby build · 2025 – 2026 · New</span><span class="hcard-t">Gesture Music, an instrument you play with hand signs</span><span class="hcard-p">A webcam watches both hands and each sign plays a note, a chord or a drum, with a looper, live MIDI, a rhythm game and a 61-page handbook.</span><span class="hcard-m">Open on GitHub · 61-page handbook</span></a><a class="hcard" href="Hobby-TARS.dc.html"><span class="hcard-img" style="background:#10131C"><img src="/_blob/72ff13df99d98450330d2613c1e1189a" alt="My printed TARS standing on a desk" loading="lazy" style="object-fit:cover"></span><span class="hcard-k">Hobby build · 2025 · New</span><span class="hcard-t">Building my own TARS</span><span class="hcard-p">The robot from Interstellar, printed and assembled from the TARS-AI community’s open build kit, then taught seven new moves in a physics simulation.</span><span class="hcard-m">Fan build · 7 new moves</span></a></div>
+<a class="more" href="Projects.dc.html">All projects →</a>
 </div>
 </section>
 
-<section class="sec white rule-t">
-<div class="wrap">
-<div class="sec-head">
-<p class="kicker">05 · Explore</p>
-<h2 class="t-h2">Explore</h2>
+<section id="talks" class="sec scene xs" data-st-ch="Talks" data-st-bg="#10131C" style="--sb:#10131C;background:#10131C">
+<svg class="star" style="left:9.1%;top:36.9%;width:18px;height:18px;opacity:0.7" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:7.7%;top:45.5%;width:24px;height:24px;opacity:0.9" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:89.7%;top:53.8%;width:14px;height:14px;opacity:0.5" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:5.0%;top:22.7%;width:24px;height:24px;opacity:0.5" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:92.0%;top:72.9%;width:18px;height:18px;opacity:0.5" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:92.6%;top:26.0%;width:10px;height:10px;opacity:0.7" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:92.5%;top:74.7%;width:10px;height:10px;opacity:0.7" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg>
+<div class="st-hpin stack-l wide">
+<div class="head-row"><div><p class="over">Talks · science and engineering, reviewed</p><h2 class="big " data-st-w="" aria-label="14 talks."><span aria-hidden="true"><span class="w"><span class="l" style="--r:-3.3deg;--y:0.045em">1</span><span class="l" style="--r:-2.8deg;--y:0.024em">4</span></span> <span class="w"><span class="l" style="--r:2.7deg;--y:0.025em">t</span><span class="l" style="--r:-1.6deg;--y:-0.015em">a</span><span class="l" style="--r:1.8deg;--y:0.047em">l</span><span class="l" style="--r:1.3deg;--y:0.004em">k</span><span class="l" style="--r:-0.9deg;--y:-0.009em">s</span><span class="l" style="--r:1.8deg;--y:-0.007em">.</span></span></span></h2><p class="serif">What’s new?</p></div><div class="pix sm" role="img" aria-label="Pixel scene: the GelasTinta character reading at his desk, turning pages until an idea lights up" style="--fw:128;--fh:80;--n:16;--t:2560ms"><img src="/_blob/5e57846f1023308734ee379e7a9f60c8" alt="" draggable="false"></div></div>
+<div class="cards" data-st-x="" tabindex="0" aria-label="Latest talks"><a class="hcard" href="Talk-Voyager.dc.html"><span class="hcard-img" style="background:#111314"><img src="/_blob/9c8c4ece7789f21bf4a15d98dbfbc209" alt="The gold plated cover of the Voyager Golden Record against black" loading="lazy" style="object-fit:contain"></span><span class="hcard-k">Talk 14 · New</span><span class="hcard-t">A Day Away. Voyager 1 Is Now One Light Day from Home</span><span class="hcard-p">Voyager 1 is the first spacecraft a full light day from Earth, so a radio hello now takes a day each way. How it got there, what it found and what it still carries.</span><span class="hcard-m">20th November 2026 · 16 min read</span></a><a class="hcard" href="Talk-SkinEffect.dc.html"><span class="hcard-img" style="background:#40456A"><img src="/_blob/ce2c9f2fca64d8e2148366c7bc188439" alt="A man in a blue polo shirt making the time out sign with his hands" loading="lazy" style="object-fit:cover"></span><span class="hcard-k">Talk 13</span><span class="hcard-t">Skin in the Game. Why Noise Can Help Light Pile Up at One Edge</span><span class="hcard-p">Lossy steps push light towards one edge. Scrambling its phase can speed that drift up, and damping kills or boosts it depending on when it acts.</span><span class="hcard-m">13th November 2026 · 16 min read</span></a><a class="hcard" href="Talk-LearningBrain.dc.html"><span class="hcard-img" style="background:#10131C"><img src="/_blob/e630aa6d0d98a9a270f6319834ff68ff" alt="A man typing furiously at a keyboard with a big grin" loading="lazy" style="object-fit:cover"></span><span class="hcard-k">Talk 12</span><span class="hcard-t">Practice Makes Plastic. Brain Cells After One Typing Lesson</span><span class="hcard-p">A finger tapping lesson made brain cell bodies swell for a while and cell branches grow denser by the next day, seen in living people with an ultra strong MRI.</span><span class="hcard-m">6th November 2026 · 14 min read</span></a><a class="hcard" href="Talk-OrigamiRobot.dc.html"><span class="hcard-img" style="background:#10131C"><img src="/_blob/be14f7e1f50ae5d83ba42aa03955b24d" alt="Three papercraft cats, folded from flat sheets, sitting on a tiled floor" loading="lazy" style="object-fit:cover"></span><span class="hcard-k">Talk 11</span><span class="hcard-t">Folded Twice, Moves Eight Ways. A Bistable Origami Robot</span><span class="hcard-p">A 0.81 g origami robot with two stable shapes: small magnetic nudges make it crawl or roll, one big pulse snaps it shut.</span><span class="hcard-m">30th October 2026 · 13 min read</span></a><a class="hcard" href="Talk-Cyberpunk.dc.html"><span class="hcard-img" style="background:#10131C"><img src="/_blob/654691c00363657dd58c94a152c33ac5" alt="Close-up of a human eye with a Kiroshi implant: a glowing purple display in the iris and the brand name printed around it" loading="lazy" style="object-fit:cover"></span><span class="hcard-k">Talk 10</span><span class="hcard-t">Chrome and Consequences. The Real Science Behind Cyberpunk’s Implants</span><span class="hcard-p">Sandevistans, Kiroshi eyes, biochips and engrams from Cyberpunk 2077 and Edgerunners, set against the real implants of 2026, plus rogue AI and cyberpsychosis.</span><span class="hcard-m">23rd October 2026 · 17 min read</span></a></div>
+<a class="more" href="Talks.dc.html">All talks →</a>
 </div>
-<div class="cols-3">
-<a class="lib" href="Projects.dc.html">
-<svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#064F6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 5h14M19.5 5v13L8.6 38.4A3 3 0 0 0 11.2 43h25.6a3 3 0 0 0 2.6-4.6L28.5 18V5"></path><path d="M13.2 30c3.6-1.6 7.2 1.6 10.8 0s7.2-1.6 10.8 0" stroke-width="1.6"></path><circle cx="24" cy="33" r="4.6"></circle><circle cx="24" cy="33" r="1.4"></circle><path d="M28.60 33.00L30.40 33.00 M27.25 36.25L28.53 37.53 M24.00 37.60L24.00 39.40 M20.75 36.25L19.47 37.53 M19.40 33.00L17.60 33.00 M20.75 29.75L19.47 28.47 M24.00 28.40L24.00 26.60 M27.25 29.75L28.53 28.47" stroke-width="2.2"></path><path d="M24 9.5h4.5M24 13.5h4.5" stroke-width="1.4"></path></svg>
-<div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px"><h3 class="t-h2" style="font-size:32px">Projects</h3><span class="go">Go →</span></div>
-<p class="small">Dissertations, hobby builds and their 3D teardowns.</p>
-</a>
-<a class="lib" href="Talks.dc.html">
-<svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#064F6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 4C24 4 9 19.5 9 29a15 15 0 0 0 23.4 12.4L40 44l-2.6-7.2A15 15 0 0 0 39 29C39 19.5 24 4 24 4Z"></path><path d="M17.5 30h.01M24 30h.01M30.5 30h.01" stroke-width="3.6"></path></svg>
-<div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px"><h3 class="t-h2" style="font-size:32px">Talks</h3><span class="go">Go →</span></div>
-<p class="small">Monthly talks on papers, films, food and robots.</p>
-</a>
-<a class="lib" href="Author.dc.html">
-<svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#064F6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 4 34 17.5 30.5 33h-13L14 17.5Z"></path><path d="M24 4v14.5"></path><circle cx="24" cy="21" r="2.6"></circle><path d="M16.5 33h15v5.5h-15Z"></path><path d="M24 41.5c-1.6 2-2.4 3.1-2.4 4a2.4 2.4 0 0 0 4.8 0c0-.9-.8-2-2.4-4Z" fill="#064F6E" stroke-width="1"></path></svg>
-<div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px"><h3 class="t-h2" style="font-size:32px">Author</h3><span class="go">Go →</span></div>
-<p class="small">Who draws all of this, and why.</p>
-</a>
+</section>
+
+<section id="beliefs" class="sec scene " data-st-ch="Beliefs" data-st-bg="#4F4086" style="--sb:#4F4086;background:#4F4086">
+<svg class="star" style="left:89.3%;top:44.0%;width:24px;height:24px;opacity:0.5" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:94.6%;top:42.0%;width:24px;height:24px;opacity:0.9" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:91.2%;top:74.6%;width:18px;height:18px;opacity:0.7" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:9.3%;top:24.0%;width:24px;height:24px;opacity:0.5" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:7.0%;top:23.6%;width:10px;height:10px;opacity:0.5" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:90.4%;top:47.8%;width:14px;height:14px;opacity:0.9" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:2.9%;top:67.7%;width:14px;height:14px;opacity:0.5" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg>
+<div class="stack-c">
+<blockquote class="quote"><p>“The highest forms of understanding we can achieve are laughter and human compassion.”</p><footer>Richard P. Feynman</footer></blockquote>
+<p class="lede">Much of how I think was shaped by Richard Feynman. It reminds me that science doesn’t have to be cold: the best ideas make people smile and bring them closer.</p>
+<div class="pix md" role="img" aria-label="Pixel scene: the GelasTinta character with headphones on, eyes closed, nodding along to music" style="--fw:128;--fh:80;--n:12;--t:1680ms"><img src="/_blob/d2e84f22d868d8739a5351cc3aa8e9e5" alt="" draggable="false"></div>
 </div>
+</section>
+
+<section id="packs" class="sec scene " data-st-ch="Packs" data-st-bg="#7A4456" style="--sb:#7A4456;background:#7A4456">
+<svg class="star" style="left:89.3%;top:44.0%;width:24px;height:24px;opacity:0.5" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:94.6%;top:42.0%;width:24px;height:24px;opacity:0.9" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:91.2%;top:74.6%;width:18px;height:18px;opacity:0.7" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:9.3%;top:24.0%;width:24px;height:24px;opacity:0.5" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:7.0%;top:23.6%;width:10px;height:10px;opacity:0.5" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:90.4%;top:47.8%;width:14px;height:14px;opacity:0.9" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:2.9%;top:67.7%;width:14px;height:14px;opacity:0.5" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg>
+<div class="row">
+<div class="stack-l">
+<p class="over">Products</p>
+<h2 class="big " data-st-w="" aria-label="Study packs."><span aria-hidden="true"><span class="w"><span class="l" style="--r:2.4deg;--y:-0.017em">S</span><span class="l" style="--r:-2.1deg;--y:0.032em">t</span><span class="l" style="--r:-3.1deg;--y:-0.002em">u</span><span class="l" style="--r:0.5deg;--y:0.011em">d</span><span class="l" style="--r:-2.8deg;--y:0.013em">y</span></span> <span class="w"><span class="l" style="--r:0.0deg;--y:0.035em">p</span><span class="l" style="--r:-3.8deg;--y:0.046em">a</span><span class="l" style="--r:-2.6deg;--y:0.031em">c</span><span class="l" style="--r:0.1deg;--y:0.034em">k</span><span class="l" style="--r:-2.5deg;--y:-0.018em">s</span><span class="l" style="--r:-3.3deg;--y:0.028em">.</span></span></span></h2>
+<p class="serif">Each pack opens with a free first sheet. The teardowns sit inside the full pack.</p>
+<div class="chips"><span class="chip">TH · Thermodynamics</span><span class="chip">RB · Robotics</span><span class="chip">T · Mechanics</span><span class="chip">VA · Vibration</span><span class="chip">CE · Control</span><span class="chip">E · Electronics</span><span class="chip">FE · Computational</span><span class="chip">M · Materials</span><span class="chip">EM · Engineering Maths</span><span class="chip">AM · Advanced Materials</span></div>
+<a class="more" href="Products.dc.html">See the study packs →</a>
+</div>
+<div class="pix md" role="img" aria-label="Pixel scene: the GelasTinta character writing an exam nervously, getting stuck, pushing through and showing off an A plus" style="--fw:128;--fh:80;--n:16;--t:2400ms"><img src="/_blob/214357d23e3f1d75a0d60cf034b2161a" alt="" draggable="false"></div>
+</div>
+</section>
+
+<section id="contact" class="sec scene " data-st-ch="Contact" data-st-bg="#064F6E" style="--sb:#064F6E;background:#064F6E">
+<svg class="star" style="left:6.0%;top:78.6%;width:24px;height:24px;opacity:0.7" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:89.0%;top:59.9%;width:18px;height:18px;opacity:0.9" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:94.3%;top:34.2%;width:10px;height:10px;opacity:0.7" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:5.4%;top:29.3%;width:10px;height:10px;opacity:0.7" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:7.9%;top:89.3%;width:14px;height:14px;opacity:0.7" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:93.7%;top:69.1%;width:24px;height:24px;opacity:0.9" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="star" style="left:91.3%;top:8.3%;width:24px;height:24px;opacity:0.9" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg>
+<div class="stack-c">
+<p class="over">Jakarta · London · Singapore</p>
+<h2 class="big " data-st-w="" aria-label="Get in touch."><span aria-hidden="true"><span class="w"><span class="l" style="--r:-0.8deg;--y:-0.031em">G</span><span class="l" style="--r:3.2deg;--y:0.013em">e</span><span class="l" style="--r:0.2deg;--y:0.020em">t</span></span> <span class="w"><span class="l" style="--r:2.8deg;--y:0.019em">i</span><span class="l" style="--r:-2.9deg;--y:0.049em">n</span></span> <span class="w"><span class="l" style="--r:-3.0deg;--y:-0.036em">t</span><span class="l" style="--r:-2.6deg;--y:-0.009em">o</span><span class="l" style="--r:1.4deg;--y:-0.036em">u</span><span class="l" style="--r:-2.7deg;--y:-0.004em">c</span><span class="l" style="--r:2.9deg;--y:-0.044em">h</span><span class="l" style="--r:3.2deg;--y:-0.025em">.</span></span></span></h2>
+<p class="serif">Open to collaborations, discussions, projects, and work in discussing creative science, design, and engineering work.</p>
+<button type="button" class="mail" data-copy="mendrofarayang@gmail.com"><span class="mail-a">mendrofarayang@gmail.com</span><span class="mail-ok" aria-live="polite">Copied</span></button>
+<div class="socials">
+<a href="https://www.linkedin.com/in/raysmendrofa/">LinkedIn</a>
+<a href="https://wa.me/447376459918">WhatsApp</a>
+<a href="https://www.youtube.com/@gelastinta"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 9l5 3-5 3z" fill="currentColor"/></svg>YouTube</a>
+<a href="https://www.instagram.com/gelastinta/"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/></svg>Instagram</a>
+<a href="https://www.tiktok.com/@gelastinta.com"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M14 3c.5 2.6 2.4 4.4 5 4.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>TikTok</a>
+</div>
+<div class="pix md" role="img" aria-label="Pixel scene: the GelasTinta character drinking warm tea on the sofa while it rains outside" style="--fw:128;--fh:80;--n:16;--t:2880ms"><img src="/_blob/5f546531126ecca601b1bd5ebcad7ece" alt="" draggable="false"></div>
 </div>
 </section>
 
@@ -632,10 +749,10 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":4400}}'>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":7800}}'>
 class Component extends DCLogic {
   // ── GelasTinta motion layer (anime.js v4) ─────────────────────────────
-  componentDidMount() { this.gtStart(0); this.gtMedia(0); this.gtTheme(); this.gtFigs(); }
+  componentDidMount() { this.stStart(0); this.hmCopy(); this.gtStart(0); this.gtMedia(0); this.gtTheme(); this.gtFigs(); }
   componentWillUnmount() {
     if (this.thOff) this.thOff();
     this.gtFigStop();
@@ -1316,6 +1433,219 @@ class Component extends DCLogic {
     setTimeout(() => { f.style.background = '#EDEFF2'; apply(); f.classList.add('out'); }, 1000);
     setTimeout(() => { if (f.parentNode) f.parentNode.removeChild(f); }, 1450);
   }
+  // Home: click the email to copy it
+  hmCopy() {
+    if (this.hmOn) return;
+    this.hmOn = true;
+    const fn = (e) => {
+      const cp = e.target && e.target.closest ? e.target.closest('[data-copy]') : null;
+      if (!cp) return;
+      const v = cp.getAttribute('data-copy');
+      const done = () => { cp.classList.add('ok'); clearTimeout(cp.__t); cp.__t = setTimeout(() => cp.classList.remove('ok'), 1600); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(v).then(done, () => { location.href = 'mailto:' + v; });
+      else location.href = 'mailto:' + v;
+    };
+    document.addEventListener('click', fn, true);
+  }
+  // story:start
+  // The scroll story layer (tools/story.py): stacked cards, scene colours from this page's palette,
+  // the left chapter rail with the walking character, wobbling headings and the ink wipe between pages.
+  stStart(tries) {
+    const marks = document.querySelectorAll('[data-st-ch]');
+    if (!marks.length) { if (tries < 40) this.stT = setTimeout(() => this.stStart(tries + 1), 100); return; }
+    if (this.stOn) return;
+    this.stOn = true;
+    const d = document, de = d.documentElement;
+    let framed = false;
+    try { framed = window.self !== window.top; } catch (e) { framed = true; }
+    const still = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+    const css = getComputedStyle(de);
+    const pal = (css.getPropertyValue('--st-pal') || '#10131C').split(',').map((x) => x.trim()).filter(Boolean);
+    const outfit = (css.getPropertyValue('--st-outfit') || 'hoodie').trim();
+    const SPR = {'hoodie-walk': ['effa22a25ea7853b01b88ec50805f0c1', 4, 140], 'hoodie-idle': ['4c1e039267cfd582c0ee4d5930f6998b', 8, 160], 'hoodie-wave': ['723c80f6c3239c1eb034218c7a3249a4', 7, 150], 'hoodie-happy': ['c86bf217f8e4735869fc0fcabfe44c9f', 8, 130], 'hoodie-pour': ['cf0cbbc176dcedea4a1c0d45350432cf', 11, 150], 'hoodie-thinking': ['e88a75bea0e274305b8af51e265cba31', 10, 220], 'labcoat-walk': ['2ac8f04301980f265efc51c1c861396a', 4, 140], 'labcoat-idle': ['0adff87b8a0ce54aa1d503767bf28772', 8, 160], 'labcoat-wave': ['af590436f0155acb650ca7a370a6820d', 7, 150], 'labcoat-inspect': ['abb3bf9b38e58b145b90221cfdc2e9b2', 10, 180], 'labcoat-eureka': ['cecfa839f65d924244169b8f91ad87c7', 10, 170], 'suit-walk': ['a4413c34a748659e2cdd0d82ca3cce01', 4, 140], 'suit-idle': ['36e3f4b4d1181d7f9e6ca9560d607250', 8, 160], 'suit-wave': ['1d89ba917ee97de87e63eed0524044b1', 7, 150], 'suit-present': ['d307f3fd9e458bd63d3e69b9eaa671d5', 12, 200]};
+    if (!css.getPropertyValue('--st-paper').trim()) de.style.setProperty('--st-paper', getComputedStyle(d.body).backgroundColor);
+    de.classList.add('st-on');
+    if (framed) de.classList.add('st-framed'); else de.classList.add('st-live');
+    const fgFor = (hex) => {
+      const m = /^#?([0-9a-f]{6})$/i.exec(hex || '');
+      if (!m) return '#EDEFF2';
+      const n = parseInt(m[1], 16), c = [n >> 16, (n >> 8) & 255, n & 255].map((v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); });
+      return (0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2]) > 0.33 ? '#10131C' : '#EDEFF2';
+    };
+    const chs = Array.from(marks);
+    const colourOf = (i) => chs[i].getAttribute('data-st-bg') || pal[i % pal.length];
+    const setScene = (i) => { const c = colourOf(i); de.style.setProperty('--st-bg', c); de.style.setProperty('--st-fg', fgFor(c)); };
+    setScene(0);
+    // the rail, built from the chapters
+    const rail = d.createElement('nav');
+    rail.className = 'st-rail';
+    rail.setAttribute('aria-label', 'Chapters');
+    const pad = (n) => (n < 10 ? '0' : '') + n;
+    rail.innerHTML = '<span class="st-track" aria-hidden="true"></span><span class="st-now" aria-hidden="true"></span>' +
+      '<span class="st-walker" aria-hidden="true"><img alt="" src=""></span><ol>' +
+      chs.map((c, i) => '<li><button type="button" data-st-go="' + i + '"><span class="n">' + pad(i + 1) + '</span><span class="t"></span></button></li>').join('') + '</ol>';
+    rail.querySelectorAll('.t').forEach((t, i) => { t.textContent = chs[i].getAttribute('data-st-ch'); });
+    d.body.appendChild(rail);
+    const chip = d.createElement('button');
+    chip.type = 'button';
+    chip.className = 'st-chip';
+    chip.setAttribute('aria-expanded', 'false');
+    chip.innerHTML = '<span class="n"></span><span class="t"></span>';
+    d.body.appendChild(chip);
+    const btns = Array.from(rail.querySelectorAll('[data-st-go]'));
+    const walker = rail.querySelector('.st-walker');
+    const wimg = walker.querySelector('img');
+    const pose = (move) => {
+      const s = SPR[outfit + '-' + move] || SPR['hoodie-' + move];
+      if (!s) return 0;
+      if (wimg.getAttribute('src') !== '/_blob/' + s[0]) wimg.setAttribute('src', '/_blob/' + s[0]);
+      walker.style.setProperty('--n', s[1]);
+      walker.style.setProperty('--t', (s[1] * s[2]) + 'ms');
+      return s[1] * s[2];
+    };
+    ['walk', 'wave', 'idle'].forEach((m) => { const s = SPR[outfit + '-' + m]; if (s) { const im = new Image(); im.src = '/_blob/' + s[0]; } });
+    pose('idle');
+    const offs = [];
+    const on = (el, ev, fn, opt) => { el.addEventListener(ev, fn, opt); offs.push(() => el.removeEventListener(ev, fn, opt)); };
+    this.stOff = () => offs.forEach((f) => f());
+    const go = (i) => {
+      const t = chs[i];
+      if (!t) return;
+      const head = d.querySelector('.site-head');
+      const y = t.getBoundingClientRect().top + window.scrollY - (head ? head.offsetHeight : 0) + 2;
+      window.scrollTo({ top: Math.max(0, y), behavior: still ? 'auto' : 'smooth' });
+      de.classList.remove('st-railopen');
+      chip.setAttribute('aria-expanded', 'false');
+    };
+    on(rail, 'click', (e) => { const b = e.target.closest('[data-st-go]'); if (b) go(+b.getAttribute('data-st-go')); });
+    on(chip, 'click', () => { const o = de.classList.toggle('st-railopen'); chip.setAttribute('aria-expanded', o ? 'true' : 'false'); });
+    // sections become cards (in the design canvas too, so the frame and cards show there)
+    const head = d.querySelector('.site-head');
+    const box = (d.getElementById('main') || chs[0]).parentElement;
+    const cards = Array.from(box.children).filter((el) => el.matches('section, nav, aside, div.sec') && !el.matches('.site-head, .site-foot, .skip-link, .gt-progress'));
+    cards.forEach((c) => c.classList.add('st-card'));
+    if (framed) return;
+    // wobbling heading letters
+    const words = Array.from(d.querySelectorAll('[data-st-w]'));
+    if (!still) words.forEach((h, hi) => {
+      if (h.children.length) return;
+      let seed = hi * 97 + 13;
+      const rnd = () => { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; };
+      const txt = h.textContent.trim().replace(/\s+/g, ' ');
+      h.setAttribute('aria-label', txt);
+      h.innerHTML = txt.split(' ').map((w) => '<span class="w" aria-hidden="true">' + Array.from(w).map((ch) =>
+        '<span class="l" style="--r:' + ((rnd() - 0.5) * 9).toFixed(1) + 'deg;--y:' + ((rnd() - 0.5) * 0.1).toFixed(3) + 'em">' +
+        ch.replace(/&/g, '&amp;').replace(/</g, '&lt;') + '</span>').join('') + '</span>').join(' ');
+    });
+    // stacked cards: each pins once its bottom reaches the screen, the next slides over it
+    let vh = window.innerHeight, hh = head ? head.offsetHeight : 0;
+    const tops = () => {
+      vh = window.innerHeight; hh = head ? head.offsetHeight : 0;
+      de.style.setProperty('--st-top', hh + 'px');
+      cards.forEach((c) => { c.style.top = Math.min(hh, vh - c.offsetHeight) + 'px'; });
+      ask();
+    };
+    let ro = null;
+    if (window.ResizeObserver) { ro = new ResizeObserver(() => tops()); cards.forEach((c) => ro.observe(c)); offs.push(() => ro.disconnect()); }
+    // sideways rows: scroll down, the row moves across
+    const rows = Array.from(d.querySelectorAll('[data-st-x]'));
+    const wide = () => window.innerWidth >= 900 && !still && !!(window.matchMedia && matchMedia('(pointer: fine)').matches);
+    const sizeRows = () => rows.forEach((r) => {
+      const scene = r.closest('.st-card'), pin = r.closest('.st-hpin');
+      if (!scene || !pin) return;
+      r.style.transform = '';
+      if (!wide()) { r.classList.remove('st-xon'); scene.style.minHeight = ''; r.__x = 0; return; }
+      r.classList.add('st-xon');
+      const extra = Math.max(0, r.scrollWidth - r.clientWidth);
+      r.__x = extra;
+      scene.style.minHeight = (pin.offsetHeight + extra + 160) + 'px';
+    });
+    // the frame colour, the rail and the walker
+    let cur = -1, raf = 0, moving = 0, acting = 0;
+    const tick = () => {
+      raf = 0;
+      let c = 0;
+      chs.forEach((s, i) => { if (s.getBoundingClientRect().top < vh * 0.45) c = i; });
+      if (c !== cur) {
+        const first = cur < 0;
+        cur = c;
+        setScene(c);
+        btns.forEach((b, i) => { b.classList.toggle('on', i === c); if (i === c) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current'); });
+        chip.querySelector('.n').textContent = pad(c + 1);
+        chip.querySelector('.t').textContent = chs[c].getAttribute('data-st-ch');
+        if (!first && !still) { clearTimeout(this.stA); acting = 1; this.stA = setTimeout(() => { acting = 0; pose(moving ? 'walk' : 'idle'); }, pose('wave')); }
+      }
+      const max = Math.max(1, de.scrollHeight - vh);
+      de.style.setProperty('--st-prog', Math.min(1, Math.max(0, window.scrollY / max)).toFixed(4));
+      // the card being covered shrinks back a little as the next one slides over it
+      if (!still) cards.forEach((card, i) => {
+        const nx = cards[i + 1] || d.querySelector('.site-foot');
+        const r = card.getBoundingClientRect();
+        let k = 0;
+        if (nx && r.bottom > 0 && r.top < vh) {
+          const nt = nx.getBoundingClientRect().top;
+          if (nt < vh && r.top <= parseFloat(card.style.top || 0) + 1) k = Math.min(1, Math.max(0, (vh - nt) / (vh - hh)));
+        }
+        if (k > 0.001) {
+          card.style.transformOrigin = '50% ' + Math.round(-r.top + (vh + hh) / 2) + 'px';
+          card.style.transform = 'scale(' + (1 - k * 0.05).toFixed(4) + ')';
+          card.style.filter = 'brightness(' + (1 - k * 0.22).toFixed(3) + ')';
+        } else if (card.style.transform) { card.style.transform = ''; card.style.filter = ''; card.style.transformOrigin = ''; }
+      });
+      rows.forEach((r) => {
+        if (!r.__x) return;
+        const sc = r.closest('.st-card').getBoundingClientRect();
+        const p = Math.min(1, Math.max(0, (hh + 40 - sc.top) / r.__x));
+        r.style.transform = 'translate3d(' + (-p * r.__x).toFixed(1) + 'px,0,0)';
+      });
+      if (!still) words.forEach((h) => {
+        const r = h.getBoundingClientRect();
+        if (r.bottom < -200 || r.top > vh + 200) return;
+        const p = Math.max(-1, Math.min(1, (r.top + r.height / 2 - vh * 0.42) / vh));
+        h.style.setProperty('--k', (0.12 + Math.abs(p) * 1.9).toFixed(3));
+      });
+    };
+    const ask = () => { if (!raf) raf = requestAnimationFrame(tick); };
+    on(window, 'scroll', () => {
+      ask();
+      if (still) return;
+      if (!moving && !acting) pose('walk');
+      moving = 1;
+      clearTimeout(this.stM);
+      this.stM = setTimeout(() => { moving = 0; if (!acting) pose('idle'); }, 180);
+    }, { passive: true });
+    on(window, 'resize', () => { sizeRows(); tops(); }, { passive: true });
+    on(window, 'load', () => { sizeRows(); tops(); });
+    sizeRows();
+    tops();
+    // ink wipe between pages (not into the study pack library, which keeps its own pages)
+    const inkFor = (p) => (p === '/' ? '#4F4086' : /^\/talks\//.test(p) ? '#10131C' : /^\/projects\//.test(p) ? '#064F6E' : /^\/products\//.test(p) ? '#7A4456' : /^\/author\//.test(p) ? '#5A82B3' : '');
+    if (de.classList.contains('st-in')) {
+      requestAnimationFrame(() => requestAnimationFrame(() => { de.classList.add('st-go'); setTimeout(() => de.classList.remove('st-in', 'st-go'), 800); }));
+    }
+    on(window, 'pageshow', (e) => { if (e.persisted) { d.querySelectorAll('.st-wipe').forEach((w) => w.remove()); de.classList.remove('st-in', 'st-go'); } });
+    if (!still) on(d, 'click', (e) => {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      const a = e.target.closest && e.target.closest('a[href]');
+      if (!a || a.target || a.hasAttribute('download')) return;
+      let u;
+      try { u = new URL(a.href, location.href); } catch (er) { return; }
+      if (u.origin !== location.origin || (u.pathname === location.pathname && u.search === location.search)) return;
+      const ink = inkFor(u.pathname);
+      if (!ink || /\.[a-z0-9]{2,4}$/i.test(u.pathname)) return;
+      e.preventDefault();
+      const w = d.createElement('div');
+      w.className = 'st-wipe';
+      w.style.setProperty('--c', ink);
+      w.style.setProperty('--x', e.clientX + 'px');
+      w.style.setProperty('--y', e.clientY + 'px');
+      d.body.appendChild(w);
+      try { sessionStorage.setItem('gt-wipe', ink); } catch (er) {}
+      requestAnimationFrame(() => requestAnimationFrame(() => w.classList.add('go')));
+      setTimeout(() => { location.href = u.href; }, 520);
+    }, true);
+  }
+  // story:end
   renderVals() {
     return {};
   }

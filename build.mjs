@@ -42,12 +42,17 @@ export const ROUTES = {
   'Hobby-FlyBrain.dc.html': '/projects/fly-brain-sugar/',
   'Hobby-GestureMusic.dc.html': '/projects/gesture-music/',
   'Hobby-TARS.dc.html': '/projects/tars/',
-  // prototype of the scroll story Home, kept out of the sitemap until the owner picks it
-  'Home-v2.dc.html': '/v2/',
 };
-const PREVIEW_ONLY = new Set(['Home-v2.dc.html']);
+const PREVIEW_ONLY = new Set();
 
 const SITE_URL = 'https://gelastinta.com';
+
+// Ink wipe between pages (tools/story.py): the page arrives covered in the ink the last page
+// poured, then the page's own script drains it. Inline so it paints before anything else.
+const STORY_HEAD = '<style>html.st-in::after{content:"";position:fixed;inset:0;z-index:2147483000;pointer-events:none;background:var(--st-wipe,#10131C)}</style>' +
+  '<script>try{var c=sessionStorage.getItem("gt-wipe");if(c){sessionStorage.removeItem("gt-wipe");' +
+  'if(!(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)){var d=document.documentElement;' +
+  'd.classList.add("st-in");d.style.setProperty("--st-wipe",c);setTimeout(function(){d.classList.remove("st-in")},2500)}}}catch(e){}</script>';
 
 // ---- sharing & search ------------------------------------------------------
 // One line per page: the summary shown under the link on WhatsApp, LinkedIn and Google,
@@ -318,6 +323,7 @@ for (const file of pages) {
 <title>${esc(pageTitle)}</title>
 <link rel="canonical" href="${url}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+${helmet.includes('data-story') ? STORY_HEAD : ''}
 ${shareTags}
 ${headScripts}
 ${helmet}

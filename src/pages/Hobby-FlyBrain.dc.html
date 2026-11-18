@@ -462,6 +462,74 @@ html{scroll-padding-top:60px}
 @media (prefers-reduced-motion:reduce){.pxs img{animation:none}}
 /* pxs:end */
 </style>
+<link data-story href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet">
+<style data-story>:root{--st-pal:#10131C,#064F6E,#2B44C8,#5A82B3;--st-outfit:labcoat}
+html.st-on{--rail:0px;--st-gap:8px;--st-r:20px;--st-top:76px}
+@media (min-width:760px){html.st-on{--st-gap:14px;--st-r:28px}}
+@media (min-width:1180px){html.st-on{--rail:176px}}
+html.st-on body{background:var(--st-bg,#10131C);transition:background-color .9s cubic-bezier(.65,0,.35,1)}
+html.st-on .gt-progress{display:none}
+html.st-on .site-head{background:var(--st-bg,#10131C);border-bottom:0;color:var(--st-fg);transition:background-color .9s cubic-bezier(.65,0,.35,1),color .9s}
+html.st-on .site-head .brand-name{font-family:'Anton',Impact,sans-serif;font-weight:400;font-size:24px;letter-spacing:.05em;text-transform:uppercase;color:var(--st-fg);text-decoration:none}
+html.st-on .site-head .nav a{font-family:'Anton',Impact,sans-serif;font-weight:400;font-size:14px;letter-spacing:.09em;text-transform:uppercase;color:var(--st-fg);background:none;border-color:transparent;opacity:.82}
+html.st-on .site-head .nav a.on,html.st-on .site-head .nav a:hover{opacity:1;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:6px;background:none}
+html.st-on .site-head .bk-logo path[stroke]{stroke:var(--st-fg)}
+html.st-on .st-card{position:relative;margin-left:calc(var(--rail) + var(--st-gap));margin-right:var(--st-gap);border-radius:var(--st-r) var(--st-r) 0 0;border-top:0;border-bottom:0;box-shadow:0 -16px 40px rgba(16,19,28,.22);overflow-x:clip}
+:where(html.st-on .st-card){background-color:var(--st-paper,#F3EFE6)}
+html.st-on .st-card + .st-card,html.st-on .st-card + .site-foot{margin-top:calc(var(--st-r) * -1)}
+html.st-on .site-foot{position:relative;z-index:1;margin-left:calc(var(--rail) + var(--st-gap));margin-right:var(--st-gap);border-radius:var(--st-r) var(--st-r) 0 0;box-shadow:0 -16px 40px rgba(16,19,28,.22)}
+html.st-live .st-card{position:sticky}
+html.st-on .st-scene{background:transparent!important;color:var(--st-fg);box-shadow:none}
+html.st-on .st-scene::before,html.st-on .st-scene::after{display:none}
+html.st-on h1{font-family:'Anton',Impact,sans-serif;font-weight:400;font-style:normal;text-transform:uppercase;letter-spacing:.006em;line-height:.94;font-size:clamp(50px,6.4vw,118px)}
+html.st-on h1.t-title{font-size:clamp(40px,4.8vw,84px);line-height:.96}
+html.st-on h1 *{font-family:inherit;font-weight:inherit}
+html.st-on .st-h{font-family:'Anton',Impact,sans-serif;font-weight:400;font-style:normal;text-transform:uppercase;letter-spacing:.01em;line-height:.96;font-size:clamp(34px,4.2vw,64px)}
+html.st-on .st-scene h1,html.st-on .st-scene .st-h{color:var(--st-fg)}
+html.st-on .st-scene :is(.kicker,.meta,.lead,.prose,.prose p,.prose b,figcaption,.muted):not(.card *){color:var(--st-fg)}
+html.st-live .st-hpin{position:sticky;top:calc(var(--st-top) + 24px)}
+.st-xon{overflow:visible!important;scroll-snap-type:none!important;will-change:transform}
+html.st-on [data-st-w] .w{display:inline-block;white-space:nowrap}
+html.st-on [data-st-w] .l{display:inline-block;transform:translateY(calc(var(--y) * var(--k,0))) rotate(calc(var(--r) * var(--k,0)));transition:transform .25s linear}
+.st-serif{font-family:'Instrument Serif',Georgia,serif;font-weight:400}
+.st-stage{--s:3;position:relative;width:calc(128px * var(--s));max-width:100%;aspect-ratio:128/80;flex:none;border-radius:10px;overflow:hidden;background:#10131C;box-shadow:0 0 0 3px rgba(237,239,242,.9),0 18px 40px rgba(16,19,28,.35)}
+.st-scene .st-stage{margin:8px 0 18px}
+.st-stage > img{position:absolute;inset:0;width:100%;height:100%;image-rendering:pixelated;image-rendering:crisp-edges}
+.st-actor{position:absolute;left:20.3%;top:25%;width:59.375%;height:72.5%;overflow:hidden}
+.st-actor img{display:block;height:100%;width:calc(var(--n) * 100%);max-width:none;image-rendering:pixelated;image-rendering:crisp-edges;animation:st-px var(--t) steps(var(--n)) infinite}
+.st-actor.walk{animation:st-walkin 7s linear infinite}
+.st-actor.act{animation:st-act 7s steps(1,end) infinite}
+@keyframes st-px{to{transform:translateX(-100%)}}
+@keyframes st-walkin{0%{transform:translateX(-140%);opacity:1}40%{transform:translateX(0);opacity:1}40.01%,100%{transform:translateX(0);opacity:0}}
+@keyframes st-act{0%,40%{opacity:0}40.01%,100%{opacity:1}}
+.st-rail{position:fixed;left:0;top:calc(var(--st-top) + 18px);bottom:28px;width:var(--rail);z-index:55;color:var(--st-fg);display:none;font-family:'Anton',Impact,sans-serif;transition:color .9s}
+@media (min-width:1180px){html.st-on .st-rail{display:block}}
+html.st-framed .st-rail{position:absolute;bottom:auto;height:720px}
+.st-track{position:absolute;left:26px;top:4px;bottom:4px;width:10px;background:repeating-linear-gradient(180deg,currentColor 0 1px,transparent 1px 9px);opacity:.5}
+.st-now{position:absolute;left:18px;width:26px;height:3px;border-radius:2px;background:currentColor;top:calc(4px + (100% - 8px) * var(--st-prog,0));transition:top .12s linear}
+.st-walker{position:absolute;left:14px;width:34px;height:58px;overflow:hidden;top:max(0px,calc(4px + (100% - 8px) * var(--st-prog,0) - 60px));transition:top .12s linear;pointer-events:none}
+.st-walker img{display:block;height:58px;width:calc(var(--n) * 76px);max-width:none;image-rendering:pixelated;animation:st-px var(--t) steps(var(--n)) infinite}
+.st-rail ol{list-style:none;margin:0;padding:0 14px 0 54px;height:100%;display:flex;flex-direction:column;justify-content:space-between}
+.st-rail button{display:flex;gap:8px;align-items:baseline;width:100%;border:0;background:none;color:inherit;font:inherit;font-size:12.5px;letter-spacing:.09em;line-height:1.15;text-transform:uppercase;text-align:left;opacity:.5;cursor:pointer;padding:3px 0;transition:opacity .3s}
+.st-rail button .n{font-family:'Ubuntu Mono',monospace;font-size:11px;letter-spacing:.04em;flex:none}
+.st-rail button .t{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.st-rail button:hover{opacity:.85}
+.st-rail button.on{opacity:1}
+.st-rail button:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+.st-chip{position:fixed;left:10px;bottom:12px;z-index:56;display:none;align-items:center;gap:8px;max-width:calc(100vw - 20px);padding:9px 16px;border-radius:999px;border:0;background:var(--st-bg,#10131C);color:var(--st-fg);box-shadow:0 0 0 2px var(--st-fg),0 8px 24px rgba(16,19,28,.3);font-family:'Anton',Impact,sans-serif;font-size:13px;letter-spacing:.09em;text-transform:uppercase;cursor:pointer;transition:background-color .9s,color .9s}
+.st-chip .n{font-family:'Ubuntu Mono',monospace;font-size:11px}
+.st-chip .t{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:1179px){html.st-live .st-chip{display:inline-flex}
+html.st-railopen .st-rail{display:block;left:10px;top:auto;bottom:62px;width:min(340px,calc(100vw - 20px));max-height:70vh;overflow:auto;padding:16px 0;border-radius:18px;background:var(--st-bg,#10131C);box-shadow:0 0 0 2px var(--st-fg),0 18px 40px rgba(16,19,28,.35)}
+html.st-railopen .st-rail ol{height:auto;gap:12px;padding:0 18px}
+html.st-railopen .st-rail button{font-size:15px}
+html.st-railopen .st-track,html.st-railopen .st-now,html.st-railopen .st-walker{display:none}}
+.st-wipe{position:fixed;inset:0;z-index:2147483000;pointer-events:none;background:var(--c);clip-path:circle(0 at var(--x) var(--y));transition:clip-path .55s cubic-bezier(.65,0,.35,1)}
+.st-wipe.go{clip-path:circle(150% at var(--x) var(--y))}
+html.st-in::after{content:"";position:fixed;inset:0;z-index:2147483000;pointer-events:none;background:var(--st-wipe,#10131C);clip-path:inset(0 0 0 0)}
+html.st-in.st-go::after{clip-path:inset(0 0 100% 0);transition:clip-path .7s cubic-bezier(.65,0,.35,1)}
+@media (prefers-reduced-motion:reduce){html.st-on [data-st-w] .l{transition:none}.st-actor.walk{display:none}.st-actor.act{animation:none;opacity:1}.st-actor img,.st-walker img{animation:none}}
+</style>
 </helmet>
 <div style="min-height:100vh" data-gt-root="">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -481,12 +549,12 @@ html{scroll-padding-top:60px}
 </div>
 </header>
 
-<section id="main" class="sec grid-bg rule-b" style="padding-top:48px">
+<section data-st-ch="Intro" id="main" class="sec grid-bg rule-b" style="padding-top:48px">
 <div class="wrap">
 <div class="stack g24" style="max-width:860px">
 <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="Main.dc.html">Home</a></li><li><a href="Projects.dc.html">Projects</a></li><li aria-current="page">Fly brain</li></ol></nav>
 <p class="kicker">Hobby build · 2026</p>
-<h1 class="t-thesis">A fly’s brain when it tastes sugar?</h1>
+<h1 class="t-thesis" data-st-w="">A fly’s brain when it tastes sugar?</h1>
 <div class="chips"><span class="chip fill">2026</span><span class="chip">Personal project</span><span class="chip">Brain simulation</span><span class="chip">Python · Numba · three.js</span></div>
 <p class="lead" style="max-width:30em">Scientists have mapped every neuron and connection in a fruit-fly brain, and a published computer model turns that map into a brain that can be switched on. I ran it. I fed it sugar, watched the spikes, then silenced two neurons to see what changes.</p>
 <div class="chips" style="gap:12px">
@@ -510,12 +578,12 @@ html{scroll-padding-top:60px}
 </div>
 </section>
 
-<section class="sec white rule-b">
+<section data-st-ch="A brain you can switch on" class="sec white rule-b">
 <div class="wrap">
 <div class="hb">
 <div class="stack g24">
 <p class="kicker">01 · The story</p>
-<h2 class="t-h2">A brain you can switch on</h2>
+<h2 class="t-h2 st-h" data-st-w="">A brain you can switch on</h2>
 <div class="pxs" role="img" aria-label="Pixel scene: the GelasTinta character in a lab coat looking into a microscope as magnified cells appear" style="--n:14;--t:2380ms"><img src="/_blob/7daa6b6a390e9020a0f87db77e7dade6" alt="" draggable="false"></div>
 <div class="prose stack g16" style="font-size:18px;line-height:1.65">
 <p>In my talk <a href="Talk-FlyConnectome.dc.html">The Whole Fly, Wired</a> I reviewed three papers on the fruit-fly connectome. One of them, by Philip Shiu and colleagues (<i>Nature</i>, 2024), turns the wiring map of a whole fly brain into a computer model that can be switched on. This hobby project runs that published model on a laptop and asks it one question: what happens inside the brain when the fly tastes sugar?</p>
@@ -544,12 +612,12 @@ html{scroll-padding-top:60px}
 </div>
 </section>
 
-<section class="sec blue rule-b" id="people">
+<section data-st-ch="From the Scott Lab at UC Berkeley" class="sec blue rule-b" id="people">
 <div class="wrap stack g32">
 <div class="hb" style="align-items:center">
 <div class="stack g16">
 <p class="kicker">Credits · The people behind the model</p>
-<h2 class="t-h2">From the Scott Lab at UC Berkeley</h2>
+<h2 class="t-h2 st-h" data-st-w="">From the Scott Lab at UC Berkeley</h2>
 <p style="font-size:18px;line-height:1.6;max-width:36em">This project only exists because Philip Shiu, Gabriella Sterne, Nico Spiller and their colleagues, in work led by Kristin Scott, built the model and shared their code openly for anyone to run. Thank you.</p>
 </div>
 <figure class="fb-lab"><img src="/_blob/715cb3dcfd7cb3ce28ae84104fc5c4ee" alt="Scott Lab at UC Berkeley banner: a dashed fly flight path above five pictures, from fluorescent taste neurons and brain imaging to a close-up of a fly’s mouthparts and a fruit fly on a leaf" loading="lazy"></figure>
@@ -563,12 +631,12 @@ html{scroll-padding-top:60px}
 </div>
 </section>
 
-<section class="sec rule-b" id="map">
+<section data-st-ch="Every neuron, in its place" class="sec rule-b" id="map">
 <div class="wrap stack g32">
 <div class="hb" style="align-items:end">
 <div class="stack g16">
 <p class="kicker">02 · The map <span class="cat data">DATA</span></p>
-<h2 class="t-h2">Every neuron, in its place</h2>
+<h2 class="t-h2 st-h" data-st-w="">Every neuron, in its place</h2>
 <div class="prose stack g16" style="font-size:18px;line-height:1.65">
 <p>The <a href="https://flywire.ai">FlyWire</a> project reconstructed the whole brain of one adult female fruit fly from electron-microscope images, covering every neuron and every synapse between them. The release used here (v630) has <b>127,400 neurons</b> joined by about <b>14.7 million connections</b>, made of 52.8 million synapses.</p>
 <p>Each dot below is one of those neurons, placed where it sits in the real brain (positions from Schlegel et al. 2024, matched by neuron ID, and 127,320 of the 127,400 have one). More than half of them are in the two optic lobes, the wide wings on either side, which handle vision. Taste and feeding live in the lower middle, in the subesophageal zone.</p>
@@ -614,12 +682,12 @@ html{scroll-padding-top:60px}
 </div>
 </section>
 
-<section class="sec white rule-b" id="neuron">
+<section data-st-ch="Every neuron is a leaky bucket" class="sec white rule-b" id="neuron">
 <div class="wrap stack g32">
 <div class="hb">
 <div class="stack g16">
 <p class="kicker">03 · Turning the map into a brain <span class="cat model">MODEL</span></p>
-<h2 class="t-h2">Every neuron is a leaky bucket</h2>
+<h2 class="t-h2 st-h" data-st-w="">Every neuron is a leaky bucket</h2>
 <div class="prose stack g16" style="font-size:18px;line-height:1.65">
 <p>Shiu and colleagues gave all 127,400 neurons the same simple rule, called <i>leaky integrate-and-fire</i>. Think of a bucket with a small hole. Incoming spikes pour charge in, the charge slowly leaks out, and if the level rises past a line the neuron fires a spike of its own and the bucket empties.</p>
 <p>How hard one neuron pushes another depends only on how many synapses connect them, and on whether its chemical messenger excites or inhibits (GABA and glutamate count as inhibitory). Each synapse is worth 0.275 mV, the model’s one tuned number. There is no learning, no hormones and no spontaneous firing. That is the whole model.</p>
@@ -692,12 +760,12 @@ input spike  →  g += synapses × 0.275 mV</pre>
 </div>
 </section>
 
-<section class="sec dark rule-b" id="replay">
+<section data-st-ch="Follow one second of sugar through the brain" class="sec dark rule-b" id="replay">
 <div class="wrap stack g32">
 <div class="hb">
 <div class="stack g16">
 <p class="kicker">04 · Sugar in, spikes out <span class="cat model">MODEL</span></p>
-<h2 class="t-h2">Follow one second of sugar through the brain</h2>
+<h2 class="t-h2 st-h" data-st-w="">Follow one second of sugar through the brain</h2>
 <div class="prose stack g16" style="font-size:18px;line-height:1.65">
 <p>This is the paper’s own test. The 21 sugar-taste neurons (gustatory receptor neurons) get random spikes at 100 per second each for one simulated second, a stand-in for the fly touching sugar, and every spike anywhere in the brain is recorded.</p>
 <p>The readout is MN9. Its firing drives the proboscis drawing beside the brain. How far a real proboscis moves for a given MN9 rate is not known, so that mapping is my choice and tagged APP. Switch to the second run to see the same input with two neurons silenced.</p>
@@ -762,12 +830,12 @@ input spike  →  g += synapses × 0.275 mV</pre>
 </div>
 </section>
 
-<section class="sec rule-b" id="silence">
+<section data-st-ch="Two neurons out of 127,400" class="sec rule-b" id="silence">
 <div class="wrap stack g32">
 <div class="hb">
 <div class="stack g16">
 <p class="kicker">05 · Silence two neurons <span class="cat model">MODEL</span></p>
-<h2 class="t-h2">Two neurons out of 127,400</h2>
+<h2 class="t-h2 st-h" data-st-w="">Two neurons out of 127,400</h2>
 <div class="prose stack g16" style="font-size:18px;line-height:1.65">
 <p>The model can switch any neuron off. Silencing, exactly as in the original code, removes everything a neuron sends. It can still fire, but nothing downstream hears it. I silenced <b>Roundup</b>, a cell type the paper places just before the motor neurons in the sugar-to-feeding pathway (two neurons, one per side), and repeated the same 10 trials.</p>
 <p>The comparison is paired. Trial 3 of the silenced run received exactly the same random sugar input as trial 3 of the normal run, so each pair of bars differs only by the silencing.</p>
@@ -789,12 +857,12 @@ input spike  →  g += synapses × 0.275 mV</pre>
 </div>
 </section>
 
-<section class="sec white rule-b" id="arena">
+<section data-st-ch="Give the brain a body (a pretend one)" class="sec white rule-b" id="arena">
 <div class="wrap stack g32">
 <div class="hb">
 <div class="stack g16">
 <p class="kicker">06 · From brain to behaviour <span class="cat app">HYBRID DEMO</span></p>
-<h2 class="t-h2">Give the brain a body (a pretend one)</h2>
+<h2 class="t-h2 st-h" data-st-w="">Give the brain a body (a pretend one)</h2>
 <div class="prose stack g16" style="font-size:18px;line-height:1.65">
 <p>The brain model only produces spikes. To see what they could mean for a fly, I connected it to a simple, <b>hand-written</b> walking controller in a small arena with two sugar patches. The fly wanders at random. When it stands on sugar, the 21 sugar neurons switch on. If MN9 then fires fast enough, the controller stops the fly to feed.</p>
 <p>The walking and turning are mine, not the model’s. The wiring map has no nerve cord, so the brain cannot move legs. Only the decision to stop and feed comes from the simulated brain. Nothing learns, and a fly that finds sugar found it by chance.</p>
@@ -834,12 +902,12 @@ input spike  →  g += synapses × 0.275 mV</pre>
 </div>
 </section>
 
-<section class="sec rule-b" id="code">
+<section data-st-ch="How the project works" class="sec rule-b" id="code">
 <div class="wrap stack g32">
 <div class="sec-head row" style="margin-bottom:0">
 <div class="stack g12">
 <p class="kicker">07 · Under the hood</p>
-<h2 class="t-h2">How the project works</h2>
+<h2 class="t-h2 st-h" data-st-w="">How the project works</h2>
 </div>
 <p class="meta muted">Python for the brain, TypeScript for the pictures</p>
 </div>
@@ -893,12 +961,12 @@ input spike  →  g += synapses × 0.275 mV</pre>
 </div>
 </section>
 
-<section class="sec white rule-b" id="limits">
+<section data-st-ch="What this does and doesn’t show" class="sec white rule-b" id="limits">
 <div class="wrap">
 <div class="hb">
 <div class="stack g16">
 <p class="kicker">08 · Honest limits</p>
-<h2 class="t-h2">What this does and doesn’t show</h2>
+<h2 class="t-h2 st-h" data-st-w="">What this does and doesn’t show</h2>
 <ul class="fb-list">
 <li>Everything moving here is computed by a model. None of it is a recording from a living fly.</li>
 <li>The model leaves a lot out: hormones and other neuromodulators, electrical synapses, neuron shapes, the body and learning. Its neurons never fire on their own.</li>
@@ -927,12 +995,12 @@ input spike  →  g += synapses × 0.275 mV</pre>
 </div>
 </section>
 
-<section class="sec white rule-t" id="comments" aria-labelledby="cm-title-fly">
+<section data-st-ch="Comments" class="sec white rule-t" id="comments" aria-labelledby="cm-title-fly">
 <div class="wrap">
 <div class="cm-wrap">
 <div class="stack g12">
 <p class="kicker">Discussion</p>
-<h2 class="t-h2" id="cm-title-fly">Comments</h2>
+<h2 class="t-h2 st-h" id="cm-title-fly" data-st-w="">Comments</h2>
 <p class="meta muted">{{cm.count}}</p>
 </div>
 <sc-if value="{{cm.notReg}}" hint-placeholder-val="{{true}}">
@@ -1021,7 +1089,7 @@ input spike  →  g += synapses × 0.275 mV</pre>
 <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":9400}}'>
 class Component extends DCLogic {
   // ── GelasTinta motion layer (anime.js v4) ─────────────────────────────
-  componentDidMount() { this.gtStart(0); this.gtMedia(0); this.gtTheme(); this.gtFigs(); this.cmMount(); }
+  componentDidMount() { this.stStart(0); this.gtStart(0); this.gtMedia(0); this.gtTheme(); this.gtFigs(); this.cmMount(); }
   componentWillUnmount() {
     if (this.thOff) this.thOff();
     this.gtFigStop();
@@ -2146,6 +2214,205 @@ class Component extends DCLogic {
     setTimeout(() => { f.style.background = '#EDEFF2'; apply(); f.classList.add('out'); }, 1000);
     setTimeout(() => { if (f.parentNode) f.parentNode.removeChild(f); }, 1450);
   }
+  // story:start
+  // The scroll story layer (tools/story.py): stacked cards, scene colours from this page's palette,
+  // the left chapter rail with the walking character, wobbling headings and the ink wipe between pages.
+  stStart(tries) {
+    const marks = document.querySelectorAll('[data-st-ch]');
+    if (!marks.length) { if (tries < 40) this.stT = setTimeout(() => this.stStart(tries + 1), 100); return; }
+    if (this.stOn) return;
+    this.stOn = true;
+    const d = document, de = d.documentElement;
+    let framed = false;
+    try { framed = window.self !== window.top; } catch (e) { framed = true; }
+    const still = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+    const css = getComputedStyle(de);
+    const pal = (css.getPropertyValue('--st-pal') || '#10131C').split(',').map((x) => x.trim()).filter(Boolean);
+    const outfit = (css.getPropertyValue('--st-outfit') || 'hoodie').trim();
+    const SPR = {'hoodie-walk': ['effa22a25ea7853b01b88ec50805f0c1', 4, 140], 'hoodie-idle': ['4c1e039267cfd582c0ee4d5930f6998b', 8, 160], 'hoodie-wave': ['723c80f6c3239c1eb034218c7a3249a4', 7, 150], 'hoodie-happy': ['c86bf217f8e4735869fc0fcabfe44c9f', 8, 130], 'hoodie-pour': ['cf0cbbc176dcedea4a1c0d45350432cf', 11, 150], 'hoodie-thinking': ['e88a75bea0e274305b8af51e265cba31', 10, 220], 'labcoat-walk': ['2ac8f04301980f265efc51c1c861396a', 4, 140], 'labcoat-idle': ['0adff87b8a0ce54aa1d503767bf28772', 8, 160], 'labcoat-wave': ['af590436f0155acb650ca7a370a6820d', 7, 150], 'labcoat-inspect': ['abb3bf9b38e58b145b90221cfdc2e9b2', 10, 180], 'labcoat-eureka': ['cecfa839f65d924244169b8f91ad87c7', 10, 170], 'suit-walk': ['a4413c34a748659e2cdd0d82ca3cce01', 4, 140], 'suit-idle': ['36e3f4b4d1181d7f9e6ca9560d607250', 8, 160], 'suit-wave': ['1d89ba917ee97de87e63eed0524044b1', 7, 150], 'suit-present': ['d307f3fd9e458bd63d3e69b9eaa671d5', 12, 200]};
+    if (!css.getPropertyValue('--st-paper').trim()) de.style.setProperty('--st-paper', getComputedStyle(d.body).backgroundColor);
+    de.classList.add('st-on');
+    if (framed) de.classList.add('st-framed'); else de.classList.add('st-live');
+    const fgFor = (hex) => {
+      const m = /^#?([0-9a-f]{6})$/i.exec(hex || '');
+      if (!m) return '#EDEFF2';
+      const n = parseInt(m[1], 16), c = [n >> 16, (n >> 8) & 255, n & 255].map((v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); });
+      return (0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2]) > 0.33 ? '#10131C' : '#EDEFF2';
+    };
+    const chs = Array.from(marks);
+    const colourOf = (i) => chs[i].getAttribute('data-st-bg') || pal[i % pal.length];
+    const setScene = (i) => { const c = colourOf(i); de.style.setProperty('--st-bg', c); de.style.setProperty('--st-fg', fgFor(c)); };
+    setScene(0);
+    // the rail, built from the chapters
+    const rail = d.createElement('nav');
+    rail.className = 'st-rail';
+    rail.setAttribute('aria-label', 'Chapters');
+    const pad = (n) => (n < 10 ? '0' : '') + n;
+    rail.innerHTML = '<span class="st-track" aria-hidden="true"></span><span class="st-now" aria-hidden="true"></span>' +
+      '<span class="st-walker" aria-hidden="true"><img alt="" src=""></span><ol>' +
+      chs.map((c, i) => '<li><button type="button" data-st-go="' + i + '"><span class="n">' + pad(i + 1) + '</span><span class="t"></span></button></li>').join('') + '</ol>';
+    rail.querySelectorAll('.t').forEach((t, i) => { t.textContent = chs[i].getAttribute('data-st-ch'); });
+    d.body.appendChild(rail);
+    const chip = d.createElement('button');
+    chip.type = 'button';
+    chip.className = 'st-chip';
+    chip.setAttribute('aria-expanded', 'false');
+    chip.innerHTML = '<span class="n"></span><span class="t"></span>';
+    d.body.appendChild(chip);
+    const btns = Array.from(rail.querySelectorAll('[data-st-go]'));
+    const walker = rail.querySelector('.st-walker');
+    const wimg = walker.querySelector('img');
+    const pose = (move) => {
+      const s = SPR[outfit + '-' + move] || SPR['hoodie-' + move];
+      if (!s) return 0;
+      if (wimg.getAttribute('src') !== '/_blob/' + s[0]) wimg.setAttribute('src', '/_blob/' + s[0]);
+      walker.style.setProperty('--n', s[1]);
+      walker.style.setProperty('--t', (s[1] * s[2]) + 'ms');
+      return s[1] * s[2];
+    };
+    ['walk', 'wave', 'idle'].forEach((m) => { const s = SPR[outfit + '-' + m]; if (s) { const im = new Image(); im.src = '/_blob/' + s[0]; } });
+    pose('idle');
+    const offs = [];
+    const on = (el, ev, fn, opt) => { el.addEventListener(ev, fn, opt); offs.push(() => el.removeEventListener(ev, fn, opt)); };
+    this.stOff = () => offs.forEach((f) => f());
+    const go = (i) => {
+      const t = chs[i];
+      if (!t) return;
+      const head = d.querySelector('.site-head');
+      const y = t.getBoundingClientRect().top + window.scrollY - (head ? head.offsetHeight : 0) + 2;
+      window.scrollTo({ top: Math.max(0, y), behavior: still ? 'auto' : 'smooth' });
+      de.classList.remove('st-railopen');
+      chip.setAttribute('aria-expanded', 'false');
+    };
+    on(rail, 'click', (e) => { const b = e.target.closest('[data-st-go]'); if (b) go(+b.getAttribute('data-st-go')); });
+    on(chip, 'click', () => { const o = de.classList.toggle('st-railopen'); chip.setAttribute('aria-expanded', o ? 'true' : 'false'); });
+    // sections become cards (in the design canvas too, so the frame and cards show there)
+    const head = d.querySelector('.site-head');
+    const box = (d.getElementById('main') || chs[0]).parentElement;
+    const cards = Array.from(box.children).filter((el) => el.matches('section, nav, aside, div.sec') && !el.matches('.site-head, .site-foot, .skip-link, .gt-progress'));
+    cards.forEach((c) => c.classList.add('st-card'));
+    if (framed) return;
+    // wobbling heading letters
+    const words = Array.from(d.querySelectorAll('[data-st-w]'));
+    if (!still) words.forEach((h, hi) => {
+      if (h.children.length) return;
+      let seed = hi * 97 + 13;
+      const rnd = () => { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; };
+      const txt = h.textContent.trim().replace(/\s+/g, ' ');
+      h.setAttribute('aria-label', txt);
+      h.innerHTML = txt.split(' ').map((w) => '<span class="w" aria-hidden="true">' + Array.from(w).map((ch) =>
+        '<span class="l" style="--r:' + ((rnd() - 0.5) * 9).toFixed(1) + 'deg;--y:' + ((rnd() - 0.5) * 0.1).toFixed(3) + 'em">' +
+        ch.replace(/&/g, '&amp;').replace(/</g, '&lt;') + '</span>').join('') + '</span>').join(' ');
+    });
+    // stacked cards: each pins once its bottom reaches the screen, the next slides over it
+    let vh = window.innerHeight, hh = head ? head.offsetHeight : 0;
+    const tops = () => {
+      vh = window.innerHeight; hh = head ? head.offsetHeight : 0;
+      de.style.setProperty('--st-top', hh + 'px');
+      cards.forEach((c) => { c.style.top = Math.min(hh, vh - c.offsetHeight) + 'px'; });
+      ask();
+    };
+    let ro = null;
+    if (window.ResizeObserver) { ro = new ResizeObserver(() => tops()); cards.forEach((c) => ro.observe(c)); offs.push(() => ro.disconnect()); }
+    // sideways rows: scroll down, the row moves across
+    const rows = Array.from(d.querySelectorAll('[data-st-x]'));
+    const wide = () => window.innerWidth >= 900 && !still && !!(window.matchMedia && matchMedia('(pointer: fine)').matches);
+    const sizeRows = () => rows.forEach((r) => {
+      const scene = r.closest('.st-card'), pin = r.closest('.st-hpin');
+      if (!scene || !pin) return;
+      r.style.transform = '';
+      if (!wide()) { r.classList.remove('st-xon'); scene.style.minHeight = ''; r.__x = 0; return; }
+      r.classList.add('st-xon');
+      const extra = Math.max(0, r.scrollWidth - r.clientWidth);
+      r.__x = extra;
+      scene.style.minHeight = (pin.offsetHeight + extra + 160) + 'px';
+    });
+    // the frame colour, the rail and the walker
+    let cur = -1, raf = 0, moving = 0, acting = 0;
+    const tick = () => {
+      raf = 0;
+      let c = 0;
+      chs.forEach((s, i) => { if (s.getBoundingClientRect().top < vh * 0.45) c = i; });
+      if (c !== cur) {
+        const first = cur < 0;
+        cur = c;
+        setScene(c);
+        btns.forEach((b, i) => { b.classList.toggle('on', i === c); if (i === c) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current'); });
+        chip.querySelector('.n').textContent = pad(c + 1);
+        chip.querySelector('.t').textContent = chs[c].getAttribute('data-st-ch');
+        if (!first && !still) { clearTimeout(this.stA); acting = 1; this.stA = setTimeout(() => { acting = 0; pose(moving ? 'walk' : 'idle'); }, pose('wave')); }
+      }
+      const max = Math.max(1, de.scrollHeight - vh);
+      de.style.setProperty('--st-prog', Math.min(1, Math.max(0, window.scrollY / max)).toFixed(4));
+      // the card being covered shrinks back a little as the next one slides over it
+      if (!still) cards.forEach((card, i) => {
+        const nx = cards[i + 1] || d.querySelector('.site-foot');
+        const r = card.getBoundingClientRect();
+        let k = 0;
+        if (nx && r.bottom > 0 && r.top < vh) {
+          const nt = nx.getBoundingClientRect().top;
+          if (nt < vh && r.top <= parseFloat(card.style.top || 0) + 1) k = Math.min(1, Math.max(0, (vh - nt) / (vh - hh)));
+        }
+        if (k > 0.001) {
+          card.style.transformOrigin = '50% ' + Math.round(-r.top + (vh + hh) / 2) + 'px';
+          card.style.transform = 'scale(' + (1 - k * 0.05).toFixed(4) + ')';
+          card.style.filter = 'brightness(' + (1 - k * 0.22).toFixed(3) + ')';
+        } else if (card.style.transform) { card.style.transform = ''; card.style.filter = ''; card.style.transformOrigin = ''; }
+      });
+      rows.forEach((r) => {
+        if (!r.__x) return;
+        const sc = r.closest('.st-card').getBoundingClientRect();
+        const p = Math.min(1, Math.max(0, (hh + 40 - sc.top) / r.__x));
+        r.style.transform = 'translate3d(' + (-p * r.__x).toFixed(1) + 'px,0,0)';
+      });
+      if (!still) words.forEach((h) => {
+        const r = h.getBoundingClientRect();
+        if (r.bottom < -200 || r.top > vh + 200) return;
+        const p = Math.max(-1, Math.min(1, (r.top + r.height / 2 - vh * 0.42) / vh));
+        h.style.setProperty('--k', (0.12 + Math.abs(p) * 1.9).toFixed(3));
+      });
+    };
+    const ask = () => { if (!raf) raf = requestAnimationFrame(tick); };
+    on(window, 'scroll', () => {
+      ask();
+      if (still) return;
+      if (!moving && !acting) pose('walk');
+      moving = 1;
+      clearTimeout(this.stM);
+      this.stM = setTimeout(() => { moving = 0; if (!acting) pose('idle'); }, 180);
+    }, { passive: true });
+    on(window, 'resize', () => { sizeRows(); tops(); }, { passive: true });
+    on(window, 'load', () => { sizeRows(); tops(); });
+    sizeRows();
+    tops();
+    // ink wipe between pages (not into the study pack library, which keeps its own pages)
+    const inkFor = (p) => (p === '/' ? '#4F4086' : /^\/talks\//.test(p) ? '#10131C' : /^\/projects\//.test(p) ? '#064F6E' : /^\/products\//.test(p) ? '#7A4456' : /^\/author\//.test(p) ? '#5A82B3' : '');
+    if (de.classList.contains('st-in')) {
+      requestAnimationFrame(() => requestAnimationFrame(() => { de.classList.add('st-go'); setTimeout(() => de.classList.remove('st-in', 'st-go'), 800); }));
+    }
+    on(window, 'pageshow', (e) => { if (e.persisted) { d.querySelectorAll('.st-wipe').forEach((w) => w.remove()); de.classList.remove('st-in', 'st-go'); } });
+    if (!still) on(d, 'click', (e) => {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      const a = e.target.closest && e.target.closest('a[href]');
+      if (!a || a.target || a.hasAttribute('download')) return;
+      let u;
+      try { u = new URL(a.href, location.href); } catch (er) { return; }
+      if (u.origin !== location.origin || (u.pathname === location.pathname && u.search === location.search)) return;
+      const ink = inkFor(u.pathname);
+      if (!ink || /\.[a-z0-9]{2,4}$/i.test(u.pathname)) return;
+      e.preventDefault();
+      const w = d.createElement('div');
+      w.className = 'st-wipe';
+      w.style.setProperty('--c', ink);
+      w.style.setProperty('--x', e.clientX + 'px');
+      w.style.setProperty('--y', e.clientY + 'px');
+      d.body.appendChild(w);
+      try { sessionStorage.setItem('gt-wipe', ink); } catch (er) {}
+      requestAnimationFrame(() => requestAnimationFrame(() => w.classList.add('go')));
+      setTimeout(() => { location.href = u.href; }, 520);
+    }, true);
+  }
+  // story:end
   renderVals() {
     return { cm: this.commentVals() };
   }

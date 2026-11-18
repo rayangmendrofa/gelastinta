@@ -550,6 +550,74 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 @keyframes pxr-sad{0%{transform:translateX(0);animation-timing-function:step-end}71.91%{transform:translateX(0);animation-timing-function:steps(10,end)}100%{transform:translateX(-100%)}}
 /* px:end */
 </style>
+<link data-story href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet">
+<style data-story>:root{--st-pal:#CC1236,#FFF200,#2B44C8,#10131C;--st-outfit:suit}
+html.st-on{--rail:0px;--st-gap:8px;--st-r:20px;--st-top:76px}
+@media (min-width:760px){html.st-on{--st-gap:14px;--st-r:28px}}
+@media (min-width:1180px){html.st-on{--rail:176px}}
+html.st-on body{background:var(--st-bg,#10131C);transition:background-color .9s cubic-bezier(.65,0,.35,1)}
+html.st-on .gt-progress{display:none}
+html.st-on .site-head{background:var(--st-bg,#10131C);border-bottom:0;color:var(--st-fg);transition:background-color .9s cubic-bezier(.65,0,.35,1),color .9s}
+html.st-on .site-head .brand-name{font-family:'Anton',Impact,sans-serif;font-weight:400;font-size:24px;letter-spacing:.05em;text-transform:uppercase;color:var(--st-fg);text-decoration:none}
+html.st-on .site-head .nav a{font-family:'Anton',Impact,sans-serif;font-weight:400;font-size:14px;letter-spacing:.09em;text-transform:uppercase;color:var(--st-fg);background:none;border-color:transparent;opacity:.82}
+html.st-on .site-head .nav a.on,html.st-on .site-head .nav a:hover{opacity:1;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:6px;background:none}
+html.st-on .site-head .bk-logo path[stroke]{stroke:var(--st-fg)}
+html.st-on .st-card{position:relative;margin-left:calc(var(--rail) + var(--st-gap));margin-right:var(--st-gap);border-radius:var(--st-r) var(--st-r) 0 0;border-top:0;border-bottom:0;box-shadow:0 -16px 40px rgba(16,19,28,.22);overflow-x:clip}
+:where(html.st-on .st-card){background-color:var(--st-paper,#F3EFE6)}
+html.st-on .st-card + .st-card,html.st-on .st-card + .site-foot{margin-top:calc(var(--st-r) * -1)}
+html.st-on .site-foot{position:relative;z-index:1;margin-left:calc(var(--rail) + var(--st-gap));margin-right:var(--st-gap);border-radius:var(--st-r) var(--st-r) 0 0;box-shadow:0 -16px 40px rgba(16,19,28,.22)}
+html.st-live .st-card{position:sticky}
+html.st-on .st-scene{background:transparent!important;color:var(--st-fg);box-shadow:none}
+html.st-on .st-scene::before,html.st-on .st-scene::after{display:none}
+html.st-on h1{font-family:'Anton',Impact,sans-serif;font-weight:400;font-style:normal;text-transform:uppercase;letter-spacing:.006em;line-height:.94;font-size:clamp(50px,6.4vw,118px)}
+html.st-on h1.t-title{font-size:clamp(40px,4.8vw,84px);line-height:.96}
+html.st-on h1 *{font-family:inherit;font-weight:inherit}
+html.st-on .st-h{font-family:'Anton',Impact,sans-serif;font-weight:400;font-style:normal;text-transform:uppercase;letter-spacing:.01em;line-height:.96;font-size:clamp(34px,4.2vw,64px)}
+html.st-on .st-scene h1,html.st-on .st-scene .st-h{color:var(--st-fg)}
+html.st-on .st-scene :is(.kicker,.meta,.lead,.prose,.prose p,.prose b,figcaption,.muted):not(.card *){color:var(--st-fg)}
+html.st-live .st-hpin{position:sticky;top:calc(var(--st-top) + 24px)}
+.st-xon{overflow:visible!important;scroll-snap-type:none!important;will-change:transform}
+html.st-on [data-st-w] .w{display:inline-block;white-space:nowrap}
+html.st-on [data-st-w] .l{display:inline-block;transform:translateY(calc(var(--y) * var(--k,0))) rotate(calc(var(--r) * var(--k,0)));transition:transform .25s linear}
+.st-serif{font-family:'Instrument Serif',Georgia,serif;font-weight:400}
+.st-stage{--s:3;position:relative;width:calc(128px * var(--s));max-width:100%;aspect-ratio:128/80;flex:none;border-radius:10px;overflow:hidden;background:#10131C;box-shadow:0 0 0 3px rgba(237,239,242,.9),0 18px 40px rgba(16,19,28,.35)}
+.st-scene .st-stage{margin:8px 0 18px}
+.st-stage > img{position:absolute;inset:0;width:100%;height:100%;image-rendering:pixelated;image-rendering:crisp-edges}
+.st-actor{position:absolute;left:20.3%;top:25%;width:59.375%;height:72.5%;overflow:hidden}
+.st-actor img{display:block;height:100%;width:calc(var(--n) * 100%);max-width:none;image-rendering:pixelated;image-rendering:crisp-edges;animation:st-px var(--t) steps(var(--n)) infinite}
+.st-actor.walk{animation:st-walkin 7s linear infinite}
+.st-actor.act{animation:st-act 7s steps(1,end) infinite}
+@keyframes st-px{to{transform:translateX(-100%)}}
+@keyframes st-walkin{0%{transform:translateX(-140%);opacity:1}40%{transform:translateX(0);opacity:1}40.01%,100%{transform:translateX(0);opacity:0}}
+@keyframes st-act{0%,40%{opacity:0}40.01%,100%{opacity:1}}
+.st-rail{position:fixed;left:0;top:calc(var(--st-top) + 18px);bottom:28px;width:var(--rail);z-index:55;color:var(--st-fg);display:none;font-family:'Anton',Impact,sans-serif;transition:color .9s}
+@media (min-width:1180px){html.st-on .st-rail{display:block}}
+html.st-framed .st-rail{position:absolute;bottom:auto;height:720px}
+.st-track{position:absolute;left:26px;top:4px;bottom:4px;width:10px;background:repeating-linear-gradient(180deg,currentColor 0 1px,transparent 1px 9px);opacity:.5}
+.st-now{position:absolute;left:18px;width:26px;height:3px;border-radius:2px;background:currentColor;top:calc(4px + (100% - 8px) * var(--st-prog,0));transition:top .12s linear}
+.st-walker{position:absolute;left:14px;width:34px;height:58px;overflow:hidden;top:max(0px,calc(4px + (100% - 8px) * var(--st-prog,0) - 60px));transition:top .12s linear;pointer-events:none}
+.st-walker img{display:block;height:58px;width:calc(var(--n) * 76px);max-width:none;image-rendering:pixelated;animation:st-px var(--t) steps(var(--n)) infinite}
+.st-rail ol{list-style:none;margin:0;padding:0 14px 0 54px;height:100%;display:flex;flex-direction:column;justify-content:space-between}
+.st-rail button{display:flex;gap:8px;align-items:baseline;width:100%;border:0;background:none;color:inherit;font:inherit;font-size:12.5px;letter-spacing:.09em;line-height:1.15;text-transform:uppercase;text-align:left;opacity:.5;cursor:pointer;padding:3px 0;transition:opacity .3s}
+.st-rail button .n{font-family:'Ubuntu Mono',monospace;font-size:11px;letter-spacing:.04em;flex:none}
+.st-rail button .t{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.st-rail button:hover{opacity:.85}
+.st-rail button.on{opacity:1}
+.st-rail button:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+.st-chip{position:fixed;left:10px;bottom:12px;z-index:56;display:none;align-items:center;gap:8px;max-width:calc(100vw - 20px);padding:9px 16px;border-radius:999px;border:0;background:var(--st-bg,#10131C);color:var(--st-fg);box-shadow:0 0 0 2px var(--st-fg),0 8px 24px rgba(16,19,28,.3);font-family:'Anton',Impact,sans-serif;font-size:13px;letter-spacing:.09em;text-transform:uppercase;cursor:pointer;transition:background-color .9s,color .9s}
+.st-chip .n{font-family:'Ubuntu Mono',monospace;font-size:11px}
+.st-chip .t{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:1179px){html.st-live .st-chip{display:inline-flex}
+html.st-railopen .st-rail{display:block;left:10px;top:auto;bottom:62px;width:min(340px,calc(100vw - 20px));max-height:70vh;overflow:auto;padding:16px 0;border-radius:18px;background:var(--st-bg,#10131C);box-shadow:0 0 0 2px var(--st-fg),0 18px 40px rgba(16,19,28,.35)}
+html.st-railopen .st-rail ol{height:auto;gap:12px;padding:0 18px}
+html.st-railopen .st-rail button{font-size:15px}
+html.st-railopen .st-track,html.st-railopen .st-now,html.st-railopen .st-walker{display:none}}
+.st-wipe{position:fixed;inset:0;z-index:2147483000;pointer-events:none;background:var(--c);clip-path:circle(0 at var(--x) var(--y));transition:clip-path .55s cubic-bezier(.65,0,.35,1)}
+.st-wipe.go{clip-path:circle(150% at var(--x) var(--y))}
+html.st-in::after{content:"";position:fixed;inset:0;z-index:2147483000;pointer-events:none;background:var(--st-wipe,#10131C);clip-path:inset(0 0 0 0)}
+html.st-in.st-go::after{clip-path:inset(0 0 100% 0);transition:clip-path .7s cubic-bezier(.65,0,.35,1)}
+@media (prefers-reduced-motion:reduce){html.st-on [data-st-w] .l{transition:none}.st-actor.walk{display:none}.st-actor.act{animation:none;opacity:1}.st-actor img,.st-walker img{animation:none}}
+</style>
 </helmet>
 <div style="min-height:100vh" data-gt-root="">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -569,14 +637,14 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 </div>
 </header>
 
-<section id="main" class="sec cp-hero rule-b" style="padding-top:48px">
+<section data-st-ch="Intro" id="main" class="sec cp-hero rule-b" style="padding-top:48px">
 <img class="cp-hero-bg" src="/_blob/654691c00363657dd58c94a152c33ac5" alt="" aria-hidden="true" style="object-position:62% 45%">
 <div class="cp-hero-shade" aria-hidden="true"></div>
 <div class="wrap" style="position:relative;z-index:2">
 <div class="col stack g16">
 <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="Main.dc.html">Home</a></li><li><a href="Talks.dc.html">Talks</a></li><li aria-current="page">Talk 10</li></ol></nav>
 <p class="kicker">Talk 10 · Review</p>
-<h1 class="t-title">Chrome and Consequences. The Real Science Behind Cyberpunk’s Implants</h1>
+<h1 class="t-title" data-st-w="">Chrome and Consequences. The Real Science Behind Cyberpunk’s Implants</h1>
 <p class="meta">Rayang T Mendrofa · 23rd October 2026 · 17 min read</p>
 <aside style="margin-top:24px;border:1px solid #281014;background:#FFFFF7">
 <div class="dark" style="padding:12px 20px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px"><span class="kicker" style="font-size:11px">Game &amp; series under review</span><span class="meta" style="font-size:11px;color:#FFF200">Science fiction · game 2020 · anime 2022</span></div>
@@ -616,11 +684,11 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 </div>
 </section>
 
-<section class="sec white rule-t rule-b">
+<section data-st-ch="Upgrading the body, and the mind" class="sec white rule-t rule-b">
 <div class="wrap article">
 <div class="col">
 <p class="kicker">01</p>
-<h2 class="t-h2" style="margin:12px 0 18px">Upgrading the body, and the mind</h2>
+<h2 class="t-h2 st-h" style="margin:12px 0 18px">Upgrading the body, and the mind</h2>
 <p>Cyberpunk’s implants fall into two families. Some replace or improve the body: arms, legs, eyes, a reinforced skeleton. Others reach into the mind: chips that speed up your thinking, store data in your head, or hold a copy of someone else. In the story, both are sold like consumer electronics, with brands, upgrades and warranties.</p>
 </div>
 <div class="col-wide" style="margin:28px auto 32px">
@@ -641,11 +709,11 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 </div>
 </section>
 
-<section class="sec">
+<section data-st-ch="Night City’s chrome against the real thing" class="sec">
 <div class="wrap article">
 <div class="col">
 <p class="kicker">02</p>
-<h2 class="t-h2" style="margin:12px 0 18px">Night City’s chrome against the real thing</h2>
+<h2 class="t-h2 st-h" style="margin:12px 0 18px">Night City’s chrome against the real thing</h2>
 <p>Here are six implants from the game and the series, each set against the closest thing that exists in 2026. Tap a marker on the body, or a tab, to see what each implant does in Night City, its closest real counterpart, and how far that counterpart has got.</p>
 </div>
 <div class="col-wide viz" style="margin-top:32px" role="group" aria-label="Chart A: six cyberpunk implants, where they sit on the body, and how close real technology is to each" data-cp-cat>
@@ -719,11 +787,11 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 </div>
 </section>
 
-<section class="sec dark">
+<section data-st-ch="Rogue AI feels a little close to home" class="sec dark">
 <div class="wrap article">
 <div class="col">
 <p class="kicker">03</p>
-<h2 class="t-h2" style="margin:12px 0 18px">Rogue AI feels a little close to home</h2>
+<h2 class="t-h2 st-h" style="margin:12px 0 18px">Rogue AI feels a little close to home</h2>
 <p>Cyberpunk’s internet is a ruin. In the lore, a hacker’s virus wrecked the old Net decades before 2077, and rogue artificial intelligences now live in the wreckage. A barrier called the Blackwall, maintained by an organisation named NetWatch, keeps them out of the network everyone else uses. Some AIs in the game are friendly, like Delamain, the taxi company that became a person. Others are treated like weather you hope never reaches you.</p>
 <p>Real AI is nothing like a ghost behind a wall, but the story feels less far fetched than it did in 2020. The 2026 International AI Safety Report, led by Yoshua Bengio with more than 100 experts, describes general purpose AI improving quickly at mathematics, coding and acting on its own. In 2025 leading systems reached gold medal level on International Mathematical Olympiad questions. It also records rising harm from deepfakes and fraud, and companies adding safeguards because tests couldn’t rule out misuse. My Talk 09 looked at an AI assisted maths result that is still being argued over.</p>
 <p>The difference that matters is that Night City’s rogue AIs want things. Today’s systems aren’t built to want things the way those AIs do, but they are being given more autonomy, more access and more responsibility, and the hard questions are about who controls them and what they are allowed to do. The Blackwall is fiction, but the arguments about building guard rails before you need them are not.</p>
@@ -733,11 +801,11 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 </div>
 </section>
 
-<section class="sec white rule-b">
+<section data-st-ch="Cyberpsychosis is the price of chrome" class="sec white rule-b">
 <div class="wrap article">
 <div class="col">
 <p class="kicker">04</p>
-<h2 class="t-h2" style="margin:12px 0 18px">Cyberpsychosis is the price of chrome</h2><span class="px pxc-sad px-beat" style="--w:36" role="img" aria-label="The GelasTinta pixel character in a hoodie, frowning with a single tear"><span class="px-v px-ai" style="--n:8;--t:1280ms"><img src="/_blob/4c1e039267cfd582c0ee4d5930f6998b" alt="" draggable="false"></span><span class="px-v px-am" style="--n:10;--t:2000ms"><img src="/_blob/aac8e546325c530b66d6b529ada318e5" alt="" draggable="false"></span><span class="px-v px-hm" style="--n:10;--t:2000ms"><img src="/_blob/aac8e546325c530b66d6b529ada318e5" alt="" draggable="false"></span></span>
+<h2 class="t-h2 st-h" style="margin:12px 0 18px">Cyberpsychosis is the price of chrome</h2><span class="px pxc-sad px-beat" style="--w:36" role="img" aria-label="The GelasTinta pixel character in a hoodie, frowning with a single tear"><span class="px-v px-ai" style="--n:8;--t:1280ms"><img src="/_blob/4c1e039267cfd582c0ee4d5930f6998b" alt="" draggable="false"></span><span class="px-v px-am" style="--n:10;--t:2000ms"><img src="/_blob/aac8e546325c530b66d6b529ada318e5" alt="" draggable="false"></span><span class="px-v px-hm" style="--n:10;--t:2000ms"><img src="/_blob/aac8e546325c530b66d6b529ada318e5" alt="" draggable="false"></span></span>
 <p>Every cyberpunk story needs a cost, and this one is cyberpsychosis. Load too much chrome into one body and the mind starts to slip. The person feels detached from their own flesh, then from other people, and finally becomes violent. Night City even has a police unit, MaxTac, for putting cyberpsychos down. In <i>Edgerunners</i>, David survives on pills that stop his body rejecting the implants, and keeps adding more anyway. It doesn’t end well.</p>
 </div>
 <div class="col" style="margin-top:28px">
@@ -766,11 +834,11 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 </div>
 </section>
 
-<section class="sec grid-bg rule-b">
+<section data-st-ch="TLDR?" class="sec grid-bg rule-b">
 <div class="wrap article">
 <div class="col">
 <p class="kicker">05</p>
-<h2 class="t-h2" style="margin:12px 0 12px">TLDR?</h2>
+<h2 class="t-h2 st-h" style="margin:12px 0 12px">TLDR?</h2>
 <p style="font-style:italic;font-size:22px">Fix first, upgrade later, maybe...</p>
 <ol class="steps" style="margin-top:20px">
 <li><b>1</b>Cyberpunk imagines implants as upgrades you buy. Real implants almost all restore something lost.</li>
@@ -808,12 +876,12 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 </div>
 </section>
 
-<section class="sec">
+<section data-st-ch="Personal Take" class="sec">
 <div class="wrap article">
 <div class="col-wide take">
 <div>
 <p class="kicker">06</p>
-<h2 class="t-h2" style="margin:12px 0 18px">Personal Take</h2>
+<h2 class="t-h2 st-h" style="margin:12px 0 18px">Personal Take</h2>
 <p>I have played <i>Cyberpunk 2077</i> and finished its story, and watched <i>Edgerunners</i> through to the end. I have been fascinated by this genre ever since I got into engineering and learned about biomedical prosthetics. Honestly, I’m hyped about this technology and really interested in where it goes. But I’m also concerned about the ethics around it, and about the future the story portrays.</p>
 <p>The engineering side is what pulled me in. Having built a prosthetic hand myself, I can’t watch a Mantis Blade unfold or a Kiroshi eye zoom without asking the questions my own project raised: where does the power come from, how does the machine know what you mean, and what happens where metal meets the body? The fiction skips all of that, which is exactly what makes it fun to pick apart.</p>
 <p>And the hype is real. Ten years ago, a chip that lets people read again or a leg that the nervous system treats as its own would have sounded like Night City too. Once restoring a body works, improving one starts to look like a matter of time, and I want to see where that goes.</p>
@@ -829,18 +897,18 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 </div>
 </section>
 
-<!-- nl:start --><section class="sec rule-t" id="newsletter" aria-labelledby="nl-title">
-<div class="wrap article"><div class="col nl-box"><div class="stack g8"><p class="kicker">Enjoyed this talk?</p><h2 class="t-h3" id="nl-title">Get the next talk by email</h2><p class="muted small">One email when a new talk goes up, about once a month. Your address is only used for that, and you can unsubscribe any time.</p></div><form class="nl-form" action="/api/newsletter" method="post"><label class="sr" for="nl-email">Email address</label><input id="nl-email" name="email" type="email" required autocomplete="email" placeholder="you@example.com"><input class="nl-hp" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true"><button class="btn" type="submit">Subscribe</button></form><p class="nl-msg" id="subscribed" role="status">Thanks! You’re on the list for the next talk.</p><p class="nl-msg" id="subscribe-error" role="alert">That didn’t work. Please check the email address and try again.</p><div class="nl-support"><span class="meta">Like the talks? Support them:</span><a class="btn ghost" href="https://trakteer.id/rayang_mendrofa" target="_blank" rel="noopener"><img class="sp-ico" src="/_blob/44290a29dc16af32e676d4457d9e8df3" alt="" width="22" height="22">Trakteer · Rupiah <span aria-hidden="true">↗</span></a><a class="btn ghost" href="https://ko-fi.com/rayanmendrofa" target="_blank" rel="noopener"><img class="sp-ico" src="/_blob/7efb8554392a4b29c2b2e6ff43bbfd24" alt="" width="22" height="22">Ko-fi · International <span aria-hidden="true">↗</span></a></div></div></div></section>
+<!-- nl:start --><section data-st-ch="Newsletter" class="sec rule-t" id="newsletter" aria-labelledby="nl-title">
+<div class="wrap article"><div class="col nl-box"><div class="stack g8"><p class="kicker">Enjoyed this talk?</p><h2 class="t-h3 st-h" id="nl-title" data-st-w="">Get the next talk by email</h2><p class="muted small">One email when a new talk goes up, about once a month. Your address is only used for that, and you can unsubscribe any time.</p></div><form class="nl-form" action="/api/newsletter" method="post"><label class="sr" for="nl-email">Email address</label><input id="nl-email" name="email" type="email" required autocomplete="email" placeholder="you@example.com"><input class="nl-hp" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true"><button class="btn" type="submit">Subscribe</button></form><p class="nl-msg" id="subscribed" role="status">Thanks! You’re on the list for the next talk.</p><p class="nl-msg" id="subscribe-error" role="alert">That didn’t work. Please check the email address and try again.</p><div class="nl-support"><span class="meta">Like the talks? Support them:</span><a class="btn ghost" href="https://trakteer.id/rayang_mendrofa" target="_blank" rel="noopener"><img class="sp-ico" src="/_blob/44290a29dc16af32e676d4457d9e8df3" alt="" width="22" height="22">Trakteer · Rupiah <span aria-hidden="true">↗</span></a><a class="btn ghost" href="https://ko-fi.com/rayanmendrofa" target="_blank" rel="noopener"><img class="sp-ico" src="/_blob/7efb8554392a4b29c2b2e6ff43bbfd24" alt="" width="22" height="22">Ko-fi · International <span aria-hidden="true">↗</span></a></div></div></div></section>
 <!-- nl:end -->
 <!-- wada:start --><section class="sec rule-t" aria-label="Colour palette" style="padding-top:28px;padding-bottom:28px">
 <div class="wrap article"><div class="col wada-note"><span class="wada-sw" aria-hidden="true"><i style="background:#CC1236"></i><i style="background:#FFF200"></i><i style="background:#2B44C8"></i></span><p class="meta" style="font-size:12px;margin:0">Palette: Sanzo Wada, <i>A Dictionary of Color Combinations</i>, No. 154 · Carmine, Yellow, with the site blue standing in for Wada’s Blue</p></div></div></section>
 <!-- wada:end -->
-<section class="sec white rule-t" id="comments" aria-labelledby="cm-title-cy">
+<section data-st-ch="Comments" class="sec white rule-t" id="comments" aria-labelledby="cm-title-cy">
 <div class="wrap">
 <div class="cm-wrap">
 <div class="stack g12">
 <p class="kicker">Discussion</p>
-<h2 class="t-h2" id="cm-title-cy">Comments</h2>
+<h2 class="t-h2 st-h" id="cm-title-cy" data-st-w="">Comments</h2>
 <p class="meta muted">{{cm.count}}</p>
 </div>
 <sc-if value="{{cm.notReg}}" hint-placeholder-val="{{true}}">
@@ -917,7 +985,7 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":11000}}'>
 class Component extends DCLogic {
   // ── GelasTinta motion layer (anime.js v4) ─────────────────────────────
-  componentDidMount() { this.gtStart(0); this.gtMedia(0); this.gtTheme(); this.gtFigs(); this.cmMount(); }
+  componentDidMount() { this.stStart(0); this.gtStart(0); this.gtMedia(0); this.gtTheme(); this.gtFigs(); this.cmMount(); }
   componentWillUnmount() {
     if (this.thOff) this.thOff();
     this.gtFigStop();
@@ -1621,6 +1689,205 @@ class Component extends DCLogic {
     setTimeout(() => { f.style.background = '#EDEFF2'; apply(); f.classList.add('out'); }, 1000);
     setTimeout(() => { if (f.parentNode) f.parentNode.removeChild(f); }, 1450);
   }
+  // story:start
+  // The scroll story layer (tools/story.py): stacked cards, scene colours from this page's palette,
+  // the left chapter rail with the walking character, wobbling headings and the ink wipe between pages.
+  stStart(tries) {
+    const marks = document.querySelectorAll('[data-st-ch]');
+    if (!marks.length) { if (tries < 40) this.stT = setTimeout(() => this.stStart(tries + 1), 100); return; }
+    if (this.stOn) return;
+    this.stOn = true;
+    const d = document, de = d.documentElement;
+    let framed = false;
+    try { framed = window.self !== window.top; } catch (e) { framed = true; }
+    const still = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+    const css = getComputedStyle(de);
+    const pal = (css.getPropertyValue('--st-pal') || '#10131C').split(',').map((x) => x.trim()).filter(Boolean);
+    const outfit = (css.getPropertyValue('--st-outfit') || 'hoodie').trim();
+    const SPR = {'hoodie-walk': ['effa22a25ea7853b01b88ec50805f0c1', 4, 140], 'hoodie-idle': ['4c1e039267cfd582c0ee4d5930f6998b', 8, 160], 'hoodie-wave': ['723c80f6c3239c1eb034218c7a3249a4', 7, 150], 'hoodie-happy': ['c86bf217f8e4735869fc0fcabfe44c9f', 8, 130], 'hoodie-pour': ['cf0cbbc176dcedea4a1c0d45350432cf', 11, 150], 'hoodie-thinking': ['e88a75bea0e274305b8af51e265cba31', 10, 220], 'labcoat-walk': ['2ac8f04301980f265efc51c1c861396a', 4, 140], 'labcoat-idle': ['0adff87b8a0ce54aa1d503767bf28772', 8, 160], 'labcoat-wave': ['af590436f0155acb650ca7a370a6820d', 7, 150], 'labcoat-inspect': ['abb3bf9b38e58b145b90221cfdc2e9b2', 10, 180], 'labcoat-eureka': ['cecfa839f65d924244169b8f91ad87c7', 10, 170], 'suit-walk': ['a4413c34a748659e2cdd0d82ca3cce01', 4, 140], 'suit-idle': ['36e3f4b4d1181d7f9e6ca9560d607250', 8, 160], 'suit-wave': ['1d89ba917ee97de87e63eed0524044b1', 7, 150], 'suit-present': ['d307f3fd9e458bd63d3e69b9eaa671d5', 12, 200]};
+    if (!css.getPropertyValue('--st-paper').trim()) de.style.setProperty('--st-paper', getComputedStyle(d.body).backgroundColor);
+    de.classList.add('st-on');
+    if (framed) de.classList.add('st-framed'); else de.classList.add('st-live');
+    const fgFor = (hex) => {
+      const m = /^#?([0-9a-f]{6})$/i.exec(hex || '');
+      if (!m) return '#EDEFF2';
+      const n = parseInt(m[1], 16), c = [n >> 16, (n >> 8) & 255, n & 255].map((v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); });
+      return (0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2]) > 0.33 ? '#10131C' : '#EDEFF2';
+    };
+    const chs = Array.from(marks);
+    const colourOf = (i) => chs[i].getAttribute('data-st-bg') || pal[i % pal.length];
+    const setScene = (i) => { const c = colourOf(i); de.style.setProperty('--st-bg', c); de.style.setProperty('--st-fg', fgFor(c)); };
+    setScene(0);
+    // the rail, built from the chapters
+    const rail = d.createElement('nav');
+    rail.className = 'st-rail';
+    rail.setAttribute('aria-label', 'Chapters');
+    const pad = (n) => (n < 10 ? '0' : '') + n;
+    rail.innerHTML = '<span class="st-track" aria-hidden="true"></span><span class="st-now" aria-hidden="true"></span>' +
+      '<span class="st-walker" aria-hidden="true"><img alt="" src=""></span><ol>' +
+      chs.map((c, i) => '<li><button type="button" data-st-go="' + i + '"><span class="n">' + pad(i + 1) + '</span><span class="t"></span></button></li>').join('') + '</ol>';
+    rail.querySelectorAll('.t').forEach((t, i) => { t.textContent = chs[i].getAttribute('data-st-ch'); });
+    d.body.appendChild(rail);
+    const chip = d.createElement('button');
+    chip.type = 'button';
+    chip.className = 'st-chip';
+    chip.setAttribute('aria-expanded', 'false');
+    chip.innerHTML = '<span class="n"></span><span class="t"></span>';
+    d.body.appendChild(chip);
+    const btns = Array.from(rail.querySelectorAll('[data-st-go]'));
+    const walker = rail.querySelector('.st-walker');
+    const wimg = walker.querySelector('img');
+    const pose = (move) => {
+      const s = SPR[outfit + '-' + move] || SPR['hoodie-' + move];
+      if (!s) return 0;
+      if (wimg.getAttribute('src') !== '/_blob/' + s[0]) wimg.setAttribute('src', '/_blob/' + s[0]);
+      walker.style.setProperty('--n', s[1]);
+      walker.style.setProperty('--t', (s[1] * s[2]) + 'ms');
+      return s[1] * s[2];
+    };
+    ['walk', 'wave', 'idle'].forEach((m) => { const s = SPR[outfit + '-' + m]; if (s) { const im = new Image(); im.src = '/_blob/' + s[0]; } });
+    pose('idle');
+    const offs = [];
+    const on = (el, ev, fn, opt) => { el.addEventListener(ev, fn, opt); offs.push(() => el.removeEventListener(ev, fn, opt)); };
+    this.stOff = () => offs.forEach((f) => f());
+    const go = (i) => {
+      const t = chs[i];
+      if (!t) return;
+      const head = d.querySelector('.site-head');
+      const y = t.getBoundingClientRect().top + window.scrollY - (head ? head.offsetHeight : 0) + 2;
+      window.scrollTo({ top: Math.max(0, y), behavior: still ? 'auto' : 'smooth' });
+      de.classList.remove('st-railopen');
+      chip.setAttribute('aria-expanded', 'false');
+    };
+    on(rail, 'click', (e) => { const b = e.target.closest('[data-st-go]'); if (b) go(+b.getAttribute('data-st-go')); });
+    on(chip, 'click', () => { const o = de.classList.toggle('st-railopen'); chip.setAttribute('aria-expanded', o ? 'true' : 'false'); });
+    // sections become cards (in the design canvas too, so the frame and cards show there)
+    const head = d.querySelector('.site-head');
+    const box = (d.getElementById('main') || chs[0]).parentElement;
+    const cards = Array.from(box.children).filter((el) => el.matches('section, nav, aside, div.sec') && !el.matches('.site-head, .site-foot, .skip-link, .gt-progress'));
+    cards.forEach((c) => c.classList.add('st-card'));
+    if (framed) return;
+    // wobbling heading letters
+    const words = Array.from(d.querySelectorAll('[data-st-w]'));
+    if (!still) words.forEach((h, hi) => {
+      if (h.children.length) return;
+      let seed = hi * 97 + 13;
+      const rnd = () => { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; };
+      const txt = h.textContent.trim().replace(/\s+/g, ' ');
+      h.setAttribute('aria-label', txt);
+      h.innerHTML = txt.split(' ').map((w) => '<span class="w" aria-hidden="true">' + Array.from(w).map((ch) =>
+        '<span class="l" style="--r:' + ((rnd() - 0.5) * 9).toFixed(1) + 'deg;--y:' + ((rnd() - 0.5) * 0.1).toFixed(3) + 'em">' +
+        ch.replace(/&/g, '&amp;').replace(/</g, '&lt;') + '</span>').join('') + '</span>').join(' ');
+    });
+    // stacked cards: each pins once its bottom reaches the screen, the next slides over it
+    let vh = window.innerHeight, hh = head ? head.offsetHeight : 0;
+    const tops = () => {
+      vh = window.innerHeight; hh = head ? head.offsetHeight : 0;
+      de.style.setProperty('--st-top', hh + 'px');
+      cards.forEach((c) => { c.style.top = Math.min(hh, vh - c.offsetHeight) + 'px'; });
+      ask();
+    };
+    let ro = null;
+    if (window.ResizeObserver) { ro = new ResizeObserver(() => tops()); cards.forEach((c) => ro.observe(c)); offs.push(() => ro.disconnect()); }
+    // sideways rows: scroll down, the row moves across
+    const rows = Array.from(d.querySelectorAll('[data-st-x]'));
+    const wide = () => window.innerWidth >= 900 && !still && !!(window.matchMedia && matchMedia('(pointer: fine)').matches);
+    const sizeRows = () => rows.forEach((r) => {
+      const scene = r.closest('.st-card'), pin = r.closest('.st-hpin');
+      if (!scene || !pin) return;
+      r.style.transform = '';
+      if (!wide()) { r.classList.remove('st-xon'); scene.style.minHeight = ''; r.__x = 0; return; }
+      r.classList.add('st-xon');
+      const extra = Math.max(0, r.scrollWidth - r.clientWidth);
+      r.__x = extra;
+      scene.style.minHeight = (pin.offsetHeight + extra + 160) + 'px';
+    });
+    // the frame colour, the rail and the walker
+    let cur = -1, raf = 0, moving = 0, acting = 0;
+    const tick = () => {
+      raf = 0;
+      let c = 0;
+      chs.forEach((s, i) => { if (s.getBoundingClientRect().top < vh * 0.45) c = i; });
+      if (c !== cur) {
+        const first = cur < 0;
+        cur = c;
+        setScene(c);
+        btns.forEach((b, i) => { b.classList.toggle('on', i === c); if (i === c) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current'); });
+        chip.querySelector('.n').textContent = pad(c + 1);
+        chip.querySelector('.t').textContent = chs[c].getAttribute('data-st-ch');
+        if (!first && !still) { clearTimeout(this.stA); acting = 1; this.stA = setTimeout(() => { acting = 0; pose(moving ? 'walk' : 'idle'); }, pose('wave')); }
+      }
+      const max = Math.max(1, de.scrollHeight - vh);
+      de.style.setProperty('--st-prog', Math.min(1, Math.max(0, window.scrollY / max)).toFixed(4));
+      // the card being covered shrinks back a little as the next one slides over it
+      if (!still) cards.forEach((card, i) => {
+        const nx = cards[i + 1] || d.querySelector('.site-foot');
+        const r = card.getBoundingClientRect();
+        let k = 0;
+        if (nx && r.bottom > 0 && r.top < vh) {
+          const nt = nx.getBoundingClientRect().top;
+          if (nt < vh && r.top <= parseFloat(card.style.top || 0) + 1) k = Math.min(1, Math.max(0, (vh - nt) / (vh - hh)));
+        }
+        if (k > 0.001) {
+          card.style.transformOrigin = '50% ' + Math.round(-r.top + (vh + hh) / 2) + 'px';
+          card.style.transform = 'scale(' + (1 - k * 0.05).toFixed(4) + ')';
+          card.style.filter = 'brightness(' + (1 - k * 0.22).toFixed(3) + ')';
+        } else if (card.style.transform) { card.style.transform = ''; card.style.filter = ''; card.style.transformOrigin = ''; }
+      });
+      rows.forEach((r) => {
+        if (!r.__x) return;
+        const sc = r.closest('.st-card').getBoundingClientRect();
+        const p = Math.min(1, Math.max(0, (hh + 40 - sc.top) / r.__x));
+        r.style.transform = 'translate3d(' + (-p * r.__x).toFixed(1) + 'px,0,0)';
+      });
+      if (!still) words.forEach((h) => {
+        const r = h.getBoundingClientRect();
+        if (r.bottom < -200 || r.top > vh + 200) return;
+        const p = Math.max(-1, Math.min(1, (r.top + r.height / 2 - vh * 0.42) / vh));
+        h.style.setProperty('--k', (0.12 + Math.abs(p) * 1.9).toFixed(3));
+      });
+    };
+    const ask = () => { if (!raf) raf = requestAnimationFrame(tick); };
+    on(window, 'scroll', () => {
+      ask();
+      if (still) return;
+      if (!moving && !acting) pose('walk');
+      moving = 1;
+      clearTimeout(this.stM);
+      this.stM = setTimeout(() => { moving = 0; if (!acting) pose('idle'); }, 180);
+    }, { passive: true });
+    on(window, 'resize', () => { sizeRows(); tops(); }, { passive: true });
+    on(window, 'load', () => { sizeRows(); tops(); });
+    sizeRows();
+    tops();
+    // ink wipe between pages (not into the study pack library, which keeps its own pages)
+    const inkFor = (p) => (p === '/' ? '#4F4086' : /^\/talks\//.test(p) ? '#10131C' : /^\/projects\//.test(p) ? '#064F6E' : /^\/products\//.test(p) ? '#7A4456' : /^\/author\//.test(p) ? '#5A82B3' : '');
+    if (de.classList.contains('st-in')) {
+      requestAnimationFrame(() => requestAnimationFrame(() => { de.classList.add('st-go'); setTimeout(() => de.classList.remove('st-in', 'st-go'), 800); }));
+    }
+    on(window, 'pageshow', (e) => { if (e.persisted) { d.querySelectorAll('.st-wipe').forEach((w) => w.remove()); de.classList.remove('st-in', 'st-go'); } });
+    if (!still) on(d, 'click', (e) => {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      const a = e.target.closest && e.target.closest('a[href]');
+      if (!a || a.target || a.hasAttribute('download')) return;
+      let u;
+      try { u = new URL(a.href, location.href); } catch (er) { return; }
+      if (u.origin !== location.origin || (u.pathname === location.pathname && u.search === location.search)) return;
+      const ink = inkFor(u.pathname);
+      if (!ink || /\.[a-z0-9]{2,4}$/i.test(u.pathname)) return;
+      e.preventDefault();
+      const w = d.createElement('div');
+      w.className = 'st-wipe';
+      w.style.setProperty('--c', ink);
+      w.style.setProperty('--x', e.clientX + 'px');
+      w.style.setProperty('--y', e.clientY + 'px');
+      d.body.appendChild(w);
+      try { sessionStorage.setItem('gt-wipe', ink); } catch (er) {}
+      requestAnimationFrame(() => requestAnimationFrame(() => w.classList.add('go')));
+      setTimeout(() => { location.href = u.href; }, 520);
+    }, true);
+  }
+  // story:end
   renderVals() {
     return { cm: this.commentVals() };
   }
