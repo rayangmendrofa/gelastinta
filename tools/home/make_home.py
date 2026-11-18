@@ -97,16 +97,14 @@ header = grab(r'<a class="skip-link".*?</header>')
 footer = grab(r'<footer class="site-foot dark">.*?</footer>')
 flask = grab(r'<figure class="hero-vessel flask">.*?</figure>')
 show = grab(r'<div class="show-grid">.*?</a></div>')
+bars = ''.join(
+    f'<a class="tbar" href="{h}"><span class="tbar-k">{k}</span><span class="tbar-t">{t}</span><span class="tbar-go">Open the 3D model →</span></a>'
+    for h, k, t in re.findall(r'<a class="show-card" href="([^"]+)">.*?<span class="kicker">([^<]*)</span><span class="show-t">([^<]*)</span>', show, re.S))
 works = ''.join(card(c) for c in CARDS if c['shelf'] == 'works')
 talks = ''.join(card(c) for c in CARDS if c['shelf'] == 'latest')
 build = open(os.path.join(ROOT, 'build.mjs')).read()
 n_talks = len(re.findall(r"'Talk-\w+\.dc\.html': '/talks/", build))
 
-ICON = {
-    'yt': '<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 9l5 3-5 3z" fill="currentColor"/></svg>',
-    'ig': '<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/></svg>',
-    'tt': '<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M14 3c.5 2.6 2.4 4.4 5 4.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
-}
 PACKS = ['TH · Thermodynamics', 'RB · Robotics', 'T · Mechanics', 'VA · Vibration', 'CE · Control', 'E · Electronics',
          'FE · Computational', 'M · Materials', 'EM · Engineering Maths', 'AM · Advanced Materials']
 
@@ -114,7 +112,7 @@ S = []
 S.append(scene('hello', 'Hello', VIOLET, f'''<div class="hello">
 <div class="hello-text">
 <p class="over">Gelas · glass &nbsp;/&nbsp; Tinta · ink</p>
-{big('h1', 'Ideas as in ink', 11)}
+{big('h1', 'Ideas in Ink', 11)}
 <p class="serif">A metaphorical vessel where ideas flow like ink, shaped by structure yet free in spirit.</p>
 <div class="hello-me">{px('pour', 'Pixel character: the GelasTinta character in his hoodie lifts a beaker and pours ink into a puddle', 'face pour')}<p class="cue">Scroll to step inside ↓</p></div>
 </div>
@@ -137,7 +135,7 @@ S.append(scene('apart', 'Take apart', OLYMPIC, f'''<div class="stack-c wide">
 {big('h2', 'See how it works.', 33)}
 <p class="serif"><i>From the inside.</i> Every model runs on the numbers from the work behind it.</p>
 {px('rush', 'Pixel scene: the GelasTinta character typing fast against a deadline, a progress bar filling, then leaning back relieved', 'md')}
-{show}
+<div class="tbars">{bars}</div>
 </div>'''))
 
 S.append(scene('builds', 'Builds', VANDAR, f'''<div class="st-hpin stack-l wide">
@@ -169,25 +167,10 @@ S.append(scene('packs', 'Packs', TAUPE, f'''<div class="row">
 {px('exam', 'Pixel scene: the GelasTinta character writing an exam nervously, getting stuck, pushing through and showing off an A plus', 'md')}
 </div>'''))
 
-S.append(scene('contact', 'Contact', VANDAR, f'''<div class="stack-c">
-<p class="over">Jakarta · London · Singapore</p>
-{big('h2', 'Get in touch.', 88)}
-<p class="serif">Open to collaborations, discussions, projects, and work in discussing creative science, design, and engineering work.</p>
-<button type="button" class="mail" data-copy="mendrofarayang@gmail.com"><span class="mail-a">mendrofarayang@gmail.com</span><span class="mail-ok" aria-live="polite">Copied</span></button>
-<div class="socials">
-<a href="https://www.linkedin.com/in/raysmendrofa/">LinkedIn</a>
-<a href="https://wa.me/447376459918">WhatsApp</a>
-<a href="https://www.youtube.com/@gelastinta">{ICON['yt']}YouTube</a>
-<a href="https://www.instagram.com/gelastinta/">{ICON['ig']}Instagram</a>
-<a href="https://www.tiktok.com/@gelastinta.com">{ICON['tt']}TikTok</a>
-</div>
-{px('rain', 'Pixel scene: the GelasTinta character drinking warm tea on the sofa while it rains outside', 'md')}
-</div>'''))
-
 CSS = f'''
 .v2{{--vh:9px}}
 html.st-live .v2{{--vh:1vh}}
-.v2::after{{content:"";position:fixed;inset:0;pointer-events:none;z-index:40;opacity:.14;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}}
+.v2::after{{content:"";position:fixed;inset:0;pointer-events:none;z-index:40;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}}
 .v2 .scene{{position:relative;min-height:820px;display:flex;align-items:center;justify-content:center;padding:96px clamp(20px,5vw,80px) 110px;color:{PAPER}}}
 html.st-live .v2 .scene{{min-height:calc(100vh - var(--st-top))}}
 .v2 .scene.xs{{align-items:flex-start}}
@@ -227,8 +210,12 @@ html.st-live .v2 .scene{{min-height:calc(100vh - var(--st-top))}}
 .v2 .pix.face{{--s:3;border-radius:50%;box-shadow:0 0 0 3px rgba(237,239,242,.85);background:rgba(237,239,242,.12)}}
 .v2 .pix.face.sm{{--s:2}}
 .v2 .pix.pour{{border-radius:12px}}
-.v2 .show-grid{{width:100%;text-align:left;margin-top:6px}}
-.v2 .show-card{{border-color:rgba(237,239,242,.85)}}
+.v2 .tbars{{display:flex;flex-direction:column;width:100%;max-width:880px;margin-top:4px;border-top:1px solid rgba(237,239,242,.4)}}
+.v2 .tbar{{display:grid;grid-template-columns:minmax(0,13em) minmax(0,1fr) auto;align-items:baseline;gap:18px;padding:14px 4px;border-bottom:1px solid rgba(237,239,242,.4);text-decoration:none;color:{PAPER};text-align:left;transition:background-color .25s,padding .25s}}
+.v2 .tbar:hover{{background:rgba(16,19,28,.16);padding-left:14px}}
+.v2 .tbar-k{{font-family:'Ubuntu Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.8}}
+.v2 .tbar-t{{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(22px,2.2vw,30px);line-height:1.1}}
+.v2 .tbar-go{{font-family:'Ubuntu Mono',monospace;font-size:12px;letter-spacing:.06em;white-space:nowrap}}
 .v2 .cards{{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(280px,340px);gap:22px;overflow-x:auto;padding:8px 2px 18px;scroll-snap-type:x mandatory;scrollbar-width:thin}}
 .v2 .cards:focus-visible{{outline:3px solid {MIST};outline-offset:4px}}
 .v2 .hcard{{scroll-snap-align:start;display:flex;flex-direction:column;gap:8px;text-decoration:none;color:{PAPER}}}
@@ -253,7 +240,7 @@ html.st-live .v2 .scene{{min-height:calc(100vh - var(--st-top))}}
 .v2 .hello .hero-vessel.flask{{order:-1}}
 .v2 .row{{flex-direction:column;align-items:flex-start}}
 .v2 .head-row{{flex-direction:column;align-items:flex-start}}
-.v2 .show-grid{{grid-template-columns:minmax(0,1fr)}}
+.v2 .tbar{{grid-template-columns:minmax(0,1fr)}}
 }}
 @media (max-width:640px){{
 .v2 .scene{{padding:72px 18px 96px}}
@@ -268,21 +255,7 @@ html.st-live .v2 .scene{{min-height:calc(100vh - var(--st-top))}}
 FONTS = ('<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Instrument+Serif:ital@0;1&amp;'
          'display=swap" rel="stylesheet">')
 
-COPY_JS = r'''  // Home: click the email to copy it
-  hmCopy() {
-    if (this.hmOn) return;
-    this.hmOn = true;
-    const fn = (e) => {
-      const cp = e.target && e.target.closest ? e.target.closest('[data-copy]') : null;
-      if (!cp) return;
-      const v = cp.getAttribute('data-copy');
-      const done = () => { cp.classList.add('ok'); clearTimeout(cp.__t); cp.__t = setTimeout(() => cp.classList.remove('ok'), 1600); };
-      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(v).then(done, () => { location.href = 'mailto:' + v; });
-      else location.href = 'mailto:' + v;
-    };
-    document.addEventListener('click', fn, true);
-  }
-'''
+
 
 head = C[:C.index('</helmet>')]
 head = head.replace('</helmet>', '')
@@ -290,11 +263,8 @@ head += FONTS + '\n<style>' + CSS + '</style>\n'
 body = ('</helmet>\n<div style="min-height:100vh" data-gt-root="" class="v2">\n' + header + '\n\n' + '\n\n'.join(S) +
         '\n\n' + footer + '\n\n</div>\n</x-dc>')
 script = C[C.index('</x-dc>') + len('</x-dc>'):]
-script = script.replace('componentDidMount() {', 'componentDidMount() { this.hmCopy();', 1)
-k = script.rfind('  renderVals()')
-script = script[:k] + COPY_JS + script[k:]
-page = story.core(head + body + script, story.page_cfg('Main.dc.html', ''))
+page = story.core(story.footer(head + body + script), story.page_cfg('Main.dc.html', ''))
 page = page.replace('"height":', '"height":', 1)
-page = re.sub(r'("\$preview":\{"width":1440,"height":)\d+', r'\g<1>7800', page)
+page = re.sub(r'("\$preview":\{"width":1440,"height":)\d+', r'\g<1>7400', page)
 open(os.path.join(ROOT, 'src/pages/Main.dc.html'), 'w').write(page)
 print('Main.dc.html', len(page), 'talks', n_talks, 'cards', len(CARDS))
