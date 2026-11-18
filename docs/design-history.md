@@ -55,6 +55,7 @@ Each style lists what it looked like, where its files live, and a prompt that wo
 - Index pages (Talks, Projects, Products, Author) read like Home: each chapter opens on a full colour scene with a giant Anton heading and an Instrument Serif kicker. Sections that hold objects (shelves, posters, polaroids, the services menu, the workshop) sit wholly on the colour. Text heavy ones (quote builder, FAQ, education, the kit) open on a colour band and continue on paper.
 - Bookshelves (talks, projects, study packs) feel like choosing a book: books rise onto the shelf as it comes into view, lean away from the pointer and lift on hover, and the chosen book is pulled out with a tilt while its cover swings open.
 - Home: the ink flask as the centrepiece of "Ideas in Ink", teardown previews as plain title bars, Featured works and Latest talks rows moving sideways as you scroll.
+- On Products and Author, long explanations show their first sentence with Read more for the rest, and service inclusions open on their own.
 - Every page ends on the same "Get in touch" scene (tea and rain pixel scene, email to copy, socials, site map, palette credit).
 - Document previews are books: two page spreads with the cover alone on the right, page turn animation, arrows, keys and swipe.
 
