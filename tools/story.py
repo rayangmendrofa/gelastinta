@@ -52,8 +52,8 @@ PAGES = {
                              scenes={'GelasTinta study packs': 'band', 'Services': 'full', 'Build your quote': 'band', 'FAQ': 'band',
                                      'From the workshop': 'full', 'PT RTM · rtechm.com': 'band'},
                              more=[('p', 'class="lead prose"'), ('all', 'class="mi-inc"')],
-                             stage=('study', 'hoodie', 'happy', 'Pixel scene: the GelasTinta character in his hoodie walks into his study room and jumps for joy'),
-                             stage_at=('before', '</div>\n<nav class="card jump')),
+                             stage=('stage', 'suit', 'present', 'Pixel scene: the GelasTinta character in a suit walks onto a stage and presents a growing chart'),
+                             stage_at=('after', '</div>\n<!--st-stage-at-->')),
     'Author.dc.html': dict(pal=['#5A82B3', '#4F4086', '#7A4456', '#4F4086'], outfit='hoodie', label='Author', scene=True,
                            scenes={'The kit': 'band', 'Education': 'band', 'Around the studies': 'full'},
                            more=[('group', '<div class="prose intro">'), ('p', 'class="edu-desc"')]),
@@ -241,6 +241,19 @@ html.st-on .st-scene .lead,html.st-on .st-scene .prose.intro p{font-size:clamp(1
 html.st-on .st-scene .prose.intro{display:flex;flex-direction:column;gap:10px}
 html.st-on .st-scene .wrap{row-gap:28px}
 html.st-on .edu-desc + .st-more,html.st-on .edu-desc{font-size:16px;line-height:1.6}
+html.st-on .st-scene h1{font-size:clamp(46px,5.4vw,100px)}
+html.st-on .st-scene .wrap.split:has(> .st-stage){grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);grid-template-rows:auto 1fr;column-gap:clamp(28px,4vw,64px);row-gap:20px;align-items:start}
+html.st-on .st-scene .wrap.split:has(> .st-stage) > .stack{grid-column:1;grid-row:1 / span 2;align-self:center}
+html.st-on .st-scene .wrap.split > .st-stage{grid-column:2;grid-row:1;margin:0;width:100%;justify-self:end}
+html.st-on .st-scene .wrap.split:has(> .st-stage) > .card.jump{grid-column:2;grid-row:2;align-self:start!important}
+html.st-on .st-scene .card.jump{padding:16px 20px 12px;gap:8px;box-shadow:0 18px 40px rgba(16,19,28,.25)}
+html.st-on .st-scene .card.jump > .kicker{font-size:11px;margin:0}
+html.st-on .st-scene .card.jump .stack:has(> a:nth-child(5)){display:grid;grid-template-columns:1fr 1fr;column-gap:22px}
+html.st-on .st-scene .card.jump a{padding:7px 0;font-size:14px;min-height:0;gap:8px}
+html.st-on .st-scene .card.jump a span{font-size:11px}
+html.st-on .st-scene .chips .btn{min-height:40px;padding:0 18px;font-size:13px}
+@media (max-width:900px){html.st-on .st-scene .wrap.split:has(> .st-stage){grid-template-columns:minmax(0,1fr)}
+html.st-on .st-scene .wrap.split:has(> .st-stage) > *{grid-column:1!important;grid-row:auto!important}}
 @media (prefers-reduced-motion:reduce){.st-leaf{transition:none}.st-more[open] > :not(summary){animation:none}.st-shelf-in > *{animation:none}.st-shelf-wait > *{opacity:1}.st-actor.walk{display:none}.st-actor.act{animation:none;opacity:1}.st-actor img,.st-walker img{animation:none}}
 '''
 
@@ -305,11 +318,20 @@ JS = r'''  // story:start
     const offs = [];
     const on = (el, ev, fn, opt) => { el.addEventListener(ev, fn, opt); offs.push(() => el.removeEventListener(ev, fn, opt)); };
     this.stOff = () => offs.forEach((f) => f());
+    // where an element sits in the page's normal flow (stacked cards report their pinned spot otherwise)
+    const naturalTop = (el) => {
+      const cs = Array.from(d.querySelectorAll('.st-card'));
+      const was = cs.map((c) => c.style.position);
+      cs.forEach((c) => { c.style.position = 'static'; });
+      const y = el.getBoundingClientRect().top + window.scrollY;
+      cs.forEach((c, k) => { c.style.position = was[k]; });
+      return y;
+    };
     const go = (i) => {
       const t = chs[i];
       if (!t) return;
       const head = d.querySelector('.site-head');
-      const y = t.getBoundingClientRect().top + window.scrollY - (head ? head.offsetHeight : 0) + 2;
+      const y = naturalTop(t) - (head ? head.offsetHeight : 0) + 2;
       if (this.stGlide) this.stGlide(Math.max(0, y)); else window.scrollTo({ top: Math.max(0, y), behavior: still ? 'auto' : 'smooth' });
       de.classList.remove('st-railopen');
       chip.setAttribute('aria-expanded', 'false');
@@ -477,6 +499,22 @@ JS = r'''  // story:start
       on(window, 'scroll', () => { if (!gliding) { target = window.scrollY; pos = target; } }, { passive: true });
       on(window, 'keydown', () => { gliding = false; target = window.scrollY; });
     }
+    // in-page links: Back to top always goes to the very top, other #links to their section's real place
+    on(d, 'click', (e) => {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      const a = e.target.closest && e.target.closest('a[href^="#"]');
+      if (!a) return;
+      const id = decodeURIComponent(a.getAttribute('href').slice(1));
+      const t = id ? d.getElementById(id) : null;
+      if (id !== 'top' && id !== 'main' && !t) return;
+      e.preventDefault();
+      const head = d.querySelector('.site-head');
+      const y = (id === 'top' || id === 'main') ? 0 : Math.max(0, naturalTop(t) - (head ? head.offsetHeight : 0) - 8);
+      if (this.stGlide) this.stGlide(y); else window.scrollTo({ top: y, behavior: still ? 'auto' : 'smooth' });
+      try { history.replaceState(null, '', id === 'top' ? location.pathname + location.search : '#' + id); } catch (er) {}
+      if (id !== 'top' && t && !t.hasAttribute('tabindex')) { t.setAttribute('tabindex', '-1'); }
+      if (t) setTimeout(() => { try { t.focus({ preventScroll: true }); } catch (er) {} }, 600);
+    }, true);
     // ink wipe between pages (not into the study pack library, which keeps its own pages)
     const inkFor = (p) => (p === '/' ? '#4F4086' : /^\/talks\//.test(p) ? '#10131C' : /^\/projects\//.test(p) ? '#064F6E' : /^\/products\//.test(p) ? '#7A4456' : /^\/author\//.test(p) ? '#5A82B3' : '');
     if (de.classList.contains('st-in')) {
