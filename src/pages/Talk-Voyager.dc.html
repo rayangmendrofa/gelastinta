@@ -319,6 +319,8 @@ figcaption{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;line-
 .wada-credit .wada-mini{margin-left:0;border-color:#55534A}
 /* wadasite:end */
 .mm{position:relative}.mm img{display:block}.mm .mm-l{position:absolute;transform:translate(-50%,-50%);background:#fff;color:#111;border:1.5px solid #111;font-family:'Titillium Web',system-ui,sans-serif;font-weight:700;font-size:12px;line-height:1.15;padding:3px 6px;text-align:center;max-width:44%}html[data-theme="dark"] .mm .mm-l{filter:invert(1) hue-rotate(180deg)}
+.dark .meme-sm{background:#23251F;border-color:#55534A;color:#FBF9F4}
+.dark .meme-sm img{border-color:#55534A}
 .meme-sm.wide{grid-template-columns:minmax(0,340px) minmax(0,1fr)}
 @media (max-width:640px){.meme-sm.wide{grid-template-columns:minmax(0,1fr)}}
 /* theme:start */
@@ -483,7 +485,7 @@ html{scroll-padding-top:60px}
 .cp-hero{background:#111314}
 .vy-hero-img{position:absolute;top:50%;right:3%;width:min(46%,600px);height:auto;transform:translateY(-50%);z-index:0;-webkit-mask-image:radial-gradient(closest-side,#000 96%,transparent 100%);mask-image:radial-gradient(closest-side,#000 96%,transparent 100%)}
 @media (max-width:960px){.vy-hero-img{width:84%;right:-14%;opacity:.42}}
-.vy-yt{background:#111314;border-color:#111314}
+.vy-yt{border-color:#111314}
 .vy-yt .td-play{background:radial-gradient(circle at 72% 38%,rgba(202,179,86,.24),rgba(17,19,20,0) 60%);color:#FBF9F4}
 .vy-yt .td-play:hover{background:radial-gradient(circle at 72% 38%,rgba(202,179,86,.38),rgba(17,19,20,0) 64%)}
 .vy-yt .td-pill{background:#CAB356;color:#111314}
@@ -502,6 +504,26 @@ html{scroll-padding-top:60px}
 .mg-dot{filter:drop-shadow(0 0 6px rgba(202,179,86,.9))}
 @media (prefers-reduced-motion:reduce){.lt-bar{transition:none}}
 @media (max-width:640px){[data-lt] .sk-svg text.vl,[data-mg] .sk-svg text.vl,.vy-dist text.vl{font-size:24px}[data-lt] .sk-svg text.sm,[data-mg] .sk-svg text.sm,.vy-dist text.sm{font-size:22px}[data-mg] .sk-svg text[data-clk]{font-size:30px !important}}
+.vy-yt{background:#111314 url(/_blob/5d1734ac39915d6fe9df4f046aef598e) center/cover}
+.vy-float{float:right;width:170px;margin:6px 0 18px 32px}
+.vy-float.wide{width:230px}
+.vy-float img{display:block;width:100%;height:auto}
+.vy-float figcaption{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;line-height:1.5;color:#55534A;margin-top:8px}
+@media (max-width:640px){.vy-float,.vy-float.wide{float:none;width:200px;margin:8px auto 20px}}
+.vy-diag{display:grid;width:100%;grid-template-columns:minmax(0,520px) minmax(0,1fr);gap:36px;align-items:center}
+.vy-diag-img{position:relative;background:#FFFFFF;border:1px solid #111314}
+.vy-diag-img img{display:block;width:100%;height:auto}
+.vy-hl{position:absolute;border:3px solid #2E9FA4;background:rgba(120,205,208,.2);border-radius:4px}
+.vy-hl.pw{border-color:#BB7125;background:rgba(187,113,37,.14)}
+.vy-key{display:inline-block;width:18px;height:12px;margin-right:8px;border:3px solid #2E9FA4;background:rgba(120,205,208,.2);border-radius:3px;vertical-align:-1px}
+.vy-key.pw{border-color:#BB7125;background:rgba(187,113,37,.14)}
+@media (max-width:960px){.vy-diag{grid-template-columns:minmax(0,1fr)}}
+.vy-pair{display:flex;flex-wrap:wrap;gap:20px 40px;align-items:flex-end;margin:4px 0 20px}
+.vy-pair figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:8px}
+.vy-pair img{height:96px;width:auto}
+.vy-pair img.wide{height:66px;margin-bottom:15px}
+.vy-pair figcaption{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;color:#55534A}
+.vy-route image{image-rendering:auto}
 /* vy:end */
 
 /* px:start */
@@ -565,7 +587,7 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="Main.dc.html">Home</a></li><li><a href="Talks.dc.html">Talks</a></li><li aria-current="page">Talk 14</li></ol></nav>
 <p class="kicker">Talk 14 · Celebration</p>
 <h1 class="t-title">A Day Away. Voyager 1 Is Now One Light Day from Home</h1>
-<p class="meta">Rayang T Mendrofa · 20th November 2026 · 15 min read</p>
+<p class="meta">Rayang T Mendrofa · 20th November 2026 · 16 min read</p>
 <aside style="margin-top:24px;border:1px solid #111314;background:#FBF9F4">
 <div class="dark" style="padding:12px 20px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px"><span class="kicker" style="font-size:11px">Milestone under review</span><span class="meta" style="font-size:11px;color:#CAB356">NASA JPL · MISSION MILESTONE · PUBLIC DOMAIN</span></div>
 <div class="stack g12" style="padding:22px 20px">
@@ -645,8 +667,17 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <p class="pull">Three things got Voyager 1 this far. A rare line up of the planets, a power supply that never needs the Sun, and a team on Earth that keeps a 1970s computer running from a day away.</p>
 <p style="margin-top:28px">Voyager 1 launched from Cape Canaveral on 5 September 1977, two weeks after its twin, on a Titan IIIE Centaur rocket. The timing came from a line up of Jupiter, Saturn, Uranus and Neptune that happens about once every 175 years. It let a spacecraft use each planet’s gravity to bend its path and pick up speed for the next one, a trick called a gravity assist.</p>
 <p>Voyager 1 took the faster route. It passed Jupiter on 5 March 1979 and Saturn on 12 November 1980. At Saturn the team chose a close pass of Titan, Saturn’s largest moon, over a path on to Uranus and Neptune. That flyby flung Voyager 1 north, out of the flat plane the planets orbit in, and it has coasted outwards on the same path ever since. Today it moves at about 61,000 km/h, roughly 17 kilometres every second.</p>
+</div>
+<div class="col-wide viz" style="margin-top:40px" role="group" aria-label="Figure: Voyager 1’s route out of the solar system">
+<div class="viz-head"><span class="kicker">Figure · The route</span><h3 class="t-h3">Past two giants, then up and away</h3><p class="small muted" style="max-width:64ch">Voyager 1 visited Jupiter and Saturn, and the pass at Titan bent its path north, out of the flat plane the planets orbit in. It has coasted on that line ever since.</p></div>
+<div class="viz-body"><svg class="sk-svg vy-route" viewBox="0 0 900 450" role="img" aria-label="Not to scale drawing of Voyager 1’s route: from Earth past Jupiter in 1979 and Saturn in 1980, then bending north out of the plane of the planets towards its position one light day away"><image href="/_blob/5d1734ac39915d6fe9df4f046aef598e" x="0" y="0" width="900" height="450" preserveAspectRatio="xMidYMid slice" opacity=".0"/><ellipse cx="170" cy="300" rx="58" ry="21" fill="none" stroke="#A39C8E" stroke-width="1.5" stroke-dasharray="4 5"/><ellipse cx="170" cy="300" rx="160" ry="58" fill="none" stroke="#A39C8E" stroke-width="1.5" stroke-dasharray="4 5"/><ellipse cx="170" cy="300" rx="250" ry="90" fill="none" stroke="#A39C8E" stroke-width="1.5" stroke-dasharray="4 5"/><image href="/_blob/3d98b20eb01142cc7bc075aa7794735d" x="128" y="258" width="84" height="84"/><path d="M224,308 C254,336 263,347 293,337 C333,325 357,346 397,338 C467,328 520,240 600,170 S760,92 806,88" fill="none" stroke="#BB7125" stroke-width="3" stroke-dasharray="1 7" stroke-linecap="round"/><image href="/_blob/ca3c78139815db4254e2ef1201fa3986" x="208" y="292" width="32" height="32"/><image href="/_blob/53c1104a0fc2d0d47fc4305605b05223" x="269" y="313" width="48" height="48"/><image href="/_blob/a9386024c733aaa22572335421fd2274" x="352" y="313" width="90" height="49"/><image href="/_blob/ea8fdc3c7c14669b6fe483c2ee067b84" x="246" y="226" width="18" height="61"/><image href="/_blob/a1c5fff0e9d6d11ed4f23a292f65e4e6" x="790" y="20" width="80" height="93"/><text x="170" y="250" text-anchor="middle" class="sm">Sun</text><path d="M224,324 L120,392" stroke="#111314" stroke-width="1"/><text x="40" y="410" class="vl">Earth · launch, 5 Sep 1977</text><path d="M293,361 L301,412" stroke="#111314" stroke-width="1"/><text x="283" y="430" class="vl">Jupiter · 5 Mar 1979</text><path d="M417,360 L470,392" stroke="#111314" stroke-width="1"/><text x="470" y="410" class="vl">Saturn and Titan · 12 Nov 1980</text><text x="508" y="196" text-anchor="end" class="sm" style="fill:#8A5214">flung north, out of</text><text x="508" y="216" text-anchor="end" class="sm" style="fill:#8A5214">the planets’ plane</text><text x="880" y="162" text-anchor="end" class="vl">Voyager 1, one light day</text><text x="880" y="182" text-anchor="end" class="vl">18 Nov 2026</text></svg></div>
+<div class="viz-foot"><span class="meta muted" style="font-size:12px">Not to scale. With Saturn’s orbit drawn this size, Voyager 1 would sit about seven times further out than shown, and the planets would be specks. Dates from NASA. Pictures from my own illustration set.</span></div>
+</div>
+<div class="col" style="margin-top:40px">
+<figure class="vy-float"><img src="/_blob/4396de36f65b1ce488404bbb52cd6618" alt="Drawing of an RTG cutaway, a metal can with glowing heat sources stacked inside and fins along its sides" loading="lazy"><figcaption>An RTG, sketched as a cutaway. Voyager carries three on a boom.</figcaption></figure>
 <p>Out there the Sun is far too faint for solar panels. Voyager runs on radioisotope thermoelectric generators, RTGs, which turn the heat of decaying plutonium into electricity. The plutonium slowly runs down and the parts that convert its heat age too, so each Voyager loses about 4 watts of power every year. That is about what a small LED bulb uses. On a machine with this little to spare, every 4 watts is a decision.</p>
 </div>
+<div class="col-wide" style="margin-top:40px"><div class="vy-diag"><div class="vy-diag-img"><img src="/_blob/ab6fcecf830307852259a131536db67d" alt="NASA line drawing of a Voyager spacecraft without its thermal blankets, labelling the science instruments on the top boom, the 3.7 metre high gain antenna, the thrusters, the three RTGs on a lower boom, the magnetometers on a long lattice boom and the two long antennas for planetary radio astronomy and plasma waves" loading="lazy"><span class="vy-hl" style="left:18.24%;top:88.91%;width:19.36%;height:5.14%"></span><span class="vy-hl" style="left:2.56%;top:68.91%;width:18.88%;height:3.54%"></span><span class="vy-hl" style="left:62.08%;top:65.49%;width:20.80%;height:6.86%"></span><span class="vy-hl pw" style="left:72.00%;top:74.40%;width:23.36%;height:6.06%"></span><span class="vy-hl pw" style="left:2.72%;top:21.03%;width:14.40%;height:5.49%"></span><span class="vy-hl pw" style="left:67.84%;top:28.46%;width:16.80%;height:3.77%"></span></div><div class="stack g12"><p class="kicker">Figure · Where everything sits</p><h3 class="t-h3">NASA’s own drawing of a Voyager</h3><p class="small">This is how the spacecraft looks with its thermal blankets off. The science instruments crowd onto the boom at the top, and the two still working are elsewhere.</p><p class="small"><span class="vy-key"></span>Blue boxes mark the two instruments still on. The magnetometers sit on a 13 metre boom, far from the spacecraft’s own magnetism, and the plasma wave instrument listens through the long antennas it once shared with planetary radio astronomy.</p><p class="small"><span class="vy-key pw"></span>Orange boxes mark what keeps Voyager alive. The 3.7 metre dish talks to Earth, the thrusters keep that dish pointed at us, and the three RTGs make the power.</p><span class="meta muted" style="font-size:11px">Diagram: NASA/JPL, the Voyager spacecraft, public domain. Boxes mine.</span></div></div></div>
 <div class="col-wide viz" style="margin-top:40px" role="group" aria-label="Chart B: the ten science instruments of Voyager 1 and which are still on">
 <div class="viz-head">
 <span class="kicker">Chart B · Ten instruments, two left</span>
@@ -671,6 +702,7 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 </div>
 <div class="col" style="margin-top:48px">
 <p>To buy more time, the team tried something bold this year. In early September they swapped three devices on Voyager 1 for lower power versions in a single operation they nicknamed the Big Bang. The six devices involved help keep the inside of the spacecraft warm, so all three swaps had to happen together. They had done the same on Voyager 2 about six weeks earlier. Without it, another instrument could have been switched off as early as the summer of 2027.</p>
+<figure class="vy-float"><img src="/_blob/4b01ac2be89bd81dd3da96275d31b6e1" alt="Drawing of a large white radio dish on a conical stand" loading="lazy"><figcaption>A Deep Space Network dish, sketched. The biggest are 70 metres across.</figcaption></figure>
 <p>Every word goes through NASA’s Deep Space Network, giant radio dishes in California, near Madrid and near Canberra, spread round the globe so one of them can always see the right patch of sky. In late October the Canberra antenna tracked Voyager 1 at 25.80 billion km.</p>
 <p>The delay shapes how the team works. On 14 November 2023 Voyager 1 started sending back data that made no sense. Engineers traced it to one memory chip in the flight data subsystem (FDS), the computer that packages science and engineering data before it is sent home. About 3 % of that computer’s memory was corrupted. Nobody can swap a chip 24 billion kilometres away, so they rewrote the software around it and moved the affected code to other parts of memory. The first patch went up on 18 April 2024. The signal needed 22.5 hours each way, so the team gathered on 20 April to see whether it had worked. It had.</p>
 <p>The surprises have not stopped. On 18 and 19 October 2026 the Deep Space Network missed two scheduled contacts with Voyager 1. The signal came back on 20 October. One set of thrusters had stopped working and the spacecraft had switched itself to its backups, part of its fault protection, which can change to spare hardware without waiting for Earth. NASA has not found the cause yet. The mission manager, Kareem Badaruddin, said the team has to expect the unexpected at this stage.</p>
@@ -717,6 +749,7 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 
 <div class="col" style="margin:56px 0 0;max-width:720px">
 <h3 class="t-h3" style="margin-bottom:12px">Two giants in 20 months</h3>
+<div class="vy-pair"><figure><img src="/_blob/53c1104a0fc2d0d47fc4305605b05223" alt="Drawing of Jupiter with its bands and Great Red Spot" loading="lazy"><figcaption>Jupiter · 5 Mar 1979</figcaption></figure><figure><img src="/_blob/a9386024c733aaa22572335421fd2274" alt="Drawing of Saturn and its rings" loading="lazy" class="wide"><figcaption>Saturn · 12 Nov 1980</figcaption></figure></div>
 <p>At Jupiter, Voyager 1 found a faint ring, two small new moons named Thebe and Metis, and the first active volcanoes seen anywhere beyond Earth, erupting on the moon Io. Twenty months later it reached Saturn. There it passed Titan at a distance of about 4,000 km and found a thick atmosphere of nitrogen with methane and other carbon compounds, the kind of chemistry that made NASA wonder whether reactions that come before life might be possible there.</p>
 <h3 class="t-h3" style="margin:40px 0 12px">One last look home</h3>
 <p>On 14 February 1990, about 6 billion km from the Sun, Voyager 1 turned its camera back and took 60 frames of the planets, a family portrait of the solar system. In one frame Earth covers 0.12 of a pixel, a pale speck sitting in a streak of sunlight scattered inside the camera. Thirty four minutes later the cameras were switched off for good, to save power for the long trip ahead. The astronomer Carl Sagan, who had pushed for years to take the picture, called it the Pale Blue Dot. The version below is NASA’s 2020 remaster, reprocessed with modern software while keeping to the original data.</p>
@@ -726,6 +759,7 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 </div>
 <div class="col" style="margin:48px 0 0;max-width:720px">
 <h3 class="t-h3" style="margin-bottom:12px">Out past the Sun’s bubble</h3>
+<figure class="vy-float wide"><img src="/_blob/6cd5a92fe3db208878f4d9b0628f28f4" alt="Drawing of the heliosphere, a bubble around the Sun stretched into a teardrop by the flow of interstellar gas" loading="lazy"><figcaption>The heliosphere, sketched. It is often drawn as a teardrop like this, and its true shape is still argued about.</figcaption></figure>
 <p>The Sun blows a constant wind of charged particles, and that wind carves a bubble called the heliosphere in the thin gas between the stars. Its outer edge, where the solar wind finally gives way, is the heliopause. Voyager 1 crossed it in August 2012, at about 121 AU from the Sun, and became the first human made object in interstellar space. Voyager 2 followed in November 2018. Between them they are the only spacecraft that have measured interstellar space from the inside. The two instruments still on keep at it. The magnetometer reads the magnetic field out there, and the plasma wave instrument picks up waves rippling through the thin plasma around the spacecraft.</p>
 </div>
 <div class="col-wide viz" style="margin-top:40px" role="group" aria-label="Chart D: Voyager 1 distance from home from 1977 to 2026">
@@ -1555,10 +1589,10 @@ class Component extends DCLogic {
     const E = 90, V = 670, Y = 96;
     const far = R.far === 'The Moon'
       ? '<circle cx="' + V + '" cy="' + Y + '" r="14" fill="#E4DED2" stroke="#111314" stroke-width="1.5"/>'
-      : '<g transform="translate(' + V + ',' + Y + ')"><line x1="-4" y1="0" x2="34" y2="-18" stroke="#111314" stroke-width="2"/><rect x="-6" y="-6" width="14" height="12" fill="#CAB356" stroke="#111314" stroke-width="1.5"/><path d="M-8,-20 Q-28,0 -8,20 Z" fill="#FBF9F4" stroke="#111314" stroke-width="1.5"/></g>';
+      : '<image href="/_blob/a1c5fff0e9d6d11ed4f23a292f65e4e6" x="' + (V - 30) + '" y="' + (Y - 38) + '" width="60" height="70"/>';
     plot.innerHTML = '<svg class="sk-svg" viewBox="0 0 760 170" aria-hidden="true">'
       + '<line x1="' + E + '" y1="' + Y + '" x2="' + V + '" y2="' + Y + '" stroke="#A39C8E" stroke-width="2" stroke-dasharray="4 6"/>'
-      + '<circle cx="' + E + '" cy="' + Y + '" r="22" fill="#78CDD0" stroke="#111314" stroke-width="1.5"/>'
+      + '<image href="/_blob/ca3c78139815db4254e2ef1201fa3986" x="' + (E - 28) + '" y="' + (Y - 28) + '" width="56" height="56"/>'
       + '<text x="' + E + '" y="' + (Y + 50) + '" text-anchor="middle" class="vl">Earth</text>'
       + far
       + '<text x="' + V + '" y="' + (Y + 50) + '" text-anchor="middle" class="vl">' + R.far + '</text>'
