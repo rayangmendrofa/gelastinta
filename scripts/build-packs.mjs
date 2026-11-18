@@ -205,7 +205,11 @@ function build(keyName, html) {
     : `<b>Free sample.</b> Sheet ${cfg.prefix}1.01 is open; the other ${locked} sheets unlock with the full pack.`;
   const head = out.indexOf('</head>'); // the real one comes first; scripts may contain the text later
   out = out.slice(0, head) + BAR_CSS + GATE_CSS + out.slice(head);
-  const end = out.lastIndexOf('</body>');
+  // the sample bar and gate go after the pack script: the script itself contains '</body>' (the 3D teardown
+  // page builder), and inserting there splits the script and breaks the whole page
+  const lastScript = out.lastIndexOf('</script>');
+  let end = out.indexOf('</body>', lastScript);
+  if (end < 0) end = out.length;
   out = out.slice(0, end) + bar(text, cfg.item, '$' + cfg.price) + gateHtml(cfg.item, '$' + cfg.price) + out.slice(end);
   // sanity: no locked lesson text survives
   return { sample: out, open, locked, teardowns: teardowns.length };
