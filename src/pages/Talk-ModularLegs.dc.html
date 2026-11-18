@@ -531,7 +531,7 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 </div>
 <div class="col meme-sm" style="margin-top:32px">
 <img src="/_blob/09dd0c22768a1e38e6b04605a008e7f9" alt="Animated: a yellow four-legged robot dog walks away, captioned I'm out" loading="lazy">
-<div class="stack g8"><p class="kicker">Asking a fixed-shape robot to become something else</p><p>One body plan, decided at the factory. It politely declines.</p></div>
+<div class="stack g8"><p class="kicker">Asking a fixed shape robot to become something else</p><p>One body plan, decided at the factory. It politely declines.</p></div>
 </div>
 <div class="col-wide viz" style="margin-top:48px" role="group" aria-label="Chart A, animated: what a single module can do" data-fig="mod">
 <div class="viz-head">
@@ -550,10 +550,10 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 </div>
 <p class="small" data-fig-f="note" data-fig-note aria-live="off">Lying flat, the module whips its motor round so fast that the links slam down into a V and fling the sphere 37 cm into the air, higher than one and a half link lengths.</p>
 </div>
-<div class="viz-more"><button type="button" class="more" aria-expanded="{{ex.a.aria}}" onClick="{{ex.a.toggle}}"><span class="more-ico" aria-hidden="true">{{ex.a.ico}}</span>{{ex.a.text}} the science</button><sc-if value="{{ex.a.open}}"><div class="more-body"><p>The sphere has a 7 cm radius and weighs 980 g. Each link is 24 cm long, weighs 194 g and is 3D printed in carbon-fibre-filled nylon (PAHT-CF). A soft rubbery sock on each tip adds grip and cuts noise. The motor is an off-the-shelf Xiaomi CyberGear with 12 Nm peak torque, running from a 1300 mAh six-cell battery that lasts several hours. Because the axis crosses the links at 63.5°, rotating the motor sweeps the links around the biggest possible cone. Bend them slightly and the centre of mass moves off the contact point, so the module starts to roll. Snap the motor round quickly and it jumps.</p>
+<div class="viz-more"><button type="button" class="more" aria-expanded="{{ex.a.aria}}" onClick="{{ex.a.toggle}}"><span class="more-ico" aria-hidden="true">{{ex.a.ico}}</span>{{ex.a.text}} the science</button><sc-if value="{{ex.a.open}}"><div class="more-body"><p>The sphere has a 7 cm radius and weighs 980 g. Each link is 24 cm long, weighs 194 g and is 3D printed in carbon fibre filled nylon (PAHT-CF). A soft rubbery sock on each tip adds grip and cuts noise. The motor is an off the shelf Xiaomi CyberGear with 12 Nm peak torque, running from a 1300 mAh six cell battery that lasts several hours. Because the axis crosses the links at 63.5°, rotating the motor sweeps the links around the biggest possible cone. Bend them slightly and the centre of mass moves off the contact point, so the module starts to roll. Snap the motor round quickly and it jumps.</p>
 <p>The controllers only use the module’s own senses: the joint encoder and an inertial measurement unit. Motion capture cameras were used to measure the robots indoors, never to steer them.</p>
 <div class="paper-fig"><img src="/_blob/748e1a0be8010d0cf0b3710a98af83ef" alt="Paper Figure 2: a module and its exploded parts, photo sequences of jumping, turning and rolling with plots of height, yaw and speed, and renders of two modules docked in different ways" loading="lazy"></div>
-<p class="fig-cap"><b>Paper Fig. 2.</b> (A–E) One module, with its battery, circuit board, holder and motor inside the sphere. (F–I) Jumping 37 cm. (J–M) Turning, even after being flipped over. (N–P) Rolling, and recovering from a push. (Q–W) Two modules can dock in 435 different ways.</p>
+<p class="fig-cap"><b>Paper Fig. 2.</b> (A to E) One module, with its battery, circuit board, holder and motor inside the sphere. (F to I) Jumping 37 cm. (J to M) Turning, even after being flipped over. (N to P) Rolling, and recovering from a push. (Q to W) Two modules can dock in 435 different ways.</p>
 <span class="meta muted" style="font-size:11px">Source: Yu et al., PNAS 123 (10), e2519129123 (2026), CC BY-NC-ND 4.0. Figures reproduced unaltered.</span></div></sc-if></div>
 </div>
 </div>
@@ -564,7 +564,7 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <div class="col">
 <p class="kicker">02</p>
 <h2 class="t-h2" style="margin:12px 0 18px">LEGO, but with M4 screws</h2>
-<p>Along the outside of every module are 18 honeycomb-shaped docks: four on the sphere, six along each link, one at each tip. Two modules can be bolted together at almost any pair of docks, in three orientations, with ordinary M4 screws and nuts. The joints are strong enough for acrobatics. They were tested to 150 Nm of torque, 3.5 kN of tension and 4 kN of shear.</p>
+<p>Along the outside of every module are 18 honeycomb shaped docks: four on the sphere, six along each link, one at each tip. Two modules can be bolted together at almost any pair of docks, in three orientations, with ordinary M4 screws and nuts. The joints are strong enough for acrobatics. They were tested to 150 Nm of torque, 3.5 kN of tension and 4 kN of shear.</p>
 <p>That is where the numbers explode. Two modules can be joined in 435 distinct ways. Every extra module multiplies the options.</p>
 </div>
 <div class="col-wide viz" style="margin-top:48px" role="group" aria-label="Chart B: how many different bodies can be built from two to five modules">
@@ -598,8 +598,8 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <ol class="steps" style="margin-top:12px">
 <li><b>1</b>A variational autoencoder squeezes about 350 thousand random bodies into a map with just 8 coordinates. Every point on the map is a body, and nearby points are similar bodies.</li>
 <li><b>2</b>Bayesian optimisation explores that map, predicting where good walkers probably are and picking the next bodies worth testing.</li>
-<li><b>3</b>For each chosen body, reinforcement learning trains a controller from scratch in a physics simulator over a million time steps, with the robot’s mass, friction and motor behaviour randomly varied so it can’t over-fit to a perfect world.</li>
-<li><b style="color:#9B6838">4</b>The winners are printed, bolted together, and taken outside. No fine-tuning.</li>
+<li><b>3</b>For each chosen body, reinforcement learning trains a controller from scratch in a physics simulator over a million time steps, with the robot’s mass, friction and motor behaviour randomly varied so it can’t overfit to a perfect world.</li>
+<li><b style="color:#9B6838">4</b>The winners are printed, bolted together, and taken outside. No fine tuning.</li>
 </ol>
 </div>
 <div class="col-wide viz" style="margin-top:48px" role="figure" aria-label="Chart C: walking speed of three computer-designed robots in simulation and in reality">
@@ -618,7 +618,7 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <div class="viz-foot"><span class="meta muted" style="font-size:12px">Speeds from the paper’s Fig. 4. The fastest design in simulation was also the fastest in reality, and the slowest stayed slowest.</span></div>
 <div class="viz-more"><button type="button" class="more" aria-expanded="{{ex.b.aria}}" onClick="{{ex.b.toggle}}"><span class="more-ico" aria-hidden="true">{{ex.b.ico}}</span>{{ex.b.text}} the science</button><sc-if value="{{ex.b.open}}"><div class="more-body"><p>Each body is stored as a list of 16 numbers (which module, which dock, which dock on the child, which orientation, for every joint). About 70% of random bodies could reach a resting pose without parts colliding, and those were used to train the autoencoder. For every candidate body, 4,096 random starting poses were tried in simulation with a simple wiggle signal. The pose with the widest footprint that moved furthest without falling became the starting point for training. One problem the simulator had to learn was that the robots are steered from a nearby computer over Wi-Fi, so the delay was built into training too.</p>
 <div class="paper-fig"><img src="/_blob/6e5b0ca066ec6a5cf2dd3de57b8439d8" alt="Paper Figure 4: a 3D surface of performance over the latent design space, Bayesian optimisation steps, interpolation between two designs, and the three optimised designs in simulation and reality with their speeds" loading="lazy"></div>
-<p class="fig-cap"><b>Paper Fig. 4.</b> (A) Performance across a 2D slice of the 8-dimensional design map. (B–J) Bayesian optimisation picking promising bodies, choosing their poses and training them. (K–L) Sliding smoothly between two designs on the map. (M–R) The three optimised designs, in simulation and in reality.</p>
+<p class="fig-cap"><b>Paper Fig. 4.</b> (A) Performance across a 2D slice of the 8 dimensional design map. (B to J) Bayesian optimisation picking promising bodies, choosing their poses and training them. (K to L) Sliding smoothly between two designs on the map. (M to R) The three optimised designs, in simulation and in reality.</p>
 <span class="meta muted" style="font-size:11px">Source: Yu et al., PNAS 123 (10), e2519129123 (2026), CC BY-NC-ND 4.0. Figures reproduced unaltered.</span></div></sc-if></div>
 </div>
 </div>
@@ -630,18 +630,18 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <p class="kicker">04</p>
 <h2 class="t-h2" style="margin:12px 0 18px">Animals it was never told about</h2>
 <p>Four bodies were built. Three came from the computer. Those were the best four and five module designs, plus a three module design from its top 5 % that was picked partly because it was easy to build. The fourth was a quadruped designed by hand, with one module acting as a moving spine. Trained only on a flat simulated floor, they were tested outside on brick paths, grass, plant litter, gravel, sand, mud, tree roots and pavers.</p>
-<p>The gaits they found look strangely familiar. The hand-built quadruped bends its spine and sprawls like a lizard. The three-module design moves like a seal: it can’t pull its hind flippers forward, so it galumphs. The four-module design settled into a three-legged gait, like an animal that has lost a leg. Nobody asked for any of these. They fell out of the body plus the training.</p>
-<p>They also learned tricks. On command, the five-module quadruped jumps and spins 66° in mid-air, and when flipped upside down it twists itself back over and carries on walking. A single module is less capable. It can roll over concrete and bricks, but grass defeats it.</p>
+<p>The gaits they found look strangely familiar. The hand built quadruped bends its spine and sprawls like a lizard. The three module design moves like a seal: it can’t pull its hind flippers forward, so it galumphs. The four module design settled into a three legged gait, like an animal that has lost a leg. Nobody asked for any of these. They fell out of the body plus the training.</p>
+<p>They also learned tricks. On command, the five module quadruped jumps and spins 66° in midair, and when flipped upside down it twists itself back over and carries on walking. A single module is less capable. It can roll over concrete and bricks, but grass defeats it.</p>
 </div>
 <div class="col-wide" style="margin-top:40px">
 <div class="paper-fig"><img src="/_blob/e15418cb154462f831a0e2bbd5364fd9" alt="Paper Figure 1: sixteen outdoor photos of modular robots built from one to five modules on grass, sand, gravel, bricks, a path and in a puddle, with a city skyline in some" loading="lazy"></div>
-<p class="fig-cap"><b>Paper Fig. 1.</b> Robots built from the same modules, outdoors. (A, B) A single module. (C–E) The three-module design. (F–I) Four modules. (J–L) Five modules. (M–P) The hand-designed quadruped. Fully extended, one module is 62 cm long.</p>
+<p class="fig-cap"><b>Paper Fig. 1.</b> Robots built from the same modules, outdoors. (A, B) A single module. (C to E) The three module design. (F to I) Four modules. (J to L) Five modules. (M to P) The hand designed quadruped. Fully extended, one module is 62 cm long.</p>
 <span class="meta muted" style="font-size:11px">Source: Yu et al., PNAS 123 (10), e2519129123 (2026), CC BY-NC-ND 4.0. Figures reproduced unaltered.</span>
 </div>
 <div class="col-wide viz" style="margin-top:32px">
-<div class="viz-more"><button type="button" class="more" aria-expanded="{{ex.c.aria}}" onClick="{{ex.c.toggle}}"><span class="more-ico" aria-hidden="true">{{ex.c.ico}}</span>{{ex.c.text}} the acrobatics</button><sc-if value="{{ex.c.open}}"><div class="more-body"><p>Every multi-module design in the paper learned to self-right. The jump-turn policy listens for a command, pushes off, rotates the body 66° clockwise in the air and lands upright. The self-righting policy notices from its tilt sensor that it is upside down and contorts its body until it is the right way up. Once again, all of this runs on the robot’s own sensors.</p>
+<div class="viz-more"><button type="button" class="more" aria-expanded="{{ex.c.aria}}" onClick="{{ex.c.toggle}}"><span class="more-ico" aria-hidden="true">{{ex.c.ico}}</span>{{ex.c.text}} the acrobatics</button><sc-if value="{{ex.c.open}}"><div class="more-body"><p>Every multi module design in the paper learned to self right. The jump turn policy listens for a command, pushes off, rotates the body 66° clockwise in the air and lands upright. The self righting policy notices from its tilt sensor that it is upside down and contorts its body until it is the right way up. Once again, all of this runs on the robot’s own sensors.</p>
 <div class="paper-fig"><img src="/_blob/e7cfd0239015ed013601bee47feef17f" alt="Paper Figure 3: photo sequences of the five-module robot jump-turning and self-righting after being flipped upside down, with plots of yaw, height, deviation and joint angles" loading="lazy"></div>
-<p class="fig-cap"><b>Paper Fig. 3.</b> (A–F) A jump-turn on command. (G–L) Flipped over with a wooden plank, it twists back upright and resumes walking.</p>
+<p class="fig-cap"><b>Paper Fig. 3.</b> (A to F) A jump turn on command. (G to L) Flipped over with a wooden plank, it twists back upright and resumes walking.</p>
 <span class="meta muted" style="font-size:11px">Source: Yu et al., PNAS 123 (10), e2519129123 (2026), CC BY-NC-ND 4.0. Figures reproduced unaltered.</span></div></sc-if></div>
 </div>
 </div>
@@ -675,7 +675,7 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <div class="viz-foot"><span class="meta muted" style="font-size:12px">Schematic top view. In the real tests, modules were cut at random points along their length, so the exact damage was never seen in training.</span></div>
 <div class="viz-more"><button type="button" class="more" aria-expanded="{{ex.d.aria}}" onClick="{{ex.d.toggle}}"><span class="more-ico" aria-hidden="true">{{ex.d.ico}}</span>{{ex.d.text}} the science</button><sc-if value="{{ex.d.open}}"><div class="more-body"><p>The transformer was trained by distillation: it learns to imitate the experts across all their damage scenarios, much like a language model learns grammar by predicting the next word. On the intact robot it walked at 105.3% of the original controller’s speed. On three damage cases it had never seen exactly (one hind limb cut at a random point, both hind limbs removed, and everything gone except one module), it consistently moved further forward than the original controller.</p>
 <div class="paper-fig"><img src="/_blob/76cd1953bfdfc1357d622ccd2e3f316a" alt="Paper Figure 5: damage scenarios used for training, the causal transformer, bar charts comparing the amputation-agnostic and original policies, and photo sequences of the damaged quadruped walking" loading="lazy"></div>
-<p class="fig-cap"><b>Paper Fig. 5.</b> (A–F) Training scenarios. (G) The causal transformer predicts the next action from recent sensations and actions. (H–K) Forward travel for the new policy (red) and original (blue) on the intact and damaged robot. (L–S) The new policy keeps moving where the original stalls or tips.</p>
+<p class="fig-cap"><b>Paper Fig. 5.</b> (A to F) Training scenarios. (G) The causal transformer predicts the next action from recent sensations and actions. (H to K) Forward travel for the new policy (red) and original (blue) on the intact and damaged robot. (L to S) The new policy keeps moving where the original stalls or tips.</p>
 <span class="meta muted" style="font-size:11px">Source: Yu et al., PNAS 123 (10), e2519129123 (2026), CC BY-NC-ND 4.0. Figures reproduced unaltered.</span></div></sc-if></div>
 </div>
 </div>
@@ -687,12 +687,12 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <p class="kicker">06</p>
 <h2 class="t-h2" style="margin:12px 0 18px">It matters? How?</h2>
 <p>Robotics has two branches that rarely meet. Agile legged robots are fast but come in fixed shapes, and reconfigurable robots change shape but are slow and weak. This paper joins them. It shows modular robots that are agile enough to run outdoors, and a design pipeline that can turn a box of parts into a working new body quickly.</p>
-<p>It also changes who can do robot design. All the electronics live in the sphere, and the links are inert printed tubes held on by screws. Anyone with a 3D printer and a screwdriver can swap in a new link shape. The authors imagine standardised, mass-produced modules that let people anywhere build and test new agile robots, a bit like LEGO for walking machines. The code is public on GitHub.</p>
+<p>It also changes who can do robot design. All the electronics live in the sphere, and the links are inert printed tubes held on by screws. Anyone with a 3D printer and a screwdriver can swap in a new link shape. The authors imagine standardised, mass produced modules that let people anywhere build and test new agile robots, a bit like LEGO for walking machines. The code is public on GitHub.</p>
 </div>
 <div class="col" style="margin-top:40px">
 <div class="catch">
 <p class="kicker">The catches</p>
-<p class="small" style="color:#F7F0E8">The robots can’t yet rebuild themselves, because a person still bolts the modules on and off. Controllers run on a nearby computer over Wi-Fi, though the authors say they are small enough to run on the module’s own chip. Each module is 62 cm long and weighs about 1.4 kg, a long way from micro. Only four bodies were built and tested. And the design map isn’t perfect: feed it the hand-designed quadruped and it gives back a slightly different robot, with the forelegs shifted and an extra spine module.</p>
+<p class="small" style="color:#F7F0E8">The robots can’t yet rebuild themselves, because a person still bolts the modules on and off. Controllers run on a nearby computer over Wi-Fi, though the authors say they are small enough to run on the module’s own chip. Each module is 62 cm long and weighs about 1.4 kg, a long way from micro. Only four bodies were built and tested. And the design map isn’t perfect: feed it the hand designed quadruped and it gives back a slightly different robot, with the forelegs shifted and an extra spine module.</p>
 </div>
 </div>
 </div>
@@ -703,11 +703,11 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <div class="col">
 <p class="kicker">07</p>
 <h2 class="t-h2" style="margin:12px 0 12px">TLDR?</h2>
-<p style="font-style:italic;font-size:22px">Build-your-own robot animal, in four steps...</p>
+<p style="font-style:italic;font-size:22px">Build your own robot animal, in four steps...</p>
 <ol class="steps" style="margin-top:20px">
 <li><b>1</b>Make one leg that is a whole robot, with one motor and its own battery and brain. It can already jump, roll and turn.</li>
 <li><b>2</b>Bolt legs together at any of 18 docks. Five legs give around a hundred billion possible bodies.</li>
-<li><b>3</b>Let machine learning pick good bodies and teach them to walk in simulation, and they work outdoors with no fine-tuning.</li>
+<li><b>3</b>Let machine learning pick good bodies and teach them to walk in simulation, and they work outdoors with no fine tuning.</li>
 <li><b style="color:#9B6838">4</b>Cut pieces off and a single controller keeps the rest moving, without being told what broke.</li>
 </ol>
 </div>

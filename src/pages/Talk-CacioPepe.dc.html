@@ -465,8 +465,8 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <figure class="col-wide stack g12" style="margin-top:56px">
 <div class="paper-fig"><img src="/_blob/fd76443c6277d1cfa0fbf50a80cef6d2" alt="Paper Figure 1: a plate of Cacio e pepe, and a photo grid of cheese mixed with plain water, pasta water and reduced pasta water at 50 to 95 degrees Celsius" loading="lazy"></div>
 <span class="kicker">Same cheese, three liquids</span>
-<p class="fig-cap">Cheese mixed with plain water (top), normal pasta water (middle) and extra-starchy pasta water (bottom), then slowly heated. The more starch, the fewer and smaller the lumps. With plain water, the cheese collapses into the Mozzarella Phase from about 70 °C.</p>
-<div><button type="button" class="more" aria-expanded="{{ex.f1.aria}}" onClick="{{ex.f1.toggle}}"><span class="more-ico" aria-hidden="true">{{ex.f1.ico}}</span>{{ex.f1.text}} the science</button><sc-if value="{{ex.f1.open}}"><div class="more-body"><p>Normal pasta water here is 100 g of pasta cooked in 1 litre of water. The extra-starchy version is pasta water “risottata”: boiled down in a pan to a third of its weight so the starch concentrates. The cheese and liquid were heated from 50 to 95 °C and photographed at each step. Higher starch means aggregates are smaller and appear at higher temperatures.</p><span class="meta muted" style="font-size:11px">Source: Bartolucci et al., Phys. Fluids 37, 044122 (2025), CC BY 4.0</span></div></sc-if></div>
+<p class="fig-cap">Cheese mixed with plain water (top), normal pasta water (middle) and extra starchy pasta water (bottom), then slowly heated. The more starch, the fewer and smaller the lumps. With plain water, the cheese collapses into the Mozzarella Phase from about 70 °C.</p>
+<div><button type="button" class="more" aria-expanded="{{ex.f1.aria}}" onClick="{{ex.f1.toggle}}"><span class="more-ico" aria-hidden="true">{{ex.f1.ico}}</span>{{ex.f1.text}} the science</button><sc-if value="{{ex.f1.open}}"><div class="more-body"><p>Normal pasta water here is 100 g of pasta cooked in 1 litre of water. The extra starchy version is pasta water “risottata”: boiled down in a pan to a third of its weight so the starch concentrates. The cheese and liquid were heated from 50 to 95 °C and photographed at each step. Higher starch means aggregates are smaller and appear at higher temperatures.</p><span class="meta muted" style="font-size:11px">Source: Bartolucci et al., Phys. Fluids 37, 044122 (2025), CC BY 4.0</span></div></sc-if></div>
 </figure>
 </div>
 </section>
@@ -512,7 +512,7 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <div class="col">
 <p class="kicker">02</p>
 <h2 class="t-h2" style="margin:12px 0 18px">So, how did they actually prove it?</h2><span class="px pxc-thinking px-beat" style="--w:41" role="img" aria-label="The GelasTinta pixel character in a lab coat, hand on chin, thinking"><span class="px-v px-ai" style="--n:8;--t:1280ms"><img src="/_blob/0adff87b8a0ce54aa1d503767bf28772" alt="" draggable="false"></span><span class="px-v px-am" style="--n:10;--t:2200ms"><img src="/_blob/1777a946f341b1e9e5f78755bd62c712" alt="" draggable="false"></span><span class="px-v px-hm" style="--n:10;--t:2200ms"><img src="/_blob/1777a946f341b1e9e5f78755bd62c712" alt="" draggable="false"></span></span>
-<p>They described the sauce with one equation from physics, the <b>binary mixture free-energy model</b>. It treats the sauce as just two ingredients, cheese proteins and “everything else” (water, starch, salt and fat), and scores whether that mix would rather stay blended or separate. Three things pull against each other:</p>
+<p>They described the sauce with one equation from physics, the <b>binary mixture free energy model</b>. It treats the sauce as just two ingredients, cheese proteins and “everything else” (water, starch, salt and fat), and scores whether that mix would rather stay blended or separate. Three things pull against each other:</p>
 </div>
 <div class="col-wide" style="margin-top:36px">
 <div class="eq-wrap">
@@ -533,7 +533,7 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <div class="card stack g8" style="border-top:5px solid #B5452A"><h3 class="t-h3" style="color:#B5452A">Temperature</h3><p style="font-size:17px">“energy level of the party” → higher heat makes proteins more likely to denature and aggregate.</p></div>
 </div>
 <div style="margin-top:20px"><button type="button" class="more" aria-expanded="{{ex.g.aria}}" onClick="{{ex.g.toggle}}"><span class="more-ico" aria-hidden="true">{{ex.g.ico}}</span>{{ex.g.text}} what each symbol means</button><sc-if value="{{ex.g.open}}"><div class="more-body"><dl class="gloss">
-<dt>f</dt><dd>Free-energy density of the mixture: the “score” of how happy the mix is.</dd>
+<dt>f</dt><dd>Free energy density of the mixture: the “score” of how happy the mix is.</dd>
 <dt>k<sub>B</sub></dt><dd>Boltzmann constant.</dd>
 <dt>T</dt><dd>Temperature.</dd>
 <dt>ν</dt><dd>Reference molecular mass, used to scale the formula.</dd>
@@ -582,7 +582,7 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <span class="lg"><i style="background:#F3E2B6"></i>Lumpy</span>
 <span class="lg"><i style="background:#F8F0DE"></i>Smooth</span>
 </div>
-<div class="viz-more"><button type="button" class="more" aria-expanded="{{ex.b.aria}}" onClick="{{ex.b.toggle}}"><span class="more-ico" aria-hidden="true">{{ex.b.ico}}</span>{{ex.b.text}} the science</button><sc-if value="{{ex.b.open}}"><div class="more-body"><p>The U-shaped line is the <b>binodal</b>: the boundary between a well-mixed sauce and one where protein aggregates form, measured with starch fixed at 1 %. Plotted against the protein mass fraction φ (here {{bin.phi}} for your choice), its lowest point sits just above 60 °C. Physicists call that a <b>lower critical solution temperature</b>: unusually, this mixture separates when heated rather than cooled.</p>
+<div class="viz-more"><button type="button" class="more" aria-expanded="{{ex.b.aria}}" onClick="{{ex.b.toggle}}"><span class="more-ico" aria-hidden="true">{{ex.b.ico}}</span>{{ex.b.text}} the science</button><sc-if value="{{ex.b.open}}"><div class="more-body"><p>The U shaped line is the <b>binodal</b>: the boundary between a well-mixed sauce and one where protein aggregates form, measured with starch fixed at 1 %. Plotted against the protein mass fraction φ (here {{bin.phi}} for your choice), its lowest point sits just above 60 °C. Physicists call that a <b>lower critical solution temperature</b>: unusually, this mixture separates when heated rather than cooled.</p>
 <p>The team fitted the equation above to this boundary. As the sauce heats, both χ (how sticky the proteins are) and n (their effective size) rise in a straight line. The authors suggest this is because heat unfolds the whey proteins and lets them latch onto each other and onto casein micelles. With those two lines, the model redraws the measured boundary almost exactly. That is a check that the model hangs together, since both lines were worked out from that same boundary.</p>
 <div class="paper-fig"><img src="/_blob/12bb18d9f6aa3f8e23fd72493d16db74" alt="Paper Figure 4: casein micelles and whey proteins aggregating on heating, chi and n rising with temperature, and theory matching the experimental binodal" loading="lazy"></div>
 <p class="fig-cap"><b>Paper Fig. 4.</b> (a) Cheese is mostly casein, packed in micelles with calcium phosphate, plus a little whey protein. Heat denatures the whey, which then aggregates with itself and with the micelles, and the micelles aggregate too. (b) The interaction χ and relative size n obtained from the experiments at each temperature. (c) Theory (crosses) against the experimental binodal (line).</p>
@@ -602,10 +602,10 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <p class="intro muted" style="max-width:60ch">The paper ends with a “scientific recipe”. These are the numbers that matter.</p>
 </div>
 <div class="cols-4">
-<div class="stat"><b>2–3 %</b><p>Starch, compared with the cheese weight. The sweet spot for a smooth sauce.</p></div>
+<div class="stat"><b>2 to 3 %</b><p>Starch, compared with the cheese weight. The sweet spot for a smooth sauce.</p></div>
 <div class="stat"><b>75 %</b><p>Water, compared with the cheese weight. A little less than equal parts is safer.</p></div>
 <div class="stat"><b>≈ 60 °C</b><p>In the tests with 1 % starch, lumps start just above this, so let the pasta cool for a moment before mixing.</p></div>
-<div class="stat"><b>80–90 °C</b><p>A properly stabilised sauce can be reheated this hot in a pan without splitting.</p></div>
+<div class="stat"><b>80 to 90 °C</b><p>A properly stabilised sauce can be reheated this hot in a pan without splitting.</p></div>
 </div>
 
 <div class="viz" style="margin-top:48px">
@@ -618,9 +618,9 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <p class="kicker" style="color:#2A220F">Starch, % of cheese weight</p>
 <div class="dose-bar">
 <div style="width:20%;background:#907018;color:#FDFBF6">Under 1 %, splits</div>
-<div style="width:20%;background:#F7EED8">1–2 %</div>
-<div style="width:20%;background:#2B44C8;color:#FDFBF6">2–3 %, ideal</div>
-<div style="width:20%;background:#F7EED8">3–4 %</div>
+<div style="width:20%;background:#F7EED8">1 to 2 %</div>
+<div style="width:20%;background:#2B44C8;color:#FDFBF6">2 to 3 %, ideal</div>
+<div style="width:20%;background:#F7EED8">3 to 4 %</div>
 <div style="width:20%;background:#DFDACD">Over 4 %, stiff when cool</div>
 <span class="dose-pin" style="left:50%"><em>Recipe · 2.5 %</em></span>
 </div>
@@ -638,7 +638,7 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 </div>
 <div class="viz-more"><button type="button" class="more" aria-expanded="{{ex.c.aria}}" onClick="{{ex.c.toggle}}"><span class="more-ico" aria-hidden="true">{{ex.c.ico}}</span>{{ex.c.text}} the science</button><sc-if value="{{ex.c.open}}"><div class="more-body"><p>Starch and citrate stop lumps in different ways. With gelatinised starch, lumps shrink gradually as you add more, and the paper leaves the exact reason open. Trisodium citrate grabs the calcium ions that hold casein proteins together. Below 2 % there isn’t enough of it and the sauce still collapses, just later. From 2 % it stays completely smooth. The paper tested citrate at 1 %, 2 % and 3 % with cheese and water mixed 1 : 1.</p>
 <div class="paper-fig"><img src="/_blob/ad9aba47dbacad10558815b6e1eb197e" alt="Paper Figure 5: sauce photos at 0 to 3 percent trisodium citrate from 50 to 95 degrees. 0 and 1 percent end in the Mozzarella Phase, 2 and 3 percent stay smooth" loading="lazy"></div>
-<p class="fig-cap"><b>Paper Fig. 5.</b> The sauce with 0–3 % trisodium citrate (relative to cheese weight), heated from 50 to 95 °C.</p>
+<p class="fig-cap"><b>Paper Fig. 5.</b> The sauce with 0 to 3 % trisodium citrate (relative to cheese weight), heated from 50 to 95 °C.</p>
 <span class="meta muted" style="font-size:11px">Source: Bartolucci et al., Phys. Fluids 37, 044122 (2025), CC BY 4.0</span></div></sc-if></div>
 </div>
 
