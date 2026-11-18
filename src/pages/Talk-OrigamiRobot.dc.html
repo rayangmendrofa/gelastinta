@@ -504,6 +504,12 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 @keyframes pxvm-inspect{0%{visibility:hidden}73.988%,100%{visibility:visible}}
 @keyframes pxr-inspect{0%{transform:translateX(0);animation-timing-function:step-end}73.988%{transform:translateX(0);animation-timing-function:steps(10,end)}100%{transform:translateX(-100%)}}
 /* px:end */
+/* heropic:start */
+.hero-pic{position:absolute;top:50%;right:4%;transform:translateY(-50%);z-index:0;width:min(42%,540px);height:auto;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 30%,#000 88%,transparent 100%),linear-gradient(180deg,transparent 0%,#000 14%,#000 86%,transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent 0%,#000 30%,#000 88%,transparent 100%),linear-gradient(180deg,transparent 0%,#000 14%,#000 86%,transparent 100%);mask-composite:intersect}
+.hero-pic.tall{width:auto;height:90%;max-width:46%;object-fit:cover}
+.cp-hero .cp-hero-shade{z-index:1}
+@media (max-width:960px){.hero-pic{width:78%;right:-8%;opacity:.38}.hero-pic.tall{height:72%;width:auto;max-width:none}}
+/* heropic:end */
 </style>
 </helmet>
 <div style="min-height:100vh" data-gt-root="">
@@ -525,8 +531,8 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 </header>
 
 <section id="main" class="sec cp-hero rule-b" style="padding-top:48px">
-<img class="cp-hero-bg" src="/_blob/563680234c75f720c635590d88b54b06" alt="" aria-hidden="true" style="object-position:70% 50%;filter:blur(2px) saturate(.9)">
-<div class="cp-hero-shade" aria-hidden="true" style="background:linear-gradient(90deg,rgba(23,28,44,.93) 0%,rgba(23,28,44,.82) 50%,rgba(23,28,44,.62) 100%)"></div>
+<img class="hero-pic" src="/_blob/be14f7e1f50ae5d83ba42aa03955b24d" alt="" aria-hidden="true">
+<div class="cp-hero-shade" aria-hidden="true" style="background:linear-gradient(90deg,rgba(23,28,44,.97) 0%,rgba(23,28,44,.88) 46%,rgba(23,28,44,.12) 100%)"></div>
 <div class="wrap" style="position:relative;z-index:2">
 <div class="col stack g16">
 <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="Main.dc.html">Home</a></li><li><a href="Talks.dc.html">Talks</a></li><li aria-current="page">Talk 11</li></ol></nav>
@@ -542,7 +548,7 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <a class="meta" href="https://doi.org/10.1038/s41467-026-79010-w" style="min-height:44px;display:inline-flex;align-items:center;align-self:flex-start">doi:10.1038/s41467-026-79010-w ↗</a>
 </div>
 </aside>
-<p class="meta" style="font-size:11px;margin-top:8px;opacity:.85">Background: the robot working through the paper’s second obstacle track, crawling, rolling, tumbling, jumping and scampering. Image: adapted (cropped) from Huang et al., Nature Communications (2026), CC BY 4.0.</p>
+<p class="meta" style="font-size:11px;margin-top:8px;opacity:.85">Behind the title, papercraft cats. Flat sheets folded into something that holds its shape, which is the whole trick of this talk. Meme picked by me.</p>
 </div>
 </div>
 </section>
