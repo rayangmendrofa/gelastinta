@@ -42,14 +42,19 @@ ENV = {'stage': 'efd70dc38e4ae3c3a02db6deb28d74a1', 'workshop': '65780fc86606cd7
 SITE = ['#4F4086', '#7A4456', '#5A82B3', '#064F6E']
 PAGES = {
     'Main.dc.html': dict(pal=SITE, outfit='hoodie', label='Hello'),
-    'Talks.dc.html': dict(pal=['#10131C', '#4F4086', '#064F6E', '#7A4456'], outfit='suit', label='Talks', scene=True),
+    'Talks.dc.html': dict(pal=['#10131C', '#4F4086', '#064F6E', '#7A4456'], outfit='suit', label='Talks', scene=True,
+                          scenes={'Articles': 'full'}),
     'Projects.dc.html': dict(pal=['#064F6E', '#4F4086', '#5A82B3', '#10131C'], outfit='labcoat', label='Projects', scene=True,
+                             scenes={'Dissertations & Hobby Builds': 'full', 'Infographics': 'full', 'CAD Designs': 'band'},
                              stage=('workshop', 'labcoat', 'inspect', 'Pixel scene: the GelasTinta character in a lab coat walks into the workshop and holds a beaker up to the light'),
                              stage_at=('after', '<div class="px-side" style="align-self:end">')),
     'Products.dc.html': dict(pal=['#7A4456', '#4F4086', '#064F6E', '#5A82B3'], outfit='hoodie', label='Products', scene=True,
+                             scenes={'GelasTinta study packs': 'band', 'Services': 'full', 'Build your quote': 'band', 'FAQ': 'band',
+                                     'From the workshop': 'full', 'PT RTM · rtechm.com': 'band'},
                              stage=('study', 'hoodie', 'happy', 'Pixel scene: the GelasTinta character in his hoodie walks into his study room and jumps for joy'),
                              stage_at=('before', '</div>\n<nav class="card jump')),
-    'Author.dc.html': dict(pal=['#5A82B3', '#4F4086', '#7A4456', '#064F6E'], outfit='hoodie', label='Author', scene=True),
+    'Author.dc.html': dict(pal=['#5A82B3', '#4F4086', '#7A4456', '#4F4086'], outfit='hoodie', label='Author', scene=True,
+                           scenes={'The kit': 'band', 'Education': 'band', 'Around the studies': 'full'}),
 }
 PROJECT_PAL = ['#10131C', '#064F6E', '#2B44C8', '#5A82B3']
 
@@ -190,7 +195,31 @@ html.st-on .st-foot .wada-credit{color:rgba(237,239,242,.75);margin:0;font-size:
 .st-bk{min-width:48px;min-height:44px;border-radius:999px;border:1px solid currentColor;background:none;color:inherit;font-size:20px;cursor:pointer}
 .st-bk:disabled{opacity:.3;cursor:default}
 .st-bk-n{font-family:'Ubuntu Mono',monospace;font-size:13px;letter-spacing:.08em;min-width:16ch;text-align:center}
-@media (prefers-reduced-motion:reduce){.st-leaf{transition:none}.st-actor.walk{display:none}.st-actor.act{animation:none;opacity:1}.st-actor img,.st-walker img{animation:none}}
+html.st-on .st-sc{--sb:#10131C;overflow:clip}
+html.st-on [data-st-sb]{--sbf:#EDEFF2}
+html.st-on .st-band{padding-top:0!important}
+html.st-on .st-band > .wrap > .sec-head:first-child{position:relative;padding:clamp(80px,13vh,140px) 0 clamp(36px,6vh,60px);margin-bottom:clamp(28px,4vh,48px);color:var(--sbf);background:var(--sb);box-shadow:0 0 0 100vmax var(--sb);clip-path:inset(0 -100vmax)}
+html.st-on .st-full{background:var(--sb)!important;background-image:none!important;color:var(--sbf)}
+html.st-on .st-full > .wrap > .sec-head:first-child{padding-top:clamp(36px,7vh,80px)}
+html.st-on .st-sc .sec-head .kicker{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:clamp(19px,1.9vw,26px);letter-spacing:0;text-transform:none;color:inherit;opacity:.92}
+html.st-on .st-sc .sec-head .st-h{font-size:clamp(50px,7vw,124px);line-height:.95;color:inherit;max-width:16ch}
+html.st-on .st-sc .sec-head .st-h.st-long{font-size:clamp(40px,4.8vw,84px);max-width:20ch}
+html.st-on .st-sc .sec-head :is(p,span,.meta,.muted,.small,.lead,a:not(.btn)){color:inherit}
+html.st-on .st-sc .sec-head :is(p,.meta,.muted,.small){opacity:.88}
+html.st-on .st-full :is(.shelf-row-k,.sh-hint,.sh-count,.pb-hint,.pb-count,.show-label){color:var(--sbf);opacity:.85}
+html.st-on .st-full > .wrap > :is(p,.meta,.muted,.small,.kicker){color:var(--sbf)}
+.st-shelf-wait > *{opacity:0}
+.st-shelf-in > *{animation:st-rise .8s cubic-bezier(.2,.85,.25,1) backwards;animation-delay:calc(var(--i,0) * 55ms)}
+@keyframes st-rise{0%{opacity:0;transform:translateY(80px) rotate(-6deg)}60%{opacity:1}}
+html.st-on :is(.shelf .book,.pb-shelf .pb){transform-origin:50% 100%;transition:transform .45s cubic-bezier(.2,.85,.25,1),flex-basis .55s cubic-bezier(.2,.7,.2,1),height .55s cubic-bezier(.2,.7,.2,1),box-shadow .3s}
+html.st-on :is(.shelf .book,.pb-shelf .pb):not(.open){transform:translateY(calc((var(--ty,0px) + var(--hov,0px)) * -1)) rotate(var(--lean,0deg))}
+html.st-on :is(.shelf .book,.pb-shelf .pb):not(.open):hover{--hov:14px;box-shadow:0 18px 26px -10px rgba(16,19,28,.55);z-index:2}
+html.st-on .shelf .book::after,html.st-on .pb-shelf .pb::after{content:"";position:absolute;top:0;bottom:0;left:0;width:58px;pointer-events:none;background:linear-gradient(90deg,rgba(255,255,255,.24),rgba(255,255,255,0) 22%,rgba(0,0,0,0) 68%,rgba(0,0,0,.26))}
+html.st-on .pb-shelf .pb::after{width:48px}
+html.st-on :is(.shelf .book,.pb-shelf .pb).open.flip{animation:st-pull .7s cubic-bezier(.2,.85,.25,1)}
+@keyframes st-pull{0%{transform:translateY(-46px) rotate(-4deg) scale(1.02);box-shadow:0 30px 40px -12px rgba(16,19,28,.5)}55%{transform:translateY(4px)}100%{transform:none}}
+html.st-on :is(.shelf,.pb-shelf){box-shadow:0 10px 0 -4px rgba(201,206,216,.9),0 28px 30px -18px rgba(16,19,28,.55)}
+@media (prefers-reduced-motion:reduce){.st-leaf{transition:none}.st-shelf-in > *{animation:none}.st-shelf-wait > *{opacity:1}.st-actor.walk{display:none}.st-actor.act{animation:none;opacity:1}.st-actor img,.st-walker img{animation:none}}
 '''
 
 JS = r'''  // story:start
@@ -276,6 +305,32 @@ JS = r'''  // story:start
     }, true);
     // document previews read like a book: turn the pages instead of scrolling
     this.stBooks(0, still);
+    // bookshelves: books rise onto the shelf when it comes into view, lean as the pointer passes, lift when you hover
+    Array.from(d.querySelectorAll('.shelf, .pb-shelf')).forEach((sh) => {
+      Array.from(sh.children).forEach((b, i) => b.style.setProperty('--i', i));
+      if (framed || still) return;
+      sh.classList.add('st-shelf-wait');
+      const seen = () => { sh.classList.remove('st-shelf-wait'); sh.classList.add('st-shelf-in'); setTimeout(() => sh.classList.remove('st-shelf-in'), 900 + sh.children.length * 55); };
+      if (window.IntersectionObserver) {
+        const io = new IntersectionObserver((es) => { if (es.some((x) => x.isIntersecting)) { io.disconnect(); seen(); } }, { threshold: 0.25 });
+        io.observe(sh); offs.push(() => io.disconnect());
+      } else seen();
+      if (!(window.matchMedia && matchMedia('(pointer: fine)').matches)) return;
+      let raf2 = 0, px = null;
+      const lean = () => {
+        raf2 = 0;
+        Array.from(sh.children).forEach((b) => {
+          if (px === null || b.classList.contains('open')) { b.style.removeProperty('--lean'); b.style.removeProperty('--ty'); return; }
+          const r = b.getBoundingClientRect();
+          const dx = (r.left + r.width / 2 - px) / 160;
+          const near = Math.max(0, 1 - Math.abs(dx));
+          b.style.setProperty('--lean', (Math.max(-1, Math.min(1, dx)) * near * 4).toFixed(2) + 'deg');
+          b.style.setProperty('--ty', (near * 6).toFixed(1) + 'px');
+        });
+      };
+      sh.addEventListener('pointermove', (e) => { px = e.clientX; if (!raf2) raf2 = requestAnimationFrame(lean); });
+      sh.addEventListener('pointerleave', () => { px = null; if (!raf2) raf2 = requestAnimationFrame(lean); });
+    });
     // sections become cards (in the design canvas too, so the frame and cards show there)
     const head = d.querySelector('.site-head');
     const box = (d.getElementById('main') || chs[0]).parentElement;
@@ -537,6 +592,11 @@ def strip(s):
     s = re.sub(r'(class="[^"]*?) st-long(?=[ "])', r'\1', s)
     s = re.sub(r'(class="[^"]*?) st-h(?=[ "])', r'\1', s)
     s = s.replace(' data-st-book=""', '')
+    s = re.sub(r' data-st-bg="[^"]*"(?=[^>]*data-st-sb=)', '', s)
+    s = re.sub(r' data-st-sb="[^"]*"', '', s)
+    s = re.sub(r' st-sc st-(full|band)', '', s)
+    s = re.sub(r' style="--sb:#[0-9A-Fa-f]{6}"', '', s)
+    s = re.sub(r'--sb:#[0-9A-Fa-f]{6};', '', s)
     s = re.sub(r'(class="[^"]*?) st-scene(?=[ "])', r'\1', s)
     s = re.sub(r'\n?<div class="st-stage"[^>]*>.*?<!--/st-stage-->\n?', '', s, flags=re.S)
     return s
@@ -658,6 +718,17 @@ def apply(name, s):
             new_attrs = new_attrs.replace(' st-h"', ' st-h st-long"', 1)
         inner = inner[:hm.start()] + f'<h2{new_attrs}>' + hm.group(2) + '</h2>' + inner[hm.end():]
         open_tag = open_tag.replace('<section', f'<section data-st-ch="{H.escape(label)}"', 1)
+        mode = cfg.get('scenes', {}).get(label)
+        if mode:
+            n = chap.count = getattr(chap, 'count', 0) + 1
+            col = cfg['pal'][n % len(cfg['pal'])]
+            open_tag = open_tag.replace('<section', f'<section data-st-bg="{col}"', 1)
+            open_tag = re.sub(r'class="sec\b', f'class="sec st-sc st-{mode}', open_tag, count=1)
+            open_tag = open_tag[:-1] + f' data-st-sb="{col}">'
+            if 'style="' in open_tag:
+                open_tag = open_tag.replace('style="', f'style="--sb:{col};', 1)
+            else:
+                open_tag = open_tag[:-1] + f' style="--sb:{col}">'
         return open_tag + inner + '</section>'
     body = re.sub(r'(<section\b[^>]*>)(.*?)</section>', chap, body, flags=re.S)
 

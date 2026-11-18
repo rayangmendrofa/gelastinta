@@ -380,7 +380,31 @@ html.st-on .st-foot .wada-credit{color:rgba(237,239,242,.75);margin:0;font-size:
 .st-bk{min-width:48px;min-height:44px;border-radius:999px;border:1px solid currentColor;background:none;color:inherit;font-size:20px;cursor:pointer}
 .st-bk:disabled{opacity:.3;cursor:default}
 .st-bk-n{font-family:'Ubuntu Mono',monospace;font-size:13px;letter-spacing:.08em;min-width:16ch;text-align:center}
-@media (prefers-reduced-motion:reduce){.st-leaf{transition:none}.st-actor.walk{display:none}.st-actor.act{animation:none;opacity:1}.st-actor img,.st-walker img{animation:none}}
+html.st-on .st-sc{--sb:#10131C;overflow:clip}
+html.st-on [data-st-sb]{--sbf:#EDEFF2}
+html.st-on .st-band{padding-top:0!important}
+html.st-on .st-band > .wrap > .sec-head:first-child{position:relative;padding:clamp(80px,13vh,140px) 0 clamp(36px,6vh,60px);margin-bottom:clamp(28px,4vh,48px);color:var(--sbf);background:var(--sb);box-shadow:0 0 0 100vmax var(--sb);clip-path:inset(0 -100vmax)}
+html.st-on .st-full{background:var(--sb)!important;background-image:none!important;color:var(--sbf)}
+html.st-on .st-full > .wrap > .sec-head:first-child{padding-top:clamp(36px,7vh,80px)}
+html.st-on .st-sc .sec-head .kicker{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:clamp(19px,1.9vw,26px);letter-spacing:0;text-transform:none;color:inherit;opacity:.92}
+html.st-on .st-sc .sec-head .st-h{font-size:clamp(50px,7vw,124px);line-height:.95;color:inherit;max-width:16ch}
+html.st-on .st-sc .sec-head .st-h.st-long{font-size:clamp(40px,4.8vw,84px);max-width:20ch}
+html.st-on .st-sc .sec-head :is(p,span,.meta,.muted,.small,.lead,a:not(.btn)){color:inherit}
+html.st-on .st-sc .sec-head :is(p,.meta,.muted,.small){opacity:.88}
+html.st-on .st-full :is(.shelf-row-k,.sh-hint,.sh-count,.pb-hint,.pb-count,.show-label){color:var(--sbf);opacity:.85}
+html.st-on .st-full > .wrap > :is(p,.meta,.muted,.small,.kicker){color:var(--sbf)}
+.st-shelf-wait > *{opacity:0}
+.st-shelf-in > *{animation:st-rise .8s cubic-bezier(.2,.85,.25,1) backwards;animation-delay:calc(var(--i,0) * 55ms)}
+@keyframes st-rise{0%{opacity:0;transform:translateY(80px) rotate(-6deg)}60%{opacity:1}}
+html.st-on :is(.shelf .book,.pb-shelf .pb){transform-origin:50% 100%;transition:transform .45s cubic-bezier(.2,.85,.25,1),flex-basis .55s cubic-bezier(.2,.7,.2,1),height .55s cubic-bezier(.2,.7,.2,1),box-shadow .3s}
+html.st-on :is(.shelf .book,.pb-shelf .pb):not(.open){transform:translateY(calc((var(--ty,0px) + var(--hov,0px)) * -1)) rotate(var(--lean,0deg))}
+html.st-on :is(.shelf .book,.pb-shelf .pb):not(.open):hover{--hov:14px;box-shadow:0 18px 26px -10px rgba(16,19,28,.55);z-index:2}
+html.st-on .shelf .book::after,html.st-on .pb-shelf .pb::after{content:"";position:absolute;top:0;bottom:0;left:0;width:58px;pointer-events:none;background:linear-gradient(90deg,rgba(255,255,255,.24),rgba(255,255,255,0) 22%,rgba(0,0,0,0) 68%,rgba(0,0,0,.26))}
+html.st-on .pb-shelf .pb::after{width:48px}
+html.st-on :is(.shelf .book,.pb-shelf .pb).open.flip{animation:st-pull .7s cubic-bezier(.2,.85,.25,1)}
+@keyframes st-pull{0%{transform:translateY(-46px) rotate(-4deg) scale(1.02);box-shadow:0 30px 40px -12px rgba(16,19,28,.5)}55%{transform:translateY(4px)}100%{transform:none}}
+html.st-on :is(.shelf,.pb-shelf){box-shadow:0 10px 0 -4px rgba(201,206,216,.9),0 28px 30px -18px rgba(16,19,28,.55)}
+@media (prefers-reduced-motion:reduce){.st-leaf{transition:none}.st-shelf-in > *{animation:none}.st-shelf-wait > *{opacity:1}.st-actor.walk{display:none}.st-actor.act{animation:none;opacity:1}.st-actor img,.st-walker img{animation:none}}
 </style>
 </helmet>
 <div style="min-height:100vh" data-gt-root="">
@@ -1324,6 +1348,32 @@ class Component extends DCLogic {
     }, true);
     // document previews read like a book: turn the pages instead of scrolling
     this.stBooks(0, still);
+    // bookshelves: books rise onto the shelf when it comes into view, lean as the pointer passes, lift when you hover
+    Array.from(d.querySelectorAll('.shelf, .pb-shelf')).forEach((sh) => {
+      Array.from(sh.children).forEach((b, i) => b.style.setProperty('--i', i));
+      if (framed || still) return;
+      sh.classList.add('st-shelf-wait');
+      const seen = () => { sh.classList.remove('st-shelf-wait'); sh.classList.add('st-shelf-in'); setTimeout(() => sh.classList.remove('st-shelf-in'), 900 + sh.children.length * 55); };
+      if (window.IntersectionObserver) {
+        const io = new IntersectionObserver((es) => { if (es.some((x) => x.isIntersecting)) { io.disconnect(); seen(); } }, { threshold: 0.25 });
+        io.observe(sh); offs.push(() => io.disconnect());
+      } else seen();
+      if (!(window.matchMedia && matchMedia('(pointer: fine)').matches)) return;
+      let raf2 = 0, px = null;
+      const lean = () => {
+        raf2 = 0;
+        Array.from(sh.children).forEach((b) => {
+          if (px === null || b.classList.contains('open')) { b.style.removeProperty('--lean'); b.style.removeProperty('--ty'); return; }
+          const r = b.getBoundingClientRect();
+          const dx = (r.left + r.width / 2 - px) / 160;
+          const near = Math.max(0, 1 - Math.abs(dx));
+          b.style.setProperty('--lean', (Math.max(-1, Math.min(1, dx)) * near * 4).toFixed(2) + 'deg');
+          b.style.setProperty('--ty', (near * 6).toFixed(1) + 'px');
+        });
+      };
+      sh.addEventListener('pointermove', (e) => { px = e.clientX; if (!raf2) raf2 = requestAnimationFrame(lean); });
+      sh.addEventListener('pointerleave', () => { px = null; if (!raf2) raf2 = requestAnimationFrame(lean); });
+    });
     // sections become cards (in the design canvas too, so the frame and cards show there)
     const head = d.querySelector('.site-head');
     const box = (d.getElementById('main') || chs[0]).parentElement;
