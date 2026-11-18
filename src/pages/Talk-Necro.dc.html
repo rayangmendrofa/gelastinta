@@ -504,7 +504,7 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <div class="col">
 <p class="kicker">01</p>
 <h2 class="t-h2" style="margin:12px 0 18px">What’s in the paper?</h2>
-<p>Their 2022 paper, <i>Necrobotics: Biotic Materials as Ready-to-Use Actuators</i>, describes what came next. They euthanised wolf spiders by cooling, inserted a 25-gauge hypodermic needle into the prosoma, and sealed the entry point with a drop of superglue. That’s the entire fabrication process. By pumping air through the needle, they could re-pressurise the hydraulic system, opening the legs on command and releasing them when the air pressure dropped. The spider grips and releases, and however long it has been dead, it keeps doing exactly what evolution designed it to do.</p>
+<p>Their 2022 paper, <i>Necrobotics: Biotic Materials as Ready-to-Use Actuators</i>, describes what came next. They euthanised wolf spiders by cooling, inserted a 25-gauge hypodermic needle into the prosoma, and sealed the entry point with a drop of superglue. That’s the entire fabrication process. By pumping air through the needle, they could re-pressurise the hydraulic system, opening the legs on command and releasing them when the air pressure dropped. The spider grips and releases, and for about two days after its death it keeps doing exactly what evolution designed it to do.</p>
 <p>The naming of the field matters. Necrobotics is a deliberate coinage for biotic materials, which are nonliving materials derived from living organisms, used as robotic components. The paper places this in a lineage going back to prehistory. Humans wore animal hides and used bones as tools long before they had words for materials science. What the researchers did isn’t categorically new. It is, however, a particular kind of acceleration. We have gone from wearing the animal to actuating it.</p>
 </div>
 <div class="col-wide split" style="margin-top:48px;gap:40px;align-items:center">
@@ -533,7 +533,7 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <div class="col">
 <p class="kicker">02</p>
 <h2 class="t-h2" style="margin:12px 0 18px">Why a spider?</h2><span class="px pxc-surprised px-beat" style="--w:38" role="img" aria-label="The GelasTinta pixel character in a lab coat, jumping back in surprise"><span class="px-v px-ai" style="--n:8;--t:1280ms"><img src="/_blob/0adff87b8a0ce54aa1d503767bf28772" alt="" draggable="false"></span><span class="px-v px-am" style="--n:8;--t:1200ms"><img src="/_blob/53e81a4090d6abadcee60c255bdd74ad" alt="" draggable="false"></span><span class="px-v px-hm" style="--n:8;--t:1200ms"><img src="/_blob/53e81a4090d6abadcee60c255bdd74ad" alt="" draggable="false"></span></span>
-<p>What makes the spider useful here is precisely the feature that makes it unusual. Almost every vertebrate, and most other arthropods, extends limbs through opposing muscle pairs, where one muscle pulls and another pushes back. The spider dispensed with the extensor side of that equation entirely, substituting a pressurised fluid system instead. This gives it a higher power density in a smaller space, meaning more force relative to body mass, and the explosive movement capability that makes spiders effective hunters. Evolution solved a mechanical engineering problem in a way that engineers hadn’t seriously considered until they looked at the corpse.</p>
+<p>What makes the spider useful here is precisely the feature that makes it unusual. Almost every vertebrate, and most other arthropods, extends limbs through opposing muscle pairs, where one muscle pulls and another pushes back. The spider dispensed with the extensor side of that equation entirely, substituting a pressurised fluid system instead. This gives it a higher power density in a smaller space, meaning more power packed into a small body, and the explosive movement capability that makes spiders effective hunters. Engineers had already been copying this trick in spider inspired grippers and joints. This team skipped the copy and used the corpse.</p>
 </div>
 <div class="col-wide viz" style="margin-top:48px" role="group" aria-label="Chart A, animated: as pressure rises the legs open and the grip fades; letting go closes them on the bead" data-fig="leg">
 <div class="viz-head">
@@ -565,12 +565,12 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 </div>
 </div>
 </div>
-<div class="viz-more"><button type="button" class="more" aria-expanded="{{ex.a.aria}}" onClick="{{ex.a.toggle}}"><span class="more-ico" aria-hidden="true">{{ex.a.ico}}</span>{{ex.a.text}} the science</button><sc-if value="{{ex.a.open}}"><div class="more-body"><p>The “leg swings open” number is the change in angle at the trochanter joint (where the leg meets the body), read from the paper’s Figure 3b. The knee-like patellofemoral joint moves much less (under 12°), and the drawing shows both. Grip force was measured by lifting a 3 mm bead off a precision balance (Figure 2). The peak was 0.35 mN with no pressure, about the weight of a 36 mg object, falling to 0.02 mN at 2.4 kPa. Above that, the legs are too open to grip and force was not measured.</p>
+<div class="viz-more"><button type="button" class="more" aria-expanded="{{ex.a.aria}}" onClick="{{ex.a.toggle}}"><span class="more-ico" aria-hidden="true">{{ex.a.ico}}</span>{{ex.a.text}} the science</button><sc-if value="{{ex.a.open}}"><div class="more-body"><p>The “leg swings open” number is the change in angle at the trochanter joint (where the leg meets the body), read from the paper’s Figure 3b. The knee-like patellofemoral joint moves much less (under 12°), and the drawing shows both. Grip force was measured with a 3 mm bead fixed to a precision balance. As the gripper pulled up, the balance read the pull as a drop in weight (Figure 2). The peak was 0.35 mN with no pressure, about the weight of a 36 mg object, falling to 0.02 mN at 2.4 kPa. The paper did not measure force at higher pressures.</p>
 <p>Unlike most pressure-driven grippers, this one needs power only to <i>open</i>. Closed is its natural state, so it can hold on indefinitely without any energy input.</p>
 <div class="paper-fig"><img src="/_blob/a89c57ef951c02c631aad3bae9cdaff9" alt="Paper Figure 2: the grip-force test setup and plots of gripping force against displacement and pressure" loading="lazy"></div>
 <p class="fig-cap"><b>Paper Fig. 2.</b> (a) The test, in which the gripper opens, closes on a red bead and is lifted while a balance records the force. (b) Force against displacement at each pressure. (c) Maximum force falls as pressure rises.</p>
 <div class="paper-fig"><img src="/_blob/33ed06ff911cf0d6899306fe60c47708" alt="Paper Figure 3: the spider at 0, 2.8 and 5.5 kPa, joint angle against pressure, and joint angle drift over 1000 cycles" loading="lazy"></div>
-<p class="fig-cap"><b>Paper Fig. 3.</b> (a) The legs at 0, 2.8 and 5.5 kPa. (b) Change in joint angle with pressure, for the trochanter (red) and patellofemoral (blue) joints. (c) After 1,000 open–close cycles, the patellofemoral joint had drifted about 50°, a sign of wear. Electron microscope images showed cracks forming as the joint dried out.</p>
+<p class="fig-cap"><b>Paper Fig. 3.</b> (a) The legs at 0, 2.8 and 5.5 kPa. (b) Change in joint angle with pressure, for the trochanter (red) and patellofemoral (blue) joints. (c) After 1,000 open–close cycles, the patellofemoral joint had drifted about 50°, a sign of wear. Electron microscope images in the supplement showed cracks in the joint, possibly from drying out.</p>
 <span class="meta muted" style="font-size:11px">Source: Yap et al., Advanced Science 9, 2201174 (2022), CC BY 4.0</span></div></sc-if></div>
 </div>
 <div class="col-wide meme-sm" style="margin-top:24px">
@@ -585,7 +585,7 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <div class="col">
 <p class="kicker">03</p>
 <h2 class="t-h2" style="margin:12px 0 18px">What can it do?</h2>
-<p>The necrobotic gripper can lift objects 1.3 times its own weight and withstand around 700 actuation cycles before the body begins to degrade. It works on objects of varying geometry, mass, and volume. It can be operated untethered, with someone holding the syringe to control the legs by hand. And when it finally fails, it biodegrades. No circuit board to dispose of. No plastics. The packaging is, in every sense, biodegradable.</p>
+<p>The necrobotic gripper can lift objects 1.3 times its own weight and withstand around 700 actuation cycles before the body begins to degrade. It works on objects of varying geometry, mass, and volume. It can be operated untethered, with someone holding the syringe to control the legs by hand. And when it finally fails, most of it biodegrades. No circuit board to dispose of. Only the needle and a drop of glue are left for the bin.</p>
 <p>The researchers make a camouflage point almost in passing, and it is worth sitting with. The necrobotic gripper blends into environments naturally, because it looks like what it is. A spider. No paint, no texture coating, no mimicry required. The body was already the disguise.</p>
 </div>
 <div class="col-wide cols-2" style="margin-top:48px;gap:24px">
@@ -595,7 +595,7 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <h3 class="t-h3">Each object’s mass, compared with the gripper’s own</h3>
 </div>
 <div class="viz-body"><div class="gbars"><div class="gbar" style="grid-template-columns:150px minmax(0,1fr) 90px"><span class="nm" style="font-size:15px;line-height:1.25">Another (dead) spider</span><div class="tr"><span style="position:absolute;top:-4px;bottom:-4px;left:62.5%;border-left:2px dashed #231E15"></span><div class="fl" style="width:83.8%;background:#AB544D"></div></div><span class="vl" style="font-size:18px">1.34×</span></div><div class="gbar" style="grid-template-columns:150px minmax(0,1fr) 90px"><span class="nm" style="font-size:15px;line-height:1.25">Foam block</span><div class="tr"><span style="position:absolute;top:-4px;bottom:-4px;left:62.5%;border-left:2px dashed #231E15"></span><div class="fl" style="width:57.5%;background:#2B44C8"></div></div><span class="vl" style="font-size:18px">0.92×</span></div><div class="gbar" style="grid-template-columns:150px minmax(0,1fr) 90px"><span class="nm" style="font-size:15px;line-height:1.25">Jumper wire</span><div class="tr"><span style="position:absolute;top:-4px;bottom:-4px;left:62.5%;border-left:2px dashed #231E15"></span><div class="fl" style="width:40.0%;background:#2B44C8"></div></div><span class="vl" style="font-size:18px">0.64×</span></div><div class="gbar" style="grid-template-columns:150px minmax(0,1fr) 90px"><span class="nm" style="font-size:15px;line-height:1.25">Foam, handheld</span><div class="tr"><span style="position:absolute;top:-4px;bottom:-4px;left:62.5%;border-left:2px dashed #231E15"></span><div class="fl" style="width:28.1%;background:#2B44C8"></div></div><span class="vl" style="font-size:18px">0.45×</span></div></div><p class="meta muted" style="font-size:11px;margin-top:8px">Dashed line = the gripper’s own mass (33.5 mg)</p></div>
-<div class="viz-more"><button type="button" class="more" aria-expanded="{{ex.b.aria}}" onClick="{{ex.b.toggle}}"><span class="more-ico" aria-hidden="true">{{ex.b.ico}}</span>{{ex.b.text}} the science</button><sc-if value="{{ex.b.open}}"><div class="more-body"><p>All four demos used the same 33.5 mg gripper. It pulled a jumper wire out of a breadboard to switch off an LED (21.6 mg), lifted another spider (45.2 mg, the 1.3× record), lifted a foam block 2.6 times its own volume (31.0 mg), probably helped by the tiny hairs on its legs sticking to the rough surface, and, held by hand on a syringe, carried a foam block from one spot to another (15.2 mg). Once pressurised, the legs reach full range in under a second.</p>
+<div class="viz-more"><button type="button" class="more" aria-expanded="{{ex.b.aria}}" onClick="{{ex.b.toggle}}"><span class="more-ico" aria-hidden="true">{{ex.b.ico}}</span>{{ex.b.text}} the science</button><sc-if value="{{ex.b.open}}"><div class="more-body"><p>All four demos used the same 33.5 mg gripper. It pulled a jumper wire out of a breadboard to switch off an LED (21.6 mg), lifted another spider (45.2 mg, the 1.3× record), lifted a foam block 2.6 times its own volume (31.0 mg), perhaps helped by the tiny hairs on its legs sticking to the rough surface, the authors suggest, and, held by hand on a syringe, carried a foam block from one spot to another (15.2 mg). Once pressurised, the legs reach full range in under a second.</p>
 <div class="paper-fig"><img src="/_blob/80704d97f69c9af2a75e124f1b841f62" alt="Paper Figure 4: time-lapse photos of the gripper removing a jumper wire, lifting a spider, lifting a foam block, and being used by hand with a syringe" loading="lazy"></div>
 <p class="fig-cap"><b>Paper Fig. 4.</b> (a) Removing a jumper wire to turn off an LED. (b) Lifting a spider 1.34× its mass. (c) Lifting a foam block. (d) Handheld use with a syringe.</p>
 <span class="meta muted" style="font-size:11px">Source: Yap et al., Advanced Science 9, 2201174 (2022), CC BY 4.0</span></div></sc-if></div>
@@ -620,8 +620,8 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <div class="col">
 <p class="kicker">04</p>
 <h2 class="t-h2" style="margin:12px 0 18px">It matters? How?</h2>
-<p>I keep returning to the image of the needle and the superglue. One step. The entire transformation from dead animal to functional tool happens at the moment a needle enters the prosoma and a drop of adhesive seals it. What was already there, from the joints and the membrane geometry to the internal chamber and a hundred million years of hydraulic refinement, needed only a single point of entry to become something new. Or rather, to continue being what it already was, just with a different operator.</p>
-<p>The paper describes this as “initiating the area of necrobotics.” It is the first formal paper in a field that didn’t exist as a named thing before 2022. Whether the field expands into other species, other biotic structures or other postmortem utilities remains to be written. For now, there is a dead spider in a lab in Houston, opening and closing its legs on command, lifting things with the patient efficiency it would have used in life.</p>
+<p>I keep returning to the image of the needle and the superglue. One step. The entire transformation from dead animal to functional tool happens at the moment a needle enters the prosoma and a drop of adhesive seals it. What was already there, from the joints and the membrane geometry to the internal chamber and millions of years of hydraulic refinement, needed only a single point of entry to become something new. Or rather, to continue being what it already was, just with a different operator.</p>
+<p>The paper describes this as “initiating the area of necrobotics.” It is the first formal paper in a field that didn’t exist as a named thing before 2022. Whether the field expands into other species, other biotic structures or other postmortem utilities remains to be written. For now, the record is a dead spider in a lab in Houston that opened and closed its legs on command, lifting things with the patient efficiency it would have used in life.</p>
 <p class="pull" style="border-color:#E6E2DB">The legs still work. That’s the sentence the entire paper is built around.</p>
 </div>
 <div class="col" style="margin-top:40px">
@@ -643,7 +643,7 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <li><b>1</b>Spiders open their legs with fluid pressure, not muscles. When they die, the pressure drops and the legs curl shut.</li>
 <li><b>2</b>The team pushed a needle into a dead wolf spider and sealed it with a drop of superglue.</li>
 <li><b>3</b>Puff air in and the legs open. Let it out and they close and grip, with no power needed to hold on.</li>
-<li><b style="color:#AB544D">4</b>It lifts up to 1.3× its own weight, lasts about 700 grips, and biodegrades when it’s done.</li>
+<li><b style="color:#AB544D">4</b>It lifts up to 1.3× its own weight, lasts about 700 grips, and mostly biodegrades when it’s done.</li>
 </ol>
 </div>
 </div>
@@ -1349,10 +1349,10 @@ class Component extends DCLogic {
       { p: 0, a1: 0, a2: 0, f: '0.35 mN', s: 'Closed · gripping', n: 'With no pressure the legs curl shut and squeeze hardest. This is how the gripper holds on, with no power at all.' },
       { p: 1, a1: 2, a2: 7, f: '≈0.17 mN', s: 'Loosening', n: 'A little pressure barely moves the legs, but it already halves the grip.' },
       { p: 2, a1: 8, a2: 9, f: '≈0.04 mN', s: 'Loosening', n: 'The grip is almost gone even though the legs have only just started to open.' },
-      { p: 3, a1: 22, a2: 7, f: 'too open to grip', s: 'Opening', n: 'The legs swing outward quickly from here.' },
-      { p: 4, a1: 41, a2: 7, f: 'too open to grip', s: 'Opening', n: 'Now inside the range a living spider uses (about 4–6 kPa).' },
-      { p: 5.5, a1: 55, a2: 6, f: 'too open to grip', s: 'Open · ready to grab', n: '5.5 kPa is the pressure the team used to open the gripper before closing it on an object.' },
-      { p: 6.9, a1: 58, a2: 12, f: 'too open to grip', s: 'Fully open', n: 'Past about 6 kPa the leg barely opens further. Pushing harder risks damaging the joints.' }
+      { p: 3, a1: 22, a2: 7, f: 'not measured', s: 'Opening', n: 'The legs swing outward quickly from here.' },
+      { p: 4, a1: 41, a2: 7, f: 'not measured', s: 'Opening', n: 'Now inside the range a living spider uses (about 4–6 kPa).' },
+      { p: 5.5, a1: 55, a2: 6, f: 'not measured', s: 'Open · ready to grab', n: '5.5 kPa is the pressure the team used to open the gripper before closing it on an object.' },
+      { p: 6.9, a1: 58, a2: 12, f: 'not measured', s: 'Fully open', n: 'Past about 6 kPa the leg barely opens further. Pushing harder risks damaging the joints.' }
     ];
     const at = (p, key) => {
       if (p <= 0) return P[0][key];
@@ -1457,10 +1457,10 @@ class Component extends DCLogic {
       { p: 0, a1: 0, a2: 0, f: '0.35 mN', s: 'Closed · gripping', n: 'With no pressure the legs curl shut and squeeze hardest. This is how the gripper holds on, with no power at all.' },
       { p: 1, a1: 2, a2: 7, f: '≈0.17 mN', s: 'Loosening', n: 'A little pressure barely moves the legs, but it already halves the grip.' },
       { p: 2, a1: 8, a2: 9, f: '≈0.04 mN', s: 'Loosening', n: 'The grip is almost gone even though the legs have only just started to open.' },
-      { p: 3, a1: 22, a2: 7, f: 'too open to grip', s: 'Opening', n: 'The legs swing outward quickly from here.' },
-      { p: 4, a1: 41, a2: 7, f: 'too open to grip', s: 'Opening', n: 'Now inside the range a living spider uses (about 4–6 kPa).' },
-      { p: 5.5, a1: 55, a2: 6, f: 'too open to grip', s: 'Open · ready to grab', n: '5.5 kPa is the pressure the team used to open the gripper before closing it on an object.' },
-      { p: 6.9, a1: 58, a2: 12, f: 'too open to grip', s: 'Fully open', n: 'Past about 6 kPa the leg barely opens further. Pushing harder risks damaging the joints.' }
+      { p: 3, a1: 22, a2: 7, f: 'not measured', s: 'Opening', n: 'The legs swing outward quickly from here.' },
+      { p: 4, a1: 41, a2: 7, f: 'not measured', s: 'Opening', n: 'Now inside the range a living spider uses (about 4–6 kPa).' },
+      { p: 5.5, a1: 55, a2: 6, f: 'not measured', s: 'Open · ready to grab', n: '5.5 kPa is the pressure the team used to open the gripper before closing it on an object.' },
+      { p: 6.9, a1: 58, a2: 12, f: 'not measured', s: 'Fully open', n: 'Past about 6 kPa the leg barely opens further. Pushing harder risks damaging the joints.' }
     ];
     const i = [0, 1, 2, 3, 4, 5, 6].indexOf(st.pi) >= 0 ? st.pi : 0;
     const c = P[i];

@@ -481,8 +481,8 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <div class="cols-4">
 <div class="find" style="background:#907018;color:#FDFBF6;border-color:#907018"><span class="meta" style="font-size:12px">01</span><h3 class="t-h3" style="font-size:21px">Mozzarella Phase</h3><p>Too little starch and the cheese melts into one big rubbery lump.</p></div>
 <div class="find"><span class="meta" style="font-size:12px;color:#2B44C8">02</span><h3 class="t-h3" style="font-size:21px">Starch is the key</h3><p>Starch from the pasta water stops cheese proteins sticking to each other.</p></div>
-<div class="find"><span class="meta" style="font-size:12px;color:#2B44C8">03</span><h3 class="t-h3" style="font-size:21px">Cheese concentration matters</h3><p>Equal parts cheese and water is the easiest mix to break. A little more or less water is safer.</p></div>
-<div class="find" style="background:#2B44C8;color:#FDFBF6;border-color:#2B44C8"><span class="meta" style="font-size:12px">04</span><h3 class="t-h3" style="font-size:21px">Trisodium citrate</h3><p>A pinch of this salt stops lumps completely, but it isn’t traditional.</p></div>
+<div class="find"><span class="meta" style="font-size:12px;color:#2B44C8">03</span><h3 class="t-h3" style="font-size:21px">Cheese concentration matters</h3><p>Mixes close to equal parts cheese and water split first. Moving well away from that ratio is safer.</p></div>
+<div class="find" style="background:#2B44C8;color:#FDFBF6;border-color:#2B44C8"><span class="meta" style="font-size:12px">04</span><h3 class="t-h3" style="font-size:21px">Trisodium citrate</h3><p>This salt at 2 % of the cheese weight stops lumps completely, but it isn’t traditional.</p></div>
 </div>
 
 <div class="viz" style="margin-top:56px" role="figure" aria-label="Chart A: the temperature at which the sauce splits, with and without starch or citrate">
@@ -528,7 +528,7 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <div class="eq-legend"><span><i style="border-color:#B5452A"></i>Temperature</span><span><i style="border-color:#2B44C8"></i>Entropy term</span><span><i style="border-color:#8A6A12"></i>Interaction term</span></div>
 </div>
 <div class="cols-3" style="margin-top:20px">
-<div class="card stack g8" style="border-top:5px solid #2B44C8"><h3 class="t-h3" style="color:#2B44C8">Entropy term</h3><p style="font-size:17px">“ideas want to spread out” → proteins and water naturally mix.</p></div>
+<div class="card stack g8" style="border-top:5px solid #2B44C8"><h3 class="t-h3" style="color:#2B44C8">Entropy term</h3><p style="font-size:17px">“everyone wants to spread out” → proteins and water naturally mix.</p></div>
 <div class="card stack g8" style="border-top:5px solid #8A6A12"><h3 class="t-h3" style="color:#8A6A12">Interaction term</h3><p style="font-size:17px">“friendship or rivalry” → proteins either cooperate with water (smooth sauce) or gang up on each other (clumps).</p></div>
 <div class="card stack g8" style="border-top:5px solid #B5452A"><h3 class="t-h3" style="color:#B5452A">Temperature</h3><p style="font-size:17px">“energy level of the party” → higher heat makes proteins more likely to denature and aggregate.</p></div>
 </div>
@@ -536,7 +536,7 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <dt>f</dt><dd>Free-energy density of the mixture: the “score” of how happy the mix is.</dd>
 <dt>k<sub>B</sub></dt><dd>Boltzmann constant.</dd>
 <dt>T</dt><dd>Temperature.</dd>
-<dt>ν</dt><dd>Reference molecular mass (a scaling volume).</dd>
+<dt>ν</dt><dd>Reference molecular mass, used to scale the formula.</dd>
 <dt>φ</dt><dd>Protein mass fraction (the cheese proteins).</dd>
 <dt>1 − φ</dt><dd>Effective solvent fraction (water, starch, salt, lipids).</dd>
 <dt>n</dt><dd>Relative size of the cheese proteins compared with the other components.</dd>
@@ -547,7 +547,7 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <div class="viz-head">
 <span class="kicker">Chart B · Water vs cheese</span>
 <h3 class="t-h3">How much water should you add?</h3>
-<p class="small muted" style="max-width:62ch">Pick how much water goes in, as a percentage of the cheese weight. The dot shows roughly the temperature where lumps start. Equal parts (100 %) is the touchiest mix.</p>
+<p class="small muted" style="max-width:62ch">Pick how much water goes in, as a percentage of the cheese weight. The dot shows roughly the temperature where lumps start. Mixes close to equal parts are the touchiest.</p>
 </div>
 <div class="viz-body stack g24">
 <div class="ratio" aria-label="Water as a percentage of cheese weight">
@@ -583,7 +583,7 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <span class="lg"><i style="background:#F8F0DE"></i>Smooth</span>
 </div>
 <div class="viz-more"><button type="button" class="more" aria-expanded="{{ex.b.aria}}" onClick="{{ex.b.toggle}}"><span class="more-ico" aria-hidden="true">{{ex.b.ico}}</span>{{ex.b.text}} the science</button><sc-if value="{{ex.b.open}}"><div class="more-body"><p>The U-shaped line is the <b>binodal</b>: the boundary between a well-mixed sauce and one where protein aggregates form, measured with starch fixed at 1 %. Plotted against the protein mass fraction φ (here {{bin.phi}} for your choice), its lowest point sits just above 60 °C. Physicists call that a <b>lower critical solution temperature</b>: unusually, this mixture separates when heated rather than cooled.</p>
-<p>The team fitted the equation above to this boundary. As the sauce heats, both χ (how sticky the proteins are) and n (their effective size) rise in a straight line, because heat unfolds the whey proteins and lets them latch onto each other and onto casein micelles. With those two lines, the model redraws the measured boundary almost exactly.</p>
+<p>The team fitted the equation above to this boundary. As the sauce heats, both χ (how sticky the proteins are) and n (their effective size) rise in a straight line. The authors suggest this is because heat unfolds the whey proteins and lets them latch onto each other and onto casein micelles. With those two lines, the model redraws the measured boundary almost exactly. That is a check that the model hangs together, since both lines were worked out from that same boundary.</p>
 <div class="paper-fig"><img src="/_blob/12bb18d9f6aa3f8e23fd72493d16db74" alt="Paper Figure 4: casein micelles and whey proteins aggregating on heating, chi and n rising with temperature, and theory matching the experimental binodal" loading="lazy"></div>
 <p class="fig-cap"><b>Paper Fig. 4.</b> (a) Cheese is mostly casein, packed in micelles with calcium phosphate, plus a little whey protein. Heat denatures the whey, which then aggregates with itself and with the micelles, and the micelles aggregate too. (b) The interaction χ and relative size n obtained from the experiments at each temperature. (c) Theory (crosses) against the experimental binodal (line).</p>
 <p class="small muted">About Chart B: the temperatures come from a parabola fitted to the binodal in paper Figs. 3(c) and 4(c), using the reported φ = 0.134 for a 1 : 1 mix to convert water percentage into φ. Dashed ends are extrapolated beyond the tested range, so treat them as rough guides.</p>
@@ -604,7 +604,7 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <div class="cols-4">
 <div class="stat"><b>2–3 %</b><p>Starch, compared with the cheese weight. The sweet spot for a smooth sauce.</p></div>
 <div class="stat"><b>75 %</b><p>Water, compared with the cheese weight. A little less than equal parts is safer.</p></div>
-<div class="stat"><b>≈ 60 °C</b><p>Around here the cheese starts to clump, so let the pasta cool for a moment before mixing.</p></div>
+<div class="stat"><b>≈ 60 °C</b><p>In the tests with 1 % starch, lumps start just above this, so let the pasta cool for a moment before mixing.</p></div>
 <div class="stat"><b>80–90 °C</b><p>A properly stabilised sauce can be reheated this hot in a pan without splitting.</p></div>
 </div>
 
@@ -636,7 +636,7 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <div class="dose-axis"><span style="left:0;transform:none">0</span><span style="left:20%">1</span><span style="left:40%">2</span><span style="left:60%">3</span><span style="left:80%">4</span><span style="left:100%;transform:translateX(-100%)">5 %</span></div>
 </div>
 </div>
-<div class="viz-more"><button type="button" class="more" aria-expanded="{{ex.c.aria}}" onClick="{{ex.c.toggle}}"><span class="more-ico" aria-hidden="true">{{ex.c.ico}}</span>{{ex.c.text}} the science</button><sc-if value="{{ex.c.open}}"><div class="more-body"><p>Starch and citrate stop lumps in different ways. Gelatinised starch gets in between the cheese proteins, so lumps shrink gradually as you add more. Trisodium citrate grabs the calcium ions that hold casein proteins together. Below 2 % there isn’t enough of it and the sauce still collapses, just later. From 2 % it stays completely smooth. The paper tested citrate at 1 %, 2 % and 3 % with cheese and water mixed 1 : 1.</p>
+<div class="viz-more"><button type="button" class="more" aria-expanded="{{ex.c.aria}}" onClick="{{ex.c.toggle}}"><span class="more-ico" aria-hidden="true">{{ex.c.ico}}</span>{{ex.c.text}} the science</button><sc-if value="{{ex.c.open}}"><div class="more-body"><p>Starch and citrate stop lumps in different ways. With gelatinised starch, lumps shrink gradually as you add more, and the paper leaves the exact reason open. Trisodium citrate grabs the calcium ions that hold casein proteins together. Below 2 % there isn’t enough of it and the sauce still collapses, just later. From 2 % it stays completely smooth. The paper tested citrate at 1 %, 2 % and 3 % with cheese and water mixed 1 : 1.</p>
 <div class="paper-fig"><img src="/_blob/ad9aba47dbacad10558815b6e1eb197e" alt="Paper Figure 5: sauce photos at 0 to 3 percent trisodium citrate from 50 to 95 degrees. 0 and 1 percent end in the Mozzarella Phase, 2 and 3 percent stay smooth" loading="lazy"></div>
 <p class="fig-cap"><b>Paper Fig. 5.</b> The sauce with 0–3 % trisodium citrate (relative to cheese weight), heated from 50 to 95 °C.</p>
 <span class="meta muted" style="font-size:11px">Source: Bartolucci et al., Phys. Fluids 37, 044122 (2025), CC BY 4.0</span></div></sc-if></div>
@@ -678,7 +678,7 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <div class="col">
 <p class="kicker">04</p>
 <h2 class="t-h2" style="margin:12px 0 18px">It matters? How?</h2>
-<p>While the idea of exploring a particular dish might seem kind of excessive, from it comes a serious exploration of phase separation, emulsions, and protein aggregation. These concepts apply to food and also to materials science, biochemistry, and even engineering. Understanding how mixtures behave under heat and concentration changes helps. Plus, it’s a reminder that cooking is chemistry in action.</p>
+<p>While the idea of exploring a particular dish might seem kind of excessive, from it comes a serious exploration of phase separation, emulsions, and protein aggregation. These concepts apply to food and also to materials science, biochemistry, and even engineering. Understanding how mixtures behave under heat and concentration changes helps in all of these fields. Plus, it’s a reminder that cooking is chemistry in action.</p>
 </div>
 </div>
 </section>
@@ -1376,9 +1376,9 @@ class Component extends DCLogic {
     const y = 330 - (T - 50) / 45 * 310;
     let note;
     if (w === 75) note = 'The paper’s recipe: 150 g of water for 200 g of cheese. Slightly cheesier than equal parts, so it copes with about 10 °C more heat.';
-    else if (w === 100) note = 'Equal weights of cheese and water: the bottom of the U, so this is the mix most likely to go lumpy.';
+    else if (w === 100) note = 'Equal weights of cheese and water: close to the bottom of the U, so this mix goes lumpy at almost the lowest heat.';
     else if (w >= 150) note = 'Very watery: the proteins are spread thin, so it takes a lot more heat before they find each other and clump.';
-    else if (w > 100) note = 'Close to the danger zone. In the experiments, the biggest lumps appeared around 110–130 % water at 75–85 °C.';
+    else if (w > 100) note = 'Right at the bottom of the U, the danger zone. In the experiments, the biggest lumps appeared around 110 to 130 % water at 75 to 85 °C.';
     else note = 'Cheesier than equal parts: the line rises again, so the sauce stays smooth to a higher temperature.';
     const open = st.open || {};
     const ex = {};

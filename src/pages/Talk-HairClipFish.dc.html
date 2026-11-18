@@ -582,12 +582,12 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <p class="small muted" style="margin-top:12px">How close the theory gets. Blue bars show error (scale 0–20%). Orange bars show predicted vs measured snap time, the right order of magnitude but 50–70% too slow.</p>
 </div>
 <div class="col" style="margin-top:32px">
-<p>The authors are refreshingly upfront that the theory is “still qualitative”. It gets the tail angle within about 5% and the energy hill within about 10%, but it overestimates snap times by more than half. That is good enough to choose a design and estimate the fastest a robot could flap, not good enough to replace testing.</p>
+<p>The authors are refreshingly upfront that the theory is “still qualitative”. It gets the tail angle within about 5% and the energy hill within about 10%, but it overestimates snap times by half or more. That is good enough to choose a design and estimate the fastest a robot could flap, not good enough to replace testing.</p>
 </div>
 <div class="col-wide viz" style="margin-top:32px">
 <div class="viz-more"><button type="button" class="more" aria-expanded="{{ex.b.aria}}" onClick="{{ex.b.toggle}}"><span class="more-ico" aria-hidden="true">{{ex.b.ico}}</span>{{ex.b.text}} the verification</button><sc-if value="{{ex.b.open}}"><div class="more-body"><p>The finite-element model used 756 shell elements in ABAQUS, with the plastic modelled as linear elastic (2 GPa, Poisson ratio 0.3). Tail angles were measured with a bend sensor wired to a small microcontroller. The energy hill can’t be calculated exactly because it depends on the path the clip takes between states, so the team approximated it as the energy difference between the ribbon’s first and third buckling shapes, borrowing from a beam clamped at both ends. A MATLAB script with the calculations is in the supplementary material.</p>
 <div class="paper-fig"><img src="/_blob/4c593206b91f056fdd104f39c67d36d4" alt="Paper Figure 4: simulated clip meshes with two measurement paths, plots comparing theory, simulation and experiment for twist angle and tail angle against kink angle and leg ratio, 3D surfaces of tail angle and energy barrier, and a comparison of beam and clip snapping shapes" loading="lazy"></div>
-<p class="fig-cap"><b>Paper Fig. 4.</b> (A–C) Twist along the ribbon: theory vs simulation. (D, E) Tail angle against θ and γ<sub>s</sub>: theory, simulation and experiments, with error under about 5%. (F, I) Design maps for tail angle and energy hill. (G) The beam analogy. (H) Energy hill: theory vs simulation.</p>
+<p class="fig-cap"><b>Paper Fig. 4.</b> (A–C) Twist along the ribbon: theory vs simulation. (D, E) Tail angle against θ and γ<sub>s</sub>: theory, simulation and experiments, with error around 5%. (F, I) Design maps for tail angle and energy hill. (G) The beam analogy. (H) Energy hill: theory vs simulation.</p>
 <span class="meta muted" style="font-size:11px">Source: Xiong et al., npj Robotics 4, 7 (2026), CC BY-NC-ND 4.0. Figure reproduced unaltered.</span></div></sc-if></div>
 </div>
 </div>
@@ -598,14 +598,14 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <div class="col">
 <p class="kicker">03</p>
 <h2 class="t-h2" style="margin:12px 0 18px">Fish one, snapping versus bending</h2><span class="px pxc-happy px-beat" style="--w:41" role="img" aria-label="The GelasTinta pixel character in a hoodie, jumping for joy"><span class="px-v px-ai" style="--n:8;--t:1280ms"><img src="/_blob/4c1e039267cfd582c0ee4d5930f6998b" alt="" draggable="false"></span><span class="px-v px-am" style="--n:8;--t:1040ms"><img src="/_blob/c86bf217f8e4735869fc0fcabfe44c9f" alt="" draggable="false"></span><span class="px-v px-hm" style="--n:8;--t:1040ms"><img src="/_blob/c86bf217f8e4735869fc0fcabfe44c9f" alt="" draggable="false"></span></span>
-<p>Real fish like mackerel and tuna swim “carangiform”, which means the front of the body stays fairly still and a wave of bending runs back to a stiff, flicking tail. A snapping clip, released at one end, sends just that kind of wave along its length. So the first robot uses a plastic clip as the fish’s body, with a 3D-printed head and a thin plastic tail fin riveted on.</p>
+<p>Real fish like mackerel and jacks swim “carangiform”, which means the front of the body stays fairly still and a wave of bending runs back to a stiff, flicking tail. A snapping clip sends just that kind of wave along its length. So the first robot uses a plastic clip as the fish’s body, with a 3D-printed head and a thin plastic tail fin riveted on.</p>
 </div>
 <div class="col meme-sm wide" style="margin-top:32px">
 <img src="/_blob/3ca51ecc4d2cd1ba4d64204fbe0a0d1b" alt="Is this a pigeon meme relabelled: robotics engineers point at a butterfly labelled a hair clip and ask, is this a fish?" loading="lazy">
 <div class="stack g8"><p class="kicker">Fish one, conceptually</p><p>Give a clip a head and a tail fin, and as far as the water can tell, yes.</p></div>
 </div>
 <div class="col" style="margin-top:32px">
-<p>Two small air-powered bending actuators sit either side of the clip. Inflate one and the clip snaps one way. Inflate the other and it snaps back. For a fair-ish test, the team also built a conventional fish of the same size and almost the same weight, where the same actuators simply bend a flat plastic strip from side to side.</p>
+<p>Two small air-powered bending actuators sit either side of the clip. Inflate one and the clip snaps one way. Inflate the other and it snaps back. For a fair-ish test, the team also built a conventional fish of the same size and almost the same weight, where a matching pair of actuators simply bends a flat plastic strip from side to side.</p>
 </div>
 <div class="col-wide viz" style="margin-top:48px" role="group" aria-label="Chart B: snapping fish compared with conventional fish">
 <div class="viz-head">
@@ -641,7 +641,7 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <div class="stack g8"><p class="kicker">Fish two, no longer tied to a pump</p><p>Battery, Bluetooth board and one servo, all on board. Next stop: an actual lake.</p></div>
 </div>
 <div class="col" style="margin-top:32px">
-<p>Out in a lake, running at 3 tail beats per second (six snaps), it swam 554 cm in 12.7 seconds, which is 43.6 cm/s, or 2.03 body lengths per second. It swam in a circle on purpose, steered by putting slightly more weight on one side, to keep it in the camera frame. In a straight dash it accelerated at about 20 cm/s². And a lovely detail. Local fish chased it, then fled when it touched them.</p>
+<p>Out in a lake, running at 3 tail beats per second (six snaps), it swam 554 cm in 12.7 seconds, which is 43.6 cm/s, or 2.03 body lengths per second. It swam in a circle on purpose, steered by putting slightly more weight on one side, to keep it in the camera frame. In a straight dash it accelerated at about 20 cm/s². And a lovely detail. Creatures in the lake chased it, then fled when it touched them.</p>
 </div>
 <div class="col-wide cols-3" style="margin-top:40px">
 <div class="stat"><b>245.66 mN</b><p>Thrust at 3 Hz, its best setting. Peak was 250.31 mN at 3.5 Hz.</p></div>
@@ -660,7 +660,7 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <img class="td-poster" src="/_blob/2bcf9d1397c868657eecf37d6bc80fb2" alt="The hair clip fish in 3D seen from above, the clip mid snap, with panels for the double well energy, the tail angle and the swimming speed" loading="lazy">
 <button class="td-play" type="button" data-td-play aria-label="The hair clip fish in 3D"><span class="td-pill">3D model</span><b>Open the 3D model</b><span class="td-sub">It plays a short tour on its own. Drag the tail beat, switch to slow motion or to air, open the head, and watch the dot cross the energy hill.</span></button>
 </div>
-<p class="meta muted td-note" style="font-size:12px">Numbers from Xiong et al. (as in the preprint): 21.5 cm, 125 g, a 0.762 mm PETG clip, 43.6 cm/s at 3 Hz. The snap is modelled as a double well. Speeds away from 3 Hz are estimated from St = 0.28. None of the paper's figures are reused.</p>
+<p class="meta muted td-note" style="font-size:12px">Numbers from Xiong et al., npj Robotics (2026). 21.5 cm, 125 g, a 0.762 mm PETG clip, 43.6 cm/s at 3 Hz. The snap is modelled as a double well. Speeds away from 3 Hz are estimated from St = 0.28. None of the paper's figures are reused.</p>
 </div>
 <div class="col" style="margin-top:48px">
 <p>One thing the paper mentions only in passing matters a lot for a real swimmer. Plastic clips crack. The team’s earlier work found that a 0.381 mm plastic clip survives roughly 20,000 actuation cycles before it fails. At several snaps a second, that number runs out quickly.</p>
@@ -733,8 +733,8 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <div class="catch">
 <p class="kicker">The catches</p>
 <p class="small" style="color:#F2F4EE">The snapping and conventional fish aren’t built the same way (the authors say so), so the 2× result mixes the effect of snapping with the effect of geometry. The thrust explanation (faster flicks, thrust growing with speed squared) is a hypothesis, not tested. On efficiency, at least one robot in the paper’s own table has a much lower cost of transport (1.24 vs 5.14).</p>
-<p class="small" style="color:#F2F4EE">The headline speed comes from one filmed lap in a lake, with no repeat runs or error bars reported. How speed changes with tail-beat frequency wasn’t measured, because the tank was too small. Steering is open loop, and the circle came from deliberately unbalanced weights.</p>
-<p class="small" style="color:#F2F4EE">Plastic clips crack after roughly 20,000 cycles, only one to two hours of swimming at 3 Hz if the thicker clip lasts as long, and the paper doesn’t test it. The abstract gives the speed as 42.6 cm/s while the results give 43.6 cm/s. The distance and time (554 cm in 12.7 s) support 43.6. And a stiff plastic ribbon driven by a servo is “soft” in a fairly generous sense.</p>
+<p class="small" style="color:#F2F4EE">The headline speed comes from one filmed run in a lake, and the main paper reports no repeat runs or error bars. How speed changes with tail beat frequency wasn’t pinned down, because the tank was too small and the robots were hard to steer. Steering is open loop, and the circle came from deliberately unbalanced weights.</p>
+<p class="small" style="color:#F2F4EE">Plastic clips crack after roughly 20,000 cycles, under two hours of swimming at 3 Hz if the thicker clip lasts as long, and the paper doesn’t test it. The abstract gives the speed as 42.6 cm/s while the results give 43.6 cm/s. The distance and time (554 cm in 12.7 s) support 43.6. And a stiff plastic ribbon driven by a servo is “soft” in a fairly generous sense.</p>
 </div>
 </div>
 </div>
@@ -749,7 +749,7 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <ol class="steps" style="margin-top:20px">
 <li><b>1</b>Pin the feet of a kinked ribbon together and it buckles into a clip with two stable shapes and an energy hill between them.</li>
 <li><b>2</b>Push slowly and it snaps across in tens of milliseconds, releasing stored energy as a wave down its length, much like a fish’s body wave.</li>
-<li><b>3</b>The clip’s resting shape depends only on its kink angle and leg ratio, so one design scales to any size or material.</li>
+<li><b>3</b>The clip’s resting shape depends only on its kink angle and leg ratio, so one design scales to other sizes and materials.</li>
 <li><b>4</b>As a fish’s body, snapping doubled speed over a conventional twin, and a one-servo version swam 2.03 body lengths per second in a lake.</li>
 <li><b style="color:#2B44C8">5</b>Fast per body length, less dominant in cm/s or efficiency. And plastic clips may wear out within hours.</li>
 </ol>
@@ -766,7 +766,7 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <p>I love papers that start from something everyone owns. Everyone has snapped a hair clip without thinking about it, and here it becomes a design principle with an equation behind it. The part I find most useful isn’t the fish at all. It is the result that the clip’s shape depends only on two numbers. That turns a fiddly, trial-and-error part into something you can look up on a chart and scale, and that is how a trick becomes a tool.</p>
 <p>I also appreciate how honest the authors are about the limits: the theory is “still qualitative”, the comparison fish isn’t a perfect match, and they even show how changing the definition of body length can shrink an impressive-sounding speed. That honesty is also why I would hold the “among the fastest” claim a little loosely. The best result rests on one filmed lap, and the ranking changes depending on the ruler.</p>
 <p>What I would want to see next is simple and slightly boring. A conventional fish built the same way, so the snap is the only difference. Several runs at several frequencies, with error bars. A long test to see how many hours a clip actually survives in water. And a fish that steers itself instead of swimming the circle its ballast chooses. If the clip still wins after all that, it deserves a place in every soft robot designer’s toolbox.</p>
-<nav class="talk-nav" aria-label="More talks"><a class="tn prev" href="Talk-ModularLegs.dc.html"><span class="tn-k">← Previous talk · 06</span><span class="tn-t">Microbot is not quite Micro, but it’s a step towards the effort</span><span class="tn-m">23rd May 2026 · 9 min read</span></a><a class="tn next" href="Talk-FlyConnectome.dc.html"><span class="tn-k">Next talk · 08 →</span><span class="tn-t">The Whole Fly, Wired. Mapping, Running and Comparing a Brain</span><span class="tn-m">23rd July 2026 · 14 min read</span></a></nav>
+<nav class="talk-nav" aria-label="More talks"><a class="tn prev" href="Talk-ModularLegs.dc.html"><span class="tn-k">← Previous talk · 06</span><span class="tn-t">Microbot is not quite Micro, but it’s a step towards the effort</span><span class="tn-m">23rd May 2026 · 9 min read</span></a><a class="tn next" href="Talk-FlyConnectome.dc.html"><span class="tn-k">Next talk · 08 →</span><span class="tn-t">The Whole Fly, Wired. Mapping, Running and Comparing a Brain</span><span class="tn-m">23rd July 2026 · 12 min read</span></a></nav>
 <a href="Talks.dc.html" class="back" style="margin-top:24px;color:#2B44C8">← Back to all talks</a>
 </div>
 <div class="stack g24">
@@ -1601,7 +1601,7 @@ class Component extends DCLogic {
     ];
     const ai = st.ai >= 0 && st.ai < A.length ? st.ai : 0;
     const BB = [
-      { label: 'Swimming speed', title: 'Swimming speed was 1.40 vs 0.69 BL/s', u: 'BL/s', h: 1.40, r: 0.69, max: 1.6, fmt: (v) => v.toFixed(2) + ' BL/s', note: 'Same size, same actuators, same air pressure and timing. The snapping fish swam twice as fast (26.54 vs 13.10 cm/s). The bodies are built differently, though, so not all of the gap is down to the snap.' },
+      { label: 'Swimming speed', title: 'Swimming speed was 1.40 vs 0.69 BL/s', u: 'BL/s', h: 1.40, r: 0.69, max: 1.6, fmt: (v) => v.toFixed(2) + ' BL/s', note: 'Same size, same air pressure, same timing. The snapping fish swam twice as fast (26.54 vs 13.10 cm/s). The bodies are built differently, though, so not all of the gap is down to the snap.' },
       { label: 'Tail flick speed', title: 'Tail flick speed was about 1,200 vs 340 °/s', h: 1200, r: 340, max: 1400, fmt: (v) => v.toLocaleString('en-GB') + ' °/s', note: 'Both tails swing through a similar angle, but the snapping tail does it about three times faster. The authors suggest this is why it pushes more water, since drag grows with speed squared.' },
       { label: 'Weight', title: 'The fish weighed 42.5 vs 41.6 g', h: 42.5, r: 41.6, max: 50, fmt: (v) => v + ' g', note: 'The two robots were matched in size (18.6 × 6.5 × 5.2 cm) and nearly matched in weight, so neither speed result comes from being lighter.' }
     ];
