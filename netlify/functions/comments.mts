@@ -23,6 +23,7 @@ const PAGES = new Set([
   "/talks/origami-robot",
   "/talks/learning-brain",
   "/talks/skin-effect",
+  "/talks/voyager-light-day",
   "/projects/beng-dissertation",
   "/projects/msc-dissertation",
   "/projects/inmoov-hand",
