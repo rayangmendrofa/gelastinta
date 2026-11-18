@@ -1,0 +1,1325 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>GelasTinta · Home</title>
+<script src="./support.js"></script>
+<script src="/_blob/59800ae8dd311e216394a93b57b5c5e9"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,600;0,700;1,400&amp;family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#EDEFF2;color:#10131C;font-family:'Titillium Web',system-ui,sans-serif;font-size:18px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{max-width:100%;display:block}
+a{color:#064F6E;text-underline-offset:3px}
+a:hover{color:#043B52}
+h1,h2,h3,p,figure,ul,ol{margin:0}
+.wrap{max-width:1160px;margin:0 auto;padding:0 32px}
+.sec{padding:96px 0}
+.sec.tight{padding:64px 0}
+.dark{background:#10131C;color:#EDEFF2}
+.white{background:#FFFFFF}
+.blue{background:#064F6E;color:#FFFFFF}
+.rule-t{border-top:1px solid #10131C}
+.rule-b{border-bottom:1px solid #10131C}
+.grid-bg{background-color:#EDEFF2;background-image:linear-gradient(#DCE0E7 1px,transparent 1px),linear-gradient(90deg,#DCE0E7 1px,transparent 1px);background-size:32px 32px}
+.disp{font-family:'Titillium Web',system-ui,sans-serif}
+.mono{font-family:'Ubuntu Mono',ui-monospace,monospace}
+.kicker{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;line-height:1.5;letter-spacing:.14em;text-transform:uppercase;color:#3A4152}
+.dark .kicker{color:#8DB0DA}
+.blue .kicker{color:#DCE6F0}
+.t-hero{font-family:'Titillium Web',system-ui,sans-serif;font-weight:800;font-size:clamp(44px,6.2vw,84px);line-height:.96;letter-spacing:-.035em}
+.t-title{font-family:'Titillium Web',system-ui,sans-serif;font-weight:800;font-size:clamp(34px,4.2vw,56px);line-height:1.04;letter-spacing:-.03em}
+.t-h2{font-family:'Titillium Web',system-ui,sans-serif;font-weight:800;font-size:clamp(30px,3.2vw,42px);line-height:1.06;letter-spacing:-.025em}
+.t-h3{font-family:'Titillium Web',system-ui,sans-serif;font-weight:700;font-size:22px;line-height:1.22;letter-spacing:-.01em}
+.lead{font-size:clamp(20px,1.9vw,23px);line-height:1.5}
+.intro{font-size:19px;line-height:1.65}
+.prose{max-width:66ch}
+.prose p+p{margin-top:1.1em}
+.small{font-size:16px;line-height:1.55}
+.muted{color:#3A4152}
+.dark .muted{color:#C9CED8}
+.meta{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;line-height:1.6;letter-spacing:.03em}
+.stack{display:flex;flex-direction:column}
+.g8{gap:8px}.g12{gap:12px}.g16{gap:16px}.g24{gap:24px}.g32{gap:32px}.g48{gap:48px}
+.sec-head{display:flex;flex-direction:column;gap:12px;margin-bottom:40px}
+.sec-head.row{flex-direction:row;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 32px}
+.cols-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.cols-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.cols-4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.split{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:start}
+.split.rev{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
+.split.mid{align-items:center}
+.card{background:#FFFFFF;border:1px solid #10131C;padding:28px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;line-height:1.4;letter-spacing:.05em;padding:6px 10px;border:1px solid currentColor}
+.chip.fill{background:#064F6E;border-color:#064F6E;color:#FFFFFF}
+.chip.warn{background:#7A4456;border-color:#7A4456;color:#FFFFFF}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 22px;background:#064F6E;color:#FFFFFF;text-decoration:none;border-radius:999px;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:14px;letter-spacing:.03em;border:1px solid #064F6E}
+.btn:hover{background:#043B52;border-color:#043B52;color:#FFFFFF}
+.btn.ghost{background:transparent;color:inherit;border-color:currentColor}
+.btn.ghost:hover{background:#10131C;color:#EDEFF2;border-color:#10131C}
+.dark .btn.ghost:hover,.blue .btn.ghost:hover{background:#EDEFF2;color:#10131C;border-color:#EDEFF2}
+.back{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:inherit;min-height:44px;display:inline-flex;align-items:center;align-self:flex-start}
+.back:hover{color:inherit;text-decoration:underline}
+figcaption{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;line-height:1.5;letter-spacing:.06em;color:#3A4152;margin-top:10px}
+.dark figcaption{color:#C9CED8}
+.site-head{background:#EDEFF2;border-bottom:1px solid #10131C}
+.site-head .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 24px;min-height:72px}
+.brand{display:flex;align-items:center;gap:10px;color:#10131C;text-decoration:none;font-family:'Titillium Web',system-ui,sans-serif;font-weight:800;font-size:22px;letter-spacing:-.01em}
+.brand:hover{color:#10131C}
+.nav{display:flex;flex-wrap:wrap;gap:0 28px}
+.nav a{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#10131C;text-decoration:none;min-height:44px;display:inline-flex;align-items:center;border-bottom:2px solid transparent}
+.nav a:hover{color:#064F6E}
+.nav a.on{color:#064F6E;border-bottom-color:#064F6E}
+.site-foot .wrap{padding-top:80px;padding-bottom:40px;display:flex;flex-direction:column;gap:56px}
+.foot-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:end}
+.foot-title{font-family:'Titillium Web',system-ui,sans-serif;font-weight:800;font-size:clamp(44px,5vw,64px);line-height:.95;letter-spacing:-.035em}
+.foot-blurb{font-size:19px;line-height:1.55;color:#C9CED8;max-width:30em}
+.foot-mail{font-family:'Titillium Web',system-ui,sans-serif;font-size:clamp(22px,2.4vw,28px);color:#EDEFF2;text-decoration:none;border-bottom:2px solid #8DB0DA;padding-bottom:4px;align-self:flex-start;overflow-wrap:anywhere}
+.foot-mail:hover{color:#FFFFFF}
+.social{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 18px;border:1px solid #8DB0DA;color:#EDEFF2;text-decoration:none;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.05em}
+.social:hover{background:#EDEFF2;color:#10131C}
+.social:hover svg{stroke:#10131C}
+.tblock{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid #3A4152;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.06em}
+.tblock div{padding:14px 16px;display:flex;flex-direction:column;gap:6px;border-right:1px solid #3A4152}
+.tblock div:last-child{border-right:0}
+.tblock span:first-child{color:#8DB0DA}
+.brand-hero{font-family:'Titillium Web',system-ui,sans-serif;font-weight:800;font-size:clamp(64px,10vw,136px);line-height:.88;letter-spacing:-.045em}
+.code-chip{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:14px;padding:8px 14px;border:1px solid #10131C;background:#FFFFFF}
+.quote{font-size:clamp(24px,2.7vw,34px);line-height:1.35;font-style:italic;max-width:34em;letter-spacing:-.005em}
+.board{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px 20px;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:15px;line-height:1.4}
+.tile{display:flex;flex-direction:column;color:#10131C;text-decoration:none;border:1px solid #10131C;background:#EDEFF2}
+.tile:hover{color:#10131C}
+.tile:hover h3{color:#064F6E}
+.tile-art{height:220px;border-bottom:1px solid #10131C;display:flex;align-items:center;justify-content:center;position:relative}
+.tile-art .kicker{position:absolute;top:16px;left:16px}
+.lib{display:flex;flex-direction:column;justify-content:space-between;gap:48px;min-height:220px;padding:28px;border:1px solid #10131C;background:#FFFFFF;color:#10131C;text-decoration:none}
+.lib:hover{color:#10131C;background:#10131C}
+.lib:hover h3,.lib:hover .go{color:#FFFFFF}
+.lib:hover svg{stroke:#8DB0DA}
+.lib .go{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;color:#064F6E}
+.latest{display:flex;align-items:center;gap:18px;padding:22px 28px;background:#10131C;color:#EDEFF2;text-decoration:none}
+.latest:hover{color:#FFFFFF;background:#043B52}
+@media (max-width:960px){
+.split,.split.rev{grid-template-columns:minmax(0,1fr);gap:40px}
+.cols-3{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cols-4{grid-template-columns:repeat(2,minmax(0,1fr))}
+.foot-top{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:640px){
+.wrap{padding:0 20px}
+.sec{padding:64px 0}
+.sec.tight{padding:48px 0}
+.cols-2,.cols-3,.cols-4{grid-template-columns:minmax(0,1fr)}
+.tblock{grid-template-columns:repeat(2,minmax(0,1fr))}
+.tblock div:nth-child(2){border-right:0}
+.tblock div:nth-child(-n+2){border-bottom:1px solid #3A4152}
+.nav{gap:0 18px}
+.board{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+.hero{position:relative;overflow:hidden;background:#0B0D14;color:#FFFFFF;min-height:680px;display:flex;align-items:center}
+.hero>.wrap{position:relative;z-index:2;width:100%}
+.hero-slides{position:absolute;inset:0;z-index:0}
+.hero-slides img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;animation:heroFade 120s linear infinite both}
+@keyframes heroFade{0%{opacity:0;transform:scale(1.02)}1.25%{opacity:1}5%{opacity:1}6.25%{opacity:0;transform:scale(1.09)}100%{opacity:0;transform:scale(1.09)}}
+.hero-shade{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(11,13,20,.9) 0%,rgba(11,13,20,.72) 48%,rgba(11,13,20,.38) 100%),linear-gradient(0deg,rgba(11,13,20,.55) 0%,rgba(11,13,20,0) 40%);}
+.hero-shade::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:32px 32px}
+.hero .kicker{color:#C8D8EA}
+.hero .lead{color:#E3E6EE}
+.hero .code-chip{color:#10131C}
+.hero .brand-hero .ink{color:#8DB0DA}
+.hero-vessel{background:transparent;border:0;padding:12px 0 0;display:flex;flex-direction:column;align-items:center;max-width:380px;justify-self:end;width:100%}
+.hero-vessel svg [stroke="#10131C"]{stroke:#F4F5F8}
+.hero-vessel svg path[fill="#10131C"]{fill:#F4F5F8}
+.hero-vessel svg path[fill="#064F6E"]{fill:#5A82B3;fill-opacity:.82}
+.hero-vessel svg text{fill:#DDE1EA}
+.hero-vessel svg{filter:drop-shadow(0 2px 10px rgba(0,0,0,.45))}
+.hero-vessel figcaption{color:#DDE1EA}
+.hero-link{position:absolute;right:32px;bottom:20px;z-index:2;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;min-height:44px;display:inline-flex;align-items:center;gap:8px}
+.hero-link:hover{color:#C8D8EA;text-decoration:underline}
+@media (prefers-reduced-motion:reduce){.hero-slides img{animation:none}.hero-slides img:first-child{opacity:1}}
+@media (max-width:960px){.hero{min-height:0}.hero-vessel{justify-self:start;max-width:320px}}
+@media (max-width:640px){.hero-link{right:20px;bottom:8px}.hero{padding-bottom:72px}.hero-vessel{max-width:220px;padding:0}}
+.fq{margin:8px 0;padding:20px 0 20px 24px;border-left:4px solid #064F6E}
+.fq p{font-family:'Titillium Web',system-ui,sans-serif;font-style:italic;font-size:clamp(22px,2.3vw,28px);line-height:1.35;letter-spacing:-.005em}
+.fq cite{display:block;margin-top:10px;font-style:normal;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#3A4152}
+.tile-art.photo{height:300px;padding:0;overflow:hidden;background:#10131C}
+.tile-art.photo img{width:100%;height:100%;object-fit:cover}
+.tile-art .tag{position:absolute;top:16px;left:16px;z-index:1;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;background:#10131C;color:#FFFFFF;padding:6px 10px}
+/* wada:start */.wada-mini{display:inline-flex;vertical-align:middle;margin-left:10px;border:1px solid #10131C}.wada-mini i{display:block;width:12px;height:12px}
+/* wada:end */
+/* wadasite:start */.site-foot{position:relative}
+.site-foot::before{content:"";position:absolute;left:0;right:0;top:-6px;height:6px;background:linear-gradient(90deg,#4F4086 0.0% 25.0%,#5A82B3 25.0% 50.0%,#10131C 50.0% 75.0%,#064F6E 75.0% 100.0%)}
+::selection{background:#5A82B3;color:#10131C}
+.wada-credit{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;font-family:"Ubuntu Mono",ui-monospace,monospace;font-size:11px;letter-spacing:.06em;color:#C9CED8}
+.wada-credit .wada-mini{margin-left:0;border-color:#3A4152}
+/* wadasite:end */
+/* shelf:start */
+.shelf-wrap{display:flex;flex-direction:column;gap:14px}
+.shelf-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.sh-btn{min-height:40px;min-width:44px;padding:0 12px;border:1px solid #10131C;background:#FFFFFF;color:#10131C;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:14px;cursor:pointer}
+.sh-btn:hover{background:#10131C;color:#FFFFFF}
+.sh-btn:focus-visible{outline:3px solid #064F6E;outline-offset:2px}
+.sh-count{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;min-width:52px;text-align:center}
+.sh-hint{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;color:#3A4152;margin-left:8px}
+.sh-sound{margin-left:auto;font-size:12px}
+.sh-sound[aria-pressed="false"]{color:#3A4152;border-style:dashed}
+.shelf{position:relative;display:flex;align-items:flex-end;gap:5px;height:440px;padding:0 6px;border-bottom:14px solid #10131C;box-shadow:0 10px 0 -4px #C9CED8;perspective:1600px}
+.shelf.tall{height:470px}
+.book{position:relative;display:flex;flex:0 0 58px;height:var(--h,94%);min-width:0;overflow:hidden;background:var(--c);color:var(--t);border:1px solid #10131C;border-bottom:0;transition:flex-basis .55s cubic-bezier(.2,.7,.2,1),height .55s cubic-bezier(.2,.7,.2,1),transform .25s ease}
+.spine{flex:0 0 56px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:10px;padding:18px 0 16px;position:relative;background:transparent;border:0;color:inherit;cursor:pointer;font:inherit;text-align:center}
+.spine:focus-visible{outline:3px solid #064F6E;outline-offset:-4px}
+.book:not(.open):hover{transform:translateY(-8px)}
+.spine::before,.spine::after{content:"";position:absolute;left:0;right:0;height:7px}
+.spine::before{top:6px;background:var(--b1);box-shadow:0 10px 0 -3px var(--b2)}
+.spine::after{bottom:6px;background:var(--b1);box-shadow:0 -10px 0 -3px var(--b2)}
+.sp-n{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;font-weight:700;margin-top:14px}
+.sp-t{writing-mode:vertical-rl;font-family:'Titillium Web',system-ui,sans-serif;font-weight:800;font-size:17px;letter-spacing:-.01em;line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-height:100%;flex:1 1 auto;min-height:0}
+.sp-y{writing-mode:vertical-rl;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;opacity:.85;margin-bottom:14px}
+.cover{flex:1 0 420px;display:grid;grid-template-rows:minmax(0,52%) minmax(0,1fr);background:#FFFFFF;color:#10131C;border-left:1px solid #10131C;text-decoration:none;transform-origin:0 50%}
+.cover:hover{color:#10131C}
+.cover:hover .cv-go{text-decoration:underline}
+.cover:focus-visible{outline:3px solid #064F6E;outline-offset:-4px}
+.cv-img{overflow:hidden;border-bottom:1px solid #10131C}
+.cv-img img{display:block;width:100%;height:100%}
+.cv-body{display:flex;flex-direction:column;gap:8px;padding:18px 22px 20px;min-height:0}
+.cv-body .kicker{font-size:11px}
+.cv-t{font-family:'Titillium Web',system-ui,sans-serif;font-weight:700;font-size:21px;line-height:1.2;letter-spacing:-.01em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.cv-p{font-size:15px;line-height:1.5;color:#3A4152;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.cv-m{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:11px;color:#3A4152;margin-top:auto}
+.cv-go{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#064F6E}
+.book.open{flex:1 1 auto;height:100%}
+.book.flip .cover{animation:sh-flip .6s cubic-bezier(.2,.7,.2,1) both}
+@keyframes sh-flip{0%{transform:rotateY(-88deg);box-shadow:-30px 0 40px -20px rgba(16,19,28,.6)}60%{box-shadow:-12px 0 24px -14px rgba(16,19,28,.35)}100%{transform:rotateY(0);box-shadow:none}}
+.shelf:not([data-ready]):hover .book.open{flex:0 0 58px;height:var(--h,94%)}
+.shelf:not([data-ready]):hover .book:hover{flex:1 1 auto;height:100%}
+.shelf-wrap:not([data-ready]) .shelf-bar .sh-btn,.shelf-wrap:not([data-ready]) .sh-count{visibility:hidden}
+.bookend{flex:0 0 26px;height:48%;margin-left:auto;background:#10131C;border-radius:14px 0 0 0}
+@media (prefers-reduced-motion:reduce){.book{transition:none}.book.flip .cover{animation:none}}
+@media (max-width:760px){
+.shelf,.shelf.tall{flex-direction:column;align-items:stretch;height:auto;gap:6px;padding:0;border-bottom:0;box-shadow:none;perspective:none}
+.sh-hint,.bookend{display:none}
+.book{flex:none !important;height:auto !important;flex-direction:column;border-bottom:1px solid #10131C}
+.book:not(.open):hover{transform:none}
+.spine{flex:0 0 auto;flex-direction:row;justify-content:flex-start;gap:14px;padding:0 16px;height:56px;width:100%;text-align:left}
+.spine::before,.spine::after{top:0;bottom:0;left:auto;right:auto;width:6px;height:auto;box-shadow:none}
+.spine::before{left:0}.spine::after{right:0}
+.sp-n{margin:0}
+.sp-t,.sp-y{writing-mode:horizontal-tb}
+.sp-t{font-size:16px;flex:1 1 auto}
+.sp-y{margin:0}
+.cover{display:none;flex:none;border-left:0;border-top:1px solid #10131C;grid-template-rows:200px auto}
+.book.open .cover{display:grid}
+.book.flip .cover{animation:sh-drop .45s cubic-bezier(.2,.7,.2,1) both;transform-origin:50% 0}
+.cv-p{-webkit-line-clamp:3}
+}
+@keyframes sh-drop{0%{transform:rotateX(-70deg);opacity:0}100%{transform:none;opacity:1}}
+/* shelf:end */
+/* logo:start */
+.brand .bk-logo{overflow:visible;flex:0 0 auto}
+.bk-tip{transform-box:view-box;transform-origin:26px 29px;animation:bk-tip 3.6s 1.6s cubic-bezier(.45,.05,.3,1) both}
+.bk-liq{transform-box:fill-box;transform-origin:50% 100%;animation:bk-liq 3.6s 1.6s ease-in-out both}
+.bk-drop{opacity:0;animation:bk-drop 3.6s 1.6s ease-in both}
+.bk-drop.d2{animation-delay:1.85s}.bk-drop.d3{animation-delay:2.1s}
+.bk-pud{transform-box:fill-box;transform-origin:30% 50%;transform:scaleX(0);animation:bk-pud 3.6s 1.6s ease-out both}
+@keyframes bk-tip{0%{transform:rotate(0)}7%{transform:rotate(-7deg)}13%{transform:rotate(6deg)}19%{transform:rotate(-3deg)}31%{transform:rotate(56deg)}60%{transform:rotate(56deg)}74%{transform:rotate(-5deg)}81%{transform:rotate(2deg)}88%,100%{transform:rotate(0)}}
+@keyframes bk-liq{0%,30%{transform:scaleY(1)}58%{transform:scaleY(.14)}80%{transform:scaleY(.14)}100%{transform:scaleY(1)}}
+@keyframes bk-drop{0%,30%{opacity:0;transform:translate(0,0)}31%{opacity:1;transform:translate(0,0)}42%{opacity:1;transform:translate(1px,19px)}44%,100%{opacity:0;transform:translate(1px,19px)}}
+@keyframes bk-pud{0%,33%{transform:scaleX(0);opacity:1}58%{transform:scaleX(1);opacity:1}80%{transform:scaleX(1.05);opacity:1}96%,100%{transform:scaleX(1.12);opacity:0}}
+@media (prefers-reduced-motion:reduce){.bk-tip,.bk-liq,.bk-drop,.bk-pud{animation:none}.bk-pud,.bk-drop{opacity:0}}
+/* logo:end */
+/* dark:start */
+.brand .bk-btn{display:inline-flex;align-items:center;justify-content:center;padding:4px;margin:-4px;border:0;background:transparent;cursor:pointer;border-radius:8px;line-height:0}
+.brand .bk-btn:hover .bk-tip{transform:rotate(-8deg)}
+.brand .bk-btn:focus-visible{outline:3px solid #064F6E;outline-offset:2px}
+.brand .brand-name{color:inherit;text-decoration:none}
+.brand .brand-name:hover{color:inherit}
+html[data-theme="dark"]{filter:invert(1) hue-rotate(180deg);background:#FFFFFF;color-scheme:dark}
+html[data-theme="dark"] img,html[data-theme="dark"] video,html[data-theme="dark"] canvas,html[data-theme="dark"] iframe,html[data-theme="dark"] picture{filter:invert(1) hue-rotate(180deg)}
+html[data-theme="dark"] :is(.dark,.hero,.cp-hero,.blue,.catch,.book){filter:invert(1) hue-rotate(180deg)}
+html[data-theme="dark"] .book .cover{filter:invert(1) hue-rotate(180deg)}
+html[data-theme="dark"] :is(.dark,.hero,.cp-hero,.blue,.catch) :is(img,video,canvas,iframe,picture){filter:none}
+.gt-flood{position:fixed;inset:0;z-index:9999;background:#10131C;pointer-events:none;clip-path:circle(0 at var(--fx,40px) var(--fy,40px));transition:clip-path .6s cubic-bezier(.55,.05,.4,1),opacity .35s ease}
+.gt-flood.go{clip-path:circle(150vmax at var(--fx,40px) var(--fy,40px))}
+.gt-flood.out{opacity:0}
+@media (prefers-reduced-motion:reduce){.gt-flood{display:none}}
+/* dark:end */
+/* home2:start */
+.hero{min-height:720px}
+.hero-shade{background:radial-gradient(ellipse 46% 60% at 72% 52%,rgba(90,130,179,.30) 0%,rgba(11,13,20,0) 70%),linear-gradient(90deg,rgba(11,13,20,.93) 0%,rgba(11,13,20,.86) 55%,rgba(11,13,20,.80) 100%)}
+.hero>.wrap.hero-grid{max-width:1380px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,3.6fr) minmax(0,8.4fr);gap:16px;align-items:center}
+.hero-h{font-family:'Titillium Web',system-ui,sans-serif;font-weight:800;font-size:clamp(52px,6vw,92px);line-height:.92;letter-spacing:-.035em}
+.hero-h .ink{color:#8DB0DA}
+.hero-quote{font-family:'Titillium Web',system-ui,sans-serif;font-style:italic;font-size:clamp(19px,1.6vw,23px);line-height:1.5;color:#E3E6EE;max-width:22em;padding-left:18px;border-left:3px solid #5A82B3}
+.hero-quote-by{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#C8D8EA}
+.hero-vessel.flask{max-width:920px;justify-self:end;padding:0}
+.hero-vessel.flask svg{max-width:920px}
+.hero-vessel .gt-call path{fill:none;stroke:#8DB0DA;stroke-width:1.2}
+.hero-vessel .gt-call circle{fill:#8DB0DA;stroke:none}
+.hero-vessel .gt-call text{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12.5px;letter-spacing:.08em;fill:#FFFFFF}
+.hero-vessel .gt-call text tspan.sub{fill:#AFC3DB;font-size:11px;letter-spacing:.04em}
+.hero-vessel .gt-call{transition:opacity .25s ease}
+.hero-vessel svg:hover .gt-call{opacity:.45}
+.hero-vessel svg .gt-call:hover{opacity:1}
+.hero-vessel svg .gt-call:hover path{stroke:#FFFFFF}
+.hero-vessel figcaption{display:flex;justify-content:space-between;gap:12px;width:100%;max-width:920px}
+@media (max-width:960px){.hero-grid{grid-template-columns:minmax(0,1fr)}.hero-vessel.flask{justify-self:center;max-width:680px;order:-1}.hero{padding-top:40px}}
+@media (max-width:640px){.hero-vessel.flask{max-width:100%}.hero-vessel .gt-call text{font-size:19px}.hero-vessel .gt-call text tspan.sub{display:none}.hero-vessel figcaption span+span{display:none}}
+.show{background:#FFFFFF}
+.show-label{display:flex;align-items:center;gap:12px;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#3A4152;margin:0 0 16px}
+.show-label::after{content:"";flex:1 1 auto;height:1px;background:#C9CED8}
+.show-label+*{margin-bottom:56px}
+.show-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.show-grid.four{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.show-grid.five{grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.show-card{display:flex;flex-direction:column;background:#FFFFFF;border:1px solid #10131C;color:#10131C;text-decoration:none;transition:transform .25s ease,box-shadow .25s ease}
+.show-card:hover{color:#10131C;transform:translateY(-4px);box-shadow:6px 6px 0 #10131C}
+.show-card:focus-visible{outline:3px solid #5A82B3;outline-offset:3px}
+.show-media{position:relative;display:block;aspect-ratio:4/3;overflow:hidden;background:#EEF0F3;border-bottom:1px solid #10131C}
+.show-media video,.show-media img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.show-card:hover .show-media img{transform:scale(1.04)}
+.show-tag{position:absolute;top:10px;left:10px;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;background:#10131C;color:#FFFFFF;padding:5px 8px}
+.show-tag.free{background:#064F6E}
+.show-body{display:flex;flex-direction:column;gap:6px;padding:16px 18px 18px;flex:1 1 auto}
+.show-body .kicker{font-size:11px}
+.show-t{font-family:'Titillium Web',system-ui,sans-serif;font-weight:700;font-size:21px;line-height:1.18;letter-spacing:-.01em}
+.show-grid.four .show-t{font-size:18px}
+.show-grid.five .show-t{font-size:16px}
+.show-p{font-size:15px;line-height:1.5;color:#3A4152}
+.show-go{margin-top:auto;padding-top:6px;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#064F6E}
+.show-card:hover .show-go{text-decoration:underline}
+.show-grid.five .show-body{padding:12px 14px 14px}
+.show-card.pk .show-body{background:var(--sc);color:var(--st)}
+.show-card.pk .show-body .kicker{color:inherit;opacity:.85}
+.show-card.pk .show-tag{background:var(--sc);color:var(--st);border:1px solid rgba(16,19,28,.25)}
+.pk-brand{margin-top:auto;padding-top:8px;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;opacity:.8}
+.show-card.pk:hover .show-body{filter:brightness(1.06)}
+.show-more{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-top:-28px}
+@media (max-width:960px){.show-grid,.show-grid.four{grid-template-columns:repeat(2,minmax(0,1fr))}.show-grid.five{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:640px){.show-grid{grid-template-columns:minmax(0,1fr)}.show-grid.four,.show-grid.five{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.show-grid.five .show-t,.show-grid.four .show-t{font-size:15px}.show-grid.four .show-p{display:none}.show-more{margin-top:-36px}}
+@media (prefers-reduced-motion:reduce){.show-card,.show-media img{transition:none}.show-card:hover{transform:none}}
+.lib p.small{color:#3A4152;margin-top:-30px;min-height:3.1em}
+.lib:hover p.small{color:#C9CED8}
+.pj{position:relative;background:#0B0D14;color:#EDEFF2;border:1px solid #10131C;padding:28px 28px 22px;overflow:hidden}
+.pj::before{content:"";position:absolute;left:50%;bottom:118px;width:150%;height:120%;transform:translateX(-50%);background:conic-gradient(from 160deg at 50% 100%,transparent 0deg,rgba(200,216,234,.09) 14deg,rgba(200,216,234,.16) 20deg,rgba(200,216,234,.09) 26deg,transparent 40deg);pointer-events:none}
+.pj-screen{position:relative;max-width:900px;margin:0 auto;aspect-ratio:16/9;background:#F4F5F8;border:10px solid #EDEFF2;box-shadow:0 0 0 1px #3A4152,0 24px 60px -18px rgba(90,130,179,.55);overflow:hidden}
+.pj-screen::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 70% 70% at 50% 45%,transparent 60%,rgba(11,13,20,.28) 100%);pointer-events:none;z-index:3}
+.pj-slide{position:absolute;inset:0;display:block;color:inherit;text-decoration:none;opacity:0;visibility:hidden;transition:opacity .45s ease,visibility 0s .45s}
+.pj-slide.on{opacity:1;visibility:visible;transition:opacity .45s ease,visibility 0s}
+.pj-slide img{width:100%;height:100%;object-fit:cover;display:block}
+.pj-cap{position:absolute;left:0;bottom:0;z-index:4;display:flex;flex-direction:column;gap:4px;max-width:min(78%,520px);padding:14px 18px 14px;background:var(--sc);color:var(--st)}
+.pj-cap b{font-family:'Ubuntu Mono',ui-monospace,monospace;font-weight:400;font-size:12px;letter-spacing:.12em;text-transform:uppercase;opacity:.9}
+.pj-cap strong{font-family:'Titillium Web',system-ui,sans-serif;font-weight:800;font-size:clamp(18px,2vw,26px);line-height:1.12;letter-spacing:-.01em}
+.pj-cap em{font-style:normal;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.85}
+.pj-slide:hover .pj-cap em{text-decoration:underline}
+.pj-slide:focus-visible{outline:3px solid #5A82B3;outline-offset:-3px}
+.pj-screen.clack .pj-slide.on img{animation:pj-clack .42s steps(1,end)}
+@keyframes pj-clack{0%{filter:brightness(.15)}18%{filter:brightness(1.35)}36%{filter:brightness(.7)}54%,100%{filter:none}}
+.pj-deck{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;gap:14px;margin:18px auto 14px;max-width:900px}
+.pj-body{display:flex;align-items:center;gap:12px;padding:8px 14px;background:#1E2230;border:1px solid #3A4152;border-radius:14px 14px 6px 6px}
+.pj-lens{width:34px;height:34px;border-radius:50%;background:radial-gradient(circle at 40% 38%,#FFFFFF 0 8%,#C8D8EA 16%,#5A82B3 42%,#10131C 70%);box-shadow:0 0 0 3px #3A4152,0 0 18px 2px rgba(200,216,234,.45)}
+.pj-count{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.08em;min-width:62px;text-align:center}
+.pj-btn{min-width:44px;min-height:40px;padding:0 12px;border:1px solid #5A82B3;background:transparent;color:#EDEFF2;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:14px;cursor:pointer;border-radius:999px}
+.pj-btn:hover{background:#EDEFF2;color:#10131C;border-color:#EDEFF2}
+.pj-btn:focus-visible{outline:3px solid #8DB0DA;outline-offset:2px}
+.pj-btn[aria-pressed="false"]{border-style:dashed;color:#C8D8EA}
+.pj-roll{position:relative;z-index:2;display:flex;align-items:flex-start;gap:10px;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:thin;scrollbar-color:#3A4152 transparent;padding:16px 12px;background-color:#050608;background-image:radial-gradient(circle at 50% 50%,#2A2F3D 0 3px,transparent 3.5px),radial-gradient(circle at 50% 50%,#2A2F3D 0 3px,transparent 3.5px);background-size:16px 12px,16px 12px;background-position:0 1px,0 calc(100% - 1px);background-repeat:repeat-x}
+.pj-frame{flex:0 0 132px;width:132px;min-width:0;scroll-snap-align:center;display:flex;flex-direction:column;gap:6px;padding:0;border:2px solid #2A2F3D;background:#10131C;color:#C9CED8;cursor:pointer;text-align:left;font:inherit}
+.pj-frame img{width:100%;height:auto;flex:0 0 auto;aspect-ratio:4/3;object-fit:cover;display:block;filter:sepia(.55) saturate(.7) brightness(.72);transition:filter .3s ease}
+.pj-frame span{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;padding:0 7px 6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pj-frame span i{font-style:normal;color:var(--sc)}
+.pj-frame:hover img{filter:none}
+.pj-frame.on{border-color:var(--sc);color:#FFFFFF;box-shadow:0 0 0 2px var(--sc),0 0 16px rgba(200,216,234,.25)}
+.pj-frame.on img{filter:none}
+.pj-frame:focus-visible{outline:3px solid #8DB0DA;outline-offset:2px}
+.pj-hint{position:relative;z-index:2;margin:10px 0 0;text-align:center;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.08em;color:#8B93A6}
+@media (max-width:640px){.pj{padding:14px 10px 14px}.pj-screen{border-width:5px}.pj-cap{max-width:92%;padding:8px 10px}.pj-cap strong{font-size:16px}.pj-cap em{display:none}.pj-frame{flex-basis:104px;width:104px}.pj::before{bottom:100px}}
+@media (prefers-reduced-motion:reduce){.pj-slide,.pj-slide.on,.pj-frame img{transition:none}.pj-screen.clack .pj-slide.on img{animation:none}}
+/* home2:end */
+/* nav2:start */
+html{scroll-padding-top:88px}
+.site-head{position:sticky;top:0;z-index:60}
+.skip-link{position:absolute;left:12px;top:-80px;z-index:200;background:#10131C;color:#FFFFFF;padding:12px 18px;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.06em;text-decoration:none;border-radius:0 0 8px 8px}
+.skip-link:focus{top:0;color:#FFFFFF;outline:3px solid #064F6E;outline-offset:0}
+.nav a:focus-visible,.brand-name:focus-visible,.crumbs a:focus-visible,.foot-nav a:focus-visible{outline:3px solid #064F6E;outline-offset:3px;border-radius:2px}
+.nav a{transition:color .2s ease,border-color .2s ease}
+.nav a:hover{border-bottom-color:currentColor}
+.crumbs{align-self:flex-start;max-width:100%}
+.crumbs ol{display:flex;flex-wrap:wrap;align-items:center;list-style:none;margin:0;padding:0;gap:0 10px;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+.crumbs li{display:inline-flex;align-items:center;min-height:44px;min-width:0}
+.crumbs li+li::before{content:"/";margin-right:10px;opacity:.55}
+.crumbs a{color:inherit;text-decoration:none;border-bottom:1px solid transparent}
+.crumbs a:hover{color:inherit;border-bottom-color:currentColor}
+.crumbs [aria-current]{opacity:.78;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:26ch}
+.pnav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border:1px solid #10131C}
+.pn{display:flex;flex-direction:column;gap:10px;padding:24px;color:#10131C;text-decoration:none;background:#EDEFF2;min-height:44px}
+.pn+.pn{border-left:1px solid #10131C}
+.pn.next{text-align:right;align-items:flex-end}
+.pn:hover{background:#10131C;color:#EDEFF2}
+.pn:focus-visible{outline:3px solid #064F6E;outline-offset:2px}
+.pn-k{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#064F6E}
+.pn:hover .pn-k{color:inherit}
+.pn-t{font-family:'Titillium Web',system-ui,sans-serif;font-weight:700;font-size:19px;line-height:1.25;letter-spacing:-.01em}
+.pn-all{display:inline-flex;align-items:center;min-height:44px;margin-top:16px;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#064F6E;text-decoration:none}
+.pn-all:hover{text-decoration:underline;color:#064F6E}
+.foot-nav{display:flex;flex-wrap:wrap;align-items:center;gap:4px 26px;padding-top:22px;border-top:1px solid rgba(237,239,242,.22);font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+.foot-nav a{color:inherit;text-decoration:none;min-height:44px;display:inline-flex;align-items:center;border-bottom:1px solid transparent}
+.foot-nav a:hover{color:inherit;border-bottom-color:currentColor}
+.foot-nav .to-top{margin-left:auto}
+[style*="position:sticky;top:24px"]{top:96px !important}
+@supports (animation-timeline: scroll()){
+.site-head{animation:nav2-shadow linear both;animation-timeline:scroll(root);animation-range:0 160px}
+@keyframes nav2-shadow{from{box-shadow:0 0 0 rgba(16,19,28,0)}to{box-shadow:0 6px 18px -10px rgba(16,19,28,.45)}}
+}
+@media (max-width:640px){
+html{scroll-padding-top:60px}
+.site-head{top:-56px}
+.site-head .wrap{min-height:0;padding-top:0;padding-bottom:0;gap:0;row-gap:0}
+.site-head .brand{min-height:56px}
+.nav{flex-wrap:nowrap;width:calc(100% + 40px);margin:0 -20px;padding:0 20px;gap:0 18px;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent)}
+.nav::-webkit-scrollbar{display:none}
+.nav a{flex:0 0 auto;font-size:12px;letter-spacing:.07em}
+.nav a[href="Main.dc.html"]{display:none}
+.nav a:last-child{margin-right:24px}
+[style*="position:sticky;top:24px"]{top:64px !important}
+.pnav{grid-template-columns:minmax(0,1fr)}
+.pn+.pn{border-left:0;border-top:1px solid #10131C}
+.pn.next{text-align:left;align-items:flex-start}
+.foot-nav{gap:0 20px}
+.foot-nav .to-top{margin-left:0}
+.crumbs [aria-current]{max-width:18ch}
+}
+/* nav2:end */
+/* px:start */
+.px{--s:3;--w:76;position:relative;display:inline-block;flex:none;width:calc(var(--w)*1px*var(--s));height:calc(58px*var(--s));cursor:pointer;-webkit-tap-highlight-color:transparent}
+.px::after{content:"";position:absolute;left:calc(4px*var(--s));width:calc(30px*var(--s));bottom:calc(-1.5px*var(--s));height:calc(4px*var(--s));background:radial-gradient(closest-side,rgba(16,19,28,.2),rgba(16,19,28,0));pointer-events:none}
+.px-v{position:absolute;inset:0;overflow:hidden;z-index:1}
+.px-v img{display:block;width:calc(var(--n)*76px*var(--s));max-width:none;height:100%;image-rendering:crisp-edges;image-rendering:pixelated;animation:px-run var(--t) steps(var(--n)) infinite;pointer-events:none;user-select:none;-webkit-user-drag:none}
+@keyframes px-run{to{transform:translateX(-100%)}}
+.px-am{visibility:hidden}
+.px-hm{display:none}
+.px:hover .px-ai,.px:hover .px-am{display:none}
+.px:hover .px-hm{display:block}
+.dark .px{filter:drop-shadow(0 0 1px rgba(244,242,238,.85)) drop-shadow(0 0 4px rgba(244,242,238,.25))}
+.dark .px::after{background:radial-gradient(closest-side,rgba(244,242,238,.16),rgba(244,242,238,0))}
+html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19,28,.95)) drop-shadow(0 0 4px rgba(16,19,28,.35))}
+.px-row{display:grid;grid-template-columns:minmax(0,820px) auto;gap:56px;align-items:end}
+.px-row>.px{margin-bottom:6px}
+.px-side{display:flex;flex-direction:column;align-items:stretch}
+.px-side>.px{align-self:flex-end;margin:0 28px calc(-1.5px*var(--s)) 0;z-index:2}
+.px-lineup{display:flex;align-items:flex-end;gap:28px;width:max-content;max-width:100%;padding:0 10px;border-bottom:1px solid currentColor;margin-top:4px}
+.px-lineup .px{--s:2;margin-bottom:calc(-1.5px*var(--s))}
+.px-lineup .px::after{display:none}
+.menu-head .px{margin-top:8px}
+.px-beat{float:right;--s:2;margin:6px 0 14px 28px}
+@media (max-width:960px){.px-row{grid-template-columns:minmax(0,1fr);gap:20px}.px-row>.px{justify-self:start}}
+@media (max-width:640px){.px{--s:2}.px-lineup .px{--s:1.6}.px-lineup{gap:18px}.px-beat{--s:1.6;margin:4px 0 8px 16px}}
+@media (prefers-reduced-motion:reduce){.px-v img,.px-ai,.px-am{animation:none}}
+.pxc-pour .px-ai{animation:pxvi-pour 6770ms step-end infinite}
+.pxc-pour .px-am{animation:pxvm-pour 6770ms step-end infinite}
+.pxc-pour .px-am img{animation:pxr-pour 6770ms infinite}
+@keyframes pxvi-pour{0%{visibility:visible}75.628%,100%{visibility:hidden}}
+@keyframes pxvm-pour{0%{visibility:hidden}75.628%,100%{visibility:visible}}
+@keyframes pxr-pour{0%{transform:translateX(0);animation-timing-function:step-end}75.628%{transform:translateX(0);animation-timing-function:steps(11,end)}100%{transform:translateX(-100%)}}
+/* px:end */
+</style>
+</helmet>
+<div style="min-height:100vh" data-gt-root="">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-head" id="top">
+<div class="wrap">
+<div class="brand"><button type="button" class="bk-btn" data-theme-toggle aria-pressed="false" aria-label="Switch to dark mode (spill the ink)" title="Switch to dark mode (spill the ink)"><svg class="bk-logo" width="44" height="28" viewBox="0 0 50 32" fill="none" aria-hidden="true"><ellipse class="bk-pud" cx="40" cy="30.2" rx="9" ry="1.7" fill="#064F6E"></ellipse><circle class="bk-drop d1" cx="42" cy="9" r="1.4" fill="#064F6E"></circle><circle class="bk-drop d2" cx="42" cy="9" r="1.4" fill="#064F6E"></circle><circle class="bk-drop d3" cx="42" cy="9" r="1.4" fill="#064F6E"></circle><g class="bk-tip"><g class="bk-liq"><path d="M9.6 20 6.3 26.4A1.7 1.7 0 0 0 7.8 29h16.4a1.7 1.7 0 0 0 1.5-2.6L22.4 20z" fill="#064F6E"></path></g><path d="M11 3h10M13 3v9L6 26.4A1.7 1.7 0 0 0 7.8 29h16.4a1.7 1.7 0 0 0 1.5-2.6L19 12V3" stroke="#10131C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></g></svg></button><a href="Main.dc.html" class="brand-name">GelasTinta</a></div>
+<nav class="nav" aria-label="Main">
+<a href="Main.dc.html" class="on" aria-current="page">Home</a>
+<a href="Projects.dc.html">Projects</a>
+<a href="Talks.dc.html">Talks</a>
+<a href="Products.dc.html">Products</a>
+<a href="/packs/library/">Library</a>
+<a href="Author.dc.html">Author</a>
+</nav>
+</div>
+</header>
+
+<section id="main" class="sec hero rule-b" aria-label="Introduction">
+<div class="hero-slides" aria-hidden="true">
+<img src="/_blob/1cbb25cb1a353957951010a42aa58fc0" alt="" style="object-position:50% 50%;animation-delay:0s" fetchpriority="high">
+<img data-src="/_blob/54e236f0eae207dc01d1ee7e8e745b14" alt="" style="object-position:50% 50%;animation-delay:6s">
+<img data-src="/_blob/23e08ad3db1cd3399987c346362c040e" alt="" style="object-position:50% 35%;animation-delay:12s">
+<img data-src="/_blob/925865cb85607eb2acd1f76463392e38" alt="" style="object-position:50% 40%;animation-delay:18s">
+<img data-src="/_blob/74947f581310c4a58b511d52b0cf453a" alt="" style="object-position:50% 50%;animation-delay:24s">
+<img data-src="/_blob/56cca24a2040f046eb4863ee0c4e43b3" alt="" style="object-position:50% 45%;animation-delay:30s">
+<img data-src="/_blob/d0b69a4315655f68a6b39c11a4d7cd41" alt="" style="object-position:50% 40%;animation-delay:36s">
+<img data-src="/_blob/ac313a03702e49c46817e6592cccc59a" alt="" style="object-position:50% 45%;animation-delay:42s">
+<img data-src="/_blob/c29e846553651da3a89b2de97a131f51" alt="" style="object-position:50% 30%;animation-delay:48s">
+<img data-src="/_blob/249cc5a7a8debd1fc9946cfc9cdb6339" alt="" style="object-position:50% 40%;animation-delay:54s">
+<img data-src="/_blob/1f97d750e619e2798cb7b950bafd4e55" alt="" style="object-position:50% 55%;animation-delay:60s">
+<img data-src="/_blob/eb1ac40f26eec653825ed28360ae1ea5" alt="" style="object-position:50% 50%;animation-delay:66s">
+<img data-src="/_blob/574bcab85e93313f5104960f53d17495" alt="" style="object-position:50% 45%;animation-delay:72s">
+<img data-src="/_blob/2f91849e973c1cb47463883f45873c92" alt="" style="object-position:50% 30%;animation-delay:78s">
+<img data-src="/_blob/33efd841aaa3072adf596960a61e97cb" alt="" style="object-position:50% 45%;animation-delay:84s">
+<img data-src="/_blob/892c6d09ed4da6ce4df609c079b7b366" alt="" style="object-position:50% 55%;animation-delay:90s">
+<img data-src="/_blob/ba4b06e7983f90f6ed932b3e45b9f3c4" alt="" style="object-position:50% 60%;animation-delay:96s">
+<img data-src="/_blob/02a467c9baf6582f2ca67ac1c3522b32" alt="" style="object-position:50% 50%;animation-delay:102s">
+<img data-src="/_blob/6dbf7e766dcb2dc97f4c02e2787cb4ca" alt="" style="object-position:50% 45%;animation-delay:108s">
+<img data-src="/_blob/03497783b08521d4753e9b37d687b41d" alt="" style="object-position:50% 40%;animation-delay:114s">
+</div>
+<div class="hero-shade" aria-hidden="true"></div>
+<div class="wrap hero-grid">
+<div class="stack g24">
+<h1 class="hero-h">Ideas as in <span class="ink">Ink</span></h1>
+<p class="hero-quote">A metaphorical vessel where ideas flow like ink, shaped by structure yet free in spirit. It symbolizes intelligence as fluid creativity, balancing imagination and order to turn thoughts into meaningful stories and designs.</p>
+<p class="hero-quote-by">Gelas · glass  /  Tinta · ink</p>
+</div>
+<figure class="hero-vessel flask">
+<svg viewBox="0 0 640 470" width="100%" role="img" aria-label="The GelasTinta ink flask, labelled like an anatomy drawing: the glass, its scale, the ink, a new drop falling in and bubbles rising">
+<g transform="translate(150 40)">
+<path class="gt-ink" d="M75 250 Q118 236 160 250 T245 250 L289 350 Q295 371 274 371 H46 Q25 371 31 350 Z" fill="#064F6E"></path>
+<path class="gt-ink-b" d="M75 254 Q118 266 160 251 T245 246 L289 350 Q295 371 274 371 H46 Q25 371 31 350 Z" fill="none" visibility="hidden"></path>
+<path class="gt-glass" d="M102 40 H218 M122 40 V150 L31 350 Q25 371 46 371 H274 Q295 371 289 350 L198 150 V40" fill="none" stroke="#10131C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M198 70 H186 M198 95 H190 M198 120 H186" stroke="#10131C" stroke-width="2"></path>
+<path class="gt-drop" style="transform-box:fill-box;transform-origin:50% 100%" d="M160 168 C160 168 148 186 148 195 a12 12 0 0 0 24 0 C172 186 160 168 160 168Z" fill="#10131C"></path>
+<circle class="gt-bubble" style="transform-box:fill-box;transform-origin:50% 50%" cx="112" cy="300" r="6" fill="#EDEFF2" opacity="0.5"></circle>
+<circle class="gt-bubble" style="transform-box:fill-box;transform-origin:50% 50%" cx="200" cy="320" r="4" fill="#EDEFF2" opacity="0.5"></circle>
+<circle class="gt-bubble" style="transform-box:fill-box;transform-origin:50% 50%" cx="168" cy="286" r="3" fill="#EDEFF2" opacity="0.5"></circle>
+</g>
+<g class="gt-call" data-call="rim"><path d="M252 80 L222 64 L8 64"></path><circle cx="252" cy="80" r="3.2"></circle><text x="8" y="56" text-anchor="start">GELAS · THE GLASS<tspan class="sub" x="8" dy="22">gelas means glass</tspan></text></g>
+<g class="gt-call" data-call="wall"><path d="M231 280 L211 300 L8 300"></path><circle cx="231" cy="280" r="3.2"></circle><text x="8" y="292" text-anchor="start">STRUCTURE<tspan class="sub" x="8" dy="22">the shape that holds an idea</tspan></text></g>
+<g class="gt-call" data-call="bubble"><path d="M262 340 L232 440 L8 440"></path><circle cx="262" cy="340" r="3.2"></circle><text x="8" y="432" text-anchor="start">BUBBLES<tspan class="sub" x="8" dy="22">questions on the way up</tspan></text></g>
+<g class="gt-call" data-call="scale"><path d="M348 110 L420 110 L436 94 L632 94"></path><circle cx="348" cy="110" r="3.2"></circle><text x="632" y="86" text-anchor="end">SCALE · 300 ML<tspan class="sub" x="632" dy="22">measured, never guessed</tspan></text></g>
+<g class="gt-call" data-call="drop"><path d="M310 232 L440 232 L456 216 L632 216"></path><circle cx="310" cy="232" r="3.2"></circle><text x="632" y="208" text-anchor="end">A NEW DROP<tspan class="sub" x="632" dy="22">one more idea falls in</tspan></text></g>
+<g class="gt-call" data-call="ink"><path d="M356 350 L444 350 L460 334 L632 334"></path><circle cx="356" cy="350" r="3.2"></circle><text x="632" y="326" text-anchor="end">TINTA · THE INK<tspan class="sub" x="632" dy="22">tinta means ink</tspan></text></g>
+</svg>
+<figcaption><span>FIG. 00 · THE INK FLASK</span><span>Drag it · hover a label</span></figcaption>
+</figure>
+</div>
+<a class="hero-link" href="Author.dc.html#activities">Photos of activities around the studies <span aria-hidden="true">→</span></a>
+</section>
+
+
+
+<section class="sec">
+<div class="wrap">
+<div class="px-row">
+<div class="stack g16" style="max-width:820px">
+<p class="kicker">01 · About</p>
+<h2 class="t-h2">About</h2>
+<div class="prose intro" style="margin-top:8px">
+<p>This is a visual interpretation of my works and hobbies. Some things are essential in my professional persona and some are just fun, quirky drops of thought.</p>
+<p>While it’s important to highlight skills and journey of my life, I find comfort in sharing bits of my interest, from short thoughts to full-length rants.</p>
+<p>Much of how I think was shaped by Richard Feynman, and one line of his stays with me more than any equation:</p>
+</div>
+<blockquote class="fq">
+<p>“The highest forms of understanding we can achieve are laughter and human compassion.”</p>
+<cite>— Richard P. Feynman</cite>
+</blockquote>
+<div class="prose intro">
+<p>It reminds me that science doesn’t have to be cold: the best ideas make people smile and bring them closer. And over the years, the most valuable thing I have learned is not to answer every question, but to ask better questions.</p>
+</div>
+</div>
+<span class="px pxc-pour" style="--w:46" role="img" aria-label="The GelasTinta pixel character in a hoodie, pouring ink from a beaker"><span class="px-v px-ai" style="--n:8;--t:1280ms"><img src="/_blob/4c1e039267cfd582c0ee4d5930f6998b" alt="" draggable="false"></span><span class="px-v px-am" style="--n:11;--t:1650ms"><img src="/_blob/cf0cbbc176dcedea4a1c0d45350432cf" alt="" draggable="false"></span><span class="px-v px-hm" style="--n:11;--t:1650ms"><img src="/_blob/cf0cbbc176dcedea4a1c0d45350432cf" alt="" draggable="false"></span></span>
+</div>
+</div>
+</section>
+
+<!-- home2:show:start -->
+<section class="sec show rule-b" id="take-apart" aria-labelledby="take-apart-h">
+<div class="wrap">
+<div class="sec-head row">
+<div class="stack g12"><p class="kicker">02 · Take it apart</p><h2 class="t-h2" id="take-apart-h">See how it works, from the inside.</h2></div>
+<p class="small muted" style="max-width:34em">Every model runs on the numbers from the work behind it. Press play, turn it round, pull it open, then read why it moves the way it does.</p>
+</div>
+<p class="show-label">3D teardowns · free to open</p>
+<div class="show-grid"><a class="show-card" href="Thesis-BEng.dc.html#teardown"><span class="show-media"><video src="/_blob/a7a2ec56d41a4fb6335cccce0e566ec0" poster="/_blob/4fb8d82ceaa66093a2fb4ede16d29685" autoplay muted loop playsinline preload="metadata" aria-label="Looping clip: the BEng prosthetic hand closing its fingers" data-gt-autoplay=""></video><span class="show-tag free">3D · Free</span></span><span class="show-body"><span class="kicker">Project · prosthetic hand</span><span class="show-t">How a prosthetic hand closes</span><span class="show-p">One muscle signal drives six servos and five tendons, and each finger curls shut in 0.4 s.</span><span class="show-go">Open the 3D model →</span></span></a><a class="show-card" href="Thesis-MSc.dc.html#teardown"><span class="show-media"><video src="/_blob/e6fc443c7eecd7281cfd0ea374a86861" poster="/_blob/aa7c142444a3367c0c7f32ec09112840" autoplay muted loop playsinline preload="metadata" aria-label="Looping clip: the MSc soft limb bending as water fills its chambers" data-gt-autoplay=""></video><span class="show-tag free">3D · Free</span></span><span class="show-body"><span class="kicker">Project · soft robot limb</span><span class="show-t">How a soft limb bends</span><span class="show-p">A bellows pumps water into seven silicone chambers, and each one adds a little arc.</span><span class="show-go">Open the 3D model →</span></span></a><a class="show-card" href="Talk-HairClipFish.dc.html#teardown"><span class="show-media"><video src="/_blob/567f81890cb84aa4d0085a802ac1e885" poster="/_blob/e74003e0877eef96a568b09081e0156b" autoplay muted loop playsinline preload="metadata" aria-label="Looping clip: the hair clip fish flicking its tail" data-gt-autoplay=""></video><span class="show-tag free">3D · Free</span></span><span class="show-body"><span class="kicker">Talk 07 · hair clip fish</span><span class="show-t">How a hair clip fish swims</span><span class="show-p">One servo loads a snap hair clip slowly, then it flicks the tail across in 50 ms.</span><span class="show-go">Open the 3D model →</span></span></a></div>
+<p class="show-label">Inside the study packs · 3D teardowns</p>
+<div class="pj" data-pj role="region" aria-roledescription="slide projector" aria-label="3D teardowns inside the study packs"><div class="pj-screen"><a class="pj-slide on" href="/packs/thermo/" style="--sc:#A5C8D1;--st:#1C1F33" data-pj-slide="0"><img src="/_blob/2d565198a112496eb70dea982dafade6" alt="3D teardown in the Thermodynamics study pack: how a four stroke engine works" loading="lazy"><span class="pj-cap"><b>TH · Thermodynamics</b><strong>How a four stroke engine works</strong><em>Open the pack, first sheet free →</em></span></a><a class="pj-slide" href="/packs/robotics/" style="--sc:#D96629;--st:#FFFFFF" data-pj-slide="1" tabindex="-1" aria-hidden="true"><img src="/_blob/68488c3e434b15aa5fbdda2d241707bc" alt="3D teardown in the Robotics study pack: how a six axis arm reaches" loading="lazy"><span class="pj-cap"><b>RB · Robotics</b><strong>How a six axis arm reaches</strong><em>Open the pack, first sheet free →</em></span></a><a class="pj-slide" href="/packs/mechanics/" style="--sc:#D96629;--st:#FFFFFF" data-pj-slide="2" tabindex="-1" aria-hidden="true"><img src="/_blob/01a730495af4bf947a6c0bca2d34c661" alt="3D teardown in the Mechanics study pack: how a bottle jack lifts a car" loading="lazy"><span class="pj-cap"><b>T · Mechanics</b><strong>How a bottle jack lifts a car</strong><em>Open the pack, first sheet free →</em></span></a><a class="pj-slide" href="/packs/vib/" style="--sc:#40456A;--st:#FFFFFF" data-pj-slide="3" tabindex="-1" aria-hidden="true"><img src="/_blob/8f921a5ed82afae50c70763a7c4847fa" alt="3D teardown in the Vibration study pack: how a woofer moves air" loading="lazy"><span class="pj-cap"><b>VA · Vibration</b><strong>How a woofer moves air</strong><em>Open the pack, first sheet free →</em></span></a><a class="pj-slide" href="/packs/control/" style="--sc:#D8A37B;--st:#1C1F33" data-pj-slide="4" tabindex="-1" aria-hidden="true"><img src="/_blob/3f5668ec7cfb292149b2374cb4090be8" alt="3D teardown in the Control study pack: how a flyball governor holds speed" loading="lazy"><span class="pj-cap"><b>CE · Control</b><strong>How a flyball governor holds speed</strong><em>Open the pack, first sheet free →</em></span></a><a class="pj-slide" href="/packs/electronics/" style="--sc:#D8A37B;--st:#1C1F33" data-pj-slide="5" tabindex="-1" aria-hidden="true"><img src="/_blob/956815b1cf4684189f69f334562597fe" alt="3D teardown in the Electronics study pack: how a linear power supply works" loading="lazy"><span class="pj-cap"><b>E · Electronics</b><strong>How a linear power supply works</strong><em>Open the pack, first sheet free →</em></span></a><a class="pj-slide" href="/packs/fea/" style="--sc:#40456A;--st:#FFFFFF" data-pj-slide="6" tabindex="-1" aria-hidden="true"><img src="/_blob/eb949d7007ccb257fc6c15a2d2b21744" alt="3D teardown in the Computational study pack: how a 3d printer builds a part" loading="lazy"><span class="pj-cap"><b>FE · Computational</b><strong>How a 3D printer builds a part</strong><em>Open the pack, first sheet free →</em></span></a><a class="pj-slide" href="/packs/materials/" style="--sc:#A5C8D1;--st:#1C1F33" data-pj-slide="7" tabindex="-1" aria-hidden="true"><img src="/_blob/f623c259d1881b7e13c97f9cd36badc0" alt="3D teardown in the Materials study pack: how a tensile test pulls a bar apart" loading="lazy"><span class="pj-cap"><b>M · Materials</b><strong>How a tensile test pulls a bar apart</strong><em>Open the pack, first sheet free →</em></span></a><a class="pj-slide" href="/packs/maths/" style="--sc:#40456A;--st:#FFFFFF" data-pj-slide="8" tabindex="-1" aria-hidden="true"><img src="/_blob/1d510099a756540349d58ac6d140d393" alt="3D teardown in the Engineering Maths study pack: how a car rides over a hump" loading="lazy"><span class="pj-cap"><b>EM · Engineering Maths</b><strong>How a car rides over a hump</strong><em>Open the pack, first sheet free →</em></span></a><a class="pj-slide" href="/packs/advmat/" style="--sc:#D96629;--st:#FFFFFF" data-pj-slide="9" tabindex="-1" aria-hidden="true"><img src="/_blob/3a9020ae7664a81cc9043d924177c980" alt="3D teardown in the Advanced Materials study pack: how an electron microscope sees" loading="lazy"><span class="pj-cap"><b>AM · Advanced Materials</b><strong>How an electron microscope sees</strong><em>Open the pack, first sheet free →</em></span></a></div><div class="pj-deck"><button type="button" class="pj-btn" data-pj-step="-1" aria-label="Previous slide">←</button><div class="pj-body"><span class="pj-lens" aria-hidden="true"></span><span class="pj-count" aria-live="polite"><b data-pj-pos>1</b> / 10</span></div><button type="button" class="pj-btn" data-pj-step="1" aria-label="Next slide">→</button><button type="button" class="pj-btn" data-pj-play aria-pressed="true">▶ Auto</button></div><div class="pj-roll" role="group" aria-label="Film roll: pick a slide"><button type="button" class="pj-frame on" style="--sc:#A5C8D1" data-pj-go="0" aria-label="Show slide 1: How a four stroke engine works" aria-current="true"><img src="/_blob/2c9784f8721477ed5a9249b61abbcf99" alt="" loading="lazy"><span><i>TH</i> · Thermodynamics</span></button><button type="button" class="pj-frame" style="--sc:#D96629" data-pj-go="1" aria-label="Show slide 2: How a six axis arm reaches"><img src="/_blob/e1030b7e77f50c33010fde3671150d04" alt="" loading="lazy"><span><i>RB</i> · Robotics</span></button><button type="button" class="pj-frame" style="--sc:#D96629" data-pj-go="2" aria-label="Show slide 3: How a bottle jack lifts a car"><img src="/_blob/eebb4ed6ac444ffb35603bf0ff74d893" alt="" loading="lazy"><span><i>T</i> · Mechanics</span></button><button type="button" class="pj-frame" style="--sc:#40456A" data-pj-go="3" aria-label="Show slide 4: How a woofer moves air"><img src="/_blob/e42eac5c30d3d883d70301ea43562bec" alt="" loading="lazy"><span><i>VA</i> · Vibration</span></button><button type="button" class="pj-frame" style="--sc:#D8A37B" data-pj-go="4" aria-label="Show slide 5: How a flyball governor holds speed"><img src="/_blob/0a344be3d90e1c61128388f6ff51cd2e" alt="" loading="lazy"><span><i>CE</i> · Control</span></button><button type="button" class="pj-frame" style="--sc:#D8A37B" data-pj-go="5" aria-label="Show slide 6: How a linear power supply works"><img src="/_blob/ca361678c4f4f34bb9be864b10e9f4da" alt="" loading="lazy"><span><i>E</i> · Electronics</span></button><button type="button" class="pj-frame" style="--sc:#40456A" data-pj-go="6" aria-label="Show slide 7: How a 3D printer builds a part"><img src="/_blob/8e8f76ac6e7212067d3f8f538c873d9a" alt="" loading="lazy"><span><i>FE</i> · Computational</span></button><button type="button" class="pj-frame" style="--sc:#A5C8D1" data-pj-go="7" aria-label="Show slide 8: How a tensile test pulls a bar apart"><img src="/_blob/a0a81f339a1296e292903f0783b9212f" alt="" loading="lazy"><span><i>M</i> · Materials</span></button><button type="button" class="pj-frame" style="--sc:#40456A" data-pj-go="8" aria-label="Show slide 9: How a car rides over a hump"><img src="/_blob/ac1eb01d4c672c724b85395b6c012dba" alt="" loading="lazy"><span><i>EM</i> · Engineering Maths</span></button><button type="button" class="pj-frame" style="--sc:#D96629" data-pj-go="9" aria-label="Show slide 10: How an electron microscope sees"><img src="/_blob/32d924aaf406d1f9c5d7dfc48a1def0d" alt="" loading="lazy"><span><i>AM</i> · Advanced Materials</span></button></div><p class="pj-hint">Click a frame on the roll · ← → keys · swipe the screen</p></div>
+<div class="show-more"><p class="small muted">Each pack opens with a free first sheet. The teardowns sit inside the full pack.</p><a class="btn ghost" href="Products.dc.html#packs">See the study packs <span aria-hidden="true">→</span></a></div>
+</div>
+</section>
+<!-- home2:show:end -->
+
+<section class="sec white rule-t rule-b">
+<div class="wrap">
+<div class="sec-head row">
+<div class="stack g12">
+<p class="kicker">03 · Dissertations</p>
+<h2 class="t-h2">Featured works</h2>
+</div>
+<a class="btn" href="Projects.dc.html">All projects <span aria-hidden="true">→</span></a>
+</div>
+<div class="shelf-wrap" data-shelf><div class="shelf-bar"><button type="button" class="sh-btn" data-shelf-step="-1" aria-label="Previous book">←</button><span class="sh-count" aria-live="polite"><b data-shelf-pos>1</b> / 6</span><button type="button" class="sh-btn" data-shelf-step="1" aria-label="Next book">→</button><span class="sh-hint">Click a spine to pull it out · click the cover to read</span><button type="button" class="sh-btn sh-sound" data-shelf-sound aria-pressed="true">♪ Sound on</button></div><div class="shelf" role="group" aria-label="Featured works"><div class="book open" data-book="0" style="--c:#064F6E;--t:#FFFFFF;--b1:#5A82B3;--b2:#10131C;--h:100%"><button type="button" class="spine" data-pick="0" aria-expanded="true" aria-controls="sh-works-0" aria-label="MSc: Bio-Inspired Pneumatic Soft Actuators for Underwater Robots"><span class="sp-n">MSc</span><span class="sp-t">Soft Actuators, Underwater</span><span class="sp-y">UCL 25</span></button><a class="cover" id="sh-works-0" href="Thesis-MSc.dc.html"><span class="cv-img" style="background:#10131C"><img src="/_blob/e6b092fd16f445a4cdd7dec4374667d7" alt="Rayang holding the finished soft underwater robot prototype at UCL" loading="lazy" style="object-fit:cover;object-position:50% 32%"></span><span class="cv-body"><span class="kicker">Dissertation · MSc · UCL · 2025</span><span class="cv-t">Bio-Inspired Pneumatic Soft Actuators for Underwater Robots</span><span class="cv-p">Soft silicone limbs modelled on manta rays and trilobites, pumped with water so a robot can explore coral reefs without harming them.</span><span class="cv-m">University College London · 2025</span><span class="cv-go">Nutshell + full paper →</span></span></a></div><div class="book" data-book="1" style="--c:#10131C;--t:#FFFFFF;--b1:#4F4086;--b2:#5A82B3;--h:94%"><button type="button" class="spine" data-pick="1" aria-expanded="false" aria-controls="sh-works-1" aria-label="BEng: Constructing and Analysing the Performance of a Modified Prosthetic Hand"><span class="sp-n">BEng</span><span class="sp-t">A Modified Prosthetic Hand</span><span class="sp-y">EXE 23</span></button><a class="cover" id="sh-works-1" href="Thesis-BEng.dc.html"><span class="cv-img" style="background:#10131C"><img src="/_blob/d694dc45d8f43526db8f49c7eb77877a" alt="The finished 3D-printed prosthetic hand, palm side" loading="lazy" style="object-fit:cover;object-position:50% 50%"></span><span class="cv-body"><span class="kicker">Dissertation · BEng · Exeter · 2023</span><span class="cv-t">Constructing and Analysing the Performance of a Modified Prosthetic Hand</span><span class="cv-p">A low-cost, 3D-printed five-finger hand that closes when you flex your forearm muscles.</span><span class="cv-m">University of Exeter · 2023</span><span class="cv-go">Nutshell + full paper →</span></span></a></div><div class="book" data-book="2" style="--c:#4F4086;--t:#10131C;--b1:#10131C;--b2:#5A82B3;--h:97%"><button type="button" class="spine" data-pick="2" aria-expanded="false" aria-controls="sh-works-2" aria-label="H1: Rebuilding the InMoov robot hand"><span class="sp-n">H1</span><span class="sp-t">Rebuilding InMoov</span><span class="sp-y">23–24</span></button><a class="cover" id="sh-works-2" href="Hobby-InMoov.dc.html"><span class="cv-img" style="background:#10131C"><img src="/_blob/8dcea2945392b3e0d9b3bd41927badc4" alt="Freshly printed black InMoov parts laid out on a cutting mat beside a craft knife" loading="lazy" style="object-fit:cover;object-position:50% 50%"></span><span class="cv-body"><span class="kicker">Hobby build · 2023 – 2024</span><span class="cv-t">Rebuilding the InMoov robot hand</span><span class="cv-p">Printing and assembling Gaël Langevin’s open-source InMoov hand, from the first print to the first movement.</span><span class="cv-m">Build diary · 11 clips</span><span class="cv-go">Read the build diary →</span></span></a></div><div class="book" data-book="3" style="--c:#5A82B3;--t:#10131C;--b1:#4F4086;--b2:#064F6E;--h:91%"><button type="button" class="spine" data-pick="3" aria-expanded="false" aria-controls="sh-works-3" aria-label="H2: A fly’s brain when it tastes sugar?"><span class="sp-n">H2</span><span class="sp-t">A Fly’s Brain on Sugar</span><span class="sp-y">2026</span></button><a class="cover" id="sh-works-3" href="Hobby-FlyBrain.dc.html"><span class="cv-img" style="background:#10131C"><img src="/_blob/217a041e95fae2bb0ca236c2a9de533e" alt="Simulation replay: a glowing cloud of fruit-fly neurons inside a see-through fly head" loading="lazy" style="object-fit:cover;object-position:42% 55%"></span><span class="cv-body"><span class="kicker">Hobby build · 2026 · New</span><span class="cv-t">A fly’s brain when it tastes sugar?</span><span class="cv-p">The published whole-brain model of the fruit fly, fed sugar and followed spike by spike, then run again with two neurons silenced.</span><span class="cv-m">127,400 neurons · 5 interactive figures</span><span class="cv-go">Explore the simulation →</span></span></a></div><div class="book" data-book="4" style="--c:#1A1F2E;--t:#FFFFFF;--b1:#064F6E;--b2:#4F4086;--h:98%"><button type="button" class="spine" data-pick="4" aria-expanded="false" aria-controls="sh-works-4" aria-label="H3: Gesture Music, an instrument you play with hand signs"><span class="sp-n">H3</span><span class="sp-t">Gesture Music</span><span class="sp-y">25–26</span></button><a class="cover" id="sh-works-4" href="Hobby-GestureMusic.dc.html"><span class="cv-img" style="background:#FFFFFF"><img src="/_blob/a50cc93e9ed9fa232711a3f74eb2bf40" alt="The Gesture Music hand-sign dictionary: nine hand skeletons" loading="lazy" style="object-fit:contain;object-position:50% 50%;padding:18px"></span><span class="cv-body"><span class="kicker">Hobby build · 2025 – 2026 · New</span><span class="cv-t">Gesture Music, an instrument you play with hand signs</span><span class="cv-p">A webcam watches both hands and each sign plays a note, a chord or a drum, with a looper, live MIDI, a rhythm game and a 61-page handbook.</span><span class="cv-m">Open on GitHub · 61-page handbook</span><span class="cv-go">See it and try it →</span></span></a></div><div class="book" data-book="5" style="--c:#10131C;--t:#FFFFFF;--b1:#064F6E;--b2:#5A82B3;--h:93%"><button type="button" class="spine" data-pick="5" aria-expanded="false" aria-controls="sh-works-5" aria-label="H4: Building my own TARS"><span class="sp-n">H4</span><span class="sp-t">Building TARS</span><span class="sp-y">2025</span></button><a class="cover" id="sh-works-5" href="Hobby-TARS.dc.html"><span class="cv-img" style="background:#10131C"><img src="/_blob/72ff13df99d98450330d2613c1e1189a" alt="My printed TARS standing on a desk" loading="lazy" style="object-fit:cover;object-position:50% 60%"></span><span class="cv-body"><span class="kicker">Hobby build · 2025 · New</span><span class="cv-t">Building my own TARS</span><span class="cv-p">The robot from Interstellar, printed and assembled from the TARS-AI community’s open build kit, then taught seven new moves in a physics simulation.</span><span class="cv-m">Fan build · 7 new moves</span><span class="cv-go">Meet TARS →</span></span></a></div><span class="bookend" aria-hidden="true"></span></div></div>
+</div>
+</section>
+
+<section class="sec">
+<div class="wrap">
+<div class="sec-head row">
+<div class="stack g12">
+<p class="kicker">04 · Talks</p>
+<h2 class="t-h2">What’s new?</h2>
+</div>
+<a class="btn" href="Talks.dc.html">All talks <span aria-hidden="true">→</span></a>
+</div>
+<div class="shelf-wrap" data-shelf><div class="shelf-bar"><button type="button" class="sh-btn" data-shelf-step="-1" aria-label="Previous book">←</button><span class="sh-count" aria-live="polite"><b data-shelf-pos>1</b> / 5</span><button type="button" class="sh-btn" data-shelf-step="1" aria-label="Next book">→</button><span class="sh-hint">Click a spine to pull it out · click the cover to read</span><button type="button" class="sh-btn sh-sound" data-shelf-sound aria-pressed="true">♪ Sound on</button></div><div class="shelf" role="group" aria-label="Latest talks"><div class="book open" data-book="0" style="--c:#CAB356;--t:#111314;--b1:#111314;--b2:#BB7125;--h:96%"><button type="button" class="spine" data-pick="0" aria-expanded="true" aria-controls="sh-latest-0" aria-label="14: A Day Away. Voyager 1 Is Now One Light Day from Home"><span class="sp-n">14</span><span class="sp-t">A Day Away</span><span class="sp-y">Nov 26</span></button><a class="cover" id="sh-latest-0" href="Talk-Voyager.dc.html"><span class="cv-img" style="background:#111314"><img src="/_blob/9c8c4ece7789f21bf4a15d98dbfbc209" alt="The gold plated cover of the Voyager Golden Record against black" loading="lazy" style="object-fit:contain;object-position:50% 50%"></span><span class="cv-body"><span class="kicker">Talk 14 · New</span><span class="cv-t">A Day Away. Voyager 1 Is Now One Light Day from Home</span><span class="cv-p">Voyager 1 is the first spacecraft a full light day from Earth, so a radio hello now takes a day each way. How it got there, what it found and what it still carries.</span><span class="cv-m">20th November 2026 · 16 min read</span><span class="cv-go">Read the talk →</span></span></a></div><div class="book" data-book="1" style="--c:#0093A5;--t:#FFFFFF;--b1:#40456A;--b2:#D1B0A7;--h:93%"><button type="button" class="spine" data-pick="1" aria-expanded="false" aria-controls="sh-latest-1" aria-label="13: Skin in the Game. Why Noise Can Help Light Pile Up at One Edge"><span class="sp-n">13</span><span class="sp-t">Skin in the Game</span><span class="sp-y">Nov 26</span></button><a class="cover" id="sh-latest-1" href="Talk-SkinEffect.dc.html"><span class="cv-img" style="background:#40456A"><img src="/_blob/ce2c9f2fca64d8e2148366c7bc188439" alt="A man in a blue polo shirt making the time out sign with his hands" loading="lazy" style="object-fit:cover;object-position:50% 30%"></span><span class="cv-body"><span class="kicker">Talk 13</span><span class="cv-t">Skin in the Game. Why Noise Can Help Light Pile Up at One Edge</span><span class="cv-p">Lossy steps push light towards one edge. Scrambling its phase can speed that drift up, and damping kills or boosts it depending on when it acts.</span><span class="cv-m">13th November 2026 · 16 min read</span><span class="cv-go">Read the talk →</span></span></a></div><div class="book" data-book="2" style="--c:#F37F94;--t:#10131C;--b1:#66629C;--b2:#B6BFC1;--h:95%"><button type="button" class="spine" data-pick="2" aria-expanded="false" aria-controls="sh-latest-2" aria-label="12: Practice Makes Plastic. Brain Cells After One Typing Lesson"><span class="sp-n">12</span><span class="sp-t">Practice Makes Plastic</span><span class="sp-y">Nov 26</span></button><a class="cover" id="sh-latest-2" href="Talk-LearningBrain.dc.html"><span class="cv-img" style="background:#10131C"><img src="/_blob/e630aa6d0d98a9a270f6319834ff68ff" alt="A man typing furiously at a keyboard with a big grin" loading="lazy" style="object-fit:cover;object-position:50% 50%"></span><span class="cv-body"><span class="kicker">Talk 12</span><span class="cv-t">Practice Makes Plastic. Brain Cells After One Typing Lesson</span><span class="cv-p">A finger tapping lesson made brain cell bodies swell for a while and cell branches grow denser by the next day, seen in living people with an ultra strong MRI.</span><span class="cv-m">6th November 2026 · 14 min read</span><span class="cv-go">Read the talk →</span></span></a></div><div class="book" data-book="3" style="--c:#E34A2B;--t:#FFFFFF;--b1:#5A82B3;--b2:#F2D3CB;--h:92%"><button type="button" class="spine" data-pick="3" aria-expanded="false" aria-controls="sh-latest-3" aria-label="11: Folded Twice, Moves Eight Ways. A Bistable Origami Robot"><span class="sp-n">11</span><span class="sp-t">Folded Twice, Moves Eight Ways</span><span class="sp-y">Oct 26</span></button><a class="cover" id="sh-latest-3" href="Talk-OrigamiRobot.dc.html"><span class="cv-img" style="background:#10131C"><img src="/_blob/be14f7e1f50ae5d83ba42aa03955b24d" alt="Three papercraft cats, folded from flat sheets, sitting on a tiled floor" loading="lazy" style="object-fit:cover;object-position:50% 50%"></span><span class="cv-body"><span class="kicker">Talk 11</span><span class="cv-t">Folded Twice, Moves Eight Ways. A Bistable Origami Robot</span><span class="cv-p">A 0.81 g origami robot with two stable shapes: small magnetic nudges make it crawl or roll, one big pulse snaps it shut.</span><span class="cv-m">30th October 2026 · 13 min read</span><span class="cv-go">Read the talk →</span></span></a></div><div class="book" data-book="4" style="--c:#FFF200;--t:#10131C;--b1:#CC1236;--b2:#2B44C8;--h:100%"><button type="button" class="spine" data-pick="4" aria-expanded="false" aria-controls="sh-latest-4" aria-label="10: Chrome and Consequences. The Real Science Behind Cyberpunk’s Implants"><span class="sp-n">10</span><span class="sp-t">Chrome and Consequences</span><span class="sp-y">Oct 26</span></button><a class="cover" id="sh-latest-4" href="Talk-Cyberpunk.dc.html"><span class="cv-img" style="background:#10131C"><img src="/_blob/654691c00363657dd58c94a152c33ac5" alt="Close-up of a human eye with a Kiroshi implant: a glowing purple display in the iris and the brand name printed around it" loading="lazy" style="object-fit:cover;object-position:55% 45%"></span><span class="cv-body"><span class="kicker">Talk 10</span><span class="cv-t">Chrome and Consequences. The Real Science Behind Cyberpunk’s Implants</span><span class="cv-p">Sandevistans, Kiroshi eyes, biochips and engrams from Cyberpunk 2077 and Edgerunners, set against the real implants of 2026, plus rogue AI and cyberpsychosis.</span><span class="cv-m">23rd October 2026 · 17 min read</span><span class="cv-go">Read the talk →</span></span></a></div><span class="bookend" aria-hidden="true"></span></div></div>
+</div>
+</section>
+
+<section class="sec white rule-t">
+<div class="wrap">
+<div class="sec-head">
+<p class="kicker">05 · Explore</p>
+<h2 class="t-h2">Explore</h2>
+</div>
+<div class="cols-3">
+<a class="lib" href="Projects.dc.html">
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#064F6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 5h14M19.5 5v13L8.6 38.4A3 3 0 0 0 11.2 43h25.6a3 3 0 0 0 2.6-4.6L28.5 18V5"></path><path d="M13.2 30c3.6-1.6 7.2 1.6 10.8 0s7.2-1.6 10.8 0" stroke-width="1.6"></path><circle cx="24" cy="33" r="4.6"></circle><circle cx="24" cy="33" r="1.4"></circle><path d="M28.60 33.00L30.40 33.00 M27.25 36.25L28.53 37.53 M24.00 37.60L24.00 39.40 M20.75 36.25L19.47 37.53 M19.40 33.00L17.60 33.00 M20.75 29.75L19.47 28.47 M24.00 28.40L24.00 26.60 M27.25 29.75L28.53 28.47" stroke-width="2.2"></path><path d="M24 9.5h4.5M24 13.5h4.5" stroke-width="1.4"></path></svg>
+<div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px"><h3 class="t-h2" style="font-size:32px">Projects</h3><span class="go">Go →</span></div>
+<p class="small">Dissertations, hobby builds and their 3D teardowns.</p>
+</a>
+<a class="lib" href="Talks.dc.html">
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#064F6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 4C24 4 9 19.5 9 29a15 15 0 0 0 23.4 12.4L40 44l-2.6-7.2A15 15 0 0 0 39 29C39 19.5 24 4 24 4Z"></path><path d="M17.5 30h.01M24 30h.01M30.5 30h.01" stroke-width="3.6"></path></svg>
+<div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px"><h3 class="t-h2" style="font-size:32px">Talks</h3><span class="go">Go →</span></div>
+<p class="small">Monthly talks on papers, films, food and robots.</p>
+</a>
+<a class="lib" href="Author.dc.html">
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#064F6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 4 34 17.5 30.5 33h-13L14 17.5Z"></path><path d="M24 4v14.5"></path><circle cx="24" cy="21" r="2.6"></circle><path d="M16.5 33h15v5.5h-15Z"></path><path d="M24 41.5c-1.6 2-2.4 3.1-2.4 4a2.4 2.4 0 0 0 4.8 0c0-.9-.8-2-2.4-4Z" fill="#064F6E" stroke-width="1"></path></svg>
+<div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px"><h3 class="t-h2" style="font-size:32px">Author</h3><span class="go">Go →</span></div>
+<p class="small">Who draws all of this, and why.</p>
+</a>
+</div>
+</div>
+</section>
+
+<footer class="site-foot dark">
+<div class="wrap">
+<div class="foot-top">
+<div class="stack g16">
+<p class="kicker">Get in touch</p>
+<p class="foot-title">GelasTinta</p>
+<p class="foot-blurb">Open to collaborations, discussions, projects, and work in discussing creative science, design, and engineering work.</p>
+</div>
+<div class="stack g16">
+<a class="foot-mail" href="mailto:mendrofarayang@gmail.com">mendrofarayang@gmail.com</a>
+<p class="meta muted">Jakarta . London . Singapore</p>
+<div class="chips" style="gap:10px">
+<a class="social" href="https://www.linkedin.com/in/raysmendrofa/" aria-label="LinkedIn profile: raysmendrofa"><img src="/_blob/49604cde322d454326d28d8c5cfe5ff8" alt="" style="width:22px;height:22px">LinkedIn</a>
+<a class="social" href="mailto:mendrofarayang@gmail.com" aria-label="Email: mendrofarayang@gmail.com"><img src="/_blob/ee68aabd0584895696ec1ef146936038" alt="" style="width:22px;height:auto">Email</a>
+<a class="social" href="https://wa.me/447376459918" aria-label="WhatsApp: +44 7376459918"><img src="/_blob/d7adca6684b39bdbd090afff2eeb09ea" alt="" style="width:22px;height:22px">WhatsApp +44</a>
+<a class="social" href="https://www.youtube.com/@gelastinta" aria-label="GelasTinta on YouTube: @gelastinta"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2" y="5" width="20" height="14" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 9l5 3-5 3z" fill="currentColor"/></svg>YouTube</a>
+<a class="social" href="https://www.instagram.com/gelastinta/" aria-label="GelasTinta on Instagram: @gelastinta"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/></svg>Instagram</a>
+<a class="social" href="https://www.tiktok.com/@gelastinta.com" aria-label="GelasTinta on TikTok: @gelastinta.com"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M14 3c.5 2.6 2.4 4.4 5 4.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>TikTok</a>
+</div>
+</div>
+</div>
+<!-- nav2:foot:start --><nav class="foot-nav" aria-label="Site"><a href="Main.dc.html" aria-current="page">Home</a><a href="Projects.dc.html">Projects</a><a href="Talks.dc.html">Talks</a><a href="Products.dc.html">Products</a><a href="/packs/library/">Library</a><a href="Author.dc.html">Author</a><a class="to-top" href="#top">Back to top <span aria-hidden="true">↑</span></a></nav>
+<!-- nav2:foot:end -->
+<div class="tblock">
+<div><span>DRAWN BY</span><span>Rayang T Mendrofa</span></div>
+<div><span>SHEET</span><span>01 · HOME</span></div>
+<div><span>SCALE</span><span>1 : IDEA</span></div>
+<div><span>REV.</span><span>Website 2026 Gelastinta.</span></div>
+</div>
+<!-- wadasite:start --><p class="wada-credit"><span class="wada-mini" aria-hidden="true"><i style="background:#4F4086"></i><i style="background:#5A82B3"></i><i style="background:#10131C"></i><i style="background:#064F6E"></i></span><span>SITE PALETTE · Sanzo Wada, <i>A Dictionary of Color Combinations</i>, No. 344 · Aconite Violet, Cinnamon Buff, with the site ink and blue in place of Wada’s Black and Deep Lyons Blue</span></p>
+<!-- wadasite:end -->
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":4400}}'>
+class Component extends DCLogic {
+  // ── GelasTinta motion layer (anime.js v4) ─────────────────────────────
+  componentDidMount() { this.gtStart(0); this.gtMedia(0); this.gtTheme(); this.gtFigs(); }
+  componentWillUnmount() {
+    if (this.thOff) this.thOff();
+    this.gtFigStop();
+    clearTimeout(this.gtWait);
+    clearInterval(this.gtSlideT);
+    clearTimeout(this.gtMediaWait);
+    if (this.gtVIO) this.gtVIO.disconnect();
+    if (this.gtIO) this.gtIO.disconnect();
+    if (this.gtScope) this.gtScope.revert();
+  }
+  componentDidUpdate() {
+    const A = window.anime;
+    if (!A || !this.gtReady) return;
+    // "Show the science" panels: grow open inside their own box (height + fade), never overlapping the page
+    if (this.gtRoot && !(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) {
+      Array.from(this.gtRoot.querySelectorAll('.more-body:not([data-gt-in])')).forEach((el) => {
+        el.setAttribute('data-gt-in', '');
+        const h = el.scrollHeight;
+        el.style.overflow = 'hidden';
+        A.animate(el, {
+          height: [0, h], opacity: [0, 1], duration: 480, ease: 'out(3)',
+          onComplete: () => { el.style.height = ''; el.style.overflow = ''; el.style.opacity = ''; }
+        });
+      });
+    }
+    const st = this.state || {};
+    const prev = this.gtPrev || {};
+    const root = this.gtRoot;
+    if (root && st.sel !== prev.sel && prev.seen) {
+      const panel = root.querySelector('[role="tabpanel"]');
+      if (panel) A.animate(panel.children, { opacity: { from: 0 }, x: { from: 18 }, delay: A.stagger(70), duration: 520, ease: 'out(3)' });
+    }
+    if (root && st.slide !== prev.slide && prev.seen) {
+      const img = root.querySelector('.gal-img');
+      if (img) A.waapi.animate(img, { opacity: [0, 1], scale: [1.04, 1], duration: 600, ease: 'out(3)' });
+      const cap = root.querySelectorAll('.gal-cap > *');
+      if (cap.length) A.animate(cap, { opacity: { from: 0 }, y: { from: 10 }, delay: A.stagger(60), duration: 450, ease: 'out(3)' });
+    }
+    if (root && st.zoom && st.zoom !== prev.zoom) {
+      const z = root.querySelector('.zoom img');
+      if (z) A.animate(z, { scale: { from: 0.9 }, opacity: { from: 0 }, ease: A.spring({ bounce: 0.35, duration: 500 }) });
+    }
+    this.gtPrev = { sel: st.sel, slide: st.slide, zoom: st.zoom, seen: true };
+  }
+  // Media loading (independent of anime.js): hero slides load just before their turn; clips play only on screen
+  gtMedia(tries) {
+    const root = document.querySelector('[data-gt-root]') || document.body;
+    if (!root.querySelector('img[data-src], video[data-gt-autoplay]')) {
+      if (tries < 20) this.gtMediaWait = setTimeout(() => this.gtMedia(tries + 1), 150);
+      return;
+    }
+    const still = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+    // 1 · Home hero slideshow: slide k fades in at k×6 s, so fetch it ~5 s ahead
+    const slides = Array.from(root.querySelectorAll('.hero-slides img[data-src]'));
+    if (slides.length && !still) {
+      const t0 = performance.now();
+      const tick = () => {
+        const t = (performance.now() - t0) / 1000;
+        let left = 0;
+        slides.forEach((img, i) => {
+          if (img.getAttribute('src')) return;
+          const k = i + 1;
+          if (t >= k * 6 - 5) { img.decoding = 'async'; img.src = img.getAttribute('data-src'); }
+          else left++;
+        });
+        if (!left) clearInterval(this.gtSlideT);
+      };
+      tick();
+      this.gtSlideT = setInterval(tick, 1000);
+    }
+    // 2 · Looping clips: muted inline video, playing only while visible
+    const vids = Array.from(root.querySelectorAll('video[data-gt-autoplay]'));
+    if (vids.length) {
+      vids.forEach((v) => { v.muted = true; v.defaultMuted = true; v.playsInline = true; v.loop = true; });
+      if (still) {
+        vids.forEach((v) => { v.removeAttribute('autoplay'); v.autoplay = false; v.pause(); v.controls = true; });
+      } else if ('IntersectionObserver' in window) {
+        this.gtVIO = new IntersectionObserver((entries) => {
+          entries.forEach((e) => {
+            const v = e.target;
+            if (e.isIntersecting) { const p = v.play(); if (p && p.catch) p.catch(() => {}); }
+            else v.pause();
+          });
+        }, { rootMargin: '120px 0px' });
+        vids.forEach((v) => this.gtVIO.observe(v));
+      } else {
+        vids.forEach((v) => { const p = v.play(); if (p && p.catch) p.catch(() => {}); });
+      }
+    }
+  }
+  gtStart(tries) {
+    // Inside a frame (the design canvas, an embed), keep the page static: browsers pause or slow
+    // animation in off-screen frames, which can leave reveals stuck half-way and the canvas laggy.
+    // The live site always runs as a normal tab, so the motion layer still plays there.
+    try { if (window.self !== window.top) return; } catch (e) { return; }
+    const A = window.anime;
+    if (!A) {
+      if (tries < 60) this.gtWait = setTimeout(() => this.gtStart(tries + 1), 100);
+      return;
+    }
+    const root = document.querySelector('[data-gt-root]');
+    if (!root || this.gtScope) return;
+    this.gtRoot = root;
+    this.gtLayouts = [];
+    this.gtPrev = { sel: (this.state || {}).sel, slide: (this.state || {}).slide, seen: true };
+    A.engine.pauseOnDocumentHidden = false;
+    const self = this;
+    this.gtScope = A.createScope({
+      root: root,
+      mediaQueries: { still: '(prefers-reduced-motion: reduce)', touch: '(hover: none)', small: '(max-width: 640px)' }
+    }).add((scope) => {
+      if (scope.matches.still) return;
+      const m = scope.matches;
+      const run = (name, fn) => { try { fn(); } catch (e) { console.warn('[gt-motion] ' + name, e); } };
+      run('motion', () => self.gtMotion(A, root, m));
+    });
+    this.gtReady = true;
+  }
+  gtMotion(A, root, m) {
+    const { animate, createTimeline, createTimer, stagger, splitText, scrambleText, onScroll, createDrawable,
+      morphTo, createMotionPath, createAnimatable, createDraggable, createLayout, waapi, spring, cubicBezier,
+      steps, irregular, utils } = A;
+    const $ = (sel, el) => Array.from((el || root).querySelectorAll(sel));
+    const DYN = '.gal, [role="tabpanel"], [role="tablist"], #comments, [id^="comments"], .ratio, .lm-row, .readout, .viz-body, .zoom, .cad, sc-for';
+    const isStatic = (el) => !el.closest(DYN);
+    const plain = (el) => el.children.length === 0 && el.textContent.trim().length > 0 && !/[<>]/.test(el.textContent);
+    const glide = cubicBezier(0.2, 0.75, 0.1, 1);
+    const done = new Set();
+    // Content is never hidden ahead of time: an element only animates once it is actually on screen
+    // (IntersectionObserver also works when the page sits inside a frame scrolled by its parent),
+    // and every reveal has a timer that snaps it to its finished state if the animation stalls.
+    const pending = new Map();
+    const io = window.IntersectionObserver ? new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        const fn = pending.get(e.target);
+        pending.delete(e.target);
+        io.unobserve(e.target);
+        if (fn) { try { fn(); } catch (err) { console.warn('[gt-motion] reveal', err); } }
+      });
+    }, { rootMargin: '0px 0px -4% 0px' }) : null;
+    this.gtIO = io;
+    const when = (el, fn) => { if (!io || !el) return; pending.set(el, fn); io.observe(el); };
+    const guard = (anim, ms) => { setTimeout(() => { try { if (anim && !anim.completed) anim.complete(); } catch (e) {} }, ms); return anim; };
+    const safe = (name, fn) => { try { fn(); } catch (e) { console.warn('[gt-motion] ' + name, e); } };
+    const calm = m.touch || m.small;
+    const head = root.querySelector('.site-head');
+    const hero = head ? head.nextElementSibling : null;
+    const intro = createTimeline({ defaults: { ease: glide, duration: 700 } });
+
+    // 1 ── header: brand flask fills, outline draws, nav staggers in
+    safe('1', () => {
+      if (head) {
+        const flask = head.querySelector('.brand svg');
+        if (flask) {
+          const [liquid, glass] = flask.querySelectorAll('path');
+          if (glass) intro.add(createDrawable(glass), { draw: ['0 0', '0 1'], duration: 900, ease: 'inOut(3)' }, 0);
+          if (liquid) {
+            liquid.style.transformBox = 'fill-box';
+            liquid.style.transformOrigin = '50% 100%';
+            intro.add(liquid, { scaleY: { from: 0 }, ease: spring({ bounce: 0.45, duration: 900 }) }, 350);
+          }
+        }
+        intro.add($('.nav a', head), { opacity: { from: 0 }, y: { from: -10 }, delay: stagger(60), duration: 500 }, 100);
+      }
+    });
+
+    // 2 ── hero: kicker scramble → split title rises → the rest follows
+    safe('2', () => {
+      if (hero) {
+        intro.label('hero', 200);
+        const hk = hero.querySelector('.kicker');
+        if (hk && plain(hk) && isStatic(hk)) {
+          intro.add(hk, { innerHTML: scrambleText({ chars: 'A-Z0-9—·', cursor: '_', revealRate: 70, settleDuration: 260 }) }, 'hero');
+          done.add(hk);
+        }
+        const h1 = hero.querySelector('h1');
+        if (h1 && isStatic(h1)) {
+          const split = splitText(h1, { words: { wrap: 'clip' }, chars: true });
+          this.gtSplits = (this.gtSplits || []).concat([split]);
+          const each = utils.clamp(900 / Math.max(1, split.chars.length), 8, 34);
+          intro.add(split.chars, {
+            y: { from: '110%' }, rotate: { from: () => utils.random(-14, 14) },
+            delay: stagger(each, { ease: 'out(2)' }), ease: spring({ bounce: 0.3, duration: 900 })
+          }, 'hero+=120');
+          done.add(h1);
+        }
+        const BG = /hero-slides|hero-shade|cp-hero-bg|cp-hero-shade/;
+        const restSet = new Set();
+        if (h1) {
+          const P = h1.parentElement;
+          Array.from(P.children).forEach((c) => { if (c !== h1 && c !== hk) restSet.add(c); });
+          const W = P.parentElement;
+          if (W && W !== hero && hero.contains(W)) Array.from(W.children).forEach((c) => { if (c !== P) restSet.add(c); });
+        }
+        $(':scope > .hero-link', hero).forEach((c) => restSet.add(c));
+        const rest = Array.from(restSet).filter((el) => !BG.test(el.className || '') && el.tagName !== 'IMG');
+        if (rest.length) intro.add(rest, { opacity: { from: 0 }, y: { from: 22 }, delay: stagger(80) }, 'hero+=420');
+        rest.forEach((el) => done.add(el));
+
+        // parallax on hero photography / CFD background
+        const bg = hero.querySelector('.cp-hero-bg, .hero-slides');
+        if (bg) animate(bg, { y: [0, 140], scale: [1.06, 1.06], ease: 'linear', autoplay: onScroll({ target: hero, enter: 'top top', leave: 'bottom top', sync: 0.25 }) });
+      }
+    });
+
+    // 3 ── Home hero vessel: ink sloshes (morphTo), outline draws, drop falls, bubbles rise, glass is draggable
+    safe('3', () => {
+      const vessel = root.querySelector('.hero-vessel svg');
+      if (vessel) {
+        const ink = vessel.querySelector('.gt-ink');
+        const inkB = vessel.querySelector('.gt-ink-b');
+        if (ink && inkB) {
+          animate(ink, { d: morphTo(inkB, 0), duration: 2600, ease: 'inOut(2)', loop: true, alternate: true });
+        }
+        const glass = vessel.querySelector('.gt-glass');
+        if (glass) animate(createDrawable(glass), { draw: ['0 0', '0 1'], duration: 1800, delay: 300, ease: 'inOut(3)' });
+        // home2: callout leaders draw out from the glass, then their labels fade in
+        $('.gt-call', vessel).forEach((g, i) => {
+          const ln = g.querySelector('path'); const dot = g.querySelector('circle'); const tx = g.querySelector('text');
+          if (ln) animate(createDrawable(ln), { draw: ['0 0', '0 1'], duration: 700, delay: 1300 + i * 140, ease: 'out(3)' });
+          if (dot) animate(dot, { scale: { from: 0 }, duration: 500, delay: 1200 + i * 140, ease: spring({ bounce: 0.5, duration: 600 }) });
+          if (tx) animate(tx, { opacity: { from: 0 }, x: { from: tx.getAttribute('text-anchor') === 'end' ? 12 : -12 }, duration: 600, delay: 1650 + i * 140 });
+        });
+        const drop = vessel.querySelector('.gt-drop');
+        if (drop) {
+          animate(drop, {
+            keyframes: [
+              { y: -40, opacity: 0, duration: 0 },
+              { y: 0, opacity: 1, duration: 500, ease: 'out(2)' },
+              { y: 62, scaleY: 1.25, duration: 650, ease: 'in(3)' },
+              { opacity: 0, scaleY: 0.4, duration: 120 }
+            ],
+            loop: true, loopDelay: 1400
+          });
+        }
+        const bubbles = $('.gt-bubble', vessel);
+        if (bubbles.length) {
+          animate(bubbles, {
+            y: { to: () => -utils.random(40, 90) }, opacity: [0.5, 0], scale: [1, 0.4],
+            duration: () => utils.random(2200, 3400), delay: stagger(500, { from: 'random' }),
+            loop: true, ease: 'out(2)'
+          });
+        }
+        if (!m.touch && !m.small) {
+          createDraggable(vessel, {
+            container: vessel.closest('section'),
+            releaseStiffness: 260, releaseDamping: 14, cursor: { onHover: 'grab', onGrab: 'grabbing' },
+            onRelease: (d) => { animate(d, { x: 0, y: 0, ease: spring({ bounce: 0.55, duration: 1100 }) }); }
+          });
+          vessel.style.touchAction = 'none';
+        }
+      }
+    });
+
+    // 4 ── code chips: a timer re-scrambles one chip at a time; <error> glitches on steps
+    safe('4', () => {
+      const chips = $('.code-chip');
+      if (chips.length) {
+        createTimer({
+          duration: 3200, loop: true,
+          onLoop: () => {
+            const c = utils.randomPick(chips);
+            const txt = c.dataset.gtText || (c.dataset.gtText = c.textContent);
+            const pool = 'abcdefghijklmnopqrstuvwxyz01#_'.split('');
+            const o = { p: 0 };
+            animate(o, {
+              p: 1, duration: 650, ease: steps(txt.length),
+              onUpdate: () => {
+                const n = Math.round(o.p * txt.length);
+                c.textContent = txt.slice(0, n) + Array.from(txt.slice(n)).map((ch) => (/[a-z.]/i.test(ch) ? utils.randomPick(pool) : ch)).join('');
+              },
+              onComplete: () => { c.textContent = txt; }
+            });
+          }
+        });
+        const err = chips.find((c) => /error/i.test(c.textContent));
+        if (err) animate(err, { x: [0, -3, 3, -2, 0], ease: steps(5), duration: 360, loop: true, loopDelay: 2600 });
+      }
+    });
+
+    // 5 ── "coming soon" chips flicker like a faulty neon tube
+    safe('5', () => {
+      $('.chip.warn').forEach((c) => {
+        animate(c, { opacity: [1, 0.35, 1], ease: irregular(14, 1.6), duration: 1400, loop: true, loopDelay: 2200 });
+      });
+    });
+
+    // 6 ── kickers scramble in, h2 headings rise word by word
+    safe('6', () => {
+      $('.kicker').filter((k) => !done.has(k) && plain(k) && isStatic(k)).forEach((k) => {
+        when(k, () => guard(animate(k, { innerHTML: scrambleText({ chars: 'A-Z0-9—', revealRate: 80, settleDuration: 220 }) }), 2500));
+      });
+      $('h2.t-h2, .foot-title').filter((h) => isStatic(h) && !done.has(h)).forEach((h) => {
+        when(h, () => {
+          // the split is undone as soon as the animation ends, so the heading's markup goes back to plain text
+          // (otherwise editing it in the canvas would save the animation's word wrappers into the page)
+          const s = splitText(h, { words: { wrap: 'clip' } });
+          guard(animate(s.words, { y: { from: '105%' }, delay: stagger(55), duration: 800, ease: glide, onComplete: () => s.revert() }), 800 + s.words.length * 55 + 800);
+        });
+      });
+    });
+
+    // 7 ── grids reveal with a staggered wave (grid-aware where the layout is a grid)
+    safe('7', () => {
+      const groups = $('.cols-2, .cols-3, .cols-4, .terms, .cost, .quotes, .mp, .art-list, .steps, .tl, .ef, .toy-tab, .spec, .chips')
+        .filter((g) => isStatic(g) && !done.has(g) && !g.closest('.site-head') && !(hero && hero.contains(g)));
+      groups.forEach((g) => {
+        const kids = Array.from(g.children).filter((k) => !done.has(k));
+        if (!kids.length) return;
+        kids.forEach((k) => done.add(k));
+        const cols = (getComputedStyle(g).gridTemplateColumns || 'none').split(' ').filter((x) => x !== 'none').length;
+        const rows = cols > 1 ? Math.ceil(kids.length / cols) : 0;
+        const delay = cols > 1 && rows > 1 ? stagger(70, { grid: [cols, rows], from: 'first' }) : stagger(70);
+        when(g, () => guard(animate(kids, {
+          opacity: { from: 0 }, y: { from: 28 }, scale: { from: 0.97 },
+          delay: delay, duration: 750, ease: glide
+        }), 750 + kids.length * 70 + 900));
+      });
+    });
+
+    // 8 ── single blocks fade up as they enter
+    safe('8', () => {
+      $('.col > p, .col-wide > p, .article figure, .viz, .eq-wrap, .paper-fig, .card, blockquote, .meme, .meme-sm, .take, .side, .stat, .quote, .prose > p')
+        .filter((el) => isStatic(el) && !done.has(el) && !el.closest('.site-head') && !(hero && hero.contains(el)) && !Array.from(done).some((d) => d !== el && d.contains && d.contains(el)))
+        .forEach((el) => {
+          done.add(el);
+          when(el, () => guard(animate(el, { opacity: { from: 0 }, y: { from: 18 }, duration: 700, ease: glide }), 1500));
+        });
+    });
+
+    // 9 ── photos: hardware-accelerated clip reveal (WAAPI) as they enter
+    safe('9', () => {
+      $('figure img, .tile-art img, .art-thumb img, .paper-fig img, .wfig img')
+        .filter((img) => isStatic(img) && !(hero && hero.contains(img)) && !img.closest('.hero-slides'))
+        .forEach((img) => {
+          when(img, () => waapi.animate(img, {
+            clipPath: ['inset(0 0 100% 0)', 'inset(0 0 0% 0)'], scale: [1.08, 1], duration: 1100, ease: 'out(4)'
+          }));
+        });
+    });
+
+    // 10 ── numbers count up (keeps prefix, suffix, commas and decimals)
+    safe('10', () => {
+      $('.stat b, .art-num, .mp b').filter((b) => plain(b) && isStatic(b)).forEach((b) => {
+        const raw = b.textContent;
+        const mm = raw.match(/^([^\d]*?)(\d[\d,]*(?:\.\d+)?)(.*)$/);
+        if (!mm) return;
+        const target = parseFloat(mm[2].replace(/,/g, ''));
+        const decimals = (mm[2].split('.')[1] || '').length;
+        const comma = mm[2].indexOf(',') >= 0;
+        const pad = /^0\d/.test(mm[2]) ? mm[2].length : 0;
+        const isYear = !comma && !decimals && target >= 1800 && target <= 2100;
+        const fmt = (v) => {
+          let s = decimals ? utils.round(v, decimals).toFixed(decimals) : String(Math.round(v));
+          if (comma) s = Number(s).toLocaleString('en-GB', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+          if (pad) s = utils.padStart(s, pad, '0');
+          return mm[1] + s + mm[3];
+        };
+        when(b, () => {
+          const o = { v: isYear ? target - 80 : 0 };
+          guard(animate(o, {
+            v: target, duration: 1600, ease: 'out(4)',
+            onUpdate: () => { b.textContent = fmt(o.v); },
+            onComplete: () => { b.textContent = raw; }
+          }), 2600);
+        });
+      });
+    });
+
+    // 11 ── line drawings: stroked chart lines draw themselves in (createDrawable)
+    safe('11', () => {
+      $('svg[role="img"]').filter((s) => isStatic(s) && !s.closest('.hero-vessel') && !s.closest('.site-head')).forEach((s) => {
+        const strokes = $('path, line, polyline, rect, circle', s).filter((p) => {
+          const cs = getComputedStyle(p);
+          return cs.stroke && cs.stroke !== 'none' && (cs.fill === 'none' || p.getAttribute('fill') === 'none') && !p.classList.contains('gt-rider');
+        });
+        if (!strokes.length) return;
+        when(s, () => guard(animate(createDrawable(strokes), { draw: ['0 0', '0 1'], delay: stagger(40), duration: 1400, ease: 'inOut(3)' }), 1400 + strokes.length * 40 + 900));
+      });
+    });
+
+    // 12 ── Navier–Stokes chart B: a dot rides the y² curve up to the blowup (createMotionPath)
+    safe('12', () => {
+      const curve = root.querySelector('.gt-curve');
+      const rider = root.querySelector('.gt-rider');
+      if (curve && rider) {
+        animate(rider, Object.assign({}, createMotionPath(curve), {
+          ease: 'in(3)', duration: 2600, loop: true, loopDelay: 700,
+          opacity: [{ to: 1, duration: 200 }, { to: 1, duration: 2200 }, { to: 0, duration: 200 }]
+        }));
+      }
+    });
+
+    // 13 ── reading progress bar synced to scroll
+    safe('13', () => {
+      const bar = root.querySelector('.gt-progress');
+      if (bar) animate(bar, { scaleX: [0, 1], ease: 'linear', autoplay: onScroll({ target: root, enter: 'top top', leave: 'bottom bottom', sync: 0.15 }) });
+    });
+
+    // 14 ── "Show the science" panels: mark the ones already open so only new openings animate
+    safe('14', () => { $('.more-body').forEach((el) => el.setAttribute('data-gt-in', '')); });
+
+    // 15 ── magnetic buttons (createAnimatable)
+    safe('15', () => {
+      if (calm) return;
+      $('.btn, .social, .hero-link, .back, .foot-mail, .gal-nav').forEach((el) => {
+        let a = null;
+        el.addEventListener('pointermove', (e) => {
+          if (!a) a = createAnimatable(el, { x: 500, y: 500, ease: 'out(3)' });
+          const r = el.getBoundingClientRect();
+          a.x(utils.clamp((e.clientX - (r.left + r.width / 2)) * 0.25, -10, 10));
+          a.y(utils.clamp((e.clientY - (r.top + r.height / 2)) * 0.35, -8, 8));
+        });
+        el.addEventListener('pointerleave', () => { if (a) { a.x(0); a.y(0); } });
+      });
+    });
+
+    // 16 ── cards tilt toward the pointer and spring back
+    safe('16', () => {
+      if (calm) return;
+      $('.tile, .art-row, .poster-link, .card, .term, .stat').filter(isStatic).forEach((el) => {
+        let a = null;
+        el.addEventListener('pointerenter', () => {
+          if (!a) { utils.set(el, { perspective: '900px' }); a = createAnimatable(el, { rotateX: 400, rotateY: 400, ease: 'out(3)' }); }
+          animate(el, { translateY: -6, ease: spring({ bounce: 0.5, duration: 600 }) });
+        });
+        el.addEventListener('pointermove', (e) => {
+          if (!a) return;
+          const r = el.getBoundingClientRect();
+          a.rotateY(utils.mapRange(e.clientX, r.left, r.right, -4, 4));
+          a.rotateX(utils.mapRange(e.clientY, r.top, r.bottom, 4, -4));
+        });
+        el.addEventListener('pointerleave', () => {
+          if (a) { a.rotateX(0); a.rotateY(0); }
+          animate(el, { translateY: 0, ease: spring({ bounce: 0.5, duration: 700 }) });
+        });
+      });
+    });
+
+    // 17 ── safety net: the opening sequence always ends fully visible, even if the animation clock stalls
+    const unsplit = () => { (this.gtSplits || []).forEach((sp) => { try { sp.revert(); } catch (e) {} }); this.gtSplits = []; };
+    intro.then(unsplit);
+    setTimeout(() => { try { if (!intro.completed) intro.complete(); } catch (e) {} unsplit(); }, 4500);
+  }
+  // ── end motion layer ──────────────────────────────────────────────────
+  // ── Bookshelf: click a spine to pull a book out; ←/→, arrow keys and wheel/swipe step one book at a time,
+  // each with a page-flip sound (synthesized, mutable). One document listener + a light rescan, so it keeps
+  // working if the page re-renders. Without the script the shelf falls back to hover (CSS).
+  gtFigs() {
+    if (this.shOn) return;
+    this.shOn = true;
+    this.pjBind();
+    const guard = (fn) => (e) => { try { fn.call(this, e); } catch (err) { if (window.console) console.warn('[shelf]', err); } };
+    const L = [['click', guard(this.shClick), true], ['keydown', guard(this.shKey), true], ['wheel', guard(this.shWheel), { passive: false, capture: true }],
+               ['touchstart', guard(this.shTouch), { passive: true, capture: true }], ['touchend', guard(this.shTouch), { passive: true, capture: true }]];
+    L.forEach((l) => document.addEventListener(l[0], l[1], l[2]));
+    this.shOff = () => L.forEach((l) => document.removeEventListener(l[0], l[1], l[2]));
+    const scan = guard(this.shScan);
+    scan();
+    this.shInt = setInterval(scan, 600);
+  }
+  gtFigStop() { clearInterval(this.shInt); if (this.shOff) this.shOff(); this.shOn = false; if (this.pjOff) this.pjOff(); }
+  // home2:pj:start ── study pack projector: the film roll, arrows, keys, swipe and a slow auto advance
+  pjBind() {
+    if (this.pjOn) return;
+    this.pjOn = true;
+    const guard = (fn) => (e) => { try { fn.call(this, e); } catch (err) { if (window.console) console.warn('[projector]', err); } };
+    const click = guard((e) => {
+      const t = e.target && e.target.closest ? e.target.closest('[data-pj-go], [data-pj-step], [data-pj-play]') : null;
+      if (!t) return;
+      const w = t.closest('[data-pj]'); if (!w) return;
+      e.preventDefault();
+      if (t.hasAttribute('data-pj-play')) { const on = t.getAttribute('aria-pressed') !== 'true'; t.setAttribute('aria-pressed', on ? 'true' : 'false'); t.textContent = on ? '▶ Auto' : '❚❚ Paused'; w.__pjT = Date.now(); return; }
+      if (t.hasAttribute('data-pj-go')) this.pjGo(w, +t.getAttribute('data-pj-go'));
+      else this.pjGo(w, this.pjI(w) + +t.getAttribute('data-pj-step'));
+    });
+    const key = guard((e) => {
+      if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+      const w = e.target && e.target.closest ? e.target.closest('[data-pj]') : null; if (!w) return;
+      e.preventDefault(); this.pjGo(w, this.pjI(w) + (e.key === 'ArrowRight' ? 1 : -1));
+    });
+    const touch = guard((e) => {
+      const sc = e.target && e.target.closest ? e.target.closest('.pj-screen') : null; if (!sc) return;
+      const x = (e.changedTouches && e.changedTouches[0] || {}).clientX || 0;
+      if (e.type === 'touchstart') { sc.__x = x; return; }
+      const dx = x - (sc.__x || x); if (Math.abs(dx) < 40) return;
+      const w = sc.closest('[data-pj]'); this.pjGo(w, this.pjI(w) + (dx < 0 ? 1 : -1));
+    });
+    const L = [['click', click, true], ['keydown', key, true], ['touchstart', touch, { passive: true, capture: true }], ['touchend', touch, { passive: true, capture: true }]];
+    L.forEach((l) => document.addEventListener(l[0], l[1], l[2]));
+    const still = () => !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+    const tick = guard(() => {
+      if (still() || document.hidden) return;
+      Array.from(document.querySelectorAll('[data-pj]')).forEach((w) => {
+        const p = w.querySelector('[data-pj-play]');
+        if (p && p.getAttribute('aria-pressed') === 'false') return;
+        let kb = false; try { kb = !!w.querySelector(':focus-visible'); } catch (e) {}
+        if (w.matches(':hover') || kb) { w.__pjT = Date.now(); return; }
+        const r = w.getBoundingClientRect(); if (r.bottom < 0 || r.top > (window.innerHeight || 800)) return;
+        if (Date.now() - (w.__pjT || 0) < 5200) return;
+        this.pjGo(w, this.pjI(w) + 1, true);
+      });
+    });
+    this.pjInt = setInterval(tick, 700);
+    this.pjOff = () => { L.forEach((l) => document.removeEventListener(l[0], l[1], l[2])); clearInterval(this.pjInt); this.pjOn = false; };
+  }
+  pjI(w) { return Math.max(0, Array.from(w.querySelectorAll('.pj-slide')).findIndex((x) => x.classList.contains('on'))); }
+  pjGo(w, i, auto) {
+    const slides = Array.from(w.querySelectorAll('.pj-slide')), frames = Array.from(w.querySelectorAll('.pj-frame'));
+    const n = slides.length; if (!n) return;
+    i = ((i % n) + n) % n;
+    w.__pjT = Date.now();
+    if (i === this.pjI(w)) return;
+    slides.forEach((x, k) => { const on = k === i; x.classList.toggle('on', on); if (on) { x.removeAttribute('tabindex'); x.removeAttribute('aria-hidden'); } else { x.setAttribute('tabindex', '-1'); x.setAttribute('aria-hidden', 'true'); } });
+    frames.forEach((x, k) => { const on = k === i; x.classList.toggle('on', on); if (on) x.setAttribute('aria-current', 'true'); else x.removeAttribute('aria-current'); });
+    const pos = w.querySelector('[data-pj-pos]'); if (pos) pos.textContent = String(i + 1);
+    const sc = w.querySelector('.pj-screen');
+    if (sc) { sc.classList.remove('clack'); void sc.offsetWidth; sc.classList.add('clack'); clearTimeout(sc.__c); sc.__c = setTimeout(() => sc.classList.remove('clack'), 500); }
+    const roll = w.querySelector('.pj-roll'), f = frames[i];
+    if (roll && f) { const left = f.offsetLeft - (roll.clientWidth - f.offsetWidth) / 2; try { roll.scrollTo({ left: Math.max(0, left), behavior: auto ? 'auto' : 'smooth' }); } catch (e) { roll.scrollLeft = left; } }
+  }
+  // home2:pj:end
+  shMuted() { try { return localStorage.getItem('gt-shelf-sound') === 'off'; } catch (e) { return !!this.shMute; } }
+  shScan() {
+    const muted = this.shMuted();
+    Array.from(document.querySelectorAll('[data-shelf]')).forEach((w) => {
+      if (!w.hasAttribute('data-ready')) {
+        w.setAttribute('data-ready', '');
+        const sh = w.querySelector('.shelf'); if (sh) sh.setAttribute('data-ready', '');
+      }
+      const s = w.querySelector('[data-shelf-sound]');
+      const lab = muted ? '♪ Sound off' : '♪ Sound on';
+      if (s && s.textContent !== lab) { s.textContent = lab; s.setAttribute('aria-pressed', muted ? 'false' : 'true'); }
+    });
+  }
+  shOpen(w, i, how) {
+    const books = Array.from(w.querySelectorAll('.book'));
+    if (!books.length) return;
+    i = Math.max(0, Math.min(books.length - 1, i));
+    const cur = books.findIndex((b) => b.classList.contains('open'));
+    if (i === cur) return;
+    books.forEach((b, k) => {
+      const on = k === i;
+      b.classList.toggle('open', on);
+      b.classList.toggle('flip', on);
+      const sp = b.querySelector('.spine'); if (sp) sp.setAttribute('aria-expanded', on ? 'true' : 'false');
+    });
+    const pos = w.querySelector('[data-shelf-pos]'); if (pos) pos.textContent = String(i + 1);
+    this.shFlip(i > cur ? 1 : -1);
+    clearTimeout(w.__flipT); w.__flipT = setTimeout(() => books.forEach((b) => b.classList.remove('flip')), 700);
+    if (how === 'tap' && window.matchMedia && matchMedia('(max-width: 760px)').matches) {
+      const b = books[i]; setTimeout(() => { try { b.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); } catch (e) {} }, 60);
+    }
+  }
+  shIndex(w) { return Math.max(0, Array.from(w.querySelectorAll('.book')).findIndex((b) => b.classList.contains('open'))); }
+  shClick(e) {
+    const t = e.target && e.target.closest ? e.target.closest('[data-pick], [data-shelf-step], [data-shelf-sound]') : null;
+    if (!t) return;
+    const w = t.closest('[data-shelf]'); if (!w) return;
+    if (t.hasAttribute('data-shelf-sound')) {
+      const m = !this.shMuted(); this.shMute = m;
+      try { localStorage.setItem('gt-shelf-sound', m ? 'off' : 'on'); } catch (err) {}
+      this.shScan(); if (!m) this.shFlip(1);
+      return;
+    }
+    if (t.hasAttribute('data-pick')) this.shOpen(w, +t.getAttribute('data-pick'), 'tap');
+    else this.shOpen(w, this.shIndex(w) + +t.getAttribute('data-shelf-step'));
+  }
+  shKey(e) {
+    if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+    const t = e.target && e.target.closest ? e.target.closest('[data-shelf]') : null;
+    if (!t) return;
+    e.preventDefault();
+    const i = this.shIndex(t) + (e.key === 'ArrowRight' ? 1 : -1);
+    this.shOpen(t, i);
+    const b = t.querySelectorAll('.book')[Math.max(0, Math.min(i, t.querySelectorAll('.book').length - 1))];
+    const sp = b && b.querySelector('.spine'); if (sp) sp.focus();
+  }
+  // wheel over the shelf steps one book per gesture; at either end the page scrolls normally
+  shWheel(e) {
+    if (window.matchMedia && matchMedia('(max-width: 760px)').matches) return;
+    const sh = e.target && e.target.closest ? e.target.closest('.shelf') : null;
+    const w = sh && sh.closest('[data-shelf]'); if (!w) return;
+    const d = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+    if (Math.abs(d) < 4) return;
+    const n = w.querySelectorAll('.book').length, i = this.shIndex(w), dir = d > 0 ? 1 : -1;
+    if ((dir > 0 && i >= n - 1) || (dir < 0 && i <= 0)) return;
+    e.preventDefault();
+    const now = Date.now();
+    if (now - (w.__wheelT || 0) < 420) return;
+    w.__wheelT = now;
+    this.shOpen(w, i + dir);
+  }
+  shTouch(e) {
+    const sh = e.target && e.target.closest ? e.target.closest('.shelf') : null;
+    const w = sh && sh.closest('[data-shelf]'); if (!w) return;
+    const p = (e.changedTouches || [])[0]; if (!p) return;
+    if (e.type === 'touchstart') { w.__tx = p.clientX; w.__ty = p.clientY; return; }
+    if (window.matchMedia && matchMedia('(max-width: 760px)').matches) return;
+    const dx = p.clientX - (w.__tx || p.clientX), dy = p.clientY - (w.__ty || p.clientY);
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.5) this.shOpen(w, this.shIndex(w) + (dx < 0 ? 1 : -1));
+  }
+  // page-flip sound: a short burst of filtered noise with a falling pitch and a paper flutter
+  shFlip(dir) {
+    if (this.shMuted()) return;
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return;
+    const ctx = this.shAC || (this.shAC = new AC());
+    if (ctx.state === 'suspended' && ctx.resume) ctx.resume();
+    const t0 = ctx.currentTime + 0.005, dur = 0.34;
+    const buf = ctx.createBuffer(1, Math.ceil(ctx.sampleRate * dur), ctx.sampleRate);
+    const d = buf.getChannelData(0);
+    for (let k = 0; k < d.length; k++) d[k] = Math.random() * 2 - 1;
+    const src = ctx.createBufferSource(); src.buffer = buf;
+    const bp = ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.Q.value = 0.8;
+    bp.frequency.setValueAtTime(dir > 0 ? 3200 : 2600, t0); bp.frequency.exponentialRampToValueAtTime(700, t0 + dur);
+    const hp = ctx.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 350;
+    const g = ctx.createGain();
+    g.gain.setValueAtTime(0.0001, t0);
+    g.gain.exponentialRampToValueAtTime(0.22, t0 + 0.025);
+    g.gain.exponentialRampToValueAtTime(0.07, t0 + 0.09);
+    g.gain.exponentialRampToValueAtTime(0.16, t0 + 0.15);
+    g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+    src.connect(bp); bp.connect(hp); hp.connect(g); g.connect(ctx.destination);
+    src.start(t0); src.stop(t0 + dur + 0.02);
+  }
+  // ── Light/dark switch: the header beaker spills its ink and floods the page dark (or back to light).
+  gtTheme() {
+    if (this.thOn) return;
+    this.thOn = true;
+    const root = document.documentElement;
+    try { if (localStorage.getItem('gt-theme') === 'dark') root.setAttribute('data-theme', 'dark'); } catch (e) {}
+    this.thLabel();
+    const onClick = (e) => {
+      const b = e.target && e.target.closest ? e.target.closest('[data-theme-toggle]') : null;
+      if (!b) return;
+      e.preventDefault();
+      try { this.thToggle(b); } catch (err) { if (window.console) console.warn('[theme]', err); }
+    };
+    document.addEventListener('click', onClick, true);
+    this.thOff = () => document.removeEventListener('click', onClick, true);
+  }
+  thLabel() {
+    const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    Array.from(document.querySelectorAll('[data-theme-toggle]')).forEach((b) => {
+      const t = dark ? 'Switch to light mode' : 'Switch to dark mode (spill the ink)';
+      b.setAttribute('aria-label', t); b.setAttribute('title', t); b.setAttribute('aria-pressed', dark ? 'true' : 'false');
+    });
+  }
+  thToggle(btn) {
+    const root = document.documentElement;
+    const dark = root.getAttribute('data-theme') !== 'dark';
+    const apply = () => {
+      if (dark) root.setAttribute('data-theme', 'dark'); else root.removeAttribute('data-theme');
+      try { localStorage.setItem('gt-theme', dark ? 'dark' : 'light'); } catch (e) {}
+      this.thLabel();
+    };
+    const still = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+    if (still) { apply(); return; }
+    // replay the spill, faster than the page-load version
+    Array.from(btn.querySelectorAll('.bk-tip, .bk-liq, .bk-drop, .bk-pud')).forEach((el, i) => {
+      el.style.animation = 'none'; void el.getBoundingClientRect();
+      const name = el.classList.contains('bk-tip') ? 'bk-tip' : el.classList.contains('bk-liq') ? 'bk-liq' : el.classList.contains('bk-pud') ? 'bk-pud' : 'bk-drop';
+      const delay = el.classList.contains('d2') ? 0.1 : el.classList.contains('d3') ? 0.2 : 0;
+      el.style.animation = name + ' 1.6s ' + delay + 's cubic-bezier(.45,.05,.3,1) both';
+    });
+    // ink flood from the beaker; the overlay is always ink-coloured (it shows light once the page is inverted)
+    const r = btn.getBoundingClientRect();
+    const f = document.createElement('div');
+    f.className = 'gt-flood';
+    f.style.setProperty('--fx', Math.round(r.left + r.width * 0.8) + 'px');
+    f.style.setProperty('--fy', Math.round(r.top + r.height) + 'px');
+    document.body.appendChild(f);
+    void f.getBoundingClientRect();
+    setTimeout(() => f.classList.add('go'), 380);
+    // after the switch the overlay is drawn inverted (or no longer inverted), so give it the paper colour to keep the screen steady while it fades
+    setTimeout(() => { f.style.background = '#EDEFF2'; apply(); f.classList.add('out'); }, 1000);
+    setTimeout(() => { if (f.parentNode) f.parentNode.removeChild(f); }, 1450);
+  }
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

@@ -513,6 +513,189 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 @keyframes pxr-thinking{0%{transform:translateX(0);animation-timing-function:step-end}69.945%{transform:translateX(0);animation-timing-function:steps(10,end)}100%{transform:translateX(-100%)}}
 /* px:end */
 </style>
+<link data-story href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet">
+<style data-story>:root{--st-pal:#F37F94,#66629C,#B6BFC1,#10131C;--st-outfit:suit}
+html.st-on{--rail:0px;--st-gap:8px;--st-r:20px;--st-top:76px}
+@media (min-width:760px){html.st-on{--st-gap:14px;--st-r:28px}}
+@media (min-width:1180px){html.st-on{--rail:176px}}
+html.st-on body{background:var(--st-bg,#10131C);transition:background-color .9s cubic-bezier(.65,0,.35,1)}
+html.st-on .gt-progress{display:none}
+html.st-on .site-head{background:var(--st-bg,#10131C);border-bottom:0;color:var(--st-fg);transition:background-color .9s cubic-bezier(.65,0,.35,1),color .9s}
+html.st-on .site-head .brand-name{font-family:'Anton',Impact,sans-serif;font-weight:400;font-size:24px;letter-spacing:.05em;text-transform:uppercase;color:var(--st-fg);text-decoration:none}
+html.st-on .site-head .nav a{font-family:'Anton',Impact,sans-serif;font-weight:400;font-size:14px;letter-spacing:.09em;text-transform:uppercase;color:var(--st-fg);background:none;border-color:transparent;opacity:.82}
+html.st-on .site-head .nav a.on,html.st-on .site-head .nav a:hover{opacity:1;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:6px;background:none}
+html.st-on .site-head .bk-logo path[stroke]{stroke:var(--st-fg)}
+html.st-on .st-card{position:relative;margin-left:calc(var(--rail) + var(--st-gap));margin-right:var(--st-gap);border-radius:var(--st-r) var(--st-r) 0 0;border-top:0;border-bottom:0;box-shadow:0 -10px 24px rgba(16,19,28,.2);overflow-x:clip}
+:where(html.st-on .st-card){background-color:var(--st-paper,#F3EFE6)}
+html.st-on .st-card + .st-card,html.st-on .st-card + .site-foot{margin-top:calc(var(--st-r) * -1)}
+html.st-on .site-foot{position:relative;z-index:1;margin-left:calc(var(--rail) + var(--st-gap));margin-right:var(--st-gap);border-radius:var(--st-r) var(--st-r) 0 0;box-shadow:0 -16px 40px rgba(16,19,28,.22)}
+html.st-live .st-card{position:sticky}
+html.st-on .st-scene{background:transparent!important;color:var(--st-fg);box-shadow:none}
+html.st-on .st-scene::before,html.st-on .st-scene::after{display:none}
+html.st-on h1{font-family:'Anton',Impact,sans-serif;font-weight:400;font-style:normal;text-transform:uppercase;letter-spacing:.006em;line-height:1;font-size:clamp(46px,6vw,112px);text-wrap:balance;margin-bottom:.06em}
+html.st-on h1.t-title{font-size:clamp(38px,4.4vw,78px);line-height:1.02}
+html.st-on h1.st-long{font-size:clamp(34px,3.6vw,62px);line-height:1.04}
+html.st-on h1 *{font-family:inherit;font-weight:inherit}
+html.st-on .st-h{font-family:'Anton',Impact,sans-serif;font-weight:400;font-style:normal;text-transform:uppercase;letter-spacing:.01em;line-height:1.02;font-size:clamp(32px,3.8vw,58px);text-wrap:balance;margin-bottom:.1em;max-width:22ch}
+html.st-on .st-h.st-long{font-size:clamp(28px,2.9vw,44px);max-width:28ch}
+html.st-on :is(p,li,figcaption,blockquote){text-wrap:pretty}
+html.st-on .prose,html.st-on .col > p{max-width:68ch}
+html.st-on .st-scene h1,html.st-on .st-scene .st-h{color:var(--st-fg)}
+html.st-on .st-scene :is(.kicker,.meta,.lead,.prose,.prose p,.prose b,figcaption,.muted):not(.card *){color:var(--st-fg)}
+html.st-live .st-hpin{position:sticky;top:calc(var(--st-top) + 24px)}
+.st-xon{overflow:visible!important;scroll-snap-type:none!important;will-change:transform}
+html.st-on [data-st-w] .w{display:inline-block;white-space:nowrap}
+html.st-on [data-st-w] .l{display:inline-block;transform:translateY(calc(var(--y) * var(--k,0))) rotate(calc(var(--r) * var(--k,0)))}
+.st-serif{font-family:'Instrument Serif',Georgia,serif;font-weight:400}
+.st-stage{--s:3;position:relative;width:calc(128px * var(--s));max-width:100%;aspect-ratio:128/80;flex:none;border-radius:10px;overflow:hidden;background:#10131C;box-shadow:0 0 0 3px rgba(237,239,242,.9),0 18px 40px rgba(16,19,28,.35)}
+.st-scene .st-stage{margin:8px 0 18px}
+.st-stage > img{position:absolute;inset:0;width:100%;height:100%;image-rendering:pixelated;image-rendering:crisp-edges}
+.st-actor{position:absolute;left:20.3%;top:25%;width:59.375%;height:72.5%;overflow:hidden}
+.st-actor img{display:block;height:100%;width:calc(var(--n) * 100%);max-width:none;image-rendering:pixelated;image-rendering:crisp-edges;animation:st-px var(--t) steps(var(--n)) infinite}
+.st-actor.walk{animation:st-walkin 7s linear infinite}
+.st-actor.act{animation:st-act 7s steps(1,end) infinite}
+@keyframes st-px{to{transform:translateX(-100%)}}
+@keyframes st-walkin{0%{transform:translateX(-140%);opacity:1}40%{transform:translateX(0);opacity:1}40.01%,100%{transform:translateX(0);opacity:0}}
+@keyframes st-act{0%,40%{opacity:0}40.01%,100%{opacity:1}}
+.st-rail{position:fixed;left:0;top:calc(var(--st-top) + 18px);bottom:28px;width:var(--rail);z-index:55;color:var(--st-fg);display:none;font-family:'Anton',Impact,sans-serif;transition:color .9s}
+@media (min-width:1180px){html.st-on .st-rail{display:block}}
+html.st-framed .st-rail{position:absolute;bottom:auto;height:720px}
+.st-track{position:absolute;left:26px;top:4px;bottom:4px;width:10px;background:repeating-linear-gradient(180deg,currentColor 0 1px,transparent 1px 9px);opacity:.5}
+.st-now{position:absolute;left:18px;width:26px;height:3px;border-radius:2px;background:currentColor;top:calc(4px + (100% - 8px) * var(--st-prog,0));transition:top .12s linear}
+.st-walker{position:absolute;left:14px;width:34px;height:58px;overflow:hidden;top:max(0px,calc(4px + (100% - 8px) * var(--st-prog,0) - 60px));transition:top .12s linear;pointer-events:none}
+.st-walker img{display:block;height:58px;width:calc(var(--n) * 76px);max-width:none;image-rendering:pixelated;animation:st-px var(--t) steps(var(--n)) infinite}
+.st-rail ol{list-style:none;margin:0;padding:0 14px 0 54px;height:100%;display:flex;flex-direction:column;justify-content:space-between}
+.st-rail button{display:flex;gap:8px;align-items:baseline;width:100%;border:0;background:none;color:inherit;font:inherit;font-size:12.5px;letter-spacing:.09em;line-height:1.15;text-transform:uppercase;text-align:left;opacity:.5;cursor:pointer;padding:3px 0;transition:opacity .3s}
+.st-rail button .n{font-family:'Ubuntu Mono',monospace;font-size:11px;letter-spacing:.04em;flex:none}
+.st-rail button .t{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.st-rail button:hover{opacity:.85}
+.st-rail button.on{opacity:1}
+.st-rail button:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+.st-chip{position:fixed;left:10px;bottom:12px;z-index:56;display:none;align-items:center;gap:8px;max-width:calc(100vw - 20px);padding:9px 16px;border-radius:999px;border:0;background:var(--st-bg,#10131C);color:var(--st-fg);box-shadow:0 0 0 2px var(--st-fg),0 8px 24px rgba(16,19,28,.3);font-family:'Anton',Impact,sans-serif;font-size:13px;letter-spacing:.09em;text-transform:uppercase;cursor:pointer;transition:background-color .9s,color .9s}
+.st-chip .n{font-family:'Ubuntu Mono',monospace;font-size:11px}
+.st-chip .t{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:1179px){html.st-live .st-chip{display:inline-flex}
+html.st-railopen .st-rail{display:block;left:10px;top:auto;bottom:62px;width:min(340px,calc(100vw - 20px));max-height:70vh;overflow:auto;padding:16px 0;border-radius:18px;background:var(--st-bg,#10131C);box-shadow:0 0 0 2px var(--st-fg),0 18px 40px rgba(16,19,28,.35)}
+html.st-railopen .st-rail ol{height:auto;gap:12px;padding:0 18px}
+html.st-railopen .st-rail button{font-size:15px}
+html.st-railopen .st-track,html.st-railopen .st-now,html.st-railopen .st-walker{display:none}}
+.st-wipe{position:fixed;inset:0;z-index:2147483000;pointer-events:none;background:var(--c);clip-path:circle(0 at var(--x) var(--y));transition:clip-path .55s cubic-bezier(.65,0,.35,1)}
+.st-wipe.go{clip-path:circle(150% at var(--x) var(--y))}
+html.st-in::after{content:"";position:fixed;inset:0;z-index:2147483000;pointer-events:none;background:var(--st-wipe,#10131C);clip-path:inset(0 0 0 0)}
+html.st-in.st-go::after{clip-path:inset(0 0 100% 0);transition:clip-path .7s cubic-bezier(.65,0,.35,1)}
+.st-foot{position:relative;z-index:1;overflow:hidden;color:#EDEFF2!important;padding:clamp(80px,12vh,130px) clamp(20px,5vw,80px) 28px!important}
+html.st-on .site-foot.st-foot{background:var(--sf,#064F6E)}
+.st-foot .st-star{position:absolute;color:#EDEFF2;pointer-events:none}
+.st-foot-in{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;text-align:center;gap:clamp(12px,2.2vh,22px);max-width:1000px;margin:0 auto}
+.st-foot .st-over{margin:0;font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:clamp(20px,2vw,28px);opacity:.92;color:inherit}
+html.st-on .st-foot .st-big{margin:0;font-family:'Anton',Impact,sans-serif;font-weight:400;text-transform:uppercase;font-size:clamp(54px,9vw,160px);line-height:.92;letter-spacing:.005em;color:#EDEFF2;max-width:none}
+.st-foot .st-big .w{display:inline-block;white-space:nowrap}
+.st-foot .st-lead{margin:0;font-family:'Instrument Serif',Georgia,serif;font-size:clamp(22px,2.4vw,36px);line-height:1.15;max-width:36ch;color:inherit}
+.st-mail{display:inline-flex;align-items:center;gap:14px;padding:0;border:0;background:none;color:inherit;cursor:pointer;font-family:'Instrument Serif',Georgia,serif;font-size:clamp(26px,3.2vw,48px);border-bottom:3px solid #8DB0DA}
+.st-mail-ok{font-family:'Ubuntu Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background:#EDEFF2;color:#10131C;opacity:0;transition:opacity .25s}
+.st-mail.ok .st-mail-ok{opacity:1}
+html.st-on .st-foot .chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+html.st-on .st-foot .social{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border:1px solid rgba(237,239,242,.6);border-radius:999px;background:none;text-decoration:none;color:#EDEFF2;font-family:'Ubuntu Mono',monospace;font-size:13px;letter-spacing:.05em}
+html.st-on .st-foot .social:hover{background:#EDEFF2;color:#10131C}
+html.st-on .st-foot .social img{filter:brightness(0) invert(1)}
+html.st-on .st-foot .social:hover img{filter:none}
+.st-foot .st-rain{--s:3;width:calc(128px * var(--s));max-width:100%;aspect-ratio:128/80;overflow:hidden;border-radius:6px;box-shadow:0 0 0 3px rgba(237,239,242,.85),0 18px 40px rgba(16,19,28,.35)}
+.st-foot .st-rain img{display:block;height:100%;width:1600%;max-width:none;image-rendering:pixelated;image-rendering:crisp-edges;animation:st-px 2880ms steps(16) infinite}
+.st-foot-bar{position:relative;z-index:2;max-width:1160px;margin:clamp(48px,8vh,90px) auto 0;padding-top:18px;border-top:1px solid rgba(237,239,242,.3);display:flex;flex-direction:column;gap:14px}
+html.st-on .st-foot .foot-nav{display:flex;flex-wrap:wrap;gap:8px 22px;margin:0;padding:0;border:0}
+html.st-on .st-foot .foot-nav a{color:#EDEFF2;font-family:'Anton',Impact,sans-serif;font-size:14px;letter-spacing:.09em;text-transform:uppercase;text-decoration:none;opacity:.85}
+html.st-on .st-foot .foot-nav a:hover{opacity:1;text-decoration:underline;text-underline-offset:5px}
+html.st-on .st-foot .foot-nav .to-top{margin-left:auto}
+html.st-on .st-foot .wada-credit{color:rgba(237,239,242,.75);margin:0;font-size:11px}
+.st-book-src{display:none!important}
+.st-book{--ar:.7071;position:relative;width:100%;max-width:min(1080px,calc((100vh - 220px) * var(--ar) * 2));margin:0 auto;outline:none}
+.st-book.one{max-width:min(560px,calc((100vh - 220px) * var(--ar)))}
+.st-book:focus-visible{outline:3px solid #8DB0DA;outline-offset:6px;border-radius:6px}
+.st-book-stage{position:relative;perspective:2200px;cursor:pointer;-webkit-user-select:none;user-select:none}
+.st-book-spread{display:grid;grid-template-columns:1fr 1fr;box-shadow:0 24px 50px rgba(0,0,0,.35)}
+.st-book.one .st-book-spread{grid-template-columns:1fr}
+.st-book.one .st-pg.l{display:none}
+.st-pg,.st-face{position:relative;aspect-ratio:var(--ar);background:#FFFFFF;overflow:hidden}
+.st-pg.blank,.st-face.blank{background:transparent}
+.st-book-spread .st-pg.l:not(.blank){box-shadow:inset -18px 0 24px -18px rgba(0,0,0,.35)}
+.st-book-spread .st-pg.r:not(.blank){box-shadow:inset 18px 0 24px -18px rgba(0,0,0,.3)}
+.st-pg img,.st-face img{display:block;width:100%;height:100%;object-fit:contain;background:#FFFFFF}
+.st-leaf{position:absolute;top:0;width:50%;height:100%;transform-style:preserve-3d;transition:transform .75s cubic-bezier(.45,.05,.25,1);will-change:transform}
+.st-leaf.fwd{left:50%;transform-origin:0 50%}
+.st-leaf.back{left:0;transform-origin:100% 50%}
+.st-leaf.fwd.go{transform:rotateY(-180deg)}
+.st-leaf.back.go{transform:rotateY(180deg)}
+.st-leaf.one{left:0;width:100%;transform-origin:0 50%}
+.st-leaf.fwd.one.go{transform:rotateY(-180deg)}
+.st-leaf.back.one{transform:rotateY(-180deg)}
+.st-leaf.back.one.go{transform:rotateY(0)}
+.st-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.st-face.backf{transform:rotateY(180deg)}
+.st-leaf .st-face::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(0,0,0,.18),transparent 40%);opacity:0;transition:opacity .75s}
+.st-leaf.go .st-face::after{opacity:1}
+.st-book-bar{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:18px}
+.st-bk{min-width:48px;min-height:44px;border-radius:999px;border:1px solid currentColor;background:none;color:inherit;font-size:20px;cursor:pointer}
+.st-bk:disabled{opacity:.3;cursor:default}
+.st-bk-n{font-family:'Ubuntu Mono',monospace;font-size:13px;letter-spacing:.08em;min-width:16ch;text-align:center}
+html.st-on .st-sc{--sb:#10131C;overflow:clip}
+html.st-on [data-st-sb]{--sbf:#EDEFF2}
+html.st-on .st-band{padding-top:0!important}
+html.st-on .st-band > .wrap > .sec-head:first-child{position:relative;padding:clamp(80px,13vh,140px) 0 clamp(36px,6vh,60px);margin-bottom:clamp(28px,4vh,48px);color:var(--sbf);background:var(--sb);box-shadow:0 0 0 100vmax var(--sb);clip-path:inset(0 -100vmax)}
+html.st-on .st-full{background:var(--sb)!important;background-image:none!important;color:var(--sbf)}
+html.st-on .st-full > .wrap > .sec-head:first-child{padding-top:clamp(36px,7vh,80px)}
+html.st-on .st-sc .sec-head .kicker{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:clamp(19px,1.9vw,26px);letter-spacing:0;text-transform:none;color:inherit;opacity:.92}
+html.st-on .st-sc .sec-head .st-h{font-size:clamp(44px,5.8vw,100px);line-height:.98;color:inherit;max-width:20ch}
+html.st-on .st-sc .sec-head .st-h.st-long{font-size:clamp(38px,4.4vw,74px);max-width:22ch}
+html.st-on .st-sc .lead{font-size:clamp(17px,1.4vw,19px);line-height:1.6;max-width:56ch}
+.st-inc > summary{margin-top:6px;font-size:11px}
+[data-st-more] > p{margin:0}
+html.st-on .st-sc .sec-head :is(p,span,.meta,.muted,.small,.lead,a:not(.btn)){color:inherit}
+html.st-on .st-sc .sec-head :is(p,.meta,.muted,.small){opacity:.88}
+html.st-on .st-full :is(.shelf-row-k,.sh-hint,.sh-count,.pb-hint,.pb-count,.show-label){color:var(--sbf);opacity:.85}
+html.st-on .st-full > .wrap > :is(p,.meta,.muted,.small,.kicker){color:var(--sbf)}
+.st-shelf-wait > *{opacity:0}
+.st-shelf-in > *{animation:st-rise .8s cubic-bezier(.2,.85,.25,1) backwards;animation-delay:calc(var(--i,0) * 55ms)}
+@keyframes st-rise{0%{opacity:0;transform:translateY(80px) rotate(-6deg)}60%{opacity:1}}
+html.st-on :is(.shelf .book,.pb-shelf .pb){transform-origin:50% 100%;transition:transform .45s cubic-bezier(.2,.85,.25,1),flex-basis .55s cubic-bezier(.2,.7,.2,1),height .55s cubic-bezier(.2,.7,.2,1),box-shadow .3s}
+html.st-on :is(.shelf .book,.pb-shelf .pb):not(.open){transform:translateY(calc((var(--ty,0px) + var(--hov,0px)) * -1)) rotate(var(--lean,0deg))}
+html.st-on :is(.shelf .book,.pb-shelf .pb):not(.open):hover{--hov:14px;box-shadow:0 18px 26px -10px rgba(16,19,28,.55);z-index:2}
+html.st-on .shelf .book::after,html.st-on .pb-shelf .pb::after{content:"";position:absolute;top:0;bottom:0;left:0;width:58px;pointer-events:none;background:linear-gradient(90deg,rgba(255,255,255,.24),rgba(255,255,255,0) 22%,rgba(0,0,0,0) 68%,rgba(0,0,0,.26))}
+html.st-on .pb-shelf .pb::after{width:48px}
+html.st-on :is(.shelf .book,.pb-shelf .pb).open.flip{animation:st-pull .7s cubic-bezier(.2,.85,.25,1)}
+@keyframes st-pull{0%{transform:translateY(-46px) rotate(-4deg) scale(1.02);box-shadow:0 30px 40px -12px rgba(16,19,28,.5)}55%{transform:translateY(4px)}100%{transform:none}}
+html.st-on :is(.shelf,.pb-shelf){box-shadow:0 10px 0 -4px rgba(201,206,216,.9),0 28px 30px -18px rgba(16,19,28,.55)}
+.st-more{margin:0}
+.st-more > summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;margin-top:2px;font-family:'Ubuntu Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:underline;text-underline-offset:5px;opacity:.85}
+.st-more > summary::-webkit-details-marker{display:none}
+.st-more > summary::after{content:"↓";text-decoration:none;transition:transform .3s}
+.st-more[open] > summary::after{transform:rotate(180deg)}
+.st-more > summary:hover{opacity:1}
+.st-more > summary:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+.st-more .st-more-c,.st-more[open] .st-more-o{display:none}
+.st-more[open] .st-more-c{display:inline}
+.st-more[open] > :not(summary){animation:st-fadein .45s cubic-bezier(.2,.8,.2,1) both}
+.st-more[open] > summary{order:2}
+.st-more[open]{display:flex;flex-direction:column;gap:12px}
+@keyframes st-fadein{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+html.st-on .st-scene .lead,html.st-on .st-scene .prose.intro p{font-size:clamp(17px,1.35vw,19px);line-height:1.6;max-width:52ch}
+html.st-on .st-scene .prose.intro{display:flex;flex-direction:column;gap:10px}
+html.st-on .st-scene .wrap{row-gap:28px}
+html.st-on .edu-desc + .st-more,html.st-on .edu-desc{font-size:16px;line-height:1.6}
+html.st-on .st-scene h1{font-size:clamp(46px,5.4vw,100px)}
+html.st-on .st-scene .wrap.split:has(> .st-stage){grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);grid-template-rows:auto 1fr;column-gap:clamp(28px,4vw,64px);row-gap:20px;align-items:start}
+html.st-on .st-scene .wrap.split:has(> .st-stage) > .stack{grid-column:1;grid-row:1 / span 2;align-self:center}
+html.st-on .st-scene .wrap.split > .st-stage{grid-column:2;grid-row:1;margin:0;width:100%;justify-self:end}
+html.st-on .st-scene .wrap.split:has(> .st-stage) > .card.jump{grid-column:2;grid-row:2;align-self:start!important}
+html.st-on .st-scene .card.jump{padding:16px 20px 12px;gap:8px;box-shadow:0 18px 40px rgba(16,19,28,.25)}
+html.st-on .st-scene .card.jump > .kicker{font-size:11px;margin:0}
+html.st-on .st-scene .card.jump .stack:has(> a:nth-child(5)){display:grid;grid-template-columns:1fr 1fr;column-gap:22px}
+html.st-on .st-scene .card.jump a{padding:7px 0;font-size:14px;min-height:0;gap:8px}
+html.st-on .st-scene .card.jump a span{font-size:11px}
+html.st-on .st-scene .chips .btn{min-height:40px;padding:0 18px;font-size:13px}
+@media (max-width:900px){html.st-on .st-scene .wrap.split:has(> .st-stage){grid-template-columns:minmax(0,1fr)}
+html.st-on .st-scene .wrap.split:has(> .st-stage) > *{grid-column:1!important;grid-row:auto!important}}
+@media (prefers-reduced-motion:reduce){.st-leaf{transition:none}.st-more[open] > :not(summary){animation:none}.st-shelf-in > *{animation:none}.st-shelf-wait > *{opacity:1}.st-actor.walk{display:none}.st-actor.act{animation:none;opacity:1}.st-actor img,.st-walker img{animation:none}}
+</style>
 </helmet>
 <div style="min-height:100vh" data-gt-root="">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -533,14 +716,14 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 </header>
 
 
-<section id="main" class="sec cp-hero rule-b" style="padding-top:48px">
+<section data-st-ch="Intro" id="main" class="sec cp-hero rule-b" style="padding-top:48px">
 <img class="cp-hero-bg" src="/_blob/e630aa6d0d98a9a270f6319834ff68ff" alt="" aria-hidden="true" style="object-position:50% 40%;filter:blur(7px) saturate(.95);transform:scale(1.08)">
 <div class="cp-hero-shade" aria-hidden="true" style="background:linear-gradient(90deg,rgba(29,27,46,.9) 0%,rgba(29,27,46,.72) 50%,rgba(29,27,46,.35) 100%)"></div>
 <div class="wrap" style="position:relative;z-index:2">
 <div class="col stack g16">
 <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="Main.dc.html">Home</a></li><li><a href="Talks.dc.html">Talks</a></li><li aria-current="page">Talk 12</li></ol></nav>
 <p class="kicker">Talk 12 · Review</p>
-<h1 class="t-title">Practice Makes Plastic. Brain Cells After One Typing Lesson</h1>
+<h1 class="t-title st-long" data-st-w="">Practice Makes Plastic. Brain Cells After One Typing Lesson</h1>
 <p class="meta">Rayang T Mendrofa · 6th November 2026 · 14 min read</p>
 <aside style="margin-top:24px;border:1px solid #1D1B2E;background:#FCFBFD">
 <div class="dark" style="padding:12px 20px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px"><span class="kicker" style="font-size:11px">Paper under review</span><span class="meta" style="font-size:11px;color:#F37F94">PLOS BIOLOGY · SHORT REPORT · OPEN ACCESS</span></div>
@@ -571,11 +754,11 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 </div>
 </section>
 
-<section class="sec white rule-t rule-b">
+<section data-st-ch="What’s in the paper?" class="sec white rule-t rule-b">
 <div class="wrap article">
 <div class="col">
 <p class="kicker">01</p>
-<h2 class="t-h2" style="margin:12px 0 18px">What’s in the paper?</h2><span class="px pxc-thinking px-beat" style="--w:41" role="img" aria-label="The GelasTinta pixel character in a hoodie, hand on chin, thinking"><span class="px-v px-ai" style="--n:8;--t:1280ms"><img src="/_blob/4c1e039267cfd582c0ee4d5930f6998b" alt="" draggable="false"></span><span class="px-v px-am" style="--n:10;--t:2200ms"><img src="/_blob/e88a75bea0e274305b8af51e265cba31" alt="" draggable="false"></span><span class="px-v px-hm" style="--n:10;--t:2200ms"><img src="/_blob/e88a75bea0e274305b8af51e265cba31" alt="" draggable="false"></span></span>
+<h2 class="t-h2 st-h" style="margin:12px 0 18px">What’s in the paper?</h2><span class="px pxc-thinking px-beat" style="--w:41" role="img" aria-label="The GelasTinta pixel character in a hoodie, hand on chin, thinking"><span class="px-v px-ai" style="--n:8;--t:1280ms"><img src="/_blob/4c1e039267cfd582c0ee4d5930f6998b" alt="" draggable="false"></span><span class="px-v px-am" style="--n:10;--t:2200ms"><img src="/_blob/e88a75bea0e274305b8af51e265cba31" alt="" draggable="false"></span><span class="px-v px-hm" style="--n:10;--t:2200ms"><img src="/_blob/e88a75bea0e274305b8af51e265cba31" alt="" draggable="false"></span></span>
 <p>The question is simple to say and hard to answer. When a brain learns, which changes are real rebuilding and which are just the tissue reacting to being busy? Hard working brain tissue is known to swell slightly for a while, as cells take up ions and water follows them in. That swelling is temporary housekeeping, not learning. Rebuilding, on the other hand, means more and longer cell branches, with dendrites growing new contact points and the arms of support cells called astrocytes reaching out to stabilise them.</p>
 <p>The trouble is that the standard MRI measure of tissue microstructure, called mean diffusivity or MD, cannot tell those two apart. The same team showed in an earlier study that MD drops in some brain regions within half an hour of learning. But a drop in MD only says that water in that patch of brain has become a bit less free to move. Swollen cell bodies would do that. So would more branches. So would both.</p>
 <p>So this paper runs the same learning experiment again, on a much stronger scanner, and adds a model called SANDI (soma and neurite density imaging) that tries to say which part of the tissue changed. The subjects are 29 healthy volunteers, 16 of them female, with no neurological or sleep problems. What changes between scans is time: before learning, 30 minutes after, and 24 hours after.</p>
@@ -608,11 +791,11 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 </div>
 </section>
 
-<section class="sec">
+<section data-st-ch="So, how did they do it?" class="sec">
 <div class="wrap article">
 <div class="col">
 <p class="kicker">02</p>
-<h2 class="t-h2" style="margin:12px 0 18px">So, how did they do it?</h2>
+<h2 class="t-h2 st-h" style="margin:12px 0 18px">So, how did they do it?</h2>
 <p class="pull">Diffusion MRI does not photograph cells. It times how far water molecules wander, and works out the shape of the walls they keep bumping into.</p>
 <p style="margin-top:28px">Here is the idea in engineering terms. Water molecules in tissue jiggle about randomly. In open water they spread out freely. Inside a cell body, which the model treats as a tiny sphere, they hit the membrane and stay put. Inside a thin branch, treated as a stick, they can travel along it but not across it. The scanner tags each molecule’s position with a magnetic gradient pulse, waits, and then checks how far it has drifted. In this study the pulses lasted 8 ms and the wait (the diffusion time) was 24 ms.</p>
 <p>How hard the scanner “leans” on that motion is called the b value. A low b value only notices large, easy movements, while a high b value is sensitive to the tiny, restricted ones trapped inside small cells. Strong gradients are what let you reach high b values while keeping the timing short, and the original 3T Connectome scanner used here was built for exactly that, with gradients of up to 300 mT/m. The team collected seven b values from 200 to 8,000 s/mm², with 32 or 64 gradient directions each, plus 22 reference images with no gradient at all.</p>
@@ -638,12 +821,12 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 </div>
 </section>
 
-<section class="sec white rule-t rule-b">
+<section data-st-ch="What did they find?" class="sec white rule-t rule-b">
 <div class="wrap article">
 <div class="col-wide">
 <div class="sec-head">
 <p class="kicker">03</p>
-<h2 class="t-h2">What did they find?</h2>
+<h2 class="t-h2 st-h" data-st-w="">What did they find?</h2>
 </div>
 <div class="cols-4">
 <div class="find" style="background:#1D1B2E;color:#FCFBFD;border-color:#1D1B2E"><span class="meta" style="font-size:12px">01</span><h3 class="t-h3" style="font-size:21px">Learning in the breaks</h3><p>People got faster mostly during the rests between blocks, not while typing.</p></div>
@@ -698,11 +881,11 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 </div>
 </section>
 
-<section class="sec dark">
+<section data-st-ch="It matters? How?" class="sec dark">
 <div class="wrap article">
 <div class="col">
 <p class="kicker">04</p>
-<h2 class="t-h2" style="margin:12px 0 18px">It matters? How?</h2>
+<h2 class="t-h2 st-h" style="margin:12px 0 18px">It matters? How?</h2>
 <p>For about twenty years, MRI studies of learning in people have reported changes in one lumped number, and argued about what it meant. This paper shows that the same drop in MD can hide two different processes with different timetables: a short lived swelling that probably means “this tissue was busy”, and a slower, lasting change in cell branches that looks much more like actual rebuilding. Being able to tell them apart, without opening anyone’s head, is the step that lets human studies talk to the decades of animal work. The authors also see uses beyond learning, such as telling healthy remodelling from inflammation or shrinkage in disease.</p>
 <p>The timing is interesting too. The lasting changes in the parietal cortex were already visible 30 minutes after practice, before any sleep. In <a href="Talk-DreamPuzzles.dc.html">Talk 05</a> I covered people solving puzzles inside their dreams, and sleep is usually given a big role in fixing memories. This paper does not say sleep is unimportant (its design cannot test that), but it suggests the cortex starts rebuilding while you are still awake. And compared with <a href="Talk-FlyConnectome.dc.html">Talk 08</a>, where every neuron of a fly was traced from electron microscope slices of a dead brain, this is the opposite trade. It is far coarser, but in a living human, over time. There are no implants either, unlike the chips of <a href="Talk-Cyberpunk.dc.html">Talk 10</a>, just water, magnets and a clever model.</p>
 </div>
@@ -717,11 +900,11 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 </div>
 </section>
 
-<section class="sec grid-bg rule-b">
+<section data-st-ch="TLDR?" class="sec grid-bg rule-b">
 <div class="wrap article">
 <div class="col">
 <p class="kicker">05</p>
-<h2 class="t-h2" style="margin:12px 0 12px">TLDR?</h2>
+<h2 class="t-h2 st-h" style="margin:12px 0 12px">TLDR?</h2>
 <p style="font-style:italic;font-size:22px">One voxel, three compartments, two timetables...</p>
 <ol class="steps" style="margin-top:20px">
 <li><b>1</b>Twenty nine people learned a five tap finger sequence and were scanned before, 30 minutes after and 24 hours after.</li>
@@ -733,12 +916,12 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 </div>
 </section>
 
-<section class="sec">
+<section data-st-ch="Personal Take" class="sec">
 <div class="wrap article">
 <div class="col-wide take">
 <div>
 <p class="kicker">06</p>
-<h2 class="t-h2" style="margin:12px 0 18px">Personal Take</h2>
+<h2 class="t-h2 st-h" style="margin:12px 0 18px">Personal Take</h2>
 <!-- OWNER TO CHECK: replace with your own story -->
 <p>What hooked me is that this is really an instrumentation paper wearing a neuroscience coat. A sensor with 2 mm pixels is used to say something about structures a few micrometres across, not by zooming in but by modelling how a tracer (water) moves through the material. Mechanical engineers do the same kind of thing all the time, inferring cracks from vibration or porosity from flow, and it always comes with the same warning label: your answer is only as good as your model.</p>
 <p>That is also why I would hold the conclusions a little loosely. The spheres, sticks and free water picture is a useful simplification, the three fractions are forced to add to one, and the effects are small: a shift of about 0.01 in a fraction near 0.2 to 0.4. I like that the authors list these limits clearly, and that they checked the hippocampus a second way. What I would really want is a control group in the same scanner, and the same experiment run in an animal where you can scan first and then look under a microscope.</p>
@@ -754,18 +937,18 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 </section>
 
 
-<!-- nl:start --><section class="sec rule-t" id="newsletter" aria-labelledby="nl-title">
-<div class="wrap article"><div class="col nl-box"><div class="stack g8"><p class="kicker">Enjoyed this talk?</p><h2 class="t-h3" id="nl-title">Get the next talk by email</h2><p class="muted small">One email when a new talk goes up, about once a month. Your address is only used for that, and you can unsubscribe any time.</p></div><form class="nl-form" action="/api/newsletter" method="post"><label class="sr" for="nl-email">Email address</label><input id="nl-email" name="email" type="email" required autocomplete="email" placeholder="you@example.com"><input class="nl-hp" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true"><button class="btn" type="submit">Subscribe</button></form><p class="nl-msg" id="subscribed" role="status">Thanks! You’re on the list for the next talk.</p><p class="nl-msg" id="subscribe-error" role="alert">That didn’t work. Please check the email address and try again.</p><div class="nl-support"><span class="meta">Like the talks? Support them:</span><a class="btn ghost" href="https://trakteer.id/rayang_mendrofa" target="_blank" rel="noopener"><img class="sp-ico" src="/_blob/44290a29dc16af32e676d4457d9e8df3" alt="" width="22" height="22">Trakteer · Rupiah <span aria-hidden="true">↗</span></a><a class="btn ghost" href="https://ko-fi.com/rayanmendrofa" target="_blank" rel="noopener"><img class="sp-ico" src="/_blob/7efb8554392a4b29c2b2e6ff43bbfd24" alt="" width="22" height="22">Ko-fi · International <span aria-hidden="true">↗</span></a></div></div></div></section>
+<!-- nl:start --><section data-st-ch="Newsletter" class="sec rule-t" id="newsletter" aria-labelledby="nl-title">
+<div class="wrap article"><div class="col nl-box"><div class="stack g8"><p class="kicker">Enjoyed this talk?</p><h2 class="t-h3 st-h" id="nl-title" data-st-w="">Get the next talk by email</h2><p class="muted small">One email when a new talk goes up, about once a month. Your address is only used for that, and you can unsubscribe any time.</p></div><form class="nl-form" action="/api/newsletter" method="post"><label class="sr" for="nl-email">Email address</label><input id="nl-email" name="email" type="email" required autocomplete="email" placeholder="you@example.com"><input class="nl-hp" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true"><button class="btn" type="submit">Subscribe</button></form><p class="nl-msg" id="subscribed" role="status">Thanks! You’re on the list for the next talk.</p><p class="nl-msg" id="subscribe-error" role="alert">That didn’t work. Please check the email address and try again.</p><div class="nl-support"><span class="meta">Like the talks? Support them:</span><a class="btn ghost" href="https://trakteer.id/rayang_mendrofa" target="_blank" rel="noopener"><img class="sp-ico" src="/_blob/44290a29dc16af32e676d4457d9e8df3" alt="" width="22" height="22">Trakteer · Rupiah <span aria-hidden="true">↗</span></a><a class="btn ghost" href="https://ko-fi.com/rayanmendrofa" target="_blank" rel="noopener"><img class="sp-ico" src="/_blob/7efb8554392a4b29c2b2e6ff43bbfd24" alt="" width="22" height="22">Ko-fi · International <span aria-hidden="true">↗</span></a></div></div></div></section>
 <!-- nl:end -->
 <!-- wada:start --><section class="sec rule-t" aria-label="Colour palette" style="padding-top:28px;padding-bottom:28px">
 <div class="wrap article"><div class="col wada-note"><span class="wada-sw" aria-hidden="true"><i style="background:#F37F94"></i><i style="background:#66629C"></i><i style="background:#B6BFC1"></i></span><p class="meta" style="font-size:12px;margin:0">Palette: Sanzo Wada, <i>A Dictionary of Color Combinations</i>, No. 197 · Eosine Pink, Dark Soft Violet, Neutral Gray</p></div></div></section>
 <!-- wada:end -->
-<section class="sec white rule-t" id="comments" aria-labelledby="cm-title-lb">
+<section data-st-ch="Comments" class="sec white rule-t" id="comments" aria-labelledby="cm-title-lb">
 <div class="wrap">
 <div class="cm-wrap">
 <div class="stack g12">
 <p class="kicker">Discussion</p>
-<h2 class="t-h2" id="cm-title-lb">Comments</h2>
+<h2 class="t-h2 st-h" id="cm-title-lb" data-st-w="">Comments</h2>
 <p class="meta muted">{{cm.count}}</p>
 </div>
 <sc-if value="{{cm.notReg}}" hint-placeholder-val="{{true}}">
@@ -803,17 +986,13 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 </div>
 </section>
 
-<footer class="site-foot dark">
-<div class="wrap">
-<div class="foot-top">
-<div class="stack g16">
-<p class="kicker">Get in touch</p>
-<p class="foot-title">GelasTinta</p>
-<p class="foot-blurb">Open to collaborations, discussions, projects, and work in discussing creative science, design, and engineering work.</p>
-</div>
-<div class="stack g16">
-<a class="foot-mail" href="mailto:mendrofarayang@gmail.com">mendrofarayang@gmail.com</a>
-<p class="meta muted">Jakarta . London . Singapore</p>
+<footer class="site-foot st-foot" id="contact" data-st-ch="Contact" data-st-bg="#064F6E" style="--sf:#064F6E">
+<svg class="st-star" style="left:6.0%;top:53.0%;width:10px;height:10px;opacity:0.7" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="st-star" style="left:8.9%;top:57.6%;width:14px;height:14px;opacity:0.7" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="st-star" style="left:6.1%;top:30.0%;width:10px;height:10px;opacity:0.7" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="st-star" style="left:10.2%;top:73.0%;width:14px;height:14px;opacity:0.7" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="st-star" style="left:10.8%;top:79.1%;width:24px;height:24px;opacity:0.9" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="st-star" style="left:92.5%;top:44.8%;width:24px;height:24px;opacity:0.9" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="st-star" style="left:2.7%;top:18.0%;width:24px;height:24px;opacity:0.7" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg><svg class="st-star" style="left:9.2%;top:15.5%;width:10px;height:10px;opacity:0.7" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0C10.8 6.6 13.4 9.2 20 10C13.4 10.8 10.8 13.4 10 20C9.2 13.4 6.6 10.8 0 10C6.6 9.2 9.2 6.6 10 0Z" fill="currentColor"/></svg>
+<div class="st-foot-in">
+<p class="st-over">Jakarta · London · Singapore</p>
+<h2 class="st-big" data-st-w="" aria-label="Get in touch."><span aria-hidden="true"><span class="w"><span class="l" style="--r:-0.8deg;--y:-0.031em">G</span><span class="l" style="--r:3.2deg;--y:0.013em">e</span><span class="l" style="--r:0.2deg;--y:0.020em">t</span></span> <span class="w"><span class="l" style="--r:2.8deg;--y:0.019em">i</span><span class="l" style="--r:-2.9deg;--y:0.049em">n</span></span> <span class="w"><span class="l" style="--r:-3.0deg;--y:-0.036em">t</span><span class="l" style="--r:-2.6deg;--y:-0.009em">o</span><span class="l" style="--r:1.4deg;--y:-0.036em">u</span><span class="l" style="--r:-2.7deg;--y:-0.004em">c</span><span class="l" style="--r:2.9deg;--y:-0.044em">h</span><span class="l" style="--r:3.2deg;--y:-0.025em">.</span></span></span></h2>
+<p class="st-lead">Open to collaborations, discussions, projects, and work in discussing creative science, design, and engineering work.</p>
+<button type="button" class="st-mail" data-copy="mendrofarayang@gmail.com"><span>mendrofarayang@gmail.com</span><span class="st-mail-ok" aria-live="polite">Copied</span></button>
 <div class="chips" style="gap:10px">
 <a class="social" href="https://www.linkedin.com/in/raysmendrofa/" aria-label="LinkedIn profile: raysmendrofa"><img src="/_blob/49604cde322d454326d28d8c5cfe5ff8" alt="" style="width:22px;height:22px">LinkedIn</a>
 <a class="social" href="mailto:mendrofarayang@gmail.com" aria-label="Email: mendrofarayang@gmail.com"><img src="/_blob/ee68aabd0584895696ec1ef146936038" alt="" style="width:22px;height:auto">Email</a>
@@ -822,16 +1001,11 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <a class="social" href="https://www.instagram.com/gelastinta/" aria-label="GelasTinta on Instagram: @gelastinta"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/></svg>Instagram</a>
 <a class="social" href="https://www.tiktok.com/@gelastinta.com" aria-label="GelasTinta on TikTok: @gelastinta.com"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M14 3c.5 2.6 2.4 4.4 5 4.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>TikTok</a>
 </div>
+<div class="st-rain" role="img" aria-label="Pixel scene: the GelasTinta character drinking warm tea on the sofa while it rains outside"><img src="/_blob/5f546531126ecca601b1bd5ebcad7ece" alt="" draggable="false"></div>
 </div>
-</div>
+<div class="st-foot-bar">
 <!-- nav2:foot:start --><nav class="foot-nav" aria-label="Site"><a href="Main.dc.html">Home</a><a href="Projects.dc.html">Projects</a><a href="Talks.dc.html">Talks</a><a href="Products.dc.html">Products</a><a href="/packs/library/">Library</a><a href="Author.dc.html">Author</a><a class="to-top" href="#top">Back to top <span aria-hidden="true">↑</span></a></nav>
 <!-- nav2:foot:end -->
-<div class="tblock">
-<div><span>DRAWN BY</span><span>Rayang T Mendrofa</span></div>
-<div><span>SHEET</span><span>05.12 · LEARNING BRAIN</span></div>
-<div><span>SCALE</span><span>1 : IDEA</span></div>
-<div><span>REV.</span><span>Website 2026 Gelastinta.</span></div>
-</div>
 <!-- wadasite:start --><p class="wada-credit"><span class="wada-mini" aria-hidden="true"><i style="background:#A36AA5"></i><i style="background:#FDC57E"></i><i style="background:#1D1B2E"></i><i style="background:#2B44C8"></i></span><span>SITE PALETTE · Sanzo Wada, <i>A Dictionary of Color Combinations</i>, No. 344 · Aconite Violet, Cinnamon Buff, with the site ink and blue in place of Wada’s Black and Deep Lyons Blue</span></p>
 <!-- wadasite:end -->
 </div>
@@ -842,7 +1016,7 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":10400}}'>
 class Component extends DCLogic {
   // ── GelasTinta motion layer (anime.js v4) ─────────────────────────────
-  componentDidMount() { this.gtStart(0); this.gtMedia(0); this.gtTheme(); this.gtFigs(); this.cmMount(); }
+  componentDidMount() { this.stStart(0); this.gtStart(0); this.gtMedia(0); this.gtTheme(); this.gtFigs(); this.cmMount(); }
   componentWillUnmount() {
     if (this.tdOff) this.tdOff();
     if (this.thOff) this.thOff();
@@ -1628,6 +1802,383 @@ class Component extends DCLogic {
     setTimeout(() => { f.style.background = '#EDEFF2'; apply(); f.classList.add('out'); }, 1000);
     setTimeout(() => { if (f.parentNode) f.parentNode.removeChild(f); }, 1450);
   }
+  // story:start
+  // The scroll story layer (tools/story.py): stacked cards, scene colours from this page's palette,
+  // the left chapter rail with the walking character, wobbling headings and the ink wipe between pages.
+  stStart(tries) {
+    const marks = document.querySelectorAll('[data-st-ch]');
+    if (!marks.length) { if (tries < 40) this.stT = setTimeout(() => this.stStart(tries + 1), 100); return; }
+    if (this.stOn) return;
+    this.stOn = true;
+    const d = document, de = d.documentElement;
+    let framed = false;
+    try { framed = window.self !== window.top; } catch (e) { framed = true; }
+    const still = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+    const css = getComputedStyle(de);
+    const pal = (css.getPropertyValue('--st-pal') || '#10131C').split(',').map((x) => x.trim()).filter(Boolean);
+    const outfit = (css.getPropertyValue('--st-outfit') || 'hoodie').trim();
+    const SPR = {'hoodie-walk': ['effa22a25ea7853b01b88ec50805f0c1', 4, 140], 'hoodie-idle': ['4c1e039267cfd582c0ee4d5930f6998b', 8, 160], 'hoodie-wave': ['723c80f6c3239c1eb034218c7a3249a4', 7, 150], 'hoodie-happy': ['c86bf217f8e4735869fc0fcabfe44c9f', 8, 130], 'hoodie-pour': ['cf0cbbc176dcedea4a1c0d45350432cf', 11, 150], 'hoodie-thinking': ['e88a75bea0e274305b8af51e265cba31', 10, 220], 'labcoat-walk': ['2ac8f04301980f265efc51c1c861396a', 4, 140], 'labcoat-idle': ['0adff87b8a0ce54aa1d503767bf28772', 8, 160], 'labcoat-wave': ['af590436f0155acb650ca7a370a6820d', 7, 150], 'labcoat-inspect': ['abb3bf9b38e58b145b90221cfdc2e9b2', 10, 180], 'labcoat-eureka': ['cecfa839f65d924244169b8f91ad87c7', 10, 170], 'suit-walk': ['a4413c34a748659e2cdd0d82ca3cce01', 4, 140], 'suit-idle': ['36e3f4b4d1181d7f9e6ca9560d607250', 8, 160], 'suit-wave': ['1d89ba917ee97de87e63eed0524044b1', 7, 150], 'suit-present': ['d307f3fd9e458bd63d3e69b9eaa671d5', 12, 200]};
+    if (!css.getPropertyValue('--st-paper').trim()) de.style.setProperty('--st-paper', getComputedStyle(d.body).backgroundColor);
+    de.classList.add('st-on');
+    if (framed) de.classList.add('st-framed'); else de.classList.add('st-live');
+    const fgFor = (hex) => {
+      const m = /^#?([0-9a-f]{6})$/i.exec(hex || '');
+      if (!m) return '#EDEFF2';
+      const n = parseInt(m[1], 16), c = [n >> 16, (n >> 8) & 255, n & 255].map((v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); });
+      return (0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2]) > 0.33 ? '#10131C' : '#EDEFF2';
+    };
+    const chs = Array.from(marks);
+    const colourOf = (i) => chs[i].getAttribute('data-st-bg') || pal[i % pal.length];
+    const setScene = (i) => { const c = colourOf(i); de.style.setProperty('--st-bg', c); de.style.setProperty('--st-fg', fgFor(c)); };
+    setScene(0);
+    // the rail, built from the chapters
+    const rail = d.createElement('nav');
+    rail.className = 'st-rail';
+    rail.setAttribute('aria-label', 'Chapters');
+    const pad = (n) => (n < 10 ? '0' : '') + n;
+    rail.innerHTML = '<span class="st-track" aria-hidden="true"></span><span class="st-now" aria-hidden="true"></span>' +
+      '<span class="st-walker" aria-hidden="true"><img alt="" src=""></span><ol>' +
+      chs.map((c, i) => '<li><button type="button" data-st-go="' + i + '"><span class="n">' + pad(i + 1) + '</span><span class="t"></span></button></li>').join('') + '</ol>';
+    rail.querySelectorAll('.t').forEach((t, i) => { t.textContent = chs[i].getAttribute('data-st-ch'); });
+    d.body.appendChild(rail);
+    const chip = d.createElement('button');
+    chip.type = 'button';
+    chip.className = 'st-chip';
+    chip.setAttribute('aria-expanded', 'false');
+    chip.innerHTML = '<span class="n"></span><span class="t"></span>';
+    d.body.appendChild(chip);
+    const btns = Array.from(rail.querySelectorAll('[data-st-go]'));
+    const walker = rail.querySelector('.st-walker');
+    const wimg = walker.querySelector('img');
+    const pose = (move) => {
+      const s = SPR[outfit + '-' + move] || SPR['hoodie-' + move];
+      if (!s) return 0;
+      if (wimg.getAttribute('src') !== '/_blob/' + s[0]) wimg.setAttribute('src', '/_blob/' + s[0]);
+      walker.style.setProperty('--n', s[1]);
+      walker.style.setProperty('--t', (s[1] * s[2]) + 'ms');
+      return s[1] * s[2];
+    };
+    ['walk', 'wave', 'idle'].forEach((m) => { const s = SPR[outfit + '-' + m]; if (s) { const im = new Image(); im.src = '/_blob/' + s[0]; } });
+    pose('idle');
+    const offs = [];
+    const on = (el, ev, fn, opt) => { el.addEventListener(ev, fn, opt); offs.push(() => el.removeEventListener(ev, fn, opt)); };
+    this.stOff = () => offs.forEach((f) => f());
+    // where an element sits in the page's normal flow (stacked cards report their pinned spot otherwise)
+    const naturalTop = (el) => {
+      const cs = Array.from(d.querySelectorAll('.st-card'));
+      const was = cs.map((c) => c.style.position);
+      cs.forEach((c) => { c.style.position = 'static'; });
+      const y = el.getBoundingClientRect().top + window.scrollY;
+      cs.forEach((c, k) => { c.style.position = was[k]; });
+      return y;
+    };
+    const go = (i) => {
+      const t = chs[i];
+      if (!t) return;
+      const head = d.querySelector('.site-head');
+      const y = naturalTop(t) - (head ? head.offsetHeight : 0) + 2;
+      if (this.stGlide) this.stGlide(Math.max(0, y)); else window.scrollTo({ top: Math.max(0, y), behavior: still ? 'auto' : 'smooth' });
+      de.classList.remove('st-railopen');
+      chip.setAttribute('aria-expanded', 'false');
+    };
+    on(rail, 'click', (e) => { const b = e.target.closest('[data-st-go]'); if (b) go(+b.getAttribute('data-st-go')); });
+    on(chip, 'click', () => { const o = de.classList.toggle('st-railopen'); chip.setAttribute('aria-expanded', o ? 'true' : 'false'); });
+    // click the email to copy it
+    on(d, 'click', (e) => {
+      const cp = e.target && e.target.closest ? e.target.closest('[data-copy]') : null;
+      if (!cp) return;
+      const v = cp.getAttribute('data-copy');
+      const done = () => { cp.classList.add('ok'); clearTimeout(cp.__t); cp.__t = setTimeout(() => cp.classList.remove('ok'), 1600); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(v).then(done, () => { location.href = 'mailto:' + v; });
+      else location.href = 'mailto:' + v;
+    }, true);
+    // document previews read like a book: turn the pages instead of scrolling
+    this.stBooks(0, still);
+    // bookshelves: books rise onto the shelf when it comes into view, lean as the pointer passes, lift when you hover
+    Array.from(d.querySelectorAll('.shelf, .pb-shelf')).forEach((sh) => {
+      Array.from(sh.children).forEach((b, i) => b.style.setProperty('--i', i));
+      if (framed || still) return;
+      sh.classList.add('st-shelf-wait');
+      const seen = () => { sh.classList.remove('st-shelf-wait'); sh.classList.add('st-shelf-in'); setTimeout(() => sh.classList.remove('st-shelf-in'), 900 + sh.children.length * 55); };
+      if (window.IntersectionObserver) {
+        const io = new IntersectionObserver((es) => { if (es.some((x) => x.isIntersecting)) { io.disconnect(); seen(); } }, { threshold: 0.25 });
+        io.observe(sh); offs.push(() => io.disconnect());
+      } else seen();
+      if (!(window.matchMedia && matchMedia('(pointer: fine)').matches)) return;
+      let raf2 = 0, px = null;
+      const lean = () => {
+        raf2 = 0;
+        Array.from(sh.children).forEach((b) => {
+          if (px === null || b.classList.contains('open')) { b.style.removeProperty('--lean'); b.style.removeProperty('--ty'); return; }
+          const r = b.getBoundingClientRect();
+          const dx = (r.left + r.width / 2 - px) / 160;
+          const near = Math.max(0, 1 - Math.abs(dx));
+          b.style.setProperty('--lean', (Math.max(-1, Math.min(1, dx)) * near * 4).toFixed(2) + 'deg');
+          b.style.setProperty('--ty', (near * 6).toFixed(1) + 'px');
+        });
+      };
+      sh.addEventListener('pointermove', (e) => { px = e.clientX; if (!raf2) raf2 = requestAnimationFrame(lean); });
+      sh.addEventListener('pointerleave', () => { px = null; if (!raf2) raf2 = requestAnimationFrame(lean); });
+    });
+    // sections become cards (in the design canvas too, so the frame and cards show there)
+    const head = d.querySelector('.site-head');
+    const box = (d.getElementById('main') || chs[0]).parentElement;
+    const cards = Array.from(box.children).filter((el) => el.matches('section, nav, aside, div.sec') && !el.matches('.site-head, .site-foot, .skip-link, .gt-progress'));
+    cards.forEach((c) => c.classList.add('st-card'));
+    if (framed) return;
+    // wobbling heading letters
+    const words = Array.from(d.querySelectorAll('[data-st-w]'));
+    if (!still) words.forEach((h, hi) => {
+      if (h.children.length) return;
+      let seed = hi * 97 + 13;
+      const rnd = () => { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; };
+      const txt = h.textContent.trim().replace(/\s+/g, ' ');
+      h.setAttribute('aria-label', txt);
+      h.innerHTML = txt.split(' ').map((w) => '<span class="w" aria-hidden="true">' + Array.from(w).map((ch) =>
+        '<span class="l" style="--r:' + ((rnd() - 0.5) * 9).toFixed(1) + 'deg;--y:' + ((rnd() - 0.5) * 0.1).toFixed(3) + 'em">' +
+        ch.replace(/&/g, '&amp;').replace(/</g, '&lt;') + '</span>').join('') + '</span>').join(' ');
+    });
+    // stacked cards: each pins once its bottom reaches the screen, the next slides over it
+    let vh = window.innerHeight, hh = head ? head.offsetHeight : 0;
+    const tops = () => {
+      vh = window.innerHeight; hh = head ? head.offsetHeight : 0;
+      de.style.setProperty('--st-top', hh + 'px');
+      cards.forEach((c) => { c.style.top = Math.min(hh, vh - c.offsetHeight) + 'px'; });
+      ask();
+    };
+    let ro = null;
+    if (window.ResizeObserver) { ro = new ResizeObserver(() => tops()); cards.forEach((c) => ro.observe(c)); offs.push(() => ro.disconnect()); }
+    // sideways rows: scroll down, the row moves across
+    const rows = Array.from(d.querySelectorAll('[data-st-x]'));
+    const wide = () => window.innerWidth >= 900 && !still && !!(window.matchMedia && matchMedia('(pointer: fine)').matches);
+    const sizeRows = () => rows.forEach((r) => {
+      const scene = r.closest('.st-card'), pin = r.closest('.st-hpin');
+      if (!scene || !pin) return;
+      r.style.transform = '';
+      if (!wide()) { r.classList.remove('st-xon'); scene.style.minHeight = ''; r.__x = 0; return; }
+      r.classList.add('st-xon');
+      const extra = Math.max(0, r.scrollWidth - r.clientWidth);
+      r.__x = extra;
+      scene.style.minHeight = (pin.offsetHeight + extra + 160) + 'px';
+    });
+    // the frame colour, the rail and the walker
+    let cur = -1, raf = 0, moving = 0, acting = 0;
+    const tick = () => {
+      raf = 0;
+      let c = 0;
+      chs.forEach((s, i) => { if (s.getBoundingClientRect().top < vh * 0.45) c = i; });
+      if (c !== cur) {
+        const first = cur < 0;
+        cur = c;
+        setScene(c);
+        btns.forEach((b, i) => { b.classList.toggle('on', i === c); if (i === c) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current'); });
+        chip.querySelector('.n').textContent = pad(c + 1);
+        chip.querySelector('.t').textContent = chs[c].getAttribute('data-st-ch');
+        if (!first && !still) { clearTimeout(this.stA); acting = 1; this.stA = setTimeout(() => { acting = 0; pose(moving ? 'walk' : 'idle'); }, pose('wave')); }
+      }
+      const max = Math.max(1, de.scrollHeight - vh);
+      de.style.setProperty('--st-prog', Math.min(1, Math.max(0, window.scrollY / max)).toFixed(4));
+      rows.forEach((r) => {
+        if (!r.__x) return;
+        const sc = r.closest('.st-card').getBoundingClientRect();
+        const p = Math.min(1, Math.max(0, (hh + 40 - sc.top) / r.__x));
+        r.style.transform = 'translate3d(' + (-p * r.__x).toFixed(1) + 'px,0,0)';
+      });
+      if (!still) words.forEach((h) => {
+        const r = h.getBoundingClientRect();
+        if (r.bottom < -200 || r.top > vh + 200) return;
+        const p = Math.max(-1, Math.min(1, (r.top + r.height / 2 - vh * 0.42) / vh));
+        const k = Math.round((0.12 + Math.abs(p) * 1.9) * 40) / 40;
+        if (h.__k !== k) { h.__k = k; h.style.setProperty('--k', k); }
+      });
+    };
+    const ask = () => { if (!raf) raf = requestAnimationFrame(tick); };
+    on(window, 'scroll', () => {
+      ask();
+      if (still) return;
+      if (!moving && !acting) pose('walk');
+      moving = 1;
+      clearTimeout(this.stM);
+      this.stM = setTimeout(() => { moving = 0; if (!acting) pose('idle'); }, 180);
+    }, { passive: true });
+    on(window, 'resize', () => { sizeRows(); tops(); }, { passive: true });
+    on(window, 'load', () => { sizeRows(); tops(); });
+    sizeRows();
+    tops();
+    // mouse wheels glide instead of jumping (trackpads and touch keep their own native momentum)
+    if (!still && window.matchMedia && matchMedia('(pointer: fine)').matches) {
+      let target = window.scrollY, pos = window.scrollY, gliding = false, last = 0;
+      const maxY = () => de.scrollHeight - window.innerHeight;
+      const step = (t) => {
+        const dt = Math.min(48, t - (last || t)); last = t;
+        pos += (target - pos) * (1 - Math.exp(-dt / 90));
+        if (Math.abs(target - pos) < 0.5) { pos = target; gliding = false; last = 0; }
+        window.scrollTo(0, pos);
+        if (gliding) requestAnimationFrame(step);
+      };
+      const glide = (y) => {
+        target = Math.max(0, Math.min(maxY(), y));
+        if (!gliding) { gliding = true; pos = window.scrollY; requestAnimationFrame(step); }
+      };
+      this.stGlide = glide;
+      const scrollsInside = (el, dy) => {
+        for (; el && el !== d.body && el !== de; el = el.parentElement) {
+          if (el.hasAttribute && el.hasAttribute('data-st-native')) return true;
+          const st = getComputedStyle(el);
+          if (/(auto|scroll)/.test(st.overflowY) && el.scrollHeight > el.clientHeight + 1) {
+            if ((dy > 0 && el.scrollTop + el.clientHeight < el.scrollHeight - 1) || (dy < 0 && el.scrollTop > 0)) return true;
+          }
+        }
+        return false;
+      };
+      on(window, 'wheel', (e) => {
+        if (e.ctrlKey || e.defaultPrevented) return;
+        let dy = e.deltaY;
+        if (e.deltaMode === 1) dy *= 32; else if (e.deltaMode === 2) dy *= window.innerHeight;
+        // small fractional steps come from trackpads: leave them alone
+        if (Math.abs(e.deltaX) > Math.abs(dy) || (e.deltaMode === 0 && Math.abs(dy) < 40)) { if (!gliding) target = window.scrollY; return; }
+        if (scrollsInside(e.target, dy)) return;
+        e.preventDefault();
+        glide((gliding ? target : window.scrollY) + dy);
+      }, { passive: false });
+      on(window, 'scroll', () => { if (!gliding) { target = window.scrollY; pos = target; } }, { passive: true });
+      on(window, 'keydown', () => { gliding = false; target = window.scrollY; });
+    }
+    // in-page links: Back to top always goes to the very top, other #links to their section's real place
+    on(d, 'click', (e) => {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      const a = e.target.closest && e.target.closest('a[href^="#"]');
+      if (!a) return;
+      const id = decodeURIComponent(a.getAttribute('href').slice(1));
+      const t = id ? d.getElementById(id) : null;
+      if (id !== 'top' && id !== 'main' && !t) return;
+      e.preventDefault();
+      const head = d.querySelector('.site-head');
+      const y = (id === 'top' || id === 'main') ? 0 : Math.max(0, naturalTop(t) - (head ? head.offsetHeight : 0) - 8);
+      if (this.stGlide) this.stGlide(y); else window.scrollTo({ top: y, behavior: still ? 'auto' : 'smooth' });
+      try { history.replaceState(null, '', id === 'top' ? location.pathname + location.search : '#' + id); } catch (er) {}
+      if (id !== 'top' && t && !t.hasAttribute('tabindex')) { t.setAttribute('tabindex', '-1'); }
+      if (t) setTimeout(() => { try { t.focus({ preventScroll: true }); } catch (er) {} }, 600);
+    }, true);
+    // ink wipe between pages (not into the study pack library, which keeps its own pages)
+    const inkFor = (p) => (p === '/' ? '#4F4086' : /^\/talks\//.test(p) ? '#10131C' : /^\/projects\//.test(p) ? '#064F6E' : /^\/products\//.test(p) ? '#7A4456' : /^\/author\//.test(p) ? '#5A82B3' : '');
+    if (de.classList.contains('st-in')) {
+      requestAnimationFrame(() => requestAnimationFrame(() => { de.classList.add('st-go'); setTimeout(() => de.classList.remove('st-in', 'st-go'), 800); }));
+    }
+    on(window, 'pageshow', (e) => { if (e.persisted) { d.querySelectorAll('.st-wipe').forEach((w) => w.remove()); de.classList.remove('st-in', 'st-go'); } });
+    if (!still) on(d, 'click', (e) => {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      const a = e.target.closest && e.target.closest('a[href]');
+      if (!a || a.target || a.hasAttribute('download')) return;
+      let u;
+      try { u = new URL(a.href, location.href); } catch (er) { return; }
+      if (u.origin !== location.origin || (u.pathname === location.pathname && u.search === location.search)) return;
+      const ink = inkFor(u.pathname);
+      if (!ink || /\.[a-z0-9]{2,4}$/i.test(u.pathname)) return;
+      e.preventDefault();
+      const w = d.createElement('div');
+      w.className = 'st-wipe';
+      w.style.setProperty('--c', ink);
+      w.style.setProperty('--x', e.clientX + 'px');
+      w.style.setProperty('--y', e.clientY + 'px');
+      d.body.appendChild(w);
+      try { sessionStorage.setItem('gt-wipe', ink); } catch (er) {}
+      requestAnimationFrame(() => requestAnimationFrame(() => w.classList.add('go')));
+      setTimeout(() => { location.href = u.href; }, 520);
+    }, true);
+  }
+  stBooks(tries, still) {
+    const views = Array.from(document.querySelectorAll('[data-st-book]')).filter((v) => !v.__book);
+    const ready = views.filter((v) => v.querySelector('img'));
+    if (!ready.length) { if (tries < 60) this.stBT = setTimeout(() => this.stBooks(tries + 1, still), 150); return; }
+    ready.forEach((view) => {
+      view.__book = 1;
+      const pages = Array.from(view.querySelectorAll('img')).map((im) => {
+        const lab = im.parentElement && im.parentElement.querySelector('.meta');
+        return { src: im.getAttribute('src') || im.getAttribute('data-src'), alt: im.getAttribute('alt') || '', lab: lab ? lab.textContent.trim() : '' };
+      }).filter((p) => p.src && p.src.indexOf('{{') < 0);
+      if (!pages.length) { view.__book = 0; return; }
+      const d = document;
+      const book = d.createElement('div');
+      book.className = 'st-book';
+      book.setAttribute('role', 'region');
+      book.setAttribute('aria-roledescription', 'book');
+      book.setAttribute('aria-label', (view.getAttribute('aria-label') || 'Document').replace(/, scrollable$/, ''));
+      book.tabIndex = 0;
+      book.innerHTML = '<div class="st-book-stage"><div class="st-book-spread"><div class="st-pg l"></div><div class="st-pg r"></div></div></div>' +
+        '<div class="st-book-bar"><button type="button" class="st-bk prev" aria-label="Previous pages">←</button>' +
+        '<span class="st-bk-n" aria-live="polite"></span><button type="button" class="st-bk next" aria-label="Next pages">→</button></div>';
+      view.insertAdjacentElement('afterend', book);
+      view.classList.add('st-book-src');
+      const stage = book.querySelector('.st-book-stage');
+      const L = book.querySelector('.st-pg.l'), R = book.querySelector('.st-pg.r');
+      const num = book.querySelector('.st-bk-n');
+      const fill = (el, i) => {
+        el.innerHTML = '';
+        el.classList.toggle('blank', !(i >= 0 && i < pages.length));
+        if (!(i >= 0 && i < pages.length)) return;
+        const im = d.createElement('img');
+        im.src = pages[i].src; im.alt = pages[i].alt; im.draggable = false;
+        el.appendChild(im);
+      };
+      const two = () => book.clientWidth >= 720;
+      // spreads: the first page sits alone on the right, like a cover
+      let at = 0;
+      const spreadOf = (i) => (two() ? (i === 0 ? [-1, 0] : (i % 2 ? [i, i + 1] : [i - 1, i])) : [i]);
+      const first = (i) => (two() ? (i === 0 ? 0 : (i % 2 ? i : i - 1)) : i);
+      const lastStart = () => first(pages.length - 1);
+      const label = () => {
+        const sp = spreadOf(at).filter((i) => i >= 0 && i < pages.length);
+        const a = sp[0] + 1, b = sp[sp.length - 1] + 1;
+        num.textContent = (a === b ? 'Page ' + a : 'Pages ' + a + ' to ' + b) + ' of ' + pages.length;
+        book.querySelector('.prev').disabled = at <= 0;
+        book.querySelector('.next').disabled = at >= lastStart();
+      };
+      const show = () => {
+        book.classList.toggle('one', !two());
+        const sp = spreadOf(at);
+        if (two()) { fill(L, sp[0]); fill(R, sp[1]); } else { fill(R, sp[0]); L.innerHTML = ''; }
+        label();
+        [1, 2, 3].forEach((k) => { const n = pages[at + k]; if (n) { const im = new Image(); im.src = n.src; } });
+      };
+      const im0 = new Image();
+      im0.onload = () => { if (im0.naturalWidth) book.style.setProperty('--ar', (im0.naturalWidth / im0.naturalHeight).toFixed(4)); };
+      im0.src = pages[0].src;
+      let busy = false;
+      const turn = (dir) => {
+        if (busy) return;
+        const nextAt = dir > 0 ? (two() ? (at === 0 ? 1 : at + 2) : at + 1) : (two() ? (at <= 1 ? 0 : at - 2) : at - 1);
+        if (nextAt < 0 || nextAt > lastStart() || nextAt === at) return;
+        if (still) { at = nextAt; show(); return; }
+        busy = true;
+        const now = spreadOf(at), then = spreadOf(nextAt);
+        const leaf = d.createElement('div');
+        leaf.className = 'st-leaf ' + (two() ? (dir > 0 ? 'fwd' : 'back') : (dir > 0 ? 'fwd one' : 'back one'));
+        leaf.innerHTML = '<div class="st-face front"></div><div class="st-face backf"></div>';
+        const F = leaf.querySelector('.front'), B = leaf.querySelector('.backf');
+        if (two()) {
+          if (dir > 0) { fill(F, now[1]); fill(B, then[0]); fill(L, now[0]); fill(R, then[1]); }
+          else { fill(F, now[0]); fill(B, then[1]); fill(L, then[0]); fill(R, now[1]); }
+        } else if (dir > 0) { fill(F, now[0]); B.classList.add('blank'); fill(R, then[0]); }
+        else { fill(F, then[0]); B.classList.add('blank'); fill(R, now[0]); }
+        stage.appendChild(leaf);
+        requestAnimationFrame(() => requestAnimationFrame(() => leaf.classList.add('go')));
+        setTimeout(() => { at = nextAt; show(); leaf.remove(); busy = false; }, 760);
+      };
+      book.querySelector('.prev').addEventListener('click', () => turn(-1));
+      book.querySelector('.next').addEventListener('click', () => turn(1));
+      stage.addEventListener('click', (e) => { const r = stage.getBoundingClientRect(); turn(e.clientX - r.left < r.width / 2 ? -1 : 1); });
+      book.addEventListener('keydown', (e) => { if (e.key === 'ArrowRight') { e.preventDefault(); turn(1); } if (e.key === 'ArrowLeft') { e.preventDefault(); turn(-1); } });
+      let sx = null;
+      stage.addEventListener('pointerdown', (e) => { if (e.pointerType !== 'mouse') sx = e.clientX; });
+      stage.addEventListener('pointerup', (e) => { if (sx !== null && Math.abs(e.clientX - sx) > 40) turn(e.clientX < sx ? 1 : -1); sx = null; });
+      let wasTwo = two();
+      window.addEventListener('resize', () => { if (two() !== wasTwo) { wasTwo = two(); at = first(at); show(); } }, { passive: true });
+      show();
+    });
+    if (views.length > ready.length && tries < 60) this.stBT = setTimeout(() => this.stBooks(tries + 1, still), 150);
+  }
+  // story:end
   renderVals() {
     const st = this.state || {};
     const open = st.open || {};
