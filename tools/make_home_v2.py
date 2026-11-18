@@ -207,7 +207,8 @@ CSS = f'''
 html{{scroll-behavior:auto}}
 body{{margin:0;background:{INK};color:{PAPER};font-family:'Titillium Web',system-ui,sans-serif;font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased}}
 a{{color:inherit}}
-.v2{{position:relative;overflow-x:clip}}
+.v2{{position:relative;overflow-x:clip;--vh:9px}}
+.v2.live{{--vh:1vh}}
 .v2.live{{background:var(--bg);transition:background-color .9s cubic-bezier(.65,0,.35,1)}}
 .v2::after{{content:"";position:fixed;inset:0;pointer-events:none;z-index:40;opacity:.16;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}}
 .skip{{position:absolute;left:12px;top:-80px;z-index:90;background:{PAPER};color:{INK};padding:10px 16px;font-family:'Ubuntu Mono',monospace}}
@@ -223,24 +224,24 @@ a{{color:inherit}}
 .scene{{position:relative;min-height:860px;display:flex;align-items:center;justify-content:center;padding:100px clamp(20px,6vw,96px) 110px;background:var(--sb)}}
 .v2.live .scene{{min-height:100vh;background:transparent}}
 .star{{position:absolute;color:{PAPER};pointer-events:none}}
-.stack-c{{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;text-align:center;gap:clamp(12px,2.2vh,22px);max-width:1100px}}
+.stack-c{{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;text-align:center;gap:clamp(12px,calc(var(--vh) * 2.2),22px);max-width:1100px}}
 .stack-l{{position:relative;z-index:2;display:flex;flex-direction:column;gap:20px;max-width:760px}}
 .stack-l.wide{{max-width:1240px;width:100%}}
 .row{{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:clamp(24px,5vw,80px);width:100%;max-width:1240px}}
 .head-row{{display:flex;align-items:flex-end;justify-content:space-between;gap:24px}}
 .over{{margin:0;font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:clamp(20px,2vw,28px);opacity:.9}}
-.big{{margin:0;font-family:'Anton',Impact,sans-serif;font-weight:400;text-transform:uppercase;font-size:clamp(56px,min(11vw,17vh),190px);line-height:.9;letter-spacing:.005em;color:{PAPER}}}
-.big.huge{{font-size:clamp(60px,min(12vw,19vh),210px)}}
+.big{{margin:0;font-family:'Anton',Impact,sans-serif;font-weight:400;text-transform:uppercase;font-size:clamp(56px,min(11vw,calc(var(--vh) * 17)),190px);line-height:.9;letter-spacing:.005em;color:{PAPER}}}
+.big.huge{{font-size:clamp(60px,min(12vw,calc(var(--vh) * 19)),210px)}}
 .big .w{{display:inline-block;white-space:nowrap}}
 .big .l{{display:inline-block;transform:translateY(calc(var(--y) * var(--k,1))) rotate(calc(var(--r) * var(--k,1)));transition:transform .2s linear}}
-.serif{{margin:0;font-family:'Instrument Serif',Georgia,serif;font-size:clamp(24px,min(2.6vw,4.4vh),40px);line-height:1.12;max-width:26ch}}
+.serif{{margin:0;font-family:'Instrument Serif',Georgia,serif;font-size:clamp(24px,min(2.6vw,calc(var(--vh) * 4.4)),40px);line-height:1.12;max-width:26ch}}
 .stack-c .serif{{max-width:40ch}}
 .lede{{margin:0;font-size:clamp(18px,1.6vw,21px);max-width:56ch;opacity:.92}}
 .mono-l{{margin:0;font-family:'Ubuntu Mono',monospace;font-size:13px;letter-spacing:.08em;text-transform:uppercase;opacity:.85}}
 .cue{{margin:0;font-family:'Ubuntu Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;opacity:.8}}
 .squiggle{{width:min(300px,60%);height:24px;color:{MIST}}}
-.quote{{margin:0;max-width:30ch}}
-.quote p{{margin:0;font-family:'Instrument Serif',Georgia,serif;font-size:clamp(34px,min(4.6vw,7.4vh),76px);line-height:1.04}}
+.quote{{margin:0;max-width:min(1000px,100%)}}
+.quote p{{margin:0;font-family:'Instrument Serif',Georgia,serif;font-size:clamp(34px,min(4.6vw,calc(var(--vh) * 7.4)),76px);line-height:1.04}}
 .quote footer{{margin-top:18px;font-family:'Ubuntu Mono',monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;opacity:.85}}
 .pix{{--s:5;position:relative;width:calc(var(--fw) * 1px * var(--s));height:calc(var(--fh) * 1px * var(--s));overflow:hidden;flex:none;border-radius:6px;box-shadow:0 0 0 3px rgba(237,239,242,.85),0 18px 40px rgba(16,19,28,.35)}}
 .pix img{{display:block;height:100%;width:calc(var(--n) * 100%);max-width:none;image-rendering:pixelated;image-rendering:crisp-edges;animation:pix var(--t) steps(var(--n)) infinite}}
@@ -400,7 +401,7 @@ page = (head + '<x-dc>\n<helmet>\n'
         '<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Instrument+Serif:ital@0;1&amp;family=Titillium+Web:ital,wght@0,400;0,600;0,700;1,400&amp;family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">\n'
         '<meta name="robots" content="noindex">\n'
         f'<style>{CSS}</style>\n</helmet>\n{body}\n</x-dc>\n'
-        '<script type="text/x-dc" data-dc-script data-props=\'{"$preview":{"width":1440,"height":8200}}\'>\n'
+        '<script type="text/x-dc" data-dc-script data-props=\'{"$preview":{"width":1440,"height":7600}}\'>\n'
         + SCRIPT + '\n</script>\n</body>\n</html>\n')
 open(os.path.join(ROOT, 'src/pages/Home-v2.dc.html'), 'w').write(page)
 print('written', len(page), 'talks', n_talks, 'cards', len(cards))
