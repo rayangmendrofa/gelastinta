@@ -51,10 +51,12 @@ PAGES = {
     'Products.dc.html': dict(pal=['#7A4456', '#4F4086', '#064F6E', '#5A82B3'], outfit='hoodie', label='Products', scene=True,
                              scenes={'GelasTinta study packs': 'band', 'Services': 'full', 'Build your quote': 'band', 'FAQ': 'band',
                                      'From the workshop': 'full', 'PT RTM · rtechm.com': 'band'},
+                             more=[('p', 'class="lead prose"'), ('all', 'class="mi-inc"')],
                              stage=('study', 'hoodie', 'happy', 'Pixel scene: the GelasTinta character in his hoodie walks into his study room and jumps for joy'),
                              stage_at=('before', '</div>\n<nav class="card jump')),
     'Author.dc.html': dict(pal=['#5A82B3', '#4F4086', '#7A4456', '#4F4086'], outfit='hoodie', label='Author', scene=True,
-                           scenes={'The kit': 'band', 'Education': 'band', 'Around the studies': 'full'}),
+                           scenes={'The kit': 'band', 'Education': 'band', 'Around the studies': 'full'},
+                           more=[('group', '<div class="prose intro">'), ('p', 'class="edu-desc"')]),
 }
 PROJECT_PAL = ['#10131C', '#064F6E', '#2B44C8', '#5A82B3']
 
@@ -202,8 +204,11 @@ html.st-on .st-band > .wrap > .sec-head:first-child{position:relative;padding:cl
 html.st-on .st-full{background:var(--sb)!important;background-image:none!important;color:var(--sbf)}
 html.st-on .st-full > .wrap > .sec-head:first-child{padding-top:clamp(36px,7vh,80px)}
 html.st-on .st-sc .sec-head .kicker{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:clamp(19px,1.9vw,26px);letter-spacing:0;text-transform:none;color:inherit;opacity:.92}
-html.st-on .st-sc .sec-head .st-h{font-size:clamp(50px,7vw,124px);line-height:.95;color:inherit;max-width:16ch}
-html.st-on .st-sc .sec-head .st-h.st-long{font-size:clamp(40px,4.8vw,84px);max-width:20ch}
+html.st-on .st-sc .sec-head .st-h{font-size:clamp(44px,5.8vw,100px);line-height:.98;color:inherit;max-width:20ch}
+html.st-on .st-sc .sec-head .st-h.st-long{font-size:clamp(38px,4.4vw,74px);max-width:22ch}
+html.st-on .st-sc .lead{font-size:clamp(17px,1.4vw,19px);line-height:1.6;max-width:56ch}
+.st-inc > summary{margin-top:6px;font-size:11px}
+[data-st-more] > p{margin:0}
 html.st-on .st-sc .sec-head :is(p,span,.meta,.muted,.small,.lead,a:not(.btn)){color:inherit}
 html.st-on .st-sc .sec-head :is(p,.meta,.muted,.small){opacity:.88}
 html.st-on .st-full :is(.shelf-row-k,.sh-hint,.sh-count,.pb-hint,.pb-count,.show-label){color:var(--sbf);opacity:.85}
@@ -219,7 +224,24 @@ html.st-on .pb-shelf .pb::after{width:48px}
 html.st-on :is(.shelf .book,.pb-shelf .pb).open.flip{animation:st-pull .7s cubic-bezier(.2,.85,.25,1)}
 @keyframes st-pull{0%{transform:translateY(-46px) rotate(-4deg) scale(1.02);box-shadow:0 30px 40px -12px rgba(16,19,28,.5)}55%{transform:translateY(4px)}100%{transform:none}}
 html.st-on :is(.shelf,.pb-shelf){box-shadow:0 10px 0 -4px rgba(201,206,216,.9),0 28px 30px -18px rgba(16,19,28,.55)}
-@media (prefers-reduced-motion:reduce){.st-leaf{transition:none}.st-shelf-in > *{animation:none}.st-shelf-wait > *{opacity:1}.st-actor.walk{display:none}.st-actor.act{animation:none;opacity:1}.st-actor img,.st-walker img{animation:none}}
+.st-more{margin:0}
+.st-more > summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;margin-top:2px;font-family:'Ubuntu Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:underline;text-underline-offset:5px;opacity:.85}
+.st-more > summary::-webkit-details-marker{display:none}
+.st-more > summary::after{content:"↓";text-decoration:none;transition:transform .3s}
+.st-more[open] > summary::after{transform:rotate(180deg)}
+.st-more > summary:hover{opacity:1}
+.st-more > summary:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+.st-more .st-more-c,.st-more[open] .st-more-o{display:none}
+.st-more[open] .st-more-c{display:inline}
+.st-more[open] > :not(summary){animation:st-fadein .45s cubic-bezier(.2,.8,.2,1) both}
+.st-more[open] > summary{order:2}
+.st-more[open]{display:flex;flex-direction:column;gap:12px}
+@keyframes st-fadein{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+html.st-on .st-scene .lead,html.st-on .st-scene .prose.intro p{font-size:clamp(17px,1.35vw,19px);line-height:1.6;max-width:52ch}
+html.st-on .st-scene .prose.intro{display:flex;flex-direction:column;gap:10px}
+html.st-on .st-scene .wrap{row-gap:28px}
+html.st-on .edu-desc + .st-more,html.st-on .edu-desc{font-size:16px;line-height:1.6}
+@media (prefers-reduced-motion:reduce){.st-leaf{transition:none}.st-more[open] > :not(summary){animation:none}.st-shelf-in > *{animation:none}.st-shelf-wait > *{opacity:1}.st-actor.walk{display:none}.st-actor.act{animation:none;opacity:1}.st-actor img,.st-walker img{animation:none}}
 '''
 
 JS = r'''  // story:start
@@ -669,6 +691,62 @@ def footer(s):
     return s[:m.start()] + new + s[m.end():]
 
 
+def first_sentence(inner):
+    """Split paragraph HTML after its first sentence (outside tags). Returns (first, rest)."""
+    depth = 0
+    for i, ch in enumerate(inner):
+        if ch == '<':
+            depth += 1
+        elif ch == '>':
+            depth -= 1
+        elif depth == 0 and ch in '.?!' and inner[i + 1:i + 2] == ' ' and i > 40:
+            return inner[:i + 1], inner[i + 2:]
+    return inner, ''
+
+
+def more_box(rest_html):
+    return ('<details class="st-more"><summary><span class="st-more-o">Read more</span><span class="st-more-c">Show less</span></summary>'
+            + rest_html + '</details>')
+
+
+def expandable(body, rules):
+    """Long explanations show their first sentence; the rest opens with Read more (nothing is cut)."""
+    for kind, anchor in rules:
+        if kind == 'p':
+            def one(m):
+                attrs, inner = m.group(1), m.group(2)
+                if len(re.sub(r'<[^>]+>', '', inner)) < 170:
+                    return m.group(0)
+                a, b = first_sentence(inner)
+                if not b:
+                    return m.group(0)
+                return f'<div{attrs} data-st-more=""><p>{a}</p>' + more_box(f'<p>{b}</p>') + '</div>'
+            body = re.sub(r'<p(\s' + re.escape(anchor) + r'[^>]*)>(.*?)</p>', one, body, flags=re.S)
+        elif kind == 'all':
+            label = 'What’s included'
+            def whole(m):
+                return (f'<details class="st-more st-inc"><summary><span class="st-more-o">{label}</span><span class="st-more-c">Hide</span></summary>'
+                        + m.group(0) + '</details>')
+            body = re.sub(r'(?<!</summary>)<p\s' + re.escape(anchor) + r'[^>]*>.*?</p>', whole, body, flags=re.S)
+        else:
+            i = body.find(anchor)
+            if i < 0:
+                continue
+            j = body.find('</div>', i)
+            block = body[i + len(anchor):j]
+            if 'st-more' in block:
+                continue
+            ps = re.findall(r'<p\b[^>]*>.*?</p>', block, re.S)
+            if not ps:
+                continue
+            m = re.match(r'(<p\b[^>]*>)(.*?)</p>', ps[0], re.S)
+            a, b = first_sentence(m.group(2))
+            rest = ([m.group(1) + b + '</p>'] if b else []) + ps[1:]
+            new = '\n' + m.group(1) + a + '</p>\n' + more_box('\n'.join(rest)) + '\n'
+            body = body[:i + len(anchor)] + new + body[j:]
+    return body
+
+
 def core(s, cfg):
     """Fonts, the style block and the stStart method (no markup changes)."""
     vars_ = f":root{{--st-pal:{','.join(cfg['pal'])};--st-outfit:{cfg['outfit']}}}"
@@ -754,6 +832,8 @@ def apply(name, s):
     body = re.sub(r'<div class="viewer"(?![^>]*data-st-book)', '<div class="viewer" data-st-book=""', body)
     body = body.replace('scroll inside the frame', 'turn the pages')
     body = footer(body)
+    if cfg.get('more'):
+        body = expandable(body, cfg['more'])
     return core(head + body, cfg)
 
 
