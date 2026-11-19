@@ -45,7 +45,7 @@ PAGES = {
     'Talks.dc.html': dict(pal=['#10131C', '#4F4086', '#064F6E', '#7A4456'], outfit='suit', label='Talks', scene=True,
                           scenes={'Articles': 'full'}),
     'Projects.dc.html': dict(pal=['#064F6E', '#4F4086', '#5A82B3', '#10131C'], outfit='labcoat', label='Projects', scene=True,
-                             scenes={'Dissertations & Hobby Builds': 'full', 'Infographics': 'full', 'CAD Designs': 'band'},
+                             scenes={'Dissertations, Hobby Builds & Industry Projects': 'full', 'Infographics': 'full', 'CAD Designs': 'band'},
                              stage=('workshop', 'labcoat', 'inspect', 'Pixel scene: the GelasTinta character in a lab coat walks into the workshop and holds a beaker up to the light'),
                              stage_at=('after', '<div class="px-side" style="align-self:end">')),
     'Products.dc.html': dict(pal=['#7A4456', '#4F4086', '#064F6E', '#5A82B3'], outfit='hoodie', label='Products', scene=True,

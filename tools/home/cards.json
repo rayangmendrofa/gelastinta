@@ -78,7 +78,7 @@
   "img": "dcf61a5bdf4c70bc75024501af165aec",
   "alt": "The web HMI of the T-101 batch station during HOLD",
   "style": "object-fit:cover;object-position:0% 0%",
-  "kicker": "Hobby build · 2026 · New",
+  "kicker": "Industry project · 2026 · New",
   "title": "A batch tank with no cook",
   "p": "A heated mixing tank run by a PLC program in Structured Text, proven against a virtual plant with 66 automated tests, then run on OpenPLC v4.",
   "meta": "66 / 66 tests · report inside"
