@@ -51,9 +51,9 @@
   "shelf": "works",
   "href": "Hobby-GestureMusic.dc.html",
   "bg": "#FFFFFF",
-  "img": "594bcf3918633ddae6c21ea7f0bbf8b5",
-  "alt": "Figure 1 of the Gesture Music handbook, From hand to music: capture, locate, recognise, map, dispatch and output",
-  "style": "object-fit:contain;object-position:50% 50%;padding:10px",
+  "img": "3e81961aa7ee6335d2f2b188f7b29e0e",
+  "alt": "Screen recording of Gesture Music: both hands make signs, the camera view labels the notes and the matching pads light up",
+  "style": "object-fit:cover;object-position:50% 40%",
   "kicker": "Hobby build · 2025 – 2026 · New",
   "title": "Gesture Music, an instrument you play with hand signs",
   "p": "A webcam watches both hands and each sign plays a note, a chord or a drum, with a looper, live MIDI, a rhythm game and a 62-page handbook.",
@@ -70,6 +70,18 @@
   "title": "Building my own TARS",
   "p": "The robot from Interstellar, printed and assembled from the TARS-AI community’s open build kit, then taught seven new moves in a physics simulation.",
   "meta": "Fan build · 7 new moves"
+ },
+ {
+  "shelf": "works",
+  "href": "Hobby-PLCBatch.dc.html",
+  "bg": "#FFFFFF",
+  "img": "dcf61a5bdf4c70bc75024501af165aec",
+  "alt": "The web HMI of the T-101 batch station during HOLD",
+  "style": "object-fit:cover;object-position:0% 0%",
+  "kicker": "Hobby build · 2026 · New",
+  "title": "A batch tank with no cook",
+  "p": "A heated mixing tank run by a PLC program in Structured Text, proven against a virtual plant with 66 automated tests, then run on OpenPLC v4.",
+  "meta": "66 / 66 tests · report inside"
  },
  {
   "shelf": "latest",

@@ -42,6 +42,7 @@ export const ROUTES = {
   'Hobby-FlyBrain.dc.html': '/projects/fly-brain-sugar/',
   'Hobby-GestureMusic.dc.html': '/projects/gesture-music/',
   'Hobby-TARS.dc.html': '/projects/tars/',
+  'Hobby-PLCBatch.dc.html': '/projects/plc-batch-station/',
 };
 const PREVIEW_ONLY = new Set();
 
@@ -79,10 +80,12 @@ export const META = {
     desc: 'A build diary: printing and assembling Gaël Langevin’s open-source InMoov hand, from the first layers to the first movement.' },
   'Hobby-FlyBrain.dc.html': { title: 'A Fly’s Brain When It Tastes Sugar? · GelasTinta', img: '217a041e95fae2bb0ca236c2a9de533e', pos: 'centre',
     desc: 'A hobby simulation: the published whole-brain model of the fruit fly, fed sugar, watched spike by spike, then run again with two neurons silenced.' },
-  'Hobby-GestureMusic.dc.html': { title: 'Gesture Music, an Instrument You Play With Hand Signs · GelasTinta', img: '594bcf3918633ddae6c21ea7f0bbf8b5', fit: 'contain',
+  'Hobby-GestureMusic.dc.html': { title: 'Gesture Music, an Instrument You Play With Hand Signs · GelasTinta', img: 'd43d2bab163ffaec395a0053916d466c', pos: 'centre',
     desc: 'A webcam instrument: hand signs play notes, chords and drums, with a looper, live MIDI, a rhythm game and a 62-page handbook. Built with OpenCV and Google MediaPipe.' },
   'Hobby-TARS.dc.html': { title: 'Building My Own TARS · GelasTinta', img: '72ff13df99d98450330d2613c1e1189a', pos: 'centre',
     desc: 'A fan build of TARS from Interstellar, printed and assembled from the TARS-AI community’s open kit, then taught seven new moves in a MuJoCo simulation.' },
+  'Hobby-PLCBatch.dc.html': { title: 'A Batch Tank With No Cook. PLC Control Tested Without a PLC · GelasTinta', img: '91f9dcd55ac001f59a2619b44320c23f', pos: 'centre',
+    desc: 'A heated batch mixing tank controlled by a PLC program in IEC 61131-3 Structured Text, tested against a virtual plant with 66 automated tests, then run on OpenPLC v4.' },
   'Talk-CacioPepe.dc.html': { title: 'The Art of Combining Cooking and Science · GelasTinta', img: '4f9fc858b3f233d90a5db49a21bd6b1f', date: '2025-12-23',
     desc: 'Why cacio e pepe turns clumpy, and the Ig Nobel-winning physics paper that fixes it with a little starch.' },
   'Talk-Salmon.dc.html': { title: 'How Coke-headed Salmon Influence Humans and the Environment · GelasTinta', img: 'cda359f19fa6c877bb9c7a27d1d81add', date: '2026-01-23',
