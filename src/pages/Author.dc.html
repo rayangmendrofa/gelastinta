@@ -1373,6 +1373,10 @@ class Component extends DCLogic {
     const head = d.querySelector('.site-head');
     const box = (d.getElementById('main') || chs[0]).parentElement;
     const cards = Array.from(box.children).filter((el) => el.matches('section, nav, aside, div.sec') && !el.matches('.site-head, .site-foot, .skip-link, .gt-progress'));
+    // sections wrapped in an extra div (personal takes, comments) are cards too, so they keep their paper
+    Array.from(d.querySelectorAll('section.sec')).forEach((sec) => {
+      if (!sec.closest('.st-card') && !sec.closest('.site-foot') && sec.parentElement !== box) { sec.classList.add('st-card'); cards.push(sec); }
+    });
     cards.forEach((c) => c.classList.add('st-card'));
     if (framed) return;
     // wobbling heading letters
