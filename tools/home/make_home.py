@@ -139,7 +139,7 @@ S.append(scene('apart', 'Take apart', OLYMPIC, f'''<div class="stack-c wide">
 </div>'''))
 
 S.append(scene('builds', 'Builds', VANDAR, f'''<div class="st-hpin stack-l wide">
-<div class="head-row"><div><p class="over">Dissertations and hobby builds</p>{big('h2', 'Featured works.', 44)}</div>{px('lab', 'Pixel portrait: the GelasTinta character in his lab coat, looking determined', 'face sm')}</div>
+<div class="head-row"><div><p class="over">Dissertations, builds and industry projects</p>{big('h2', 'Featured works.', 44)}</div>{px('lab', 'Pixel portrait: the GelasTinta character in his lab coat, looking determined', 'face sm')}</div>
 <div class="cards" data-st-x="" tabindex="0" aria-label="Featured works">{works}</div>
 <a class="more" href="Projects.dc.html">All projects →</a>
 </div>''', 'xs'))

@@ -10,7 +10,7 @@ Source of the interactive 3D pages served from `src/static/teardowns/`.
 - `gt-hand-*`: the BEng prosthetic hand (Thesis-BEng page, section 04), served as `beng-hand.html`. `gt-hand-shared/kin.js` holds every number and
   says where each comes from (the BEng report; phalanx lengths are typical adult sizes because the report has none).
 
-- `gt-plc-*`: tank T-101 of the PLC batch station (Hobby build H5, section 01), served as `plc-batch-station.html`. Live page only, no film.
+- `gt-plc-*`: tank T-101 of the PLC batch station (industry project IP1, section 01), served as `plc-batch-station.html`. Live page only, no film.
   `gt-plc-shared/data.js` is one default batch recorded from the PLC program every 0.5 s; every reading, lamp and valve reads from it. The
   vessel's proportions are illustrative. The poster is a Playwright screenshot of the live page during HEAT with the glass on.
 Build with the teardown kit (the `teardown/` folder of the study pack source bundle, after `npm install` there):

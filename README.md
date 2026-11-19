@@ -20,7 +20,7 @@ and *Talks* — reviews of scientific papers told with a personal take, somewher
 | ↳ [InMoov hand](https://gelastinta.com/projects/inmoov-hand/) | Hobby replication of Gaël Langevin's open-source InMoov robot hand |
 | ↳ [Fly brain on sugar](https://gelastinta.com/projects/fly-brain-sugar/) | Hobby simulation: the published whole-brain model of the fruit fly (Shiu et al. 2024), fed sugar and replayed spike by spike |
 | ↳ [Gesture Music](https://gelastinta.com/projects/gesture-music/) | Hobby build: a webcam instrument played with hand signs ([code](https://github.com/rayangmendrofa/OpenCV-handsign-midi)), with its handbook |
-| ↳ [PLC batch station](https://gelastinta.com/projects/plc-batch-station/) | Hobby build: PLC control of a heated batch tank in IEC 61131-3 Structured Text, tested on a virtual plant ([code](https://github.com/rayangmendrofa/plc-batch-station)), with a 3D tank, the KiCad I/O board and its report |
+| ↳ [PLC batch station](https://gelastinta.com/projects/plc-batch-station/) | Industry project: PLC control of a heated batch tank in IEC 61131-3 Structured Text, tested on a virtual plant ([code](https://github.com/rayangmendrofa/plc-batch-station)), with a 3D tank, the KiCad I/O board and its report |
 | [Talks](https://gelastinta.com/talks/) | Paper reviews with interactive figures and a personal take |
 | ↳ [Skin effect](https://gelastinta.com/talks/skin-effect/) | *Skin in the Game* — light piling up at one edge of a lossy photonic walk, and how noise speeds the drift |
 | ↳ [Voyager 1, one light day](https://gelastinta.com/talks/voyager-light-day/) | *A Day Away* — Voyager 1 becomes the first spacecraft one light day from Earth, and what it carries |

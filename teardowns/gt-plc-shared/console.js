@@ -64,7 +64,7 @@ export function createConsole(app) {
   const RW = 320;
 
   // ------------------------------------------------------------ title block
-  add(`<div class="sm" style="position:absolute;left:${LX + 2}px;top:24px;letter-spacing:2.6px;font-size:11.5px">GELASTINTA · HOBBY BUILD H5</div>`);
+  add(`<div class="sm" style="position:absolute;left:${LX + 2}px;top:24px;letter-spacing:2.6px;font-size:11.5px">GELASTINTA · INDUSTRY PROJECT IP1</div>`);
   add(`<div style="position:absolute;left:${LX}px;top:42px;font-size:34px;font-weight:700;letter-spacing:-.7px;line-height:1">T-101 batch tank <span style="color:${C.blue};font-weight:400">/</span> one batch in 3D</div>`);
   add(`<div class="mo" style="position:absolute;left:${LX + 2}px;top:84px;font-size:11.5px;letter-spacing:2px;color:#4a5060">FILL · STIR · HEAT · HOLD · DRAIN, DRIVEN BY THE REAL PLC PROGRAM</div>`);
   add(`<div class="sm" style="position:absolute;right:24px;top:26px;letter-spacing:2.2px">40 L · 45 KW HEATER · OPENPLC · 50 MS SCAN</div>`);
