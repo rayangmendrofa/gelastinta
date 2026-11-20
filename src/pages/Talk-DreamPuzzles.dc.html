@@ -473,6 +473,17 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 @keyframes pxvm-thinking{0%{visibility:hidden}69.945%,100%{visibility:visible}}
 @keyframes pxr-thinking{0%{transform:translateX(0);animation-timing-function:step-end}69.945%{transform:translateX(0);animation-timing-function:steps(10,end)}100%{transform:translateX(-100%)}}
 /* px:end */
+/* pxs:start */
+.pxs{position:relative;display:block;width:100%;aspect-ratio:128/80;overflow:hidden;background:#10131C;margin:0}
+.pxs::after{content:"";position:absolute;inset:0;border:1px solid #10131C;pointer-events:none}
+.pxs img{display:block;width:calc(100% * var(--n));height:100%;max-width:none;image-rendering:crisp-edges;image-rendering:pixelated;animation:pxs-run var(--t) steps(var(--n)) infinite;pointer-events:none;user-select:none;-webkit-user-drag:none}
+@keyframes pxs-run{to{transform:translateX(-100%)}}
+.sec-head.pxs-head{flex-direction:row;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:24px 48px}
+.pxs-head > .stack{flex:1 1 320px;min-width:0}
+.pxs-head > .pxs{flex:0 0 auto;width:384px;max-width:100%}
+@media (max-width:760px){.pxs-head > .pxs{width:100%}}
+@media (prefers-reduced-motion:reduce){.pxs img{animation:none}}
+/* pxs:end */
 </style>
 <link data-story href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet">
 <style data-story>:root{--st-pal:#F37F94,#9A72AA,#59256A,#10131C;--st-outfit:suit}
@@ -722,6 +733,7 @@ html.st-on .st-scene .wrap.split:has(> .st-stage) > *{grid-column:1!important;gr
 <div class="col">
 <p class="kicker">01</p>
 <h2 class="t-h2 st-h" style="margin:12px 0 18px">What’s in the paper?</h2>
+<div class="pxs" role="img" aria-label="Pixel scene: the GelasTinta character in pajamas reads in bed under the lamp and nods off" style="--n:18;--t:3240ms;margin:0 0 22px"><img src="/_blob/30d5316949e2cbff88a07c508edff0a1" alt="" draggable="false"></div>
 <p>There is decent lab evidence that <i>sleep</i> helps with creative problems: in several studies, people are more likely to crack a puzzle after a night’s sleep than after the same time awake. The evidence that <i>dreaming</i> is what helps is much weaker. Correlations can’t tell you whether the dream caused the insight. And experiments that simply ask people to think about a problem before bed can’t separate the dream from the thinking.</p>
 <p>The tool the team used is called targeted memory reactivation, or TMR. A sound that was linked to something during the day is replayed quietly during sleep, nudging the brain to revisit that memory. The twist is who they tested. Most of the 20 participants have lucid dreams at least once a month (they know they are dreaming while it happens), so they could be asked to work on a puzzle inside the dream, and even tell the experimenters, in real time, that they were doing it.</p>
 </div>
