@@ -349,6 +349,17 @@ html[data-theme="dark"] .px:not(.dark .px){filter:drop-shadow(0 0 1px rgba(16,19
 @keyframes pxvm-inspect{0%{visibility:hidden}73.988%,100%{visibility:visible}}
 @keyframes pxr-inspect{0%{transform:translateX(0);animation-timing-function:step-end}73.988%{transform:translateX(0);animation-timing-function:steps(10,end)}100%{transform:translateX(-100%)}}
 /* px:end */
+/* pxs:start */
+.pxs{position:relative;display:block;width:100%;aspect-ratio:128/80;overflow:hidden;background:#10131C;margin:0}
+.pxs::after{content:"";position:absolute;inset:0;border:1px solid #10131C;pointer-events:none}
+.pxs img{display:block;width:calc(100% * var(--n));height:100%;max-width:none;image-rendering:crisp-edges;image-rendering:pixelated;animation:pxs-run var(--t) steps(var(--n)) infinite;pointer-events:none;user-select:none;-webkit-user-drag:none}
+@keyframes pxs-run{to{transform:translateX(-100%)}}
+.sec-head.pxs-head{flex-direction:row;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:24px 48px}
+.pxs-head > .stack{flex:1 1 320px;min-width:0}
+.pxs-head > .pxs{flex:0 0 auto;width:384px;max-width:100%}
+@media (max-width:760px){.pxs-head > .pxs{width:100%}}
+@media (prefers-reduced-motion:reduce){.pxs img{animation:none}}
+/* pxs:end */
 </style>
 <link data-story href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet">
 <style data-story>:root{--st-pal:#064F6E,#4F4086,#5A82B3,#10131C;--st-outfit:labcoat}
@@ -637,10 +648,13 @@ html.st-on .st-scene .wrap.split:has(> .st-stage) > *{grid-column:1!important;gr
 
 <section data-st-bg="#10131C" data-st-ch="CAD Designs" id="cad" class="sec st-sc st-band white rule-t" data-st-sb="#10131C" style="--sb:#10131C">
 <div class="wrap">
-<div class="sec-head">
+<div class="sec-head pxs-head">
+<div class="stack g12">
 <p class="kicker">03 · Models &amp; prototypes</p>
 <h2 class="t-h2 st-h" data-st-w="">CAD Designs</h2>
 <p class="intro prose muted">Each model is rendered straight from its CAD file as a 360° turntable. Pick a tab to see it spin.</p>
+</div>
+<div class="pxs" role="img" aria-label="Pixel scene: the GelasTinta mechanic tightens a bolt on a motorbike, wipes his face, and the bike starts with puffs of exhaust" style="--n:16;--t:2240ms"><img src="/_blob/66a00b97639b7843d1f21694a8229805" alt="" draggable="false"></div>
 </div>
 <div class="cad">
 <div class="cad-tabs" role="tablist" aria-label="CAD models">
