@@ -107,6 +107,34 @@ figcaption{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;line-
 .zoom img{max-height:calc(100vh - 96px);max-width:min(94vw,1200px);width:auto;height:auto;object-fit:contain;background:#FFFFFF;box-shadow:0 24px 64px rgba(0,0,0,.55)}
 .zoom figcaption{color:#EDEFF2;margin:0}
 @media (hover:none){.zoom{display:none}.poster-hint{display:none}}
+.hw-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px 40px;margin:72px 0 28px;padding-top:40px;border-top:1px solid currentColor}
+.hw-head .meta{max-width:58ch}
+.hw-chips{display:flex;flex-wrap:wrap;gap:8px}
+.hw-chips button{min-height:40px;padding:0 14px;border:1px solid #10131C;background:#FFFFFF;color:#10131C;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:13px;cursor:pointer}
+.hw-chips button span{opacity:.55;margin-left:4px}
+.hw-chips button:hover{background:#EDEFF2}
+.hw-chips button.on{background:#10131C;color:#FFFFFF}
+.hw-chips button:focus-visible{outline:3px solid #2B44C8;outline-offset:2px}
+.hw-grid{grid-auto-flow:dense}
+.hw-grid figure{margin:0}
+.hw-grid figure.land{grid-column:span 2}
+.hw-grid .poster-link.land img{aspect-ratio:1684/1191}
+.hw-grid .poster-link img{background:#1B1F27}
+.hw-grid .poster-link video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .25s;pointer-events:none;background:#1B1F27}
+.hw-grid .poster-link.playing video{opacity:1}
+.hw-grid[data-f="all"]:not(.hw-open) .hw-more,.hw-grid:not([data-f]):not(.hw-open) .hw-more,.hw-grid .hw-off{display:none}
+.hw-morewrap{display:flex;justify-content:center;margin-top:36px}
+.hw-grid.hw-open + .hw-morewrap,.hw-grid[data-f]:not([data-f="all"]) + .hw-morewrap{display:none}
+.hw-zoom{position:fixed;inset:0;z-index:60;background:rgba(16,19,28,.88);display:none;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:24px;pointer-events:none}
+.hw-zoom.open{display:flex}
+.hw-zoom video,.hw-zoom img{display:block;max-height:calc(100vh - 96px);max-width:min(94vw,1200px);width:auto;height:auto;aspect-ratio:1191/1684;box-shadow:0 24px 64px rgba(0,0,0,.55);background:#1B1F27}
+.hw-zoom.land video,.hw-zoom.land img{aspect-ratio:1684/1191}
+.hw-zoom img{display:none}
+.hw-zoom.img img{display:block}
+.hw-zoom.img video{display:none}
+.hw-zoom p{color:#EDEFF2;margin:0;font-size:15px}
+@media (hover:none){.hw-zoom{display:none!important}.hw-grid .poster-hint{display:none}}
+@media (max-width:640px){.hw-grid figure.land{grid-column:auto}}
 .cad{display:grid;grid-template-columns:300px minmax(0,1fr);border:1px solid #10131C;background:#FFFFFF}
 .cad-tabs{border-right:1px solid #10131C;max-height:740px;overflow-y:auto}
 .cad-group{padding:14px 18px 10px;font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:11px;line-height:1.5;letter-spacing:.12em;text-transform:uppercase;color:#3A4152;background:#EDEFF2;border-bottom:1px solid #C9CED8}
@@ -609,7 +637,7 @@ html.st-on .st-scene .wrap.split:has(> .st-stage) > *{grid-column:1!important;gr
 <p class="kicker">02 · Visual stories</p>
 <h2 class="t-h2 st-h" data-st-w="">Infographics</h2>
 </div>
-<p class="meta muted">Hover a poster to see it full size · click to open it</p>
+<p class="meta muted">Hover a poster to see it full size or watch it play · click to open it</p>
 </div>
 <div class="cols-3" style="gap:32px">
 <figure>
@@ -643,6 +671,249 @@ html.st-on .st-scene .wrap.split:has(> .st-stage) > *{grid-column:1!important;gr
 </div>
 </figure>
 </div>
+
+<div class="hw-head">
+<div class="stack g12">
+<p class="kicker">How It Works · Animated posters</p>
+<h3 class="t-h3" style="font-size:28px">One machine, one question, one test</h3>
+<p class="meta muted">Each poster takes a machine apart and tests a single question with numbers. Hover a poster to play its 8 second loop. Click to open it full size.</p>
+</div>
+<div class="hw-chips" role="group" aria-label="Filter the posters"><button type="button" data-hwf="all" aria-pressed="true" class="on">All <span>23</span></button><button type="button" data-hwf="air" aria-pressed="false">Air and space <span>5</span></button><button type="button" data-hwf="med" aria-pressed="false">Medical <span>5</span></button><button type="button" data-hwf="mach" aria-pressed="false">Machines <span>6</span></button><button type="button" data-hwf="farm" aria-pressed="false">Farming <span>2</span></button><button type="button" data-hwf="sea" aria-pressed="false">Sea <span>2</span></button><button type="button" data-hwf="art" aria-pressed="false">Sound and print <span>3</span></button></div>
+</div>
+<div class="cols-3 hw-grid" data-hw-grid style="gap:32px">
+<figure class="hw-card land" data-g="air">
+<a class="poster-link land" href="/_blob/cb081757f890ee7c5aae821ca853907c" data-hw="hw01_loop" aria-label="Open full-size poster: How Does a Catapult Launch a Fighter Jet?">
+<img src="/_blob/cb081757f890ee7c5aae821ca853907c" alt="Poster: How Does a Catapult Launch a Fighter Jet?" loading="lazy">
+<span class="poster-hint">Hover to play</span>
+</a>
+<div class="poster-cap">
+<p class="kicker">HW01 · Aerospace</p>
+<p class="t-h3" style="font-size:19px">How Does a Catapult Launch a Fighter Jet?</p>
+</div>
+</figure>
+<figure class="hw-card land" data-g="farm">
+<a class="poster-link land" href="/_blob/c8c010c1a51c0cc7fbb7f3abf482fc08" data-hw="hw02_loop" aria-label="Open full-size poster: How Does a Combine Clean Its Grain?">
+<img src="/_blob/c8c010c1a51c0cc7fbb7f3abf482fc08" alt="Poster: How Does a Combine Clean Its Grain?" loading="lazy">
+<span class="poster-hint">Hover to play</span>
+</a>
+<div class="poster-cap">
+<p class="kicker">HW02 · Agriculture</p>
+<p class="t-h3" style="font-size:19px">How Does a Combine Clean Its Grain?</p>
+</div>
+</figure>
+<figure class="hw-card" data-g="farm">
+<a class="poster-link" href="/_blob/79225f1b3df4f3a6aca0d96425b65255" data-hw="hw03_loop" aria-label="Open full-size poster: How Does a Swather Lay Down Its Crop?">
+<img src="/_blob/79225f1b3df4f3a6aca0d96425b65255" alt="Poster: How Does a Swather Lay Down Its Crop?" loading="lazy">
+<span class="poster-hint">Hover to play</span>
+</a>
+<div class="poster-cap">
+<p class="kicker">HW03 · Agriculture</p>
+<p class="t-h3" style="font-size:19px">How Does a Swather Lay Down Its Crop?</p>
+</div>
+</figure>
+<figure class="hw-card land" data-g="sea">
+<a class="poster-link land" href="/_blob/7f50044560e94b27555ef790276a2b0d" data-hw="hw04_loop" aria-label="Open full-size poster: How Does a Submarine Surface?">
+<img src="/_blob/7f50044560e94b27555ef790276a2b0d" alt="Poster: How Does a Submarine Surface?" loading="lazy">
+<span class="poster-hint">Hover to play</span>
+</a>
+<div class="poster-cap">
+<p class="kicker">HW04 · Marine</p>
+<p class="t-h3" style="font-size:19px">How Does a Submarine Surface?</p>
+</div>
+</figure>
+<figure class="hw-card" data-g="sea">
+<a class="poster-link" href="/_blob/99083feab0915dfc842309c2c05d57fe" data-hw="hw05_loop" aria-label="Open full-size poster: Why Is a Submarine Round?">
+<img src="/_blob/99083feab0915dfc842309c2c05d57fe" alt="Poster: Why Is a Submarine Round?" loading="lazy">
+<span class="poster-hint">Hover to play</span>
+</a>
+<div class="poster-cap">
+<p class="kicker">HW05 · Marine</p>
+<p class="t-h3" style="font-size:19px">Why Is a Submarine Round?</p>
+</div>
+</figure>
+<figure class="hw-card" data-g="med">
+<a class="poster-link" href="/_blob/491beee6bf8b39aced68cc1b5dc460a9" data-hw="hw06_loop" aria-label="Open full-size poster: How Does an Anaesthetic Vaporizer Stay Accurate?">
+<img src="/_blob/491beee6bf8b39aced68cc1b5dc460a9" alt="Poster: How Does an Anaesthetic Vaporizer Stay Accurate?" loading="lazy">
+<span class="poster-hint">Hover to play</span>
+</a>
+<div class="poster-cap">
+<p class="kicker">HW06 · Medical</p>
+<p class="t-h3" style="font-size:19px">How Does an Anaesthetic Vaporizer Stay Accurate?</p>
+</div>
+</figure>
+<figure class="hw-card" data-g="mach">
+<a class="poster-link" href="/_blob/96ef6ecd2a0db3400aaaed301624c865" data-hw="hw07_loop" aria-label="Open full-size poster: How Can a 55 t Tank Cross Soft Ground?">
+<img src="/_blob/96ef6ecd2a0db3400aaaed301624c865" alt="Poster: How Can a 55 t Tank Cross Soft Ground?" loading="lazy">
+<span class="poster-hint">Hover to play</span>
+</a>
+<div class="poster-cap">
+<p class="kicker">HW07 · Defence Engineering</p>
+<p class="t-h3" style="font-size:19px">How Can a 55 t Tank Cross Soft Ground?</p>
+</div>
+</figure>
+<figure class="hw-card land" data-g="med">
+<a class="poster-link land" href="/_blob/34960305d0cd9c91e3eb5ef4ceb090a5" data-hw="hw08_loop" aria-label="Open full-size poster: How Does a Surgical Robot Steady the Hand?">
+<img src="/_blob/34960305d0cd9c91e3eb5ef4ceb090a5" alt="Poster: How Does a Surgical Robot Steady the Hand?" loading="lazy">
+<span class="poster-hint">Hover to play</span>
+</a>
+<div class="poster-cap">
+<p class="kicker">HW08 · Medical</p>
+<p class="t-h3" style="font-size:19px">How Does a Surgical Robot Steady the Hand?</p>
+</div>
+</figure>
+<figure class="hw-card" data-g="mach">
+<a class="poster-link" href="/_blob/ad9d81ebed0f115663c192858b48dcbe" data-hw="hw09_loop" aria-label="Open full-size poster: How Does a Four Legged Robot Keep Its Balance?">
+<img src="/_blob/ad9d81ebed0f115663c192858b48dcbe" alt="Poster: How Does a Four Legged Robot Keep Its Balance?" loading="lazy">
+<span class="poster-hint">Hover to play</span>
+</a>
+<div class="poster-cap">
+<p class="kicker">HW09 · Robotics</p>
+<p class="t-h3" style="font-size:19px">How Does a Four Legged Robot Keep Its Balance?</p>
+</div>
+</figure>
+<figure class="hw-card land hw-more" data-g="art">
+<a class="poster-link land" href="/_blob/42f750b8adeab101f5dff415c078ee6a" data-hw="hw10_loop" aria-label="Open full-size poster: Why Does a Speaker Need Two Drivers?">
+<img src="/_blob/42f750b8adeab101f5dff415c078ee6a" alt="Poster: Why Does a Speaker Need Two Drivers?" loading="lazy">
+<span class="poster-hint">Hover to play</span>
+</a>
+<div class="poster-cap">
+<p class="kicker">HW10 · Sound Engineering</p>
+<p class="t-h3" style="font-size:19px">Why Does a Speaker Need Two Drivers?</p>
+</div>
+</figure>
+<figure class="hw-card hw-more" data-g="med">
+<a class="poster-link" href="/_blob/383e560b6e880dc215861f610cab2494" data-hw="hw11_loop" aria-label="Open full-size poster: Why Is an MRI Magnet Always On?">
+<img src="/_blob/383e560b6e880dc215861f610cab2494" alt="Poster: Why Is an MRI Magnet Always On?" loading="lazy">
+<span class="poster-hint">Hover to play</span>
+</a>
+<div class="poster-cap">
+<p class="kicker">HW11 · Medical</p>
+<p class="t-h3" style="font-size:19px">Why Is an MRI Magnet Always On?</p>
+</div>
+</figure>
+<figure class="hw-card land hw-more" data-g="air">
+<a class="poster-link land" href="/_blob/6ccab027b82199cde315cff930a99890" data-hw="hw12_loop" aria-label="Open full-size poster: Why Does a Moon Rocket Have Stages?">
+<img src="/_blob/6ccab027b82199cde315cff930a99890" alt="Poster: Why Does a Moon Rocket Have Stages?" loading="lazy">
+<span class="poster-hint">Hover to play</span>
+</a>
+<div class="poster-cap">
+<p class="kicker">HW12 · Aerospace</p>
+<p class="t-h3" style="font-size:19px">Why Does a Moon Rocket Have Stages?</p>
+</div>
+</figure>
+<figure class="hw-card hw-more" data-g="mach">
+<a class="poster-link" href="/_blob/2a1e19c79a3ac09812cafd4a820997a6" data-hw="hw13_loop" aria-label="Open full-size poster: How a Hydraulic Excavator Digs">
+<img src="/_blob/2a1e19c79a3ac09812cafd4a820997a6" alt="Poster: How a Hydraulic Excavator Digs" loading="lazy">
+<span class="poster-hint">Hover to play</span>
+</a>
+<div class="poster-cap">
+<p class="kicker">HW13 · Mining</p>
+<p class="t-h3" style="font-size:19px">How a Hydraulic Excavator Digs</p>
+</div>
+</figure>
+<figure class="hw-card hw-more" data-g="med">
+<a class="poster-link" href="/_blob/e7673ef1f15c12bb388b0ad336e85ab0" data-hw="hw14_loop" aria-label="Open full-size poster: How Does a Dialysis Machine Clean Blood?">
+<img src="/_blob/e7673ef1f15c12bb388b0ad336e85ab0" alt="Poster: How Does a Dialysis Machine Clean Blood?" loading="lazy">
+<span class="poster-hint">Hover to play</span>
+</a>
+<div class="poster-cap">
+<p class="kicker">HW14 · Medical</p>
+<p class="t-h3" style="font-size:19px">How Does a Dialysis Machine Clean Blood?</p>
+</div>
+</figure>
+<figure class="hw-card hw-more" data-g="med">
+<a class="poster-link" href="/_blob/847636ab6b089121e75148eed3d344e4" data-hw="hw15_loop" aria-label="Open full-size poster: How Does a CT Scanner See Inside the Body?">
+<img src="/_blob/847636ab6b089121e75148eed3d344e4" alt="Poster: How Does a CT Scanner See Inside the Body?" loading="lazy">
+<span class="poster-hint">Hover to play</span>
+</a>
+<div class="poster-cap">
+<p class="kicker">HW15 · Medical</p>
+<p class="t-h3" style="font-size:19px">How Does a CT Scanner See Inside the Body?</p>
+</div>
+</figure>
+<figure class="hw-card land hw-more" data-g="mach">
+<a class="poster-link land" href="/_blob/18523bbf6087f92fb5cf8dfe93d9c08b" data-hw="hw16_loop" aria-label="Open full-size poster: Why Does a Robot Arm Work Harder Stretched Out?">
+<img src="/_blob/18523bbf6087f92fb5cf8dfe93d9c08b" alt="Poster: Why Does a Robot Arm Work Harder Stretched Out?" loading="lazy">
+<span class="poster-hint">Hover to play</span>
+</a>
+<div class="poster-cap">
+<p class="kicker">HW16 · Robotics</p>
+<p class="t-h3" style="font-size:19px">Why Does a Robot Arm Work Harder Stretched Out?</p>
+</div>
+</figure>
+<figure class="hw-card land hw-more" data-g="air">
+<a class="poster-link land" href="/_blob/e689b1f168500485797a049064469f7d" data-hw="hw17_loop" aria-label="Open full-size poster: How Does a Mars Rover Climb Over Rocks?">
+<img src="/_blob/e689b1f168500485797a049064469f7d" alt="Poster: How Does a Mars Rover Climb Over Rocks?" loading="lazy">
+<span class="poster-hint">Hover to play</span>
+</a>
+<div class="poster-cap">
+<p class="kicker">HW17 · Space Robotics</p>
+<p class="t-h3" style="font-size:19px">How Does a Mars Rover Climb Over Rocks?</p>
+</div>
+</figure>
+<figure class="hw-card land hw-more" data-g="mach">
+<a class="poster-link land" href="/_blob/a42bb7af18443512472e2d7e0155edb5" data-hw="hw18_loop" aria-label="Open full-size poster: How Does an Injection Moulding Machine Make Parts?">
+<img src="/_blob/a42bb7af18443512472e2d7e0155edb5" alt="Poster: How Does an Injection Moulding Machine Make Parts?" loading="lazy">
+<span class="poster-hint">Hover to play</span>
+</a>
+<div class="poster-cap">
+<p class="kicker">HW18 · Manufacturing</p>
+<p class="t-h3" style="font-size:19px">How Does an Injection Moulding Machine Make Parts?</p>
+</div>
+</figure>
+<figure class="hw-card land hw-more" data-g="mach">
+<a class="poster-link land" href="/_blob/5ec3aaecd147262780b89a50177d1bd2" data-hw="hw19_loop" aria-label="Open full-size poster: Why Is a Bottling Line Only as Fast as Its Slowest Machine?">
+<img src="/_blob/5ec3aaecd147262780b89a50177d1bd2" alt="Poster: Why Is a Bottling Line Only as Fast as Its Slowest Machine?" loading="lazy">
+<span class="poster-hint">Hover to play</span>
+</a>
+<div class="poster-cap">
+<p class="kicker">HW19 · Manufacturing</p>
+<p class="t-h3" style="font-size:19px">Why Is a Bottling Line Only as Fast as Its Slowest Machine?</p>
+</div>
+</figure>
+<figure class="hw-card hw-more" data-g="art">
+<a class="poster-link" href="/_blob/e1eb16ef8a26b9cd07bf5b90e36c9573" data-hw="hw20_loop" aria-label="Open full-size poster: How Does an Electric Guitar Shape Its Tone?">
+<img src="/_blob/e1eb16ef8a26b9cd07bf5b90e36c9573" alt="Poster: How Does an Electric Guitar Shape Its Tone?" loading="lazy">
+<span class="poster-hint">Hover to play</span>
+</a>
+<div class="poster-cap">
+<p class="kicker">HW20 · Creative Engineering</p>
+<p class="t-h3" style="font-size:19px">How Does an Electric Guitar Shape Its Tone?</p>
+</div>
+</figure>
+<figure class="hw-card hw-more" data-g="art">
+<a class="poster-link" href="/_blob/e0bbe6c382a5ae2533cc0744b386dada" data-hw="hw21_loop" aria-label="Open full-size poster: Why Do Printers Use CMYK and Not RGB?">
+<img src="/_blob/e0bbe6c382a5ae2533cc0744b386dada" alt="Poster: Why Do Printers Use CMYK and Not RGB?" loading="lazy">
+<span class="poster-hint">Hover to play</span>
+</a>
+<div class="poster-cap">
+<p class="kicker">HW21 · Creative Engineering</p>
+<p class="t-h3" style="font-size:19px">Why Do Printers Use CMYK and Not RGB?</p>
+</div>
+</figure>
+<figure class="hw-card land hw-more" data-g="air">
+<a class="poster-link land" href="/_blob/e6f43b5bb6c863ede808b055eb2c026c" data-hw="hw22_loop" aria-label="Open full-size poster: How Does a Helicopter Fly Forward Without Rolling Over?">
+<img src="/_blob/e6f43b5bb6c863ede808b055eb2c026c" alt="Poster: How Does a Helicopter Fly Forward Without Rolling Over?" loading="lazy">
+<span class="poster-hint">Hover to play</span>
+</a>
+<div class="poster-cap">
+<p class="kicker">HW22 · Aerospace</p>
+<p class="t-h3" style="font-size:19px">How Does a Helicopter Fly Forward Without Rolling Over?</p>
+</div>
+</figure>
+<figure class="hw-card hw-more" data-g="air">
+<a class="poster-link" href="/_blob/46595da388424f413bb8ad02ca34aacc" data-hw="hw23_loop" aria-label="Open full-size poster: Is a Faster Exhaust a Better Jet Engine?">
+<img src="/_blob/46595da388424f413bb8ad02ca34aacc" alt="Poster: Is a Faster Exhaust a Better Jet Engine?" loading="lazy">
+<span class="poster-hint">Hover to play</span>
+</a>
+<div class="poster-cap">
+<p class="kicker">HW23 · Aerospace</p>
+<p class="t-h3" style="font-size:19px">Is a Faster Exhaust a Better Jet Engine?</p>
+</div>
+</figure>
+</div>
+<div class="hw-morewrap"><button type="button" class="btn ghost" data-hw-all>Show all 23 posters ↓</button></div>
+<div class="hw-zoom" aria-hidden="true"><img alt=""><video muted loop playsinline preload="none"></video><p></p></div>
 </div>
 </section>
 
@@ -1176,8 +1447,83 @@ class Component extends DCLogic {
     const scan = guard(this.shScan);
     scan();
     this.shInt = setInterval(scan, 600);
+    this.hwBind();
   }
-  gtFigStop() { clearInterval(this.shInt); if (this.shOff) this.shOff(); this.shOn = false; }
+  gtFigStop() { clearInterval(this.shInt); if (this.shOff) this.shOff(); if (this.hwOff) this.hwOff(); this.shOn = false; }
+  // ── How It Works posters: hover plays the 8 s loop full size (hover screens), a tap plays it in the card (touch).
+  // Filter chips by field, "Show all". The loops live on the website (/infographics/how-it-works/); away from it
+  // (the design canvas) they load from gelastinta.com. One set of document listeners, so re-renders don't matter.
+  hwBind() {
+    const local = /(^|\.)gelastinta\.com$|netlify\.app$|^localhost$|^127\./.test(location.hostname);
+    const root = (local ? '' : 'https://gelastinta.com') + '/infographics/how-it-works/';
+    const canHover = window.matchMedia && matchMedia('(hover: hover)').matches;
+    const still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const src = (b) => '<source src="' + root + b + '.mp4" type="video/mp4"><source src="' + root + b + '.webm" type="video/webm">';
+    const play = (v) => { try { v.currentTime = 0; } catch (e) { void e; } const p = v.play(); if (p) p.catch(() => {}); };
+    const card = (a) => {
+      let v = a.querySelector('video');
+      if (!v) {
+        v = document.createElement('video');
+        v.muted = true; v.loop = true; v.playsInline = true; v.preload = 'none';
+        v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.setAttribute('aria-hidden', 'true');
+        v.poster = a.querySelector('img').src; v.innerHTML = src(a.getAttribute('data-hw'));
+        a.appendChild(v);
+      }
+      return v;
+    };
+    const zoom = () => document.querySelector('.hw-zoom');
+    const open = (a) => {
+      const z = zoom(); if (!z) return;
+      const img = a.querySelector('img'), zv = z.querySelector('video'), zi = z.querySelector('img'), b = a.getAttribute('data-hw');
+      z.querySelector('p').textContent = (img.alt || '').replace('Poster: ', '');
+      z.classList.toggle('land', a.classList.contains('land'));
+      if (still) { zi.src = img.src; z.classList.add('open', 'img'); return; }
+      z.classList.remove('img');
+      zv.poster = img.src;
+      if (zv.getAttribute('data-b') !== b) { zv.innerHTML = src(b); zv.setAttribute('data-b', b); zv.load(); }
+      z.classList.add('open'); play(zv);
+      a.classList.add('playing'); play(card(a));
+    };
+    const close = (a) => {
+      const z = zoom(); if (z) { z.classList.remove('open'); const zv = z.querySelector('video'); if (zv) zv.pause(); }
+      if (a) { a.classList.remove('playing'); const v = a.querySelector('video'); if (v) v.pause(); }
+    };
+    const filt = (k) => {
+      document.querySelectorAll('[data-hwf]').forEach((b) => { const on = b.getAttribute('data-hwf') === k; b.classList.toggle('on', on); b.setAttribute('aria-pressed', on ? 'true' : 'false'); });
+      const g = document.querySelector('[data-hw-grid]'); if (!g) return;
+      g.setAttribute('data-f', k);
+      g.querySelectorAll('.hw-card').forEach((f) => f.classList.toggle('hw-off', k !== 'all' && f.getAttribute('data-g') !== k));
+    };
+    const over = (e) => {
+      if (!canHover) return;
+      const a = e.target && e.target.closest ? e.target.closest('a[data-hw]') : null;
+      if (!a || (e.relatedTarget && a.contains(e.relatedTarget))) return;
+      open(a);
+    };
+    const out = (e) => {
+      if (!canHover) return;
+      const a = e.target && e.target.closest ? e.target.closest('a[data-hw]') : null;
+      if (!a || (e.relatedTarget && a.contains(e.relatedTarget))) return;
+      close(a);
+    };
+    const click = (e) => {
+      const t = e.target && e.target.closest ? e.target : null; if (!t) return;
+      const f = t.closest('[data-hwf]');
+      if (f) { e.preventDefault(); filt(f.getAttribute('data-hwf')); return; }
+      if (t.closest('[data-hw-all]')) { e.preventDefault(); const g = document.querySelector('[data-hw-grid]'); if (g) g.classList.add('hw-open'); return; }
+      const a = t.closest('a[data-hw]');
+      if (a && !canHover && !still && !a.classList.contains('playing')) {
+        e.preventDefault();
+        document.querySelectorAll('a[data-hw].playing').forEach((x) => close(x));
+        a.classList.add('playing'); play(card(a));
+      }
+    };
+    const fin = (e) => { const a = e.target && e.target.closest ? e.target.closest('a[data-hw]') : null; if (a && canHover) open(a); };
+    const fout = (e) => { const a = e.target && e.target.closest ? e.target.closest('a[data-hw]') : null; if (a) close(a); };
+    const L = [['pointerover', over, true], ['pointerout', out, true], ['click', click, true], ['focusin', fin, true], ['focusout', fout, true]];
+    L.forEach((l) => document.addEventListener(l[0], l[1], l[2]));
+    this.hwOff = () => { L.forEach((l) => document.removeEventListener(l[0], l[1], l[2])); close(null); };
+  }
   shMuted() { try { return localStorage.getItem('gt-shelf-sound') === 'off'; } catch (e) { return !!this.shMute; } }
   shScan() {
     const muted = this.shMuted();
