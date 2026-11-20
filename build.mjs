@@ -43,6 +43,7 @@ export const ROUTES = {
   'Hobby-GestureMusic.dc.html': '/projects/gesture-music/',
   'Hobby-TARS.dc.html': '/projects/tars/',
   'Hobby-PLCBatch.dc.html': '/projects/plc-batch-station/',
+  'Industry-GH1.dc.html': '/projects/gh1-greenhouse/',
 };
 const PREVIEW_ONLY = new Set();
 
@@ -86,6 +87,8 @@ export const META = {
     desc: 'A fan build of TARS from Interstellar, printed and assembled from the TARS-AI community’s open kit, then taught seven new moves in a MuJoCo simulation.' },
   'Hobby-PLCBatch.dc.html': { title: 'A Batch Tank With No Cook. PLC Control Tested Without a PLC · GelasTinta', img: '91f9dcd55ac001f59a2619b44320c23f', pos: 'centre',
     desc: 'A heated batch mixing tank controlled by a PLC program in IEC 61131-3 Structured Text, tested against a virtual plant with 66 automated tests, then run on OpenPLC v4.' },
+  'Industry-GH1.dc.html': { title: 'GH-1 Tropical Greenhouse. PLC Control System · GelasTinta', img: 'a241ecfb28af302d77101131da29d567', pos: 'centre',
+    desc: 'A PLC program for a 1,000 m² tropical greenhouse with drip irrigation, fertigation and climate control, tested end to end against a virtual plant, and playable in your browser.' },
   'Talk-CacioPepe.dc.html': { title: 'The Art of Combining Cooking and Science · GelasTinta', img: '4f9fc858b3f233d90a5db49a21bd6b1f', date: '2025-12-23',
     desc: 'Why cacio e pepe turns clumpy, and the Ig Nobel-winning physics paper that fixes it with a little starch.' },
   'Talk-Salmon.dc.html': { title: 'How Coke-headed Salmon Influence Humans and the Environment · GelasTinta', img: 'cda359f19fa6c877bb9c7a27d1d81add', date: '2026-01-23',

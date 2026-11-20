@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GH-1 Greenhouse — farm with a real PLC program</title>
+<meta name="description" content="Plant crops in a pixel-art tropical greenhouse run by a real IEC 61131-3 PLC program: irrigation, fertigation and climate control, live in your browser.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --night: #0f1222; --win: #1c2140; --win2: #262c52; --edge: #070914; --hi: #3d4680; --ink: #f1ecd8; --muted: #9aa0c4;
+    --leaf: #6cc37a; --leaf-d: #2f6b3a; --gold: #f2c14e; --gold-d: #a6761b; --red: #e0574b; --red-d: #8a2a22;
+    --sky: #5aa9e6; --soil: #5b3b26;
+  }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  html { background: var(--night); }
+  body { margin: 0; color: var(--ink); font: 16px/1.3 "Pixelify Sans", ui-monospace, monospace;
+         background: radial-gradient(circle at 50% -20%, #232a55 0%, var(--night) 60%); min-height: 100vh;
+         -webkit-font-smoothing: none; }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 14px 14px 26px; }
+
+  /* pixel window: notched corners, hard bevel, drop shadow */
+  .win { position: relative; background: var(--win); padding: 12px;
+         clip-path: polygon(6px 0, calc(100% - 6px) 0, 100% 6px, 100% calc(100% - 6px), calc(100% - 6px) 100%, 6px 100%, 0 calc(100% - 6px), 0 6px);
+         box-shadow: inset 0 0 0 3px var(--edge), inset 0 0 0 6px var(--hi), inset 0 -6px 0 6px #151933; }
+  .title { display: flex; align-items: center; gap: 10px; margin: 0 0 10px; }
+  .title h1 { font-size: 22px; margin: 0; letter-spacing: 1px; text-shadow: 2px 2px 0 var(--edge); }
+  .title .tagline { color: var(--muted); font-size: 14px; }
+  .logo { width: 32px; height: 32px; image-rendering: pixelated; }
+
+
+  /* HUD */
+  .hud { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin-bottom: 10px; }
+  .hud .grp { display: flex; align-items: center; gap: 4px; }
+  .clock { font-size: 26px; font-weight: 700; letter-spacing: 1px; color: var(--gold); text-shadow: 2px 2px 0 var(--edge); min-width: 74px; }
+  .chip { background: var(--win2); padding: 3px 8px; box-shadow: inset 0 0 0 2px var(--edge); font-size: 14px; display: inline-flex; gap: 6px; align-items: center; }
+  .chip img { width: 16px; height: 16px; image-rendering: pixelated; }
+  .spacer { flex: 1; }
+
+  .stage { display: grid; justify-items: center; background: #0b0d18; box-shadow: inset 0 0 0 3px var(--edge); padding: 6px; position: relative; }
+  canvas#farm { display: block; image-rendering: pixelated; cursor: pointer; }
+  #loading { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; padding: 20px; background: #0b0d18f0; }
+  #loading .big { font-size: 22px; color: var(--gold); }
+  .loadbar { width: 220px; height: 14px; margin: 10px auto 0; box-shadow: inset 0 0 0 2px var(--edge); background: var(--win2); overflow: hidden; }
+  .loadbar i { display: block; height: 100%; width: 30%; background: repeating-linear-gradient(90deg, var(--leaf) 0 8px, var(--leaf-d) 8px 10px);
+               animation: load 1.2s steps(10) infinite; }
+  @keyframes load { from { transform: translateX(-100%); } to { transform: translateX(330%); } }
+
+  /* pixel buttons */
+  .btn { font: inherit; font-size: 15px; color: var(--ink); background: #4a5590; border: 0; padding: 6px 12px; cursor: pointer; min-height: 34px;
+         box-shadow: inset -3px -3px 0 #2b3260, inset 3px 3px 0 #7581c4, 0 3px 0 var(--edge); display: inline-flex; align-items: center; gap: 6px; }
+  .btn:hover:not(:disabled) { filter: brightness(1.12); }
+  .btn:active:not(:disabled) { transform: translateY(2px); box-shadow: inset -3px -3px 0 #2b3260, inset 3px 3px 0 #7581c4, 0 1px 0 var(--edge); }
+  .btn:disabled { filter: grayscale(.8) brightness(.7); cursor: not-allowed; }
+  .btn:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+  .btn.on, .btn.go { background: var(--leaf); color: #0d2412; box-shadow: inset -3px -3px 0 var(--leaf-d), inset 3px 3px 0 #a7e8b0, 0 3px 0 var(--edge); }
+  .btn.warn { background: var(--gold); color: #2a1c00; box-shadow: inset -3px -3px 0 var(--gold-d), inset 3px 3px 0 #ffe39a, 0 3px 0 var(--edge); }
+  .btn.bad { background: var(--red); box-shadow: inset -3px -3px 0 var(--red-d), inset 3px 3px 0 #f59a8f, 0 3px 0 var(--edge); }
+  .btn.icon { padding: 5px; min-width: 34px; justify-content: center; }
+  .btn img { width: 16px; height: 16px; image-rendering: pixelated; }
+  .btn.sm { font-size: 13px; min-height: 28px; padding: 3px 8px; }
+
+  /* seed hotbar */
+  .hotbar { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; margin-top: 10px; }
+  .slot { width: 56px; height: 60px; background: var(--win2); border: 0; cursor: pointer; position: relative; color: var(--ink); font: inherit;
+          box-shadow: inset 0 0 0 3px var(--edge), inset 0 0 0 5px #333a6b; display: grid; place-items: center; padding: 4px 0 2px; }
+  .slot canvas { width: 32px; height: 32px; image-rendering: pixelated; }
+  .slot span { font-size: 11px; line-height: 1; }
+  .slot.on { box-shadow: inset 0 0 0 3px var(--edge), inset 0 0 0 5px var(--gold); background: #3a3566; }
+  .slot:focus-visible { outline: 3px solid var(--gold); }
+  .seedinfo { text-align: center; margin-top: 8px; font-size: 14px; color: var(--muted); min-height: 36px; }
+  .seedinfo .btn { margin: 4px 2px 0; }
+
+  h2 { font-size: 15px; margin: 12px 0 6px; color: var(--gold); letter-spacing: 1px; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  h2:first-child { margin-top: 0; }
+
+  /* stats */
+  .kv { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 5px; }
+  .kv div { background: var(--win2); padding: 4px 8px; box-shadow: inset 0 0 0 2px var(--edge); min-width: 0; }
+  .kv span { display: block; font-size: 12px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .kv b { font-weight: 600; font-variant-numeric: tabular-nums; }
+  .kv div.warn { box-shadow: inset 0 0 0 2px var(--gold); } .kv div.bad { box-shadow: inset 0 0 0 2px var(--red); }
+  .bar { height: 14px; background: #0b0d18; box-shadow: inset 0 0 0 2px var(--edge); margin: 2px 0 8px; position: relative; }
+  .bar i { position: absolute; left: 2px; top: 2px; bottom: 2px; width: 0; transition: width .3s steps(8);
+           background: repeating-linear-gradient(90deg, var(--leaf) 0 6px, var(--leaf-d) 6px 8px); }
+  .bar.hp i { background: repeating-linear-gradient(90deg, #e86a5b 0 6px, var(--red-d) 6px 8px); }
+  .bar.hp.ok i { background: repeating-linear-gradient(90deg, #ff9fb0 0 6px, #b24b62 6px 8px); }
+  .row { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-top: 8px; }
+  .small { font-size: 13px; color: var(--muted); }
+  .badge { display: inline-block; font-size: 12px; padding: 1px 6px; margin: 2px 3px 2px 0; background: var(--win2); box-shadow: inset 0 0 0 2px var(--edge); }
+  .badge.warn { color: #2a1c00; background: var(--gold); } .badge.bad { background: var(--red); } .badge.ok { color: #0d2412; background: var(--leaf); }
+  .alarms { font-size: 13px; max-height: 140px; overflow: auto; margin-top: 8px; }
+  .alarms div { padding: 3px 0; border-bottom: 2px dotted #333a6b; }
+  .sp label { display: grid; grid-template-columns: 1fr auto; gap: 2px 8px; align-items: center; font-size: 14px; margin-bottom: 8px; }
+  .sp b { color: var(--gold); }
+  input[type=range] { grid-column: 1 / -1; width: 100%; -webkit-appearance: none; appearance: none; height: 14px; background: #0b0d18;
+                      box-shadow: inset 0 0 0 2px var(--edge); margin: 0; }
+  input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 14px; height: 18px; background: var(--gold); box-shadow: inset -2px -2px 0 var(--gold-d); cursor: pointer; }
+  input[type=range]::-moz-range-thumb { width: 14px; height: 18px; background: var(--gold); border: 0; border-radius: 0; cursor: pointer; }
+  input[type=range]:focus-visible { outline: 3px solid var(--gold); }
+  select { font: inherit; font-size: 14px; color: var(--ink); background: var(--win2); border: 0; padding: 5px 6px; min-height: 32px; box-shadow: inset 0 0 0 2px var(--edge); }
+  .chips { display: flex; flex-wrap: wrap; gap: 5px; }
+  .result { background: var(--win2); padding: 8px 10px; margin-top: 8px; font-size: 14px; box-shadow: inset 0 0 0 2px var(--edge); }
+  .result.good { box-shadow: inset 0 0 0 2px var(--leaf); } .result.badr { box-shadow: inset 0 0 0 2px var(--red); }
+  .result dl { display: grid; grid-template-columns: auto 1fr; gap: 3px 10px; margin: 6px 0 0; font-size: 13px; } .result dt { color: var(--gold); } .result dd { margin: 0; }
+  #toast { position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%); z-index: 9; }
+  #toast div { background: var(--win); padding: 8px 14px; margin-top: 6px; box-shadow: inset 0 0 0 3px var(--edge), inset 0 0 0 5px var(--gold), 0 4px 0 var(--edge);
+               animation: pop .2s steps(3); }
+  @keyframes pop { from { transform: scale(.6); } to { transform: scale(1); } }
+  /* one farm world */
+  .lots { display: flex; gap: 4px; margin-bottom: 6px; flex-wrap: wrap; }
+  .lots .btn { font-size: 14px; min-height: 30px; padding: 3px 10px; }
+  .lots .dot { width: 8px; height: 8px; background: var(--red); box-shadow: 0 0 0 2px var(--edge); }
+  .lots .dot.ripe { background: var(--gold); }
+  .news { flex-wrap: wrap; gap: 4px; } .news .chip, .news .btn { font-size: 13px; } .news .chip img, .news .btn img { width: 14px; height: 14px; }
+  canvas#farm { touch-action: pan-y; }
+  canvas#farm:focus-visible { outline: 3px solid var(--gold); }
+  .cam { position: absolute; top: 12px; opacity: .8; z-index: 2; }      /* over the sky, clear of the equipment */
+  #camL { left: 10px; } #camR { right: 10px; }
+  .pop { position: absolute; top: 8px; right: 8px; width: min(370px, calc(100% - 16px)); max-height: calc(100% - 16px); overflow: auto; z-index: 3;
+         background: var(--win); padding: 10px 12px; box-shadow: inset 0 0 0 3px var(--edge), inset 0 0 0 6px var(--hi), 0 4px 0 var(--edge); }
+  .pophead { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 6px; color: var(--gold); letter-spacing: 1px; }
+  @media (max-width: 700px) {
+    .pop { position: fixed; top: auto; left: 0; right: 0; bottom: 0; width: auto; max-height: 62vh; }
+  }
+  .pop h3 { font-size: 14px; color: var(--gold); margin: 10px 0 4px; letter-spacing: 1px; }
+  .pop .note { font-size: 12px; color: var(--muted); }
+  .parked { font-size: 13px; color: var(--muted); background: var(--win2); padding: 4px 8px; margin-bottom: 8px; box-shadow: inset 0 0 0 2px var(--edge); }
+  .diag { margin-top: 10px; padding: 8px; background: #3a1f2c; box-shadow: inset 0 0 0 2px var(--red); }
+  .diag h3 { margin-top: 0; color: #ff9f93; }
+  .hotbar .sep { width: 3px; background: var(--edge); margin: 4px 4px; }
+  .slot .count { position: absolute; bottom: 14px; right: 4px; font-size: 11px; color: var(--gold); text-shadow: 1px 1px 0 var(--edge); }
+  .boost { font-size: 12px; }
+
+  /* progress */
+  .lvl { display: inline-flex; align-items: center; gap: 6px; }
+  .lvl .bar { width: 70px; height: 10px; margin: 0; }
+  .slot.locked { filter: grayscale(1) brightness(.6); cursor: not-allowed; }
+  .slot .lock { position: absolute; top: 2px; right: 3px; font-size: 10px; color: var(--gold); }
+  .shop > div, .ach > div { background: var(--win2); padding: 6px 8px; box-shadow: inset 0 0 0 2px var(--edge); margin-bottom: 5px;
+                            display: flex; align-items: center; gap: 8px; }
+  .shop .what { flex: 1; min-width: 0; } .shop .what .small { display: block; }
+  .ach { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 5px; }
+  .ach > div { margin: 0; align-items: flex-start; font-size: 13px; }
+  .ach > div.no { opacity: .45; }
+  .ach img { width: 16px; height: 16px; image-rendering: pixelated; flex: none; margin-top: 1px; }
+  .ach b { display: block; color: var(--ink); }
+
+  /* the farmer guide */
+  .guide { display: flex; gap: 10px; align-items: stretch; margin-top: 10px; background: #f1ecd8; color: #2a2238; padding: 8px;
+           box-shadow: inset 0 0 0 3px var(--edge), inset 0 0 0 5px #c9b98f, 0 3px 0 var(--edge); }
+  .guide canvas { width: 112px; height: 108px; image-rendering: pixelated; background: #d9cfa9; box-shadow: inset 0 0 0 2px #a8996e; flex: none; }
+  .guide .say { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+  .guide .who { font-size: 13px; color: #8a5a2b; font-weight: 700; letter-spacing: 1px; }
+  .guide #sayText { flex: 1; font-size: 16px; line-height: 1.35; margin: 2px 0 6px; min-height: 66px; }
+  .guide .row { margin-top: 0; justify-content: flex-end; }
+  .guide.min { padding: 4px 8px; } .guide.min canvas, .guide.min #sayText, .guide.min #sayNext { display: none; }
+  @media (max-width: 480px) { .guide canvas { width: 56px; height: 54px; } .guide #sayText { font-size: 15px; } }
+
+  .explain { margin-top: 14px; font-size: 14px; color: var(--muted); }
+  .explain h2 { margin-top: 0; }
+  .explain ul { margin: 4px 0 6px; padding-left: 18px; }
+  a { color: var(--gold); }
+  code { color: var(--ink); }
+  @media (prefers-reduced-motion: reduce) { .loadbar i, #toast div { animation: none; } .bar i { transition: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="title">
+    <canvas class="logo" id="logo" width="16" height="16" aria-hidden="true"></canvas>
+    <h1>GH-1 GREENHOUSE</h1>
+    <span class="tagline">farm with a real PLC program</span>
+  </div>
+
+  <div class="win game">
+    <div class="hud">
+      <span class="clock" id="clock">--:--</span>
+      <span class="chip" id="day">DAY 1</span>
+      <span class="chip" title="Coins"><img id="ico-coin" alt="">&nbsp;<b id="coins">0</b></span>
+      <span class="chip lvl" title="Level: every kg you harvest is 1 xp"><b id="lvl">LV 1</b><span class="bar"><i id="xpbar"></i></span></span>
+      <span id="boosts" class="grp"></span>
+      <span class="spacer"></span>
+      <span class="grp" id="weather" role="group" aria-label="Weather"></span>
+      <span class="grp" id="speeds" role="group" aria-label="Speed"></span>
+      <span class="grp" id="menus" role="group" aria-label="Farm menus"></span>
+    </div>
+    <div class="lots"><span id="lots" class="grp" role="group" aria-label="Go to a greenhouse"></span><span class="spacer"></span><span id="news" class="grp news" aria-label="Today"></span></div>
+    <div class="stage" id="stage">
+      <canvas id="farm" width="320" height="200" tabindex="0"
+        aria-label="The farm. Drag or use the arrow keys to look around. Click a bed, the tank, the pump, the roof or the PLC cabinet to open its panel."></canvas>
+      <button class="btn icon cam" id="camL" aria-label="Look left">◀</button>
+      <button class="btn icon cam" id="camR" aria-label="Look right">▶</button>
+      <div class="pop" id="pop" hidden role="dialog" aria-labelledby="popTitle">
+        <div class="pophead"><b id="popTitle"></b><button class="btn icon sm" data-act="close" aria-label="Close">✕</button></div>
+        <div id="popBody"></div>
+      </div>
+      <div id="loading"><div><div class="big">Starting the PLC…</div><div class="small" id="loadmsg">Loading Python (Pyodide)…</div>
+        <div class="loadbar"><i></i></div><div class="small" style="margin-top:8px">First visit downloads about 10 MB, then it is cached.</div></div></div>
+    </div>
+    <div class="hotbar" id="hotbar" role="group" aria-label="Seeds and items"></div>
+    <div class="seedinfo" id="seedinfo">Pick a seed, then click an empty bed. Click a ripe bed to harvest.</div>
+    <div class="guide" id="guide" aria-live="polite">
+      <canvas id="farmer" width="56" height="54" aria-hidden="true"></canvas>
+      <div class="say">
+        <div class="who">FARMER</div>
+        <div id="sayText">…</div>
+        <div class="row"><button class="btn sm" id="sayNext">Next ▸</button><button class="btn sm" id="sayHide">Hide</button></div>
+      </div>
+    </div>
+    <div class="row small"><span><b id="kg">0</b> kg</span><span>· Harvests <b id="harvests">0</b></span><span>· Lost <b id="lost">0</b></span><span class="spacer"></span><span id="speedtxt"></span></div>
+  </div>
+
+  <div class="win explain">
+    <h2>WHAT IS REAL AND WHAT IS GAME</h2>
+    <ul>
+      <li><b>Real:</b> the PLC program <code>greenhouse.st</code> runs unmodified in an IEC 61131-3 interpreter, scan by scan (50 ms), in your browser. It is the same file that passes the automated tests and runs on OpenPLC Runtime v4.</li>
+      <li><b>Model:</b> the greenhouse — weather, air, crop water use, pump and dripper hydraulics, nutrient and pH chemistry — is a physics model. The PLC only sees it through its sensors.</li>
+      <li><b>Game:</b> crops, varieties, health and harvest are added for this page, on an accelerated clock: one simulated minute of good daylight counts as one growing day. So are coins, levels, building, items, problems, roadblocks and achievements.</li>
+      <li><b>Upgrades:</b> the shade net, pad-and-fan cooling, fogging and light-sum watering are functions the PLC program always has. Until you buy the hardware, their set points are parked where they never act. The canvas draws the physical plant, so a puddle or a stopped pump is what you would see on site; the panels show what the PLC's sensors say.</li>
+      <li><b>Scaling:</b> every greenhouse you build runs its own copy of the same <code>greenhouse.st</code>, with no change to the program. More greenhouses means more PLC scans to compute, so the farm runs a little slower.</li>
+    </ul>
+    <div>Farmer character: GelasTinta character pack.</div>
+    <div>Project, documentation and tests: <a href="https://github.com/rayangmendrofa/horticulture-farm-plc">github.com/rayangmendrofa/horticulture-farm-plc</a></div>
+  </div>
+</div>
+<div id="toast" aria-live="polite"></div>
+<script src="app.js"></script>
+</body>
+</html>

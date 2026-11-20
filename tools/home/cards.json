@@ -84,6 +84,18 @@
   "meta": "66 / 66 tests · report inside"
  },
  {
+  "shelf": "works",
+  "href": "Industry-GH1.dc.html",
+  "bg": "#FFFFFF",
+  "img": "a241ecfb28af302d77101131da29d567",
+  "alt": "The GH-1 operator HMI overview with the water tank, dosing pumps and four drip zones",
+  "style": "object-fit:cover;object-position:0% 0%",
+  "kicker": "Industry project · 2026 · New",
+  "title": "GH-1 Tropical Greenhouse",
+  "p": "A PLC program for a 1,000 m² tropical greenhouse, tested end to end against a virtual plant, and playable in your browser.",
+  "meta": "130 tests · play it in your browser"
+ },
+ {
   "shelf": "latest",
   "href": "Talk-Voyager.dc.html",
   "bg": "#111314",
