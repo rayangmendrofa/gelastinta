@@ -51,6 +51,8 @@ const SITE_URL = 'https://gelastinta.com';
 
 // Ink wipe between pages (tools/story.py): the page arrives covered in the ink the last page
 // poured, then the page's own script drains it. Inline so it paints before anything else.
+// Netlify injects a "Powered by Netlify" badge (#nl-badge-frame); the owner asked to hide it on every page.
+const HIDE_BADGE = '<style>#nl-badge-frame{display:none !important}</style>';
 const STORY_HEAD = '<style>html.st-in::after{content:"";position:fixed;inset:0;z-index:2147483000;pointer-events:none;background:var(--st-wipe,#10131C)}</style>' +
   '<script>try{var c=sessionStorage.getItem("gt-wipe");if(c){sessionStorage.removeItem("gt-wipe");' +
   'if(!(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)){var d=document.documentElement;' +
@@ -247,6 +249,13 @@ fs.writeFileSync(path.join(OUT, 'assets', 'dc-lite.js'), runtime);
 fs.writeFileSync(path.join(OUT, 'favicon.svg'), FAVICON);
 // src/static/ is copied as is (for example the 3D teardown pages in src/static/teardowns/)
 if (fs.existsSync(path.join(SRC, 'static'))) fs.cpSync(path.join(SRC, 'static'), OUT, {recursive: true});
+{
+  const td = path.join(OUT, 'teardowns');
+  if (fs.existsSync(td)) for (const f of fs.readdirSync(td).filter((n) => n.endsWith('.html'))) {
+    const fp = path.join(td, f), h = fs.readFileSync(fp, 'utf8');
+    if (!h.includes('nl-badge-frame')) fs.writeFileSync(fp, h.replace(/<head>/i, '<head>' + HIDE_BADGE));
+  }
+}
 
 const pages = fs.readdirSync(path.join(SRC, 'pages')).filter((f) => f.endsWith('.dc.html'));
 const sitemap = [];
@@ -329,6 +338,7 @@ for (const file of pages) {
 <title>${esc(pageTitle)}</title>
 <link rel="canonical" href="${url}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+${HIDE_BADGE}
 ${helmet.includes('data-story') ? STORY_HEAD : ''}
 ${shareTags}
 ${headScripts}
@@ -377,6 +387,7 @@ console.log(`sitemap.xml   ${sitemap.length} pages`);
 <html lang="en">
 <head>
 <meta charset="utf-8">
+${HIDE_BADGE}
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Page not found · GelasTinta</title>
 <meta name="robots" content="noindex">
