@@ -97,12 +97,24 @@
  },
  {
   "shelf": "latest",
+  "href": "Talk-Riemann.dc.html",
+  "bg": "#111314",
+  "img": "7e05dd227b0d3c458455da774d2721b8",
+  "alt": "A map of the Riemann zeta function in deep blue and violet, with its first ten zeros glowing gold on one straight line",
+  "style": "object-fit:cover;object-position:50% 50%",
+  "kicker": "Talk 15 · New",
+  "title": "Proved, Checked, Not Yet Understood. Claude and the Riemann Hypothesis",
+  "p": "An Anthropic mathematician says he proved the Riemann Hypothesis with Claude. Lean certified it in a day. Nobody can yet explain why it is true.",
+  "meta": "27th November 2026 · 16 min read"
+ },
+ {
+  "shelf": "latest",
   "href": "Talk-Voyager.dc.html",
   "bg": "#111314",
   "img": "9c8c4ece7789f21bf4a15d98dbfbc209",
   "alt": "The gold plated cover of the Voyager Golden Record against black",
   "style": "object-fit:contain;object-position:50% 50%",
-  "kicker": "Talk 14 · New",
+  "kicker": "Talk 14",
   "title": "A Day Away. Voyager 1 Is Now One Light Day from Home",
   "p": "Voyager 1 is the first spacecraft a full light day from Earth, so a radio hello now takes a day each way. How it got there, what it found and what it still carries.",
   "meta": "20th November 2026 · 16 min read"
@@ -142,17 +154,5 @@
   "title": "Folded Twice, Moves Eight Ways. A Bistable Origami Robot",
   "p": "A 0.81 g origami robot with two stable shapes: small magnetic nudges make it crawl or roll, one big pulse snaps it shut.",
   "meta": "30th October 2026 · 13 min read"
- },
- {
-  "shelf": "latest",
-  "href": "Talk-Cyberpunk.dc.html",
-  "bg": "#10131C",
-  "img": "654691c00363657dd58c94a152c33ac5",
-  "alt": "Close-up of a human eye with a Kiroshi implant: a glowing purple display in the iris and the brand name printed around it",
-  "style": "object-fit:cover;object-position:55% 45%",
-  "kicker": "Talk 10",
-  "title": "Chrome and Consequences. The Real Science Behind Cyberpunk’s Implants",
-  "p": "Sandevistans, Kiroshi eyes, biochips and engrams from Cyberpunk 2077 and Edgerunners, set against the real implants of 2026, plus rogue AI and cyberpsychosis.",
-  "meta": "23rd October 2026 · 17 min read"
  }
 ]
