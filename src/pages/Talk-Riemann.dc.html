@@ -482,6 +482,23 @@ html{scroll-padding-top:60px}
 @media (max-width:640px){.sk-rl{grid-template-columns:minmax(0,1fr) 56px}.sk-rl span{grid-column:1 / -1}}
 /* sk:end */
 /* rh:start */
+.eq-wrap{background:#FBF9F6;border:1px solid #111314;padding:24px 20px;display:flex;flex-direction:column;gap:14px;align-items:center}
+.eq{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 10px;font-family:'Cambria Math',Cambria,'STIX Two Text','Times New Roman',serif;font-size:clamp(20px,2.4vw,30px);line-height:1.2;color:#111314}
+.eq i{font-style:italic}
+.eq sup{font-size:.6em;vertical-align:.7em;line-height:0}
+.eq .up{font-style:normal}
+.eq .frac{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;font-size:.9em}
+.eq .frac>span:first-child{border-bottom:1.5px solid currentColor;padding:0 4px 2px}
+.eq .frac>span:last-child{padding:2px 4px 0}
+.eq .op{display:inline-flex;flex-direction:column;align-items:center;line-height:1}
+.eq .op b{font-weight:400;font-size:1.5em;line-height:1}
+.eq .op small{font-size:.45em;font-family:'Ubuntu Mono',ui-monospace,monospace}
+.eq .hl{display:inline-flex;align-items:center;gap:6px;border:2.5px solid;border-radius:999px;padding:2px 12px}
+.eq-legend{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:center}
+.rh-key{display:inline-block;width:20px;height:12px;border:2.5px solid;border-radius:999px;margin-right:8px;vertical-align:-1px}
+h4.rh-step{font-family:'Titillium Web',system-ui,sans-serif;font-weight:700;font-size:22px;line-height:1.25;margin:6px 0 12px;color:#111314}
+@media (max-width:640px){.eq{font-size:18px;gap:4px 6px}.eq-wrap{padding:16px 10px}[data-ez] .sk-svg text.sm{font-size:20px}[data-ez] .sk-svg text.vl{font-size:22px}}
+
 .rh-float{float:right;width:190px;margin:6px 0 18px 32px}
 .rh-float img{display:block;width:100%;height:auto;border:1px solid #111314;filter:grayscale(1)}
 .rh-float figcaption{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;line-height:1.5;color:#4D5160;margin-top:8px}
@@ -746,7 +763,7 @@ html.st-on .st-scene .wrap.split:has(> .st-stage) > *{grid-column:1!important;gr
 <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="Main.dc.html">Home</a></li><li><a href="Talks.dc.html">Talks</a></li><li aria-current="page">Talk 15</li></ol></nav>
 <p class="kicker">Talk 15 · Review</p>
 <h1 class="t-title st-long" data-st-w="">Proved, Checked, Not Yet Understood. Claude and the Riemann Hypothesis</h1>
-<p class="meta">Rayang T Mendrofa · 27th November 2026 · 15 min read</p>
+<p class="meta">Rayang T Mendrofa · 27th November 2026 · 21 min read</p>
 <aside style="margin-top:24px;border:1px solid #111314;background:#FBF9F6">
 <div class="dark" style="padding:12px 20px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px"><span class="kicker" style="font-size:11px">Claim under review</span><span class="meta" style="font-size:11px;color:#FDC57E">NOTE AND LEAN 4 CODE · NOT PEER REVIEWED</span></div>
 <div class="stack g12" style="padding:22px 20px">
@@ -791,8 +808,131 @@ html.st-on .st-scene .wrap.split:has(> .st-stage) > *{grid-column:1!important;gr
 <div class="viz-body"><svg class="sk-svg rh-strip" viewBox="0 0 900 330" role="img" aria-label="The critical strip drawn sideways: height from 0 to 52 runs left to right, real part 0 at the bottom and 1 at the top. The first ten zeros, at heights 14.1, 21.0, 25.0, 30.4, 32.9, 37.6, 40.9, 43.3, 48.0 and 49.8, all sit on the middle line at real part one half."><rect x="70" y="40" width="800" height="210" fill="#EEF0F6" stroke="#111314" stroke-width="1"/><line x1="70" y1="145.0" x2="870" y2="145.0" stroke="#1C4286" stroke-width="2" stroke-dasharray="6 6"/><line class="gl" x1="70.0" y1="250" x2="70.0" y2="258"/><text x="70.0" y="278" text-anchor="middle" class="sm">0</text><line class="gl" x1="223.8" y1="250" x2="223.8" y2="258"/><text x="223.8" y="278" text-anchor="middle" class="sm">10</text><line class="gl" x1="377.7" y1="250" x2="377.7" y2="258"/><text x="377.7" y="278" text-anchor="middle" class="sm">20</text><line class="gl" x1="531.5" y1="250" x2="531.5" y2="258"/><text x="531.5" y="278" text-anchor="middle" class="sm">30</text><line class="gl" x1="685.4" y1="250" x2="685.4" y2="258"/><text x="685.4" y="278" text-anchor="middle" class="sm">40</text><line class="gl" x1="839.2" y1="250" x2="839.2" y2="258"/><text x="839.2" y="278" text-anchor="middle" class="sm">50</text><text x="470.0" y="306" text-anchor="middle" class="sm">height of the zero (imaginary part)</text><text x="60" y="46" text-anchor="end" class="sm">1</text><text x="60" y="151.0" text-anchor="end" class="sm" style="fill:#1C4286">½</text><text x="60" y="256" text-anchor="end" class="sm">0</text><text x="78" y="171" class="sm" style="fill:#1C4286">the critical line, real part ½</text><circle cx="287.5" cy="145.0" r="8" fill="#FDC57E" stroke="#111314" stroke-width="1.5"/><text x="287.5" y="123.0" text-anchor="middle" class="sm">14.1</text><circle cx="393.4" cy="145.0" r="8" fill="#FDC57E" stroke="#111314" stroke-width="1.5"/><text x="393.4" y="181.0" text-anchor="middle" class="sm">21.0</text><circle cx="454.8" cy="145.0" r="8" fill="#FDC57E" stroke="#111314" stroke-width="1.5"/><text x="454.8" y="123.0" text-anchor="middle" class="sm">25.0</text><circle cx="538.1" cy="145.0" r="8" fill="#FDC57E" stroke="#111314" stroke-width="1.5"/><text x="538.1" y="181.0" text-anchor="middle" class="sm">30.4</text><circle cx="576.7" cy="145.0" r="8" fill="#FDC57E" stroke="#111314" stroke-width="1.5"/><text x="576.7" y="123.0" text-anchor="middle" class="sm">32.9</text><circle cx="648.2" cy="145.0" r="8" fill="#FDC57E" stroke="#111314" stroke-width="1.5"/><text x="648.2" y="181.0" text-anchor="middle" class="sm">37.6</text><circle cx="699.5" cy="145.0" r="8" fill="#FDC57E" stroke="#111314" stroke-width="1.5"/><text x="699.5" y="123.0" text-anchor="middle" class="sm">40.9</text><circle cx="736.6" cy="145.0" r="8" fill="#FDC57E" stroke="#111314" stroke-width="1.5"/><text x="736.6" y="181.0" text-anchor="middle" class="sm">43.3</text><circle cx="808.5" cy="145.0" r="8" fill="#FDC57E" stroke="#111314" stroke-width="1.5"/><text x="808.5" y="123.0" text-anchor="middle" class="sm">48.0</text><circle cx="835.8" cy="145.0" r="8" fill="#FDC57E" stroke="#111314" stroke-width="1.5"/><text x="835.8" y="181.0" text-anchor="middle" class="sm">49.8</text><text x="78" y="62" class="sm" style="fill:#4D5160">the strip, real part between 0 and 1</text></svg></div>
 <div class="viz-foot"><span class="meta muted" style="font-size:12px">Heights of the zeros computed by me with the mpmath library and rounded to one decimal place. The strip is drawn sideways to fit the page, height runs left to right.</span></div>
 </div>
+<div class="col" style="margin-top:48px">
+<h3 class="t-h3" style="font-size:28px;margin-bottom:12px">The maths, step by step</h3>
+<p>If you only want the news, skip to section 02. If you want to see why mathematicians care so much about one line, here is the whole idea in six steps. I will keep the equations short and say in words what each one means.</p>
+</div>
+<div class="col" style="margin-top:24px"><figure class="meme-sm" style="margin:0"><img src="/_blob/4bf71512ace781545d9eaf3b32c51b5a" alt="A confused woman surrounded by floating geometry and maths formulas" loading="lazy"><p style="margin:0;font-size:17px;line-height:1.6">Me, the first time I opened Riemann’s 1859 paper. Stay with me, it gets better.<br><span class="meta" style="font-size:11px;opacity:.8">Meme picked by me. Still from the TV Globo telenovela Senhora do Destino.</span></p></figure></div>
+
 <div class="col" style="margin-top:40px">
-<p>Why should anyone care where these zeros are? Because their position sets the size of the waves. If every zero is on the half line, the prime count can never drift from the best smooth estimate by more than about the square root of <i>x</i>, times a logarithm. If even one zero sat off the line, the primes would be lumpier than that somewhere. Chart B shows how tight that promise is.</p>
+<p class="kicker">Step 1</p>
+<h4 class="rh-step">A sum over every whole number</h4>
+<p>Pick a number <i>s</i>. Take every whole number, raise it to the power <i>s</i>, flip it over, and add the lot.</p>
+</div>
+<div class="col-wide" style="margin-top:12px"><div class="eq-wrap"><div class="eq" role="img" aria-label="zeta of s equals the sum over n from 1 to infinity of 1 over n to the s, which is 1 plus 1 over 2 to the s plus 1 over 3 to the s and so on">
+<span>ζ(<i>s</i>)</span><span class="up">=</span><span class="op"><small>∞</small><b>∑</b><small><i>n</i>=1</small></span><span class="frac"><span>1</span><span><i>n<sup>s</sup></i></span></span><span class="up">=</span><span>1</span><span class="up">+</span><span class="frac"><span>1</span><span>2<sup><i>s</i></sup></span></span><span class="up">+</span><span class="frac"><span>1</span><span>3<sup><i>s</i></sup></span></span><span class="up">+</span><span class="frac"><span>1</span><span>4<sup><i>s</i></sup></span></span><span class="up">+ …</span>
+</div></div></div>
+<div class="col" style="margin-top:16px">
+<p>With <i>s</i> = 2 you get 1 + ¼ + 1/9 + 1/16 + …, which Euler showed in the 1730s adds up to exactly π²/6, about 1.645. With <i>s</i> = 1 you get 1 + ½ + ⅓ + ¼ + …, which never settles and grows forever. So the sum only makes sense when <i>s</i> is bigger than 1. That one sum is the zeta function.</p>
+</div>
+
+<div class="col" style="margin-top:40px">
+<p class="kicker">Step 2</p>
+<h4 class="rh-step">The same thing, built only from primes</h4>
+<p>Euler’s second trick, from 1737, is the reason any of this is about primes. The same sum can be written as a product with one factor for every prime.</p>
+</div>
+<div class="col-wide" style="margin-top:12px"><div class="eq-wrap"><div class="eq" role="img" aria-label="the sum over n of 1 over n to the s equals the product over all primes p of 1 over 1 minus p to the minus s">
+<span class="op"><small>∞</small><b>∑</b><small><i>n</i>=1</small></span><span class="frac"><span>1</span><span><i>n<sup>s</sup></i></span></span><span class="up">=</span><span class="op"><small>&nbsp;</small><b>∏</b><small><i>p</i> prime</small></span><span class="frac"><span>1</span><span>1 − <i>p</i><sup>−<i>s</i></sup></span></span>
+</div></div></div>
+<div class="col" style="margin-top:16px">
+<p>Why does it work? Each factor is a geometric series, 1 + 1/<i>p</i><sup><i>s</i></sup> + 1/<i>p</i><sup>2<i>s</i></sup> + …, so it holds every power of one prime. Multiply all the factors out and you get every possible product of prime powers, which is every whole number exactly once, because each whole number splits into primes in only one way. The sum on the left knows nothing about primes. The product on the right is nothing but primes. They are the same function. That is the bridge Riemann walked across.</p>
+<p>It even gives a one line proof that there are infinitely many primes. As <i>s</i> drops towards 1 the sum on the left blows up. A product of a finite number of factors could not do that, so the primes cannot run out.</p>
+</div>
+
+<div class="col" style="margin-top:40px">
+<p class="kicker">Step 3</p>
+<h4 class="rh-step">Letting <i>s</i> be a complex number</h4>
+<p>Riemann’s big move was to let <i>s</i> be complex, <i>s</i> = σ + <i>it</i>, with a real part σ and an imaginary part <i>t</i>. Then each term splits into a size and a spin.</p>
+</div>
+<div class="col-wide" style="margin-top:12px"><div class="eq-wrap"><div class="eq" role="img" aria-label="n to the minus s equals n to the minus sigma times the cosine of t log n minus i sine of t log n">
+<span><i>n</i><sup>−<i>s</i></sup></span><span class="up">=</span><span class="hl" style="border-color:#1C4286"><i>n</i><sup>−σ</sup></span><span class="up">·</span><span class="hl" style="border-color:#A36AA5">( cos(<i>t</i> ln <i>n</i>) − <i>i</i> sin(<i>t</i> ln <i>n</i>) )</span>
+</div>
+<div class="eq-legend"><span class="meta" style="font-size:12px"><span class="rh-key" style="border-color:#1C4286"></span>size, set by the real part σ</span><span class="meta" style="font-size:12px"><span class="rh-key" style="border-color:#A36AA5"></span>spin, set by the height t</span></div></div></div>
+<div class="col" style="margin-top:16px">
+<p>The size of each term depends only on σ. The height <i>t</i> just turns each term round a circle, like the hand of a clock, at a speed set by ln <i>n</i>. Picture adding up millions of little arrows that shrink and point in different directions. When σ is above 1 they shrink fast enough to settle on an answer. Below that, the plain sum falls apart.</p>
+</div>
+
+<div class="col" style="margin-top:40px">
+<p class="kicker">Step 4</p>
+<h4 class="rh-step">Stretching it to the whole plane</h4>
+<p>Riemann showed the function itself carries on where the sum breaks down, a process called analytic continuation. The easiest way to see it is to alternate the signs, which makes the arrows cancel much better.</p>
+</div>
+<div class="col-wide" style="margin-top:12px"><div class="eq-wrap"><div class="eq" role="img" aria-label="one minus 2 to the 1 minus s, times zeta of s, equals 1 minus 1 over 2 to the s plus 1 over 3 to the s minus 1 over 4 to the s and so on, which works whenever the real part of s is above 0">
+<span>(1 − 2<sup>1−<i>s</i></sup>) ζ(<i>s</i>)</span><span class="up">=</span><span>1</span><span class="up">−</span><span class="frac"><span>1</span><span>2<sup><i>s</i></sup></span></span><span class="up">+</span><span class="frac"><span>1</span><span>3<sup><i>s</i></sup></span></span><span class="up">−</span><span class="frac"><span>1</span><span>4<sup><i>s</i></sup></span></span><span class="up">+ …</span>
+</div>
+<p class="meta" style="font-size:12px;margin:0">works for every <i>s</i> with real part above 0</p></div></div>
+<div class="col" style="margin-top:16px">
+<p>The rest of the plane comes from a beautiful symmetry Riemann found. Dress ζ up with a few extra factors and you get a function, ξ, that looks exactly the same from both sides of the line σ = ½.</p>
+</div>
+<div class="col-wide" style="margin-top:12px"><div class="eq-wrap"><div class="eq" role="img" aria-label="xi of s equals one half times s times s minus 1 times pi to the minus s over 2 times gamma of s over 2 times zeta of s, and xi of s equals xi of 1 minus s">
+<span>ξ(<i>s</i>)</span><span class="up">=</span><span>½ <i>s</i>(<i>s</i> − 1) π<sup>−<i>s</i>/2</sup> Γ(<i>s</i>/2) ζ(<i>s</i>)</span><span class="up">,</span><span class="hl" style="border-color:#1C4286">ξ(<i>s</i>) = ξ(1 − <i>s</i>)</span>
+</div></div></div>
+<div class="col" style="margin-top:16px">
+<p>That mirror is the whole reason ½ is special. It also explains the boring zeros. The factor Γ(<i>s</i>/2) blows up at <i>s</i> = −2, −4, −6 and so on, and ξ stays finite there, so ζ must be 0 at exactly those points. Those are the trivial zeros. Every other zero has to live in the strip between σ = 0 and σ = 1. In 1896 Hadamard and de la Vallée Poussin showed that none sit on the edge σ = 1, and that alone was enough to prove the prime number theorem.</p>
+<p>The symmetry also means zeros come in sets. If ρ is a zero, so are its mirror image 1&nbsp;−&nbsp;ρ and their reflections below the axis. A zero on the line is its own mirror image, so it only comes as an upper and lower pair. A zero off the line would bring a set of four with it.</p>
+</div>
+
+<div class="col" style="margin-top:40px">
+<p class="kicker">Step 5</p>
+<h4 class="rh-step">The hypothesis in one line</h4>
+</div>
+<div class="col-wide" style="margin-top:12px"><div class="eq-wrap"><div class="eq" role="img" aria-label="every nontrivial zero rho equals one half plus i gamma, with gamma a real number">
+<span>every nontrivial zero</span><span class="up">&nbsp;</span><span class="hl" style="border-color:#1C4286">ρ = ½ + <i>i</i>γ</span><span class="up">,</span><span>γ real</span>
+</div></div></div>
+<div class="col" style="margin-top:16px">
+<p>That is all it says. Riemann also gave a formula for how many zeros there are up to a height <i>T</i>, later proved by von Mangoldt, and it grows only a little faster than <i>T</i>.</p>
+</div>
+<div class="col-wide" style="margin-top:12px"><div class="eq-wrap"><div class="eq" role="img" aria-label="N of T is about T over 2 pi times the log of T over 2 pi minus T over 2 pi">
+<span><i>N</i>(<i>T</i>)</span><span class="up">≈</span><span class="frac"><span><i>T</i></span><span>2π</span></span><span>ln</span><span class="frac"><span><i>T</i></span><span>2π</span></span><span class="up">−</span><span class="frac"><span><i>T</i></span><span>2π</span></span>
+</div></div></div>
+<div class="col" style="margin-top:16px">
+<p>Try <i>T</i> = 50 and you get about 8.6. The real count, the ten dots in the figure above, is 10, because the formula leaves out some smaller correction terms. Higher up the zeros crowd together. Below a height of a trillion there are already more than 4 trillion of them.</p>
+</div>
+
+<div class="col" style="margin-top:40px">
+<p class="kicker">Step 6</p>
+<h4 class="rh-step">How the zeros build the primes</h4>
+<p>Now the payoff. Count primes with a weight, giving each prime power <i>p</i><sup><i>k</i></sup> up to <i>x</i> the weight ln <i>p</i>. Call the total ψ(<i>x</i>). It is a staircase that jumps at every prime and prime power. Von Mangoldt proved in 1895 that this staircase is exactly a smooth line minus one wave for every zero.</p>
+</div>
+<div class="col-wide" style="margin-top:12px"><div class="eq-wrap"><div class="eq" role="img" aria-label="psi of x equals x minus the sum over all nontrivial zeros rho of x to the rho over rho, minus log of 2 pi, minus one half log of 1 minus x to the minus 2">
+<span>ψ(<i>x</i>)</span><span class="up">=</span><span class="hl" style="border-color:#111314"><i>x</i></span><span class="up">−</span><span class="hl" style="border-color:#A36AA5"><span class="op"><small>&nbsp;</small><b>∑</b><small>ρ</small></span><span class="frac"><span><i>x</i><sup>ρ</sup></span><span>ρ</span></span></span><span class="up">−</span><span>ln 2π</span><span class="up">−</span><span>½ ln(1 − <i>x</i><sup>−2</sup>)</span>
+</div>
+<div class="eq-legend"><span class="meta" style="font-size:12px"><span class="rh-key" style="border-color:#111314"></span>the smooth average, the prime number theorem</span><span class="meta" style="font-size:12px"><span class="rh-key" style="border-color:#A36AA5"></span>one wave for each zero</span></div></div></div>
+<div class="col" style="margin-top:16px">
+<p>Write a zero as ρ = β + <i>i</i>γ. Its wave wiggles like cos(γ ln <i>x</i>) and its height grows like <i>x</i><sup>β</sup>. If every β is ½, every wave grows like √<i>x</i>, and the staircase never strays from the line by much more than √<i>x</i>. If even one zero had β = 0.9, its wave would grow like <i>x</i><sup>0.9</sup> and swamp everything else for large <i>x</i>. In 1901 Helge von Koch showed this is an exact swap. The hypothesis is true if and only if the prime count stays within about √<i>x</i> ln <i>x</i> of Riemann’s estimate. Chart A lets you watch the waves rebuild the staircase.</p>
+</div>
+
+<div class="col-wide viz" style="margin-top:40px" role="group" aria-label="Chart A: the prime staircase psi of x for x up to 50, and the smooth line plus waves from the first zeros of zeta" data-ez>
+<div class="viz-head">
+<span class="kicker">Chart A · Primes from zeros</span>
+<h3 class="t-h3" data-r="eztitle">The staircase, rebuilt from 100 zeros</h3>
+<p class="small muted" style="max-width:64ch">The black steps are the real primes, counted by ψ(<i>x</i>). The violet curve is the right side of von Mangoldt’s formula, the smooth line plus one wave for each zero you switch on. Add more zeros and the curve snaps onto the steps.</p>
+</div>
+<div class="viz-body stack g24">
+<div class="ratio" aria-label="Choose how many zeros to use"><button type="button" data-ez-s="0" aria-pressed="false">No zeros</button><button type="button" data-ez-s="1" aria-pressed="false">1 zero</button><button type="button" data-ez-s="2" aria-pressed="false">10 zeros</button><button type="button" data-ez-s="3" class="on" aria-pressed="true">100 zeros</button></div>
+<div class="gd" data-gd="ez"><p class="gd-cap" data-r="guide" aria-live="polite"></p><ol class="gd-all" data-r="gall"></ol><div class="gd-bar"><span class="gd-dots" data-r="gdots" aria-hidden="true"></span><button type="button" class="gd-btn" data-g="pause">‖ Pause</button><button type="button" class="gd-btn" data-g="replay">↺ Replay</button></div></div>
+<div data-r="ezplot"></div>
+<div class="readout r3">
+<div><span>Zeros used</span><b data-r="ezn">…</b></div>
+<div><span>Highest zero</span><b data-r="ezh">…</b></div>
+<div><span>Typical miss</span><b data-r="ezm">…</b></div>
+</div>
+<p class="small" data-r="eznote" aria-live="polite"></p>
+</div>
+<div class="viz-foot"><span class="meta muted" style="font-size:12px">Each zero is counted with its mirror image below the axis. Heights of the first 100 zeros computed with mpmath, the curve and the staircase computed in your browser. The typical miss is the average gap between curve and steps away from the jumps.</span></div>
+</div>
+
+<div class="col" style="margin-top:32px">
+<div class="viz-more" style="border:0;padding:0"><button type="button" class="more" aria-expanded="{{ex.d.aria}}" onClick="{{ex.d.toggle}}"><span class="more-ico" aria-hidden="true">{{ex.d.ico}}</span>{{ex.d.text}} more ways to say the same thing</button><sc-if value="{{ex.d.open}}"><div class="more-body"><p>The hypothesis has dozens of disguises that look nothing like zeta. Here are three of my favourites.</p>
+<p>Coin flips. Give every whole number a score, +1 if it has an even number of distinct prime factors, −1 if odd, and 0 if any prime appears twice. Add the scores up to <i>x</i>. The hypothesis is true exactly when this running total wanders no further than an honest coin flip game would, about √<i>x</i>, give or take a tiny bit. Littlewood proved this in 1912.</p>
+<p>Adding up divisors. Add all the divisors of <i>n</i> and call it σ(<i>n</i>). In 1984 Guy Robin showed the hypothesis is true exactly when σ(<i>n</i>) &lt; e<sup>γ</sup> <i>n</i> ln ln <i>n</i> for every <i>n</i> above 5040, where γ here is Euler’s constant, about 0.577.</p>
+<p>Random matrices. In 1973 Hugh Montgomery found that the gaps between zeros follow the same pattern as the energy levels of heavy atomic nuclei, modelled by large random matrices. Andrew Odlyzko later checked it against millions of computed zeros. Nobody knows why, but it hints the zeros might be the notes of some hidden physical system.</p>
+<p>And there is the sibling problem for curves over finite fields from section 02. Weil proved that version in the 1940s and Pierre Deligne proved a far wider version in 1974. Mathematicians took that as strong evidence the real one is true too.</p>
+<span class="meta muted" style="font-size:11px">Sources: A. Connes, arXiv 2602.04022 (2026), sections 2 and 3. Standard textbook results.</span></div></sc-if></div>
+</div>
+
+<div class="col" style="margin-top:40px">
+<p>Counting primes the ordinary way tells the same story. Chart B compares the true number of primes with the plain estimate <i>x</i>/ln <i>x</i>, with Riemann’s better estimate Li(<i>x</i>), and with the limit that the hypothesis guarantees.</p>
 </div>
 <div class="col-wide viz" style="margin-top:40px" role="group" aria-label="Chart B: counting primes, comparing the true count with two smooth estimates and with the limit the Riemann Hypothesis sets" data-px>
 <div class="viz-head">
@@ -877,9 +1017,9 @@ html.st-on .st-scene .wrap.split:has(> .st-stage) > *{grid-column:1!important;gr
 <p>The Clay Mathematics Institute offers $1 million for each of its seven Millennium Prize Problems. It has changed the Riemann Hypothesis from unsolved to active. Its rules ask for a solution published in a qualifying outlet, open to scrutiny for at least two years, and broadly accepted by mathematicians. A Lean library on a personal website is none of those yet, so the clock has not started.</p>
 </div>
 
-<div class="col-wide viz" style="margin-top:48px" role="group" aria-label="Chart A: the share of zeta zeros proved to lie on the critical line, from 1974 to November 2026" data-pc>
+<div class="col-wide viz" style="margin-top:48px" role="group" aria-label="Chart C: the share of zeta zeros proved to lie on the critical line, from 1974 to November 2026" data-pc>
 <div class="viz-head">
-<span class="kicker">Chart A · How much of the line</span>
+<span class="kicker">Chart C · How much of the line</span>
 <h3 class="t-h3" data-r="pctitle">From a third to all of it</h3>
 <p class="small muted" style="max-width:64ch">Before a full proof, mathematicians tried to show that at least some fixed share of the zeros sits on the line. That share crept up for fifty years, then jumped twice this year.</p>
 </div>
@@ -899,12 +1039,12 @@ html.st-on .st-scene .wrap.split:has(> .st-stage) > *{grid-column:1!important;gr
 
 <div class="col" style="margin:56px 0 0;max-width:720px">
 <h3 class="t-h3" style="margin-bottom:12px">Not out of nowhere</h3>
-<p>The Riemann claim is the loudest in a year of AI maths news. Back in September I wrote about Navier–Stokes in <a href="Talk-NavierStokes.dc.html">Talk 09</a>, where OpenAI said about ten thousand agents had built a blow up for the fluid equations with a push from outside, and Tristan Buckmaster and Alpöge posted related results built with Claude and Codex. In October OpenAI released 377 claimed results in 722 papers, including a claimed proof of a weaker cousin of the Riemann Hypothesis that pins every zero between 1/12 and 11/12. And in August an unreleased version of Claude raised the share of zeros known to sit on the line from five twelfths, about 42%, to more than two thirds, the jump you can see in Chart A. Chart C puts the year in order.</p>
+<p>The Riemann claim is the loudest in a year of AI maths news. Back in September I wrote about Navier–Stokes in <a href="Talk-NavierStokes.dc.html">Talk 09</a>, where OpenAI said about ten thousand agents had built a blow up for the fluid equations with a push from outside, and Tristan Buckmaster and Alpöge posted related results built with Claude and Codex. In October OpenAI released 377 claimed results in 722 papers, including a claimed proof of a weaker cousin of the Riemann Hypothesis that pins every zero between 1/12 and 11/12. And in August an unreleased version of Claude raised the share of zeros known to sit on the line from five twelfths, about 42%, to more than two thirds, the jump you can see in Chart C. Chart D puts the year in order.</p>
 </div>
 
-<div class="col-wide viz" style="margin-top:40px" role="group" aria-label="Chart C: a timeline of AI and mathematics news in 2026" data-yr>
+<div class="col-wide viz" style="margin-top:40px" role="group" aria-label="Chart D: a timeline of AI and mathematics news in 2026" data-yr>
 <div class="viz-head">
-<span class="kicker">Chart C · The year in AI maths</span>
+<span class="kicker">Chart D · The year in AI maths</span>
 <h3 class="t-h3" data-r="yrtitle">2026, month by month</h3>
 <p class="small muted" style="max-width:64ch">Tap a point to read what happened. Results are claims unless the note says otherwise, and most have no peer reviewed paper yet.</p>
 </div>
@@ -1594,6 +1734,7 @@ class Component extends DCLogic {
     this.skOn = false;
   }
   skScan() {
+    Array.from(document.querySelectorAll('[data-ez]')).forEach((el) => { if (!el.__ez) { el.__ez = { s: 3 }; this.ezShow(el); } });
     Array.from(document.querySelectorAll('[data-px]')).forEach((el) => { if (!el.__px) { el.__px = { s: 3 }; this.pxShow(el); } });
     Array.from(document.querySelectorAll('[data-pc]')).forEach((el) => { if (!el.__pc) { el.__pc = { s: 4 }; this.pcShow(el); } });
     Array.from(document.querySelectorAll('[data-yr]')).forEach((el) => { if (!el.__yr) { el.__yr = { s: 8 }; this.yrShow(el); } });
@@ -1618,18 +1759,26 @@ class Component extends DCLogic {
       else if (G.playing) this.gdHalt(G); else if (G.i >= G.steps.length - 1) this.gdStart(G); else this.gdGo(G, G.i);
       return;
     }
-    const t = e.target && e.target.closest ? e.target.closest('[data-px-s], [data-pc-s], [data-yr-s]') : null;
+    const t = e.target && e.target.closest ? e.target.closest('[data-ez-s], [data-px-s], [data-pc-s], [data-yr-s]') : null;
     if (!t) return;
     this.skTake(t);
+    if (t.hasAttribute('data-ez-s')) { const el = t.closest('[data-ez]'); el.__ez = { s: +t.getAttribute('data-ez-s') }; this.ezShow(el); return; }
     if (t.hasAttribute('data-px-s')) { const el = t.closest('[data-px]'); el.__px = { s: +t.getAttribute('data-px-s') }; this.pxShow(el); return; }
     if (t.hasAttribute('data-pc-s')) { const el = t.closest('[data-pc]'); el.__pc = { s: +t.getAttribute('data-pc-s') }; this.pcShow(el); return; }
     const el = t.closest('[data-yr]'); el.__yr = { s: +t.getAttribute('data-yr-s') }; this.yrShow(el);
   }
   // ── guided sequences: each step changes the chart and says why, then the next one follows ──
   gdSteps(key) {
+    const ez = (s) => (box) => { const el = box.closest('[data-ez]'); el.__ez = { s: s }; this.ezShow(el); };
     const px = (s) => (box) => { const el = box.closest('[data-px]'); el.__px = { s: s }; this.pxShow(el); };
     const pc = (s) => (box) => { const el = box.closest('[data-pc]'); el.__pc = { s: s }; this.pcShow(el); };
     const yr = (s) => (box) => { const el = box.closest('[data-yr]'); el.__yr = { s: s }; this.yrShow(el); };
+    if (key === 'ez') return [
+      { d: 4800, go: ez(0), text: 'No zeros yet. The smooth line x, minus two small constants, follows the general climb of the steps but misses every jump.' },
+      { d: 4800, go: ez(1), text: 'Add the first zero, at height 14.13, with its mirror image. One slow wave appears and the curve starts to lean towards the steps.' },
+      { d: 4800, go: ez(2), text: 'With 10 zeros the waves start to make corners where the primes are.' },
+      { d: 5600, go: ez(3), text: 'With 100 zeros the curve hugs the staircase and jumps at 2, 3, 4, 5, 7, 8, 9 and the other prime powers. The primes are hiding in the zeros.' }
+    ];
     if (key === 'px') return [
       { d: 4600, go: px(0), text: 'Up to ten thousand there are 1,229 primes. The plain guess x ÷ ln x is about 12% short.' },
       { d: 4600, go: px(1), text: 'Up to a million, Riemann’s estimate Li(x) is off by only 129 out of 78,498.' },
@@ -1689,6 +1838,53 @@ class Component extends DCLogic {
   }
   rhTxt(el, k, v) { const n = el.querySelector('[data-r="' + k + '"]'); if (n && n.textContent !== v) n.textContent = v; }
   rhPlot(el, key, h) { const plot = el.querySelector('[data-r="' + key + '"]'); if (plot && plot.__h !== h) { plot.innerHTML = h; plot.__h = h; } }
+  // Chart A: von Mangoldt's explicit formula, psi(x) = x - sum over zeros of x^rho/rho - ln 2pi - 1/2 ln(1 - x^-2), first N zero pairs
+  ezZeros() { return [14.134725, 21.02204, 25.010858, 30.424876, 32.935062, 37.586178, 40.918719, 43.327073, 48.005151, 49.773832, 52.970321, 56.446248, 59.347044, 60.831779, 65.112544, 67.079811, 69.546402, 72.067158, 75.704691, 77.14484, 79.337375, 82.910381, 84.735493, 87.425275, 88.809111, 92.491899, 94.651344, 95.870634, 98.831194, 101.317851, 103.725538, 105.446623, 107.168611, 111.029536, 111.874659, 114.320221, 116.22668, 118.790783, 121.370125, 122.946829, 124.256819, 127.516684, 129.578704, 131.087689, 133.497737, 134.75651, 138.116042, 139.736209, 141.123707, 143.111846, 146.000982, 147.422765, 150.05352, 150.925258, 153.024694, 156.112909, 157.597592, 158.849988, 161.188964, 163.03071, 165.537069, 167.18444, 169.094515, 169.911976, 173.411537, 174.754192, 176.441434, 178.377408, 179.916484, 182.207078, 184.874468, 185.598784, 187.228923, 189.416159, 192.026656, 193.079727, 195.265397, 196.876482, 198.01531, 201.264752, 202.493595, 204.189672, 205.394697, 207.906259, 209.57651, 211.690863, 213.347919, 214.547045, 216.169539, 219.067596, 220.714919, 221.430706, 224.007, 224.983325, 227.421444, 229.337413, 231.250189, 231.987235, 233.693404, 236.52423]; }
+  ezPsi(x) {
+    let s = 0;
+    for (let p = 2; p <= x; p++) {
+      let pr = true; for (let q = 2; q * q <= p; q++) if (p % q === 0) { pr = false; break; }
+      if (!pr) continue;
+      for (let pk = p; pk <= x; pk *= p) s += Math.log(p);
+    }
+    return s;
+  }
+  ezCurve(x, n, Z) {
+    const L = Math.log(x), r = Math.sqrt(x);
+    let v = x - Math.log(2 * Math.PI) - 0.5 * Math.log(1 - 1 / (x * x));
+    for (let k = 0; k < n; k++) { const g = Z[k]; v -= 2 * r * (0.5 * Math.cos(g * L) + g * Math.sin(g * L)) / (0.25 + g * g); }
+    return v;
+  }
+  ezShow(el) {
+    const Z = this.ezZeros(), N = [0, 1, 10, 100];
+    const s = Math.max(0, Math.min(3, el.__ez.s | 0)), n = N[s];
+    const X0 = 1.5, X1 = 50, L = 56, W = 680, T = 18, H = 300, Y1 = 50;
+    const px = (x) => L + W * (x - X0) / (X1 - X0), py = (y) => T + H - H * Math.max(-2, Math.min(Y1, y)) / Y1;
+    let h = '<svg class="sk-svg" viewBox="0 0 760 ' + (T + H + 46) + '" aria-hidden="true">';
+    [0, 10, 20, 30, 40, 50].forEach((y) => { const yy = py(y).toFixed(1); h += '<line class="gl" x1="' + L + '" y1="' + yy + '" x2="' + (L + W) + '" y2="' + yy + '"/><text x="' + (L - 8) + '" y="' + (+yy + 5) + '" text-anchor="end" class="sm">' + y + '</text>'; });
+    [2, 10, 20, 30, 40, 50].forEach((x) => { const xx = px(x).toFixed(1); h += '<text x="' + xx + '" y="' + (T + H + 26) + '" text-anchor="middle" class="sm">' + x + '</text>'; });
+    let st = 'M' + px(X0).toFixed(1) + ',' + py(0).toFixed(1), prev = 0;
+    for (let x = 2; x <= X1; x++) { const v = this.ezPsi(x); if (v !== prev) { st += 'H' + px(x).toFixed(1) + 'V' + py(v).toFixed(1); prev = v; } }
+    st += 'H' + px(X1).toFixed(1);
+    h += '<path d="' + st + '" fill="none" stroke="#111314" stroke-width="2.5"/>';
+    let cv = '', miss = 0, cnt = 0;
+    for (let i = 0; i <= 700; i++) {
+      const x = X0 + (X1 - X0) * i / 700, y = this.ezCurve(x, n, Z);
+      cv += (i ? 'L' : 'M') + px(x).toFixed(1) + ',' + py(y).toFixed(1);
+      const fx = x - Math.floor(x);
+      if (fx > 0.25 && fx < 0.75) { miss += Math.abs(y - this.ezPsi(x)); cnt++; }
+    }
+    h += '<path class="ez-curve" d="' + cv + '" fill="none" stroke="#A36AA5" stroke-width="2.6" stroke-linejoin="round" opacity=".95"/>';
+    h += '<text x="' + (L + 10) + '" y="' + (T + 16) + '" class="vl">ψ(x)</text><text x="' + (L + W) + '" y="' + (T + H + 26) + '" text-anchor="end" class="sm">x</text></svg>';
+    this.rhPlot(el, 'ezplot', h);
+    const m = cnt ? miss / cnt : 0;
+    this.rhTxt(el, 'eztitle', n ? 'The staircase, rebuilt from ' + (n === 1 ? 'the first zero' : n + ' zeros') : 'The staircase and the smooth line only');
+    this.rhTxt(el, 'ezn', n ? n + (n === 1 ? ' pair' : ' pairs') : 'none');
+    this.rhTxt(el, 'ezh', n ? 'γ ≈ ' + Z[n - 1].toFixed(2) : 'none');
+    this.rhTxt(el, 'ezm', m.toFixed(2));
+    this.rhTxt(el, 'eznote', ['The prime number theorem in one line. On average ψ(x) grows like x, but the line knows nothing about where the individual primes are.', 'One zero gives one slow wave. Already the curve bends towards the steps.', 'Ten zeros, all with real part ½. The corners start to show up at the primes.', 'A hundred zeros, the highest at height 236.5. The curve now jumps almost exactly where the steps do, and with more zeros it would match them perfectly.'][s]);
+    this.skBtns(el, 'data-ez-s', s);
+  }
   // Chart B: prime counts are standard values (OEIS A006880). x ÷ ln x, Li(x) = li(x) − li(2) and Schoenfeld’s limit √x ln x ÷ 8π computed with mpmath
   pxData() {
     return [
@@ -2240,7 +2436,7 @@ class Component extends DCLogic {
     const st = this.state || {};
     const open = st.open || {};
     const ex = {};
-    ['a', 'b', 'c'].forEach((k) => {
+    ['a', 'b', 'c', 'd'].forEach((k) => {
       const o = !!open[k];
       ex[k] = { open: o, aria: o ? 'true' : 'false', ico: o ? '−' : '+', text: o ? 'Hide' : 'Show',
         toggle: () => this.setState({ open: Object.assign({}, open, { [k]: !o }) }) };
