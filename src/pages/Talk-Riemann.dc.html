@@ -482,6 +482,10 @@ html{scroll-padding-top:60px}
 @media (max-width:640px){.sk-rl{grid-template-columns:minmax(0,1fr) 56px}.sk-rl span{grid-column:1 / -1}}
 /* sk:end */
 /* rh:start */
+.rh-float{float:right;width:190px;margin:6px 0 18px 32px}
+.rh-float img{display:block;width:100%;height:auto;border:1px solid #111314;filter:grayscale(1)}
+.rh-float figcaption{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:12px;line-height:1.5;color:#4D5160;margin-top:8px}
+@media (max-width:640px){.rh-float{float:none;width:200px;margin:8px auto 20px}}
 .cp-hero{background:#111314}
 .rh-hero-img{object-position:62% 50%}
 .lt-bar{transition:width .5s cubic-bezier(.2,.75,.1,1),fill .3s ease}
@@ -742,7 +746,7 @@ html.st-on .st-scene .wrap.split:has(> .st-stage) > *{grid-column:1!important;gr
 <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="Main.dc.html">Home</a></li><li><a href="Talks.dc.html">Talks</a></li><li aria-current="page">Talk 15</li></ol></nav>
 <p class="kicker">Talk 15 · Review</p>
 <h1 class="t-title st-long" data-st-w="">Proved, Checked, Not Yet Understood. Claude and the Riemann Hypothesis</h1>
-<p class="meta">Rayang T Mendrofa · 27th November 2026 · 16 min read</p>
+<p class="meta">Rayang T Mendrofa · 27th November 2026 · 15 min read</p>
 <aside style="margin-top:24px;border:1px solid #111314;background:#FBF9F6">
 <div class="dark" style="padding:12px 20px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px"><span class="kicker" style="font-size:11px">Claim under review</span><span class="meta" style="font-size:11px;color:#FDC57E">NOTE AND LEAN 4 CODE · NOT PEER REVIEWED</span></div>
 <div class="stack g12" style="padding:22px 20px">
@@ -779,6 +783,7 @@ html.st-on .st-scene .wrap.split:has(> .st-stage) > *{grid-column:1!important;gr
 <h2 class="t-h2 st-h" style="margin:12px 0 18px">What’s the claim?</h2>
 <p>Start with primes, the numbers you cannot split, like 2, 3, 5, 7 and 11. Up close they look random. Zoom out and they thin out at a steady rate. Around a number <i>x</i>, roughly one number in every ln <i>x</i> is prime. That is the prime number theorem, proved in 1896. It tells you the average. It does not tell you how far the real count can wander away from the average.</p>
 <p>Riemann found the thing that controls the wandering. It is a function called the zeta function, ζ(<i>s</i>), which you can build from a sum over all whole numbers or, through Euler’s product, from all the primes at once. It takes complex numbers in and gives complex numbers out, and it has zeros, places where the output is exactly 0. A few of them are boring, at −2, −4, −6 and so on. The rest, the nontrivial zeros, behave like tuning forks. Each one adds a small wave to the prime count, and together the waves turn the smooth average into the real, lumpy list of primes.</p>
+<figure class="rh-float"><img src="/_blob/af5be4d66545923c5e172dcced16b823" alt="Engraved portrait of Bernhard Riemann, a bearded man with small round glasses, a dark jacket and a bow tie" loading="lazy"><figcaption>Bernhard Riemann, the man behind the guess. Portrait, public domain.</figcaption></figure>
 <p>Riemann worked out the first few of these zeros and noticed they all had real part exactly ½. In his paper he wrote that <q>it is very probable that all roots are real</q>, which in today’s language means every nontrivial zero sits on the vertical line where the real part is ½. Then he admitted he had put the question aside after some failed attempts, because he did not need it for his main goal. That throwaway remark is the Riemann Hypothesis.</p>
 </div>
 <div class="col-wide viz" style="margin-top:40px" role="group" aria-label="Figure: the critical strip and the first ten nontrivial zeros of the zeta function, all on the line with real part one half">
@@ -926,6 +931,9 @@ html.st-on .st-scene .wrap.split:has(> .st-stage) > *{grid-column:1!important;gr
 <h2 class="t-h2 st-h" style="margin:12px 0 18px">It matters? How?</h2>
 <p>For maths, a huge amount rests on this one line. Hundreds of published results start with the words assume the Riemann Hypothesis, or its generalised version. Sharp limits on gaps between primes, fast and certain tests for whether a number is prime, the error in counting primes in sequences. If the proof holds, all of that stops being conditional overnight. It will not break internet encryption, which depends on how hard it is to factor big numbers, not on where the zeros sit. What it changes is how much mathematicians can stand on.</p>
 <p>For anyone who uses AI at work, the bigger story is the split between checking and understanding. Lean answered the question is it true, very quickly. It cannot answer why. A proof has always been two things at once, a guarantee and an explanation, and this is the first time the most famous problem in maths may have one without the other. Many mathematicians are uneasy about that. The Leiden Declaration in June asked for more scrutiny of AI in mathematics, and in September 25 Fields medallists signed a sharper statement that more than 7,400 researchers endorsed within days.</p>
+</div>
+<div class="col" style="margin-top:32px"><figure class="meme-sm" style="margin:0"><img src="/_blob/e1ca56fa90a41c68183ebbe5b8da6c0d" alt="Two stills from the game Metal Gear Rising. At the top a cyborg swordsman holds out his blade. At the bottom a senator in a suit stands on a ridge and points back" loading="lazy"><p style="margin:0;font-size:17px;line-height:1.6">Mathematicians draw their swords and ask why the theorem is true. Lean points back and says it compiles, son.<br><span class="meta" style="font-size:11px;opacity:.8">Meme picked by me. Stills from Metal Gear Rising: Revengeance, © Konami.</span></p></figure></div>
+<div class="col" style="margin-top:32px">
 <p>And for the field itself, it raises awkward questions about credit and timing. The person who steered the work is an Anthropic employee, the model is Anthropic’s, and the note went up a day after Anthropic’s stock market debut. Alpöge addresses that in the note and says he checked with company leadership and trusted mathematicians before posting. Maybe the timing was a coincidence. Either way, the Lean certificate does not care who wrote the code, and that is exactly the point of it.</p>
 </div>
 <div class="col" style="margin-top:40px">
@@ -955,19 +963,8 @@ html.st-on .st-scene .wrap.split:has(> .st-stage) > *{grid-column:1!important;gr
 </div>
 <div class="col" style="margin-top:48px">
 <p class="kicker">Sources</p>
-<ol class="rh-src small">
-<li>L. Alpöge, note on a proof of the Riemann Hypothesis with Claude, 20 November 2026. <a href="https://alpo.ge/remark.pdf">alpo.ge/remark.pdf</a></li>
-<li>B. Riemann, On the Number of Prime Numbers less than a Given Quantity, 1859, translated by D. R. Wilkins (1998).</li>
-<li>A. Connes, The Riemann Hypothesis. Past, Present and a Letter Through Time, arXiv 2602.04022 (2026). <a href="https://arxiv.org/abs/2602.04022">arXiv</a></li>
-<li>Scientific American, independent mathematicians confirm the AI Riemann hypothesis proof, 21 November 2026. <a href="https://www.scientificamerican.com/article/the-ai-riemann-hypothesis-proof-is-almost-certainly-true-independent-mathematicians-attest/">article</a></li>
-<li>The Next Web, Anthropic mathematician says he and Claude proved the Riemann hypothesis, November 2026. <a href="https://thenextweb.com/news/anthropic-alpoge-claude-riemann-hypothesis-proof-lean">article</a></li>
-<li>IBM Think, S. Brodsky, Anthropic mathematician claims AI helped solve a 167 year old math mystery, 20 to 23 November 2026. <a href="https://www.ibm.com/think/news/anthropic-claude-riemann-hypothesis-math-proof">article</a></li>
-<li>The Register, T. Mann, 24 November 2026, on the Clay status and Masullo’s draft. <a href="https://www.theregister.com/ai-and-ml/2026/11/24/anthropic-says-claude-solved-an-age-old-math-problem-but-the-written-proof-is-250000-pages-of-slop/5311775">article</a></li>
-<li>Interesting Engineering, A. Khollam, the 250,000 page figure was a joke, 23 November 2026. <a href="https://interestingengineering.com/ai-robotics/anthropic-mathematician-riemann-proof-joke">article</a></li>
-<li>Anthropic, Learning more about Claude’s mathematical capabilities, 10 August 2026. <a href="https://www.anthropic.com/research/riemann-zeta">post</a></li>
-<li>Quanta Magazine, AI proved the quasi Riemann hypothesis. What happens now?, 19 October 2026, and its weekly AI and maths updates. <a href="https://quantamagazine.org/ai-proved-the-quasi-riemann-hypothesis-what-happens-now-20261019">article</a></li>
-<li>T. Buckmaster, statement of 7 September 2026. <a href="https://cims.nyu.edu/~tristanb/statement.pdf">PDF</a></li>
-</ol>
+<ol class="rh-src small"><li>L. Alpöge, note on a proof of the Riemann Hypothesis with Claude, 20 November 2026. <a href="https://alpo.ge/remark.pdf">alpo.ge/remark.pdf</a></li><li>B. Riemann, On the Number of Prime Numbers less than a Given Quantity, 1859, translated by D. R. Wilkins (1998).</li><li>A. Connes, The Riemann Hypothesis. Past, Present and a Letter Through Time, arXiv 2602.04022 (2026). <a href="https://arxiv.org/abs/2602.04022">arXiv</a></li><li>Scientific American, independent mathematicians confirm the AI Riemann hypothesis proof, 21 November 2026. <a href="https://www.scientificamerican.com/article/the-ai-riemann-hypothesis-proof-is-almost-certainly-true-independent-mathematicians-attest/">article</a></li></ol>
+<div class="viz-more" style="border:0;padding:0;margin-top:12px"><button type="button" class="more" aria-expanded="{{ex.c.aria}}" onClick="{{ex.c.toggle}}"><span class="more-ico" aria-hidden="true">{{ex.c.ico}}</span>{{ex.c.text}} all 11 sources</button><sc-if value="{{ex.c.open}}"><ol class="rh-src small" start="5"><li>The Next Web, Anthropic mathematician says he and Claude proved the Riemann hypothesis, November 2026. <a href="https://thenextweb.com/news/anthropic-alpoge-claude-riemann-hypothesis-proof-lean">article</a></li><li>IBM Think, S. Brodsky, Anthropic mathematician claims AI helped solve a 167 year old math mystery, 20 to 23 November 2026. <a href="https://www.ibm.com/think/news/anthropic-claude-riemann-hypothesis-math-proof">article</a></li><li>The Register, T. Mann, 24 November 2026, on the Clay status and Masullo’s draft. <a href="https://www.theregister.com/ai-and-ml/2026/11/24/anthropic-says-claude-solved-an-age-old-math-problem-but-the-written-proof-is-250000-pages-of-slop/5311775">article</a></li><li>Interesting Engineering, A. Khollam, the 250,000 page figure was a joke, 23 November 2026. <a href="https://interestingengineering.com/ai-robotics/anthropic-mathematician-riemann-proof-joke">article</a></li><li>Anthropic, Learning more about Claude’s mathematical capabilities, 10 August 2026. <a href="https://www.anthropic.com/research/riemann-zeta">post</a></li><li>Quanta Magazine, AI proved the quasi Riemann hypothesis. What happens now?, 19 October 2026, and its weekly AI and maths updates. <a href="https://quantamagazine.org/ai-proved-the-quasi-riemann-hypothesis-what-happens-now-20261019">article</a></li><li>T. Buckmaster, statement of 7 September 2026. <a href="https://cims.nyu.edu/~tristanb/statement.pdf">PDF</a></li></ol></sc-if></div>
 </div>
 </div>
 </section>
@@ -2243,7 +2240,7 @@ class Component extends DCLogic {
     const st = this.state || {};
     const open = st.open || {};
     const ex = {};
-    ['a', 'b'].forEach((k) => {
+    ['a', 'b', 'c'].forEach((k) => {
       const o = !!open[k];
       ex[k] = { open: o, aria: o ? 'true' : 'false', ico: o ? '−' : '+', text: o ? 'Hide' : 'Show',
         toggle: () => this.setState({ open: Object.assign({}, open, { [k]: !o }) }) };
