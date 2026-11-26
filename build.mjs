@@ -256,9 +256,17 @@ fs.writeFileSync(path.join(OUT, 'favicon.svg'), FAVICON);
 // src/static/ is copied as is (for example the 3D teardown pages in src/static/teardowns/)
 if (fs.existsSync(path.join(SRC, 'static'))) fs.cpSync(path.join(SRC, 'static'), OUT, {recursive: true});
 {
-  const td = path.join(OUT, 'teardowns');
-  if (fs.existsSync(td)) for (const f of fs.readdirSync(td).filter((n) => n.endsWith('.html'))) {
-    const fp = path.join(td, f), h = fs.readFileSync(fp, 'utf8');
+  // static pages get the badge style too: the teardowns, the talk figures and the GH-1 game page. The game stays
+  // byte for byte the owner's copy in src/static, the style is only added to the published file.
+  const html = [];
+  for (const dir of ['teardowns', 'figures']) {
+    const d = path.join(OUT, dir);
+    if (fs.existsSync(d)) for (const f of fs.readdirSync(d).filter((n) => n.endsWith('.html'))) html.push(path.join(d, f));
+  }
+  const game = path.join(OUT, 'projects', 'gh1-greenhouse', 'play', 'index.html');
+  if (fs.existsSync(game)) html.push(game);
+  for (const fp of html) {
+    const h = fs.readFileSync(fp, 'utf8');
     if (!h.includes('nl-badge-frame')) fs.writeFileSync(fp, h.replace(/<head>/i, '<head>' + HIDE_BADGE));
   }
 }
