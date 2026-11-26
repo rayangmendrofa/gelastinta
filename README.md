@@ -25,6 +25,7 @@ and *Talks* — reviews of scientific papers told with a personal take, somewher
 | [Talks](https://gelastinta.com/talks/) | Paper reviews with interactive figures and a personal take |
 | ↳ [Skin effect](https://gelastinta.com/talks/skin-effect/) | *Skin in the Game* — light piling up at one edge of a lossy photonic walk, and how noise speeds the drift |
 | ↳ [Voyager 1, one light day](https://gelastinta.com/talks/voyager-light-day/) | *A Day Away* — Voyager 1 becomes the first spacecraft one light day from Earth, and what it carries |
+| ↳ [Flying Roadster](https://gelastinta.com/talks/flying-roadster/) | *Five Seconds of Wind* · the physics of Tesla’s flying Roadster, from fan suction and a thruster mixer to its 10,000 psi nitrogen tank |
 | ↳ [Riemann Hypothesis](https://gelastinta.com/talks/riemann-hypothesis/) | *Proved, Checked, Not Yet Understood* · a Lean certified proof of the Riemann Hypothesis, found working with Claude, and why nobody can yet explain it |
 | ↳ [Learning brain](https://gelastinta.com/talks/learning-brain/) | *Practice Makes Plastic* — brain cells changing after a finger tapping lesson, seen with ultra high gradient MRI |
 | ↳ [Origami robot](https://gelastinta.com/talks/origami-robot/) | *Folded Twice, Moves Eight Ways* — a bistable origami robot driven by uneven magnetic fields |

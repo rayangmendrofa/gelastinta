@@ -13,6 +13,10 @@ Source of the interactive 3D pages served from `src/static/teardowns/`.
 - `gt-plc-*`: tank T-101 of the PLC batch station (industry project IP1, section 01), served as `plc-batch-station.html`. Live page only, no film.
   `gt-plc-shared/data.js` is one default batch recorded from the PLC program every 0.5 s; every reading, lamp and valve reads from it. The
   vessel's proportions are illustrative. The poster is a Playwright screenshot of the live page during HEAT with the glass on.
+- `gt-copv-*`: the cold gas boost system of the Roadster Thrust trim (Talk 16, section 02), served as `roadster-copv.html`. Live page only.
+  `gt-copv-shared/data.js` is one 5 s burn from my real gas blowdown model (CoolProp nitrogen, 200 L at 10,000 psi, regulator at 50 bar,
+  ideal nozzles; script in the talk's working folder). Tesla has published no drawings, so the layout and wall thicknesses are illustrative.
+  The cutaway uses three.js local clipping planes. The poster is a Playwright screenshot of the TANK view during BURN with the cutaway on.
 Build with the teardown kit (the `teardown/` folder of the study pack source bundle, after `npm install` there):
 
 ```
