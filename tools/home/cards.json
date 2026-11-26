@@ -97,12 +97,24 @@
  },
  {
   "shelf": "latest",
+  "href": "Talk-Roadster.dc.html",
+  "bg": "#111111",
+  "img": "768e879146823fef8b9ca7f54dab973f",
+  "alt": "A line drawing of a bench model of an inverted half loop, with a small white car driving up its vertical wall",
+  "style": "object-fit:cover;object-position:75% 50%",
+  "kicker": "Talk 16 · New",
+  "title": "Five Seconds of Wind. The Physics of Tesla’s Flying Roadster",
+  "p": "Tesla’s new Roadster drove on a ceiling and flipped over five cars. The physics of how, from fans and a mixer to a 10,000 psi tank of nitrogen that empties in five seconds.",
+  "meta": "4th December 2026 · 19 min read"
+ },
+ {
+  "shelf": "latest",
   "href": "Talk-Riemann.dc.html",
   "bg": "#111314",
   "img": "7e05dd227b0d3c458455da774d2721b8",
   "alt": "A map of the Riemann zeta function in deep blue and violet, with its first ten zeros glowing gold on one straight line",
   "style": "object-fit:cover;object-position:50% 50%",
-  "kicker": "Talk 15 · New",
+  "kicker": "Talk 15",
   "title": "Proved, Checked, Not Yet Understood. Claude and the Riemann Hypothesis",
   "p": "An Anthropic mathematician says he proved the Riemann Hypothesis with Claude. Lean certified it in a day. Nobody can yet explain why it is true.",
   "meta": "27th November 2026 · 21 min read"
@@ -142,17 +154,5 @@
   "title": "Practice Makes Plastic. Brain Cells After One Typing Lesson",
   "p": "A finger tapping lesson made brain cell bodies swell for a while and cell branches grow denser by the next day, seen in living people with an ultra strong MRI.",
   "meta": "6th November 2026 · 14 min read"
- },
- {
-  "shelf": "latest",
-  "href": "Talk-OrigamiRobot.dc.html",
-  "bg": "#10131C",
-  "img": "be14f7e1f50ae5d83ba42aa03955b24d",
-  "alt": "Three papercraft cats, folded from flat sheets, sitting on a tiled floor",
-  "style": "object-fit:cover;object-position:50% 50%",
-  "kicker": "Talk 11",
-  "title": "Folded Twice, Moves Eight Ways. A Bistable Origami Robot",
-  "p": "A 0.81 g origami robot with two stable shapes: small magnetic nudges make it crawl or roll, one big pulse snaps it shut.",
-  "meta": "30th October 2026 · 13 min read"
  }
 ]
