@@ -7,14 +7,20 @@ const fx = (v, d = 1) => v == null || isNaN(v) ? "--" : Number(v).toFixed(d);
 const num = v => Math.round(v).toLocaleString("en");
 const cv = $("farm");
 let g = cv.getContext("2d");
-let mtab = "boosts", ttab = "crops";
-let S = null, META = null, speed = 20, armed = null, dragging = null, VW = 320;
+let mtab = "sell", ttab = "crops";
+let S = null, META = null, speed = 20, armed = null, dragging = null, VW = 320, VH = 200, zoomStep = 0;
 let sel = {h: 0, z: 0}, hoverSpot = null, pop = null;
-const cam = {x: 0, tx: 0};
+const cam = {x: 0, y: 0, tx: 0, ty: 0};
 const robotX = [120, 120, 120], floaters = [], anims = [];
 const worker = new Worker("worker.js");
 const send = m => worker.postMessage(m);
-const LOT = 320, LOTS = 3;
+// the farm map: 3 x 3 plots seen from above with dirt roads between them
+const LOT = 320, PW = 320, PH = 208, ROAD = 24, DY = 14;     // greenhouse art sits DY higher inside its plot
+const WORLD_W = ROAD + 3 * (PW + ROAD), WORLD_H = ROAD + 3 * (PH + ROAD), EDGE = 60;
+const HOUSE_PLOTS = ["gh1", "gh2", "gh3"];
+const plotXY = id => { const p = META.plots[id]; return [ROAD + p.col * (PW + ROAD), ROAD + p.row * (PH + ROAD)]; };
+const ghXY = h => { const [x, y] = plotXY(HOUSE_PLOTS[h]); return [x, y - DY]; };
+const bedXY = (h, z) => { const [x, y] = ghXY(h); return [x + 190, y + BED_Y[z] + 8]; };
 
 // ---------------------------------------------------------------- drawing helpers
 const R = (x, y, w, h, c) => { g.fillStyle = c; g.fillRect(Math.round(x), Math.round(y), Math.round(w), Math.round(h)); };
@@ -27,8 +33,15 @@ const hash = n => { n = Math.sin(n * 12.9898) * 43758.5453; return n - Math.floo
 const text = (s, x, y, c = "#e8ecef", size = 6) => { g.fillStyle = c; g.font = `${size}px monospace`; g.fillText(s, x, y); };
 const BED_Y = [56, 86, 116, 146], BED_X0 = 86, BED_X1 = 292, PATH_Y = 172;
 const LEAF = {tomato: "#3e8f3a", chili: "#2f7a34", cucumber: "#3a9a42", melon: "#5aa54a", strawberry: "#3d8f45",
-              lettuce: "#93d354", kangkung: "#3fae5a"};
-const FLOWER = {tomato: "#f5d442", chili: "#f4f4f0", cucumber: "#f5d442", melon: "#f5d442", strawberry: "#f4f4f0"};
+              lettuce: "#93d354", kangkung: "#3fae5a", amaranth: "#8a3a5a", pakchoi: "#7cc84a", longbean: "#3e9a3a",
+              eggplant: "#3a7a3a", shallot: "#5aa84a", paprika: "#357a34"};
+const FLOWER = {tomato: "#f5d442", chili: "#f4f4f0", cucumber: "#f5d442", melon: "#f5d442", strawberry: "#f4f4f0",
+                longbean: "#c8a8e8", eggplant: "#b088d8", paprika: "#f4f4f0"};
+const SEASON_SHORT = {dry: "Dry", to_wet: "Rains coming", wet: "Wet", to_dry: "Rains ending"};
+const PRODUCT = {egg: ["Eggs", "eggs"], truffle: ["Truffles", "truffles"], milk: ["Milk", "L"], wool: ["Wool", "bundles"],
+                 fish: ["Catfish", "fish"], mango: ["Mangoes", "mangoes"]};
+const orderName = o => o.crop ? shortName(o.crop) : PRODUCT[o.product][0];
+const orderUnit = o => o.crop ? "kg" : PRODUCT[o.product][1];
 const has = u => S.farm.upgrades.includes(u);
 
 const SKY = {clear: ["#3f7fc8", "#a6d6f2"], cloudy: ["#6f8396", "#c2ccd4"], rain: ["#465462", "#7f8c98"], storm: ["#262e38", "#545e68"]};
@@ -37,85 +50,71 @@ function daylight() {                  // 0 at night, 1 in full day; twilight ra
   const m = S.clock_min;
   return m < 330 || m > 1110 ? 0 : Math.min(1, Math.min(m - 330, 1110 - m) / 60);
 }
-function sky(t, cx) {
-  const m = S.clock_min, wx = S.weather, look = wx.look, day = m >= 360 && m <= 1080;
-  const k = day ? Math.sin(Math.PI * (m - 360) / 720) : 0, dl = daylight();
-  const tw = dl > 0 && dl < 1 ? 1 - Math.abs(dl - 0.5) * 2 : day && k < 0.3 ? 1 - k / 0.3 : 0;   // golden hour
-  let [top, hor] = SKY[look] || SKY.clear;
-  top = mix("#060a1c", top, dl); hor = mix("#1b2550", hor, dl);
-  hor = mix(hor, "#f0915a", tw * 0.8); top = mix(top, "#6a4f8f", tw * 0.4);
-  if (S.farm.today.heat && day) hor = mix(hor, "#f6c27a", 0.4);
-  for (let y = 0; y < 40; y++) R(0, y, VW, 1, mix(top, hor, (y / 40) ** 1.4));
-  if (look === "storm" && hash(Math.floor(t / 90)) > 0.975) flash = 1;
-  if (day) {                                                        // sun with a soft glow
-    const x = 10 + (VW - 20) * (m - 360) / 720, y = 32 - 26 * k, heat = S.farm.today.heat;
-    if (look === "clear" || look === "cloudy") {
-      g.globalAlpha = 0.18; disc(x, y, heat ? 11 : 8, heat ? "#ffb347" : "#fff3b0"); g.globalAlpha = 0.3; disc(x, y, heat ? 7 : 5, "#fff3b0"); g.globalAlpha = 1;
-      disc(x, y, heat ? 4 : 3, heat ? "#ffcf5a" : "#ffe98a");
+const SEASON_GREEN = {dry: ["#6f8a3c", "#62803a", "#7f9a48", "#9ab05a"], to_wet: ["#5a8240", "#4f7838", "#6a9248", "#86ac5a"],
+                      wet: ["#3f7a3a", "#356e32", "#4f8a42", "#6aa858"], to_dry: ["#56803c", "#4b7636", "#669046", "#82a858"]};
+const green = () => { const c = SEASON_GREEN[S.farm.calendar.season]; return S.farm.today.drought ? c.map(x => mix(x, "#b8a060", 0.3)) : c; };
+function ground(t, cx, cy) {
+  const G = green();
+  R(0, 0, VW, VH, mix(G[1], "#1b3a1a", 0.35));                     // forest floor beyond the farm
+  const x0 = Math.max(0, -cx), y0 = Math.max(0, -cy), x1 = Math.min(VW, WORLD_W - cx), y1 = Math.min(VH, WORLD_H - cy);
+  if (x1 > x0 && y1 > y0) R(x0, y0, x1 - x0, y1 - y0, G[0]);
+  for (let k = 0; k < 4; k++) {                                     // dirt roads between the plots
+    const ry = k * (PH + ROAD) - cy, rx = k * (PW + ROAD) - cx;
+    R(-cx, ry, WORLD_W, ROAD, "#8a7350"); R(-cx, ry + 2, WORLD_W, 1, "#a8916a"); R(-cx, ry + ROAD - 3, WORLD_W, 1, "#6b5a3e");
+    R(rx, -cy, ROAD, WORLD_H, "#8a7350"); R(rx + 2, -cy, 1, WORLD_H, "#a8916a"); R(rx + ROAD - 3, -cy, 1, WORLD_H, "#6b5a3e");
+  }
+  for (let i = 0; i < 160; i++) {                                    // pebbles and wheel ruts on the roads
+    const k = i % 4, along = hash(i + 3) * WORLD_W;
+    R(along - cx, k * (PH + ROAD) + 6 + hash(i + 9) * 12 - cy, 2, 1, "#6b5a3e");
+    R(k * (PW + ROAD) + 6 + hash(i + 11) * 12 - cx, hash(i + 13) * WORLD_H - cy, 1, 2, "#6b5a3e");
+  }
+  const T = 22;                                                     // a ring of forest round the farm
+  for (let gx = Math.floor((cx - EDGE) / T) * T; gx < cx + VW + T; gx += T)
+    for (let gy = Math.floor((cy - EDGE) / T) * T; gy < cy + VH + T; gy += T) {
+      if (gx > -4 && gx < WORLD_W - T + 4 && gy > -4 && gy < WORLD_H - T + 4) continue;
+      tree(gx + hash(gx * 3 + gy) * 8 - cx, gy + hash(gx + gy * 7) * 8 - cy, 9 + hash(gx + gy) * 4, t, true);
     }
-  } else {                                                          // a crescent moon, twinkling stars
-    const x = 20 + (VW - 40) * (((m + 1440 - 1080) % 1440) / 720);
-    disc(x, 11, 3, "#eef0f8"); disc(x + 2, 10, 3, top);
-    for (let i = 0; i < VW / 9; i++) if (hash(i + Math.floor(t / 600 + i) * 0.13) > 0.15) R(hash(i) * VW, hash(i + 50) * 32, 1, 1, hash(i + 7) > 0.8 ? "#ffffff" : "#9aa6d8");
-  }
-  const n = Math.round(({clear: 2, cloudy: 6, rain: 8, storm: 10}[look] || 2) * VW / 320);   // puffy clouds, lit from above
+  const look = S.weather.look, n = {clear: 2, cloudy: 7, rain: 9, storm: 11}[look] || 2;   // cloud shadows drift over the fields
+  g.globalAlpha = look === "clear" ? 0.08 : 0.16;
   for (let i = 0; i < n; i++) {
-    const w = 18 + hash(i + 3) * 22, x = ((hash(i) * (VW + 80) - cx * 0.15 + t * (4 + wx.wind) / 5000) % (VW + 80) + VW + 80) % (VW + 80) - 50, y = 3 + hash(i + 9) * 18;
-    const base = look === "clear" ? "#f4f7fa" : look === "cloudy" ? "#dfe5ea" : look === "rain" ? "#8d98a2" : "#5c6670";
-    const lit = mix(base, "#ffffff", 0.4 * dl), shade = mix(base, "#1b2550", 0.35);
-    g.globalAlpha = look === "clear" ? 0.75 : 0.95;
-    R(x, y + 3, w, 4, shade); R(x + 2, y, w - 4, 5, base); R(x + w * 0.25, y - 3, w * 0.4, 4, base); R(x + w * 0.3, y - 3, w * 0.3, 1, lit); R(x + 3, y, w - 8, 1, lit);
-    g.globalAlpha = 1;
+    const w = 60 + hash(i) * 90, h = 30 + hash(i + 1) * 40, span = WORLD_W + 400;
+    const x = ((hash(i + 2) * span + t * (4 + S.weather.wind) / 900) % span) - 200 - cx, y = hash(i + 3) * WORLD_H - cy;
+    R(x, y, w, h, "#0b1a10"); R(x + w * 0.2, y - h * 0.25, w * 0.6, h * 1.5, "#0b1a10");
   }
-  if (day && look === "clear") for (let i = 0; i < 3; i++) {       // birds far away
-    const bx = ((t / 60 + i * 37 + hash(i) * 200) % (VW + 40)) - 20, by = 10 + i * 4 + Math.sin(t / 400 + i) * 2, up = Math.floor(t / 180 + i) % 2;
-    R(bx - 1, by - up, 1, 1, "#2a3340"); R(bx, by, 1, 1, "#2a3340"); R(bx + 1, by - up, 1, 1, "#2a3340");
-  }
-  hills(t, cx, top, hor, dl);
-  R(0, 40, VW, 160, mix("#24402a", "#4e7a3a", 0.35 + 0.65 * dl));
+  g.globalAlpha = 1;
 }
-function hills(t, cx, top, hor, dl) {  // two parallax ridges and coconut palms on the horizon
-  const far = mix(mix(hor, "#3f6a5a", 0.45), "#0e1730", 1 - dl), near = mix("#2f5a36", "#0b1422", (1 - dl) * 0.8);
-  for (let x = 0; x < VW; x++) {
-    const a = x + cx * 0.2, b = x + cx * 0.45;
-    const h1 = 7 + 4 * Math.sin(a / 41) + 3 * Math.sin(a / 17 + 1), h2 = 4 + 3 * Math.sin(b / 29 + 2) + 1.5 * Math.sin(b / 9);
-    R(x, 40 - h1, 1, h1, far); R(x, 40 - h2, 1, h2, near);
-  }
-  for (let i = -1; i < VW / 70 + 2; i++) {
-    const base = Math.floor(cx * 0.45 / 70) + i, x = base * 70 + hash(base) * 40 - cx * 0.45, hgt = 10 + hash(base + 5) * 6;
-    if (hash(base + 11) < 0.35) continue;
-    const sway = Math.sin(t / 900 + base) * S.weather.wind / 8;
-    for (let k = 0; k < hgt; k++) R(x + (k / hgt) ** 2 * 2 + sway * k / hgt, 40 - k, 1, 1, near);
-    const tx = x + 2 + sway, ty = 40 - hgt;
-    for (const [dx, dy] of [[-4, 1], [-3, 0], [-2, -1], [2, -1], [3, 0], [4, 1], [-1, -2], [1, -2]]) R(tx + dx, ty + dy, 2, 1, near);
-  }
+function tree(x, y, r, t, cull = false) {   // a round canopy seen from above
+  if (cull && (x < -30 || y < -30 || x > VW + 30 || y > VH + 30)) return;
+  const sway = Math.round(Math.sin(t / 900 + x * 0.05) * Math.min(1, S.weather.wind / 8));
+  g.globalAlpha = 0.3; disc(x + 3, y + 4, r, "#0b1a10"); g.globalAlpha = 1;
+  disc(x + sway, y, r, "#2f5a2a"); disc(x + sway - 2, y - 2, r - 3, "#3e7a36"); disc(x + sway - 3, y - 4, Math.max(2, r - 7), "#5a9a4a");
 }
 function disc(x, y, r, c) {
   for (let dy = -r; dy <= r; dy++) { const w = Math.round(Math.sqrt(r * r - dy * dy)); R(x - w, y + dy, 2 * w + 1, 1, c); }
 }
 
-function rain(t, cx) {
+function rain(t, cx, cy) {
   if (!S.weather.rain) return;
   const storm = S.weather.look === "storm", slant = storm ? 0.14 : 0.05;
   g.globalAlpha = 0.6;
-  for (let i = 0; i < (storm ? 130 : 80) * VW / 320; i++) {
-    const x = (hash(i) * (VW + 20) + t * slant) % (VW + 20) - 10, y = (hash(i + 20) * 200 + t * 0.3) % 200;
+  for (let i = 0; i < (storm ? 130 : 80) * VW * VH / 64000; i++) {
+    const x = (hash(i) * (VW + 20) + t * slant) % (VW + 20) - 10, y = (hash(i + 20) * VH + t * 0.3) % VH;
     R(x, y, 1, storm ? 4 : 3, "#c4dcf2");
   }
   g.globalAlpha = 1;
   if (Math.random() < 0.9) for (let k = 0; k < 3; k++)            // splashes on the ground
-    parts.push({x: cx + Math.random() * VW, y: 42 + Math.random() * 156, vx: 0, vy: -0.25, life: 10, max: 10, c: "#d8e8f6", gr: 0.05, w: 2});
+    parts.push({x: cx + Math.random() * VW, y: cy + Math.random() * VH, vx: 0, vy: -0.25, life: 10, max: 10, c: "#d8e8f6", gr: 0.05, w: 2});
 }
 
-function grass(lot, t) {               // mottled turf, tufts that bend with the wind, wildflowers
-  const wind = Math.min(2, S.weather.wind / 6);
-  for (let i = 0; i < 26; i++) { const x = hash(i + lot * 77) * LOT, y = 42 + hash(i + 3 + lot * 77) * 152; R(x, y, 14 + hash(i) * 20, 6 + hash(i + 1) * 8, "#46703a"); }
-  for (let i = 0; i < 150; i++) {
-    const x = hash(i + 3 + lot * 500) * LOT, y = 40 + hash(i + 7 + lot * 500) * 158, bend = Math.round(Math.sin(t / 500 + x / 13) * wind);
-    R(x, y, 1, 2, "#5d8a45"); R(x + bend, y - 1, 1, 1, "#78a85a");
+function grass(seed, t) {              // mottled turf, tufts that bend with the wind, wildflowers (plot coordinates)
+  const wind = Math.min(2, S.weather.wind / 6), G = green();
+  R(0, 0, PW, PH, G[0]);
+  for (let i = 0; i < 26; i++) { const x = hash(i + seed * 77) * PW, y = hash(i + 3 + seed * 77) * PH; R(x, y, 14 + hash(i) * 20, 6 + hash(i + 1) * 8, G[1]); }
+  for (let i = 0; i < 170; i++) {
+    const x = hash(i + 3 + seed * 500) * PW, y = hash(i + 7 + seed * 500) * PH, bend = Math.round(Math.sin(t / 500 + x / 13) * wind);
+    R(x, y, 1, 2, G[2]); R(x + bend, y - 1, 1, 1, G[3]);
   }
-  for (let i = 0; i < 18; i++) R(hash(i + lot * 31) * LOT, 44 + hash(i + 9 + lot * 31) * 150, 1, 1, ["#f2c14e", "#f1ecd8", "#e88fb0"][i % 3]);
-  if (lot > 0) for (let y = 44; y < 196; y += 8) { R(0, y, 2, 5, "#8a6a3a"); R(0, y + 2, 2, 1, "#a8865a"); }   // fence between lots
+  for (let i = 0; i < 20; i++) R(hash(i + seed * 31) * PW, hash(i + 9 + seed * 31) * PH, 1, 1, ["#f2c14e", "#f1ecd8", "#e88fb0"][i % 3]);
 }
 
 function windsock(t, h) {
@@ -141,12 +140,26 @@ function plantSprite(x, cy, z, i) {
   const dark = mix(leaf, "#0f2a12", 0.35);
   const s = Math.max(1, Math.round(1 + m * 5 + (seed - 0.5)));
   if (z.stage === "seedling") { R(x, cy - 1, 1, 3, leaf); R(x - 1, cy - 1, 1, 1, leaf); R(x + 1, cy - 2, 1, 1, leaf); return; }
-  if (crop === "lettuce" || crop === "kangkung") {
+  if (crop === "shallot") {                                  // upright green shoots; bulbs show when ripe
+    for (let k = -1; k <= 1; k++) R(x + k * 2, cy - s - 1 + Math.abs(k), 1, s + 2, k ? leaf : dark);
+    if (z.stage === "ripe") { R(x - 2, cy + 1, 5, 3, "#b0506a"); R(x - 1, cy + 1, 3, 1, "#d88aa0"); }
+    return;
+  }
+  if (crop === "longbean") {                                 // a vine on a stake with long hanging pods
+    R(x, cy - s - 3, 1, 2 * s + 5, "#8a6a3a");
+    for (let k = 0; k < s + 2; k++) R(x - 2 + (k % 2) * 3, cy - s - 2 + k * 2, 2, 2, k % 2 ? leaf : dark);
+    if (z.stage === "flowering") R(x + 1, cy - 2, 1, 1, FLOWER.longbean);
+    if (z.stage === "ripe") for (let k = 0; k < 3; k++) R(x - 3 + k * 3, cy - 1, 1, 5, "#7ac84a");
+    return;
+  }
+  if (crop === "lettuce" || crop === "kangkung" || crop === "amaranth" || crop === "pakchoi") {
     R(x - s, cy - s + 1, 2 * s + 1, 2 * s - 1, dark);
     R(x - s + 1, cy - s, 2 * s - 1, 2 * s + 1, dark);
     R(x - s + 1, cy - s + 1, 2 * s - 1, 2 * s - 1, leaf);
+    if (crop === "pakchoi") { R(x - 1, cy - s + 1, 3, 2 * s - 1, "#e9f7c4"); }
+    if (crop === "amaranth") R(x - 1, cy - 1, 3, 3, "#c43a6a");
     if (crop === "lettuce") R(x - 1, cy - 1, 3, 3, mix(leaf, "#e9f7c4", 0.5));
-    else { R(x - s, cy, 2 * s + 1, 1, dark); R(x, cy - s, 1, 2 * s + 1, dark); }
+    else if (crop === "kangkung") { R(x - s, cy, 2 * s + 1, 1, dark); R(x, cy - s, 1, 2 * s + 1, dark); }
     return;
   }
   const wide = crop === "melon" ? 2 : 1, low = crop === "strawberry" ? 0.6 : 1;
@@ -160,6 +173,10 @@ function plantSprite(x, cy, z, i) {
   if (z.stage === "ripe") {
     const col = META.crops[crop].colour;
     if (crop === "melon") { R(x - 2, cy - 1, 4, 3, col); R(x - 1, cy - 2, 2, 5, col); }
+    else if (crop === "eggplant" || crop === "paprika") for (let k = 0; k < 3; k++) {
+      const fx2 = x - rw + 1 + hash(seed + k) * (2 * rw - 2), fy = cy - rh + 1 + hash(seed + k + 4) * (2 * rh - 2);
+      R(fx2, fy, 2, crop === "eggplant" ? 4 : 3, col); R(fx2, fy - 1, 2, 1, "#2a5a2a");
+    }
     else if (crop === "cucumber") for (let k = 0; k < 3; k++) R(x - rw + 1 + hash(seed + k) * 2 * rw, cy - 1 + k, 3, 1, "#1e5d22");
     else for (let k = 0; k < 4; k++) R(x - rw + 1 + hash(seed + k) * (2 * rw - 1), cy - rh + 1 + hash(seed + k + 4) * (2 * rh - 1), crop === "chili" ? 1 : 2, crop === "chili" ? 2 : 1, col);
   }
@@ -194,7 +211,8 @@ function greenhouse(t, h, hi) {
     const a = animOf("bed", hi, i);
     if (z.locked && !a) { lockedBed(y, i, hi); continue; }
     const dry = Math.min(1, z.deficit / 160);
-    R(BED_X0, y, BED_X1 - BED_X0, 18, mix("#5b3b26", "#9a7b55", dry));
+    if (soilPat) { g.fillStyle = soilPat; g.fillRect(BED_X0, y, BED_X1 - BED_X0, 18); g.globalAlpha = dry * 0.6; R(BED_X0, y, BED_X1 - BED_X0, 18, "#b89a6a"); g.globalAlpha = 1; }
+    else R(BED_X0, y, BED_X1 - BED_X0, 18, mix("#5b3b26", "#9a7b55", dry));
     for (let k = 0; k < 20; k++) R(BED_X0 + hash(k + i * 40) * (BED_X1 - BED_X0), y + hash(k + 3 + i * 40) * 18, 1, 1, "#6e4a31");
     if (a) { tilling(t, y, i, prog(a, t)); continue; }
     R(BED_X0, y + 9, BED_X1 - BED_X0, 1, "#8a949c");                 // drip line
@@ -247,7 +265,9 @@ function greenhouse(t, h, hi) {
   R(188, 56, 5, 4, "#e8ecef");
 }
 
-const PAINT = {white: "#c3c9ce", green: "#4f9a62", red: "#b5402f", blue: "#4a86c8"};
+let soilPat = null;
+{ const im = new Image(); im.onload = () => { soilPat = g.createPattern(im, "repeat"); }; im.src = "img/soil.png"; }
+const PAINT = {white: "#c3c9ce", green: "#4f9a62", red: "#b5402f", blue: "#4a86c8", yellow: "#d8b03a", purple: "#7a4a9a"};
 function path() {
   const st = S.farm.style.path;
   if (st === "brick") {
@@ -256,6 +276,9 @@ function path() {
   } else if (st === "planks") {
     R(84, PATH_Y - 3, 212, 14, "#8a6a3a");
     for (let x = 0; x < 212; x += 6) R(84 + x, PATH_Y - 3, 1, 14, "#6b4f2a");
+  } else if (st === "stone") {
+    R(84, PATH_Y - 3, 212, 14, green()[0]);
+    for (let x = 86; x < 292; x += 11) { R(x, PATH_Y - 1 + (x % 3), 8, 6, "#9a9a90"); R(x + 1, PATH_Y - 1 + (x % 3), 6, 1, "#c0c0b8"); }
   } else R(84, PATH_Y - 3, 212, 14, "#7b8288");
 }
 function decor(t, hi) {                // cosmetics outside the greenhouse
@@ -287,11 +310,11 @@ function pests(t, y, i) {             // bugs crawling over an infested bed
   if (Math.floor(t / 400) % 2) { R(BED_X1 - 8, y + 1, 7, 7, "#8a2a22"); R(BED_X1 - 6, y + 3, 3, 3, "#1d232a"); R(BED_X1 - 7, y + 2, 1, 1, "#1d232a"); R(BED_X1 - 3, y + 2, 1, 1, "#1d232a"); }
 }
 const flocks = [];
-function birdsDraw(t, cx) {            // a flock flies in, pecks, and leaves (or turns back at the scarecrow)
+function birdsDraw(t, cx, cy) {            // a flock flies in, pecks, and leaves (or turns back at the scarecrow)
   for (let f = flocks.length - 1; f >= 0; f--) {
     const fl = flocks[f], a = (t - fl.t0) / 1000;
     if (a > 7) { flocks.splice(f, 1); continue; }
-    const tx = fl.h * LOT + BED_X0 + 60 + fl.z * 30 - cx, ty = BED_Y[fl.z] + 4, sx = fl.h * LOT - 40 - cx, sy = 8;
+    const [gx, gy] = ghXY(fl.h), tx = gx + BED_X0 + 60 + fl.z * 30 - cx, ty = gy + BED_Y[fl.z] + 4 - cy, sx = gx - 40 - cx, sy = gy - 20 - cy;
     for (let b = 0; b < 6; b++) {
       let x, y, peck = false;
       const ox = (b % 3) * 14 + hash(b) * 6, oy = Math.floor(b / 3) * 5;
@@ -312,12 +335,12 @@ function burst(x, y, colors, n = 26) {  // harvest: produce and leaves pop out o
   for (let i = 0; i < n; i++) parts.push({x: x + (Math.random() - 0.5) * 120, y, vx: (Math.random() - 0.5) * 1.2, vy: -1 - Math.random() * 1.6,
     life: 50 + Math.random() * 30, max: 80, c: colors[i % colors.length], gr: 0.06, w: 2});
 }
-function partsDraw(cx) {
+function partsDraw(cx, cy) {
   for (let i = parts.length - 1; i >= 0; i--) {
     const q = parts[i];
     q.x += q.vx; q.y += q.vy; q.vy += q.gr; q.life--;
     if (q.life <= 0) { parts.splice(i, 1); continue; }
-    g.globalAlpha = Math.min(1, q.life / 15); R(q.x - cx, q.y, q.w || 1, 1, q.c); g.globalAlpha = 1;
+    g.globalAlpha = Math.min(1, q.life / 15); R(q.x - cx, q.y - cy, q.w || 1, 1, q.c); g.globalAlpha = 1;
   }
   if (parts.length > 600) parts.splice(0, parts.length - 600);
 }
@@ -331,16 +354,132 @@ function critters(t, lot) {           // butterflies by day, fireflies at night 
   }
 }
 
-const YARD = 110;
-function yard(t) {                     // the yard left of GH-1: road, market stall, the buyer's truck
-  for (let i = 0; i < 60; i++) R(hash(i + 900) * YARD, 40 + hash(i + 901) * 158, 1, 2, "#5d8a45");
-  R(0, 160, YARD, 26, "#8a7350"); for (let x = 0; x < YARD; x += 6) R(x, 172, 3, 1, "#a8916a");
-  R(14, 96, 3, 50, "#7a5530"); R(66, 96, 3, 50, "#7a5530");                                     // stall
+// pens on their plots: [plot, x, y, width, height] in plot coordinates
+const PEN_RECT = {coop: ["coop", 8, 10, 148, 188], pigs: ["coop", 164, 10, 148, 188], barn: ["barn", 8, 10, 304, 188],
+                  pasture: ["pasture", 8, 10, 304, 188], pond: ["pond", 8, 10, 304, 188], orchard: ["orchard", 8, 10, 304, 188]};
+const RANCH_PARTS = ["lumber", "grain", "hay", "pellets", "vet_kit", "fertilizer"];
+const penCenter = pid => { const [pl, x, y, w, h] = PEN_RECT[pid], [ox, oy] = plotXY(pl); return [ox + x + w / 2, oy + y + h / 2]; };
+const SPRITE = {};
+for (const n of ["hen", "cow", "sheep", "pig"]) { const im = new Image(); im.onload = () => { im.ok = true; }; im.src = `img/sprites/${n}.png`; SPRITE[n] = im; }
+function beast(n, x, y, t, i, dir, hop = 0) {   // one of the farm's animals; the sprites face right
+  const im = SPRITE[n];
+  g.globalAlpha = 0.3; R(x - im.width * 0.35, y - 2, im.width * 0.7, 3, "#0b1a10"); g.globalAlpha = 1;
+  if (!im.ok) { R(x - 4, y - 6, 8, 6, "#f1ecd8"); return; }
+  g.save(); g.translate(Math.round(x), Math.round(y - hop)); if (dir < 0) g.scale(-1, 1);
+  g.drawImage(im, -Math.round(im.width / 2), -im.height); g.restore();
+}
+function wander(i, x0, y0, w, h, t, speed2 = 1) {   // slow wandering inside a pen: position and facing
+  const a = t / (2600 / speed2) + i * 2.1, px = x0 + w * (0.5 + 0.38 * Math.sin(a + hash(i) * 6)), py = y0 + h * (0.5 + 0.34 * Math.sin(a * 0.7 + hash(i + 3) * 6));
+  return [px, py, Math.cos(a + hash(i) * 6) >= 0 ? 1 : -1];
+}
+function dirt(x0, y0, w, h, pen, k) { for (let i = 0; i < (100 - pen.clean) / 4; i++) R(x0 + 6 + hash(i + k) * (w - 12), y0 + 30 + hash(i + k + 9) * (h - 40), 2, 1, "#6b4f2a"); }
+function fenceBox(x0, y0, w, h) {
+  for (let x = x0; x < x0 + w; x += 6) { R(x, y0, 1, 6, "#a8865a"); R(x, y0 + h - 6, 1, 6, "#a8865a"); }
+  R(x0, y0 + 2, w, 1, "#c9a36a"); R(x0, y0 + h - 4, w, 1, "#c9a36a");
+  for (let y = y0; y < y0 + h; y += 6) { R(x0, y, 2, 1, "#a8865a"); R(x0 + w - 2, y, 2, 1, "#a8865a"); }
+}
+function stakes(x0, y0, w, h, label, cost, level, hov) {   // owned ground, nothing built yet
+  for (let x = x0; x < x0 + w; x += 10) { R(x, y0, 4, 1, "#e8d9a8"); R(x, y0 + h - 1, 4, 1, "#e8d9a8"); }
+  for (let y = y0; y < y0 + h; y += 10) { R(x0, y, 1, 4, "#e8d9a8"); R(x0 + w - 1, y, 1, 4, "#e8d9a8"); }
+  const cx = x0 + w / 2, cy = y0 + h / 2;
+  R(cx - 1, cy + 8, 2, 18, "#7a5530"); R(cx - 32, cy - 12, 64, 24, hov ? "#c9a36a" : "#a8865a"); R(cx - 30, cy - 10, 60, 20, "#e8d9a8");
+  text(label, cx - 27, cy - 2, "#5b3b26", 7); text(`${num(cost)} LV${level}`, cx - 27, cy + 7, "#8a2a22", 6);
+}
+function shed(x, y, w, h, roof, wall) {  // a small building seen from above: roof, ridge, front wall
+  g.globalAlpha = 0.3; R(x + 4, y + 4, w, h, "#0b1a10"); g.globalAlpha = 1;
+  R(x, y + h - 8, w, 8, wall); R(x, y, w, h - 8, roof);
+  for (let k = 3; k < h - 8; k += 4) R(x, y + k, w, 1, mix(roof, "#000000", 0.18));
+  R(x, y + (h - 8) / 2 - 1, w, 2, mix(roof, "#ffffff", 0.25));
+}
+function penArea(t, pid) {
+  const [plot, x0, y0, w, h] = PEN_RECT[pid], pen = S.farm.ranch[pid], P = META.pens[pid];
+  const hov = hoverSpot && hoverSpot.type === "pen" && hoverSpot.z === pid;
+  if (!pen) { stakes(x0, y0, w, h, P.title.split(" ").pop().toUpperCase(), P.cost, P.level, hov); return; }
+  const dl = (n, k) => { for (let i = 0; i < Math.min(n, 8); i++) k(i); };
+  if (pid === "pond") pond(t, x0, y0, w, h, pen);
+  else if (pid === "orchard") orchard(t, x0, y0, w, h, pen);
+  else {
+    R(x0 + 2, y0 + 2, w - 4, h - 4, {coop: "#7a8a4a", pigs: "#7a6a44", barn: "#6a8a46", pasture: "#5e9446"}[pid]);
+    if (pid === "pigs") { g.globalAlpha = 0.8; disc(x0 + w * 0.65, y0 + h * 0.62, 18, "#5b4026"); g.globalAlpha = 1; }   // the wallow
+    if (pid === "pasture") for (let i = 0; i < 40; i++) R(x0 + 6 + hash(i + 77) * (w - 12), y0 + 30 + hash(i + 78) * (h - 40), 2, 2, "#6fa652");
+    dirt(x0, y0, w, h, pen, pid.length * 13);
+    if (S.farm.today.flood) { g.globalAlpha = 0.6; for (let k = 0; k < 5; k++) disc(x0 + 20 + hash(k + pid.length) * (w - 40), y0 + 60 + hash(k + 7) * (h - 80), 6 + k % 3 * 3, "#4a7aa8"); g.globalAlpha = 1; }
+    if (pid === "coop") { shed(x0 + 8, y0 + 10, 50, 40, "#b5402f", "#c8853a"); R(x0 + 28, y0 + 42, 8, 8, "#3a2418"); raidDraw(t, x0, y0, w, h); }
+    if (pid === "pigs") { shed(x0 + 8, y0 + 10, 46, 34, "#8a6a3a", "#a88050"); }
+    if (pid === "barn") { shed(x0 + 10, y0 + 10, 96, 58, "#a8322a", "#c8c0a8"); R(x0 + 46, y0 + 56, 24, 12, "#5b3b26"); R(x0 + 57, y0 + 56, 1, 12, "#c8c0a8"); }
+    if (pid === "pasture") { shed(x0 + 10, y0 + 10, 50, 32, "#7a5530", "#a88050"); }
+    const fx2 = x0 + w - 44, fy = y0 + 14;                          // feeder: grain, hay or slops
+    R(fx2, fy, 34, 8, "#7a5530"); R(fx2 + 1, fy + 1, 32 * pen.feed / 100, 5, pid === "barn" || pid === "pasture" ? "#d8c060" : "#e8c35a");
+    if (pid === "coop") dl(Math.floor(pen.stock), i => R(x0 + 12 + (i % 4) * 5, y0 + 60 + Math.floor(i / 4) * 5, 2, 3, "#f8f2e0"));
+    if (pid === "barn") dl(Math.floor(pen.stock), i => { R(x0 + 112 + i * 8, y0 + 18, 6, 8, "#c3c9ce"); R(x0 + 113 + i * 8, y0 + 17, 4, 1, "#9aa5af"); });
+    if (pid === "pasture") dl(Math.floor(pen.stock), i => disc(x0 + 70 + i * 9, y0 + 24, 3, "#f4f1e8"));
+    if (pid === "pigs") dl(Math.floor(pen.stock), i => disc(x0 + 14 + i * 8, y0 + 60, 2, "#5b3f2a"));
+    const kind = {coop: "hen", pigs: "pig", barn: "cow", pasture: "sheep"}[pid];
+    const order = [];
+    for (let i = 0; i < pen.n; i++) { const [ax, ay, dir] = wander(i, x0 + 16, y0 + 56, w - 32, h - 70, t, kind === "hen" ? 1.8 : 0.7); order.push([ay, ax, dir, i]); }
+    order.sort((a, b) => a[0] - b[0]);                             // nearer animals drawn last
+    for (const [ay, ax, dir, i] of order) {
+      const peck = kind === "hen" && pen.feed > 15 && Math.floor(t / 380 + i * 3) % 4 === 0;
+      beast(kind, ax, ay, t, i, dir, peck ? 0 : Math.floor(t / 260 + i) % 2 === 0 && kind === "hen" ? 1 : 0);
+      if (pen.sick && i === 0) text("~", ax - 2, ay - 22, "#8ad84a", 8);
+    }
+    fenceBox(x0, y0, w, h);
+  }
+  if (hov) { R(x0, y0 - 2, w, 1, "#f2c14e"); R(x0, y0 + h + 1, w, 1, "#f2c14e"); }
+  penBubble(t, x0 + w - 12, y0 + 6, pen);
+}
+function pond(t, x0, y0, w, h, pen) {
+  const water = mix("#3d84c4", "#5a8a3a", (100 - pen.clean) / 100);
+  R(x0 + 10, y0 + 16, w - 20, h - 30, "#8a7350"); R(x0 + 16, y0 + 22, w - 32, h - 42, water);                 // bank and water
+  for (let k = 0; k < 9; k++) { const rx = x0 + 24 + ((k * 37 + t * 0.01) % (w - 60)); R(rx, y0 + 34 + k * 14, 10, 1, mix(water, "#ffffff", 0.35)); }
+  const grown = Math.min(1, pen.stock / META.fish_grow_h), size = 2 + Math.round(grown * 4);
+  for (let i = 0; i < Math.min(16, Math.ceil(pen.n / 2)); i++) {
+    const fx2 = x0 + 24 + ((hash(i + 21) * (w - 60) + t * 0.008 * (i % 2 ? 1 : -1)) % (w - 60) + (w - 60)) % (w - 60), fy = y0 + 30 + hash(i + 25) * (h - 70);
+    g.globalAlpha = 0.55; R(fx2, fy, size + 3, size > 4 ? 2 : 1, "#1d3a4a"); g.globalAlpha = 1;
+  }
+  if (pen.ready && Math.floor(t / 900) % 3 === 0) { const q = (t % 900) / 900; R(x0 + 90 + q * 18, y0 + 90 - Math.sin(q * Math.PI) * 12, 3, 2, "#9aa5af"); }
+  for (let k = 0; k < 12; k++) R(x0 + 14 + k * 3, y0 + h - 30 + (k % 2) * 3, 1, 12, "#4f9a3a");                    // reeds
+  R(x0 + w - 30, y0 + 8, 2, 14, "#7a5530"); R(x0 + w - 34, y0 + 6, 10, 4, "#c3c9ce"); R(x0 + w - 33, y0 + 7, 8 * pen.feed / 100, 2, "#c89a5a");
+  if (pen.sick) text("~", x0 + 60, y0 + 40, "#8ad84a", 9);
+  if (S.farm.style.decor.includes("decor:ducks")) for (let k = 0; k < 3; k++) {   // ducks paddling round the pond
+    const a = t / 3000 + k * 2.1, dx = x0 + w / 2 + Math.cos(a) * (w * 0.3), dy = y0 + h / 2 + Math.sin(a) * (h * 0.25);
+    R(dx - 3, dy - 2, 6, 4, "#f1ecd8"); R(dx + (Math.sin(a) > 0 ? -4 : 2), dy - 4, 3, 3, "#3e8a4a"); R(dx + (Math.sin(a) > 0 ? -5 : 4), dy - 3, 2, 1, "#f2a03a");
+  }
+}
+function orchard(t, x0, y0, w, h, pen) {
+  R(x0 + 2, y0 + 2, w - 4, h - 4, "#567a3a");
+  for (let i = 0; i < (100 - pen.clean) / 3; i++) R(x0 + 6 + hash(i + 5) * (w - 12), y0 + 6 + hash(i + 6) * (h - 12), 2, 3, "#7aa84a");   // weeds
+  for (let i = 0; i < 6; i++) {
+    const tx = x0 + 40 + (i % 3) * 110, ty = y0 + 50 + Math.floor(i / 3) * 90;
+    if (i >= pen.n) { R(tx - 3, ty - 2, 6, 4, "#6b4f2a"); continue; }
+    tree(tx, ty, 18, t);
+    if (pen.stock >= 1 || pen.ready) for (let k = 0; k < 5; k++) R(tx - 10 + hash(k + i) * 20, ty - 10 + hash(k + i + 3) * 16, 2, 2, "#f2a03a");
+    if (pen.sick) text("~", tx - 3, ty - 18, "#8ad84a", 8);
+  }
+  fenceBox(x0, y0, w, h);
+}
+function penBubble(t, x, y, pen) {
+  const bad = pen.n && (pen.feed < 25 || pen.clean < 30 || pen.sick), ready = pen.ready;
+  if (bad && Math.floor(t / 350) % 2 === 0) { R(x - 5, y - 5, 11, 11, "#070914"); R(x - 4, y - 4, 9, 9, "#e0574b"); R(x, y - 3, 1, 4, "#fff"); R(x, y + 2, 1, 1, "#fff"); }
+  else if (ready) { R(x - 5, y - 5, 11, 11, "#070914"); R(x - 4, y - 4, 9, 9, "#f2c14e"); R(x - 1, y - 2, 3, 4, "#f8f2e0"); }
+  else { g.globalAlpha = 0.7; R(x - 4, y - 4, 9, 9, "#1c2140"); gear(x, y, "#9aa0c4"); g.globalAlpha = 1; }
+}
+
+function home(t) {                     // the homestead: farmhouse, market stall, the buyer's truck
+  shed(150, 8, 112, 70, "#9a3a2a", "#e8d9a8");                          // farmhouse
+  R(196, 66, 16, 12, "#5b3b26"); R(160, 68, 12, 8, "#bfe3ff"); R(232, 68, 12, 8, "#bfe3ff"); R(250, 10, 8, 10, "#7a7a7a");   // door, windows, chimney
+  if (Math.floor(t / 400) % 3 === 0) { g.globalAlpha = 0.4; disc(254, 4 - (t / 400 % 3), 3, "#c3c9ce"); g.globalAlpha = 1; }
+  R(198, 78, 12, PH - 78, "#a89a7a"); for (let y = 82; y < PH; y += 7) R(199, y, 10, 1, "#8a7a5a");   // garden path to the road
+  for (let i = 0; i < 8; i++) { R(232 + (i % 4) * 18, 112 + Math.floor(i / 4) * 22, 14, 14, "#5b3b26"); R(234 + (i % 4) * 18, 115 + Math.floor(i / 4) * 22, 10, 8, ["#6cc37a", "#e0574b", "#f2c14e", "#3e8f3a"][i % 4]); }   // kitchen garden
+  R(268, 86, 18, 14, "#7a7a7a"); disc(277, 93, 5, "#2a5a8a");                                       // the well
+  R(14, 96, 3, 50, "#7a5530"); R(66, 96, 3, 50, "#7a5530");                                         // market stall
   for (let x = 0; x < 64; x += 8) R(10 + x, 88, 8, 10, (x / 8) % 2 ? "#f1ecd8" : "#c8403a");
   for (let x = 0; x < 64; x += 8) R(10 + x + 2, 98, 4, 2, (x / 8) % 2 ? "#f1ecd8" : "#c8403a");
   R(12, 128, 60, 16, "#7a5530"); R(12, 126, 60, 2, "#a8865a");
   for (let k = 0; k < 7; k++) { R(16 + k * 8, 120, 6, 6, "#8a5a2b"); R(17 + k * 8, 119, 4, 2, ["#d8432f", "#7cc242", "#e6b43c", "#4fb06a", "#e0405e", "#b5201c", "#3f8f3a"][k]); }
   text("MARKET", 23, 112, "#f2c14e", 7);
+  homeDecor(t);
+  R(0, 160, 140, 26, "#8a7350"); for (let x = 0; x < 140; x += 6) R(x, 172, 3, 1, "#a8916a");   // the lane where the truck parks
   const o = S.farm.order, tr = truck.t0 ? (t - truck.t0) / 2500 : 1;
   let x = null;
   if (o) x = truck.mode === "in" ? -60 + Math.min(1, tr) * 82 : 22;
@@ -350,23 +489,74 @@ function yard(t) {                     // the yard left of GH-1: road, market st
     R(x, 152 + bob, 46, 22, "#3ab0a5"); R(x + 46, 160 + bob, 14, 14, "#2b8f86"); R(x + 49, 162 + bob, 8, 6, "#bfe3ff");
     R(x + 2, 154 + bob, 42, 2, "#5fd0c4"); text("FRESH", x + 8, 166 + bob, "#f1ecd8", 7);
     for (const wx of [x + 8, x + 44]) { R(wx, 173, 8, 6, "#1d232a"); R(wx + 3, 175, 2, 2, "#9aa5af"); }
-    if (tr < 1) for (let k = 0; k < 3; k++) { g.globalAlpha = 0.4; R(x - 4 - k * 5, 172 - k, 3, 2, "#c9b48a"); g.globalAlpha = 1; }
-    if (o && tr >= 1) {                                             // the order board
-      R(70, 120, 34, 26, "#7a5530"); R(72, 122, 30, 22, "#e8d9a8");
-      text(shortName(o.crop).slice(0, 8), 74, 130, "#2a1c00", 6);
-      text(`${num(o.got)}/${num(o.kg)}`, 74, 137, "#8a2a22", 6); text(`kg`, 74, 143, "#5b3b26", 5);
-      R(72, 140, 30 * Math.min(1, o.got / o.kg), 2, "#6cc37a");
+    if (o && tr >= 1) {
+      R(84, 120, 34, 26, "#7a5530"); R(86, 122, 30, 22, "#e8d9a8");
+      text(orderName(o).slice(0, 8), 88, 130, "#2a1c00", 6);
+      text(`${num(o.got)}/${num(o.kg)}`, 88, 137, "#8a2a22", 6); text(orderUnit(o), 88, 143, "#5b3b26", 5);
+      R(86, 140, 30 * Math.min(1, o.got / o.kg), 2, "#6cc37a");
     }
   }
 }
 const truck = {mode: "in", t0: 0};
+function homeDecor(t) {                // cosmetics at the homestead
+  const d = S.farm.style.decor;
+  if (d.includes("decor:windmill")) {                               // a little windmill by the house
+    R(294, 48, 4, 30, "#a8865a"); disc(296, 46, 3, "#7a5530");
+    const a = t / (400 / Math.max(0.3, S.weather.wind / 3));
+    for (let k = 0; k < 4; k++) { const ang = a + k * Math.PI / 2; for (let r = 2; r < 13; r++) R(296 + Math.cos(ang) * r, 46 + Math.sin(ang) * r, 2, 2, "#f1ecd8"); }
+  }
+  if (d.includes("decor:fountain")) {                               // a fountain on the garden path
+    disc(180, 108, 9, "#9a9a90"); disc(180, 108, 7, "#3d84c4");
+    for (let k = 0; k < 8; k++) { const q = (t / 700 + k / 8) % 1, dir = k % 2 ? 1 : -1; R(180 + dir * q * 6, 104 - Math.sin(q * Math.PI) * 9, 1, 1, "#bfe3ff"); }
+  }
+  if (d.includes("decor:bunting")) for (let x = 150; x < 262; x += 4) {   // festival flags over the porch
+    const y = 82 + Math.round(Math.sin((x - 150) / 112 * Math.PI) * 4);
+    R(x, y, 3, 3, ["#e0574b", "#f2c14e", "#6cc37a", "#5aa9e6"][(x / 4) % 4 | 0]);
+  }
+  if (d.includes("decor:dog")) {                                    // the guard dog, wagging by the porch
+    const x = 222, y = 94, wag = Math.floor(t / 150) % 2;
+    g.globalAlpha = 0.3; R(x - 6, y + 3, 14, 2, "#0b1a10"); g.globalAlpha = 1;
+    R(x - 5, y - 4, 10, 6, "#b07a3a"); R(x + 4, y - 7, 5, 5, "#b07a3a"); R(x + 7, y - 5, 2, 2, "#3a2418"); R(x + 4, y - 8, 2, 2, "#7a5020");
+    R(x - 5, y + 2, 2, 2, "#7a5020"); R(x + 2, y + 2, 2, 2, "#7a5020"); R(x - 7, y - 4 - wag, 2, 2, "#b07a3a");
+  }
+  const m = S.farm.today.merchant;
+  if (m) {                                                          // the travelling merchant's cart
+    const hov = hoverSpot && hoverSpot.type === "merchant";
+    g.globalAlpha = 0.3; R(90, 62, 48, 6, "#0b1a10"); g.globalAlpha = 1;
+    R(88, 40, 46, 22, hov ? "#a86ad8" : "#8a4ac8"); for (let x = 88; x < 134; x += 6) R(x, 34, 6, 6, (x / 6) % 2 ? "#f2c14e" : "#8a4ac8");
+    R(92, 46, 38, 12, "#5a2a8a"); text("SALE", 98, 55, "#f2c14e", 7); disc(94, 64, 3, "#3a2418"); disc(128, 64, 3, "#3a2418");
+    if (Math.floor(t / 500) % 2) R(112, 28, 3, 3, "#ffffff");
+  }
+}
+const raids = [];
+function raidDraw(t, x0, y0, w, h) {   // a monitor lizard dashes for the coop at night; the dog sends it off
+  for (let i = raids.length - 1; i >= 0; i--) {
+    const r = raids[i], a = (t - r.t0) / 4000;
+    if (a > 1) { raids.splice(i, 1); continue; }
+    const q = r.scared ? (a < 0.5 ? a * 2 : 2 - a * 2) : a, x = x0 - 30 + q * (w * 0.6), y = y0 + h * 0.7;
+    R(x, y, 14, 3, "#5a6a3a"); R(x + 13, y, 4, 2, "#5a6a3a"); R(x - 8, y + 1, 8, 1, "#4a5a30");
+    for (const lx of [2, 9]) R(x + lx, y + (Math.floor(t / 100) % 2 ? -1 : 3), 1, 2, "#4a5a30");
+    if (r.scared && a > 0.4) text("!", x + 6, y - 4, "#f2c14e", 8);
+  }
+}
 
-function lighting(t, cx) {             // night falls over the farm; lamps, lanterns and fireflies glow
+function wild(t, pid) {               // land not bought yet: bush, trees, rocks; a sign if it is for sale
+  R(0, 0, PW, PH, "#41683a");
+  for (let i = 0; i < 26; i++) tree(8 + hash(i + pid.length * 9) * (PW - 16), 8 + hash(i + 5 + pid.length * 9) * (PH - 16), 8 + hash(i + 2) * 7, t);
+  for (let i = 0; i < 10; i++) { const x = hash(i + 40) * PW, y = hash(i + 41) * PH; R(x, y, 6, 4, "#8a8a80"); R(x + 1, y, 4, 1, "#b0b0a8"); }
+  const sale = S.farm.shop.find(it => it.id === `land:${pid}`), P = META.plots[pid];
+  const hov = hoverSpot && hoverSpot.type === "land" && hoverSpot.z === pid, cx = PW / 2, cy = PH / 2;
+  if (!sale) { g.globalAlpha = 0.25; R(0, 0, PW, PH, "#0b1a10"); g.globalAlpha = 1; return; }
+  R(cx - 1, cy + 6, 3, 24, "#7a5530"); R(cx - 40, cy - 16, 80, 26, hov ? "#c9a36a" : "#a8865a"); R(cx - 38, cy - 14, 76, 22, "#e8d9a8");
+  text("FOR SALE", cx - 34, cy - 6, "#5b3b26", 7); text(`${num(P.cost)} · LV${P.level}`, cx - 34, cy + 4, "#8a2a22", 7);
+}
+
+function lighting(t, cx, cy) {             // night falls over the farm; lamps, lanterns and fireflies glow
   const dl = daylight(), look = S.weather.look;
   const dark = (1 - dl) * 0.58 + (look === "storm" ? 0.16 : look === "rain" ? 0.08 : 0) * dl;
-  if (dark > 0.02) { g.fillStyle = `rgba(6,10,36,${dark})`; g.fillRect(0, 0, VW, 200); }
+  if (dark > 0.02) { g.fillStyle = `rgba(6,10,36,${dark})`; g.fillRect(0, 0, VW, VH); }
   if (flash > 0) {                                                  // lightning: a bolt and a white flash
-    g.fillStyle = `rgba(235,240,255,${flash * 0.55})`; g.fillRect(0, 0, VW, 200);
+    g.fillStyle = `rgba(235,240,255,${flash * 0.55})`; g.fillRect(0, 0, VW, VH);
     let x = (hash(Math.floor(t / 300)) * VW) | 0, y = 0;
     while (y < 40) { const nx = x + Math.round((hash(x + y) - 0.5) * 8); R(Math.min(x, nx), y, Math.abs(nx - x) + 1, 1, "#ffffff"); x = nx; R(x, y, 1, 4, "#ffffff"); y += 4; }
     flash = Math.max(0, flash - 0.08);
@@ -374,19 +564,20 @@ function lighting(t, cx) {             // night falls over the farm; lamps, lant
   if (dl > 0.7) return;
   g.globalCompositeOperation = "lighter";
   const glow = (x, y, r, c, a) => { g.globalAlpha = a; disc(x, y, r, c); g.globalAlpha = a * 0.6; disc(x, y, Math.round(r * 0.5), c); };
-  for (let i = 0; i < LOTS; i++) {
-    const ox = i * LOT - cx;
-    if (ox > VW || ox + LOT < 0 || i >= S.houses.length) continue;
+  for (let i = 0; i < S.houses.length; i++) {
+    const [gx, gy] = ghXY(i), ox = gx - cx, oy0 = gy - cy;
+    if (ox > VW || ox + LOT < 0 || oy0 > VH || oy0 + 220 < 0) continue;
     const h = S.houses[i];
-    glow(ox + 48, 125, 4, h.plc.alarms.some(a => a.active) ? "#ff5040" : "#40ff70", 0.25);
-    if (S.farm.style.decor.includes("decor:lanterns")) for (const x of [66, 312]) glow(ox + x, 175, 10, "#ffcf6a", 0.22);
-    if (S.farm.boosts.lamp != null) glow(ox + 190, 110, 60, "#a040ff", 0.08);
+    glow(ox + 48, oy0 + 125, 4, h.plc.alarms.some(a => a.active) ? "#ff5040" : "#40ff70", 0.25);
+    if (S.farm.style.decor.includes("decor:lanterns")) for (const x of [66, 312]) glow(ox + x, oy0 + 175, 10, "#ffcf6a", 0.22);
+    if (S.farm.boosts.lamp != null) glow(ox + 190, oy0 + 110, 60, "#a040ff", 0.08);
     for (let f = 0; f < 8; f++) {
       const fx2 = ox + (hash(f + i * 13) * 320 + Math.sin(t / 900 + f) * 14), fy = 60 + hash(f + 5 + i * 13) * 130 + Math.cos(t / 700 + f) * 8;
-      if (Math.sin(t / 250 + f * 3) > 0.3 && (fx2 - ox < 68 || fx2 - ox > 310 || fy > 193)) glow(fx2, fy, 2, "#d8ff60", 0.5);
+      if (Math.sin(t / 250 + f * 3) > 0.3 && (fx2 - ox < 68 || fx2 - ox > 310 || fy > 193)) glow(fx2, oy0 + fy, 2, "#d8ff60", 0.5);
     }
   }
-  if (cx < 0 && S.farm.order) glow(-cx - YARD + 80, 160, 6, "#fff2b0", 0.25);
+  const [hx, hy] = plotXY("home");
+  glow(hx + 168 - cx, hy + 70 - cy, 14, "#ffd88a", 0.2); glow(hx + 238 - cx, hy + 70 - cy, 10, "#ffd88a", 0.2);   // lit windows
   g.globalAlpha = 1; g.globalCompositeOperation = "source-over";
 }
 
@@ -478,7 +669,7 @@ function forSale(t, i) {               // a lot you can buy: survey stakes and a
   const hov = hoverSpot && hoverSpot.type === "lot" && hoverSpot.h === i;
   R(160, 100, 3, 40, "#7a5530"); R(176, 100, 3, 40, "#7a5530");
   R(140, 84, 60, 34, hov ? "#c9a36a" : "#a8865a"); R(142, 86, 56, 30, "#e8d9a8");
-  text(next ? "FOR SALE" : "LATER", 146, 95, "#5b3b26", 7);
+  text(next ? "BUILD HERE" : "LATER", 146, 95, "#5b3b26", 7);
   text(META.house_names[i], 155, 104, "#2a1c00", 7);
   if (next && it) text(`${num(it.cost)} LV${it.level}`, 145, 113, "#8a2a22", 6);
   else text(`build ${META.house_names[i - 1]}`, 146, 113, "#5b3b26", 6);
@@ -542,7 +733,6 @@ function gear(x, y, c) { R(x - 2, y - 2, 5, 5, c); R(x - 1, y - 3, 3, 7, c); R(x
 const SPOT_NAME = {feed: "Feed tank", water: "Pump", plc: "PLC", climate: "Climate"};
 
 function drawLot(t, i) {
-  grass(i, t);
   const ha = animOf("house", i);
   if (i >= S.houses.length || (ha && prog(ha, t) < 1)) {
     if (ha) construction(t, i, prog(ha, t)); else forSale(t, i);
@@ -557,66 +747,90 @@ function drawLot(t, i) {
   }
 }
 
-function floatersDraw(t, cx) {
+function floatersDraw(t, cx, cy) {
   g.font = "8px 'Pixelify Sans', monospace";
   for (let i = floaters.length - 1; i >= 0; i--) {
     const f = floaters[i], a = (t - f.t0) / 1600;
     if (a > 1) { floaters.splice(i, 1); continue; }
     const y = f.y - 22 * a;
-    g.fillStyle = "#070914"; g.fillText(f.text, f.x - cx + 1, y + 1);
-    g.fillStyle = "#f2c14e"; g.fillText(f.text, f.x - cx, y);
+    g.fillStyle = "#070914"; g.fillText(f.text, f.x - cx + 1, y - cy + 1);
+    g.fillStyle = "#f2c14e"; g.fillText(f.text, f.x - cx, y - cy);
   }
 }
 
-const clampCam = x => Math.max(-YARD, Math.min(LOT * LOTS - VW, x));
-function camTo(i) { cam.tx = clampCam(i * LOT + LOT / 2 - VW / 2 + 30); }
+const clampX = x => VW >= WORLD_W + 2 * EDGE ? (WORLD_W - VW) / 2 : Math.max(-EDGE, Math.min(WORLD_W + EDGE - VW, Number.isFinite(x) ? x : 0));
+const clampY = y => VH >= WORLD_H + 2 * EDGE ? (WORLD_H - VH) / 2 : Math.max(-EDGE, Math.min(WORLD_H + EDGE - VH, Number.isFinite(y) ? y : 0));
+function camAt(wx, wy, now = false) { cam.tx = clampX(wx - VW / 2); cam.ty = clampY(wy - VH / 2 + 20); if (now) { cam.x = cam.tx; cam.y = cam.ty; } }
+function camPlot(id, now) { const [x, y] = plotXY(id); camAt(x + PW / 2, y + PH / 2, now); }
+function camTo(h) { camPlot(HOUSE_PLOTS[h]); }
 function frame(t) {
   if (S && META) {
-    if (!drag) cam.x += (cam.tx - cam.x) * 0.12;
+    if (!drag) { cam.x += (cam.tx - cam.x) * 0.12; cam.y += (cam.ty - cam.y) * 0.12; }
     const shake = S.weather.look === "storm" && S.weather.wind > 15 && hash(Math.floor(t / 60)) > 0.8 ? 1 : 0;
-    const cx = Math.round(cam.x) + shake;
-    sky(t, cx);
-    if (cx < 0) { g.save(); g.translate(-YARD - cx, 0); yard(t); g.restore(); }
-    for (let i = 0; i < LOTS; i++) {
-      const ox = i * LOT - cx;
-      if (ox > VW || ox + LOT < 0) continue;
-      g.save(); g.translate(ox, 0); drawLot(t, i); g.restore();
+    const cx = Math.round(cam.x) + shake, cy = Math.round(cam.y);
+    ground(t, cx, cy);
+    for (const pid of Object.keys(META.plots)) {
+      const [ox, oy] = plotXY(pid);
+      if (ox - cx > VW || ox + PW - cx < 0 || oy - cy > VH || oy + PH - cy < 0) continue;
+      g.save(); g.translate(ox - cx, oy - cy);
+      g.beginPath(); g.rect(-4, -4, PW + 8, PH + 8); g.clip();
+      drawPlot(t, pid);
+      g.restore();
     }
-    birdsDraw(t, cx); partsDraw(cx); rain(t, cx); lighting(t, cx); floatersDraw(t, cx);
+    birdsDraw(t, cx, cy); partsDraw(cx, cy); rain(t, cx, cy); lighting(t, cx, cy); floatersDraw(t, cx, cy);
     for (let i = anims.length - 1; i >= 0; i--) if (prog(anims[i], t) >= 1) anims.splice(i, 1);
-    $("camL").disabled = cam.tx <= -YARD; $("camR").disabled = cam.tx >= LOT * LOTS - VW;
   }
   guideFrame(t);
   requestAnimationFrame(frame);
 }
+function drawPlot(t, pid) {
+  if (!S.farm.land.includes(pid)) { wild(t, pid); return; }
+  grass(pid.length * 3 + pid.charCodeAt(0), t);
+  const hi = HOUSE_PLOTS.indexOf(pid);
+  if (hi >= 0) { g.translate(0, -DY); drawLot(t, hi); return; }
+  if (pid === "home") { home(t); return; }
+  for (const pen of Object.keys(PEN_RECT)) if (PEN_RECT[pen][0] === pid) penArea(t, pen);
+}
 requestAnimationFrame(frame);
 
-// whole-pixel scaling keeps the art crisp; a wide screen shows more of the farm instead of bigger pixels
+// the canvas fills the screen at a whole-pixel scale; a bigger screen shows more of the farm
 function fit() {
-  const st = getComputedStyle(cv.parentElement);
-  const avail = cv.parentElement.clientWidth - parseFloat(st.paddingLeft) - parseFloat(st.paddingRight);
-  const k = avail >= 640 ? 2 : avail / 320;
-  VW = Math.max(320, Math.min(LOT * LOTS, Math.floor(avail / k)));
-  if (cv.width !== VW) { cv.width = VW; g.imageSmoothingEnabled = false; }
-  cv.style.width = VW * k + "px"; cv.style.height = 200 * k + "px";
-  cam.tx = clampCam(cam.tx); cam.x = clampCam(cam.x);
+  const W = innerWidth, H = innerHeight;
+  if (!(W > 0 && H > 0)) return;
+  const k = Math.max(1, Math.min(6, Math.floor(Math.min(W / 400, H / 300)) + zoomStep));
+  VW = Math.ceil(W / k); VH = Math.ceil(H / k);
+  if (cv.width !== VW || cv.height !== VH) { cv.width = VW; cv.height = VH; g.imageSmoothingEnabled = false; }
+  cv.style.width = VW * k + "px"; cv.style.height = VH * k + "px";
+  cam.tx = clampX(cam.tx); cam.ty = clampY(cam.ty); cam.x = clampX(cam.x); cam.y = clampY(cam.y);
 }
+function zoom(d) { zoomStep = Math.max(-3, Math.min(3, zoomStep + d)); const mx = cam.x + VW / 2, my = cam.y + VH / 2; fit(); camAt(mx, my - 20, true); }
 addEventListener("resize", fit); fit();
 
 // ---------------------------------------------------------------- looking around and clicking
 function toWorld(e) {
   const r = cv.getBoundingClientRect();
-  return {x: (e.clientX - r.left) * VW / r.width + Math.round(cam.x), y: (e.clientY - r.top) * 200 / r.height};
+  return {x: (e.clientX - r.left) * VW / r.width + Math.round(cam.x), y: (e.clientY - r.top) * VH / r.height + Math.round(cam.y)};
 }
 function spotAt({x, y}) {
-  if (S && x < 0 && x >= -YARD) {                                 // the yard: the stall and the buyer's truck
-    const yx = x + YARD;
-    if (yx >= 8 && yx < 76 && y >= 84 && y < 146) return {type: "market", h: 0};
-    if (S.farm.order && y >= 116 && y < 186) return {type: "order", h: 0};
+  if (!S) return null;
+  const pid = Object.keys(META.plots).find(id => { const [ox, oy] = plotXY(id); return x >= ox && x < ox + PW && y >= oy && y < oy + PH; });
+  if (!pid) return null;
+  const [ox, oy] = plotXY(pid), lx = x - ox, ly = y - oy;
+  if (!S.farm.land.includes(pid)) return {type: "land", h: 0, z: pid};
+  const i = HOUSE_PLOTS.indexOf(pid);
+  if (i >= 0) return ghSpot(i, lx, ly + DY);
+  if (pid === "home") {
+    if (lx >= 8 && lx < 76 && ly >= 84 && ly < 146) return {type: "market", h: 0};
+    if (S.farm.today.merchant && lx >= 84 && lx < 140 && ly >= 28 && ly < 70) return {type: "merchant", h: 0};
+    if (S.farm.order && lx < 140 && ly >= 116) return {type: "order", h: 0};
+    if (lx >= 150 && lx < 262 && ly < 80) return {type: "farm", h: 0};
     return null;
   }
-  const i = Math.floor(x / LOT), lx = x - i * LOT;
-  if (!S || i < 0 || i >= LOTS) return null;
+  for (const [pen, [pl, x0, y0, w, h]] of Object.entries(PEN_RECT))
+    if (pl === pid && lx >= x0 && lx < x0 + w && ly >= y0 && ly < y0 + h) return {type: "pen", h: 0, z: pen};
+  return null;
+}
+function ghSpot(i, lx, y) {             // inside a greenhouse plot, in the greenhouse art's coordinates
   if (i >= S.houses.length || animOf("house", i)) return {type: "lot", h: i};
   if (lx >= BED_X0 - 10 && lx <= BED_X1 + 4) {
     const z = BED_Y.findIndex(b => y >= b - 4 && y <= b + 22);
@@ -625,29 +839,46 @@ function spotAt({x, y}) {
   if (lx >= 2 && lx < 36 && y >= 44 && y < 142) return {type: "feed", h: i};
   if (lx >= 36 && lx < 68 && y >= 88 && y < 118) return {type: "water", h: i};
   if (lx >= 38 && lx < 62 && y >= 108 && y < 148) return {type: "plc", h: i};
-  if (i === 0 && has("cold") && lx < 40 && y >= 148) return {type: "farm", h: i};
   if ((lx >= 70 && lx < 310 && y >= 26 && y < 52) || (lx >= 44 && lx < 74 && y >= 14 && y < 44) ||
       (lx >= 296 && lx < 312 && y >= 52 && y < 125)) return {type: "climate", h: i};
   return null;
 }
 let drag = null;
-cv.addEventListener("pointerdown", e => { drag = {x: e.clientX, cam: cam.x, moved: false}; });
+const touches = new Map();
+cv.addEventListener("pointerdown", e => {
+  touches.set(e.pointerId, {x: e.clientX, y: e.clientY});
+  drag = {x: e.clientX, y: e.clientY, cx: cam.x, cy: cam.y, moved: false, pinch: touches.size === 2 ? null : undefined};
+});
 cv.addEventListener("pointermove", e => {
+  if (touches.has(e.pointerId)) touches.set(e.pointerId, {x: e.clientX, y: e.clientY});
   hoverSpot = spotAt(toWorld(e));
   cv.style.cursor = hoverSpot ? "pointer" : drag ? "grabbing" : "grab";
   if (!drag) return;
-  const dx = (e.clientX - drag.x) * VW / cv.getBoundingClientRect().width;
-  if (Math.abs(dx) > 4 && !drag.moved) { drag.moved = true; cv.setPointerCapture(e.pointerId); }
-  if (drag.moved) cam.x = cam.tx = clampCam(drag.cam - dx);
+  if (touches.size === 2) {                                          // two fingers: pinch to zoom
+    const [a, b] = [...touches.values()], d = Math.hypot(a.x - b.x, a.y - b.y);
+    if (drag.pinch == null) drag.pinch = d;
+    else if (Math.abs(d - drag.pinch) > 60) { zoom(d > drag.pinch ? 1 : -1); drag.pinch = d; }
+    drag.moved = true; return;
+  }
+  const r = cv.getBoundingClientRect(), dx = (e.clientX - drag.x) * VW / r.width, dy = (e.clientY - drag.y) * VH / r.height;
+  if (Math.hypot(dx, dy) > 4 && !drag.moved) { drag.moved = true; cv.setPointerCapture(e.pointerId); }
+  if (drag.moved) { cam.x = cam.tx = clampX(drag.cx - dx); cam.y = cam.ty = clampY(drag.cy - dy); }
 });
-cv.addEventListener("pointerup", e => { if (drag && !drag.moved) clickAt(spotAt(toWorld(e))); drag = null; });
-cv.addEventListener("pointercancel", () => { drag = null; });
+cv.addEventListener("pointerup", e => {
+  touches.delete(e.pointerId);
+  if (drag && !drag.moved) clickAt(spotAt(toWorld(e)));
+  if (!touches.size) drag = null;
+});
+cv.addEventListener("pointercancel", e => { touches.delete(e.pointerId); drag = null; });
 cv.addEventListener("pointerleave", () => { hoverSpot = null; });
+cv.addEventListener("wheel", e => { e.preventDefault(); if (e.ctrlKey || Math.abs(e.deltaY) > Math.abs(e.deltaX) * 2 && e.deltaMode === 0 && Math.abs(e.deltaY) >= 50) zoom(e.deltaY < 0 ? 1 : -1);
+  else { cam.tx = clampX(cam.tx + e.deltaX / 2); cam.ty = clampY(cam.ty + e.deltaY / 2); } }, {passive: false});
 cv.addEventListener("keydown", e => {
-  if (e.key === "ArrowLeft" || e.key === "ArrowRight") { cam.tx = clampCam(cam.tx + (e.key === "ArrowLeft" ? -80 : 80)); e.preventDefault(); }
+  const step = {ArrowLeft: [-80, 0], ArrowRight: [80, 0], ArrowUp: [0, -60], ArrowDown: [0, 60]}[e.key];
+  if (step) { cam.tx = clampX(cam.tx + step[0]); cam.ty = clampY(cam.ty + step[1]); e.preventDefault(); }
+  if (e.key === "+" || e.key === "=") zoom(1);
+  if (e.key === "-") zoom(-1);
 });
-$("camL").onclick = () => { cam.tx = clampCam(cam.tx - LOT / 2); };
-$("camR").onclick = () => { cam.tx = clampCam(cam.tx + LOT / 2); };
 
 function clickAt(s) {
   if (!s) return;
@@ -694,6 +925,23 @@ const ICON = {
   cool: ["..www...", "...w....", "w..w..w.", "wwwkwww.", "w..w..w.", "...w....", "..www...", "........"],
   robot: ["...r....", "...g....", ".gggggg.", ".gwggwg.", ".gggggg.", ".g.gg.g.", "..g..g..", "........"],
   cold: ["...b....", ".b.b.b..", "..bbb...", "bbbwbbb.", "..bbb...", ".b.b.b..", "...b....", "........"],
+  hen: ["........", "....rr..", "...www..", "w..wwwo.", "wwwwww..", ".wwwww..", "..o.o...", "........"],
+  egg_i: ["........", "...ww...", "..wwww..", ".wwwwww.", ".wwwwww.", ".wwwwww.", "..wwww..", "........"],
+  milk_i: ["..gggg..", "..g..g..", ".wwwwww.", ".wbbbbw.", ".wwwwww.", ".wwwwww.", ".wwwwww.", "........"],
+  wool_i: ["........", ".ww.ww..", "wwwwwww.", "wwwwwwww", ".wwwwwww", "wwwwwww.", "..ww.ww.", "........"],
+  truffle_i: ["........", "...nn...", "..nnkn..", ".nknnnn.", ".nnnnkn.", "..nnnn..", "........", "........"],
+  fish_i: ["........", "......d.", ".ddddddd", "dwdddddd", "dddddddd", ".ddddddd", "......d.", "........"],
+  mango_i: ["....l...", "...l....", "..oooo..", ".oooooo.", ".ooyooo.", ".oooooo.", "..oooo..", "........"],
+  calendar: ["rrrrrrrr", "wwwwwwww", "wkwkwkww", "wwwwwwww", "wkwkwkww", "wwwwwwww", "wkwkwwww", "wwwwwwww"],
+  map: ["llllbbbb", "llllbbbb", "llnnnnbb", "llnwwnll", "bbnwwnll", "bbnnnnll", "bbbbllll", "bbbbllll"],
+  cow: ["........", "kw.....w", "wwwwkkww", "wkwwwwkw", "wwwwkwww", ".w.w.w.w", ".k.k.k.k", "........"],
+  sheep: ["........", "..wwww..", ".wwwwwwk", "wwwwwwkk", ".wwwwww.", "..k..k..", "..k..k..", "........"],
+  gear: ["...ww...", ".w.ww.w.", "..wwww..", "wwwkkwww", "wwwkkwww", "..wwww..", ".w.ww.w.", "...ww..."],
+  lumber: ["........", "nnnnnnnn", "nwnnnnwn", "nnnnnnnn", "nnnnnnnn", "nwnnnnwn", "nnnnnnnn", "........"],
+  grain: ["..nnnn..", ".nyyyyn.", "nyyoyyyn", "nyyyyoyn", "nyoyyyyn", "nyyyyyyn", ".nnnnnn.", "........"],
+  hay: ["........", ".yoyoyo.", "yyyyyyyy", "nnnnnnnn", "yoyoyoyo", "yyyyyyyy", ".nnnnnn.", "........"],
+  pellets: ["...gg...", "..gwwg..", ".gwwwwg.", ".gbbbbg.", ".gbobob.", ".gbbbbg.", ".gggggg.", "........"],
+  vet_kit: ["..gggg..", ".g....g.", "wwwwwwww", "wwwrrwww", "wwrrrrww", "wwwrrwww", "wwwwwwww", "........"],
   tree: ["...ll...", "..llll..", ".llllll.", "..llll..", ".llllll.", "...nn...", "...nn...", "........"],
   check: ["........", ".......l", "......ll", "l....ll.", "ll..ll..", ".llll...", "..ll....", "........"],
 };
@@ -713,12 +961,7 @@ function drawInto(canvas, fn) {     // reuse the farm sprites on a small canvas
 function cropIcon(canvas, crop) {
   drawInto(canvas, () => { R(0, 0, 16, 16, "#5b3b26"); plantSprite(8, 8, {crop, maturity: 100, health: 100, stage: "ripe"}, 3); });
 }
-function drawLogo() {
-  drawInto($("logo"), () => {
-    R(0, 0, 16, 16, "#0f1222"); R(1, 5, 14, 10, "#d7dde2"); R(2, 6, 12, 8, "#36414a");
-    R(3, 3, 10, 2, "#d7dde2"); R(5, 1, 6, 2, "#d7dde2");
-    R(3, 11, 10, 2, "#5b3b26"); R(5, 8, 3, 3, "#6cc37a"); R(9, 8, 3, 3, "#3e8f3a"); R(6, 9, 1, 1, "#e0574b");
-  });
+function drawLogo() {     // the game's mark is the GelasTinta farmer, img/logo.png (also the app icons)
 }
 
 // ---------------------------------------------------------------- the farmer guide (GelasTinta character pack)
@@ -809,7 +1052,8 @@ function onEvent(ev) {
     toast(`Achievement: ${a.title} · +${META.ach_bonus} coins`);
     guide(`Achievement unlocked: ${a.title}! ${a.desc} Here's ${META.ach_bonus} coins.`, "proud");
   } else if (ev.type === "level") {
-    guide(`Level ${ev.level}! New branches of the crop and upgrade trees may be open now.`, "starstruck");
+    guide(`Level ${ev.level}! New branches of the crop and upgrade trees may be open now.` +
+      (ev.level === 2 ? " The west field is for sale now: a chicken coop and a pig sty go there. Open the Map." : ""), "starstruck");
   } else if (ev.type === "unlock") {
     toast(`New seed: ${ev.crops.map(cropName).join(", ")}`);
     guide(`New seed unlocked: ${ev.crops.map(cropName).join(" and ")}! The tree button at the top shows what comes after it.`, "starstruck");
@@ -834,6 +1078,13 @@ function onEvent(ev) {
     if (ev.item.startsWith("house")) {
       anims.push({kind: "house", h: ev.house, t0, dur: 6000}); camTo(ev.house); closePop();
       guide(`${ev.title} is going up! It runs its own copy of the same PLC program: not one line changed. That's how a farm scales.`, "starstruck", true);
+    } else if (ev.item.startsWith("land")) {
+      closePop(); camPlot(ev.plot);
+      guide(`${ev.title.replace("Land: ", "")} is ours! ` + ({gh2: "Build GH-2 on it from its panel.", gh3: "Build GH-3 on it from its panel."}[ev.plot] ||
+        "Open the staked-out ground to build a pen on it."), "starstruck");
+    } else if (ev.item.startsWith("pen")) {
+      { const [px, py] = penCenter(ev.pen); camAt(px, py); }
+      guide(`The ${ev.title.toLowerCase()} is built! Open it to buy animals. They need feed from the market's Ranch tab.`, "proud_basket");
     } else if (ev.item.startsWith("bed")) {
       anims.push({kind: "bed", h: ev.house, z: ev.zone, t0, dur: 2500}); camTo(ev.house);
       guide(`${ev.title} is ready. Plant it!`, "happy");
@@ -846,17 +1097,35 @@ function onEvent(ev) {
     toast(`Built: ${ev.title}`);
   } else if (ev.type === "new_day") {
     const wxText = {clear: "clear skies", cloudy: "a cloudy day", rain: "showers this afternoon", storm: "a storm this afternoon"}[ev.weather];
-    guide(`Good morning, day ${ev.day}! Forecast: ${wxText}${ev.heat ? ", and a heatwave: watch the temperature" : ""}. ` +
+    if (ev.season_day === 1) {
+      const se = META.seasons.find(x => x.id === ev.season);
+      guide(`A new season: ${se.title}! ${se.crops.map(c => cropName(c).toLowerCase()).join(", ")} grow faster now.`, "starstruck");
+    }
+    if (ev.festival) guide(`It's ${ev.festival_title}! ${ev.festival_desc}`, "laugh");
+    guide(`Good morning, day ${ev.season_day} of the ${ev.season_title.split(" (")[0].split(":")[0].toLowerCase()}! Forecast: ${wxText}${ev.heat ? ", and a heatwave: watch the temperature" : ""}. ` +
       `Market: ${cropName(ev.hot)} sells high today${ev.glut ? `, ${cropName(ev.glut).toLowerCase()} is cheap` : ""}.` +
-      (ev.order ? ` A buyer's truck is in the yard: ${num(ev.order.kg)} kg of ${cropName(ev.order.crop).toLowerCase()} in ${ev.order.due - ev.day + 1} days for a ${num(ev.order.bonus)}-coin bonus.` : ""),
+      (ev.drought ? " Drought: the well refills slowly, so watch the tank." : "") +
+      (ev.flood ? " The storm flooded the pens: give them a clean." : "") +
+      (ev.merchant ? ` A travelling merchant is at the house with a ${ev.merchant.title.toLowerCase()} on sale.` : "") +
+      (ev.order ? ` A buyer's truck is in the yard: ${num(ev.order.kg)} ${orderUnit(ev.order)} of ${orderName(ev.order).toLowerCase()} in ${ev.order.due - ev.day + 2} days for a ${num(ev.order.bonus)}-coin bonus.` : ""),
       ev.heat ? "wipe_sweat" : ev.weather === "storm" ? "nervous" : "wave_hat");
     if (ev.order) { truck.mode = "in"; truck.t0 = performance.now(); }
   } else if (ev.type === "order_done") {
     truck.mode = "out"; truck.t0 = performance.now();
-    toast(`Order delivered · +${num(ev.bonus)} coins`); guide(`Order filled: ${num(ev.kg)} kg of ${cropName(ev.crop).toLowerCase()}! The buyer paid a ${num(ev.bonus)}-coin bonus.`, "laugh");
+    toast(`Order delivered · +${num(ev.bonus)} coins`); guide(`Order filled: ${num(ev.kg)} ${orderUnit(ev)} of ${orderName(ev).toLowerCase()}! The buyer paid a ${num(ev.bonus)}-coin bonus.`, "laugh");
   } else if (ev.type === "order_failed") {
     truck.mode = "out"; truck.t0 = performance.now();
-    guide(`The buyer gave up on the ${cropName(ev.crop).toLowerCase()} order. There'll be others.`, "sad");
+    guide(`The buyer gave up on the ${orderName(ev).toLowerCase()} order. There'll be others.`, "sad");
+  } else if (ev.type === "raid") {
+    raids.push({t0: performance.now()});
+    guide("A monitor lizard got into the coop last night and took a hen! A guard dog from the market keeps them away.", "crying");
+  } else if (ev.type === "raid_scared") {
+    raids.push({t0: performance.now(), scared: true});
+    once1("dog", "Woof! The guard dog chased a monitor lizard away from the coop.", "laugh");
+  } else if (ev.type === "animal_sick") {
+    guide(`The animals in the ${META.pens[ev.pen].title.toLowerCase()} are sick! Treat them with a vet kit and keep the pen clean.`, "shocked");
+  } else if (ev.type === "animal_lost") {
+    guide(`We lost a ${ev.animal.toLowerCase()}. Animals need feed, a clean pen and a vet when they're sick.`, "crying");
   } else if (ev.type === "pest") {
     guide(`Bugs on the ${cropName(ev.crop).toLowerCase()} in ${hn(ev.house)} bed ${ev.zone + 1}! They eat health until you spray neem oil from the bed's panel.`, "shocked");
     camTo(ev.house);
@@ -868,8 +1137,9 @@ function onEvent(ev) {
     flocks.push({h: ev.house, z: ev.zone, t0: performance.now(), scared: true});
     once1("scared", "Ha! The scarecrow sent the birds packing.", "laugh");
   } else if (ev.type === "auto_harvest" && ev.kg > 0) {
-    burst(ev.house * LOT + 190, BED_Y[ev.zone] + 8, [META.crops[ev.crop].colour, LEAF[ev.crop], "#f2c14e"]);
-    floaters.push({text: `+${ev.coins}`, x: ev.house * LOT + 170, y: BED_Y[ev.zone] + 6, t0: performance.now()});
+    const [bx, by] = bedXY(ev.house, ev.zone);
+    burst(bx, by, [META.crops[ev.crop].colour, LEAF[ev.crop], "#f2c14e"]);
+    floaters.push({text: `+${ev.coins}`, x: bx - 20, y: by - 2, t0: performance.now()});
     once1("robot", "The harvest robot picked a ripe bed for you.", "happy");
   } else if (ev.type === "used") toast(`${META.items.find(i => i.id === ev.item).title}!`);
   else if (ev.type === "boost_end") toast(`${META.items.find(i => i.id === ev.item).title} wore off`);
@@ -1036,10 +1306,17 @@ const POPS = {
   },
   market() {
     const f = S.farm, tab = mtab;
-    const tabs = [["boosts", "Boosts"], ["tools", "Tools & parts"], ["style", "Cosmetics"]].map(([k, l]) =>
+    const tabs = [["sell", "Sell"], ["boosts", "Boosts"], ["tools", "Tools & parts"], ["ranch", "Ranch"], ["style", "Cosmetics"]].map(([k, l]) =>
       `<button class="btn sm ${k === tab ? "on" : ""}" data-act="mtab" data-v="${k}">${l}</button>`).join("");
     let body = "";
-    if (tab === "boosts") body = META.items.map(i => `<div>${ico(i.id)}<span class="what"><b>${esc(i.title)} · ${f.items[i.id]} owned</b>
+    if (tab === "sell") {
+      const have = Object.entries(f.produce).filter(([, n]) => n > 0);
+      body = '<div class="small">What your animals made. Prices change with the market: everything sells for double at the village fair.</div>' +
+        (have.length ? have.map(([k, n]) => `<div>${ico(k + "_i")}<span class="what"><b>${PRODUCT[k][0]} · ${n} ${PRODUCT[k][1]}</b>
+          <span class="small">${ico("coin")} ${f.produce_price[k]} each · ${num(n * f.produce_price[k])} for all</span></span>
+          <button class="btn sm" data-act="sell" data-v="${k}" data-n="1">Sell 1</button><button class="btn sm go" data-act="sell" data-v="${k}" data-n="all">Sell all</button></div>`).join("")
+          : '<div class="note">The basket is empty. Collect eggs, milk, wool, truffles, fish or mangoes from your pens first.</div>');
+    } else if (tab === "boosts") body = META.items.map(i => `<div>${ico(i.id)}<span class="what"><b>${esc(i.title)} · ${f.items[i.id]} owned</b>
         <span class="small">${esc(i.desc)} ${ico("coin")} ${i.cost}${f.boosts[i.id] != null ? ` · active, ${Math.ceil(f.boosts[i.id] / 60)} h left` : ""}</span></span>
         <button class="btn sm" data-act="buy" data-v="${i.id}" ${f.coins >= i.cost ? "" : "disabled"}>Buy</button>
         <button class="btn sm go" data-act="use" data-v="${i.id}" ${f.items[i.id] ? "" : "disabled"}>Use</button></div>`).join("");
@@ -1047,8 +1324,9 @@ const POPS = {
       META.tools.map(t => { const own = f.tools.includes(t.id);
         return `<div><span class="what"><b>${esc(t.title)}${own ? " ✔" : ""}</b><span class="small">${esc(t.desc)} ${ico("coin")} ${t.cost}</span></span>
           <button class="btn sm" data-act="buy" data-v="${t.id}" ${own || f.coins < t.cost ? "disabled" : ""}>${own ? "Owned" : "Buy"}</button></div>`; }).join("") +
-      META.parts.map(x => `<div><span class="what"><b>${esc(x.title)} · ${f.parts[x.id]} in stock</b><span class="small">${esc(x.desc)} ${ico("coin")} ${x.cost}</span></span>
-          <button class="btn sm" data-act="buy" data-v="${x.id}" ${f.coins < x.cost ? "disabled" : ""}>Buy</button></div>`).join("");
+      META.parts.filter(x => !RANCH_PARTS.includes(x.id)).map(partRow).join("");
+    else if (tab === "ranch") body = '<div class="small">Feed, medicine and timber for the pens west of the yard.</div>' +
+      META.parts.filter(x => RANCH_PARTS.includes(x.id)).map(partRow).join("");
     else body = ["outfit", "paint", "path", "decor"].map(slot => `<h3>${{outfit: "FARMER OUTFIT", paint: "GREENHOUSE PAINT", path: "PATH", decor: "DECORATIONS"}[slot]}</h3>` +
       META.cosmetics.filter(c => c.slot === slot).map(c => {
         const own = f.owned.includes(c.id), on = slot === "decor" ? f.style.decor.includes(c.id) : f.style[slot] === c.id.split(":")[1];
@@ -1057,18 +1335,139 @@ const POPS = {
           <button class="btn sm ${own && !on ? "go" : ""}" data-act="cosmetic" data-v="${c.id}" ${(!own && f.coins < c.cost) || (on && slot !== "decor") ? "disabled" : ""}>${label}</button></div>`;
       }).join("")).join("");
     return {title: "MARKET", html: `<div class="row" style="margin-top:0">${tabs}</div><div class="shop" style="margin-top:8px">${body}</div>`, vals: {},
-      key: JSON.stringify([tab, f.items, Object.keys(f.boosts), f.tools, f.parts, f.owned, f.style, Math.floor(f.coins / 10)])};
+      key: JSON.stringify([tab, f.items, Object.keys(f.boosts), f.tools, f.parts, f.owned, f.style, Math.floor(f.coins / 10), f.produce, f.produce_price])};
+  },
+  pen(h, pid) {
+    const f = S.farm, P = META.pens[pid], A = META.animals[P.animal], pen = f.ranch[pid];
+    if (!pen) {
+      const it = f.shop.find(x => x.id === `pen:${pid}`);
+      return {title: P.title.toUpperCase(), vals: {}, key: JSON.stringify([it, f.parts, f.tools]),
+        html: `<div class="note">${{coop: "Hens lay eggs every hour they are fed and clean. Their manure makes compost tea.",
+          goats: "Goats give milk while fed and clean, and lots of manure for compost.",
+          pond: "Catfish grow while fed; harvest the whole pond when they are big enough."}[pid]}</div>` + (it ? `<div class="shop">${shopRow(it)}</div>` : "")};
+    }
+    const fish = pid === "pond", feedHave = f.parts[A.feed], price = fish ? A.price * P.cap : A.price;
+    const stat = (l, k) => `<span>${l}</span><div class="bar ${k === "health" ? "hp ok" : ""}"><i data-w="${k}"></i></div><b data-k="${k}"></b>`;
+    const html = `<div class="small"><b style="color:var(--ink)">${pen.n} / ${P.cap} ${esc(A.name.toLowerCase())}${pen.n === 1 || fish ? "" : "s"}</b> · <span data-k="status"></span></div>
+      <div class="pen-stat" style="margin-top:6px">${stat("Feed", "feed")}${stat(fish ? "Water" : "Clean", "clean")}${stat("Health", "health")}</div>
+      <div class="small" style="margin-top:6px" data-k="stock"></div>
+      <div class="row">
+        <button class="btn sm go" data-act="animal" data-v="collect" data-z="${pid}" ${pen.ready ? "" : "disabled"}>${fish ? "Harvest the pond" : "Collect"}</button>
+        <button class="btn sm" data-act="animal" data-v="feed" data-z="${pid}" ${feedHave ? "" : "disabled"}>${ico(A.feed)} Feed (${feedHave})</button>
+        <button class="btn sm" data-act="animal" data-v="clean" data-z="${pid}">${fish ? "Change water" : "Clean"}</button>
+        ${pen.sick ? `<button class="btn sm bad" data-act="animal" data-v="treat" data-z="${pid}" ${f.parts.vet_kit ? "" : "disabled"}>${ico("vet_kit")} Treat (${f.parts.vet_kit})</button>` : ""}
+      </div>
+      <div class="row">
+        <button class="btn sm" data-act="animal" data-v="buy" data-z="${pid}" ${(fish ? pen.n === 0 : pen.n < P.cap) && f.coins >= price ? "" : "disabled"}>${fish ? `Stock ${P.cap} fingerlings` : `Buy a ${A.name.toLowerCase()}`} · ${ico("coin")} ${num(price)}</button>
+        ${!feedHave || (pen.sick && !f.parts.vet_kit) ? `<button class="btn sm" data-act="open" data-v="market" data-tab="ranch">Market</button>` : ""}
+      </div>
+      <div class="note" style="margin-top:6px">Production halves above ${A.heat < 90 ? A.heat + " °C outside" : "—"}. ${A.manure ? "Manure turns into compost tea when you collect." : ""}</div>`;
+    const prod = fish ? `Grown: ${Math.round(100 * Math.min(1, pen.stock / META.fish_grow_h))} %` :
+      `${Math.floor(pen.stock)} ${A.product === "egg" ? "eggs" : "L of milk"} waiting · ${A.sell} coins each`;
+    const status = pen.n === 0 ? "empty" : pen.sick ? "sick!" : pen.feed <= 15 ? "hungry!" : pen.clean <= 25 ? "dirty!" : S.weather.t_out > A.heat ? "too hot: half production" : "happy";
+    return {title: P.title.toUpperCase(), html,
+      vals: {feed: fx(pen.feed, 0) + "%", clean: fx(pen.clean, 0) + "%", health: fx(pen.health, 0) + "%", "w:feed": pen.feed, "w:clean": pen.clean, "w:health": pen.health,
+             stock: prod, status},
+      key: JSON.stringify([pen.n, pen.sick, pen.ready, feedHave, f.parts.vet_kit, f.coins >= price])};
+  },
+  calendar() {
+    const f = S.farm, cal = f.calendar, wx = {clear: "sun", cloudy: "cloud", rain: "rain", storm: "storm"};
+    const se = META.seasons.find(x => x.id === cal.season);
+    const fore = [f.today, ...f.forecast];
+    const grid = META.seasons.map((sz, si) => `<div class="small" style="margin-top:6px"><b style="color:var(--gold)">${esc(sz.title)}</b></div>
+      <div class="cal">${Array.from({length: META.season_days}, (_, k) => {
+        const doy = si * META.season_days + k, fest = META.festivals[doy], ahead = (doy - cal.doy + META.year_days) % META.year_days;
+        const w = ahead < fore.length ? fore[ahead] : null;
+        return `<div class="${doy === cal.doy ? "today" : doy < cal.doy ? "past" : ""}" title="${fest ? esc(fest.title + ": " + fest.desc) : ""}">
+          <b>${k + 1}</b>${w ? ico(wx[w.weather]) : ""}${fest ? '<span class="fest">★</span>' : ""}</div>`;
+      }).join("")}</div>`).join("");
+    const td = f.today, notes = [td.festival && `★ ${META.festivals[cal.doy].title}: ${META.festivals[cal.doy].desc}`, td.heat && "Heatwave: 4 °C hotter outside.",
+      td.drought && "Drought: the well refills slowly.", td.flood && "Flood: the storm muddied the pens.", td.merchant && `The travelling merchant is at the house.`].filter(Boolean);
+    const html = `<div class="small">Year ${cal.year}, day ${cal.doy + 1} of ${META.year_days}. <b style="color:var(--ink)">${esc(se.title)}</b>, day ${cal.season_day} of ${META.season_days}.</div>
+      <div class="note">Growing faster this season: ${se.crops.map(c => esc(cropName(c))).join(", ")}.</div>
+      ${notes.length ? `<div class="result small">${notes.map(esc).join("<br>")}</div>` : ""}
+      <h3>FORECAST</h3><div class="row" style="margin-top:0">${fore.map((w, k) => `<span class="chip">${["Today", "Tomorrow", "In 2 days", "In 3 days"][k]} ${ico(wx[w.weather])}${w.heat ? " hot" : ""}</span>`).join("")}</div>
+      <h3>THE FARM YEAR</h3>${grid}
+      <div class="note" style="margin-top:6px">★ festivals: ${Object.values(META.festivals).map(x => esc(x.title)).join(", ")}. The weather comes from each season's odds; you can't change it.</div>`;
+    return {title: "CALENDAR", html, vals: {}, key: JSON.stringify([cal, f.today, f.forecast])};
+  },
+  merchant() {
+    const f = S.farm, m = f.today.merchant;
+    return {title: "TRAVELLING MERCHANT", vals: {}, key: JSON.stringify([m, f.coins >= (m ? m.price : 0)]),
+      html: m ? `<div class="small">"Only today, friend: a ${esc(m.title.toLowerCase())}, cheaper than in any market."</div>
+        <div class="shop" style="margin-top:6px"><div><span class="what"><b>${esc(m.title)}</b><span class="small">${ico("coin")} ${num(m.price)}
+          (market price ${num(META.cosmetics.find(c => c.id === m.id).cost)})</span></span>
+          <button class="btn sm go" data-act="merchant" ${f.coins >= m.price ? "" : "disabled"}>Buy</button></div></div>` :
+        `<div class="note">The merchant has moved on. Maybe another day.</div>`};
+  },
+  install() {
+    return {title: "PLAY IT LIKE AN APP", vals: {}, key: String(!!installEvt) + standalone(),
+      html: standalone() ? `<div class="small">You are playing the installed app. Nice!</div>` :
+        `<div class="small">Add the farm to your home screen: it opens full screen like an app, and after the first visit it plays without a connection.</div>
+        ${installEvt ? `<div class="row"><button class="btn go" data-act="install">Install the app</button></div>` : ""}${installSteps()}`};
+  },
+  about() {
+    return {title: "WHAT IS REAL AND WHAT IS GAME", vals: {}, key: "about", html: `<ul>
+      <li><b>Real:</b> the PLC program <code>greenhouse.st</code> runs unmodified in an IEC 61131-3 interpreter, scan by scan (50 ms), in your browser: one copy for each greenhouse. It is the same file that passes the automated tests and runs on OpenPLC Runtime v4.</li>
+      <li><b>Model:</b> each greenhouse — weather, air, crop water use, pump and dripper hydraulics, nutrient and pH chemistry — is a physics model. The PLC only sees it through its sensors. The map draws the physical plant; the panels show what the sensors say.</li>
+      <li><b>Upgrades:</b> the shade net, pad-and-fan cooling, fogging and light-sum watering are functions the PLC always has; until you buy the hardware their set points are parked where they never act.</li>
+      <li><b>Game:</b> crops, animals, land, coins, levels, items, problems and achievements are added for this page, on an accelerated clock.</li>
+    </ul><div class="small">Animal sprites and the soil texture: supplied by the author. Farmer character: GelasTinta character pack.</div>
+    <div class="row"><a class="btn sm" href="https://github.com/rayangmendrofa/horticulture-farm-plc" target="_blank" rel="noopener">Project, documents and tests</a></div>`};
+  },
+  map() {
+    const f = S.farm, cells = Object.entries(META.plots).sort((a, b) => a[1].row - b[1].row || a[1].col - b[1].col);
+    const sale = new Set(f.shop.filter(i => i.id.startsWith("land:")).map(i => i.id.slice(5)));
+    const what = {home: "Homestead", gh1: "GH-1", gh2: "GH-2", gh3: "GH-3", coop: "Coop + sty", barn: "Cow barn", pasture: "Sheep meadow", pond: "Fish pond", orchard: "Mango grove"};
+    const html = `<div class="small">The farm is nine plots. Buy the ones next to land you own to grow in any direction.</div>
+      <div class="map" style="margin-top:8px">${cells.map(([id, P]) => {
+        const own = f.land.includes(id), it = f.shop.find(i => i.id === "land:" + id);
+        return `<button class="btn ${own ? "own" : sale.has(id) ? "sale" : "wild"}" data-act="plot" data-v="${id}">
+          <b>${esc(what[id])}</b><span>${own ? "owned" : sale.has(id) ? `${ico("coin")} ${num(P.cost)} · LV${P.level}` : "beyond reach"}</span>
+          ${!own && it && it.ok ? "<span>tap to buy</span>" : ""}</button>`;
+      }).join("")}</div>
+      <div class="row"><button class="btn sm" data-act="zoom" data-v="1">Zoom in</button><button class="btn sm" data-act="zoom" data-v="-1">Zoom out</button></div>`;
+    return {title: "MAP", html, vals: {}, key: JSON.stringify([f.land, [...sale], f.shop.filter(i => i.id.startsWith("land:")).map(i => i.ok)])};
+  },
+  land(h, pid) {
+    const f = S.farm, P = META.plots[pid], it = f.shop.find(i => i.id === "land:" + pid);
+    const what = {gh2: "a second greenhouse with its own PLC", gh3: "a third greenhouse with its own PLC", coop: "a chicken coop and a pig sty",
+                  barn: "a cow barn", pasture: "a sheep meadow", pond: "a fish pond", orchard: "a mango grove"}[pid] || "";
+    return {title: P.title.toUpperCase(), vals: {}, key: JSON.stringify([it, f.land]),
+      html: `<div class="note">Wild land. Once it is yours, it has room for ${what}.</div>` +
+        (it ? `<div class="shop" style="margin-top:6px">${shopRow(it)}</div>` : `<div class="small" style="margin-top:6px">Buy the land next to it first.</div>`)};
+  },
+  more() {
+    const sp = [[0, "pause", "Pause"], [1, "play", "1×"], [5, "ff", "5×"], [20, "fff", "20×"], ["max", "max", "Max"]];
+    const wx = {clear: "sun", cloudy: "cloud", rain: "rain", storm: "storm"};
+    const html = `<h3>SPEED</h3><div class="sheet-grid">${sp.map(([v, i, t]) => `<button class="btn ${String(speed) === String(v) ? "on" : ""}" data-act="speed" data-v="${v}">${ico(i)} ${t}</button>`).join("")}
+        <button class="btn" data-act="skip">${ico("moon")} Next morning</button></div>
+      <h3>SEASON</h3><div class="sheet-grid"><button class="btn" data-act="open" data-v="calendar">${ico("calendar")} Calendar</button></div>
+      <h3>FARM</h3><div class="sheet-grid">
+        <button class="btn" data-act="open" data-v="trees">${ico("tree")} Trees</button>
+        <button class="btn" data-act="open" data-v="order">${ico("basket")} Orders</button>
+        <button class="btn" data-act="guide">${$("guide").classList.contains("min") ? "Show" : "Hide"} farmer</button>
+        <button class="btn" data-act="problems" data-v="${S.farm.problems_on ? "off" : "on"}">Problems: ${S.farm.problems_on ? "on" : "off"}</button>
+        <button class="btn ${installEvt ? "go" : ""}" data-act="open" data-v="install">Install app</button>
+        <button class="btn" data-act="open" data-v="about">About</button>
+        <button class="btn" data-act="zoom" data-v="1">Zoom in</button><button class="btn" data-act="zoom" data-v="-1">Zoom out</button>
+        <button class="btn bad" data-act="newfarm">New farm</button></div>
+      <div class="note" style="margin-top:8px">${standalone() ? "Running as an app." : "Install it to play full screen from your home screen."}
+        The PLC program is real; the farm around it is a game. <a href="https://github.com/rayangmendrofa/horticulture-farm-plc" target="_blank" rel="noopener">How it works</a></div>`;
+    return {title: "MORE", html, vals: {}, key: JSON.stringify([speed, S.weather.look, S.farm.problems_on, !!installEvt, $("guide").classList.contains("min")])};
   },
   order() {
     const f = S.farm, o = f.order;
     const rows = Object.entries(f.prices_now).filter(([c]) => f.crops.includes(c)).map(([c, v]) =>
       `<div><span>${esc(cropName(c))}${c === f.today.hot ? " ▲" : c === f.today.glut ? " ▼" : ""}</span><b>${v} /kg</b></div>`).join("");
-    const html = (o ? `<div class="small">The buyer wants <b style="color:var(--ink)">${num(o.kg)} kg of ${esc(cropName(o.crop).toLowerCase())}</b> by day ${o.due + 1}.
-        Harvests of it count automatically. Bonus when it's full: ${ico("coin")} ${num(o.bonus)}.</div>
-        <div class="bar"><i style="width:calc(${Math.min(100, 100 * o.got / o.kg)}% - 4px)"></i></div><div class="small">${num(o.got)} / ${num(o.kg)} kg</div>`
+    const html = (o ? `<div class="small">The buyer wants <b style="color:var(--ink)">${num(o.kg)} ${orderUnit(o)} of ${esc(orderName(o).toLowerCase())}</b> by day ${o.due + 1}.
+        ${o.crop ? "Harvests of it count automatically." : `Collect it from your animals, then deliver it from the basket (you have ${f.produce[o.product]}).`}
+        Bonus when it's full: ${ico("coin")} ${num(o.bonus)}.</div>
+        <div class="bar"><i style="width:calc(${Math.min(100, 100 * o.got / o.kg)}% - 4px)"></i></div><div class="small">${num(o.got)} / ${num(o.kg)} ${orderUnit(o)}</div>
+        ${o.product ? `<div class="row"><button class="btn go" data-act="deliver" ${f.produce[o.product] ? "" : "disabled"}>Deliver from the basket</button></div>` : ""}`
       : '<div class="note">No buyer today. Orders come with the morning.</div>') +
       `<h3>TODAY'S PRICES</h3><div class="kv">${rows}</div>`;
-    return {title: "BUYER'S ORDER", html, vals: {}, key: JSON.stringify([o, f.prices_now, f.today])};
+    return {title: "BUYER'S ORDER", html, vals: {}, key: JSON.stringify([o, f.prices_now, f.today, f.produce])};
   },
   trees() {
     const tabs = [["crops", "Crop tree"], ["ups", "Upgrade tree"]].map(([k, l]) =>
@@ -1117,7 +1516,8 @@ function treeSVG(nodes, edges) {
       <text x="${x + 6}" y="${y + 32}" fill="${c}" font-size="8" font-family="Pixelify Sans, monospace">${esc(l1)}</text>
       <text x="${x + 6}" y="${y + 41}" fill="${c}" font-size="8" font-family="Pixelify Sans, monospace">${esc(l2)}</text></g>`;
   }).join("");
-  return `<svg viewBox="0 0 ${COL_W * 3 + 2} ${rows * ROW_H + 4}" width="100%" style="margin-top:8px;display:block">${lines}${boxes}</svg>`;
+  const cols = Math.max(...nodes.map(n => n.col)) + 1;
+  return `<div style="overflow-x:auto"><svg viewBox="0 0 ${COL_W * cols + 2} ${rows * ROW_H + 4}" width="${Math.max(100, cols * 22)}%" style="margin-top:8px;display:block;min-width:${cols * 92}px">${lines}${boxes}</svg></div>`;
 }
 const CROP_ICONS = {};
 function cropIconURL(c) {
@@ -1166,6 +1566,9 @@ function treeClick(id) {
   }
 }
 
+const partRow = x => `<div>${ICON[x.id] ? ico(x.id) : ""}<span class="what"><b>${esc(x.title)} · ${S.farm.parts[x.id]} in stock</b><span class="small">${esc(x.desc)} ${ico("coin")} ${x.cost}</span></span>
+  <button class="btn sm" data-act="buy" data-v="${x.id}" ${S.farm.coins < x.cost ? "disabled" : ""}>Buy</button></div>`;
+
 function shopRow(it, desc = "") {
   const f = S.farm;
   const why = (it.locked_by || []).length ? `Build ${it.locked_by.map(upTitle).join(" and ")} first` :
@@ -1180,7 +1583,7 @@ function shopRow(it, desc = "") {
 
 function renderPop() {
   if (!pop || !S) return;
-  if (!["farm", "market", "lot", "trees", "order"].includes(pop.type) && pop.h >= S.houses.length) { closePop(); return; }
+  if (!["farm", "market", "lot", "trees", "order", "pen", "more", "map", "land", "install", "about", "calendar", "merchant"].includes(pop.type) && pop.h >= S.houses.length) { closePop(); return; }
   const o = POPS[pop.type](pop.h, pop.z), body = $("popBody"), key = pop.type + pop.h + pop.z + o.key;
   if ($("pop").dataset.key !== key) {
     const keep = $("dpick") && $("dpick").value, top = $("pop").scrollTop;
@@ -1211,6 +1614,21 @@ $("pop").addEventListener("click", e => {
     use: () => send({cmd: "use", item: d.v}),
     cosmetic: () => send({cmd: "cosmetic", id: d.v}),
     spray: () => send({cmd: "spray", house: h, zone: +d.z}),
+    animal: () => send({cmd: "animals", action: d.v, pen: d.z}),
+    speed: () => setSpeed(d.v === "max" ? "max" : +d.v),
+    skip: () => send({cmd: "skip_night"}),
+    deliver: () => send({cmd: "deliver"}),
+    sell: () => send({cmd: "sell", product: d.v, n: d.n === "all" ? "all" : +d.n}),
+    merchant: () => send({cmd: "merchant"}),
+    guide: () => { $("sayHide").click(); renderPop(); },
+    install: () => installApp(),
+    zoom: () => zoom(+d.v),
+    plot: () => {
+      const id = d.v, it = S.farm.shop.find(i => i.id === "land:" + id);
+      if (S.farm.land.includes(id)) { closePop(); camPlot(id); }
+      else if (it) openPop("land", 0, id);
+      else toast("Buy the land next to it first");
+    },
     repair: () => send({cmd: "repair", house: h, fault: d.v}),
     hire: () => send({cmd: "repair", house: h, fault: d.v, hire: true}),
     mtab: () => { mtab = d.v; renderPop(); },
@@ -1227,7 +1645,7 @@ $("pop").addEventListener("click", e => {
     newfarm: () => {
       if (!confirm("Start a new farm? Coins, buildings, upgrades and achievements in this browser are reset.")) return;
       store.set("gh1-farm", null); store.set("gh1-tut2", null); tut = 0; tipsSeen.clear();
-      sel = {h: 0, z: 0}; armed = null; closePop(); cam.tx = 0; send({cmd: "new_farm"});
+      sel = {h: 0, z: 0}; armed = null; closePop(); camPlot("gh1"); send({cmd: "new_farm"});
     },
   }[d.act];
   if (act) act();
@@ -1243,37 +1661,48 @@ addEventListener("keydown", e => { if (e.key === "Escape" && pop) closePop(); })
 const changed = (el, key) => { if (el.dataset.key === key) return false; el.dataset.key = key; return true; };
 function renderTop() {
   const f = S.farm;
-  $("clock").textContent = S.clock; $("day").textContent = `DAY ${S.day}`;
+  const cal = f.calendar, calIco = {clear: "sun", cloudy: "cloud", rain: "rain", storm: "storm"}[f.today.weather];
+  $("clock").textContent = S.clock; $("day").textContent = `YEAR ${cal.year} · DAY ${cal.doy + 1}`;
+  const calHtml = `${ico(calIco)} ${SEASON_SHORT[cal.season]} ${cal.season_day}/${META.season_days}${f.today.festival ? " ★" : ""}`;
+  if ($("calChip") && $("calChip").innerHTML !== calHtml) $("calChip").innerHTML = calHtml;
   $("coins").textContent = num(f.coins);
   const pct = f.level_to ? 100 * (f.xp - f.level_from) / (f.level_to - f.level_from) : 100;
   $("lvl").textContent = `LV ${f.level}`; $("xpbar").style.width = `calc(${Math.min(100, pct)}% - 4px)`;
   $("kg").textContent = num(f.kg); $("harvests").textContent = f.harvests; $("lost").textContent = f.lost;
   $("speedtxt").textContent = S.achieved ? `${fx(S.achieved, 0)}× real time · ${S.houses.length} PLC${S.houses.length > 1 ? "s" : ""} running` : "";
-  document.querySelectorAll("[data-wx]").forEach(b => b.classList.toggle("on", b.dataset.wx === S.weather.look));
   if (changed($("boosts"), JSON.stringify(Object.entries(f.boosts).map(([k, v]) => [k, Math.ceil(v / 60)]))))
     $("boosts").innerHTML = Object.entries(f.boosts).map(([k, v]) => `<span class="chip boost" title="${esc(META.items.find(i => i.id === k).title)}">${ico(k)} ${Math.ceil(v / 60)}h</span>`).join("");
   const td = f.today, o = f.order, wxIco = {clear: "sun", cloudy: "cloud", rain: "rain", storm: "storm"}[td.weather];
   const news = `<span class="chip" title="Today's forecast">${ico(wxIco)}${td.heat ? " Heatwave" : ""}</span>` +
     (td.hot ? `<span class="chip" title="Sells high today">▲ ${esc(shortName(td.hot))} ×1.8</span>` : "") +
     (td.glut ? `<span class="chip" title="Cheap today">▼ ${esc(shortName(td.glut))} ×0.6</span>` : "") +
-    (o ? `<button class="btn sm" id="orderChip" title="The buyer's order">${ico("basket")} ${num(o.got)}/${num(o.kg)} kg ${esc(shortName(o.crop))}</button>` : "");
-  if (changed($("news"), news)) { $("news").innerHTML = news; if ($("orderChip")) $("orderChip").onclick = () => { cam.tx = -YARD; openPop("order"); }; }
+    (o ? `<button class="btn sm" id="orderChip" title="The buyer's order">${ico("basket")} ${num(o.got)}/${num(o.kg)} ${orderUnit(o)} ${esc(orderName(o))}</button>` : "");
+  if (changed($("news"), news)) { $("news").innerHTML = news; if ($("orderChip")) $("orderChip").onclick = () => { camPlot("home"); openPop("order"); }; }
   const lots = META.house_names.map((n, i) => {
     const h = S.houses[i];
     if (!h) return `<button class="btn" data-lot="${i}">${ico("lock")} ${n}</button>`;
     const al = Object.values(alerts(h)).some(Boolean) || (f.trouble && f.trouble.house === i) || f.repairs.some(r => r.house === i) || h.zones.some(z => z.pest), ripe = h.zones.some(z => z.stage === "ripe");
     return `<button class="btn" data-lot="${i}">${ico("house")} ${n}${al ? '<span class="dot"></span>' : ""}${ripe ? '<span class="dot ripe"></span>' : ""}</button>`;
   }).join("");
-  if (changed($("lots"), lots)) {
-    $("lots").innerHTML = lots;
+  const pens = Object.entries(f.ranch), penDots = pl => {
+    const here = pens.filter(([pid]) => PEN_RECT[pid][0] === pl).map(([, p]) => p);
+    return (here.some(p => p.n && (p.feed < 25 || p.clean < 30 || p.sick)) ? '<span class="dot"></span>' : "") + (here.some(p => p.ready) ? '<span class="dot ripe"></span>' : "");
+  };
+  const places = `<button class="btn" data-place="map">${ico("map")} Map</button><button class="btn" data-place="home">${ico("house")} Home</button>` +
+    S.houses.map((h, i) => lots.split("</button>")[i] + "</button>").join("") +
+    ["coop", "barn", "pasture", "pond", "orchard"].filter(pl => f.land.includes(pl)).map(pl =>
+      `<button class="btn" data-place="${pl}">${ico({coop: "hen", barn: "cow", pasture: "sheep", pond: "pellets", orchard: "tree"}[pl])} ${{coop: "Coop", barn: "Barn", pasture: "Meadow", pond: "Pond", orchard: "Grove"}[pl]}${penDots(pl)}</button>`).join("");
+  if (changed($("lots"), places)) {
+    $("lots").innerHTML = places;
     document.querySelectorAll("[data-lot]").forEach(b => b.onclick = () => camTo(+b.dataset.lot));
+    document.querySelectorAll("[data-place]").forEach(b => b.onclick = () => b.dataset.place === "map" ? openPop("map") : camPlot(b.dataset.place));
   }
 }
 
 function renderBar() {
   const open = S ? S.farm.crops : ["kangkung"], items = S ? S.farm.items : {};
   if (armed && !open.includes(armed.crop)) armed = null;
-  if (!changed($("hotbar"), JSON.stringify([open, items, armed, S && S.farm.crop_locks]))) return;
+  if (!changed($("hotbar"), JSON.stringify([open, items, armed, S && S.farm.crop_locks, S && S.farm.produce]))) return;
   $("hotbar").innerHTML = Object.entries(META.crops).map(([k, c]) => {
     const locked = !open.includes(k), label = esc(k === "kangkung" ? "Kangkung" : c.name.split(" ")[0]);
     return `<button class="slot ${armed && armed.crop === k ? "on" : ""} ${locked ? "locked" : ""}" data-seed="${k}"
@@ -1281,7 +1710,10 @@ function renderBar() {
       ${locked ? `<span class="lock">T${CT[k].row + 1}</span>` : ""}<canvas width="16" height="16"></canvas><span>${label}</span></button>`;
   }).join("") + '<span class="sep"></span>' + META.items.map(i =>
     `<button class="slot" data-item="${i.id}" title="${esc(i.title)}: ${esc(i.desc)}"><img src="${icoSrc(i.id)}" alt="" style="width:32px;height:32px;image-rendering:pixelated">
-      <span class="count">${items[i.id] || 0}</span><span>${esc(i.title.split(" ").pop())}</span></button>`).join("");
+      <span class="count">${items[i.id] || 0}</span><span>${esc(i.title.split(" ").pop())}</span></button>`).join("") +
+    (S && Object.values(S.farm.produce).some(n => n) ? '<span class="sep"></span>' + Object.entries(S.farm.produce).filter(([, n]) => n).map(([k, n]) =>
+      `<button class="slot" data-basket="${k}" title="${PRODUCT[k][0]}: ${n} in the basket. Tap to sell."><img src="${icoSrc(k + "_i")}" alt="" style="width:32px;height:32px;image-rendering:pixelated">
+       <span class="count">${n}</span><span>${PRODUCT[k][0]}</span></button>`).join("") : "");
   document.querySelectorAll("[data-seed]").forEach(b => {
     cropIcon(b.querySelector("canvas"), b.dataset.seed);
     b.onclick = () => {
@@ -1290,6 +1722,7 @@ function renderBar() {
       armed = armed && armed.crop === k ? null : {crop: k, variant: 0}; renderBar(); renderSeedInfo();
     };
   });
+  document.querySelectorAll("[data-basket]").forEach(b => b.onclick = () => { mtab = "sell"; openPop("market"); });
   document.querySelectorAll("[data-item]").forEach(b => b.onclick = () =>
     S.farm.items[b.dataset.item] ? send({cmd: "use", item: b.dataset.item}) : (mtab = "boosts", openPop("market")));
   renderSeedInfo();
@@ -1310,23 +1743,49 @@ function buildStatic() {
   const sp = [[0, "pause", "Pause"], [1, "play", "1× real time"], [5, "ff", "5×"], [20, "fff", "20×"], ["max", "max", "As fast as this device can"]];
   $("speeds").innerHTML = sp.map(([v, i, t]) => `<button class="btn icon" data-speed="${v}" title="${t}" aria-label="${t}">${ico(i)}</button>`).join("") +
     `<button class="btn icon" id="skip" title="Skip to the next morning" aria-label="Skip to the next morning">${ico("moon")}</button>`;
-  document.querySelectorAll("[data-speed]").forEach(b => b.onclick = () => {
-    speed = b.dataset.speed === "max" ? "max" : +b.dataset.speed; send({cmd: "speed", value: speed}); markSpeed();
-  });
+  document.querySelectorAll("[data-speed]").forEach(b => b.onclick = () => setSpeed(b.dataset.speed === "max" ? "max" : +b.dataset.speed));
   markSpeed();
-  const wxIcon = {clear: "sun", cloudy: "cloud", rain: "rain", storm: "storm"};
-  $("weather").innerHTML = META.scenarios.map(w => `<button class="btn icon" data-wx="${w}" title="${w}" aria-label="Weather: ${w}">${ico(wxIcon[w])}</button>`).join("");
-  document.querySelectorAll("[data-wx]").forEach(b => b.onclick = () => send({cmd: "weather", scenario: b.dataset.wx}));
-  $("menus").innerHTML = `<button class="btn icon" id="openFarm" title="Farm book: upgrades, building, achievements" aria-label="Farm book">${ico("book")}</button>
-    <button class="btn icon" id="openTrees" title="Crop tree and upgrade tree" aria-label="Trees">${ico("tree")}</button>
-    <button class="btn icon" id="openShop" title="Market: boosts, tools, parts and cosmetics" aria-label="Market">${ico("bag")}</button>`;
-  $("openFarm").onclick = () => openPop("farm");
-  $("openShop").onclick = () => openPop("market");
-  $("openTrees").onclick = () => openPop("trees");
+  $("weather").innerHTML = `<button class="btn sm" id="calChip" title="Calendar: seasons, festivals and the forecast"></button>`;
+  $("calChip").onclick = () => openPop("calendar");
+  $("dock").innerHTML = [["farm", "book", "Farm"], ["market", "bag", "Market"], ["map", "map", "Map"], ["trees", "tree", "Trees"], ["more", "gear", "More"]]
+    .map(([k, i, l]) => `<button class="btn" data-dock="${k}">${ico(i)}<span>${l}</span></button>`).join("");
+  document.querySelectorAll("[data-dock]").forEach(b => b.onclick = () => {
+    const k = b.dataset.dock;
+    if (pop && pop.type === k) closePop(); else openPop(k);
+  });
+  $("quickSpeed").hidden = false;
+  $("quickSpeed").onclick = () => setSpeed(speed === 0 ? 20 : speed === 20 ? "max" : 0);
   $("skip").onclick = () => send({cmd: "skip_night"});
   renderBar();
 }
-function markSpeed() { document.querySelectorAll("[data-speed]").forEach(b => b.classList.toggle("on", String(speed) === b.dataset.speed)); }
+function markSpeed() {
+  document.querySelectorAll("[data-speed]").forEach(b => b.classList.toggle("on", String(speed) === b.dataset.speed));
+  $("quickSpeed").innerHTML = ico(speed === 0 ? "pause" : speed === "max" ? "max" : "fff");
+  $("quickSpeed").title = speed === 0 ? "Paused: tap to play" : `Speed ${speed === "max" ? "max" : speed + "×"}: tap to change`;
+}
+function setSpeed(v) { speed = v; send({cmd: "speed", value: v}); markSpeed(); renderPop(); }
+
+// ---------------------------------------------------------------- install as an app
+let installEvt = null;
+const standalone = () => matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
+addEventListener("beforeinstallprompt", e => { e.preventDefault(); installEvt = e; if (pop) renderPop(); });
+addEventListener("appinstalled", () => { installEvt = null; toast("Installed: open it from your home screen"); if (pop) renderPop(); });
+async function installApp() {
+  if (!installEvt) return;
+  installEvt.prompt();
+  await installEvt.userChoice;
+  installEvt = null; renderPop();
+}
+const deviceOS = () => { const ua = navigator.userAgent; return /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1) ? "ios" : /Android/.test(ua) ? "android" : "desktop"; };
+function installSteps() {
+  const steps = {
+    android: `<b>Android (Chrome):</b> tap <span class="key">⋮</span> at the top right, then <i>Install app</i> or <i>Add to Home screen</i>, then <i>Install</i>.`,
+    ios: `<b>iPhone and iPad (Safari):</b> tap the Share button <span class="key">⬆</span>, scroll down, tap <i>Add to Home Screen</i>, then <i>Add</i>. In another app's browser, open the page in Safari first.`,
+    desktop: `<b>Computer (Chrome or Edge):</b> click the install icon at the right of the address bar, or open the browser menu and choose <i>Install</i>.`,
+  }, os = deviceOS();
+  return [os, ...Object.keys(steps).filter(k => k !== os)].map(k => `<div class="steps ${k === os ? "here" : ""}">${steps[k]}</div>`).join("");
+}
+if ("serviceWorker" in navigator && location.protocol !== "file:") navigator.serviceWorker.register("sw.js").catch(() => {});
 
 send({cmd: "init", save: store.get("gh1-farm")});
 farmerSheet("wave_hat");
@@ -1338,7 +1797,7 @@ worker.onmessage = e => {
   if (m.save) store.set("gh1-farm", m.save);
   if (m.state) {
     const first = !S; S = m.state;
-    if (first) { $("loading").hidden = true; fit(); }
+    if (first) { $("loading").hidden = true; fit(); camPlot("gh1", true); }
     renderTop(); renderBar();
     S.farm.events.forEach(onEvent);
     tutorial(S); tips(S); renderPop();
@@ -1347,11 +1806,20 @@ worker.onmessage = e => {
     const c = m.cmd;
     if (!m.reply.ok) toast(m.reply.error);
     else if (c.cmd === "harvest" && m.reply.kg > 0) {
-      floaters.push({text: `+${m.reply.coins}`, x: c.house * LOT + 160, y: BED_Y[c.zone] + 6, t0: performance.now()});
-      burst(c.house * LOT + 190, BED_Y[c.zone] + 8, [META.crops[m.reply.crop].colour, LEAF[m.reply.crop], "#f2c14e"]);
+      const [bx, by] = bedXY(c.house, c.zone);
+      floaters.push({text: `+${m.reply.coins}`, x: bx - 30, y: by - 2, t0: performance.now()});
+      burst(bx, by, [META.crops[m.reply.crop].colour, LEAF[m.reply.crop], "#f2c14e"]);
       toast(`Harvested ${num(m.reply.kg)} kg · +${num(m.reply.coins)} coins`);
     } else if (c.cmd === "plant") toast(`Planted ${cropName(c.crop)} in ${META.house_names[c.house]} bed ${c.zone + 1}`);
     else if (c.cmd === "buy") toast(`Bought ${(META.items.find(i => i.id === c.item) || {title: nameOf(c.item)}).title}`);
     else if (c.cmd === "cosmetic") toast(META.cosmetics.find(x => x.id === c.id).title);
+    else if (c.cmd === "sell") { toast(`Sold ${m.reply.sold} ${PRODUCT[m.reply.product][1]} · +${num(m.reply.coins)} coins`); }
+    else if (c.cmd === "deliver") toast(`Delivered ${m.reply.delivered} to the buyer`);
+    else if (c.cmd === "merchant") toast("Bought from the merchant: find it in the market's Cosmetics tab");
+    else if (c.cmd === "animals" && c.action === "collect") {
+      const r = m.reply, [px, py] = penCenter(c.pen);
+      floaters.push({text: `+${r.units} ${PRODUCT[r.product][1]}`, x: px - 16, y: py - 20, t0: performance.now()});
+      toast(`${r.units} ${PRODUCT[r.product][1]} of ${PRODUCT[r.product][0].toLowerCase()} into the basket (worth ${num(r.value)})${r.tea ? ` · +${r.tea} compost tea` : ""}`);
+    }
   }
 };

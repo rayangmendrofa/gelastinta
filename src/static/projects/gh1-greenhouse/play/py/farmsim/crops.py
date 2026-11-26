@@ -34,6 +34,24 @@ CROPS = {
     "strawberry": dict(name="Strawberry", colour="#e0405e", recipe=(1.5, 5.8, 30, 22.0, 26.0, 80.0),
                        comfort=(5, 15, 24, 30, 1.0, 2.0),
                        variants=[("Day-neutral", 60, 2.0, 0.0)]),
+    "amaranth": dict(name="Amaranth", colour="#c43a6a", recipe=(1.8, 6.2, 35, 30.0, 34.0, 90.0),
+                     comfort=(18, 25, 34, 40, 1.2, 2.6),
+                     variants=[("Green bayam", 25, 2.2, 1.0), ("Red bayam", 28, 2.0, 1.0)]),
+    "pakchoi": dict(name="Pak choi", colour="#8fd35a", recipe=(1.8, 6.2, 30, 26.0, 30.0, 85.0),
+                    comfort=(10, 18, 29, 35, 1.2, 2.4),
+                    variants=[("Green pak choi", 30, 3.0, 0.0), ("Baby pak choi", 22, 2.0, 1.0)]),
+    "longbean": dict(name="Long bean", colour="#5aa83a", recipe=(2.0, 6.2, 45, 29.0, 33.0, 85.0),
+                     comfort=(16, 24, 33, 38, 1.4, 2.6),
+                     variants=[("Yard-long", 55, 2.5, 1.0)]),
+    "eggplant": dict(name="Eggplant", colour="#6a2a8a", recipe=(2.6, 6.0, 55, 28.0, 32.0, 85.0),
+                     comfort=(16, 24, 32, 38, 2.0, 3.4),
+                     variants=[("Long purple", 70, 4.0, 1.0), ("Round green", 75, 4.5, 0.0)]),
+    "shallot": dict(name="Shallot", colour="#b0506a", recipe=(2.0, 6.4, 35, 29.0, 33.0, 80.0),
+                    comfort=(15, 24, 33, 38, 1.4, 2.8),
+                    variants=[("Brebes", 60, 1.8, 1.0)]),
+    "paprika": dict(name="Bell pepper", colour="#e0402e", recipe=(2.6, 6.0, 50, 25.0, 28.0, 85.0),
+                    comfort=(12, 20, 27, 32, 2.0, 3.2),
+                    variants=[("Red", 90, 4.0, 0.0), ("Yellow", 95, 3.8, 0.0)]),
 }
 ZONE_M2 = 250.0
 STAGES = ("seedling", "growing", "flowering", "ripe")
@@ -96,7 +114,7 @@ class Bed:
         self.__init__()
         return kg
 
-    def step_minute(self, t_in, rad_in, deficit_l, light_floor=0.0):
+    def step_minute(self, t_in, rad_in, deficit_l, light_floor=0.0, growth=1.0):
         """Advance one simulated minute with the conditions the crop actually saw."""
         if not self.crop or self.health <= 0 or self.stage == "ripe":
             return
@@ -112,7 +130,7 @@ class Bed:
         worst = min(f_t, f_ec, f_ph, f_w)
         self.stress = {k: round(v, 2) for k, v in (("heat" if t_in > t_hi else "cold", f_t), ("ec", f_ec),
                                                      ("ph", f_ph), ("water", f_w)) if v < 0.8}
-        self.days += GROW_DAYS_PER_MIN * f_light * worst
+        self.days += GROW_DAYS_PER_MIN * f_light * worst * growth
         if worst < 0.3:
             self.health = max(0.0, self.health - 2.0 * (0.3 - worst) / 0.3)
         elif self.health < 100:

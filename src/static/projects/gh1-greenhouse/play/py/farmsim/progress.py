@@ -14,18 +14,22 @@ import random
 
 from . import tags
 from .crops import CROPS, ZONE_M2
+from .plant import PlantConfig
+from .ranch import ANIMALS, FISH_GROW_H, MANURE_PER_TEA, PENS, Ranch
 from .webdemo import TICKS_PER_MIN, WEB_FAULTS, Demo
 
 PRICE = {"kangkung": 0.6, "lettuce": 0.8, "tomato": 1.5, "chili": 4.0, "cucumber": 1.0, "strawberry": 4.0,
-         "melon": 2.5}                                  # coins per kg
+         "melon": 2.5, "amaranth": 0.7, "pakchoi": 1.0, "longbean": 1.4, "eggplant": 1.3, "shallot": 3.0,
+         "paprika": 5.0}                                # coins per kg
 # heat-tolerant crops first: lettuce and strawberry need a cool house, which a tropical one is not
 # crop tree: crop -> (level, parent crop to harvest first, upgrade it needs, row, column in the tree view)
 CROP_TREE = {
-    "kangkung": (1, None, None, 0, 1),
-    "chili": (1, "kangkung", None, 1, 0), "cucumber": (2, "kangkung", "solar", 1, 1),
-    "lettuce": (3, "kangkung", "cool", 1, 2),
-    "tomato": (2, "chili", None, 2, 0), "melon": (3, "cucumber", None, 2, 1),
-    "strawberry": (4, "lettuce", "fog", 2, 2),
+    "kangkung": (1, None, None, 0, 2),
+    "amaranth": (1, "kangkung", None, 1, 0), "chili": (1, "kangkung", None, 1, 1),
+    "cucumber": (2, "kangkung", "solar", 1, 3), "lettuce": (3, "kangkung", "cool", 1, 4),
+    "pakchoi": (2, "amaranth", None, 2, 0), "tomato": (2, "chili", None, 2, 1), "longbean": (2, "chili", None, 2, 2),
+    "melon": (3, "cucumber", None, 2, 3), "strawberry": (4, "lettuce", "fog", 2, 4),
+    "shallot": (3, "pakchoi", None, 3, 0), "eggplant": (3, "tomato", None, 3, 1), "paprika": (4, "tomato", "cool", 3, 2),
 }
 LEVELS = (0, 1200, 4000, 10000, 20000)                  # xp (= kg harvested) to reach level 1, 2, ...
 HOUSE_NAMES = ("GH-1", "GH-2", "GH-3")
@@ -97,7 +101,12 @@ PARTS = (("pipe_kit", "Pipe kit", "Fittings, seals and a strainer screen.", 120)
          ("acid", "Acid can", "Refills the acid tank.", 60),
          ("cal_kit", "Calibration kit", "Standard solutions for the EC and pH probes.", 90),
          ("cable", "Sensor cable", "A new cable run for one sensor.", 70),
-         ("neem", "Neem oil", "Sprays one pest outbreak.", 50))
+         ("neem", "Neem oil", "Sprays one pest outbreak.", 50),
+         ("lumber", "Timber", "Posts and boards for a pen.", 120),
+         ("grain", "Grain sack", "Fills the chickens' feeder.", 40),
+         ("hay", "Hay bale", "Fills the goats' rack.", 60),
+         ("pellets", "Fish pellets", "Feeds the pond.", 50),
+         ("vet_kit", "Vet kit", "Treats a sick pen.", 150))
 TL, PT = {t[0]: t for t in TOOLS}, {t[0]: t for t in PARTS}
 FIX = {                                                 # fault -> (tools, parts) to repair it
     "p201_trip": (("multimeter",), ()), "f602_trip": (("multimeter",), ()),
@@ -116,7 +125,17 @@ NEEDS = {                                               # what a build takes bes
     "up:cool": (("wrench",), ("pipe_kit",)), "up:fog": (("wrench",), ("pipe_kit",)),
     "up:robot": (("multimeter",), ()), "up:cold": (("wrench",), ()),
     "bed": ((), ("drippers",)), "house": (("wrench", "ladder"), ()),
+    **{f"pen:{k}": (v[5], v[6]) for k, v in PENS.items()},
 }
+# the farm map, 3 x 3 plots: plot -> (column, row, title, land price, level); you buy plots next to ones you own
+PLOTS = {
+    "pasture": (0, 0, "North-west meadow", 3000, 3), "barn": (1, 0, "North field", 2500, 3), "gh2": (2, 0, "North-east plot", 4000, 3),
+    "coop": (0, 1, "West field", 1000, 2), "home": (1, 1, "Homestead", 0, 1), "gh1": (2, 1, "East plot", 0, 1),
+    "orchard": (0, 2, "South-west grove", 3500, 4), "pond": (1, 2, "South field", 2000, 3), "gh3": (2, 2, "South-east plot", 9000, 4),
+}
+START_LAND = ("home", "gh1")
+HOUSE_PLOT = {1: "gh2", 2: "gh3"}
+
 STARTER = (("wrench",), {"drippers": 1, "fertilizer": 1})
 # id, slot, title, cost: outfit, paint and path are worn one at a time; decor can be switched on and off
 COSMETICS = (
@@ -128,12 +147,37 @@ COSMETICS = (
     ("path:planks", "path", "Wooden boardwalk", 400),
     ("decor:flowers", "decor", "Flower border", 300), ("decor:scarecrow", "decor", "Scarecrow", 350),
     ("decor:lanterns", "decor", "Night lanterns", 450), ("decor:flag", "decor", "Farm flag", 250),
+    ("paint:yellow", "paint", "Sunflower yellow frame", 500), ("paint:purple", "paint", "Ube purple frame", 600),
+    ("path:stone", "path", "Stepping-stone path", 450),
+    ("decor:dog", "decor", "Guard dog", 800), ("decor:windmill", "decor", "Windmill", 900),
+    ("decor:fountain", "decor", "Fountain", 700), ("decor:ducks", "decor", "Ducks on the pond", 400),
+    ("decor:bunting", "decor", "Festival bunting", 300),
 )
 CO = {c[0]: c for c in COSMETICS}
 
-# dynamic days: the weather, the market, buyers, pests and birds
-WEATHER_ODDS = (("clear", 0.45), ("cloudy", 0.30), ("rain", 0.17), ("storm", 0.08))
-HEATWAVE = (0.25, 4.0)                                   # chance on a clear day, degC added outside
+# the farm year: 4 seasons of 7 days, as in Indonesia (dry, the change to wet, wet, the change back)
+SEASON_DAYS = 7
+SEASONS = (
+    # id, title, weather odds (clear, cloudy, rain, storm), heatwave chance on a clear day, crops that grow faster
+    ("dry", "Dry season (kemarau)", (0.65, 0.25, 0.07, 0.03), 0.35, ("chili", "tomato", "melon", "shallot", "eggplant", "paprika")),
+    ("to_wet", "Pancaroba: rains coming", (0.30, 0.30, 0.22, 0.18), 0.15, ("longbean", "lettuce", "strawberry")),
+    ("wet", "Wet season (hujan)", (0.15, 0.30, 0.40, 0.15), 0.0, ("kangkung", "amaranth", "pakchoi", "cucumber", "longbean")),
+    ("to_dry", "Pancaroba: rains ending", (0.35, 0.30, 0.20, 0.15), 0.10, ("lettuce", "strawberry", "amaranth")),
+)
+YEAR_DAYS = SEASON_DAYS * len(SEASONS)
+HEATWAVE_C = 4.0                                         # degC added outside on a heatwave day
+FESTIVALS = {                                            # day of the year (0-based) -> id, title, what it does
+    6: ("harvest", "Harvest festival", "Crops sell for 50 % more today."),
+    13: ("kites", "Kite day", "Windy fun: the village pays 300 coins to every farm with a scarecrow or a flag up."),
+    20: ("planting", "Planting day", "Every crop grows 30 % faster today."),
+    24: ("fair", "Village fair", "Eggs, milk, wool, truffles, fish and mangoes sell for double today."),
+    27: ("lantern", "Lantern night", "The village gives every farm a 300-coin gift for the new year."),
+}
+FESTIVAL_GIFT = 300
+DROUGHT_CHANCE, DROUGHT_REFILL = 0.3, 0.4                # dry season: chance per day, the well's refill rate left
+FLOOD_DIRT = 40.0                                        # a wet-season storm muddies every pen
+MERCHANT_CHANCE, MERCHANT_DISCOUNT = 0.25, 0.6
+RAID_CHANCE = 0.15                                       # a monitor lizard at the coop, once a night
 MARKET_UP, MARKET_DOWN = 1.8, 0.6                       # today's price for the crop in demand / in glut
 ORDER_CHANCE, ORDER_DAYS = 0.5, 3
 PEST_CHANCE, BIRD_CHANCE = 0.12, 0.35                   # per simulated daylight hour
@@ -161,6 +205,20 @@ ACHIEVEMENTS = (
     ("stylish", "Stylish", "Buy a cosmetic from the market."),
     ("trader", "Trader", "Fill a buyer's order."),
     ("pest_control", "Pest control", "Spray a pest outbreak."),
+    ("rancher", "Rancher", "Build a pen and keep animals."),
+    ("egg_basket", "Egg basket", "Collect 50 eggs."),
+    ("full_barn", "Full barn", "Build every pen: coop, sty, barn, meadow, pond and grove."),
+    ("landowner", "Landowner", "Own all nine plots of the farm."),
+    ("full_year", "A full year", "See all four seasons come round."),
+    ("festival_goer", "Festival goer", "Be on the farm for a village festival."),
+    ("bargain", "Bargain hunter", "Buy from the travelling merchant."),
+    ("good_dog", "Good dog", "Your guard dog chases off a monitor lizard."),
+    ("dry_spell", "Dry spell", "Harvest on a drought day."),
+    ("shepherd", "Shepherd", "Collect 20 bundles of wool."),
+    ("dairy", "Dairy farmer", "Collect 100 L of milk."),
+    ("angler", "Angler", "Harvest the fish pond three times."),
+    ("fashionable", "Fashionable", "Own ten cosmetics."),
+    ("rich", "Well off", "Have 50,000 coins at once."),
 )
 ACH_IDS = [a[0] for a in ACHIEVEMENTS]
 
@@ -196,8 +254,13 @@ class Farm:
         self.owned = [c[0] for c in COSMETICS if c[3] == 0]
         self.style = {"outfit": "farmer", "paint": "white", "path": "gravel", "decor": []}
         self.repairs: list[dict] = []                    # faults found but not fixed yet
-        self.today = {"weather": "clear", "heat": False, "hot": None, "glut": None}
+        self.today = {"weather": "clear", "heat": False, "hot": None, "glut": None, "festival": None,
+                      "drought": False, "flood": False, "merchant": None}
+        self.forecast: list[dict] = []                   # the next three days' weather
         self.order = None                                # a buyer's order: crop, kg, got, due day, bonus
+        self.ranch = Ranch(self.rng)
+        self.produce = {a["product"]: 0 for a in ANIMALS.values()}   # the basket: what the animals made, to sell
+        self.land: list[str] = list(START_LAND)
         self.events: list[dict] = []
         if save:
             self._load(save)
@@ -210,6 +273,8 @@ class Farm:
         self._lost_seen = self._lost_total()
         self._open = set(self.crops_open())
         self._day = self.houses[0].b.plant.day
+        self.forecast = [self._roll(self._day + k) for k in (1, 2, 3)]
+        self._apply_day()
         self._hour = self.houses[0].b.plant.clock_min // 60
 
     # ------------------------------------------------------------------ hardware
@@ -226,7 +291,7 @@ class Farm:
     def _sky(self, h: Demo):
         """One sky over the farm: today's weather and heatwave."""
         h.b.plant.weather.scenario = self.today["weather"]
-        h.b.plant.weather.heat = HEATWAVE[1] if self.today["heat"] else 0.0
+        h.b.plant.weather.heat = HEATWAVE_C if self.today["heat"] else 0.0
 
     # ------------------------------------------------------------------ simulation
     def run(self, n: int):
@@ -246,6 +311,10 @@ class Farm:
             self.events.append({"type": "lost"})
             self._award("lesson")
         if t // TICKS_PER_MIN != (t - n) // TICKS_PER_MIN:          # once per simulated minute
+            for _ in range(t // TICKS_PER_MIN - (t - n) // TICKS_PER_MIN):   # every minute this call crossed
+                self.ranch.minute(self.houses[0].b.plant.wx.t_out)
+            self.events += self.ranch.events
+            self.ranch.events = []
             if "robot" in self.upgrades:
                 for hi, h in enumerate(self.houses):
                     for z, bed in enumerate(h.beds):
@@ -262,36 +331,103 @@ class Farm:
             self._maybe_problem()
             self._maybe_critters()
 
-    def _new_day(self):
-        r = self.rng
-        x, sc = r.random(), "clear"
-        for name, odds in WEATHER_ODDS:
-            if x < odds:
+    @staticmethod
+    def season_of(day: int):
+        return SEASONS[(day % YEAR_DAYS) // SEASON_DAYS]
+
+    def calendar(self) -> dict:
+        d = self._day
+        return {"day": d + 1, "year": d // YEAR_DAYS + 1, "doy": d % YEAR_DAYS, "season": self.season_of(d)[0],
+                "season_day": d % SEASON_DAYS + 1}
+
+    def _roll(self, day: int) -> dict:
+        """One day's weather, from that day's season."""
+        sid, _t, odds, heat_p, _c = self.season_of(day)
+        x, sc = self.rng.random(), "storm"
+        for name, p in zip(("clear", "cloudy", "rain", "storm"), odds):
+            if x < p:
                 sc = name
                 break
-            x -= odds
-        heat = sc == "clear" and r.random() < HEATWAVE[0]
+            x -= p
+        return {"weather": sc, "heat": sc == "clear" and self.rng.random() < heat_p}
+
+    def _apply_day(self):
+        """Put today's sky, season and festival on every greenhouse."""
+        season = self.season_of(self._day)
+        fest = FESTIVALS.get(self._day % YEAR_DAYS)
         for h in self.houses:
-            w = h.b.plant.weather
-            w.scenario, w.heat = sc, HEATWAVE[1] if heat else 0.0
-            w.override.clear()
+            self._sky(h)
+            h.in_season = set(season[4])
+            h.growth = 1.3 if fest and fest[0] == "planting" else 1.0
+            h.b.plant.cfg.refill_lph = PlantConfig().refill_lph * (DROUGHT_REFILL if self.today["drought"] else 1.0)
+
+    def _new_day(self):
+        r = self.rng
+        wx = self.forecast.pop(0) if self.forecast else self._roll(self._day)
+        self.forecast.append(self._roll(self._day + 3))
+        sid = self.season_of(self._day)[0]
+        fest = FESTIVALS.get(self._day % YEAR_DAYS)
         opens = self.crops_open()
         hot = r.choice(opens)
         glut = r.choice([c for c in opens if c != hot]) if len(opens) > 1 else None
-        self.today = {"weather": sc, "heat": heat, "hot": hot, "glut": glut}
+        merchant = None
+        offer = [c for c in COSMETICS if c[3] > 0 and c[0] not in self.owned]
+        if offer and r.random() < MERCHANT_CHANCE:
+            c = r.choice(offer)
+            merchant = {"id": c[0], "title": c[2], "price": round(c[3] * MERCHANT_DISCOUNT, -1)}
+        self.today = {**wx, "hot": hot, "glut": glut, "festival": fest[0] if fest else None,
+                      "drought": sid == "dry" and r.random() < DROUGHT_CHANCE,
+                      "flood": sid in ("wet", "to_wet") and wx["weather"] == "storm", "merchant": merchant}
+        self._apply_day()
+        for h in self.houses:
+            h.b.plant.weather.override.clear()
+        if self.today["flood"]:
+            for p in self.ranch.pens.values():
+                p.clean = max(0.0, p.clean - FLOOD_DIRT)
+        if fest:
+            self._award("festival_goer")
+            if fest[0] == "lantern":
+                self.coins += FESTIVAL_GIFT
+            if fest[0] == "kites" and ({"decor:scarecrow", "decor:flag"} & set(self.style["decor"])):
+                self.coins += FESTIVAL_GIFT
+        if self._day >= YEAR_DAYS:
+            self._award("full_year")
         if self.order and self._day > self.order["due"]:
             self.events.append({"type": "order_failed", **self.order})
             self.order = None
         new_order = None
         if not self.order and self.harvests >= 1 and r.random() < ORDER_CHANCE:
-            crop = r.choice(opens)
-            kg = round(CROPS[crop]["variants"][0][2] * ZONE_M2 * r.choice((1, 1.5, 2)) / 50) * 50
-            new_order = self.order = {"crop": crop, "kg": kg, "got": 0, "due": self._day + ORDER_DAYS,
-                                      "bonus": round(kg * PRICE[crop] * 0.6 + 200, -1)}
-        self.events.append({"type": "new_day", "day": self._day + 1, **self.today, "order": new_order})
+            stocked = [ANIMALS[PENS[pid][1]] for pid, p in self.ranch.pens.items() if p.n and pid != "pond"]
+            if stocked and r.random() < 0.4:                 # a neighbour wants eggs, milk, wool...
+                a = r.choice(stocked)
+                qty = max(5, round(a["per_h"] * 24 / 5) * 5)
+                new_order = {"product": a["product"], "kg": qty, "got": 0, "due": self._day + ORDER_DAYS,
+                             "bonus": round(qty * a["sell"] * 0.6 + 200, -1)}
+            else:
+                crop = r.choice(opens)
+                kg = round(CROPS[crop]["variants"][0][2] * ZONE_M2 * r.choice((1, 1.5, 2)) / 50) * 50
+                new_order = {"crop": crop, "kg": kg, "got": 0, "due": self._day + ORDER_DAYS,
+                             "bonus": round(kg * PRICE[crop] * 0.6 + 200, -1)}
+            self.order = new_order
+        self.events.append({"type": "new_day", **self.calendar(), **self.today, "order": new_order,
+                            "season_title": self.season_of(self._day)[1],
+                            "festival_title": fest[1] if fest else None, "festival_desc": fest[2] if fest else None})
+
+    def _night_raid(self):
+        coop = self.ranch.pens.get("coop")
+        if not coop or coop.n == 0 or self.rng.random() >= RAID_CHANCE:
+            return
+        if "decor:dog" in self.style["decor"]:
+            self.events.append({"type": "raid_scared"})
+            self._award("good_dog")
+        else:
+            coop.n -= 1
+            self.events.append({"type": "raid"})
 
     def _maybe_critters(self):
         p = self.houses[0].b.plant
+        if p.clock_min // 60 == 2:                       # 02:00, when the monitor lizards come
+            self._night_raid()
         if self.harvests < 1 or not 7 * 60 <= p.clock_min < 17 * 60:
             return
         beds = [(hi, z, b) for hi, h in enumerate(self.houses) for z, b in enumerate(h.beds) if b.crop and b.health > 0]
@@ -354,7 +490,9 @@ class Farm:
 
     def price_mult(self, crop=None) -> float:
         news = MARKET_UP if crop and crop == self.today["hot"] else MARKET_DOWN if crop and crop == self.today["glut"] else 1.0
-        return (1.2 if "cold" in self.upgrades else 1.0) * (1.5 if "market" in self.boosts else 1.0) * news
+        fest = self.today.get("festival")
+        fest_k = 1.5 if fest == "harvest" and crop else 2.0 if fest == "fair" and crop is None else 1.0
+        return (1.2 if "cold" in self.upgrades else 1.0) * (1.5 if "market" in self.boosts else 1.0) * news * fest_k
 
     def _harvest(self, hi: int, z: int) -> dict:
         h = self.houses[hi]
@@ -371,8 +509,10 @@ class Farm:
         kg *= 1.25 if "bees" in self.boosts else 1.0
         coins = kg * PRICE[crop] * self.price_mult(crop)
         self._gain(kg, coins, crop, health, look)
+        if self.today.get("drought"):
+            self._award("dry_spell")
         o = self.order
-        if o and o["crop"] == crop:
+        if o and o.get("crop") == crop:
             o["got"] = round(o["got"] + kg)
             if o["got"] >= o["kg"]:
                 self.coins += o["bonus"]
@@ -430,13 +570,19 @@ class Farm:
                 items.append({"id": f"bed:{h}:{n}", "title": f"{HOUSE_NAMES[h]} bed {n + 1}",
                               "cost": BED_COST[n] * (h + 1), "level": BED_LEVEL[n]})
         n = len(self.houses)
-        if n < len(HOUSE_NAMES):
+        if n < len(HOUSE_NAMES) and HOUSE_PLOT[n] in self.land:
             items.append({"id": f"house:{n}", "title": f"Greenhouse {HOUSE_NAMES[n]}",
                           "cost": HOUSE_COST[n], "level": HOUSE_LEVEL[n]})
+        for pl in self.land_for_sale():
+            c, r, title, cost, lv = PLOTS[pl]
+            items.append({"id": f"land:{pl}", "title": f"Land: {title}", "cost": cost, "level": lv})
         for u in UPGRADES:
             if u[0] not in self.upgrades:
                 items.append({"id": f"up:{u[0]}", "title": u[1], "cost": u[3], "level": u[4],
                               "after": UP_AFTER.get(u[0], ())})
+        for pid, pen in PENS.items():
+            if pid not in self.ranch.pens and pen[7] in self.land:
+                items.append({"id": f"pen:{pid}", "title": pen[0], "cost": pen[3], "level": pen[4]})
         for it in items:
             tools, parts = needs_of(it["id"])
             it["roadblock"] = it["id"] in ROADBLOCKS and it["id"] not in self.cleared
@@ -445,6 +591,12 @@ class Farm:
             it["ok"] = (self.coins >= it["cost"] and self.level >= it["level"] and not self.trouble
                         and not it["missing"] and not it["locked_by"])
         return items
+
+    def land_for_sale(self) -> list[str]:
+        """Plots next to land you own (up, down, left or right)."""
+        own = {PLOTS[p][:2] for p in self.land}
+        return [p for p, (c, r, *_x) in PLOTS.items() if p not in self.land
+                and any((c + dc, r + dr) in own for dc, dr in ((1, 0), (-1, 0), (0, 1), (0, -1)))]
 
     def missing(self, need) -> list[str]:
         tools, parts = need
@@ -498,6 +650,16 @@ class Farm:
             self._award("scale_out")
             if len(self.houses) == 3:
                 self._award("estate")
+        elif kind == "land":
+            self.land.append(rest[0])
+            ev["plot"] = rest[0]
+            if len(self.land) == len(PLOTS):
+                self._award("landowner")
+        elif kind == "pen":
+            self.ranch.build(rest[0])
+            ev["pen"] = rest[0]
+            if len(self.ranch.pens) == len(PENS):
+                self._award("full_barn")
         else:
             self.upgrades.append(rest[0])
             for h in self.houses:
@@ -523,6 +685,26 @@ class Farm:
         else:
             self.parts[item] += 1
 
+    def buy_from_merchant(self):
+        m = self.today.get("merchant")
+        if not m:
+            raise ValueError("the merchant is not here today")
+        if m["id"] in self.owned:
+            raise ValueError("you already have it")
+        if self.coins < m["price"]:
+            raise ValueError(f"needs {m['price']} coins")
+        self.coins -= m["price"]
+        self.owned.append(m["id"])
+        self.today["merchant"] = None
+        self._award("bargain")
+        self._award("stylish")
+        self._after_cosmetic()
+        return {"bought": m["id"]}
+
+    def _after_cosmetic(self):
+        if len([c for c in self.owned if CO[c][3] > 0]) >= 10:
+            self._award("fashionable")
+
     def cosmetic(self, cid: str):
         """Buy a cosmetic the first time, then wear it (or switch a decoration on and off)."""
         if cid not in CO:
@@ -534,6 +716,7 @@ class Farm:
             self.coins -= cost
             self.owned.append(cid)
             self._award("stylish")
+            self._after_cosmetic()
         if slot == "decor":
             d = self.style["decor"]
             if cid in d:
@@ -568,6 +751,112 @@ class Farm:
             it = next((i for i in self.shop() if i["id"] == rep["item"]), None)
             if it and it["ok"]:
                 self._finish(it)
+
+    def animals(self, action: str, pid: str, n: int = 1):
+        """Look after a pen: buy animals, feed, clean, treat, collect what they made."""
+        if pid not in self.ranch.pens:
+            raise ValueError("build that pen first")
+        p, a = self.ranch.pens[pid], self.ranch.animal(pid)
+        if action == "buy":
+            if pid == "pond":
+                if p.n:
+                    raise ValueError("harvest the pond before you stock it again")
+                n = PENS[pid][2]
+            if n < 1:
+                raise ValueError("buy at least one")
+            if p.n + n > PENS[pid][2]:
+                raise ValueError(f"the {PENS[pid][0].lower()} holds {PENS[pid][2]}")
+            if self.coins < a["price"] * n:
+                raise ValueError(f"needs {a['price'] * n} coins")
+            self.coins -= a["price"] * n
+            p.n += n
+            if pid == "pond":
+                p.stock = 0.0
+            self._award("rancher")
+        elif action == "feed":
+            if self.parts[a["feed"]] < 1:
+                raise ValueError("needs " + self._name(a["feed"]))
+            self.parts[a["feed"]] -= 1
+            p.feed = 100.0
+        elif action == "clean":
+            p.clean = 100.0
+        elif action == "treat":
+            if not p.sick:
+                raise ValueError("nobody is sick")
+            if self.parts[a["medicine"]] < 1:
+                raise ValueError("needs " + self._name(a["medicine"]))
+            self.parts[a["medicine"]] -= 1
+            p.sick, p.health = False, min(100.0, p.health + 30.0)
+        elif action == "collect":
+            if not self.ranch.ready(pid):
+                raise ValueError("nothing to collect yet")
+            if pid == "pond":
+                units, p.n, p.stock = p.n, 0, 0.0
+            else:
+                units = int(p.stock)
+                p.stock -= units
+            kg = units * a["kg"]
+            self.produce[a["product"]] += units
+            self.ranch.collected[a["product"]] += units
+            if pid == "pond":
+                self.ranch.ponds = getattr(self.ranch, "ponds", 0) + 1
+                if self.ranch.ponds >= 3:
+                    self._award("angler")
+            if self.ranch.collected.get("wool", 0) >= 20:
+                self._award("shepherd")
+            if self.ranch.collected.get("milk", 0) >= 100:
+                self._award("dairy")
+            tea = int(p.manure // MANURE_PER_TEA)
+            p.manure -= tea * MANURE_PER_TEA
+            self.items["tea"] += tea
+            before = self.level
+            self.xp += kg
+            if self.ranch.collected["egg"] >= 50:
+                self._award("egg_basket")
+            if self.level > before:
+                self.events.append({"type": "level", "level": self.level})
+                self._check_unlocks()
+            return {"units": units, "product": a["product"], "value": round(units * self.unit_price(a["product"])),
+                    "tea": tea}
+        else:
+            raise ValueError(f"unknown action {action!r}")
+        return None
+
+    def unit_price(self, product: str) -> float:
+        """Today's price for one egg, litre, bundle, truffle, fish or mango."""
+        a = next(x for x in ANIMALS.values() if x["product"] == product)
+        return a["sell"] * (a["kg"] if product == "fish" else 1) * self.price_mult()
+
+    def sell(self, product: str, n):
+        if product not in self.produce:
+            raise ValueError(product)
+        have = self.produce[product]
+        n = have if n == "all" else int(n)
+        if n < 1 or n > have:
+            raise ValueError("not that many in the basket")
+        coins = n * self.unit_price(product)
+        self.produce[product] -= n
+        self.coins += coins
+        if self.coins >= 50000:
+            self._award("rich")
+        return {"sold": n, "product": product, "coins": round(coins)}
+
+    def deliver(self):
+        """Hand the buyer what the basket holds for their order."""
+        o = self.order
+        if not o or "product" not in o:
+            raise ValueError("no order for animal produce right now")
+        n = min(self.produce[o["product"]], o["kg"] - o["got"])
+        if n < 1:
+            raise ValueError("nothing in the basket for this order")
+        self.produce[o["product"]] -= n
+        o["got"] += n
+        if o["got"] >= o["kg"]:
+            self.coins += o["bonus"]
+            self.order = None
+            self.events.append({"type": "order_done", **o})
+            self._award("trader")
+        return {"delivered": n}
 
     def use(self, item: str):
         if self.items.get(item, 0) < 1:
@@ -608,6 +897,8 @@ class Farm:
             return self.use(m["item"])
         if c == "cosmetic":
             return self.cosmetic(m["id"])
+        if c == "animals":
+            return self.animals(m["action"], m["pen"], int(m.get("n", 1)))
         if c == "spray":
             return self.spray(int(m["house"]), int(m["zone"]))
         if c == "repair":
@@ -615,7 +906,15 @@ class Farm:
         if c == "problems":
             self.problems_on = bool(m["on"])
             return None
-        if c in ("weather", "skip_night"):              # one sky and one clock over the whole farm
+        if c == "weather":
+            raise ValueError("the weather follows the seasons now")
+        if c == "merchant":
+            return self.buy_from_merchant()
+        if c == "sell":
+            return self.sell(m["product"], m.get("n", 1))
+        if c == "deliver":
+            return self.deliver()
+        if c in ("skip_night",):                         # one clock over the whole farm
             for h in self.houses:
                 r = self._call(h, m)
             if c == "skip_night":
@@ -694,6 +993,9 @@ class Farm:
                 "items": self.items, "boosts": {k: (u - t) // TICKS_PER_MIN for k, u in self.boosts.items()},
                 "crops": self.crops_open(), "crop_locks": {c: self.crop_lock(c) for c in CROP_TREE},
                 "crops_done": self.crops_done, "today": self.today, "order": self.order,
+                "calendar": self.calendar(), "forecast": self.forecast, "produce": self.produce,
+                "produce_price": {k: round(self.unit_price(k), 1) for k in self.produce},
+                "ranch": self.ranch.state(), "collected": self.ranch.collected, "land": self.land,
                 "prices_now": {c: round(PRICE[c] * self.price_mult(c), 2) for c in CROP_TREE},
                 "ach": self.ach, "trouble": self.trouble, "problems_on": self.problems_on,
                 "tools": self.tools, "parts": self.parts, "owned": self.owned, "style": self.style,
@@ -711,8 +1013,10 @@ class Farm:
             "v": 2, "coins": self.coins, "xp": self.xp, "kg": self.kg, "harvests": self.harvests,
             "lost": self.lost, "ach": self.ach, "cleared": self.cleared, "crops_done": self.crops_done,
             "upgrades": self.upgrades, "items": self.items, "problems_on": self.problems_on,
+            "ranch": self.ranch.save(), "land": self.land,
             "tools": self.tools, "parts": self.parts, "owned": self.owned, "style": self.style,
-            "repairs": self.repairs, "order": self.order, "today": self.today,
+            "repairs": self.repairs, "order": self.order, "today": self.today, "day": self._day,
+            "ponds": getattr(self.ranch, "ponds", 0), "produce": self.produce,
             "clock": self.houses[0].b.plant.clock_min, "open_beds": self.open_beds,
             "beds": [[{"crop": b.crop, "variant": b.variant, "days": b.days, "health": b.health, "pest": b.pest}
                       for b in h.beds] for h in self.houses],
@@ -729,15 +1033,26 @@ class Farm:
         self.upgrades = [u for u in d.get("upgrades", []) if u in UP]
         self.items.update({k: max(0, int(v)) for k, v in d.get("items", {}).items() if k in IT})
         self.problems_on = bool(d.get("problems_on", True))
+        self.ranch.load(d.get("ranch", {}))
+        land = [pl for pl in d.get("land", []) if pl in PLOTS]
+        land += [HOUSE_PLOT[i] for i in (1, 2) if len(d["beds"]) > i]               # older saves: land under what was built
+        land += [PENS[pid][7] for pid in self.ranch.pens]
+        self.land = list(dict.fromkeys(list(START_LAND) + land))
         o = d.get("order")
         if isinstance(o, dict) and o.get("crop") in CROPS:
             self.order = {"crop": o["crop"], "kg": int(o["kg"]), "got": int(o["got"]), "due": int(o["due"]),
                           "bonus": int(o["bonus"])}
         t = d.get("today")
         if isinstance(t, dict) and t.get("weather") in ("clear", "cloudy", "rain", "storm"):
-            self.today = {"weather": t["weather"], "heat": bool(t.get("heat")),
-                          "hot": t.get("hot") if t.get("hot") in CROPS else None,
-                          "glut": t.get("glut") if t.get("glut") in CROPS else None}
+            m = t.get("merchant")
+            self.today.update({"weather": t["weather"], "heat": bool(t.get("heat")),
+                               "hot": t.get("hot") if t.get("hot") in CROPS else None,
+                               "glut": t.get("glut") if t.get("glut") in CROPS else None,
+                               "festival": t.get("festival") if t.get("festival") in [f[0] for f in FESTIVALS.values()] else None,
+                               "drought": bool(t.get("drought")), "flood": bool(t.get("flood")),
+                               "merchant": m if isinstance(m, dict) and m.get("id") in CO else None})
+        self.ranch.ponds = int(d.get("ponds", 0))
+        self.produce.update({k: max(0, int(v)) for k, v in d.get("produce", {}).items() if k in self.produce})
         if "tools" in d:
             self.tools = [t for t in d["tools"] if t in TL]
             self.parts.update({k: max(0, int(v)) for k, v in d["parts"].items() if k in PT})
@@ -759,6 +1074,9 @@ class Farm:
                     bed.days, bed.health = float(sb["days"]), max(0.0, min(100.0, float(sb["health"])))
                     bed.pest = bool(sb.get("pest", False))
             self.houses.append(h)
+        day = max(0, int(d.get("day", 0)))                 # the calendar carries on where it was
+        for h in self.houses:
+            h.b.plant.day = day
         for r in d.get("repairs", []):                   # a found fault is still broken after a reload
             if r.get("fault") in FIX and 0 <= int(r.get("house", -1)) < n:
                 self.repairs.append({"house": int(r["house"]), "fault": r["fault"],
@@ -782,6 +1100,12 @@ def meta() -> str:
               "callout_fee": CALLOUT_FEE, "tech_fee": TECH_FEE, "fix": FIX,
               "tools": [{"id": t[0], "title": t[1], "desc": t[2], "cost": t[3]} for t in TOOLS],
               "parts": [{"id": t[0], "title": t[1], "desc": t[2], "cost": t[3]} for t in PARTS],
-              "cosmetics": [{"id": c[0], "slot": c[1], "title": c[2], "cost": c[3]} for c in COSMETICS], "bed_costs": BED_COST, "house_costs": HOUSE_COST,
+              "cosmetics": [{"id": c[0], "slot": c[1], "title": c[2], "cost": c[3]} for c in COSMETICS],
+              "pens": {k: {"title": v[0], "animal": v[1], "cap": v[2], "cost": v[3], "level": v[4]} for k, v in PENS.items()},
+              "animals": ANIMALS, "fish_grow_h": FISH_GROW_H,
+              "seasons": [{"id": s[0], "title": s[1], "odds": s[2], "heat": s[3], "crops": s[4]} for s in SEASONS],
+              "season_days": SEASON_DAYS, "year_days": YEAR_DAYS,
+              "festivals": {d: {"id": f[0], "title": f[1], "desc": f[2]} for d, f in FESTIVALS.items()},
+              "plots": {k: {"col": v[0], "row": v[1], "title": v[2], "cost": v[3], "level": v[4]} for k, v in PLOTS.items()}, "bed_costs": BED_COST, "house_costs": HOUSE_COST,
               "house_levels": HOUSE_LEVEL})
     return json.dumps(m)
