@@ -24,6 +24,7 @@ const PAGES = new Set([
   "/talks/learning-brain",
   "/talks/skin-effect",
   "/talks/voyager-light-day",
+  "/talks/riemann-hypothesis",
   "/projects/beng-dissertation",
   "/projects/msc-dissertation",
   "/projects/inmoov-hand",
