@@ -1,0 +1,17 @@
+{
+  "name": "GH-1 Farm: greenhouse with a real PLC program",
+  "short_name": "GH-1 Farm",
+  "description": "A pixel farm run by a real IEC 61131-3 PLC program, in your browser.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0f1222",
+  "theme_color": "#1c2140",
+  "categories": ["games", "education"],
+  "icons": [
+    {"src": "img/icon-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "img/icon-512.png", "sizes": "512x512", "type": "image/png"},
+    {"src": "img/icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ]
+}

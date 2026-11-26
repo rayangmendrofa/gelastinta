@@ -8,4 +8,5 @@ farmsim/faults.py
 farmsim/crops.py
 farmsim/webdemo.py
 farmsim/progress.py
+farmsim/ranch.py
 plc/greenhouse.st

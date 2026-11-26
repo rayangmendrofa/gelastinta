@@ -39,6 +39,8 @@ class Demo:
         self.challenge, self.result = None, None
         self.park = {}                  # set point -> value held while its hardware is not installed
         self.light_floor = 0.0          # grow lamps: light the crops get even in the dark
+        self.in_season: set = set()     # crops that grow faster this season (the progress layer sets it)
+        self.growth = 1.0               # a festival can speed up every crop
         self.apply_recipe()
         self.b.run(2.0)                 # analog filters settle, then clear the power-up alarms
         self.b.hmi("reset")
@@ -58,7 +60,8 @@ class Demo:
                 rad_in = p.wx.rad * p.cfg.transmissivity * (1 - p.cfg.net_shading * p.net_pos / 100.0)
                 for i, bed in enumerate(self.beds):
                     alive = bed.health > 0
-                    bed.step_minute(p.t_in, rad_in, p.deficit[i], light_floor=self.light_floor)
+                    g = self.growth * (1.2 if bed.crop in self.in_season else 1.0)
+                    bed.step_minute(p.t_in, rad_in, p.deficit[i], light_floor=self.light_floor, growth=g)
                     if alive and bed.crop and bed.health <= 0:
                         self.lost += 1
                         self.apply_recipe()
